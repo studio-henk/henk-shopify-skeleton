@@ -3,12 +3,9 @@ store = "surf-turf-2-0.myshopify.com"
 
 [environments.production]
 theme_id = "141470990497"
-branch = "main"
 
 [environments.staging]
 theme_id = "141473448097"
-branch = "staging"
 
 [environments.develop]
-theme_id = "141473513633"
-branch = "develop"
+theme = "141473513633"

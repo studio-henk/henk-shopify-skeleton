@@ -1,0 +1,307 @@
+{%- liquid
+    assign localization_forms = false
+
+    if localization.available_countries.size > 1 and section.settings.enable_country_selector or section.settings.enable_language_selector and localization.available_languages.size > 1
+        assign localization_forms = true
+    endif
+-%}
+<link
+    rel="stylesheet"
+    href="{{ 'component-cart-notification.css' | asset_url }}"
+    media="print"
+    onload="this.media='all'"
+>
+<script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+
+{% assign main_level_links = linklists['main-menu'].links %}
+<div class="henk-header__inner">
+    <button
+        class="henk-button henk-button--ghost"
+        data-js-mobile-menu=""
+        aria-expanded="false"
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="1"
+        >
+            <line x1="0" y1="0.5" x2="24" y2="0.5"></line>
+            <line x1="0" y1="12" x2="24" y2="12"></line>
+            <line x1="0" y1="23.5" x2="24" y2="23.5"></line>
+        </svg>
+    </button>
+    <a
+        class="henk-logo henk-logo--transparent"
+        href="{{ routes.root_url }}"
+        aria-label="Studio HENK"
+    >
+        {%- render 'henk-logo' -%}
+    </a>
+    <ul class="henk-header__menu">
+        {% for main_level_link in main_level_links %}
+            {% if main_level_link.levels > 0 %}
+                {% assign main_level_sub_links = main_level_link.links %}
+                <li class="henk-header__menu-item henk-header__dropdown main-level">
+                    <a
+                        href="{{ main_level_link.url }}"
+                        data-js-behavior="openSub"
+                        class="henk-header__menu-link henk-button henk-button--ghost"
+                    >
+                        {{- main_level_link.title }}
+                        <!-- <i class="henk-icon"> -->
+                        <!-- {%- render 'henk-icon-chevron-down' -%} -->
+                        <!-- </i> -->
+                    </a>
+                    <div class="dropdown-container">
+                        <div class="dropdown-container__inner">
+                            <ul class="dropdown">
+                                <li class="sub-level left-col">
+                                    {% if main_level_sub_links[0].links.size > 0
+                                    %}
+                                        {% assign highlightsHeading = main_level_sub_links[0].title %}
+                                        {% assign highlightsUrl = main_level_sub_links[0].url %}
+                                        {% if highlightsUrl %}
+                                            {% if highlightsHeading %}
+                                                <a
+                                                    class="column__heading"
+                                                    href="{{ highlightsUrl }}"
+                                                >
+                                                    {{- highlightsHeading -}}
+                                                </a>
+                                            {% endif %}
+                                        {% else %}
+                                            <span class="column__heading">
+                                                {{- highlightsHeading -}}
+                                            </span>
+                                        {% endif %}
+                                        <ul>
+                                            {% for feature_link in main_level_sub_links[0].links %}
+                                                <li>
+                                                    <a href="{{ feature_link.url }}">
+                                                        {{- feature_link.title -}}
+                                                    </a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                                <li class="sub-level right-col">
+                                    {% if main_level_sub_links[0].links.size > 0
+                                    %}
+                                        {% assign no_sub_links = '' %}
+
+                                        <!--
+                                            Loop through main level sub links
+                                        -->
+                                        {% for sub_level_link in main_level_sub_links %}
+                                            {% if forloop.index > 1 %}
+                                                {% if sub_level_link.links.size
+                                                        > 0
+                                                %}
+                                                    <!--
+                                                        Create a column for links with sub-levels
+                                                    -->
+                                                    <div class="column">
+                                                        <a
+                                                            class="column__heading"
+                                                            href="{{ sub_level_link.url }}"
+                                                        >
+                                                            {{- sub_level_link.title -}}
+                                                        </a>
+                                                        <ul>
+                                                            {% for sub_level2_link in sub_level_link.links %}
+                                                                <li>
+                                                                    <a href="{{ sub_level2_link.url }}">
+                                                                        {{ sub_level2_link.title }}
+                                                                    </a>
+                                                                </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                {% else %}
+                                                    <!--
+                                                        Add links without sub-levels to a variable
+                                                    -->
+                                                    {% assign no_sub_links = no_sub_links
+                                                        | append: '<li><a href="'
+                                                        | append: sub_level_link.url
+                                                        | append: '">'
+                                                        | append: sub_level_link.title
+                                                        | append: '</a></li>'
+                                                    %}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+
+                                        <!--
+                                            If there are links without sub-levels, group them in one div
+                                        -->
+                                        {% if no_sub_links != '' %}
+                                            <div class="column">
+                                                <a
+                                                    class="column__heading"
+                                                    href="{{main_level_link.url}}"
+                                                >
+                                                    {{- main_level_link.title -}}
+                                                </a>
+                                                <ul>
+                                                    {{ no_sub_links | raw }}
+                                                </ul>
+                                            </div>
+                                        {% endif %}
+
+                                    {% else %}
+                                        <div class="column">
+                                            <a
+                                                href="{{main_level_link.url}}"
+                                                class="column__heading"
+                                            >
+                                                {{- main_level_link.title -}}
+                                            </a>
+                                            <ul>
+                                                {% for sub_level_link in main_level_sub_links %}
+                                                    {% assign parts = sub_level_link.title
+                                                        | split: '&'
+                                                    %}
+                                                    <li>
+                                                        <a href="{{sub_level_link.url}}">
+                                                            {% comment %}{{sub_level_link.title}}{% endcomment %}
+                                                            {% for part in parts %}
+                                                                {{ part }}
+                                                                {% unless forloop.last %}
+                                                                    <span class="amp"
+                                                                        >&amp;</span
+                                                                    >
+                                                                {% endunless %}
+                                                            {% endfor %}
+                                                        </a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            {% else %}
+                <li class="main-level">
+                    <a href="{{ main_level_link.url }}">
+                        {{- main_level_link.title -}}
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <div class="henk-header__utils" data-js-utils>
+        {%- if localization and localization.available_languages.size > 0 -%}
+            <div class="henk-localise">
+                <div class="henk-popover henk-popover--lang">
+                    <button
+                        id="lang-button"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="henk-lang-popover"
+                        data-js-expand
+                        data-state="closed"
+                        popovertarget="henk-lang-popover"
+                        class="henk-button henk-button--small henk-button--ghost"
+                    >
+                        {{ localization.language.endonym_name | capitalize }}
+
+                        <i class="henk-icon">
+                            {%- render 'henk-icon-chevron-down' -%}
+                        </i>
+                    </button>
+                    <div
+                        popover
+                        id="henk-lang-popover"
+                        anchor="lang-button"
+                        data-js-popover
+                    >
+                        {%- form 'localization' -%}
+                            <input
+                                type="hidden"
+                                name="return_to"
+                                value="{{ request.path }}"
+                            >
+                            <ul>
+                                {% for lang in localization.available_languages %}
+                                    {% if lang.iso_code
+                                            != localization.language.iso_code
+                                    %}
+                                        <li>
+                                            <button
+                                                type="submit"
+                                                name="locale_code"
+                                                value="{{ lang.iso_code }}"
+                                                class="henk-button henk-button--ghost"
+                                                title="Switch to {{ lang.endonym_name }}"
+                                            >
+                                                {{ lang.endonym_name }}
+                                            </button>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        {%- endform -%}
+                    </div>
+                </div>
+            </div>
+        {%- endif -%}
+        {% render 'header-search', input_id: 'Search-In-Modal' %}
+        <a
+            class="header__utils-link header__utils-link--cart header__iconx header__icon--cartx link focus-insetx henk-button henk-button--small henk-button--ghost"
+            href="{{ routes.cart_url }}"
+            aria-label="Cart"
+            id="cart-icon-bubble"
+        >
+            <i class="henk-icon icon--only">{%- render 'henk-icon-bag' -%}</i>
+            {%- if cart != empty -%}
+                <div class="cart-count-bubble cart__badge">
+                    {%- if cart.item_count < 100 -%}
+                        <span aria-hidden="true">{{ cart.item_count }}</span>
+                    {%- endif -%}
+                    <span class="visually-hidden">
+                        {{-
+                            'sections.header.cart_count'
+                            | t: count: cart.item_count
+                        -}}
+                    </span>
+                </div>
+            {%- endif -%}
+        </a>
+    </div>
+</div>
+
+<script src="{{ 'TheHeaderMenu.min.js' | asset_url }}" defer></script>
+
+<script src="{{ 'henk-mobile-menu.min.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "tag": "header",
+  "class": "henk-header henk-header--center henk-header--in-between",
+  "settings": [
+{
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": true,
+      "label": "t:sections.header.settings.enable_country_selector.label",
+      "info":"t:sections.header.settings.enable_country_selector.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": true,
+      "label": "t:sections.header.settings.enable_language_selector.label",
+      "info":"t:sections.header.settings.enable_language_selector.info"
+    },
+  ]
+  }
+{% endschema %}

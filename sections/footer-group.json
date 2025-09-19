@@ -12,12 +12,11 @@
   "name": "t:general.footer",
   "sections": {
     "footer": {
-      "type": "footer",
-      "settings": {
-        "menu": "",
-        "show_payment_icons": true
-      }
+      "type": "henk-footer",
+      "settings": {}
     }
   },
-  "order": ["footer"]
+  "order": [
+    "footer"
+  ]
 }

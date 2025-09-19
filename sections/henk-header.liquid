@@ -181,17 +181,14 @@
                             </div>
                         </div>
                     </details>
-                    <a
-                        href="{{ main_level_link.url }}"
-                        data-js-behavior="openSub"
-                        class="henk-header__menu-link henk-button henk-button--ghost"
-                    >
-                        {{- main_level_link.title }}
-                        <!-- <i class="henk-icon"> -->
-                        <!-- {%- render 'henk-icon-chevron-down' -%} -->
-                        <!-- </i> -->
-                    </a>
-                    <div class="dropdown-container">
+                    <!-- <a -->
+                    <!--     href="{{ main_level_link.url }}" -->
+                    <!--     data-js-behavior="openSub" -->
+                    <!--     class="henk-header__menu-link henk-button henk-button--ghost" -->
+                    <!-- > -->
+                    <!--     {{- main_level_link.title }} -->
+                    <!-- </a> -->
+                    <div class="dropdown-container" hidden>
                         <div class="dropdown-container__inner">
                             <ul class="dropdown">
                                 <li class="sub-level left-col">
@@ -229,17 +226,11 @@
                                     %}
                                         {% assign no_sub_links = '' %}
 
-                                        <!--
-                                            Loop through main level sub links
-                                        -->
                                         {% for sub_level_link in main_level_sub_links %}
                                             {% if forloop.index > 1 %}
                                                 {% if sub_level_link.links.size
                                                         > 0
                                                 %}
-                                                    <!--
-                                                        Create a column for links with sub-levels
-                                                    -->
                                                     <div class="column">
                                                         <a
                                                             class="column__heading"
@@ -258,9 +249,6 @@
                                                         </ul>
                                                     </div>
                                                 {% else %}
-                                                    <!--
-                                                        Add links without sub-levels to a variable
-                                                    -->
                                                     {% assign no_sub_links = no_sub_links
                                                         | append: '<li><a href="'
                                                         | append: sub_level_link.url
@@ -272,9 +260,6 @@
                                             {% endif %}
                                         {% endfor %}
 
-                                        <!--
-                                            If there are links without sub-levels, group them in one div
-                                        -->
                                         {% if no_sub_links != '' %}
                                             <div class="column">
                                                 <a
@@ -304,7 +289,6 @@
                                                     %}
                                                     <li>
                                                         <a href="{{sub_level_link.url}}">
-                                                            {% comment %}{{sub_level_link.title}}{% endcomment %}
                                                             {% for part in parts %}
                                                                 {{ part }}
                                                                 {% unless forloop.last %}

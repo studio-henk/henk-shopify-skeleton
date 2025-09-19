@@ -9,11 +9,11 @@
     {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
     {{ '_henk-header.css' | asset_url | stylesheet_tag: preload: true }}
 
-{% if theme.id != 141470990497 %} /* production ID */
-<style>
-#shopify-pc__banner { display: none !important; }
-</style>
-{% endif %}
+    {% if theme.id != 141470990497 %}
+    <style>
+      #shopify-pc__banner { display: none !important; }
+    </style>
+    {% endif %}
 
     {% # Social, title, etc. %}
     {% render 'meta-tags' %}

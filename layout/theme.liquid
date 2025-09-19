@@ -3,6 +3,7 @@
   <head>
     {% # Inlined CSS Variables %}
     {% render 'css-variables' %}
+    {{ 'henk-tokens.min.css' | asset_url | stylesheet_tag: preload: true }}
 
     {% # Load and preload the critical CSS %}
     {% comment %} {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}

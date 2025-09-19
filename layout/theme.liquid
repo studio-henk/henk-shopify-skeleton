@@ -1,3 +1,4 @@
+{{ request }}
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
   <head>
@@ -8,11 +9,11 @@
     {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
     {{ '_henk-header.css' | asset_url | stylesheet_tag: preload: true }}
 
-{% if request.host contains '127.0.0.1' or request.host contains 'localhost' %}
-  <style>
-    #shopify-pc__banner { display: none !important; }
-  </style>
-{% endif %}
+  {% if request.host contains '127.0.0.1' or request.host contains 'localhost' %}
+    <style>
+      #shopify-pc__banner { display: none !important; }
+    </style>
+  {% endif %}
 
     {% # Social, title, etc. %}
     {% render 'meta-tags' %}

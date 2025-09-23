@@ -5,6 +5,8 @@
         assign localization_forms = true
     endif
 -%}
+
+
 <!-- <link -->
 <!--     rel="stylesheet" -->
 <!--     href="{{ 'component-cart-notification.css' | asset_url }}" -->
@@ -141,7 +143,7 @@
                                                         {{- main_level_link.title -}}
                                                     </a>
                                                     <ul>
-                                                        {{ no_sub_links | raw }}
+                                                        {{ no_sub_links }}
                                                     </ul>
                                                 </div>
                                             {% endif %}

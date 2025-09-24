@@ -2,7 +2,7 @@
 <html lang="{{ request.locale.iso_code }}">
   <head>
     {% # Inlined CSS Variables %}
-    {% render 'css-variables' %}
+    {% comment %} {% render 'css-variables' %} {% endcomment %}
     {{ 'henk-tokens.min.css' | asset_url | stylesheet_tag: preload: true }}
 
     {% # Load and preload the critical CSS %}

@@ -1,0 +1,149 @@
+footer.henk-footer {
+  /* background-color: var(--color-background-base); */
+  /* background-color: var(--color-background-primary-light); */
+  /* background-color: var(--color-background-tertiary); */
+  background-color: var(--color-background-secondary-light);
+  color: var(--color-text-static, #000);
+  color-scheme: light;
+
+  --color-text-link: var(--color-text-static, #000);
+}
+
+footer.henk-footer a {
+  text-decoration: none;
+}
+
+footer.henk-footer a:hover {
+  text-decoration: underline;
+}
+
+.henk-footer__container {
+  width: min(var(--size-width-content, 1140px), 100% - 3rem);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 0 0;
+}
+
+.henk-footer__grid {
+  padding-bottom: 80px;
+  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(173px, 1fr));
+  gap: 24px;
+}
+
+.henk-footer__grid-column .henk-footer__heading {
+  /* border-bottom: 1px solid var(--color-border-base, #000); */
+  margin-block-start: 0;
+  margin-block-end: 24px;
+  font-weight: 500;
+}
+
+.henk-footer__grid-column .henk-footer__heading a:hover {
+  text-decoration: none;
+}
+
+.henk-footer__row--social-rating {
+  padding-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.henk-footer__social-media {
+  gap: 4px;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.henk-footer__social-media-link {
+  display: block;
+}
+
+.henk-footer__social-media-item {
+  line-height: 1;
+}
+
+.henk-footer__row--payment-terms {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--color-border-static, #000);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.henk-footer__payment-logos {
+  display: flex;
+  gap: 1rem;
+}
+
+.henk-footer__payment-logos,
+.henk-footer__small-print {
+  margin: 0;
+  padding: 0;
+}
+
+.henk-footer__small-print {
+  display: flex;
+  row-gap: 8px;
+  flex-wrap: wrap;
+  column-gap: 24px;
+}
+
+.henk-footer__small-print-item a,
+.henk-footer__small-print-item .footer__link {
+  line-height: 24px;
+}
+
+/* b-corp and rating */
+.henk-footer__certificates-rating {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1.5rem;
+  row-gap: 1.5rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.henk-footer__certificates-rating > a {
+  display: inline-flex;
+}
+
+.henk-footer__certificates-rating > a > svg {
+  height: 118px;
+  width: auto;
+}
+
+.henk-footer__rating-widget {
+  display: flex;
+  align-items: center;
+  flex: 1 1 193px;
+}
+
+.henk-footer__payment-logo-item {
+  display: flex;
+  align-items: center;
+}
+
+.henk-footer__payment-logo-item svg {
+  width: auto;
+  height: 16px;
+}
+
+@media (pointer: coarse) {
+  .henk-footer__social-media-link .henk-icon svg {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+.henk-footer .trustpilot-widget,
+.henk-footer .trustpilot-widget {
+  max-height: 118px;
+}

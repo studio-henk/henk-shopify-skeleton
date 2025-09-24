@@ -8,7 +8,7 @@
     {% # Load and preload the critical CSS %}
     {% comment %} {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
 
-    {{ '_henk-base.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'henk-base.min.css' | asset_url | stylesheet_tag: preload: true }}
     {% comment %} {{ '_henk-header.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
     {% comment %} {{ '_henk-footer.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
 

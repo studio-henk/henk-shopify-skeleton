@@ -10,7 +10,7 @@
 
     {{ '_henk-base.css' | asset_url | stylesheet_tag: preload: true }}
     {% comment %} {{ '_henk-header.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
-    {{ '_henk-footer.css' | asset_url | stylesheet_tag: preload: true }}
+    {% comment %} {{ '_henk-footer.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
 
     {% # TODO: check when site live / prod %}
     {% if theme.id != 141470990497 %}

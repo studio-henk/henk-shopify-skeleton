@@ -291,12 +291,12 @@
       <div class="henk-footer__section footer__section--terms">
         <h3 class="visually-hidden">Terms and Policies</h3>
 
-        <ul class="henk-footer__small-print henk-list henk-list--no-bullets fs-small">
+        <ul class="henk-footer__small-print henk-list henk-list--no-bullets">
           {%- for policy in shop.policies -%}
             {%- if policy != blank -%}
               <li class="henk-footer__small-print-item">
                 <a class="footer__link" href="{{ policy.url }}">
-                  {{- policy.title | escape -}}
+                  <small>{{- policy.title | escape -}}</small>
                 </a>
               </li>
             {%- endif -%}

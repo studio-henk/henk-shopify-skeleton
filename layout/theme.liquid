@@ -10,12 +10,15 @@
 
     {{ '_henk-base.css' | asset_url | stylesheet_tag: preload: true }}
     {% comment %} {{ '_henk-header.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
+    {{ '_henk-footer.css' | asset_url | stylesheet_tag: preload: true }}
 
     {% # TODO: check when site live / prod %}
     {% if theme.id != 141470990497 %}
-    <style>
-      #shopify-pc__banner { display: none !important; }
-    </style>
+      <style>
+        #shopify-pc__banner {
+          display: none !important;
+        }
+      </style>
     {% endif %}
 
     {% # Social, title, etc. %}
@@ -26,11 +29,11 @@
 
   <body>
     <div class="henk-wrapper">
-    {% sections 'header-group' %}
-    <main>
-    {{ content_for_layout }}
-    </main>
-    {% sections 'footer-group' %}
+      {% sections 'header-group' %}
+      <main>
+        {{ content_for_layout }}
+      </main>
+      {% sections 'footer-group' %}
     </div>
   </body>
 </html>

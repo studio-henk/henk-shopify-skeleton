@@ -263,7 +263,7 @@
   }
 }
 
-.henk-wrapper > .henk-header {
+.js-enabled .henk-wrapper > .henk-header {
   position: fixed;
   z-index: 10;
 }

@@ -21,6 +21,10 @@
   right: 0;
   top: 0;
 
+  html:has(details[name="main-nav"][open]) {
+    overflow: hidden;
+  }
+
   /* always */
   .henk-header__inner {
     width: min(var(--size-width-content, 1140px), 100% - 3rem);

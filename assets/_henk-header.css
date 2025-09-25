@@ -136,5 +136,9 @@ html:has(details[name="main-nav"][open]) {
     padding: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
+
+    .sub-level.right-col {
+      background-color: yellow;
+    }
   }
 }

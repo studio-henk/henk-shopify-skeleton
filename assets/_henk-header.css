@@ -11,7 +11,12 @@
 
   /* always */
   .henk-header__inner {
-    display: flex;
+    width: min(var(--size-width-content, 1140px), 100% - 3rem);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: start;
+    align-items: center;
     background: aqua;
     justify-content: space-between;
     align-items: center;

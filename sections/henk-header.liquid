@@ -305,7 +305,32 @@
           <summary>
             {{ localization.language.endonym_name | capitalize }}
           </summary>
-          <div class="henk-localise__content">more</div>
+          <div class="henk-localise__content">
+            {%- form 'localization' -%}
+              <input
+                type="hidden"
+                name="return_to"
+                value="{{ request.path }}"
+              >
+              <ul>
+                {% for lang in localization.available_languages %}
+                  {% if lang.iso_code != localization.language.iso_code %}
+                    <li>
+                      <button
+                        type="submit"
+                        name="locale_code"
+                        value="{{ lang.iso_code }}"
+                        class="henk-button henk-button--ghost"
+                        title="Switch to {{ lang.endonym_name }}"
+                      >
+                        {{ lang.endonym_name }}
+                      </button>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {%- endform -%}
+          </div>
         </details>
       </div>
     {%- endif -%}

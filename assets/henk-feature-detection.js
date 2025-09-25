@@ -1,9 +1,6 @@
 (() => {
   const html = document.documentElement;
 
-  document.documentElement.classList.remove("no-js");
-  document.documentElement.classList.add("js-enabled");
-
   // Color gamut
   if (window.matchMedia("(color-gamut: p3)").matches) {
     html.classList.add("color-p3");

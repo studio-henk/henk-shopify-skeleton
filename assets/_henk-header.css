@@ -90,7 +90,8 @@ html:has(details[name="main-nav"][open]) {
     right: 0;
     max-width: 1140px;
     margin: auto;
-    top: 50px;
+    top: 64px;
+    border-top: 1px solid;
   }
 
   .dropdown-container__inner {

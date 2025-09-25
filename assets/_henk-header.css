@@ -26,10 +26,12 @@
     padding: 0;
     display: flex;
     gap: 8px;
+    justify-self: start;
   }
 
   .henk-header__utils {
     display: flex;
     gap: 16px;
+    justify-self: end;
   }
 }

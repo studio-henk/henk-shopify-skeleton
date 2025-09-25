@@ -177,12 +177,12 @@ html:has(details[name="main-nav"][open]) {
         line-height: 32px;
         transition: all 1.3s ease;
 
-        &:hover {
-          background: black;
-          color: white;
-          padding-block: 0.2em;
-          text-decoration-line: none;
-        }
+        /* &:hover { */
+        /*   background: black; */
+        /*   color: white; */
+        /*   padding-block: 0.2em; */
+        /*   text-decoration-line: none; */
+        /* } */
       }
     }
 

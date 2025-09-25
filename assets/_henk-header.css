@@ -1,3 +1,10 @@
+html.no-js & {
+  &:has(details[open]) {
+    background-color: pink;
+    overflow: hidden;
+  }
+}
+
 .henk-header {
   /* style only when JS is disabled */
   html.no-js & {
@@ -24,13 +31,6 @@
   /* html:has(details[name="main-nav"][open]) { */
   /*   overflow: hidden; */
   /* } */
-
-  html.no-js & {
-    &:has(details[open]) {
-      background-color: pink;
-      overflow: hidden;
-    }
-  }
 
   /* always */
   .henk-header__inner {

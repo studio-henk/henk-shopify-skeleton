@@ -29,7 +29,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
-    /* background: aqua; */
     align-items: center;
     padding-block: 24px;
   }
@@ -43,7 +42,6 @@
     justify-self: start;
 
     details::details-content {
-      background-color: yellow;
       opacity: 0;
       overflow: clip;
       block-size: 0;
@@ -56,7 +54,6 @@
 
     details[open]::details-content {
       block-size: auto;
-      background-color: green;
       opacity: 1;
     }
   }

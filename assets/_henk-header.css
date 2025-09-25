@@ -76,6 +76,10 @@
     }
   }
 
+  .henk-header__logo {
+    z-index: 9;
+  }
+
   .henk-header__utils {
     display: flex;
     gap: 16px;

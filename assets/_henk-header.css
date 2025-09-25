@@ -17,6 +17,11 @@
     background-color: yellow;
   }
 
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+
   /* always */
   .henk-header__inner {
     width: min(var(--size-width-content, 1140px), 100% - 3rem);

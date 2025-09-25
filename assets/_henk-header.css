@@ -1,5 +1,5 @@
-html.no-js & {
-  &:has(details[open]) {
+html.no-js {
+  :has(details[open]) {
     background-color: pink;
     overflow: hidden;
   }

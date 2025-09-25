@@ -88,6 +88,14 @@ html:has(details[name="main-nav"][open]) {
     gap: 16px;
     justify-self: end;
     z-index: 9;
+
+    .henk-header__utils-item {
+      &.henk-header__utils-item--cart {
+        sup {
+          background-color: red;
+        }
+      }
+    }
   }
 
   .dropdown-container {

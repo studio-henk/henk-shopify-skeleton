@@ -15,10 +15,9 @@
     margin-inline: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* justify-items: start; */
+    justify-items: center;
     background: aqua;
-    /* justify-content: space-between; */
-    /* align-items: center; */
+    align-items: center;
   }
 
   .henk-header__menu {

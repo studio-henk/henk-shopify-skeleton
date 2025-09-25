@@ -1,8 +1,6 @@
-html.no-js {
-  :has(details[open]) {
-    background-color: pink;
-    overflow: hidden;
-  }
+html.no-js:has(details[open]) {
+  background-color: pink;
+  overflow: hidden;
 }
 
 .henk-header {

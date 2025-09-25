@@ -1,21 +1,15 @@
-@layer components.footer.base {
-  .henk-footer {
-    .henk-footer__list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+.henk-footer {
+  background-color: var(--color-background-secondary-light);
+  color: var(--color-text-static, #000);
+  color-scheme: light;
 
-    .henk-footer__dl {
-      background-color: yellow;
-    }
-  }
+  --color-text-link: var(--color-text-static, #000);
 
-  footer.henk-footer a {
+  a {
     text-decoration: none;
   }
 
-  footer.henk-footer a:hover {
+  a:hover {
     text-decoration: underline;
   }
 
@@ -25,6 +19,12 @@
     display: flex;
     flex-direction: column;
     padding: 80px 0 0;
+  }
+
+  .henk-footer__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   .henk-footer__grid {
@@ -142,26 +142,16 @@
     width: auto;
     height: 16px;
   }
+}
 
-  @media (pointer: coarse) {
-    .henk-footer__social-media-link .henk-icon svg {
-      width: 44px;
-      height: 44px;
-    }
-  }
-
-  .henk-footer .trustpilot-widget,
-  .henk-footer .trustpilot-widget {
-    max-height: 118px;
+@media (pointer: coarse) {
+  .henk-footer__social-media-link .henk-icon svg {
+    width: 44px;
+    height: 44px;
   }
 }
 
-@layer components.footer.theme {
-  .henk-footer {
-    background-color: var(--color-background-secondary-light);
-    color: var(--color-text-static, #000);
-    color-scheme: light;
-
-    --color-text-link: var(--color-text-static, #000);
-  }
+.henk-footer .trustpilot-widget,
+.henk-footer .trustpilot-widget {
+  max-height: 118px;
 }

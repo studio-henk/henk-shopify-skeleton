@@ -50,6 +50,11 @@ html:has(details[name="main-nav"][open]) {
 
     /* hide marker with display flex */
     details[name="main-nav"] {
+      &[open] {
+        summary {
+          color: blue;
+        }
+      }
       summary {
         display: flex;
         cursor: pointer;

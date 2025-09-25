@@ -149,6 +149,7 @@ html:has(details[name="main-nav"][open]) {
       margin-bottom: 24px;
 
       + ul {
+        list-style-type: none;
         margin: 0;
         padding: 0;
       }

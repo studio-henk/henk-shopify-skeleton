@@ -1,7 +1,7 @@
 .henk-header {
   /* style only when JS is disabled */
   html.no-js & {
-    background-color: lightgray;
+    background-color: pink;
   }
 
   /* style only when JS is enabled */

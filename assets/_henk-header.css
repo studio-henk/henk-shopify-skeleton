@@ -52,7 +52,8 @@ html:has(details[name="main-nav"][open]) {
     details[name="main-nav"] {
       &[open] {
         summary {
-          color: var(--color-text-primary, blue);
+          /* color: var(--color-text-primary, blue); */
+          color: var(--color-text-secondary, blue);
           text-decoration-line: underline;
           text-decoration-thickness: 4px;
           text-underline-offset: 4px;

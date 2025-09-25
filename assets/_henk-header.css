@@ -1,0 +1,11 @@
+.henk-header {
+  /* style only when JS is disabled */
+  html.no-js & {
+    background-color: lightgray;
+  }
+
+  /* style only when JS is enabled */
+  html.js-enabled & {
+    background-color: yellow;
+  }
+}

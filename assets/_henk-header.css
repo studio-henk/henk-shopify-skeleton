@@ -5,9 +5,9 @@
       /* align-items: start; */
     }
 
-    details[open] {
-      background-color: yellow;
-    }
+    /* details[open] { */
+    /*   background-color: yellow; */
+    /* } */
   }
 
   /* style only when JS is enabled */

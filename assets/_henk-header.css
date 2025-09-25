@@ -147,6 +147,13 @@ html:has(details[name="main-nav"][open]) {
       text-decoration: none;
     }
 
+    .dropdown__highlights {
+      a {
+        font-size: 25px;
+        line-height: 32px;
+      }
+    }
+
     .sub-level.right-col {
       background-color: yellow;
       display: grid;

@@ -43,6 +43,7 @@
     justify-self: start;
 
     details::details-content {
+      background-color: yellow;
       overflow: clip;
       block-size: 0;
       transition:
@@ -53,6 +54,7 @@
 
     details[open]::details-content {
       block-size: auto;
+      background-color: green;
     }
   }
 

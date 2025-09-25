@@ -79,6 +79,7 @@ html:has(details[name="main-nav"][open]) {
 
   .henk-header__logo {
     z-index: 9;
+    padding: 0;
   }
 
   .henk-header__utils {

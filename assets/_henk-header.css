@@ -56,6 +56,7 @@ html:has(details[name="main-nav"][open]) {
         line-height: 24px;
         text-transform: uppercase;
         font-weight: 500;
+        letter-spacing: 0.02em;
       }
     }
 

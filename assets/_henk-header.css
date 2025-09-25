@@ -1,8 +1,6 @@
 .henk-header {
   /* style only when JS is disabled */
   html.no-js & {
-    background-color: pink;
-
     .henk-header__inner:has(details[open]) {
       /* align-items: start; */
     }
@@ -17,6 +15,7 @@
     background-color: yellow;
   }
 
+  background-color: #fff;
   position: fixed;
   left: 0;
   right: 0;

@@ -157,14 +157,15 @@ html:has(details[name="main-nav"][open]) {
       background: #fff;
       left: 0;
       height: 200px;
-      right: 0;
+      /* right: 0; */
       border: 1px solid;
       padding: 8px;
       z-index: 10;
 
       button {
         font-size: 13px;
-        line-height: 24px;
+        line-height: 20px;
+        padding: 0;
       }
     }
   }

@@ -179,6 +179,10 @@ html:has(details[name="main-nav"][open]) {
     }
 
     .sub-level.right-col {
+      .column__heading {
+        margin-bottom: 25px;
+      }
+
       display: grid;
       grid-template-columns: repeat(4, 1fr);
 

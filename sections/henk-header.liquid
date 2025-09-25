@@ -37,13 +37,6 @@
       <line x1="0" y1="23.5" x2="24" y2="23.5"></line>
     </svg>
   </button>
-  <a
-    class="henk-logo henk-logo--transparent"
-    href="{{ routes.root_url }}"
-    aria-label="Studio HENK"
-  >
-    {%- render 'henk-logo' -%}
-  </a>
   <ul class="henk-header__menu">
     {% for main_level_link in main_level_links %}
       {% if main_level_link.levels > 0 %}
@@ -296,6 +289,14 @@
       {% endif %}
     {% endfor %}
   </ul>
+
+  <a
+    class="henk-logo henk-logo--transparent"
+    href="{{ routes.root_url }}"
+    aria-label="Studio HENK"
+  >
+    {%- render 'henk-logo' -%}
+  </a>
   <div class="henk-header__utils" data-js-utils>
     {%- if localization and localization.available_languages.size > 0 -%}
       <div class="henk-localise">

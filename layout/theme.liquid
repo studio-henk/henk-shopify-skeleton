@@ -9,7 +9,7 @@
     {% comment %} {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
 
     {{ 'henk-base.min.css' | asset_url | stylesheet_tag: preload: true }}
-    {% comment %} {{ '_henk-header.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
+    {{ '_henk-header.css' | asset_url | stylesheet_tag: preload: true }}
     {% comment %} {{ '_henk-footer.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
 
     {% # TODO: check when site live / prod %}
@@ -25,6 +25,7 @@
     {% render 'meta-tags' %}
 
     {{ content_for_header }}
+
     <script>
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js-enabled');

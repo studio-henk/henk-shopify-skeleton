@@ -15,10 +15,10 @@
     margin-inline: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    justify-items: start;
+    /* justify-items: start; */
     background: aqua;
-    justify-content: space-between;
-    align-items: center;
+    /* justify-content: space-between; */
+    /* align-items: center; */
   }
 
   .henk-header__menu {

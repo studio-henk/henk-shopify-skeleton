@@ -1,4 +1,3 @@
-// public/scripts/user-env.js
 (() => {
   const html = document.documentElement;
 

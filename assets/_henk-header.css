@@ -4,7 +4,7 @@
     background-color: pink;
 
     .henk-header__inner:has(details[open]) {
-      align-items: start;
+      /* align-items: start; */
     }
 
     details[open] {
@@ -42,5 +42,16 @@
     display: flex;
     gap: 16px;
     justify-self: end;
+  }
+
+  .dropdown-container {
+    width: 100vw;
+    position: absolute;
+    background: aqua;
+    left: 0;
+    right: 0;
+    max-width: 1140px;
+    margin: auto;
+    top: 50px;
   }
 }

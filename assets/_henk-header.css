@@ -58,6 +58,10 @@ html:has(details[name="main-nav"][open]) {
         text-transform: uppercase;
         font-weight: 500;
         letter-spacing: 0.02em;
+
+        &:hover {
+          border-bottom: 2px solid currentColor;
+        }
       }
     }
 

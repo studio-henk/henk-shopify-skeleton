@@ -1,21 +1,8 @@
-html.no-js:has(details[name="main-nav"][open]) {
+html:has(details[name="main-nav"][open]) {
   overflow: hidden;
 }
 
 .henk-header {
-  /* style only when JS is disabled */
-  /* html.no-js & { */
-  /*   .henk-header__inner:has(details[open]) { */
-  /*     align-items: start; */
-  /*   } */
-  /**/
-  /* } */
-
-  /* style only when JS is enabled */
-  html.js-enabled & {
-    /* background-color: yellow; */
-  }
-
   background-color: #fff;
   position: fixed;
   left: 0;

@@ -152,6 +152,7 @@ html:has(details[name="main-nav"][open]) {
         line-height: 24px;
       }
     }
+
     .henk-localise__content {
       position: absolute;
       background: #fff;

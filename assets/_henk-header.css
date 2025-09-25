@@ -16,7 +16,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
-    background: aqua;
+    /* background: aqua; */
     align-items: center;
     padding-block: 24px;
   }

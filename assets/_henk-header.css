@@ -162,6 +162,8 @@ html:has(details[name="main-nav"][open]) {
       a {
         font-size: 25px;
         line-height: 32px;
+        color: currentColor;
+        text-decoration: none;
       }
     }
 

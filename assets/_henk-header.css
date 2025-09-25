@@ -152,19 +152,19 @@ html:has(details[name="main-nav"][open]) {
         list-style-type: none;
         margin: 0;
         padding: 0;
+
+        a {
+          font-size: 25px;
+          line-height: 32px;
+          color: currentColor;
+          text-decoration: none;
+        }
       }
     }
 
     .dropdown__highlights {
       /* margin: 0; */
       /* padding: 0; */
-
-      a {
-        font-size: 25px;
-        line-height: 32px;
-        color: currentColor;
-        text-decoration: none;
-      }
     }
 
     .sub-level.right-col {

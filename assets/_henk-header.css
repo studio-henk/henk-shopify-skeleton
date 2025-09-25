@@ -175,6 +175,13 @@ html:has(details[name="main-nav"][open]) {
       a {
         font-size: 25px;
         line-height: 32px;
+
+        &:hover {
+          background: black;
+          color: white;
+          padding: 0.2em;
+          text-decoration-line: none;
+        }
       }
     }
 

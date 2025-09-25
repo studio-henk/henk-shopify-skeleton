@@ -58,6 +58,7 @@
     display: flex;
     gap: 8px;
     justify-self: start;
+    z-index: 9;
 
     details::details-content {
       opacity: 0;
@@ -84,6 +85,7 @@
     display: flex;
     gap: 16px;
     justify-self: end;
+    z-index: 9;
   }
 
   .dropdown-container {

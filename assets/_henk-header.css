@@ -105,4 +105,9 @@ html.no-js:has(details[name="main-nav"][open]) {
     margin: auto;
     top: 50px;
   }
+
+  .dropdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }

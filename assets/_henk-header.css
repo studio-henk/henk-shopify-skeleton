@@ -53,6 +53,10 @@ html:has(details[name="main-nav"][open]) {
       &[open] {
         summary {
           color: blue;
+          text-decoration-line: underline;
+          text-decoration-thickness: 4px;
+          text-underline-offset: 4px;
+          text-underline-position: from-font;
         }
       }
       summary {

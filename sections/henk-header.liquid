@@ -302,10 +302,6 @@
     {%- if localization and localization.available_languages.size > 0 -%}
       <div class="henk-localise">
         {{ localization.language.endonym_name | capitalize }}
-
-        <i class="henk-icon">
-          {%- render 'henk-icon-chevron-down' -%}
-        </i>
       </div>
     {%- endif -%}
     {% comment %} {% render 'header-search', input_id: 'Search-In-Modal' %} {% endcomment %}

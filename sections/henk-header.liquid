@@ -309,26 +309,6 @@
       </div>
     {%- endif -%}
     {% comment %} {% render 'header-search', input_id: 'Search-In-Modal' %} {% endcomment %}
-    <!-- <a -->
-    <!--
-      class="header__utils-link header__utils-link--cart header__iconx header__icon--cartx link focus-insetx henk-button henk-button--small henk-button--ghost"
-    -->
-    <!-- href="{{ routes.cart_url }}" -->
-    <!-- aria-label="Cart" -->
-    <!-- id="cart-icon-bubble" -->
-    <!-- > -->
-    <!-- <i class="henk-icon icon--only">{%- render 'henk-icon-bag' -%}</i> -->
-    <!-- {%- if cart != empty -%} -->
-    <!-- <div class="cart-count-bubble cart__badge"> -->
-    <!-- {%- if cart.item_count < 100 -%} -->
-    <!-- <span aria-hidden="true">{{ cart.item_count }}</span> -->
-    <!-- {%- endif -%} -->
-    <!-- <span class="visually-hidden"> -->
-    <!-- {{- 'sections.header.cart_count' | t: count: cart.item_count -}} -->
-    <!-- </span> -->
-    <!-- </div> -->
-    <!-- {%- endif -%} -->
-    <!-- </a> -->
     <a
       href="{{ routes.cart_url }}"
       class="henk-button henk-button--ghost henk-header__utils-item henk-header__utils-item--cart"

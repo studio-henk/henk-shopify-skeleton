@@ -145,6 +145,7 @@ html:has(details[name="main-nav"][open]) {
       text-transform: uppercase;
       letter-spacing: 0.02em;
       text-decoration: none;
+      margin-bottom: 24px;
     }
 
     .dropdown__highlights {

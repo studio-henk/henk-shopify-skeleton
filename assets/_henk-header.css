@@ -52,6 +52,9 @@ html:has(details[name="main-nav"][open]) {
       summary {
         display: flex;
         cursor: pointer;
+        font-size: 13px;
+        line-height: 24px;
+        text-transform: uppercase;
       }
     }
 

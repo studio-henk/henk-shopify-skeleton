@@ -183,7 +183,9 @@ html:has(details[name="main-nav"][open]) {
       grid-template-columns: repeat(4, 1fr);
 
       a {
+        display: block;
         font-size: 13px;
+        line-height: 24px;
       }
     }
   }

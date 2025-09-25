@@ -147,6 +147,10 @@ html:has(details[name="main-nav"][open]) {
       text-decoration: none;
       display: inline-block;
       margin-bottom: 24px;
+
+      + ul {
+        margin: 0;
+      }
     }
 
     .dropdown__highlights {

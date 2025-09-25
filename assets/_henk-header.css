@@ -144,7 +144,7 @@ html:has(details[name="main-nav"][open]) {
   }
 
   .henk-localise {
-    .henk-localise__content {
+    .henk-localise__details {
       position: relative;
     }
     .henk-localise__content {

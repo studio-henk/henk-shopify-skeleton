@@ -300,57 +300,7 @@
   </a>
   <div class="henk-header__utils" data-js-utils>
     {%- if localization and localization.available_languages.size > 0 -%}
-      <div class="henk-localise">
-        <div class="henk-popover henk-popover--lang">
-          <button
-            id="lang-button"
-            type="button"
-            aria-expanded="false"
-            aria-controls="henk-lang-popover"
-            data-js-expand
-            data-state="closed"
-            popovertarget="henk-lang-popover"
-            class="henk-button henk-button--small henk-button--ghost"
-          >
-            {{ localization.language.endonym_name | capitalize }}
-
-            <i class="henk-icon">
-              {%- render 'henk-icon-chevron-down' -%}
-            </i>
-          </button>
-          <div
-            popover
-            id="henk-lang-popover"
-            anchor="lang-button"
-            data-js-popover
-          >
-            {%- form 'localization' -%}
-              <input
-                type="hidden"
-                name="return_to"
-                value="{{ request.path }}"
-              >
-              <ul>
-                {% for lang in localization.available_languages %}
-                  {% if lang.iso_code != localization.language.iso_code %}
-                    <li>
-                      <button
-                        type="submit"
-                        name="locale_code"
-                        value="{{ lang.iso_code }}"
-                        class="henk-button henk-button--ghost"
-                        title="Switch to {{ lang.endonym_name }}"
-                      >
-                        {{ lang.endonym_name }}
-                      </button>
-                    </li>
-                  {% endif %}
-                {% endfor %}
-              </ul>
-            {%- endform -%}
-          </div>
-        </div>
-      </div>
+      <div class="henk-localise">NL</div>
     {%- endif -%}
     {% render 'header-search', input_id: 'Search-In-Modal' %}
     <a

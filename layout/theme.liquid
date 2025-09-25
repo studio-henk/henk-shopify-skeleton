@@ -26,7 +26,7 @@
 
     {{ content_for_header }}
 
-    {{ 'henk-feature-detection.js' | asset_url | script_tag }}
+    {{ 'henk-feature-detection.js' | asset_url | script_tag: async: true }}
   </head>
 
   <body>

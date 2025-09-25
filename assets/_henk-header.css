@@ -78,7 +78,7 @@ html:has(details[name="main-nav"][open]) {
         }
 
         &:active {
-          color: red;
+          color: var(--color-text-link-hover);
         }
       }
     }

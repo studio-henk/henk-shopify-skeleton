@@ -154,8 +154,6 @@ html:has(details[name="main-nav"][open]) {
         padding: 0;
 
         a {
-          font-size: 25px;
-          line-height: 32px;
           color: currentColor;
           text-decoration: none;
         }
@@ -165,6 +163,12 @@ html:has(details[name="main-nav"][open]) {
     .dropdown__highlights {
       /* margin: 0; */
       /* padding: 0; */
+
+      a {
+        font-size: 25px;
+
+        line-height: 32px;
+      }
     }
 
     .sub-level.right-col {

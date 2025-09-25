@@ -116,7 +116,7 @@
     justify-self: end;
   }
 
-  .dropdown-container {
+  html.js-enabled .dropdown-container {
     position: absolute;
     display: none;
     opacity: 0;

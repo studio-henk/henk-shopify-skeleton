@@ -146,6 +146,11 @@ html:has(details[name="main-nav"][open]) {
   .henk-localise {
     .henk-localise__details {
       position: relative;
+
+      summary {
+        font-size: 13px;
+        line-height: 24px;
+      }
     }
     .henk-localise__content {
       position: absolute;

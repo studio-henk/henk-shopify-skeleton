@@ -24,4 +24,9 @@
     display: flex;
     gap: 8px;
   }
+
+  .henk-header__utils {
+    display: flex;
+    gap: 16px;
+  }
 }

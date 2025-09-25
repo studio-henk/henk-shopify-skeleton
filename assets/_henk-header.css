@@ -18,6 +18,7 @@
     justify-items: center;
     background: aqua;
     align-items: center;
+    padding-block: 24px;
   }
 
   .henk-header__menu {

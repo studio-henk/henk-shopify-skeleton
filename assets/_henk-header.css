@@ -91,6 +91,8 @@ html:has(details[name="main-nav"][open]) {
 
     .henk-header__utils-item {
       &.henk-header__utils-item--cart {
+        position: relative;
+
         sup {
           position: absolute;
           right: -4px;

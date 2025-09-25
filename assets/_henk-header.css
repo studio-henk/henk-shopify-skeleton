@@ -172,7 +172,6 @@ html:has(details[name="main-nav"][open]) {
     }
 
     .sub-level.right-col {
-      background-color: yellow;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
 

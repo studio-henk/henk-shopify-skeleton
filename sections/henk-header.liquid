@@ -300,9 +300,9 @@
   </a>
   <div class="henk-header__utils" data-js-utils>
     {%- if localization and localization.available_languages.size > 0 -%}
-      <div class="henk-localise">NL</div>
+      <!-- <div class="henk-localise">NL</div> -->
     {%- endif -%}
-    {% render 'header-search', input_id: 'Search-In-Modal' %}
+    {% comment %} {% render 'header-search', input_id: 'Search-In-Modal' %} {% endcomment %}
     <a
       class="header__utils-link header__utils-link--cart header__iconx header__icon--cartx link focus-insetx henk-button henk-button--small henk-button--ghost"
       href="{{ routes.cart_url }}"

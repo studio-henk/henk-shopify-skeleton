@@ -2,6 +2,10 @@
   /* style only when JS is disabled */
   html.no-js & {
     background-color: pink;
+
+    details[open] {
+      background-color: yellow;
+    }
   }
 
   /* style only when JS is enabled */

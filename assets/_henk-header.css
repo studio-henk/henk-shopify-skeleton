@@ -21,7 +21,11 @@
   right: 0;
   top: 0;
 
-  html:has(details[name="main-nav"][open]) {
+  /* html:has(details[name="main-nav"][open]) { */
+  /*   overflow: hidden; */
+  /* } */
+
+  html:has(details[open]) {
     overflow: hidden;
   }
 

@@ -301,11 +301,11 @@
   <div class="henk-header__utils" data-js-utils>
     {%- if localization and localization.available_languages.size > 0 -%}
       <div class="henk-localise">
-        <details>
+        <details class="henk-localise__details">
           <summary>
             {{ localization.language.endonym_name | capitalize }}
           </summary>
-          more
+          <div class="henk-localise__content">more</div>
         </details>
       </div>
     {%- endif -%}

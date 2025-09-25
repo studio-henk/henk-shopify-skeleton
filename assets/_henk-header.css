@@ -46,10 +46,11 @@
     pointer-events: none;
   }
 
-  &.henk-header--is-open .henk-header__inner::before {
+  .henk-header__inner:has(details[open])::before {
     opacity: 1;
     pointer-events: auto;
   }
+
   .henk-header__menu {
     list-style: none;
     margin: 0;

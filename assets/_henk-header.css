@@ -132,6 +132,12 @@ html:has(details[name="main-nav"][open]) {
           justify-content: center;
           align-items: center;
         }
+
+        &:hover {
+          sup {
+            width: 20px;
+          }
+        }
       }
     }
   }

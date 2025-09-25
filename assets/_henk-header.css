@@ -161,9 +161,16 @@ html:has(details[name="main-nav"][open]) {
       }
     }
 
+    .left-col {
+      .column__heading {
+        margin-bottom: 11px;
+      }
+    }
+
     .dropdown__highlights {
       /* margin: 0; */
       /* padding: 0; */
+      line-height: 48px;
 
       a {
         font-size: 25px;

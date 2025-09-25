@@ -67,6 +67,7 @@ html:has(details[name="main-nav"][open]) {
         text-transform: uppercase;
         font-weight: 500;
         letter-spacing: 0.02em;
+        transition: all 0.3s ease;
 
         &:hover {
           text-decoration-line: underline;

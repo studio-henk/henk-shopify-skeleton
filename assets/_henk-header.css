@@ -1,11 +1,20 @@
 .henk-header {
   /* style only when JS is disabled */
   html.no-js & {
+    background-color: pink;
+
+    .henk-header__inner:has(details[open]) {
+      /* align-items: start; */
+    }
+
+    details[open] {
+      background-color: yellow;
+    }
   }
 
   /* style only when JS is enabled */
   html.js-enabled & {
-    /* background-color: yellow; */
+    background-color: yellow;
   }
 
   position: fixed;

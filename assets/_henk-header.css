@@ -91,7 +91,6 @@
   .dropdown-container {
     width: 100vw;
     position: absolute;
-    background: aqua;
     left: 0;
     right: 0;
     max-width: 1140px;

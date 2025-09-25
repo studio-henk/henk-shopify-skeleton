@@ -60,6 +60,14 @@ html.no-js:has(details[name="main-nav"][open]) {
     justify-self: start;
     z-index: 9;
 
+    /* hide marker with display flex */
+    details[name="main-nav"] {
+      summary {
+        display: flex;
+        cursor: pointer;
+      }
+    }
+
     details::details-content {
       opacity: 0;
       overflow: clip;

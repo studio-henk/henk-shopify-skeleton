@@ -60,7 +60,10 @@ html:has(details[name="main-nav"][open]) {
         letter-spacing: 0.02em;
 
         &:hover {
-          border-bottom: 2px solid currentColor;
+          text-decoration-line: underline;
+          text-decoration-thickness: 4px;
+          text-underline-offset: 4px;
+          text-underline-position: from-font;
         }
       }
     }

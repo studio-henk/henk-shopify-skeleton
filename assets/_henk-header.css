@@ -115,6 +115,7 @@ html:has(details[name="main-nav"][open]) {
       &.henk-header__utils-item--cart {
         position: relative;
         padding: 0;
+        --btn-text-hover: red;
 
         sup {
           position: absolute;

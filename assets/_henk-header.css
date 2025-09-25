@@ -42,7 +42,7 @@
     gap: 8px;
     justify-self: start;
 
-    .henk-details::details-content {
+    details::details-content {
       overflow: clip;
       block-size: 0;
       transition:
@@ -51,7 +51,7 @@
       transition-behavior: allow-discrete;
     }
 
-    .henk-details[open]::details-content {
+    details[open]::details-content {
       block-size: auto;
     }
   }

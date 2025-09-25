@@ -137,6 +137,13 @@ html:has(details[name="main-nav"][open]) {
     display: grid;
     grid-template-columns: 1fr 1fr;
 
+    .column__heading {
+      font-size: 13px;
+      line-height: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
     .sub-level.right-col {
       background-color: yellow;
       display: grid;

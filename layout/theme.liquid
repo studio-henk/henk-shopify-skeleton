@@ -25,7 +25,10 @@
     {% render 'meta-tags' %}
 
     {{ content_for_header }}
-
+    <script>
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('js-enabled');
+    </script>
     <script src="{{ 'henk-feature-detection.js' | asset_url }}" defer></script>
   </head>
 

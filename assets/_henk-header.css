@@ -138,7 +138,9 @@ html:has(details[name="main-nav"][open]) {
     grid-template-columns: 1fr 1fr;
 
     .column__heading {
+      --color-text-link: var(--color-text-neutral-darkest);
       font-size: 13px;
+      font-weight: 500;
       line-height: 24px;
       text-transform: uppercase;
       letter-spacing: 0.02em;

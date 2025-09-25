@@ -25,6 +25,8 @@
     {% render 'meta-tags' %}
 
     {{ content_for_header }}
+
+    {{ 'henk-feature-detection.js' | asset_url | script_tag }}
   </head>
 
   <body>

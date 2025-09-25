@@ -93,6 +93,11 @@ html:has(details[name="main-nav"][open]) {
     top: 50px;
   }
 
+  .dropdown-container__inner {
+    width: min(1140px, 100% - 3rem);
+    margin-inline: auto;
+  }
+
   .dropdown {
     list-style: none;
     margin: 0;

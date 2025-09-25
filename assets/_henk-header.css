@@ -177,6 +177,10 @@ html:has(details[name="main-nav"][open]) {
       background-color: yellow;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
+
+      a {
+        font-size: 13px;
+      }
     }
   }
 }

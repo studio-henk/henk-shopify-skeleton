@@ -155,7 +155,10 @@ html:has(details[name="main-nav"][open]) {
 
         a {
           color: currentColor;
-          text-decoration: none;
+
+          &:not(:hover) {
+            text-decoration-line: none;
+          }
         }
       }
     }
@@ -166,7 +169,6 @@ html:has(details[name="main-nav"][open]) {
 
       a {
         font-size: 25px;
-
         line-height: 32px;
       }
     }

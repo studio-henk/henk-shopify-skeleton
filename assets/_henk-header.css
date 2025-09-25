@@ -10,6 +10,12 @@
   }
 
   /* always */
+  .henk-header__inner {
+    display: flex;
+    background: aqua;
+    justify-content: space-between;
+  }
+
   .henk-header__menu {
     list-style: none;
     margin: 0;

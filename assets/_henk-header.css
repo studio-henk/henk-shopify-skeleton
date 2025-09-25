@@ -65,6 +65,10 @@ html:has(details[name="main-nav"][open]) {
           text-underline-offset: 4px;
           text-underline-position: from-font;
         }
+
+        &:active {
+          color: red;
+        }
       }
     }
 

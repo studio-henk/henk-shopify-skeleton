@@ -155,7 +155,6 @@ html:has(details[name="main-nav"][open]) {
 
         a {
           color: currentColor;
-          font-size: 13px;
 
           &:not(:hover) {
             text-decoration-line: none;

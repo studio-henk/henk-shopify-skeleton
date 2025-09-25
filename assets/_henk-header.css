@@ -1,4 +1,4 @@
-html.no-js:has(details[open]) {
+html.no-js:has(details[name="main-nav"][open]) {
   overflow: hidden;
 }
 

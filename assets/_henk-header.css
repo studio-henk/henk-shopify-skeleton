@@ -156,9 +156,8 @@ html:has(details[name="main-nav"][open]) {
     .henk-localise__content {
       position: absolute;
       background: #fff;
-      left: 0;
-      height: 200px;
-      /* right: 0; */
+      right: 0;
+      top: 32px;
       border: 1px solid var(--color-border-muted);
       padding: 8px;
       z-index: 10;
@@ -257,6 +256,16 @@ html:has(details[name="main-nav"][open]) {
         font-size: 13px;
         line-height: 24px;
       }
+    }
+  }
+}
+
+html.js-enabled {
+  .henk-header--is-open {
+    button.close-menu {
+      z-index: 9;
+      justify-self: end;
+      padding: 0;
     }
   }
 }

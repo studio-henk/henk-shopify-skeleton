@@ -1,13 +1,3 @@
-{% comment %}
-  {%- liquid
-      assign localization_forms = false
-
-      if localization.available_countries.size > 1 and section.settings.enable_country_selector or section.settings.enable_language_selector and localization.available_languages.size > 1
-          assign localization_forms = true
-      endif
-  -%}
-{% endcomment %}
-
 <!-- <link -->
 <!-- rel="stylesheet" -->
 <!-- href="{{ 'component-cart-notification.css' | asset_url }}" -->
@@ -349,6 +339,7 @@
 </div>
 
 <!-- <script src="{{ 'TheHeaderMenu.min.js' | asset_url }}" defer></script> -->
+<script src="{{ 'henk-desktop-menu.js' | asset_url }}" defer></script>
 
 <!-- <script src="{{ 'henk-mobile-menu.min.js' | asset_url }}" defer></script> -->
 

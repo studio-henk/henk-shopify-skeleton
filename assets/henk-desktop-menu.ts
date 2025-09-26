@@ -9,7 +9,7 @@
       openClass: "open",
       openingClass: "opening",
       closingClass: "closing",
-      openButton: '[data-js-behavior="openSub"]',
+      // openButton: '[data-js-behavior="openSub"]',
       utils: "[data-js-utils]",
       html: htmlElement,
     };
@@ -47,72 +47,73 @@
     // Insert after utils
     utils?.insertAdjacentElement("afterend", closeButton);
 
-    function toggleHeaderSubmenuState(isOpen: boolean) {
-      if (!header) return;
-      header.classList.toggle("henk-header--is-open", isOpen);
-      closeButton.style.display = isOpen ? "flex" : "none";
-    }
+    // function toggleHeaderSubmenuState(isOpen: boolean) {
+    //   if (!header) return;
+    //   header.classList.toggle("henk-header--is-open", isOpen);
+    //   closeButton.style.display = isOpen ? "flex" : "none";
+    // }
 
     function toggleUtils(hidden: boolean) {
       if (!utils) return;
       utils.style.display = hidden ? "none" : "flex";
     }
 
-    function openSub(element: Element, event?: Event) {
-      if (!element) return;
-      if (event) event.preventDefault();
+    // function openSub(element: Element, event?: Event) {
+    //   if (!element) return;
+    //   if (event) event.preventDefault();
+    //
+    //   // Close any open submenu immediately
+    //   const alreadyOpen = document.querySelector(`.${selectors.openClass}`);
+    //   if (alreadyOpen && alreadyOpen !== element) {
+    //     // Synchronous reset of classes instead of waiting for timeout
+    //     alreadyOpen.classList.remove(
+    //       selectors.openClass,
+    //       selectors.openingClass,
+    //       selectors.closingClass,
+    //     );
+    //     removeEscListener();
+    //   }
+    //
+    //   if (!element.classList.contains(selectors.openClass)) {
+    //     element.classList.add(selectors.openingClass);
+    //
+    //     setTimeout(() => {
+    //       element.classList.remove(selectors.openingClass);
+    //       element.classList.add(selectors.openClass);
+    //       htmlElement.style.overflow = "hidden";
+    //       toggleUtils(true);
+    //       toggleHeaderSubmenuState(true);
+    //       addEscListener();
+    //     }, 20);
+    //   } else {
+    //     closeSub(element);
+    //   }
+    // }
 
-      // Close any open submenu immediately
-      const alreadyOpen = document.querySelector(`.${selectors.openClass}`);
-      if (alreadyOpen && alreadyOpen !== element) {
-        // Synchronous reset of classes instead of waiting for timeout
-        alreadyOpen.classList.remove(
-          selectors.openClass,
-          selectors.openingClass,
-          selectors.closingClass,
-        );
-        removeEscListener();
-      }
-
-      if (!element.classList.contains(selectors.openClass)) {
-        element.classList.add(selectors.openingClass);
-
-        setTimeout(() => {
-          element.classList.remove(selectors.openingClass);
-          element.classList.add(selectors.openClass);
-          htmlElement.style.overflow = "hidden";
-          toggleUtils(true);
-          toggleHeaderSubmenuState(true);
-          addEscListener();
-        }, 20);
-      } else {
-        closeSub(element);
-      }
-    }
-
-    function closeSub(element: Element, removeBackdrop = true) {
-      if (!element || !element.classList.contains(selectors.openClass)) return;
-
-      element.classList.add(selectors.closingClass);
-
-      setTimeout(() => {
-        element.classList.remove(selectors.openClass);
-        element.classList.remove(selectors.closingClass);
-
-        if (removeBackdrop) {
-          htmlElement.style.overflow = "";
-          toggleUtils(false);
-          toggleHeaderSubmenuState(false);
-        }
-
-        removeEscListener();
-      }, 500);
-    }
+    // function closeSub(element: Element, removeBackdrop = true) {
+    //   if (!element || !element.classList.contains(selectors.openClass)) return;
+    //
+    //   element.classList.add(selectors.closingClass);
+    //
+    //   setTimeout(() => {
+    //     element.classList.remove(selectors.openClass);
+    //     element.classList.remove(selectors.closingClass);
+    //
+    //     if (removeBackdrop) {
+    //       htmlElement.style.overflow = "";
+    //       toggleUtils(false);
+    //       toggleHeaderSubmenuState(false);
+    //     }
+    //
+    //     removeEscListener();
+    //   }, 500);
+    // }
 
     function closeMenu() {
       const openSubMenu = document.querySelector(`.${selectors.openClass}`);
       if (openSubMenu) {
-        closeSub(openSubMenu);
+        // closeSub(openSubMenu);
+        alert("closing");
       }
     }
 
@@ -152,39 +153,39 @@
       closeButton.remove();
 
       // Reset overflow + state classes
-      htmlElement.style.overflow = "";
+      // htmlElement.style.overflow = "";
       header.classList.remove("henk-header--is-open");
       toggleUtils(false);
 
       // Reset submenu states
-      header
-        .querySelectorAll<HTMLElement>(selectors.mainLevel)
-        .forEach((el) => {
-          el.classList.remove(
-            selectors.openClass,
-            selectors.openingClass,
-            selectors.closingClass,
-          );
-        });
+      // header
+      //   .querySelectorAll<HTMLElement>(selectors.mainLevel)
+      //   .forEach((el) => {
+      //     el.classList.remove(
+      //       selectors.openClass,
+      //       selectors.openingClass,
+      //       selectors.closingClass,
+      //     );
+      //   });
 
       // remove classes from submenu opener links
-      header
-        .querySelectorAll<HTMLElement>('[data-js-behavior="openSub"]')
-        .forEach((el) => {
-          el.classList.remove(
-            selectors.openClass,
-            selectors.openingClass,
-            selectors.closingClass,
-          );
-        });
+      // header
+      //   .querySelectorAll<HTMLElement>('[data-js-behavior="openSub"]')
+      //   .forEach((el) => {
+      //     el.classList.remove(
+      //       selectors.openClass,
+      //       selectors.openingClass,
+      //       selectors.closingClass,
+      //     );
+      //   });
 
       // Remove event listeners
       removeEscListener();
-      header
-        .querySelectorAll<HTMLElement>(selectors.openButton)
-        .forEach((button) => {
-          button.replaceWith(button.cloneNode(true)); // quick way to remove listeners
-        });
+      // header
+      //   .querySelectorAll<HTMLElement>(selectors.openButton)
+      //   .forEach((button) => {
+      //     button.replaceWith(button.cloneNode(true)); // quick way to remove listeners
+      //   });
     };
   };
   document.addEventListener("DOMContentLoaded", () => {

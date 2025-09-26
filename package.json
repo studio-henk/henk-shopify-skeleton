@@ -16,8 +16,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "shopify theme dev -e $(git rev-parse --abbrev-ref HEAD)",
-    "push": "shopify theme push -e $(git rev-parse --abbrev-ref HEAD)",
-    "pull": "shopify theme pull -e $(git rev-parse --abbrev-ref HEAD)"
+    "dev": "shopify theme dev -e develop"
+  },
+  "devDependencies": {
+    "@shopify/prettier-plugin-liquid": "^1.10.0",
+    "prettier": "^3.6.2"
   }
 }

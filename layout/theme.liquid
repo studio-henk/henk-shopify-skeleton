@@ -1,36 +1,48 @@
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}">
+<html lang="{{ request.locale.iso_code }}" class="no-js baseline-gridx">
   <head>
     {% # Inlined CSS Variables %}
-    {% render 'css-variables' %}
+    {% comment %} {% render 'css-variables' %} {% endcomment %}
     {{ 'henk-tokens.min.css' | asset_url | stylesheet_tag: preload: true }}
 
     {% # Load and preload the critical CSS %}
     {% comment %} {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
 
-    {{ '_henk-base.css' | asset_url | stylesheet_tag: preload: true }}
-    {% comment %} {{ '_henk-header.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
+    {{ 'henk-base.min.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'henk-atoms.min.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'henk-components.min.css' | asset_url | stylesheet_tag: preload: true }}
+
+    {{ '_henk-header.css' | asset_url | stylesheet_tag: preload: true }}
+    {% comment %} {{ '_henk-footer.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
 
     {% # TODO: check when site live / prod %}
     {% if theme.id != 141470990497 %}
-    <style>
-      #shopify-pc__banner { display: none !important; }
-    </style>
+      <style>
+        #shopify-pc__banner {
+          display: none !important;
+        }
+      </style>
     {% endif %}
 
     {% # Social, title, etc. %}
     {% render 'meta-tags' %}
 
     {{ content_for_header }}
+
+    <script>
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('js-enabled');
+    </script>
+    <script src="{{ 'henk-feature-detection.js' | asset_url }}" defer></script>
   </head>
 
   <body>
     <div class="henk-wrapper">
-    {% sections 'header-group' %}
-    <main>
-    {{ content_for_layout }}
-    </main>
-    {% sections 'footer-group' %}
+      {% sections 'header-group' %}
+      <main>
+        {{ content_for_layout }}
+      </main>
+      {% sections 'footer-group' %}
     </div>
   </body>
 </html>

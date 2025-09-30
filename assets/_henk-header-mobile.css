@@ -4,6 +4,11 @@
   html.no-js {
     background-color: pink;
   }
+
+  heml.js-enabled {
+    background-color: lightgreen;
+  }
+
   html:has(details[name="main-nav"][open]) {
     overflow: hidden;
   }

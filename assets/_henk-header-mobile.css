@@ -4,26 +4,26 @@
   html.no-js {
     background-color: pink;
 
-
-      .henk-header__menu {
-        margin: 0;
-        /* padding: 0; */
-        /* list-style-type: none; */
-        /* display: flex; */
-        /* font-size: 13px; */
-        /* letter-spacing: 0.02em; */
-        /* line-height: 24px; */
-        /* gap: 48px; */
-        /* z-index: 10; */
-        /* border-bottom: 1px solid var(--color-border-muted, #ccc); */
-        /* margin-inline: -1.5rem; */
-        /* padding-inline: 1.5rem; */
-        /* grid-column: 1/4; */
-        /* grid-row: 2; */
-        /* align-self: end; */
-        /* padding-block-end: 8px; */
-        /* border-top: 1px solid #ccc; */
-        /* padding-block-start: 42px; */
+    .henk-header__menu {
+      margin: 0;
+      /* padding: 0; */
+      /* list-style-type: none; */
+      /* display: flex; */
+      /* font-size: 13px; */
+      /* letter-spacing: 0.02em; */
+      /* line-height: 24px; */
+      /* gap: 48px; */
+      /* z-index: 10; */
+      /* border-bottom: 1px solid var(--color-border-muted, #ccc); */
+      /* margin-inline: -1.5rem; */
+      /* padding-inline: 1.5rem; */
+      /* grid-column: 1/4; */
+      /* grid-row: 2; */
+      /* align-self: end; */
+      /* padding-block-end: 8px; */
+      /* border-top: 1px solid #ccc; */
+      /* padding-block-start: 42px; */
+    }
   }
 
   html.js-enabled {

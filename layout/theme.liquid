@@ -12,7 +12,8 @@
     {{ 'henk-atoms.min.css' | asset_url | stylesheet_tag: preload: true }}
     {{ 'henk-components.min.css' | asset_url | stylesheet_tag: preload: true }}
 
-    {{ '_henk-header.css' | asset_url | stylesheet_tag: preload: true }}
+    {% comment %} {{ '_henk-header.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
+    {% comment %} {{ '_henk-header-mobile.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
     {% comment %} {{ '_henk-footer.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
 
     {% # TODO: check when site live / prod %}

@@ -192,7 +192,9 @@
       href="{{ routes.cart_url }}"
       class="henk-button henk-button--ghost henk-header__utils-item henk-header__utils-item--cart"
     >
-      {{ 'icon-bag.svg' | inline_asset_content }}
+      <i class="henk-icon icon--only">
+        {{ 'icon-bag.svg' | inline_asset_content }}
+      </i>
       {% if cart.item_count > 0 %}
         <sup class="henk-notification-badge">{{ cart.item_count }} </sup>
         <span class="visually-hidden">items in cart</span>

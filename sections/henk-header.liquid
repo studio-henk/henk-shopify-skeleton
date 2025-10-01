@@ -194,7 +194,7 @@
     >
       {{ 'icon-bag.svg' | inline_asset_content }}
       {% if cart.item_count > 0 %}
-        <sup>{{ cart.item_count }} </sup>
+        <sup class="henk-notification-badge">{{ cart.item_count }} </sup>
         <span class="visually-hidden">items in cart</span>
       {% endif %}
     </a>

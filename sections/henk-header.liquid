@@ -8,14 +8,6 @@
 
 {% assign main_level_links = linklists['main-menu'].links %}
 <div class="henk-header__inner">
-  <!-- logo -->
-  <a
-    class="henk-logo henk-logo--transparent henk-header__logo"
-    href="{{ routes.root_url }}"
-    aria-label="Studio HENK"
-  >
-    {%- render 'henk-logo' -%}
-  </a>
   <ul class="henk-header__menu">
     {% for main_level_link in main_level_links %}
       {% if main_level_link.levels > 0 %}
@@ -140,13 +132,6 @@
               </div>
             </div>
           </details>
-          <!-- <a -->
-          <!-- href="{{ main_level_link.url }}" -->
-          <!-- data-js-behavior="openSub" -->
-          <!-- class="henk-header__menu-link henk-button henk-button--ghost" -->
-          <!-- > -->
-          <!-- {{- main_level_link.title }} -->
-          <!-- </a> -->
           <div class="dropdown-container" hidden>
             <div class="dropdown-container__inner">
               <ul class="dropdown">
@@ -224,7 +209,7 @@
                           {{- main_level_link.title -}}
                         </a>
                         <ul>
-                          {{ no_sub_links | raw }}
+                          {{ no_sub_links }}
                         </ul>
                       </div>
                     {% endif %}
@@ -269,6 +254,15 @@
     {% endfor %}
   </ul>
 
+  hello
+  <!-- logo -->
+  <a
+    class="henk-logo henk-logo--transparent henk-header__logo"
+    href="{{ routes.root_url }}"
+    aria-label="Studio HENK"
+  >
+    {%- render 'henk-logo' -%}
+  </a>
   <div class="henk-header__utils" data-js-utils>
     {%- if localization and localization.available_languages.size > 0 -%}
       <div class="henk-localise">

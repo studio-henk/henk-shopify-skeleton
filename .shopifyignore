@@ -19,3 +19,9 @@ node_modules/*
 
 package.json
 package-lock.json
+
+.prettierrc
+.prettierrc.json
+.prettierignore
+
+TODO.md

@@ -12,13 +12,11 @@
   "name": "t:general.header",
   "sections": {
     "header": {
-      "type": "header",
+      "type": "henk-header",
       "settings": {
         "menu": "main-menu"
       }
     }
   },
-  "order": [
-    "header"
-  ]
+  "order": ["header"]
 }

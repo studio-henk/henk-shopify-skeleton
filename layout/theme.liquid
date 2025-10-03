@@ -33,6 +33,12 @@
     <script>
       document.documentElement.classList.remove('no-js');
       document.documentElement.classList.add('js-enabled');
+
+      import { mobileMenu } from '../src/scripts/henk-mobile-menu.ts';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        mobileMenu.setupMatchMedia();
+      });
     </script>
     <script src="{{ 'henk-feature-detection.js' | asset_url }}" defer></script>
   </head>

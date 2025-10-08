@@ -59,8 +59,8 @@
     "results_for_html": "{{ count }} results found for {{ terms }}"
   },
   "card": {
-    "no_description": "No description available",
-    "from_label": "From"
+    "no_description": "Keine Beschreibung verfügbar",
+    "from_label": "Ab"
   },
   "breadcrumbs": {
     "home": "HENK"

@@ -10,8 +10,8 @@
 {
   "404": {
     "title": "404",
-    "not_found": "Pagina niet gevonden.",
-    "back_to_shopping": "Winkel verder"
+    "not_found": "Page not found.",
+    "back_to_shopping": "Continue shopping"
   },
   "blog": {
     "article_comments": "Comments",
@@ -59,8 +59,8 @@
     "results_for_html": "{{ count }} results found for {{ terms }}"
   },
   "card": {
-    "no_description": "Geen beschrijving beschikbaar",
-    "from_label": "Vanaf"
+    "no_description": "No description available",
+    "from_label": "From"
   },
   "breadcrumbs": {
     "home": "HENK"

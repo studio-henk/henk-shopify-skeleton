@@ -21,8 +21,8 @@
               {% if product.featured_image %}
                 {{
                   product.featured_image
-                  | image_url: width: 1032
-                  | image_tag: width: 1032, height: 1032, class: 'henk-card__img'
+                  | image_url: width: 1032, height: 1032, crop: 'center', class: 'henk-card__img'
+                  | image_tag: srcset: null
                 }}
               {% endif %}
             </figure>

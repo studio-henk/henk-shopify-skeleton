@@ -71,7 +71,7 @@
         {% comment %}
           Fallback to the raw tag if no translation exists
         {% endcomment %}
-        {% if tag_label == 'tags.' | append: tag %}
+        {% if tag_label == 'tags' | append: tag %}
           {% assign tag_label = tag %}
         {% endif %}
 

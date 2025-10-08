@@ -9,9 +9,10 @@
 
 <h1>{{ collection.title }}</h1>
 
-{% render 'henk-section-header',
+{%
+  render 'henk-section-header',
   id: '{{ collection.id}}',
-  caption: 'Welcome to our store',
+  caption: collection.caption,,
   title: collection.title,
   text: '<p>Discover our unique collection made with love.</p>',
   button_label: 'Shop Now',

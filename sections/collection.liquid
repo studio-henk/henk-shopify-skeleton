@@ -19,7 +19,7 @@
           >
             <figure class="henk-card__image-container">
               {% if product.featured_image %}
-                {{ product | image_url: width: 400 | image_tag: width: 300 }}
+                {{ product.featured_image | image_url: width: 400 | image_tag: width: 300 }}
                 <img
                   class="henk-card__img"
                   src="https://www.studio-henk.nl/Images/emersya/stool-without-background/678010/image-thumb__678010__ListerSquareAvif/BS-BSS770-3062.avif"

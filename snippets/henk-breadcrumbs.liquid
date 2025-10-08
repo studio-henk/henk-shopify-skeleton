@@ -2,17 +2,162 @@
   {%- assign t = template | split: '.' | first -%}
   {%- assign position = 1 -%}
 
-  <nav
-    aria-label="breadcrumb"
-    class="henk-breadcrumbs"
-    id="henk-breadcrumbs-bar"
-  >
-    <ol
-      class="henk-breadcrumbs__list"
-      itemscope
-      itemtype="https://schema.org/BreadcrumbList"
-    >
-      ...
+  <nav aria-label="breadcrumb" class="henk-breadcrumbs" id="henk-breadcrumbs-bar">
+    <ol class="henk-breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <!-- Home -->
+      <li class="henk-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="{{ '/' | relative_url }}" class="henk-breadcrumbs__link" itemprop="item">
+          <span itemprop="name">{{- 'general.breadcrumbs.home' | t -}}</span>
+        </a>
+        <meta itemprop="position" content="{{ position }}">
+      </li>
+      {%- case t -%}
+        {%- when 'page' -%}
+          {%- assign position = position | plus: 1 -%}
+          <li
+            class="henk-breadcrumbs__item"
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+          >
+            <span class="henk-breadcrumbs__name" itemprop="name">{{- page.title -}}</span>
+            <meta itemprop="position" content="{{ position }}">
+          </li>
+        {%- when 'collection' -%}
+          {%- assign position = position | plus: 1 -%}
+          <li
+            class="henk-breadcrumbs__item"
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+          >
+            <span class="henk-breadcrumbs__name" itemprop="name">{{- collection.title -}}</span>
+            <meta itemprop="position" content="{{ position }}">
+          </li>
+          {% comment %} <li {% endcomment %}
+          {% comment %} class="henk-breadcrumbs__item" {% endcomment %}
+          {% comment %} itemprop="itemListElement" {% endcomment %}
+          {% comment %} itemscope {% endcomment %}
+          {% comment %} itemtype="https://schema.org/ListItem" {% endcomment %}
+          {% comment %} > {% endcomment %}
+          {% comment %} <a {% endcomment %}
+          {% comment %} href="/collections" {% endcomment %}
+          {% comment %} class="henk-breadcrumbs__link" {% endcomment %}
+          {% comment %} itemprop="item" {% endcomment %}
+          {% comment %} > {% endcomment %}
+          {% comment %} <span itemprop="name">Collections</span> {% endcomment %}
+          {% comment %} </a> {% endcomment %}
+          {% comment %} <meta itemprop="position" content="{{ position }}"> {% endcomment %}
+          {% comment %} </li> {% endcomment %}
+          {% comment %}{% endcomment %}
+          {% comment %} {%- assign position = position | plus: 1 -%} {% endcomment %}
+          {% comment %} <li {% endcomment %}
+          {% comment %} class="henk-breadcrumbs__item" {% endcomment %}
+          {% comment %} itemprop="itemListElement" {% endcomment %}
+          {% comment %} itemscope {% endcomment %}
+          {% comment %} itemtype="https://schema.org/ListItem" {% endcomment %}
+          {% comment %} aria-current="page" {% endcomment %}
+          {% comment %} > {% endcomment %}
+          {% comment %} <span class="henk-breadcrumbs__name" itemprop="name"> {% endcomment %}
+          {% comment %} {{- collection.title -}} {% endcomment %}
+          {% comment %} </span> {% endcomment %}
+          {% comment %} <meta itemprop="position" content="{{ position }}"> {% endcomment %}
+          {% comment %} </li> {% endcomment %}
+        {%- when 'product' -%}
+          {%- if collection and collection.url -%}
+            {%- assign position = position | plus: 1 -%}
+            <li
+              class="henk-breadcrumbs__item"
+              itemprop="itemListElement"
+              itemscope
+              itemtype="https://schema.org/ListItem"
+            >
+              <a href="{{ collection.url }}" class="henk-breadcrumbs__link" itemprop="item">
+                <span itemprop="name">{{- collection.title -}}</span>
+              </a>
+              <meta itemprop="position" content="{{ position }}">
+            </li>
+          {%- endif -%}
+          {%- assign position = position | plus: 1 -%}
+          <li
+            class="henk-breadcrumbs__item"
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+            aria-current="page"
+          >
+            <span class="henk-breadcrumbs__name" itemprop="name">{{- product.title -}}</span>
+            <meta itemprop="position" content="{{ position }}">
+          </li>
+        {%- when 'blog' -%}
+          {%- assign position = position | plus: 1 -%}
+          <li
+            class="henk-breadcrumbs__item"
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+          >
+            <span class="henk-breadcrumbs__name" itemprop="name">{{- blog.title -}}</span>
+            <meta itemprop="position" content="{{ position }}">
+          </li>
+        {%- when 'article' -%}
+          {%- assign position = position | plus: 1 -%}
+          <li
+            class="henk-breadcrumbs__item"
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+          >
+            <a href="{{ blog.url }}" class="henk-breadcrumbs__link" itemprop="item">
+              <span itemprop="name">{{ blog.title }}</span>
+            </a>
+            <meta itemprop="position" content="{{ position }}">
+          </li>
+          {%- assign position = position | plus: 1 -%}
+          <li
+            class="henk-breadcrumbs__item"
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+            aria-current="page"
+          >
+            <span class="henk-breadcrumbs__name" itemprop="name">{{- article.title -}}</span>
+            <meta itemprop="position" content="{{ position }}">
+          </li>
+        {%- when 'metaobject/store_location' -%}
+          {%- assign position = position | plus: 1 -%}
+          {% comment %} <li class="henk-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"> {% endcomment %}
+          {% comment %} {% assign stores_handle = 'general.breadcrumbs.stores_handle' | t %} {% endcomment %}
+          {% comment %} <a href="{{ '/pages/' | append: stores_handle | relative_url }}" class="henk-breadcrumbs__link" itemprop="item"> {% endcomment %}
+          {% comment %} <span itemprop="name">{{ 'general.breadcrumbs.stores' | t }}</span> {% endcomment %}
+          {% comment %} </a> {% endcomment %}
+          {% comment %} <meta itemprop="position" content="{{ position }}" /> {% endcomment %}
+          {% comment %} </li> {% endcomment %}
+          {%- assign position = position | plus: 1 -%}
+          <li
+            class="henk-breadcrumbs__item"
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+            aria-current="page"
+          >
+            <span class="henk-breadcrumbs__name" itemprop="name">{{- page_title -}}</span>
+            <meta itemprop="position" content="{{ position }}">
+          </li>
+        {%- else -%}
+          {%- assign position = position | plus: 1 -%}
+          <li
+            class="henk-breadcrumbs__item"
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+            aria-current="page"
+          >
+            <span class="henk-breadcrumbs__name" itemprop="name">{{- page_title -}}</span>
+            <meta itemprop="position" content="{{ position }}">
+            <!-- hello 2: {{ template }} -->
+          </li>
+      {%- endcase -%}
     </ol>
   </nav>
 {%- endunless -%}

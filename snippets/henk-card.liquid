@@ -70,6 +70,7 @@
         {% assign tag_label = key | t %}
 
         {% if tag_label contains 'translation missing' %}
+          {% assign tag_label = tag %}
           <span class="henk-tag henk-tag--small henk-tag--dark">
             {{ tag }}
           </span>

@@ -38,7 +38,7 @@
           default: 'No description available' }}
         "
       >
-        {{ product.description | default: t('card.no_description') }}
+        {{ product.description | default: 'card.no_description' | t }}
       </p>
     {% else %}
       <p class="henk-card__price">

@@ -5,8 +5,10 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/collection
 {% endcomment %}
 
+{{ collection | json }}
+
 <h1>{{ collection.title }}</h1>
-hello
+
 <div class="collection-products">
   {% paginate collection.products by 20 %}
     {% for product in collection.products %}

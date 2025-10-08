@@ -1,0 +1,18 @@
+{%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
+  {%- assign t = template | split: '.' | first -%}
+  {%- assign position = 1 -%}
+
+  <nav
+    aria-label="breadcrumb"
+    class="henk-breadcrumbs"
+    id="henk-breadcrumbs-bar"
+  >
+    <ol
+      class="henk-breadcrumbs__list"
+      itemscope
+      itemtype="https://schema.org/BreadcrumbList"
+    >
+      ...
+    </ol>
+  </nav>
+{%- endunless -%}

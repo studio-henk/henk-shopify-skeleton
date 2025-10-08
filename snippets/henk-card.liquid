@@ -71,14 +71,10 @@
 
         {% if tag_label contains 'translation missing' %}
           {% assign tag_label = tag %}
-          <span class="henk-tag henk-tag--small henk-tag--dark">
-            {{ tag }}
-          </span>
-        {% else %}
-          <span class="henk-tag henk-tag--small henk-tag--dark">
-            {{ tag_label }}
-          </span>
         {% endif %}
+        <span class="henk-tag henk-tag--small henk-tag--dark">
+          {{ tag_label }}
+        </span>
       {% endfor %}
     </div>
   {% endif %}

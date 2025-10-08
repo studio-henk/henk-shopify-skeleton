@@ -18,6 +18,16 @@
             class="henk-card__image-link"
           >
             <figure class="henk-card__image-container">
+              {% if product.featured_image %}
+                {% render 'image',
+                  class: 'collection-product__image',
+                  image: product.featured_image,
+                  url: product.url,
+                  width: 400,
+                  height: 400,
+                  crop: 'center'
+                %}
+              {% endif %}
               <img
                 class="henk-card__img"
                 src="https://www.studio-henk.nl/Images/emersya/stool-without-background/678010/image-thumb__678010__ListerSquareAvif/BS-BSS770-3062.avif"

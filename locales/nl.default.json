@@ -37,7 +37,8 @@
     }
   },
   "collections": {
-    "title": "Collections"
+    "title": "Collections",
+    "from_label": "Vanaf"
   },
   "gift_card": {
     "add_to_apple_wallet": "Add to Apple Wallet",

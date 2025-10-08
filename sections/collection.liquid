@@ -14,40 +14,6 @@
     {% paginate collection.products by 20 %}
       {% for product in collection.products %}
         {% render 'henk-card', product: product, collection: collection, card_variant: null %}
-        <div class="henk-card">
-          <a
-            href="{{ product.url }}"
-            class="henk-card__image-link"
-          >
-            <figure class="henk-card__image-container">
-              {% if product.featured_image %}
-                {{
-                  product.featured_image
-                  | image_url: width: 1032, height: 1032
-                  | image_tag: srcset: null, class: 'henk-card__img'
-                }}
-              {% endif %}
-            </figure>
-          </a>
-          <div class="henk-card__content">
-            <p class="henk-card__title truncate">{{ product.title }}</p>
-            <p
-              class="henk-card__description truncate"
-              title="
-                {{
-                product.description }}
-              "
-            >
-              {{ product.description }}
-            </p>
-            <a
-              href="{{ product.url }}"
-              class="henk-button henk-card__button"
-            >
-              Vanaf {{ product.price | money_without_trailing_zeros }}
-            </a>
-          </div>
-        </div>
       {% endfor %}
       {{ paginate | default_pagination }}
     {% endpaginate %}

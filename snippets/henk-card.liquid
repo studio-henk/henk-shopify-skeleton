@@ -61,10 +61,11 @@
           {{ product.price | money_without_trailing_zeros }}
         {% endif %}
       </a>
-      {% render 'henk-button',
+      {%
+        render 'henk-button',
         element: 'a',
         href: product.url,
-        label: product.price,
+        label: product.price | money,
         extra_classes: 'henk-card__button'
       %}
     {% endif %}

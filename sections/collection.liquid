@@ -14,7 +14,7 @@
       {% for product in collection.products %}
         <div class="henk-card">
           <a
-            href="/en/collections/bar-stools/products/base-bar-stool"
+            href="{{ product.url }}"
             class="henk-card__image-link"
           >
             <figure class="henk-card__image-container">
@@ -29,7 +29,15 @@
           </a>
           <div class="henk-card__content">
             <p class="henk-card__title truncate">{{ product.title }}</p>
-            <p class="henk-card__description truncate">{{ product.description }}</p>
+            <p
+              class="henk-card__description truncate"
+              title="
+                {{
+                product.description }}
+              "
+            >
+              {{ product.description }}
+            </p>
             <a
               href="{{ product.url }}"
               class="henk-button henk-card__button"

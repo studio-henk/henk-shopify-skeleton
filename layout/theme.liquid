@@ -47,6 +47,7 @@
   <body class="template-{{ template.name }}">
     <div class="henk-wrapper">
       {% sections 'header-group' %}
+      {% render 'henk-breadcrumbs' %}
       <main class="henk-main">
         {{ content_for_layout }}
       </main>

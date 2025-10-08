@@ -34,8 +34,7 @@
               href="{{ product.url }}"
               class="henk-button henk-card__button"
             >
-              Vanaf
-              {{ product.price | money }}
+              Vanaf {{ product.price | money_without_trailing_zeros }}
             </a>
           </div>
         </div>

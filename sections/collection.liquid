@@ -9,6 +9,7 @@
 
 {% render 'henk-section-header', title: collection.title, text: collection.description %}
 
+{% render 'henk-icon', iconName: 'henk-icon-close' %}
 <section class="shopify-section" id="shopify-section-lister">
   <div class="henk-lister-grid henk-section">
     {% paginate collection.products by 20 %}

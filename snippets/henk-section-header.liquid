@@ -10,7 +10,6 @@
         {% endif %}
         {% if text %}
           <div class="henk-section-header__text">
-            {{ text }}
             {% assign stripped = text | strip %}
             {% if stripped contains '<' and stripped contains '>' %}
               {{ text }}

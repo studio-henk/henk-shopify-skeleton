@@ -34,35 +34,6 @@
             <span class="henk-breadcrumbs__name" itemprop="name">{{- collection.title -}}</span>
             <meta itemprop="position" content="{{ position }}">
           </li>
-          {% comment %} <li {% endcomment %}
-          {% comment %} class="henk-breadcrumbs__item" {% endcomment %}
-          {% comment %} itemprop="itemListElement" {% endcomment %}
-          {% comment %} itemscope {% endcomment %}
-          {% comment %} itemtype="https://schema.org/ListItem" {% endcomment %}
-          {% comment %} > {% endcomment %}
-          {% comment %} <a {% endcomment %}
-          {% comment %} href="/collections" {% endcomment %}
-          {% comment %} class="henk-breadcrumbs__link" {% endcomment %}
-          {% comment %} itemprop="item" {% endcomment %}
-          {% comment %} > {% endcomment %}
-          {% comment %} <span itemprop="name">Collections</span> {% endcomment %}
-          {% comment %} </a> {% endcomment %}
-          {% comment %} <meta itemprop="position" content="{{ position }}"> {% endcomment %}
-          {% comment %} </li> {% endcomment %}
-          {% comment %}{% endcomment %}
-          {% comment %} {%- assign position = position | plus: 1 -%} {% endcomment %}
-          {% comment %} <li {% endcomment %}
-          {% comment %} class="henk-breadcrumbs__item" {% endcomment %}
-          {% comment %} itemprop="itemListElement" {% endcomment %}
-          {% comment %} itemscope {% endcomment %}
-          {% comment %} itemtype="https://schema.org/ListItem" {% endcomment %}
-          {% comment %} aria-current="page" {% endcomment %}
-          {% comment %} > {% endcomment %}
-          {% comment %} <span class="henk-breadcrumbs__name" itemprop="name"> {% endcomment %}
-          {% comment %} {{- collection.title -}} {% endcomment %}
-          {% comment %} </span> {% endcomment %}
-          {% comment %} <meta itemprop="position" content="{{ position }}"> {% endcomment %}
-          {% comment %} </li> {% endcomment %}
         {%- when 'product' -%}
           {%- if collection and collection.url -%}
             {%- assign position = position | plus: 1 -%}

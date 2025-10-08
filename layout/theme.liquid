@@ -44,7 +44,7 @@
     <script src="{{ 'henk-feature-detection.js' | asset_url }}" defer></script>
   </head>
 
-  <body>
+  <body className="template-{{ template.name }}">
     <div class="henk-wrapper">
       {% sections 'header-group' %}
       <main class="henk-main">

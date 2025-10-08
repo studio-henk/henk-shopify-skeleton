@@ -66,6 +66,8 @@
   {% if product.tags != blank %}
     <div class="henk-card__tags">
       {% for tag in product.tags limit: 1 %}
+        {% render 'henk-tag', tag: tag %}
+
         {% assign tag_key_part = tag | handleize | replace: '-', '_' %}
         {% assign key = 'tags.' | append: tag_key_part %}
         {% capture tag_label %}

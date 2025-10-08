@@ -18,8 +18,7 @@
       {% render 'henk-icon-search' %}
     {% when 'cart' %}
       {% render 'henk-icon-bag' %}
-    {% else %}
-      {# fallback empty icon snippet #}
-      {% render 'henk-icon-empty' %}
+      {% comment %} {% else %} {% endcomment %}
+      {% comment %}   {% render 'henk-icon-empty' %} {% endcomment %}
   {% endcase %}
 </i>

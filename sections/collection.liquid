@@ -9,13 +9,7 @@
 
 <h1>{{ collection.title }}</h1>
 
-{% render 'henk-section-header',
-  id: '{{ collection.id}}',
-  title: collection.title,
-  text: collection.description,
-  button_label: 'Shop Now',
-  button_url: '/collections/all'
-%}
+{% render 'henk-section-header', id: '{{ collection.id}}', title: collection.title, text: collection.description %}
 
 <section class="shopify-section" id="shopify-section-lister">
   <div class="henk-lister-grid henk-section">

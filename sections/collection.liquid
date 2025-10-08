@@ -13,6 +13,7 @@
   <div class="henk-lister-grid henk-section">
     {% paginate collection.products by 20 %}
       {% for product in collection.products %}
+        {% render 'henk-card', product: product, collection: collection, card_variant: null %}
         <div class="henk-card">
           <a
             href="{{ product.url }}"

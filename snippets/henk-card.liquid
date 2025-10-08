@@ -66,8 +66,17 @@
   {% if product.tags != blank %}
     <div class="henk-card__tags">
       {% for tag in product.tags limit: 1 %}
+        {% assign tag_label = 'tags.' | append: tag | t %}
+
+        {% comment %}
+          Fallback to the raw tag if no translation exists
+        {% endcomment %}
+        {% if tag_label == 'tags.' | append: tag %}
+          {% assign tag_label = tag %}
+        {% endif %}
+
         <span class="henk-tag henk-tag--small henk-tag--dark">
-          {{- tag -}}
+          {{ tag_label }}
         </span>
       {% endfor %}
     </div>

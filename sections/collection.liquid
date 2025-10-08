@@ -8,7 +8,36 @@
 {{ collection | json }}
 
 <h1>{{ collection.title }}</h1>
-
+<section class="shopify-section" id="shopify-section-lister">
+  <div class="henk-lister-grid henk-section">
+    <div class="henk-card">
+      <a
+        href="/en/collections/bar-stools/products/base-bar-stool"
+        class="henk-card__image-link"
+      >
+        <figure class="henk-card__image-container">
+          <img
+            class="henk-card__img"
+            src="https://www.studio-henk.nl/Images/emersya/stool-without-background/678010/image-thumb__678010__ListerSquareAvif/BS-BSS770-3062.avif"
+            alt="Base stool"
+            width="1032"
+            height="1032"
+          >
+        </figure>
+      </a>
+      <div class="henk-card__content">
+        <p class="henk-card__title truncate">Base stool 77</p>
+        <p class="henk-card__description truncate">Eiken hardwax olie naturel 3062</p>
+        <a
+          href="/en/collections/bar-stools/products/base-bar-stool"
+          class="henk-button henk-card__button henk-button--undefined"
+        >
+          Vanaf € 379
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 <div class="collection-products">
   {% paginate collection.products by 20 %}
     {% for product in collection.products %}

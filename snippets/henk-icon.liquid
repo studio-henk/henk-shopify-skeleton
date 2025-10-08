@@ -1,6 +1,25 @@
-{% case icon_name %}
-  {% when 'close' %}
-    {% render 'henk-icon-close' %}
-  {% when 'bag' %}
-    {% render 'henk-icon-bag' %}
-{% endcase %}
+{% comment %}
+  Dynamic icon component using individual snippets per icon
+  Inputs:
+    icon_name: 'close', 'search', 'cart', etc.
+    size: 'small', 'medium', 'large' (optional)
+    only: true/false (for icon-only buttons)
+{% endcomment %}
+
+{% assign classes = 'henk-icon' %}
+{% if size %}{% assign classes = classes | append: ' icon--' | append: size %}{% endif %}
+{% if only %}{% assign classes = classes | append: ' icon--only' %}{% endif %}
+
+<i class="{{ classes }}">
+  {% case icon_name %}
+    {% when 'close' %}
+      {% render 'henk-icon-close' %}
+    {% when 'search' %}
+      {% render 'henk-icon-search' %}
+    {% when 'cart' %}
+      {% render 'henk-icon-bag' %}
+    {% else %}
+      {# fallback empty icon snippet #}
+      {% render 'henk-icon-empty' %}
+  {% endcase %}
+</i>

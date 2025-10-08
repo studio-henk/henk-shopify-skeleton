@@ -68,12 +68,17 @@
       {% for tag in product.tags limit: 1 %}
         {% assign key = 'tags.' | append: tag %}
         {% assign tag_label = key | t %}
+
         {% if tag_label contains 'translation missing' %}
-          {% assign tag_label = tag %}
+          {# optional fallback #}
+          <span class="henk-tag henk-tag--small henk-tag--dark">
+            {{ tag }}
+          </span>
+        {% else %}
+          <span class="henk-tag henk-tag--small henk-tag--dark">
+            {{ tag_label }}
+          </span>
         {% endif %}
-        <span class="henk-tag henk-tag--small henk-tag--dark">
-          {{ tag_label }}
-        </span>
       {% endfor %}
     </div>
   {% endif %}

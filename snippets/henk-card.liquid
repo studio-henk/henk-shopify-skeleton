@@ -67,21 +67,6 @@
     <div class="henk-card__tags">
       {% for tag in product.tags limit: 1 %}
         {% render 'henk-tag', tag: tag %}
-
-        {% assign tag_key_part = tag | handleize | replace: '-', '_' %}
-        {% assign key = 'tags.' | append: tag_key_part %}
-        {% capture tag_label %}
-        {{ key | t }}
-      {% endcapture %}
-        {% assign tag_label_stripped = tag_label | strip %}
-
-        {% if tag_label_stripped contains 'Translation missing' %}
-          {% assign tag_label_stripped = tag %}
-        {% endif %}
-
-        <span class="henk-tag henk-tag--small henk-tag--dark">
-          {{ tag_label_stripped }}
-        </span>
       {% endfor %}
     </div>
   {% endif %}

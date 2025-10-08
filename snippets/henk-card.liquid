@@ -66,8 +66,7 @@
   {% if product.tags != blank %}
     <div class="henk-card__tags">
       {% for tag in product.tags limit: 1 %}
-        {% assign key = 'tags.' | append: tag %}
-
+        {% assign key = 'tags.' | append: (tag | handleize | replace: '-', '_') %}
         {% capture tag_label %}
         {{ key | t }}
       {% endcapture %}

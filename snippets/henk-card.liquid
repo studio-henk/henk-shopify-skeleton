@@ -50,17 +50,6 @@
     {% endif %}
 
     {% if card_variant == null %}
-      <a
-        href="{{ product.url }}"
-        class="henk-button henk-card__button"
-      >
-        {% if product.price_varies %}
-          {{ 'card.from_label' | t }}
-          {{ product.price_min | money_without_trailing_zeros }}
-        {% else %}
-          {{ product.price | money_without_trailing_zeros }}
-        {% endif %}
-      </a>
       {% assign min_price = product.price_min | money_without_trailing_zeros %}
 
       {% if product.price_varies %}

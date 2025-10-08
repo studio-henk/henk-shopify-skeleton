@@ -3,67 +3,67 @@
 {% comment %} {{ product.tags | json }} {% endcomment %}
 
 <div class="henk-card {% if card_variant %} henk-card--{{ card_variant }}{% endif %}">
-    <a
-        href="{{ collection.url }}/products/{{ product.handle }}"
-        class="henk-card__image-link"
-    >
-        <figure class="henk-card__image-container">
-            {% if product.featured_image %}
-                <img
-                    class="henk-card__img"
-                    src="{{ product.featured_image | image_url: width: 1134}}"
-                    alt="{{ product.title }}"
-                    width="{{ product.featured_image.width }}"
-                    height="{{ product.featured_image.height }}"
-                >
-            {% else %}
-                <img
-                    class="henk-card__img"
-                    src="https://placehold.co/1000x1000"
-                    alt="No image available"
-                    width="1000"
-                    height="1000"
-                >
-            {% endif %}
-        </figure>
-    </a>
-    <div class="henk-card__content">
-        <p class="henk-card__title truncate">{{ product.title }}</p>
+  <a
+    href="{{ product.url }}"
+    class="henk-card__image-link"
+  >
+    <figure class="henk-card__image-container">
+      {% if product.featured_image %}
+        <img
+          class="henk-card__img"
+          src="{{ product.featured_image | image_url: width: 1134}}"
+          alt="{{ product.title }}"
+          width="{{ product.featured_image.width }}"
+          height="{{ product.featured_image.height }}"
+        >
+      {% else %}
+        <img
+          class="henk-card__img"
+          src="https://placehold.co/1000x1000"
+          alt="No image available"
+          width="1000"
+          height="1000"
+        >
+      {% endif %}
+    </figure>
+  </a>
+  <div class="henk-card__content">
+    <p class="henk-card__title truncate">{{ product.title }}</p>
 
-        {% if card_variant == null %}
-            <p class="henk-card__description truncate">
-                {{ product.description | default: 'No description available' }}
-            </p>
+    {% if card_variant == null %}
+      <p class="henk-card__description truncate">
+        {{ product.description | default: 'No description available' }}
+      </p>
+    {% else %}
+      <p class="henk-card__price">
+        {% if product.price_varies %}
+          From {{ product.price_min | money }}
         {% else %}
-            <p class="henk-card__price">
-                {% if product.price_varies %}
-                    From {{ product.price_min | money }}
-                {% else %}
-                    {{ product.price | money }}
-                {% endif %}
-            </p>
+          {{ product.price | money }}
         {% endif %}
-
-        {% if card_variant == null %}
-            <a
-                href="{{ collection.url }}/products/{{ product.handle }}"
-                class="henk-button henk-card__button"
-            >
-                {% if product.price_varies %}
-                    From {{ product.price_min | money }}
-                {% else %}
-                    {{ product.price | money }}
-                {% endif %}
-            </a>
-        {% endif %}
-    </div>
-    {% if product.tags != blank %}
-        <div class="henk-card__tags">
-            {% for tag in product.tags limit: 1 %}
-                <span class="henk-tag henk-tag--small henk-tag--dark">
-                    {{- tag -}}
-                </span>
-            {% endfor %}
-        </div>
+      </p>
     {% endif %}
+
+    {% if card_variant == null %}
+      <a
+        href="{{ collection.url }}/products/{{ product.handle }}"
+        class="henk-button henk-card__button"
+      >
+        {% if product.price_varies %}
+          From {{ product.price_min | money }}
+        {% else %}
+          {{ product.price | money }}
+        {% endif %}
+      </a>
+    {% endif %}
+  </div>
+  {% if product.tags != blank %}
+    <div class="henk-card__tags">
+      {% for tag in product.tags limit: 1 %}
+        <span class="henk-tag henk-tag--small henk-tag--dark">
+          {{- tag -}}
+        </span>
+      {% endfor %}
+    </div>
+  {% endif %}
 </div>

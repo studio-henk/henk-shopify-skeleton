@@ -9,7 +9,17 @@
           <h2 class="henk-section-header__title">{{ title }}</h2>
         {% endif %}
         {% if text %}
-          <div class="henk-section-header__text">{{ text }}</div>
+          <div class="henk-section-header__text">
+            {{ text }}
+            {% assign stripped = text | strip %}
+            {% if stripped contains '<' and stripped contains '>' %}
+              {{ text }}
+              <!-- assume HTML already, render as-is -->
+            {% else %}
+              <p>{{ text }}</p>
+              <!-- wrap plain text in p -->
+            {% endif %}
+          </div>
         {% endif %}
         {% if button_label and button_url %}
           <a href="{{ button_url }}" class="henk-button henk-button--default henk-section-header__button">

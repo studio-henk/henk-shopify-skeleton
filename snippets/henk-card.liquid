@@ -31,15 +31,22 @@
     <p class="henk-card__title truncate">{{ product.title }}</p>
 
     {% if card_variant == null %}
-      <p
-        class="henk-card__description truncate"
-        title="
-          {{ product.description |
-          default: 'No description available' }}
-        "
-      >
-        {{ product.description | default: 'card.no_description' | t }}
+      <p class="henk-card__description truncate" title="{{ product.description }}">
+        {% if product.description != blank %}
+          {{ product.description }}
+        {% else %}
+          {{ 'card.no_description' | t }}
+        {% endif %}
       </p>
+      <!-- <p -->
+      <!-- class="henk-card__description truncate" -->
+      <!-- title=" -->
+      <!-- {{ product.description | -->
+      <!-- default: 'No description available' }} -->
+      <!-- " -->
+      <!-- > -->
+      <!-- {{ product.description | default: 'card.no_description' | t }} -->
+      <!-- </p> -->
     {% else %}
       <p class="henk-card__price">
         {% if product.price_varies %}

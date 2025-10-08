@@ -61,6 +61,13 @@
           {{ product.price | money_without_trailing_zeros }}
         {% endif %}
       </a>
+
+      {% if product.price_varies %}
+        {{ 'card.from_label' | t }}
+        {{ product.price_min | money_without_trailing_zeros }}
+      {% else %}
+        {{ product.price | money_without_trailing_zeros }}
+      {% endif %}
       {% assign price_label = product.price | money_without_trailing_zeros %}
       {% render 'henk-button',
         element: 'a',

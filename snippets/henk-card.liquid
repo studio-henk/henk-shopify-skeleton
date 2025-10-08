@@ -61,7 +61,14 @@
           {{ product.price | money_without_trailing_zeros }}
         {% endif %}
       </a>
-      {% render 'henk-button', element: 'a', href: product.url, label: 'Shop now', variant: 'primary' %}
+      {% render 'henk-button',
+        element: 'a',
+        href: product.url,
+        label: 'Shop
+      now',
+        variant: 'primary',
+        extra_classes: 'my-custom-class another-class'
+      %}
     {% endif %}
   </div>
   {% if product.tags != blank %}

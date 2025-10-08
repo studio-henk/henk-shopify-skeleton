@@ -19,21 +19,14 @@
           >
             <figure class="henk-card__image-container">
               {% if product.featured_image %}
-                {% render 'image',
-                  class: 'henk-card__image',
-                  image: product.featured_image,
-                  width: 1032,
-                  height: 1032,
-                  crop: 'center'
-                %}
+                <img
+                  class="henk-card__img"
+                  src="https://www.studio-henk.nl/Images/emersya/stool-without-background/678010/image-thumb__678010__ListerSquareAvif/BS-BSS770-3062.avif"
+                  alt="Base stool"
+                  width="1032"
+                  height="1032"
+                >
               {% endif %}
-              <img
-                class="henk-card__img"
-                src="https://www.studio-henk.nl/Images/emersya/stool-without-background/678010/image-thumb__678010__ListerSquareAvif/BS-BSS770-3062.avif"
-                alt="Base stool"
-                width="1032"
-                height="1032"
-              >
             </figure>
           </a>
           <div class="henk-card__content">

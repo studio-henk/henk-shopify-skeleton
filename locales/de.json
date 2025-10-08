@@ -10,8 +10,8 @@
 {
   "404": {
     "title": "404",
-    "not_found": "Page not found.",
-    "back_to_shopping": "Continue shopping"
+    "not_found": "Seite nicht gefunden",
+    "back_to_shopping": "weiter einkaufen"
   },
   "blog": {
     "article_comments": "Comments",

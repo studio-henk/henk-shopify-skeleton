@@ -45,7 +45,7 @@
         {% if product.price_varies %}
           From {{ product.price_min | money_without_trailing_zeros }}
         {% else %}
-          {{ product.price | money }}
+          {{ product.price | money_without_trailing_zeros }}
         {% endif %}
       </p>
     {% endif %}
@@ -56,9 +56,9 @@
         class="henk-button henk-card__button"
       >
         {% if product.price_varies %}
-          From {{ product.price_min | money }}
+          From {{ product.price_min | money_without_trailing_zeros }}
         {% else %}
-          {{ product.price | money }}
+          {{ product.price | money_without_trailing_zeros }}
         {% endif %}
       </a>
     {% endif %}

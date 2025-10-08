@@ -55,7 +55,7 @@
         class="henk-button henk-card__button"
       >
         {% if product.price_varies %}
-          {{ 'from_label' | t }}
+          {{ 'card.from_label' | t }}
           {{ product.price_min | money_without_trailing_zeros }}
         {% else %}
           {{ product.price | money_without_trailing_zeros }}

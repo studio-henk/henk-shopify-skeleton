@@ -34,7 +34,8 @@
               href="{{ product.url }}"
               class="henk-button henk-card__button"
             >
-              Vanaf € 379
+              Vanaf
+              {{ product.price | money }}
             </a>
           </div>
         </div>

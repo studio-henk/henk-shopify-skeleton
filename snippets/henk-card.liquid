@@ -61,9 +61,10 @@
           {{ product.price | money_without_trailing_zeros }}
         {% endif %}
       </a>
+      {% assign min_price = product.price_min | money_without_trailing_zeros %}
 
       {% if product.price_varies %}
-        {% assign price_label = 'card.from_label' | t | append: ' ' | append: (product.price_min | money_without_trailing_zeros) %}
+        {% assign price_label = 'card.from_label' | t | append: ' ' | append: min_price %}
       {% else %}
         {% assign price_label = product.price | money_without_trailing_zeros %}
       {% endif %}

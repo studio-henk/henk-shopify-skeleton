@@ -1,6 +1,6 @@
 {% comment %} {{ collection | json }} {% endcomment %}
 {% comment %} {{ product | json }} {% endcomment %}
-{% comment %} {{ product.tags | json }} {% endcomment %}
+{{ product.tags | json }}
 
 <div class="henk-card {% if card_variant %} henk-card--{{ card_variant }}{% endif %}">
   <a

@@ -61,7 +61,7 @@
           {{ product.price | money_without_trailing_zeros }}
         {% endif %}
       </a>
-      {% assign price_label = product.price | money %}
+      {% assign price_label = product.price | money_without_trailing_zeros %}
       {% render 'henk-button',
         element: 'a',
         href: product.url,

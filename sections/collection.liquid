@@ -5,9 +5,7 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/collection
 {% endcomment %}
 
-{{ collection | json }}
-
-<h1>{{ collection.title }}</h1>
+{% comment %} {{ collection | json }} {% endcomment %}
 
 {% render 'henk-section-header', title: collection.title, text: collection.description %}
 

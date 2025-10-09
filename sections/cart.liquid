@@ -7,7 +7,13 @@
 
 {% comment %} {{ cart | json }} {% endcomment %}
 {% assign cart_title = 'cart.title' | t %}
-{% render 'henk-section-header', title: cart_title, level: 1, align: 'left', button_label: 'continue shopping' %}
+{% render 'henk-section-header',
+  title: cart_title,
+  level: 1,
+  align: 'left',
+  button_label: 'continue shopping',
+  button_url: '#'
+%}
 
 <form action="{{ routes.cart_url }}" method="post">
   <table>

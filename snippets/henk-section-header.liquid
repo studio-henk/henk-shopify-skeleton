@@ -43,9 +43,14 @@
         {% if caption %}
           <p class="henk-section-header__caption">{{ caption }}</p>
         {% endif %}
+
         {% if title %}
-          <h2 class="henk-section-header__title">{{ title }}</h2>
+          <{{ heading_tag }} class="{{ title_class }}">{{ title }}</{{ heading_tag }}>
         {% endif %}
+
+        {% comment %} {% if title %} {% endcomment %}
+        {% comment %}   <h2 class="henk-section-header__title">{{ title }}</h2> {% endcomment %}
+        {% comment %} {% endif %} {% endcomment %}
         {% if text %}
           <div class="henk-section-header__text">
             {% assign stripped = text | strip %}

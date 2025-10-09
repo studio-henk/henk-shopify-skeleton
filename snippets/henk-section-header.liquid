@@ -1,3 +1,23 @@
+{% comment %}
+  Section header component
+  Props:
+    id             - optional unique ID
+    caption        - optional small heading text
+    title          - main title (h2)
+    text           - body text (plain or HTML)
+    align          - alignment class, e.g. 'left', 'center', 'right'
+    button_label   - label for the button
+    button_url     - link for the button
+    button_variant - optional variant (primary, secondary, etc.)
+    button_size    - optional size (small, large)
+    button_extra_classes - optional additional classes for button
+{% endcomment %}
+
+{% assign alignment_class = '' %}
+{% if align %}
+  {% assign alignment_class = ' henk-section-header--align-' | append: align %}
+{% endif %}
+
 <section class="shopify-section">
   <div class="henk-section henk-section-header" id="section-header-{{ id | default: '1' }}">
     <div class="henk-section-header__inner">

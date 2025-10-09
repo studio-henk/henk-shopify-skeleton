@@ -1,8 +1,8 @@
 {
   "404": {
     "title": "404",
-    "not_found": "Page not found.",
-    "back_to_shopping": "Back to shopping"
+    "not_found": "Pagina niet gevonden.",
+    "back_to_shopping": "Winkel verder"
   },
   "blog": {
     "article_comments": "Comments",
@@ -48,5 +48,17 @@
     "submit": "Search",
     "no_results_html": "No results found for {{ terms }}",
     "results_for_html": "{{ count }} results found for {{ terms }}"
+  },
+  "card": {
+    "no_description": "Geen beschrijving beschikbaar",
+    "from_label": "Vanaf"
+  },
+  "breadcrumbs": {
+    "home": "HENK"
+  },
+  "tags": {
+    "tweedekans": "Tweede Kans",
+    "snelle_levering": "Snelle Levering",
+    "sale": "Aanbieding"
   }
 }

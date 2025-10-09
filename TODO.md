@@ -1,34 +1,8 @@
 # TODO
 
-- [x] move todo to project folder as TODO.md (shopifyignore?)
-- [x] hide the cookie banner on development / preview
-- [x] add language (de?) to have more than 1 extra lang. (for html/js purposes)
-
-## Header
-
-- [ ] refactor html -> progressive enhancement:
-  - [ ] no css, no js 
-    - [x] <details> for submenus.
-  - [ ] css, no js 
-    - [x] details elements 
-      - [x] only 1 open at a time 
-      - [ ] animated 
-      - [ ] no marker
-  - [ ] css, js 
-    - [ ] close on click outside submenu 
-    - [ ] close on esc
-
-## Footer 
-
-- [x] add css from storybook?
-
-
 ## Other
 
-- [x] add features script.
-- cart badge redo: sup element
 - [ ] webfont check
-- [x] how to deal with css?
 
 for now a few css files: tokens, base via head. footer via footer.liquid.
 
@@ -37,15 +11,29 @@ for now a few css files: tokens, base via head. footer via footer.liquid.
 
 ## Shopify
 
-- [ ] listers
-  - [ ] money_without_trailing_zeros
-  - [ ] money_without_currency
+- [ ] button component: use button snippet
+- [ ] card component: use button snippet
+  - [ ] use tag component snippet?
+  - [x] tag translations -> locale json files
+- [x] breadcrumbs on theme.liquid
+  - [ ] improve on some templates?
+- [ ] collection page: lister
+  - [x] grid with cards
+  - [ ] filter
+  - [ ] sort
+- [ ] stores overview page
+ - [ ] grid with cards?
+     - [ ] card component: adjust / expand for store info?
+- [ ] stores detail page
+- [ ] blog overview page
+- [ ] blog article page
+- [ ] favicon
+- [ ] product page: image gallery?
   - [ ] filter
   - [ ] their filter still working but styled?
 
 ## next
 
-- [ ] editor: AI-assisted development tools when you run shopify theme init
 - [ ] change blog template (main img, max-width etc) -> new template
 - [ ] fullwidthVideo
 

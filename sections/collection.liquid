@@ -5,39 +5,20 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/collection
 {% endcomment %}
 
-<h1>{{ collection.title }}</h1>
+{% comment %} {{ collection | json }} {% endcomment %}
 
-<div class="collection-products">
-  {% paginate collection.products by 20 %}
-    {% for product in collection.products %}
-      <div class="collection-product">
-        {% if product.featured_image %}
-          {% render 'image',
-            class: 'collection-product__image',
-            image: product.featured_image,
-            url: product.url,
-            width: 400,
-            height: 400,
-            crop: 'center'
-          %}
-        {% endif %}
-        <div class="collection-product__content">
-          <p>{{ product.title | escape | link_to: product.url }}</p>
-          <p>{{ product.price | money }}</p>
-        </div>
-      </div>
-    {% endfor %}
+{% render 'henk-section-header', title: collection.title, text: collection.description %}
 
-    {{ paginate | default_pagination }}
-  {% endpaginate %}
-</div>
-
-{% stylesheet %}
-  .collection-products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  }
-{% endstylesheet %}
+<section class="shopify-section" id="shopify-section-lister">
+  <div class="henk-lister-grid henk-section">
+    {% paginate collection.products by 20 %}
+      {% for product in collection.products %}
+        {% render 'henk-card', product: product, collection: collection, card_variant: null %}
+      {% endfor %}
+      {{ paginate | default_pagination }}
+    {% endpaginate %}
+  </div>
+</section>
 
 {% schema %}
 {

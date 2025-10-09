@@ -1,0 +1,31 @@
+<section class="shopify-section">
+  <div class="henk-section henk-section-header" id="section-header-{{ id | default: '1' }}">
+    <div class="henk-section-header__inner">
+      <div class="henk-section-header__content">
+        {% if caption %}
+          <p class="henk-section-header__caption">{{ caption }}</p>
+        {% endif %}
+        {% if title %}
+          <h2 class="henk-section-header__title">{{ title }}</h2>
+        {% endif %}
+        {% if text %}
+          <div class="henk-section-header__text">
+            {% assign stripped = text | strip %}
+            {% if stripped contains '<' and stripped contains '>' %}
+              {{ text }}
+              <!-- assume HTML already, render as-is -->
+            {% else %}
+              <p>{{ text }}</p>
+              <!-- wrap plain text in p -->
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if button_label and button_url %}
+          <a href="{{ button_url }}" class="henk-button henk-button--default henk-section-header__button">
+            {{ button_label }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

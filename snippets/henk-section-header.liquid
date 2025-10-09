@@ -19,6 +19,20 @@
   {% assign alignment_class = ' henk-section-header--align-' | append: align %}
 {% endif %}
 
+{% assign heading_tag = 'h2' %}
+{% assign title_class = 'henk-section-header__title' %}
+
+{% if level == 'display' %}
+  {% assign heading_tag = 'h1' %}
+  {% assign title_class = title_class | append: ' fs-display' %}
+{% elsif level == 1 %}
+  {% assign heading_tag = 'h1' %}
+{% elsif level == 3 %}
+  {% assign heading_tag = 'h3' %}
+{% else %}
+  {% assign heading_tag = 'h2' %}
+{% endif %}
+
 <section class="shopify-section">
   <div
     class="henk-section henk-section-header henk-section-header{{ alignment_class }}"

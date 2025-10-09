@@ -13,11 +13,10 @@
   "sections": {
     "footer": {
       "type": "henk-footer",
-      "settings": {
-        "menu": "",
-        "show_payment_icons": true
-      }
+      "settings": {}
     }
   },
-  "order": ["footer"]
+  "order": [
+    "footer"
+  ]
 }

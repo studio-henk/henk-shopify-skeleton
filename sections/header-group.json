@@ -13,10 +13,10 @@
   "sections": {
     "header": {
       "type": "henk-header",
-      "settings": {
-        "menu": "main-menu"
-      }
+      "settings": {}
     }
   },
-  "order": ["header"]
+  "order": [
+    "header"
+  ]
 }

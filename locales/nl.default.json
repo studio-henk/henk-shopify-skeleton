@@ -24,7 +24,7 @@
   },
   "cart": {
     "checkout": "Checkout",
-    "title": "Cart",
+    "title": "Winkelwagen",
     "update": "Update",
     "remove": "Remove"
   },

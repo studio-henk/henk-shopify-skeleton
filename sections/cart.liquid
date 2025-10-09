@@ -7,11 +7,8 @@
 
 {% comment %} {{ cart | json }} {% endcomment %}
 {% assign cart_title = 'cart.title' | t %}
-{% if request.locale.root_url == '' %}
-  {% assign collections_url = shop.url | append: '/collections' %}
-{% else %}
-  {% assign collections_url = shop.url | append: request.locale.root_url | append: '/collections' %}
-{% endif %}
+{% assign collections_url = request.locale.root_url | append: '/collections' %}
+
 {% render 'henk-section-header',
   title: cart_title,
   level: 1,

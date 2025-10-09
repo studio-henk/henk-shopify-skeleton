@@ -64,15 +64,17 @@
           </div>
         {% endif %}
         {% if button_label and button_url %}
-          {% render 'henk-button',
-            element: 'a',
+          {%
+            render 'henk-button',
+            element: button_element | default: 'a',
             href: button_url,
             label: button_label,
             extra_classes: 'henk-section-header__button'
+            variant: button_variant | default: 'primary',
           %}
-          <a href="{{ button_url }}" class="henk-button henk-button--default henk-section-header__button">
-            {{ button_label }}
-          </a>
+          <!-- <a href="{{ button_url }}" class="henk-button henk-button--default henk-section-header__button"> -->
+          <!-- {{ button_label }} -->
+          <!-- </a> -->
         {% endif %}
       </div>
     </div>

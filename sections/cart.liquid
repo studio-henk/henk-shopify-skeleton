@@ -7,7 +7,7 @@
 
 {{ cart | json }}
 
-{% render 'henk-section-header', title: 'Shopping Cart', align: 'left' %}
+{% render 'henk-section-header', title: cart.title, align: 'left' %}
 
 <h1>{{ 'cart.title' | t }}</h1>
 

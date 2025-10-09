@@ -24,7 +24,7 @@
   },
   "cart": {
     "checkout": "Checkout",
-    "title": "Cart",
+    "title": "Warenkorb",
     "update": "Update",
     "remove": "Remove"
   },

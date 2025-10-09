@@ -5,8 +5,10 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/cart
 {% endcomment %}
 
+{% render 'henk-section-header', title: collection.title, text: collection.description %}
+
 <h1>{{ 'cart.title' | t }}</h1>
-hello
+
 <form action="{{ routes.cart_url }}" method="post">
   <table>
     {% for item in cart.items %}

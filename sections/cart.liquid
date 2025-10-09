@@ -5,8 +5,7 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/cart
 {% endcomment %}
 
-{{ cart | json }}
-{% render 'henk-section-header', title: cart.title, text: cart.description %}
+{% render 'henk-section-header', title: 'hello cart', text: cart.description %}
 
 <h1>{{ 'cart.title' | t }}</h1>
 

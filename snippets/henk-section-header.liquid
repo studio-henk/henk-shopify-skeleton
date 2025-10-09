@@ -64,6 +64,12 @@
           </div>
         {% endif %}
         {% if button_label and button_url %}
+          {% render 'henk-button',
+            element: 'a',
+            href: button_url,
+            label: button_label,
+            extra_classes: 'henk-section-header__button'
+          %}
           <a href="{{ button_url }}" class="henk-button henk-button--default henk-section-header__button">
             {{ button_label }}
           </a>

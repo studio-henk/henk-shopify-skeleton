@@ -9,13 +9,13 @@
 {% assign cart_title = 'cart.title' | t %}
 {% comment %} {% assign collections_url = request.locale.root_url | append: '/collections' %} {% endcomment %}
 {{ routes.collections_url }}
-{% if request.locale.root_url == empty %}
-  hello
-  {% assign collections_url = '/collections' %}
-{% else %}
-  not hello
-  {% assign collections_url = request.locale.root_url | append: '/collections' %}
-{% endif %}
+{% comment %} {% if request.locale.root_url == empty %} {% endcomment %}
+{% comment %}   hello {% endcomment %}
+{% comment %}   {% assign collections_url = '/collections' %} {% endcomment %}
+{% comment %} {% else %} {% endcomment %}
+{% comment %}   not hello {% endcomment %}
+{% comment %}   {% assign collections_url = request.locale.root_url | append: '/collections' %} {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
 {% render 'henk-section-header',
   title: cart_title,
   level: 1,

@@ -9,8 +9,10 @@
 {% assign cart_title = 'cart.title' | t %}
 {% comment %} {% assign collections_url = request.locale.root_url | append: '/collections' %} {% endcomment %}
 {% if request.locale.root_url == blank %}
+  hello
   {% assign collections_url = '/collections' %}
 {% else %}
+  not hello
   {% assign collections_url = request.locale.root_url | append: '/collections' %}
 {% endif %}
 {% render 'henk-section-header',

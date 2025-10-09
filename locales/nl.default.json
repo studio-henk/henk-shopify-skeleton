@@ -26,7 +26,8 @@
     "checkout": "Checkout",
     "title": "Winkelwagen",
     "update": "Update",
-    "remove": "Remove"
+    "remove": "Remove",
+    "continue_shopping": "Winkel verder"
   },
   "customers": {
     "login": {

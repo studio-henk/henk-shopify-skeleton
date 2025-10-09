@@ -19,7 +19,10 @@
 {% endif %}
 
 <section class="shopify-section">
-  <div class="henk-section henk-section-header" id="section-header-{{ id | default: '1' }}">
+  <div
+    class="henk-section henk-section-header henk-section-header{{ alignment_class }}"
+    id="section-header-{{ id | default: '1' }}"
+  >
     <div class="henk-section-header__inner">
       <div class="henk-section-header__content">
         {% if caption %}

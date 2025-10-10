@@ -20,6 +20,10 @@
   button_icon_name: 'chevron-left'
 %}
 
+
+<section class="henk-cart-list">
+  <div class="cart-list__column">
+
 <form action="{{ routes.cart_url }}" method="post">
   <table>
     {% for item in cart.items %}
@@ -42,6 +46,11 @@
 
   <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}">
 </form>
+  </div>
+
+  <div class="cart-list__column cart-list__summary">
+col 2
+  </div>
 
 {% schema %}
 {

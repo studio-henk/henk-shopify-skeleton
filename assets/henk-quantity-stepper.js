@@ -32,7 +32,7 @@ class HenkQuantityStepper extends HTMLElement {
         .wc-stepper-quantity {
 
 align-items: center;
-    border: 1px solid var(--color-ui-border-neutral);
+    border: 1px solid var(--color-border-muted);
     border-radius: 8px;
     display: flex
 ;

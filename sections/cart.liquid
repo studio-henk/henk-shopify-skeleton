@@ -27,6 +27,14 @@
         {% for item in cart.items %}
           <li class="cart-item cart-list__list-item henk-cart-list__list-item">
             {% render 'image', image: item.image, url: item.url %}
+
+            <img
+              class="henk-card__img"
+              src="{{ product.featured_image | image_url: width: 1134}}"
+              alt="{{ product.title }}"
+              width="{{ product.featured_image.width }}"
+              height="{{ product.featured_image.height }}"
+            >
             <div>
               <p class="henk-cart-list__title">{{ item.product.title }}</p>
               <div class="cart-item__qty">

@@ -25,6 +25,13 @@
     <form action="{{ routes.cart_url }}" method="post">
       <table>
         {% for item in cart.items %}
+          <li class="henk-cart-list__list">
+            {% render 'image', image: item.image, url: item.url %}
+            <div>
+              <p class="henk-cart-list__title">{{ item.product.title }}</p>
+              {{ 'cart.remove' | t | link_to: item.url_to_remove }}
+            </div>
+          </li>
           <tr>
             <td>
               {% render 'image', image: item.image, url: item.url %}

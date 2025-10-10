@@ -29,10 +29,10 @@
             {% render 'image', image: item.image, url: item.url %}
             <div>
               <p class="henk-cart-list__title">{{ item.product.title }}</p>
-              {{ 'cart.remove' | t | link_to: item.url_to_remove }}
               <div class="cart-item__qty">
                 <input type="text" name="updates[]" value="{{ item.quantity }}">
                 <input type="submit" value="{{ 'cart.update' | t }}">
+                {{ 'cart.remove' | t | link_to: item.url_to_remove }}
               </div>
             </div>
           </li>

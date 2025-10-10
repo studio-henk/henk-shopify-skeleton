@@ -20,8 +20,12 @@
   button_icon_name: 'chevron-left'
 %}
 
-<section class="henk-cart-list">
-  <form action="{{ routes.cart_url }}" method="post">
+<section class="henk-cart-section">
+  <form
+    action="{{ routes.cart_url }}"
+    method="post"
+    class="henk-cart-section__form"
+  >
     <div class="cart-list__column">
       <ul class="cart-list henk-cart-list__list --no-bullets">
         {% for item in cart.items %}

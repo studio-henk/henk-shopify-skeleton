@@ -93,9 +93,9 @@ align-items: center;
           inputmode="numeric"
                class="wc-stepper-quantity__input"
                min="${this._min}"
-               max="${this._max === Infinity ? "" : this._max}"
                step="1"
                value="${this._value}"
+          minlength="1"
                readonly
         />
 

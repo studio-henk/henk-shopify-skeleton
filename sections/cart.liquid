@@ -39,6 +39,13 @@
                 <input type="number" name="updates[]" value="{{ item.quantity }}">
                 <input type="submit" value="{{ 'cart.update' | t }}">
                 {{ 'cart.remove' | t | link_to: item.url_to_remove, class: 'henk-button' }}
+                {%
+                  render 'henk-button',
+                  element: 'a',
+                  label: 'cart.remove' | t,
+                  url: item.url_to_remove,
+                  variant: 'text'
+                %}
               </div>
 
               <p>price: {{ item.line_price | money_without_trailing_zeros }}</p>

@@ -23,7 +23,6 @@
 <section class="henk-cart-list">
   <div class="cart-list__column">
     <form action="{{ routes.cart_url }}" method="post">
-      <!-- <table> -->
       <ul class="cart-list henk-cart-list__list --no-bullets">
         {% for item in cart.items %}
           <li class="cart-item cart-list__list-item henk-cart-list__list-item">
@@ -39,23 +38,9 @@
               <p>price: {{ item.line_price }}</p>
             </div>
           </li>
-          <!-- <tr> -->
-          <!-- <td> -->
-          <!-- {% render 'image', image: item.image, url: item.url %} -->
-          <!-- </td> -->
-          <!-- <td> -->
-          <!-- <p>{{ item.product.title }}</p> -->
-          <!-- {{ 'cart.remove' | t | link_to: item.url_to_remove }} -->
-          <!-- </td> -->
-          <!-- <td> -->
-          <!-- <input type="text" name="updates[]" value="{{ item.quantity }}"> -->
-          <!-- <input type="submit" value="{{ 'cart.update' | t }}"> -->
-          <!-- </td> -->
-          <!-- </tr> -->
-          <!-- <p>price: {{ item.line_price }}</p> -->
         {% endfor %}
-        <!-- </table> -->
       </ul>
+
       <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}">
     </form>
   </div>

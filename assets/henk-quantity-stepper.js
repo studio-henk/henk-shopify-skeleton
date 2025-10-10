@@ -89,7 +89,8 @@ align-items: center;
           ${minusIcon}
         </button>
 
-        <input type="number"
+        <input type="text"
+          inputmode="numeric"
                class="wc-stepper-quantity__input"
                min="${this._min}"
                max="${this._max === Infinity ? "" : this._max}"

@@ -49,11 +49,20 @@ class HenkQuantityStepper extends HTMLElement {
           cursor: not-allowed;
         }
         .wc-stepper-quantity__input {
-          width: 3rem;
-          text-align: center;
-          font: inherit;
-          border: 1px solid #ccc;
-          border-radius: 4px;
+
+-webkit-appearance: textfield !important;
+    appearance: textfield !important;
+    background-color: var(--color-alias-base-transparent);
+    border: 0;
+    cursor: default;
+    font-family: var(--font-body, sans-serif);
+    font-feature-settings: "pnum" on, "lnum" on;
+    padding: 0;
+    pointer-events: none;
+    text-align: center;
+    -webkit-user-select: none;
+    user-select: none;
+    width: 3ch;
         }
       </style>
 

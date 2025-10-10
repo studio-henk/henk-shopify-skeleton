@@ -30,26 +30,26 @@ class HenkQuantityStepper extends HTMLElement {
     this.shadowRoot.innerHTML = `
       <style>
         .wc-stepper-quantity {
-
 align-items: center;
     border: 1px solid var(--color-border-muted);
     border-radius: 8px;
-    display: flex
-;
+    display: flex;
     justify-content: space-between;
-        }
+  }
         .wc-stepper-quantity__button {
-          background: none;
-          border: none;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: inherit;
-          padding: 0.25rem;
+align-items: center;
+    background-color: initial;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+    line-height: 24px;
+    padding: 10px;
         }
         .wc-stepper-quantity__button[disabled] {
-          opacity: 0.4;
+          opacity: 0.5;
           cursor: not-allowed;
         }
         .wc-stepper-quantity__input {

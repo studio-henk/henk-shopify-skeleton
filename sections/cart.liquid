@@ -74,6 +74,88 @@
     </div>
   </form>
 </section>
+{% stylesheet %}
+  .henk-cart-section__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    /* max-width: 1256px; */
+    margin: 0 auto;
+    /* padding: 0 24px; */
+  }
+
+  .henk-cart-list__item-image {
+    width: 100%;
+    height: auto;
+    background-color: var(--color-ui-surface-surface-neutral, #ededed);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .henk-cart-list__item-image + .henk-tag {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+  }
+
+  .henk-cart-list__list {
+    display: grid;
+    gap: 24px;
+    margin: 0;
+  }
+
+  .henk-cart-list__list-item {
+    display: grid;
+    justify-items: start;
+  }
+
+  .henk-cart-list__list-item:has(.henk-tag) {
+    position: relative;
+  }
+
+  .henk-cart-list__title {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .henk-cart-list__controls {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 124px auto;
+    justify-items: start;
+    padding: 24px 0;
+    gap: 8px;
+  }
+
+  .henk-cart-list__item-price-container {
+    margin-bottom: 24px;
+  }
+
+  .henk-cart-list__item-info * {
+    margin: 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    .henk-cart-section__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .henk-cart-section__grid .henk-cart-section__grid-item:first-child {
+      grid-column: 1 / span 2;
+    }
+
+    .henk-cart-list__list-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: stretch;
+      gap: 24px;
+    }
+
+    .henk-cart-list__item-image {
+      margin: 0;
+    }
+  }
+{% endstylesheet %}
 {% schema %}
 {
   "name": "t:general.cart",

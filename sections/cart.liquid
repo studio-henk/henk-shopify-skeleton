@@ -28,19 +28,19 @@
   >
     <div class="henk-cart-section__grid">
       <div class="henk-cart-section__grid-item">
-        <ul class="cart-list henk-cart-list__list --no-bullets">
+        <ul class="">
           {% for item in cart.items %}
-            <li class="cart-item cart-list__list-item henk-cart-list__list-item">
+            <li class="">
               <img
-                class="cart-list__list-item-image henk-cart-list__item-image"
+                class=""
                 src="{{ item.image| image_url}}"
                 alt="item image"
                 width="{{ item.image.width }}"
                 height="{{ item.image.height }}"
               >
               <div>
-                <p class="henk-cart-list__title">{{ item.product.title }}</p>
-                <div class="cart-item__qty">
+                <p class="">{{ item.product.title }}</p>
+                <div class="">
                   <input
                     type="text"
                     inputmode="numeric"
@@ -49,7 +49,6 @@
                     value="{{ item.quantity }}"
                   >
                   <input type="submit" value="{{ 'cart.update' | t }}">
-                  <!-- {{ 'cart.remove' | t | link_to: item.url_to_remove, class: 'henk-button' }} -->
                   {% assign remove_label = 'cart.remove' | t %}
                   {% render 'henk-button',
                     element: 'a',
@@ -70,7 +69,7 @@
         <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}">
       </div>
 
-      <div class="henk-cart-section__grid-item cart-list__summary">col 2</div>
+      <div class="henk-cart-section__grid-item xcart-list__summary">col 2</div>
     </div>
   </form>
 </section>
@@ -79,9 +78,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
-    /* max-width: 1256px; */
     margin: 0 auto;
-    /* padding: 0 24px; */
   }
 
   .henk-cart-list__item-image {

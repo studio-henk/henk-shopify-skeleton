@@ -24,7 +24,7 @@
   <div class="cart-list__column">
     <form action="{{ routes.cart_url }}" method="post">
       <!-- <table> -->
-      <ul>
+      <ul class="cart-list henk-cart-list__list --no-bullets">
         {% for item in cart.items %}
           <li class="henk-cart-list__list">
             {% render 'image', image: item.image, url: item.url %}

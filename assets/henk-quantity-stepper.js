@@ -33,6 +33,17 @@ class HenkQuantityStepper extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
       <style>
+
+  .henk-icon,
+  ::part(henk-icon) {
+    align-items: flex-start;
+    display: inline-flex;
+    place-content: center;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+  }
+
+
         .wc-stepper-quantity {
 align-items: center;
     border: 1px solid var(--color-border-muted);

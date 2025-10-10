@@ -29,11 +29,11 @@
             {% render 'image', image: item.image, url: item.url %}
 
             <img
-              class="henk-card__img"
-              src="{{ product.featured_image | image_url: width: 1134}}"
-              alt="{{ product.title }}"
-              width="{{ product.featured_image.width }}"
-              height="{{ product.featured_image.height }}"
+              class="cart-list__list-item-image henk-cart-list__item-image"
+              src="{{ item.image| image_url: width: 1204}}"
+              alt="item image"
+              width="{{ item.image.width }}"
+              height="{{ item.image.height }}"
             >
             <div>
               <p class="henk-cart-list__title">{{ item.product.title }}</p>

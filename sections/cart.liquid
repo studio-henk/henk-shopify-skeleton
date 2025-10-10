@@ -34,6 +34,8 @@
                 <input type="submit" value="{{ 'cart.update' | t }}">
                 {{ 'cart.remove' | t | link_to: item.url_to_remove }}
               </div>
+
+              <p>price: {{ item.line_price }}</p>
             </div>
           </li>
           <tr>

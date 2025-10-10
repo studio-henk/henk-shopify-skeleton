@@ -36,7 +36,7 @@
             <div>
               <p class="henk-cart-list__title">{{ item.product.title }}</p>
               <div class="cart-item__qty">
-                <input type="text" name="updates[]" value="{{ item.quantity }}">
+                <input type="number" name="updates[]" value="{{ item.quantity }}">
                 <input type="submit" value="{{ 'cart.update' | t }}">
                 {{ 'cart.remove' | t | link_to: item.url_to_remove }}
               </div>

@@ -21,8 +21,8 @@
 %}
 
 <section class="henk-cart-list">
-  <div class="cart-list__column">
-    <form action="{{ routes.cart_url }}" method="post">
+  <form action="{{ routes.cart_url }}" method="post">
+    <div class="cart-list__column">
       <ul class="cart-list henk-cart-list__list --no-bullets">
         {% for item in cart.items %}
           <li class="cart-item cart-list__list-item henk-cart-list__list-item">
@@ -56,17 +56,17 @@
                 %}
               </div>
 
-              <p>price: {{ item.line_price | money_without_trailing_zeros }}</p>
+              <p>{{ item.line_price | money_without_trailing_zeros }}</p>
             </div>
           </li>
         {% endfor %}
       </ul>
 
       <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}">
-    </form>
-  </div>
+    </div>
 
-  <div class="cart-list__column cart-list__summary">col 2</div>
+    <div class="cart-list__column cart-list__summary">col 2</div>
+  </form>
 </section>
 {% schema %}
 {

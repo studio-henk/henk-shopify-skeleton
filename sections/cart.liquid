@@ -5,7 +5,7 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/cart
 {% endcomment %}
 
-{% comment %} {{ cart | json }} {% endcomment %}
+{{ cart | json }}
 {% assign cart_title = 'cart.title' | t %}
 {% assign button_label = 'cart.continue_shopping' | t %}
 
@@ -36,6 +36,7 @@
           <input type="submit" value="{{ 'cart.update' | t }}">
         </td>
       </tr>
+      <p>price: {{ item.price }}</p>
     {% endfor %}
   </table>
 

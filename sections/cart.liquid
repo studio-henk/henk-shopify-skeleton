@@ -30,9 +30,9 @@
       <div class="henk-cart-section__grid-item">
         <ul class="henk-cart-section__list">
           {% for item in cart.items %}
-            <li class="henk-cart-section__item">
+            <li class="henk-cart-section__list-item">
               <img
-                class=""
+                class="henk-cart-section__item-image"
                 src="{{ item.image| image_url}}"
                 alt="item image"
                 width="{{ item.image.width }}"
@@ -141,7 +141,7 @@
       grid-column: 1 / span 2;
     }
 
-    .henk-cart-list__list-item {
+    .henk-cart-section__item {
       display: grid;
       grid-template-columns: 1fr 1fr;
       justify-items: stretch;

@@ -5,6 +5,10 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/cart
 {% endcomment %}
 
+{% if template == 'cart' %}
+  <script type="module" src="{{ 'henk-quantity-stepper.js' | asset_url }}"></script>
+{% endif %}
+
 {% comment %} {{ cart | json }} {% endcomment %}
 {% assign cart_title = 'cart.title' | t %}
 {% assign button_label = 'cart.continue_shopping' | t %}

@@ -26,50 +26,52 @@
     method="post"
     class="henk-cart-section__form"
   >
-    <div class="cart-list__column">
-      <ul class="cart-list henk-cart-list__list --no-bullets">
-        {% for item in cart.items %}
-          <li class="cart-item cart-list__list-item henk-cart-list__list-item">
-            <img
-              class="cart-list__list-item-image henk-cart-list__item-image"
-              src="{{ item.image| image_url}}"
-              alt="item image"
-              width="{{ item.image.width }}"
-              height="{{ item.image.height }}"
-            >
-            <div>
-              <p class="henk-cart-list__title">{{ item.product.title }}</p>
-              <div class="cart-item__qty">
-                <input
-                  type="text"
-                  inputmode="numeric"
-                  pattern="[0-9]*"
-                  name="updates[]"
-                  value="{{ item.quantity }}"
-                >
-                <input type="submit" value="{{ 'cart.update' | t }}">
-                <!-- {{ 'cart.remove' | t | link_to: item.url_to_remove, class: 'henk-button' }} -->
-                {% assign remove_label = 'cart.remove' | t %}
-                {% render 'henk-button',
-                  element: 'a',
-                  label: remove_label,
-                  href: item.url_to_remove,
-                  icon_name: 'trash',
-                  icon_only: true,
-                  aria_label: remove_label
-                %}
+    <div class="henk-cart-section__grid">
+      <div class="cart-list__column">
+        <ul class="cart-list henk-cart-list__list --no-bullets">
+          {% for item in cart.items %}
+            <li class="cart-item cart-list__list-item henk-cart-list__list-item">
+              <img
+                class="cart-list__list-item-image henk-cart-list__item-image"
+                src="{{ item.image| image_url}}"
+                alt="item image"
+                width="{{ item.image.width }}"
+                height="{{ item.image.height }}"
+              >
+              <div>
+                <p class="henk-cart-list__title">{{ item.product.title }}</p>
+                <div class="cart-item__qty">
+                  <input
+                    type="text"
+                    inputmode="numeric"
+                    pattern="[0-9]*"
+                    name="updates[]"
+                    value="{{ item.quantity }}"
+                  >
+                  <input type="submit" value="{{ 'cart.update' | t }}">
+                  <!-- {{ 'cart.remove' | t | link_to: item.url_to_remove, class: 'henk-button' }} -->
+                  {% assign remove_label = 'cart.remove' | t %}
+                  {% render 'henk-button',
+                    element: 'a',
+                    label: remove_label,
+                    href: item.url_to_remove,
+                    icon_name: 'trash',
+                    icon_only: true,
+                    aria_label: remove_label
+                  %}
+                </div>
+
+                <p>{{ item.line_price | money_without_trailing_zeros }}</p>
               </div>
+            </li>
+          {% endfor %}
+        </ul>
 
-              <p>{{ item.line_price | money_without_trailing_zeros }}</p>
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
+        <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}">
+      </div>
 
-      <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}">
+      <div class="cart-list__column cart-list__summary">col 2</div>
     </div>
-
-    <div class="cart-list__column cart-list__summary">col 2</div>
   </form>
 </section>
 {% schema %}

@@ -40,7 +40,7 @@
                 <input type="submit" value="{{ 'cart.update' | t }}">
                 {{ 'cart.remove' | t | link_to: item.url_to_remove, class: 'henk-button' }}
                 {% assign remove_label = 'cart.remove' | t %}
-                {% render 'henk-button', element: 'a', label: remove_label, url: item.url_to_remove, variant: 'text' %}
+                {% render 'henk-button', element: 'a', label: remove_label, url: item.url_to_remove %}
               </div>
 
               <p>price: {{ item.line_price | money_without_trailing_zeros }}</p>

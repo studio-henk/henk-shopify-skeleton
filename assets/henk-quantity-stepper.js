@@ -24,7 +24,9 @@ class HenkQuantityStepper extends HTMLElement {
   }
 
   render() {
-    const minusIcon = `<i class="henk-icon icon--large">-</i>`;
+    const minusIcon = `<i class="henk-icon icon--large">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M21.3023 11.3022C21.6876 11.3022 22 11.6146 22 11.9999C22 12.3852 21.6876 12.6976 21.3023 12.6976C5.03713 12.6976 18.9629 12.6976 2.69767 12.6976C2.31236 12.6976 2 12.3852 2 11.9999C2 11.6146 2.31236 11.3022 2.69767 11.3022C18.6105 11.3022 -4.73861 11.3022 21.3023 11.3022Z" fill="currentcolor"></path></svg>
+</i>`;
     const plusIcon = `<i class="henk-icon icon--large">+</i>`;
 
     this.shadowRoot.innerHTML = `

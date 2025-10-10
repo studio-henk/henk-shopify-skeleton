@@ -65,7 +65,9 @@
     {% if aria_label %}
       aria-label="{{ aria_label }}"
     {% endif %}
-
+    {% if icon_only %}
+      role="button"
+    {% endif %}
     {% if attrs %}
       {% for item in attrs %}
         hi

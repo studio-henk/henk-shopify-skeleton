@@ -1,32 +1,79 @@
 class HenkQuantityStepper extends HTMLElement {
+  static formAssociated = true; // enables form association
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+
+    this._internals = this.attachInternals(); // FACE API
     this._value = parseInt(this.getAttribute("value")) || 1;
     this._name = this.getAttribute("name") || "quantity";
+    this._min = parseInt(this.getAttribute("min")) || 1;
+    this._max = this.hasAttribute("max")
+      ? parseInt(this.getAttribute("max"))
+      : Infinity;
+
+    this.render();
+    this.updateButtonState();
+    this._internals.setFormValue(String(this._value)); // initial form value
   }
 
   connectedCallback() {
-    this.render();
-    this.updateButtonState();
-    this.ensureHiddenInput();
+    this.btnMinus.addEventListener("click", () => this.change(-1));
+    this.btnPlus.addEventListener("click", () => this.change(1));
   }
 
   render() {
-    const minusIcon = `<i class="henk-icon icon--large">−</i>`;
+    const minusIcon = `<i class="henk-icon icon--large">-</i>`;
     const plusIcon = `<i class="henk-icon icon--large">+</i>`;
 
     this.shadowRoot.innerHTML = `
       <style>
-        .wc-stepper-quantity { display: inline-flex; align-items: center; gap: 0.25rem; }
-        .wc-stepper-quantity__button { background: none; border: none; cursor: pointer; padding: 0.25rem; }
-        .wc-stepper-quantity__button[disabled] { opacity: 0.4; cursor: not-allowed; }
-        .wc-stepper-quantity__input { width: 3rem; text-align: center; font: inherit; border: 1px solid #ccc; border-radius: 4px; }
+        .wc-stepper-quantity {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.25rem;
+        }
+        .wc-stepper-quantity__button {
+          background: none;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: inherit;
+          padding: 0.25rem;
+        }
+        .wc-stepper-quantity__button[disabled] {
+          opacity: 0.4;
+          cursor: not-allowed;
+        }
+        .wc-stepper-quantity__input {
+          width: 3rem;
+          text-align: center;
+          font: inherit;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
       </style>
+
       <div class="wc-stepper-quantity">
-        <button type="button" class="wc-stepper-quantity__button wc-stepper-quantity__button-min" aria-label="Decrease quantity">${minusIcon}</button>
-        <input type="number" class="wc-stepper-quantity__input" value="${this._value}" readonly min="1" step="1" aria-label="Item quantity">
-        <button type="button" class="wc-stepper-quantity__button wc-stepper-quantity__button-plus" aria-label="Increase quantity">${plusIcon}</button>
+        <button type="button" aria-label="Decrease quantity" class="wc-stepper-quantity__button wc-stepper-quantity__button-min">
+          ${minusIcon}
+        </button>
+
+        <input type="number"
+               class="wc-stepper-quantity__input"
+               min="${this._min}"
+               max="${this._max === Infinity ? "" : this._max}"
+               step="1"
+               value="${this._value}"
+               readonly
+        />
+
+        <button type="button" aria-label="Increase quantity" class="wc-stepper-quantity__button wc-stepper-quantity__button-plus">
+          ${plusIcon}
+        </button>
       </div>
     `;
 
@@ -37,31 +84,22 @@ class HenkQuantityStepper extends HTMLElement {
       ".wc-stepper-quantity__button-plus",
     );
     this.input = this.shadowRoot.querySelector(".wc-stepper-quantity__input");
-
-    this.btnMinus.addEventListener("click", () => this.change(-1));
-    this.btnPlus.addEventListener("click", () => this.change(1));
-  }
-
-  ensureHiddenInput() {
-    // Light DOM input for form submission
-    if (!this._hiddenInput) {
-      this._hiddenInput = document.createElement("input");
-      this._hiddenInput.type = "hidden";
-      this._hiddenInput.name = this._name;
-      this._hiddenInput.value = this._value;
-      this.appendChild(this._hiddenInput);
-    }
   }
 
   change(delta) {
-    this._value = Math.max(1, this._value + delta);
-    this.input.value = this._value;
-    this._hiddenInput.value = this._value; // update hidden input
+    let newValue = this._value + delta;
+    newValue = Math.max(this._min, Math.min(newValue, this._max));
+    this._value = newValue;
+    this.input.value = newValue;
     this.updateButtonState();
 
+    // Update form value
+    this._internals.setFormValue(String(this._value));
+
+    // Dispatch a custom event
     this.dispatchEvent(
       new CustomEvent("quantity-change", {
-        detail: { value: this._value },
+        detail: { value: newValue },
         bubbles: true,
         composed: true,
       }),
@@ -69,7 +107,37 @@ class HenkQuantityStepper extends HTMLElement {
   }
 
   updateButtonState() {
-    this.btnMinus.disabled = this._value <= 1;
+    this.btnMinus.disabled = this._value <= this._min;
+    this.btnPlus.disabled = this._value >= this._max;
+  }
+
+  // Expose value as property
+  get value() {
+    return this._value;
+  }
+
+  set value(val) {
+    const num = parseInt(val);
+    if (!isNaN(num)) {
+      this._value = Math.max(this._min, Math.min(num, this._max));
+      this.input.value = this._value;
+      this.updateButtonState();
+      this._internals.setFormValue(String(this._value));
+    }
+  }
+
+  // Optional: support required validation
+  checkValidity() {
+    return this._value >= this._min && this._value <= this._max;
+  }
+
+  reportValidity() {
+    if (!this.checkValidity()) {
+      this.input.setCustomValidity("Invalid quantity");
+      return this.input.reportValidity();
+    }
+    this.input.setCustomValidity("");
+    return true;
   }
 }
 

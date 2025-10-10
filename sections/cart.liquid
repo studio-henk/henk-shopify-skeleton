@@ -26,7 +26,7 @@
       <!-- <table> -->
       <ul class="cart-list henk-cart-list__list --no-bullets">
         {% for item in cart.items %}
-          <li class="henk-cart-list__list">
+          <li class="cart-item cart-list__list-item henk-cart-list__list-item">
             {% render 'image', image: item.image, url: item.url %}
             <div>
               <p class="henk-cart-list__title">{{ item.product.title }}</p>

@@ -47,13 +47,13 @@
 
                 <div class="henk-cart-section__item-controls">
                   <henk-quantity-stepper name="updates[]" value="{{item.quantity}}"></henk-quantity-stepper>
-                  <!-- <input -->
-                  <!-- type="text" -->
-                  <!-- inputmode="numeric" -->
-                  <!-- pattern="[0-9]*" -->
-                  <!-- name="updates[]" -->
-                  <!-- value="{{ item.quantity }}" -->
-                  <!-- > -->
+                  <input
+                    type="text"
+                    inputmode="numeric"
+                    pattern="[0-9]*"
+                    name="updates[]"
+                    value="{{ item.quantity }}"
+                  >
                   <input type="submit" value="{{ 'cart.update' | t }}">
                   {% assign remove_label = 'cart.remove' | t %}
                   {% render 'henk-button',

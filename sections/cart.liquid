@@ -26,8 +26,6 @@
       <ul class="cart-list henk-cart-list__list --no-bullets">
         {% for item in cart.items %}
           <li class="cart-item cart-list__list-item henk-cart-list__list-item">
-            {% render 'image', image: item.image, url: item.url %}
-
             <img
               class="cart-list__list-item-image henk-cart-list__item-image"
               src="{{ item.image| image_url}}"

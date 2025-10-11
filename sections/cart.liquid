@@ -96,6 +96,15 @@
 
 {% if template == 'cart' %}
   <script type="module" src="{{ 'henk-quantity-stepper.js' | asset_url }}"></script>
+
+  <script>
+    customElements.whenDefined('henk-quantity-stepper').then(() => {
+      // find all non-JS inputs you want to replace
+      document.querySelectorAll('[data-js-replaced-input]').forEach((input) => {
+        input.remove(); // safely remove after the component is ready
+      });
+    });
+  </script>
 {% endif %}
 
 {% stylesheet %}

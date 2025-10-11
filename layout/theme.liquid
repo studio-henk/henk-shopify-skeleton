@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}" class="no-js baseline-gridx">
   <head>
+    <style>
+      html.js-enabled [data-js-hide] {
+        display: none !important;
+      }
+      henk-quantity-stepper:not(:defined) {
+        visibility: hidden;
+      }
+    </style>
     {% # Inlined CSS Variables %}
     {% comment %} {% render 'css-variables' %} {% endcomment %}
     {{ 'henk-tokens.min.css' | asset_url | stylesheet_tag: preload: true }}

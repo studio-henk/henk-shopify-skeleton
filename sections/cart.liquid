@@ -131,7 +131,6 @@
     gap: 8px;
     display: grid;
     grid-template-columns: 117px 1fr 1fr;
-    height: 94px;
   }
 
   @media screen and (min-width: 768px) {
@@ -201,6 +200,8 @@
       transform 0.25s ease,
       background-color 0.25s ease;
     transform: scale(0.98);
+    min-width: 116px; /* same width as final component */
+    min-height: 94px;
   }
 
   henk-quantity-stepper:defined {

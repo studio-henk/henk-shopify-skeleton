@@ -179,30 +179,8 @@
     display: none;
   }
 
-  /* show loading message */
-
-  henk-quantity-stepper:not(:defined) {
-    width: 4rem; /* or something reasonable */
-    height: 2rem;
-  }
-  henk-quantity-stepper:not(:defined)::before {
-    content: 'Loading...';
-    position: absolute;
-    inset: 0;
-    align-content: center;
-    text-align: center;
-    font-size: 2rem;
-    background-color: pink;
-    border-radius: 1rem;
-  }
-
-  /* remove the loading message */
-  henk-quantity-stepper:defined::before {
-    /* content: 'done'; */
-  }
-
   henk-quantity-stepper {
-    opacity: 1;
+    opacity: 0;
     transition:
       opacity 1s ease,
       transform 0.25s ease,

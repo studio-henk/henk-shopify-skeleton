@@ -180,6 +180,11 @@
   }
 
   /* show loading message */
+
+  henk-quantity-stepper:not(:defined) {
+    width: 4rem; /* or something reasonable */
+    height: 2rem;
+  }
   henk-quantity-stepper:not(:defined)::before {
     content: 'Loading...';
     position: absolute;
@@ -189,8 +194,6 @@
     font-size: 2rem;
     background-color: pink;
     border-radius: 1rem;
-    width: 4rem; /* or something reasonable */
-    height: 2rem;
   }
 
   /* remove the loading message */

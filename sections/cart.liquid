@@ -47,7 +47,11 @@
 
                 <div class="henk-cart-section__item-controls">
                   <!-- <henk-quantity-stepper name="updates[]" value="{{item.quantity}}"></henk-quantity-stepper> -->
-                  <input type="submit" value="{{ 'cart.update' | t }}">
+                  <input
+                    type="submit"
+                    value="{{ 'cart.update' | t }}"
+                    class="henk-button"
+                  >
                   {% assign remove_label = 'cart.remove' | t %}
                   {% render 'henk-button',
                     element: 'a',

@@ -211,6 +211,16 @@
   henk-quantity-stepper:defined {
     opacity: 1;
   }
+
+  .blink {
+    animation: blink 1s step-start infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
 {% endstylesheet %}
 {% schema %}
 {

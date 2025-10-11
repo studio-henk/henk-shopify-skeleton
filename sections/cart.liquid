@@ -100,7 +100,7 @@
   <script>
     customElements.whenDefined('henk-quantity-stepper').then(() => {
       // find all non-JS inputs you want to replace
-      document.querySelectorAll('[data-js-replaced-input]').forEach((input) => {
+      document.querySelectorAll('[data-js-replace]').forEach((input) => {
         input.remove(); // safely remove after the component is ready
       });
     });

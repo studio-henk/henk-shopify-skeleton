@@ -6,14 +6,16 @@
       document.documentElement.classList.add('js-enabled');
     </script>
 
-    <style>
-      /* html.js-enabled [data-js-hide] { */
-      /*   display: none !important; */
-      /* } */
-      /* henk-quantity-stepper:not(:defined) { */
-      /*   visibility: hidden; */
-      /* } */
-    </style>
+    <!-- # preload fonts -->
+
+    <link
+      rel="preload"
+      href="{{ 'NeueHaasGrotTextRound-55Roman-Web.woff2' | asset_url }}"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    >
+
     {% # Inlined CSS Variables %}
     {% comment %} {% render 'css-variables' %} {% endcomment %}
     {{ 'henk-tokens.min.css' | asset_url | stylesheet_tag: preload: true }}

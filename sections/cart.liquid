@@ -173,7 +173,8 @@
   .js-enabled [data-js-hide] {
     display: none;
   }
-  .henk-quantity-stepper {
+
+  henk-quantity-stepper {
     opacity: 0;
     transition:
       opacity 0.25s ease,
@@ -181,11 +182,11 @@
     transform: scale(0.98);
   }
 
-  .henk-quantity-stepper:not(:defined) {
+  henk-quantity-stepper:not(:defined) {
     background-color: yellow;
   }
 
-  .henk-quantity-stepper:defined {
+  henk-quantity-stepper:defined {
     background-color: green;
     opacity: 1;
     transform: scale(1);

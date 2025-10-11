@@ -180,7 +180,15 @@
       transform 0.25s ease;
     transform: scale(0.98);
   }
+
+  .henk-quantity-stepper:not(:defined) {
+    background-color: yellow;
+  }
+
   .henk-quantity-stepper:defined {
+    background-color: green;
+    opacity: 1;
+    transform: scale(1);
   }
 {% endstylesheet %}
 {% schema %}

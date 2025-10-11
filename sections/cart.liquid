@@ -5,9 +5,9 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/cart
 {% endcomment %}
 
-{% if template == 'cart' %}
-  <script type="module" src="{{ 'henk-quantity-stepper.js' | asset_url }}"></script>
-{% endif %}
+{% comment %} {% if template == 'cart' %} {% endcomment %}
+{% comment %}   <script type="module" src="{{ 'henk-quantity-stepper.js' | asset_url }}"></script> {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
 
 {% comment %} {{ cart | json }} {% endcomment %}
 {% assign cart_title = 'cart.title' | t %}
@@ -87,6 +87,11 @@
     </div>
   </form>
 </section>
+
+{% if template == 'cart' %}
+  <script type="module" src="{{ 'henk-quantity-stepper.js' | asset_url }}"></script>
+{% endif %}
+
 {% stylesheet %}
   .henk-cart-section__grid {
     display: grid;

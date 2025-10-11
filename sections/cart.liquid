@@ -175,9 +175,6 @@
   }
 
   henk-quantity-stepper {
-  }
-
-  henk-quantity-stepper:not(:defined) {
     opacity: 0;
     transition:
       opacity 2s ease,
@@ -186,9 +183,16 @@
     transform: scale(0.98);
   }
 
+  henk-quantity-stepper:not(:defined) {
+  }
+
   henk-quantity-stepper:defined {
     opacity: 1;
     transform: scale(1);
+  }
+
+  henk-quantity-stepper .wc-stepper-quantity {
+    background-color: yellow;
   }
 {% endstylesheet %}
 {% schema %}

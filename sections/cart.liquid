@@ -189,6 +189,17 @@
     border-radius: 1rem;
   }
 
+  henk-quantity-stepper::before {
+    content: 'Loading...';
+    position: absolute;
+    inset: 0;
+    align-content: center;
+    text-align: center;
+    font-size: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+  }
+
   /* remove the loading message */
   henk-quantity-stepper:defined::before {
     content: '';
@@ -202,17 +213,6 @@
       transform 0.25s ease,
       background-color 0.25s ease;
     transform: scale(0.98);
-  }
-
-  henk-quantity-stepper::before {
-    content: 'Loading...';
-    position: absolute;
-    inset: 0;
-    align-content: center;
-    text-align: center;
-    font-size: 2rem;
-    background-color: white;
-    border-radius: 1rem;
   }
 
   henk-quantity-stepper:not(:defined) {

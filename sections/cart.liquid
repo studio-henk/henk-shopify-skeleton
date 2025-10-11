@@ -177,6 +177,23 @@
     display: none;
   }
 
+  /* show loading message */
+  henk-quantity-stepper:not(:defined)::before {
+    content: 'Loading...';
+    position: absolute;
+    inset: 0;
+    align-content: center;
+    text-align: center;
+    font-size: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+  }
+
+  /* remove the loading message */
+  henk-quantity-stepper:defined::before {
+    content: '';
+  }
+
   henk-quantity-stepper {
     opacity: 0;
     transition:

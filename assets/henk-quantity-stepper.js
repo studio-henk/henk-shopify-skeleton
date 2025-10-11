@@ -81,6 +81,7 @@ align-items: center;
     text-align: center;
     -webkit-user-select: none;
     user-select: none;
+    width: 3ch;
         }
       </style>
 

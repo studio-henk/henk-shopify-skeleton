@@ -41,9 +41,10 @@
     </div>
 
     <!-- Footer / Button -->
-    {%- if button_text %}
+
+    {%- if button_label %}
       <div class="info-box__footer">
-        <a href="{{ button_url }}" class="henk-button henk-button--primary">{{ button_text }}</a>
+        {% render 'henk-button', element: 'a', href: button_url, label: button_label, variant: 'primary' %}
       </div>
     {%- endif %}
   </div>

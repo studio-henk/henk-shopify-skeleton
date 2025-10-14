@@ -27,7 +27,11 @@
     "title": "Warenkorb",
     "update": "Update",
     "remove": "Remove",
-    "continue_shopping": "weiter einkaufen"
+    "continue_shopping": "weiter einkaufen",
+    "empty": {
+      "title": "Je winkelwagen is leeg",
+      "continue_shopping": "Ontdek onze collectie"
+    }
   },
   "customers": {
     "login": {

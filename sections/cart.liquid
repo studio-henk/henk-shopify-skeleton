@@ -138,31 +138,31 @@
     button_variant: 'primary'
   %}
 
-  <section class="henk-cart-section henk-cart-section--empty">
-    <section class="grid-info-box henk-section">
-      {% render 'henk-info-box',
-        title: 'Bezorgen op afspraak',
-        content: '<p>Onze transporteur neemt contact met je op als jouw bestelling binnen is. Je kunt vervolgens zelf het gewenste
+  <!-- <section class="henk-cart-section henk-cart-section--empty"> -->
+  <section class="grid-info-box henk-section">
+    {% render 'henk-info-box',
+      title: 'Bezorgen op afspraak',
+      content: '<p>Onze transporteur neemt contact met je op als jouw bestelling binnen is. Je kunt vervolgens zelf het gewenste
     aflevermoment kiezen.</p>',
-        icon_name: 'calendar'
-      %}
+      icon_name: 'calendar'
+    %}
 
-      {% render 'henk-info-box',
-        title: 'Gratis levering en montage',
-        content: '<p>Onze producten worden gratis geleverd en gemonteerd in
+    {% render 'henk-info-box',
+      title: 'Gratis levering en montage',
+      content: '<p>Onze producten worden gratis geleverd en gemonteerd in
       Nederland en België (muv Waddeneilanden en Wallonië).</p>
       <p class="fs-small">*Met uitzondering van wandplanken, tweedekansjes en niet-meubelproducten.</p>',
-        icon_name: 'truck-thick'
-      %}
+      icon_name: 'truck-thick'
+    %}
 
-      {% render 'henk-info-box',
-        title: 'Bezorgen op afspraak',
-        content: '<p>Onze transporteur neemt contact met je op als jouw bestelling binnen is. Je kunt vervolgens zelf het gewenste
+    {% render 'henk-info-box',
+      title: 'Bezorgen op afspraak',
+      content: '<p>Onze transporteur neemt contact met je op als jouw bestelling binnen is. Je kunt vervolgens zelf het gewenste
     aflevermoment kiezen.</p>',
-        icon_name: 'info-open'
-      %}
-    </section>
+      icon_name: 'info-open'
+    %}
   </section>
+  <!-- </section> -->
 {% endif %}
 
 {% if template == 'cart' %}

@@ -27,7 +27,11 @@
     "title": "Winkelwagen",
     "update": "Update",
     "remove": "Remove",
-    "continue_shopping": "Winkel verder"
+    "continue_shopping": "Winkel verder",
+    "empty": {
+      "title": "Je winkelwagen is leeg",
+      "continue_shopping": "Winkel verder"
+    }
   },
   "customers": {
     "login": {

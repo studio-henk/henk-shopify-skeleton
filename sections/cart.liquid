@@ -142,7 +142,11 @@
     {% render 'henk-info-box',
       title: 'Bezorgen op afspraak',
       content: '<p>Onze transporteur neemt contact met je op als jouw bestelling binnen is. Je kunt vervolgens zelf het gewenste
-    aflevermoment kiezen.</p>'
+    aflevermoment kiezen.</p>',
+      button_element: 'a',
+      button_label: button_label,
+      button_url: routes.collections_url,
+      button_variant: 'primary'
     %}
   </section>
 {% endif %}

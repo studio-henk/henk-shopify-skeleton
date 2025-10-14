@@ -87,14 +87,27 @@
       <div class="henk-cart-section__grid-item xcart-list__summary">
         <div class="henk-cart-section__summary-wrapper">
           <table class="cart-totals">
-            <tr>
-              <td>Totaal incl BTW</td>
-              <td>{{ cart.items_subtotal_price | money }}</td>
-            </tr>
-            <tr>
-              <td>Nu te betalen</td>
-              <td>{{ cart.total_price | money }}</td>
-            </tr>
+            <caption>
+              Council budget (in £) 2018
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Items</th>
+                <th scope="col">Expenditure</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Totaal incl BTW</th>
+                <td>{{ cart.items_subtotal_price | money }}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th scope="row">Nu te betalen</th>
+                <td>{{ cart.total_price | money }}</td>
+              </tr>
+            </tfoot>
           </table>
           <div class="henk-button-group henk-button-group--right">
             <input
@@ -294,6 +307,10 @@
     border: 1px solid var(--color-border-muted, #d1d1d1);
     border-radius: 8px;
     padding: 1.5rem;
+  }
+
+  tfoot th {
+    font-weight: 500;
   }
 {% endstylesheet %}
 {% schema %}

@@ -90,6 +90,16 @@
       <div class="henk-cart-section__grid-item xcart-list__summary">
         col 2
 
+        <table class="cart-totals">
+          <tr>
+            <td>Totaal incl BTW</td>
+            <td>{{ cart.items_subtotal_price | money }}</td>
+          </tr>
+          <tr>
+            <td>Nu te betalen</td>
+            <td>{{ cart.total_price | money }}</td>
+          </tr>
+        </table>
         <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}">
       </div>
     </div>

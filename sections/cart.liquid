@@ -82,6 +82,8 @@
 
                 <p>{{ item.line_price | money_without_trailing_zeros }}</p>
                 <p>total_discount: {{ item.total_discount }}</p>
+                <p>discounted price: {{ item.discounted_price }}</p>
+                <p>gift_card: {{ item.gift_card }}</p>
               </div>
             </li>
           {% endfor %}

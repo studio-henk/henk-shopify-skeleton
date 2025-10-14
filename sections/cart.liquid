@@ -9,7 +9,7 @@
 {% comment %}   <script type="module" src="{{ 'henk-quantity-stepper.js' | asset_url }}"></script> {% endcomment %}
 {% comment %} {% endif %} {% endcomment %}
 
-{% comment %} {{ cart | json }} {% endcomment %}
+{{ cart | json }}
 {% assign cart_title = 'cart.title' | t %}
 {% assign button_label = 'cart.continue_shopping' | t %}
 

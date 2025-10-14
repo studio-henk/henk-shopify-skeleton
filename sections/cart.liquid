@@ -308,8 +308,13 @@
     border: 1px solid var(--color-border-muted, #d1d1d1);
     border-radius: 8px;
     padding: 1.5rem;
-    position: sticky;
-    top: var(--size-height-header, 72px);
+  }
+
+  @media screen and (min-width: 768px) {
+    .henk-cart-section__summary-wrapper {
+      position: sticky;
+      top: var(--size-height-header, 72px);
+    }
   }
 
   table {

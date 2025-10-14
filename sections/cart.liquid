@@ -24,104 +24,118 @@
   button_icon_name: 'chevron-left'
 %}
 
-<section class="henk-cart-section">
-  <form
-    action="{{ routes.cart_url }}"
-    method="post"
-    class="henk-cart-section__form"
-  >
-    <div class="henk-cart-section__grid">
-      <div class="henk-cart-section__grid-item">
-        <ul class="henk-cart-section__list">
-          {% for item in cart.items %}
-            <li class="henk-cart-section__list-item">
-              <img
-                class="henk-cart-section__item-image"
-                src="{{ item.image| image_url}}"
-                alt="item image"
-                width="{{ item.image.width }}"
-                height="{{ item.image.height }}"
-              >
-              <div class="henk-cart-section__item-info">
-                <p class="henk-cart-section__item-title">{{ item.product.title }}</p>
+{% if cart.item_count > 0 %}
+  <section class="henk-cart-section">
+    <form
+      action="{{ routes.cart_url }}"
+      method="post"
+      class="henk-cart-section__form"
+    >
+      <div class="henk-cart-section__grid">
+        <div class="henk-cart-section__grid-item">
+          <ul class="henk-cart-section__list">
+            {% for item in cart.items %}
+              <li class="henk-cart-section__list-item">
+                <img
+                  class="henk-cart-section__item-image"
+                  src="{{ item.image| image_url}}"
+                  alt="item image"
+                  width="{{ item.image.width }}"
+                  height="{{ item.image.height }}"
+                >
+                <div class="henk-cart-section__item-info">
+                  <p class="henk-cart-section__item-title">{{ item.product.title }}</p>
 
-                <div class="henk-cart-section__item-controls">
-                  <henk-quantity-stepper name="updates[]" value="{{item.quantity}}"></henk-quantity-stepper>
-                  <input
-                    class="henk-cart-section__item-quantity"
-                    data-js-replace
-                    type="text"
-                    inputmode="numeric"
-                    pattern="[0-9]*"
-                    name="updates[]"
-                    value="{{ item.quantity }}"
-                  >
-                  <input
-                    type="submit"
-                    value="{{ 'cart.update' | t }}"
-                    class="henk-button henk-cart-section__item-update-button"
-                    data-js-replacex
-                  >
-                  {% assign remove_label = 'cart.remove' | t %}
-                  {% render 'henk-button',
-                    element: 'a',
-                    label: remove_label,
-                    href: item.url_to_remove,
-                    icon_name: 'trash',
-                    icon_only: true,
-                    aria_label: remove_label,
-                    extra_classes: 'henk-cart-section__item-remove-button'
-                  %}
+                  <div class="henk-cart-section__item-controls">
+                    <henk-quantity-stepper name="updates[]" value="{{item.quantity}}"></henk-quantity-stepper>
+                    <input
+                      class="henk-cart-section__item-quantity"
+                      data-js-replace
+                      type="text"
+                      inputmode="numeric"
+                      pattern="[0-9]*"
+                      name="updates[]"
+                      value="{{ item.quantity }}"
+                    >
+                    <input
+                      type="submit"
+                      value="{{ 'cart.update' | t }}"
+                      class="henk-button henk-cart-section__item-update-button"
+                      data-js-replacex
+                    >
+                    {% assign remove_label = 'cart.remove' | t %}
+                    {% render 'henk-button',
+                      element: 'a',
+                      label: remove_label,
+                      href: item.url_to_remove,
+                      icon_name: 'trash',
+                      icon_only: true,
+                      aria_label: remove_label,
+                      extra_classes: 'henk-cart-section__item-remove-button'
+                    %}
+                  </div>
+
+                  <p>{{ item.line_price | money_without_trailing_zeros }}</p>
+                  <p>total_discount: {{ item.total_discount }}</p>
+                  <p>discounted price: {{ item.discounted_price }}</p>
+                  <p>gift_card: {{ item.gift_card }}</p>
                 </div>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
 
-                <p>{{ item.line_price | money_without_trailing_zeros }}</p>
-                <p>total_discount: {{ item.total_discount }}</p>
-                <p>discounted price: {{ item.discounted_price }}</p>
-                <p>gift_card: {{ item.gift_card }}</p>
-              </div>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-
-      <div class="henk-cart-section__grid-item xcart-list__summary">
-        <div class="henk-cart-section__summary-wrapper">
-          <table class="cart-totals">
-            <caption class="visually-hidden">
-              Your cart totals
-            </caption>
-            <!-- <thead> -->
-            <!-- <tr> -->
-            <!-- <th scope="col">Items</th> -->
-            <!-- <th scope="col">Expenditure</th> -->
-            <!-- </tr> -->
-            <!-- </thead> -->
-            <tbody>
-              <tr>
-                <th scope="row">Totaal incl BTW</th>
-                <td>{{ cart.items_subtotal_price | money }}</td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <th scope="row">Nu te betalen</th>
-                <td>{{ cart.total_price | money }}</td>
-              </tr>
-            </tfoot>
-          </table>
-          <div class="henk-button-group henk-button-group--right">
-            <input
-              type="submit"
-              name="checkout"
-              value="{{ 'cart.checkout' | t }}"
-              class="henk-button henk-button--primary"
-            >
+        <div class="henk-cart-section__grid-item xcart-list__summary">
+          <div class="henk-cart-section__summary-wrapper">
+            <table class="cart-totals">
+              <caption class="visually-hidden">
+                Your cart totals
+              </caption>
+              <!-- <thead> -->
+              <!-- <tr> -->
+              <!-- <th scope="col">Items</th> -->
+              <!-- <th scope="col">Expenditure</th> -->
+              <!-- </tr> -->
+              <!-- </thead> -->
+              <tbody>
+                <tr>
+                  <th scope="row">Totaal incl BTW</th>
+                  <td>{{ cart.items_subtotal_price | money }}</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th scope="row">Nu te betalen</th>
+                  <td>{{ cart.total_price | money }}</td>
+                </tr>
+              </tfoot>
+            </table>
+            <div class="henk-button-group henk-button-group--right">
+              <input
+                type="submit"
+                name="checkout"
+                value="{{ 'cart.checkout' | t }}"
+                class="henk-button henk-button--primary"
+              >
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </form>
-</section>
+    </form>
+  </section>
+{% else %}
+  <section class="henk-cart-section henk-cart-section--empty">
+    <p>{{ 'cart.general.empty' | t }}</p>
+    {% assign button_label = 'cart.continue_shopping' | t %}
+    {% render 'henk-button',
+      element: 'a',
+      label: button_label,
+      href: routes.collections_url,
+      variant: 'primary',
+      icon_name: 'chevron-left'
+    %}
+  </section>
+{% endif %}
 
 {% if template == 'cart' %}
   <script type="module" src="{{ 'henk-quantity-stepper.js' | asset_url }}"></script>

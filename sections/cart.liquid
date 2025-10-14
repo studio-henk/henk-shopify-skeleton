@@ -138,7 +138,19 @@
     button_variant: 'primary'
   %}
 
-  <section class="henk-cart-section henk-cart-section--empty">infoboxes here</section>
+  <section class="henk-cart-section henk-cart-section--empty">
+    Onze transporteur neemt contact met je op als jouw bestelling binnen is. Je kunt vervolgens zelf het gewenste
+    aflevermoment kiezen.
+    {% render 'henk-info-box',
+      title: 'Bezorgen op afspraak',
+      level: 1,
+      align: 'center',
+      button_element: 'a',
+      button_label: button_label,
+      button_url: routes.collections_url,
+      button_variant: 'primary'
+    %}
+  </section>
 {% endif %}
 
 {% if template == 'cart' %}

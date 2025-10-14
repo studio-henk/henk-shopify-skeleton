@@ -145,6 +145,11 @@
 {% endif %}
 
 {% stylesheet %}
+  .henk-cart-section {
+    width: min(var(--size-width-content, 1140px), 100% - 3rem);
+    margin-inline: auto;
+  }
+
   .henk-cart-section__grid {
     display: grid;
     grid-template-columns: 1fr;

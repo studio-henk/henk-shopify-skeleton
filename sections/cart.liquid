@@ -85,23 +85,25 @@
       </div>
 
       <div class="henk-cart-section__grid-item xcart-list__summary">
-        <table class="cart-totals">
-          <tr>
-            <td>Totaal incl BTW</td>
-            <td>{{ cart.items_subtotal_price | money }}</td>
-          </tr>
-          <tr>
-            <td>Nu te betalen</td>
-            <td>{{ cart.total_price | money }}</td>
-          </tr>
-        </table>
-        <div class="henk-button-group henk-button-group--right">
-          <input
-            type="submit"
-            name="checkout"
-            value="{{ 'cart.checkout' | t }}"
-            class="henk-button henk-button--primary"
-          >
+        <div class="henk-cart-section__summary-wrapper">
+          <table class="cart-totals">
+            <tr>
+              <td>Totaal incl BTW</td>
+              <td>{{ cart.items_subtotal_price | money }}</td>
+            </tr>
+            <tr>
+              <td>Nu te betalen</td>
+              <td>{{ cart.total_price | money }}</td>
+            </tr>
+          </table>
+          <div class="henk-button-group henk-button-group--right">
+            <input
+              type="submit"
+              name="checkout"
+              value="{{ 'cart.checkout' | t }}"
+              class="henk-button henk-button--primary"
+            >
+          </div>
         </div>
       </div>
     </div>

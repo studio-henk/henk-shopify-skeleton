@@ -1,0 +1,47 @@
+{% comment %}
+  Dynamic InfoBox component
+  Inputs:
+    variant: 'info' | 'success' | 'warning' | 'danger' (optional)
+    title: string (optional, default: "This is a title")
+    content: string (optional, default: "<p>This is an info box</p>")
+    icon_name: string (optional, name of the icon to render)
+    icon_size: 'small' | 'large' (optional, default: "large")
+    button_text: string (optional, text for the button in the footer)
+    button_url: string (optional, href for the button, default: "#")
+{% endcomment %}
+
+{%- assign variant = variant | default: null -%}
+{%- assign title = title | default: 'This is a title' -%}
+{%- assign content = content | default: '<p>This is an info box</p>' -%}
+{%- assign icon_name = icon_name | default: null -%}
+{%- assign icon_size = icon_size | default: 'large' -%}
+{%- assign button_text = button_text | default: null -%}
+{%- assign button_url = button_url | default: '#' -%}
+
+<div class="info-box{% if variant %} info-box--variant-{{ variant | downcase }}{% endif %}">
+  <div class="info-box__container">
+    <!-- Header -->
+    <div class="info-box__header{% if icon_name %} info-box__header--has-icon{% endif %}">
+      <p class="info-box__heading">{{ title }}</p>
+
+      {%- if icon_name %}
+        <i class="henk-icon icon--{{ icon_size }}">
+          {%- comment -%} Placeholder for the icon SVG. Implement `render_icon` filter or snippet as needed {%- endcomment -%}
+          {{ icon_name | render_icon }}
+        </i>
+      {%- endif %}
+    </div>
+
+    <!-- Body -->
+    <div class="info-box__body">
+      {{ content | raw }}
+    </div>
+
+    <!-- Footer / Button -->
+    {%- if button_text %}
+      <div class="info-box__footer">
+        <a href="{{ button_url }}" class="henk-button henk-button--primary">{{ button_text }}</a>
+      </div>
+    {%- endif %}
+  </div>
+</div>

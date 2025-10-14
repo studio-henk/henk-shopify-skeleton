@@ -125,17 +125,21 @@
     </form>
   </section>
 {% else %}
-  <section class="henk-cart-section henk-cart-section--empty">
-    <p>{{ 'cart.general.empty' | t }}</p>
-    {% assign button_label = 'cart.continue_shopping' | t %}
-    {% render 'henk-button',
-      element: 'a',
-      label: button_label,
-      href: routes.collections_url,
-      variant: 'primary',
-      icon_name: 'chevron-left'
-    %}
-  </section>
+  {% assign cart_title = 'cart.title' | t %}
+  {% assign button_label = 'cart.continue_shopping' | t %}
+
+  {% render 'henk-section-header',
+    title: cart_title,
+    level: 1,
+    align: 'left',
+    button_element: 'a',
+    button_label: button_label,
+    button_url: routes.collections_url,
+    button_variant: 'ghost',
+    button_icon_name: 'chevron-left'
+  %}
+
+  <section class="henk-cart-section henk-cart-section--empty">hello</section>
 {% endif %}
 
 {% if template == 'cart' %}

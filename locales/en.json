@@ -27,7 +27,11 @@
     "title": "Cart",
     "update": "Update",
     "remove": "Remove",
-    "continue_shopping": "Continue shopping"
+    "continue_shopping": "Continue shopping",
+    "empty": {
+      "title": "Your cart is currently empty",
+      "continue_shopping": "Discover our collection"
+    }
   },
   "customers": {
     "login": {

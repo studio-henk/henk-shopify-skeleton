@@ -27,7 +27,11 @@
     "title": "Warenkorb",
     "update": "Update",
     "remove": "Remove",
-    "continue_shopping": "weiter einkaufen"
+    "continue_shopping": "weiter einkaufen",
+    "empty": {
+      "title": "Ihr Warenkorb ist leer",
+      "continue_shopping": "Entdecken Sie unsere Kollektion"
+    }
   },
   "customers": {
     "login": {

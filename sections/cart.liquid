@@ -5,30 +5,255 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/cart
 {% endcomment %}
 
-<h1>{{ 'cart.title' | t }}</h1>
+{% comment %} {% if template == 'cart' %} {% endcomment %}
+{% comment %}   <script type="module" src="{{ 'henk-quantity-stepper.js' | asset_url }}"></script> {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
 
-<form action="{{ routes.cart_url }}" method="post">
-  <table>
-    {% for item in cart.items %}
-      <tr>
-        <td>
-          {% render 'image', image: item.image, url: item.url %}
-        </td>
-        <td>
-          <p>{{ item.product.title }}</p>
-          {{ 'cart.remove' | t | link_to: item.url_to_remove }}
-        </td>
-        <td>
-          <input type="text" name="updates[]" value="{{ item.quantity }}">
-          <input type="submit" value="{{ 'cart.update' | t }}">
-        </td>
-      </tr>
-    {% endfor %}
-  </table>
+{% comment %} {{ cart | json }} {% endcomment %}
+{% assign cart_title = 'cart.title' | t %}
+{% assign button_label = 'cart.continue_shopping' | t %}
 
-  <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}">
-</form>
+{% render 'henk-section-header',
+  title: cart_title,
+  level: 1,
+  align: 'left',
+  button_element: 'a',
+  button_label: button_label,
+  button_url: routes.collections_url,
+  button_variant: 'ghost',
+  button_icon_name: 'chevron-left'
+%}
 
+<section class="henk-cart-section">
+  <form
+    action="{{ routes.cart_url }}"
+    method="post"
+    class="henk-cart-section__form"
+  >
+    <div class="henk-cart-section__grid">
+      <div class="henk-cart-section__grid-item">
+        <ul class="henk-cart-section__list">
+          {% for item in cart.items %}
+            <li class="henk-cart-section__list-item">
+              <img
+                class="henk-cart-section__item-image"
+                src="{{ item.image| image_url}}"
+                alt="item image"
+                width="{{ item.image.width }}"
+                height="{{ item.image.height }}"
+              >
+              <div class="henk-cart-section__item-info">
+                <p class="">{{ item.product.title }}</p>
+
+                <div class="henk-cart-section__item-controls">
+                  <henk-quantity-stepper name="updates[]" value="{{item.quantity}}">
+                    <!-- <input -->
+                    <!-- type="text" -->
+                    <!-- name="id[]" -->
+                    <!-- value="test" -->
+                    <!-- > -->
+                  </henk-quantity-stepper>
+                  <input
+                    class="henk-cart-section__item-quantity xblink"
+                    data-js-replace
+                    type="text"
+                    inputmode="numeric"
+                    pattern="[0-9]*"
+                    name="updates[]"
+                    value="{{ item.quantity }}"
+                  >
+                  <input
+                    type="submit"
+                    value="{{ 'cart.update' | t }}"
+                    class="henk-button henk-cart-section__item-update-button"
+                  >
+                  {% assign remove_label = 'cart.remove' | t %}
+                  {% render 'henk-button',
+                    element: 'a',
+                    label: remove_label,
+                    href: item.url_to_remove,
+                    icon_name: 'trash',
+                    icon_only: true,
+                    aria_label: remove_label
+                  %}
+                </div>
+
+                <p>{{ item.line_price | money_without_trailing_zeros }}</p>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="henk-cart-section__grid-item xcart-list__summary">
+        col 2
+
+        <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}">
+      </div>
+    </div>
+  </form>
+</section>
+
+{% if template == 'cart' %}
+  <script type="module" src="{{ 'henk-quantity-stepper.js' | asset_url }}"></script>
+
+  <script>
+    customElements.whenDefined('henk-quantity-stepper').then(() => {
+      // find all non-JS inputs you want to replace
+      document.querySelectorAll('[data-js-replace]').forEach((input) => {
+        input.remove(); // safely remove after the component is ready
+      });
+    });
+
+    const steppers = document.querySelectorAll('henk-quantity-stepper');
+
+    steppers.forEach((stepper) => {
+      let debounceTimer;
+
+      stepper.addEventListener('quantity-change', () => {
+        // clear previous timer
+        clearTimeout(debounceTimer);
+
+        // debounce 400ms
+        debounceTimer = setTimeout(() => {
+          const form = stepper.closest('form');
+          if (form) form.submit();
+        }, 400);
+      });
+    });
+  </script>
+{% endif %}
+
+{% stylesheet %}
+  .henk-cart-section__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin: 0 auto;
+  }
+
+  .henk-cart-section__list {
+    display: grid;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .henk-cart-section__list__item {
+    display: grid;
+    justify-items: start;
+  }
+
+  .henk-cart-section__item-image {
+    width: 100%;
+    height: auto;
+    background-color: var(--color-ui-surface-surface-neutral, #ededed);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .henk-cart-section__item-image + .henk-tag {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+  }
+
+  .henk-cart-section__item-controls {
+    padding: 24px 0;
+    gap: 8px;
+    display: grid;
+    grid-template-columns: 117px 1fr 1fr;
+    padding-block: 0;
+    align-items: center;
+    justify-items: start;
+  }
+
+  @media screen and (min-width: 768px) {
+    .henk-cart-section__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .henk-cart-section__grid .henk-cart-section__grid-item:first-child {
+      grid-column: 1 / span 2;
+    }
+
+    .henk-cart-section__list-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: stretch;
+      gap: 24px;
+    }
+
+    .henk-cart-section__item-image {
+      margin: 0;
+    }
+  }
+
+  .henk-cart-section__item-update-button {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .henk-icon,
+  ::part(henk-icon) {
+    align-items: flex-start;
+    display: inline-flex;
+    place-content: center;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+  }
+
+  .henk-cart-section__item-quantity {
+    width: 116px;
+    height: 44px;
+    grid-column: 1;
+    grid-row: 1;
+    text-align: center;
+    border: 1px solid var(--color-border-muted);
+    border-radius: var(--radius-1);
+    position: relative;
+    z-index: 0;
+  }
+
+  .henk-cart-section__item-quantity {
+    opacity: 1;
+    transition: all 0.25s ease;
+    transition-behavior: allow-discrete;
+  }
+
+  henk-quantity-stepper:defined ~ .henk-cart-section__item-quantity {
+    opacity: 0;
+    visibility: hidden;
+    /* display: none;*/
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  henk-quantity-stepper {
+    grid-column: 1;
+    grid-row: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    transform: scale(0.98);
+    min-width: 116px;
+    position: relative;
+    z-index: 1;
+  }
+
+  henk-quantity-stepper:defined {
+    opacity: 1;
+  }
+
+  .js-enable blink {
+    animation: blink 1s step-start infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+{% endstylesheet %}
 {% schema %}
 {
   "name": "t:general.cart",

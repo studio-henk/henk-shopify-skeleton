@@ -16,10 +16,16 @@
       {% render 'henk-icon-close' %}
     {% when 'search' %}
       {% render 'henk-icon-search' %}
+    {% when 'trash' %}
+      {% render 'henk-icon-trash' %}
     {% when 'cart' %}
       {% render 'henk-icon-bag' %}
     {% when 'bag' %}
       {% render 'henk-icon-bag' %}
+    {% when 'chevron-left' %}
+      {% render 'henk-icon-chevron-left' %}
+    {% when 'chevron-right' %}
+      {% render 'henk-icon-chevron-right' %}
       {% comment %} {% else %} {% endcomment %}
       {% comment %}   {% render 'henk-icon-empty' %} {% endcomment %}
   {% endcase %}

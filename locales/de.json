@@ -24,9 +24,10 @@
   },
   "cart": {
     "checkout": "Checkout",
-    "title": "Cart",
+    "title": "Warenkorb",
     "update": "Update",
-    "remove": "Remove"
+    "remove": "Remove",
+    "continue_shopping": "weiter einkaufen"
   },
   "customers": {
     "login": {

@@ -2,6 +2,18 @@
 
 ## Other
 
+## FOUC issue
+
+- [ ] css load order 
+- [ ] critical css 
+- [x] remove non js input: does wc render ok ? yes after setting min-width on
+grid cell same as component width. 
+- [ ] skeleton or spinner?
+- [x] remove wc component: does non js input / controls render ok?
+- [ ] deal with non js input name updates[], either change or remove the whole
+tag.
+- [ ] wc input id...randomise? or item id?
+
 - [ ] webfont check
 
 for now a few css files: tokens, base via head. footer via footer.liquid.

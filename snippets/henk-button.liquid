@@ -24,11 +24,15 @@
 
 {%- comment -%} Build classes -{%- endcomment -%}
 {% assign classes = 'henk-button' %}
+
 {% if variant != 'tertiary' %}{% assign classes = classes | append: ' henk-button--' | append: variant %}{% endif %}
+
 {% if size != 'large' %}{% assign classes = classes | append: ' henk-button--' | append: size %}{% endif %}
+
 {% if extra_classes %}
   {% assign classes = classes | append: ' ' | append: extra_classes %}
 {% endif %}
+
 {%- comment -%} Build icon HTML if needed -{%- endcomment -%}
 {% assign icon_html = '' %}
 {% if icon_name %}
@@ -61,7 +65,9 @@
     {% if aria_label %}
       aria-label="{{ aria_label }}"
     {% endif %}
-
+    {% if icon_only %}
+      role="button"
+    {% endif %}
     {% if attrs %}
       {% for item in attrs %}
         hi

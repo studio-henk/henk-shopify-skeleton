@@ -81,6 +81,7 @@
                 </div>
 
                 <p>{{ item.line_price | money_without_trailing_zeros }}</p>
+                <p>{{ item.total_discount }}</p>
               </div>
             </li>
           {% endfor %}

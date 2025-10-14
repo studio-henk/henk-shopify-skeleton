@@ -25,6 +25,12 @@
       <p class="info-box__heading">{{ title }}</p>
 
       {%- if icon_name %}
+        {% assign icon_html = '' %}
+        {% if icon_name %}
+          {% capture icon_html %}
+    {% render 'henk-icon', icon_name: icon_name, size: icon_size, only: icon_only %}
+  {% endcapture %}
+        {% endif %}
         <i class="henk-icon icon--{{ icon_size }}">
           {%- comment -%} Placeholder for the icon SVG. Implement `render_icon` filter or snippet as needed {%- endcomment -%}
           icon

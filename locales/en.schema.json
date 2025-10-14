@@ -71,6 +71,10 @@
       "title": "Title",
       "subtitle": "Subtitle",
       "normal": "Normal text"
-    },
+    }
+  },
+  "sections": {
+    "footer": { "name": "Footer" },
+    "header": { "name": "Header" }
   }
 }

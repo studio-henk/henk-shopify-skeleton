@@ -29,8 +29,8 @@
     "remove": "Remove",
     "continue_shopping": "weiter einkaufen",
     "empty": {
-      "title": "Je winkelwagen is leeg",
-      "continue_shopping": "Ontdek onze collectie"
+      "title": "Ihr Warenkorb ist leer",
+      "continue_shopping": "Entdecken Sie unsere Kollektion"
     }
   },
   "customers": {

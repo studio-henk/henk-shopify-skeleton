@@ -101,12 +101,14 @@
             <td>{{ cart.total_price | money }}</td>
           </tr>
         </table>
-        <input
-          type="submit"
-          name="checkout"
-          value="{{ 'cart.checkout' | t }}"
-          class="henk-button henk-button--primary"
-        >
+        <div class="henk-button-group henk-button-group--right">
+          <input
+            type="submit"
+            name="checkout"
+            value="{{ 'cart.checkout' | t }}"
+            class="henk-button henk-button--primary"
+          >
+        </div>
       </div>
     </div>
   </form>

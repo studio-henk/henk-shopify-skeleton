@@ -95,13 +95,13 @@
               <tbody>
                 <tr>
                   <th scope="row">Totaal incl BTW</th>
-                  <td>{{ cart.items_subtotal_price | money }}</td>
+                  <td>{{ cart.items_subtotal_price | money_without_trailing_zeros }}</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
                   <th scope="row">Nu te betalen</th>
-                  <td>{{ cart.total_price | money }}</td>
+                  <td>{{ cart.total_price | money_without_trailing_zeros }}</td>
                 </tr>
               </tfoot>
             </table>

@@ -14,6 +14,8 @@
 <h1>{{ 'collections.title' | t }}</h1>
 
 {{ collections | json }}
+{% render 'henk-section-header', title: 'Shop All Collections', text: 'Browse all product categories from our store' %}
+
 <div
   class="collections {{ section.settings.grid_item_width }}"
   style="--grid-gap: {{ section.settings.grid_gap }}px"

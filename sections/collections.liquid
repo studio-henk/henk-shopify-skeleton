@@ -18,6 +18,8 @@
   style="--grid-gap: {{ section.settings.grid_gap }}px"
 >
   {% for collection in collections %}
+    {% render 'henk-collections-card', collection: collection, card_variant: null %}
+    <hr>
     <a class="collection-card" href="{{ collection.url }}">
       {% if collection.featured_image %}
         {% render 'image',

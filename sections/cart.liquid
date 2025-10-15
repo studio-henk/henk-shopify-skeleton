@@ -101,7 +101,9 @@
               <tfoot>
                 <tr>
                   <th scope="row">Nu te betalen</th>
-                  <td>{{ cart.total_price | money_without_trailing_zeros }}</td>
+                  <td>
+                    <strong>{{ cart.total_price | money_without_trailing_zeros }}</strong>
+                  </td>
                 </tr>
               </tfoot>
             </table>

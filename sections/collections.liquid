@@ -8,7 +8,10 @@
 <h1>{{ 'collections.title' | t }}</h1>
 
 {% comment %} {{ collections | json }} {% endcomment %}
-{% render 'henk-section-header', title: 'Shop All Collections', text: 'Browse all product categories from our store' %}
+{% render 'henk-section-header',
+  title: 'Shop All Collections',
+  text: 'We geloven dat design zowel mooi als functioneel kan zijn. Daarom hebben we een collectie minimalistische designmeubels ontworpen die helemaal aangepast kunnen worden aan jouw interieur. Kies uit een breed aanbod aan maten, afwerkingen, stoffen en kleuren en ontwerp een uniek meubelstuk voor jouw interieur. Bekijk de collectie hieronder.'
+%}
 
 <div
   class="collections {{ section.settings.grid_item_width }}"

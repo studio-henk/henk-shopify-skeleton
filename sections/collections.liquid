@@ -6,6 +6,13 @@
 {% endcomment %}
 
 {{ collections | json }}
+
+<dl>
+  <dt>hanldle</dt>
+  <dd>{{ collections.handle }}</dd>
+  <dt>title</dt>
+  <dd>{{ collections.title }}</dd>
+</dl>
 <h1>{{ 'collections.title' | t }}</h1>
 
 <div

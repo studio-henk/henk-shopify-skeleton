@@ -14,7 +14,7 @@
       {% if collection.featured_image %}
         <img
           class="henk-card__img"
-          src="{{ collection.featured_image | image_url: width: 1134 }}"
+          src="{{ collection.featured_image | image_url: width: 1134, height: 1134, crop: 'center' }}"
           alt="{{ collection.title }}"
           width="1134"
           height="1134"

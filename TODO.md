@@ -1,14 +1,18 @@
 # TODO
 
-- [ ] translations for info boxes?
-- [ ] collections page
+- [ ] test edit content homepage section header on live site. what does this
+mean when pull theme develop? do we get same content?
 
 ## Other
 
+- [ ] translations for info boxes?
 - [ ] check: The resource http://127.0.0.1:9292/cdn/shop/t/15/assets/NeueHaasGrotTextRound-55Roman-Web.woff2?v=110563115276511605801758284655 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
 - [ ] wc input id...randomise? or item id?
 
-for now a few css files: tokens, base via head. footer via footer.liquid.
+## Collections overview page 
+
+- [ ] "all" collection : dont show? no image
+- [ ] materials collection feature image must be different.
 
 ### Cart 
 
@@ -18,8 +22,7 @@ for now a few css files: tokens, base via head. footer via footer.liquid.
 - [ ] downpayment?
 - [ ] ajaxify quantity change
 
-- [ ] collection page: lister
-  - [x] grid with cards
+### Lister page / collection
   - [ ] filter
   - [ ] sort
 - [ ] stores overview page
@@ -38,3 +41,7 @@ for now a few css files: tokens, base via head. footer via footer.liquid.
 - [ ] change blog template (main img, max-width etc) -> new template
 - [ ] fullwidthVideo
 
+## DONE
+
+- [x] collections page with macs cards
+- [x] add text when no products in collection

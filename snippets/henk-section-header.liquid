@@ -4,7 +4,7 @@
     id             - optional unique ID
     caption        - optional small heading text
     title          - main title (h2)
-    level (number or string: 1, 2, 3, or 'display')
+    level (string: 1, 2, 3, or 'display')
     text           - body text (plain or HTML)
     align          - alignment class, e.g. 'left', 'center', 'right'
     button_label   - label for the button
@@ -25,9 +25,9 @@
 {% if level == 'display' %}
   {% assign heading_tag = 'h1' %}
   {% assign title_class = title_class | append: ' fs-display' %}
-{% elsif level == 1 %}
+{% elsif level == '1' %}
   {% assign heading_tag = 'h1' %}
-{% elsif level == 3 %}
+{% elsif level == '3' %}
   {% assign heading_tag = 'h3' %}
 {% else %}
   {% assign heading_tag = 'h2' %}

@@ -9,16 +9,27 @@
 
 {% render 'henk-section-header', title: collection.title, text: collection.description %}
 
-<section class="shopify-section" id="shopify-section-lister">
-  <div class="henk-lister-grid henk-section">
-    {% paginate collection.products by 20 %}
-      {% for product in collection.products %}
-        {% render 'henk-card', product: product, collection: collection, card_variant: null %}
-      {% endfor %}
-      {{ paginate | default_pagination }}
-    {% endpaginate %}
+{% if collection.products.size > 0 %}
+  <section class="shopify-section" id="shopify-section-lister">
+    <div class="henk-lister-grid henk-section">
+      {% paginate collection.products by 20 %}
+        {% for product in collection.products %}
+          {% render 'henk-card', product: product, collection: collection, card_variant: null %}
+        {% endfor %}
+        {{ paginate | default_pagination }}
+      {% endpaginate %}
+    </div>
+  </section>
+{% else %}
+  <div style="max-width: 600px; margin-inline: auto;">
+    {% render 'henk-info-box',
+      variant: 'danger',
+      title: 'Geen producten gevonden',
+      content: '<p>Nog geen producten gekoppeld aan deze collectie.</p>',
+      icon_name: 'danger'
+    %}
   </div>
-</section>
+{% endif %}
 
 {% schema %}
 {

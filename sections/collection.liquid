@@ -10,20 +10,19 @@
 {% render 'henk-section-header', title: collection.title, text: collection.description %}
 
 {% if collection.products.size > 0 %}
-  yes
+  <section class="shopify-section" id="shopify-section-lister">
+    <div class="henk-lister-grid henk-section">
+      {% paginate collection.products by 20 %}
+        {% for product in collection.products %}
+          {% render 'henk-card', product: product, collection: collection, card_variant: null %}
+        {% endfor %}
+        {{ paginate | default_pagination }}
+      {% endpaginate %}
+    </div>
+  </section>
 {% else %}
   no
 {% endif %}
-<section class="shopify-section" id="shopify-section-lister">
-  <div class="henk-lister-grid henk-section">
-    {% paginate collection.products by 20 %}
-      {% for product in collection.products %}
-        {% render 'henk-card', product: product, collection: collection, card_variant: null %}
-      {% endfor %}
-      {{ paginate | default_pagination }}
-    {% endpaginate %}
-  </div>
-</section>
 
 {% schema %}
 {

@@ -59,6 +59,7 @@
       <main class="henk-main">
         {{ content_for_layout }}
         {% comment %} newsletter {% endcomment %}
+        {% render 'henk-newsletter' %}
       </main>
       {% sections 'footer-group' %}
     </div>

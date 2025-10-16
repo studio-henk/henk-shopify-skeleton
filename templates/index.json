@@ -10,9 +10,11 @@
 {
   "sections": {
     "main": {
-      "type": "hello-world",
+      "type": "henk-section-header",
       "settings": {}
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

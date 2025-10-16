@@ -15,15 +15,16 @@
         "id": "home-header",
         "caption": "Welcome to Studio HENK",
         "title": "Discover Our Interiors",
-        "level": "2",
         "text": "<p>High-quality furniture and interior inspiration for your home.</p>",
+        "level": "2",
         "align": "center",
         "button_label": "Shop Now",
         "button_url": "/collections",
-        "button_variant": "primary",
-        "button_extra_classes": ""
+        "button_variant": "primary"
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

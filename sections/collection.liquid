@@ -21,7 +21,12 @@
     </div>
   </section>
 {% else %}
-  {% render 'henk-info-box', variant: 'danger', title: 'Geen producten gevonden', icon_name: 'danger' %}
+  {% render 'henk-info-box',
+    variant: 'danger',
+    title: 'Geen producten gevonden',
+    content: '<p>Nog geen producten gekoppeld aan deze collectie.</p>',
+    icon_name: 'danger'
+  %}
 {% endif %}
 
 {% schema %}

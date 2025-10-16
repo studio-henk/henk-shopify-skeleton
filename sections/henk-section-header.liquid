@@ -1,0 +1,18 @@
+{% comment %}
+  Section wrapper for henk-section-header snippet
+  Passes all settings from the section to the snippet
+{% endcomment %}
+
+{% render 'henk-section-header',
+  id: section.settings.id,
+  caption: section.settings.caption,
+  title: section.settings.title,
+  level: section.settings.level,
+  text: section.settings.text,
+  align: section.settings.align,
+  button_label: section.settings.button_label,
+  button_url: section.settings.button_url,
+  button_variant: section.settings.button_variant,
+  button_size: section.settings.button_size,
+  button_extra_classes: section.settings.button_extra_classes
+%}

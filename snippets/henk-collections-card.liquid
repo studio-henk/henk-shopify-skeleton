@@ -1,0 +1,41 @@
+{% comment %}
+  Henk Collections Card
+  Props:
+    collection      - required collection object
+    card_variant    - optional variant (affects wrapper class)
+{% endcomment %}
+
+<div class="henk-card {% if card_variant %}henk-card--{{ card_variant }}{% endif %}">
+  <a
+    href="{{ collection.url }}"
+    class="henk-card__image-link"
+  >
+    <figure class="henk-card__image-container">
+      {% if collection.featured_image %}
+        <img
+          class="henk-card__img"
+          src="{{ collection.featured_image | image_url: width: 1134 }}"
+          alt="{{ collection.title }}"
+          {% if collection.featured_image.width %}
+            width="{{ collection.featured_image.width }}"
+          {% endif %}
+          {% if collection.featured_image.height %}
+            height="{{ collection.featured_image.height }}"
+          {% endif %}
+        >
+      {% else %}
+        <img
+          class="henk-card__img"
+          src="https://placehold.co/1000x1000"
+          alt="No image available"
+          width="1000"
+          height="1000"
+        >
+      {% endif %}
+    </figure>
+  </a>
+
+  <div class="henk-card__content">
+    <p class="henk-card__title truncate">{{ collection.title }}</p>
+  </div>
+</div>

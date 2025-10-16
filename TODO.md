@@ -1,7 +1,6 @@
 # TODO
 
 - [ ] translations for info boxes?
-- [ ] update not empty cart page in storybook
 - [ ] collections page
 
 ## Other
@@ -11,12 +10,6 @@
 
 for now a few css files: tokens, base via head. footer via footer.liquid.
 
-## Storybook
-
-- [ ] default table styles
-
-## Shopify
-
 ### Cart 
 
 - [ ] voeg cadeaubon toe -> button, pricing logic, how?
@@ -25,12 +18,6 @@ for now a few css files: tokens, base via head. footer via footer.liquid.
 - [ ] downpayment?
 - [ ] ajaxify quantity change
 
-- [ ] button component: use button snippet
-- [ ] card component: use button snippet
-  - [ ] use tag component snippet?
-  - [x] tag translations -> locale json files
-- [x] breadcrumbs on theme.liquid
-  - [ ] improve on some templates?
 - [ ] collection page: lister
   - [x] grid with cards
   - [ ] filter
@@ -51,6 +38,3 @@ for now a few css files: tokens, base via head. footer via footer.liquid.
 - [ ] change blog template (main img, max-width etc) -> new template
 - [ ] fullwidthVideo
 
-## Figma
-
-- [ ] next page for brand guide.

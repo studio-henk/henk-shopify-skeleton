@@ -88,20 +88,22 @@
 
         <div class="henk-cart-section__grid-item xcart-list__summary">
           <div class="henk-cart-section__summary-wrapper">
-            <table class="cart-totals">
+            <table class="cart-totals henk-table henk-table--no-border">
               <caption class="visually-hidden">
                 Your cart totals
               </caption>
               <tbody>
                 <tr>
                   <th scope="row">Totaal incl BTW</th>
-                  <td>{{ cart.items_subtotal_price | money }}</td>
+                  <td>{{ cart.items_subtotal_price | money_without_trailing_zeros }}</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
                   <th scope="row">Nu te betalen</th>
-                  <td>{{ cart.total_price | money }}</td>
+                  <td>
+                    <strong>{{ cart.total_price | money_without_trailing_zeros }}</strong>
+                  </td>
                 </tr>
               </tfoot>
             </table>
@@ -348,28 +350,6 @@
       position: sticky;
       top: var(--size-height-header, 72px);
     }
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1.5rem;
-  }
-
-  tbody {
-    font-size: 13px;
-  }
-
-  tbody th {
-    font-weight: 400;
-  }
-
-  tfoot th {
-    font-weight: 500;
-  }
-
-  th[scope='row'] {
-    text-align: left;
   }
 {% endstylesheet %}
 {% schema %}

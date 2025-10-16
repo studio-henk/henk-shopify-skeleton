@@ -13,11 +13,8 @@
           class="henk-card__img"
           src="{{ product.featured_image | image_url: width: 1134}}"
           alt="{{ product.title }}"
-          <!--
-          width="{{ product.featured_image.width }}"
-          --
-        >
-        <!-- height="{{ product.featured_image.height }}" -->
+          width="1134"
+          height="1134"
         >
       {% else %}
         <img

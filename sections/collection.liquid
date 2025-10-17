@@ -50,6 +50,22 @@
     %}
   </div>
 {% endif %}
+{% stylesheet %}
+  .henk-grid-options-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--henk-space-md);
+  }
+
+  .henk-grid-options-bar__filters {
+    flex: 1;
+  }
+
+  .henk-grid-options-bar__sort {
+    flex-shrink: 0;
+  }
+{% endstylesheet %}
 
 {% schema %}
 {

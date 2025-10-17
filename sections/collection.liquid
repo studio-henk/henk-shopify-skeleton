@@ -15,7 +15,7 @@
 
 <form method="get" action="{{ collection.url }}" class="henk-collection-sort-form">
   <label for="sort-by" class="henk-label">Sort by</label>
-  <select id="sort-by" onchange="this.form.submit()" class="henk-input">
+  <select id="sort-by" name="sort_by" onchange="this.form.submit()" class="henk-input">
     {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
 
     {% for option in collection.sort_options %}
@@ -28,64 +28,6 @@
         {{ option.name }}
       </option>
     {% endfor %}
-  </select>
-  <select id="sort-by" name="sort_by" class="henk-input" onchange="this.form.submit()">
-    <option
-      value="manual"
-      {% if collection.sort_by == 'manual' %}
-        selected
-      {% endif %}
-    >
-      Featured
-    </option>
-    <option
-      value="best-selling"
-      {% if collection.sort_by == 'best-selling' %}
-        selected
-      {% endif %}
-    >
-      Best selling
-    </option>
-    <option
-      value="title-ascending"
-      {% if collection.sort_by == 'title-ascending' %}
-        selected
-      {% endif %}
-    >
-      Alphabetically, A–Z
-    </option>
-    <option
-      value="title-descending"
-      {% if collection.sort_by == 'title-descending' %}
-        selected
-      {% endif %}
-    >
-      Alphabetically, Z–A
-    </option>
-    <option
-      value="price-ascending"
-      {% if collection.sort_by == 'price-ascending' %}
-        selected
-      {% endif %}
-    >
-      Price, low to high
-    </option>
-    <option
-      value="price-descending"
-      {% if collection.sort_by == 'price-descending' %}
-        selected
-      {% endif %}
-    >
-      Price, high to low
-    </option>
-    <option
-      value="created-descending"
-      {% if collection.sort_by == 'created-descending' %}
-        selected
-      {% endif %}
-    >
-      Newest
-    </option>
   </select>
   <noscript>
     <button type="submit" class="henk-button">Sort</button>

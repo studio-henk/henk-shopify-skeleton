@@ -16,10 +16,15 @@
 
 <div class="henk-grid-options-bar">
   <div class="henk-grid-options-bar__filters">
-    {% render 'grid-filter-widget' %}
+    filter-widget
+    {% comment %}
+      {% render 'grid-filter-widget' %}
+    {% endcomment %}
   </div>
   <div class="henk-grid-options-bar__sort">
-    <!-- {% render 'grid-sort-widget' %} -->
+    {% comment %}
+      {% render 'grid-sort-widget' %}
+    {% endcomment %}
     {% render 'henk-collection-sort' %}
   </div>
 </div>

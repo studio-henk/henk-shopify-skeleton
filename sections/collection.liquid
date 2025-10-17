@@ -12,7 +12,7 @@
 {% comment %}
   sorting
 {% endcomment %}
-
+{{ collection.sort_options | json }}
 <form method="get" action="{{ collection.url }}" class="henk-collection-sort-form">
   <label for="sort-by" class="henk-label">Sort by</label>
   <select id="sort-by" name="sort_by" onchange="this.form.submit()" class="henk-input">

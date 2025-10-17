@@ -14,7 +14,15 @@
   {{ collection.sort_options | json }}
 {% endcomment %}
 
-{% render 'henk-collection-sort' %}
+<div class="henk-grid-options-bar">
+  <div class="henk-grid-options-bar__filters">
+    {% render 'grid-filter-widget' %}
+  </div>
+  <div class="henk-grid-options-bar__sort">
+    <!-- {% render 'grid-sort-widget' %} -->
+    {% render 'henk-collection-sort' %}
+  </div>
+</div>
 
 {% if collection.products.size > 0 %}
   <section class="shopify-section" id="shopify-section-lister">

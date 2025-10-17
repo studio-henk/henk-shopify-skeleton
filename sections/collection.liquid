@@ -15,6 +15,20 @@
 
 <form method="get" action="{{ collection.url }}" class="henk-collection-sort-form">
   <label for="sort-by" class="henk-label">Sort by</label>
+  <select id="sort-by">
+    {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+
+    {% for option in collection.sort_options %}
+      <option
+        value="{{ option.value }}"
+        {% if option.value == sort_by %}
+          selected="selected"
+        {% endif %}
+      >
+        {{ option.name }}
+      </option>
+    {% endfor %}
+  </select>
   <select id="sort-by" name="sort_by" class="henk-input" onchange="this.form.submit()">
     <option
       value="manual"

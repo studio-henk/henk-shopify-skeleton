@@ -16,20 +16,22 @@
       {{ collection.sort_options | json }}
     {% endcomment %}
 
-    <div class="henk-grid-options-bar">
-      <div class="henk-grid-options-bar__filters">
-        filter-widget
-        {% comment %}
-          {% render 'grid-filter-widget' %}
-        {% endcomment %}
+    {% if collection.products.size > 1 %}
+      <div class="henk-grid-options-bar">
+        <div class="henk-grid-options-bar__filters">
+          filter-widget
+          {% comment %}
+            {% render 'grid-filter-widget' %}
+          {% endcomment %}
+        </div>
+        <div class="henk-grid-options-bar__sort">
+          {% comment %}
+            {% render 'grid-sort-widget' %}
+          {% endcomment %}
+          {% render 'henk-collection-sort' %}
+        </div>
       </div>
-      <div class="henk-grid-options-bar__sort">
-        {% comment %}
-          {% render 'grid-sort-widget' %}
-        {% endcomment %}
-        {% render 'henk-collection-sort' %}
-      </div>
-    </div>
+    {% endif %}
     <div class="henk-lister-grid henk-section">
       {% paginate collection.products by 20 %}
         {% for product in collection.products %}

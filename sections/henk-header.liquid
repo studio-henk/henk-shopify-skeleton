@@ -163,14 +163,19 @@
               {{ localization.language.endonym_name | capitalize }}
             </summary>
             <div class="henk-localise__content">
+              {% assign translated_url = '' %}
+              {% if collection %}
+                {% assign translated_url = collection.url %}
+              {% endif %}
+              {{ translated_url }}
               {%- form 'localization' -%}
                 <input
                   type="hidden"
                   name="return_to"
-                  value="{% if collection %}{{ collection.url }}{% elsif product %}{{ product.url }}{% elsif page %}{{ page.url }}{% elsif blog %}{{ blog.url }}{% else %}{{ request.path }}{% endif %}"
-                  {% comment %}
+                  value="{{ translated_url | default: request.path }}"
+                  {%- comment -%}
                     value="{{ request.path }}"
-                  {% endcomment %}
+                  {%- endcomment -%}
                 >
                 <ul class="henk-list henk-list--no-bullets">
                   {% for lang in localization.available_languages %}

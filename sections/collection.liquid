@@ -19,7 +19,9 @@
     {% if collection.products.size > 1 %}
       <div class="henk-grid-options-bar">
         <div class="henk-grid-options-bar__filters">
-          filter-widget
+          filter-widget:
+
+          {{ collection.filters }}
           {% comment %}
             {% render 'grid-filter-widget' %}
           {% endcomment %}

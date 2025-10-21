@@ -31,7 +31,17 @@
     <p class="henk-card__title truncate">{{ product.title }}</p>
 
     {% if card_variant == null %}
-      {{ product.metafields.custom.short_description }}
+      {% if product.metafields.custom.short_description != blank %}
+        <p
+          class="henk-card__short_description truncate"
+          title="
+            {{
+            product.metafields.custom.short_description }}
+          "
+        >
+          {{ product.metafields.custom.short_description }}
+        </p>
+      {% endif %}
       {% comment %}
         <p class="henk-card__description truncate" title="{{ product.description }}">
           {% if product.description != blank %}

@@ -9,28 +9,27 @@
 
 {% render 'henk-section-header', title: collection.title, text: collection.description %}
 
-{% comment %}
-  sorting
-  {{ collection.sort_options | json }}
-{% endcomment %}
-
-<div class="henk-grid-options-bar">
-  <div class="henk-grid-options-bar__filters">
-    filter-widget
-    {% comment %}
-      {% render 'grid-filter-widget' %}
-    {% endcomment %}
-  </div>
-  <div class="henk-grid-options-bar__sort">
-    {% comment %}
-      {% render 'grid-sort-widget' %}
-    {% endcomment %}
-    {% render 'henk-collection-sort' %}
-  </div>
-</div>
-
 {% if collection.products.size > 0 %}
   <section class="shopify-section" id="shopify-section-lister">
+    {% comment %}
+      sorting
+      {{ collection.sort_options | json }}
+    {% endcomment %}
+
+    <div class="henk-grid-options-bar">
+      <div class="henk-grid-options-bar__filters">
+        filter-widget
+        {% comment %}
+          {% render 'grid-filter-widget' %}
+        {% endcomment %}
+      </div>
+      <div class="henk-grid-options-bar__sort">
+        {% comment %}
+          {% render 'grid-sort-widget' %}
+        {% endcomment %}
+        {% render 'henk-collection-sort' %}
+      </div>
+    </div>
     <div class="henk-lister-grid henk-section">
       {% paginate collection.products by 20 %}
         {% for product in collection.products %}

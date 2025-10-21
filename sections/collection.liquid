@@ -23,6 +23,15 @@
 
           {% for filter in collection.filters %}
             {{ filter.label }} - {{ filter.type }}
+
+            {%- case filter.type -%}
+              {%- when 'boolean' -%}
+                bool
+              {%- when 'list' -%}
+                list
+              {%- when 'price_range' -%}
+                price_range
+            {% endcase %}
           {% endfor %}
           {% comment %}
             {% render 'grid-filter-widget' %}

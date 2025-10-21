@@ -25,28 +25,31 @@
 
           {% for filter in collection.filters %}
             {{ filter.label }} - {{ filter.type }}
-            {% for value in filter.values %}
-              <label>
-                <input
-                  type="checkbox"
-                  name="{{ value.param_name }}"
-                  value="{{ value.value }}"
-                  {% if value.active %}
-                    checked
-                  {% endif %}
-                >
-                {{ value.label }}
-              </label>
-            {% endfor %}
-
-            {%- case filter.type -%}
-              {%- when 'boolean' -%}
-                bool
-              {%- when 'list' -%}
-                list
-              {%- when 'price_range' -%}
-                price_range
-            {% endcase %}
+            <ul>
+              {% for value in filter.values %}
+                <li>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="{{ value.param_name }}"
+                      value="{{ value.value }}"
+                      {% if value.active %}
+                        checked
+                      {% endif %}
+                    >
+                    {{ value.label }}
+                  </label>
+                </li>
+              {% endfor %}
+            </ul>
+            {% comment %} {%- case filter.type -%} {% endcomment %}
+            {% comment %}   {%- when 'boolean' -%} {% endcomment %}
+            {% comment %}     bool {% endcomment %}
+            {% comment %}   {%- when 'list' -%} {% endcomment %}
+            {% comment %}     list {% endcomment %}
+            {% comment %}   {%- when 'price_range' -%} {% endcomment %}
+            {% comment %}     price_range {% endcomment %}
+            {% comment %} {% endcase %} {% endcomment %}
           {% endfor %}
           {% comment %}
             {% render 'grid-filter-widget' %}

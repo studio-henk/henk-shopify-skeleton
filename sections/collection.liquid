@@ -25,6 +25,19 @@
 
           {% for filter in collection.filters %}
             {{ filter.label }} - {{ filter.type }}
+            {% for value in filter.values %}
+              <label>
+                <input
+                  type="checkbox"
+                  name="{{ value.param_name }}"
+                  value="{{ value.value }}"
+                  {% if value.active %}
+                    checked
+                  {% endif %}
+                >
+                {{ value.label }}
+              </label>
+            {% endfor %}
 
             {%- case filter.type -%}
               {%- when 'boolean' -%}

@@ -8,7 +8,7 @@
 {% comment %} {{ collection | json }} {% endcomment %}
 
 {% render 'henk-section-header', title: collection.title, text: collection.description %}
-{{ collection | json }}
+{{ collection.products | json }}
 {% if collection.products.size > 0 %}
   <section class="shopify-section henk-section" id="shopify-section-lister">
     {% comment %}

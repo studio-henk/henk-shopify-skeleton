@@ -167,7 +167,10 @@
                 <input
                   type="hidden"
                   name="return_to"
-                  value="{{ request.path }}"
+                  value="{% if collection %}{{ collection.url }}{% elsif product %}{{ product.url }}{% elsif page %}{{ page.url }}{% elsif blog %}{{ blog.url }}{% else %}{{ request.path }}{% endif %}"
+                  {% comment %}
+                    value="{{ request.path }}"
+                  {% endcomment %}
                 >
                 <ul class="henk-list henk-list--no-bullets">
                   {% for lang in localization.available_languages %}

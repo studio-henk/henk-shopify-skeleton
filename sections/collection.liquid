@@ -10,7 +10,7 @@
 {% render 'henk-section-header', title: collection.title, text: collection.description %}
 {% comment %} {{ collection.products | json }} {% endcomment %}
 {{ collection.all_products_count }}
-{% if collection.products.size > 0 %}
+{% if collection.all_products_count > 0 %}
   <section class="shopify-section henk-section" id="shopify-section-lister">
     {% comment %}
       sorting

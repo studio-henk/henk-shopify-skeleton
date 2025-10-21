@@ -163,11 +163,13 @@
               {{ localization.language.endonym_name | capitalize }}
             </summary>
             <div class="henk-localise__content">
-              {% assign translated_url = '' %}
-              {% if collection %}
-                {% assign translated_url = collection.url %}
-              {% endif %}
-              {{ translated_url }}
+              {%- comment -%}
+                {% assign translated_url = '' %}
+                {% if collection %}
+                  {% assign translated_url = collection.url %}
+                {% endif %}
+                {{ translated_url }}
+              {%- endcomment -%}
               {%- form 'localization' -%}
                 {%- comment -%}
                   <input

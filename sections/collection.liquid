@@ -24,30 +24,7 @@
           <hr>
 
           {% for filter in collection.filters %}
-            {% comment %} {{ filter.label }} - {{ filter.type }} {% endcomment %}
-
-            <details>
-              <summary>
-                <div>
-                  <span>{{ filter.label }}</span>
-
-                  {%- if filter.active_values.size > 0 -%}
-                    <span>({{ filter.active_values.size }})</span>
-                  {%- endif -%}
-                </div>
-              </summary>
-
-              <div>
-                <div>
-                  <p>{{ filter.active_values.size }} selected</p>
-                  {%- if filter.active_values.size > 0 -%}
-                    <p><a href="{{ filter.url_to_remove }}">Reset</a></p>
-                  {%- endif -%}
-                </div>
-
-                <!-- Case-specific rendering happens here -->
-              </div>
-            </details>
+            {{ filter.label }} - {{ filter.type }}
 
             {%- case filter.type -%}
               {%- when 'boolean' -%}

@@ -21,7 +21,9 @@
         <div class="henk-grid-options-bar__filters">
           filter-widget:
 
-          {{ collection.filters }}
+          {% for filter in collection.filters %}
+            {{ filter.label }}
+          {% endfor %}
           {% comment %}
             {% render 'grid-filter-widget' %}
           {% endcomment %}

@@ -163,24 +163,7 @@
               {{ localization.language.endonym_name | capitalize }}
             </summary>
             <div class="henk-localise__content">
-              {%- comment -%}
-                {% assign translated_url = '' %}
-                {% if collection %}
-                  {% assign translated_url = collection.url %}
-                {% endif %}
-                {{ translated_url }}
-              {%- endcomment -%}
               {%- form 'localization' -%}
-                {%- comment -%}
-                  <input
-                    type="hidden"
-                    name="return_to"
-                    value="{{ translated_url | default: request.path }}"
-                    {%- comment -%}
-                      value="{{ request.path }}"
-                    {%- endcomment -%}
-                  >
-                {%- endcomment -%}
                 <ul class="henk-list henk-list--no-bullets">
                   {% for lang in localization.available_languages %}
                     {% if lang.iso_code != localization.language.iso_code %}

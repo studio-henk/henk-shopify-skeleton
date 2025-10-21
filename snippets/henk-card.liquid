@@ -32,7 +32,6 @@
 
     {% if card_variant == null %}
       {{ product.metafields.custom.short_description }}
-      <hr>
       <p class="henk-card__description truncate" title="{{ product.description }}">
         {% if product.description != blank %}
           {{ product.description }}

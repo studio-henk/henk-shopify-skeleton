@@ -31,6 +31,8 @@
     <p class="henk-card__title truncate">{{ product.title }}</p>
 
     {% if card_variant == null %}
+      {{ product.custom.short_description }}
+      <hr>
       <p class="henk-card__description truncate" title="{{ product.description }}">
         {% if product.description != blank %}
           {{ product.description }}

@@ -8,22 +8,52 @@
 {% comment %} {{ collection | json }} {% endcomment %}
 
 {% render 'henk-section-header', title: collection.title, text: collection.description %}
-
-{% if collection.products.size > 0 %}
+{% comment %} {{ collection.products | json }} {% endcomment %}
+{{ collection.all_products_count }}
+{% if collection.all_products_count > 0 %}
   <section class="shopify-section henk-section" id="shopify-section-lister">
     {% comment %}
       sorting
       {{ collection.sort_options | json }}
     {% endcomment %}
 
-    {% if collection.products.size > 1 %}
+    {% if collection.all_products_count > 1 %}
       <div class="henk-grid-options-bar">
         <div class="henk-grid-options-bar__filters">
           filter-widget:
 
-          {% for filter in collection.filters %}
-            {{ filter.label }}
-          {% endfor %}
+          <hr>
+          <form>
+            {% for filter in collection.filters %}
+              {{ filter.label }} - {{ filter.type }}
+              <ul>
+                {% for value in filter.values %}
+                  <li>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="{{ value.param_name }}"
+                        value="{{ value.value }}"
+                        {% if value.active %}
+                          checked
+                        {% endif %}
+                      >
+                      {{ value.label }}
+                    </label>
+                  </li>
+                {% endfor %}
+              </ul>
+              {% comment %} {%- case filter.type -%} {% endcomment %}
+              {% comment %}   {%- when 'boolean' -%} {% endcomment %}
+              {% comment %}     bool {% endcomment %}
+              {% comment %}   {%- when 'list' -%} {% endcomment %}
+              {% comment %}     list {% endcomment %}
+              {% comment %}   {%- when 'price_range' -%} {% endcomment %}
+              {% comment %}     price_range {% endcomment %}
+              {% comment %} {% endcase %} {% endcomment %}
+            {% endfor %}
+            <button type="submit">Apply</button>
+          </form>
           {% comment %}
             {% render 'grid-filter-widget' %}
           {% endcomment %}

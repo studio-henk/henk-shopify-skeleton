@@ -22,7 +22,7 @@
           filter-widget:
 
           {% for filter in collection.filters %}
-            {{ filter.label }}
+            {{ filter.label }} - {{ filter.type }}
           {% endfor %}
           {% comment %}
             {% render 'grid-filter-widget' %}

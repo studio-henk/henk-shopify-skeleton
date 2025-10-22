@@ -20,6 +20,9 @@
             {% for filter in collection.filters %}
               {% assign active_filters_count = active_filters_count | plus: filter.active_values.size %}
             {% endfor %}
+            {% if collection.filters.size > 0 and collection.url %}
+              <a href="{{ collection.url }}" class="henk-button henk-button--ghost">Clear all</a>
+            {% endif %}
             <details id="filters-widget">
               <summary>
                 Filters

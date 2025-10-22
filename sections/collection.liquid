@@ -95,8 +95,8 @@
                     </div>
                   </details>
                 {% endfor %}
+                <button type="submit">Apply</button>
               </div>
-              <button type="submit">Apply</button>
             </details>
           </form>
           {% comment %}
@@ -161,15 +161,15 @@
   }
 
   details#filters-widget {
-    background-color: white;
-    summary {
+    > summary {
       border: 1px solid black;
       border-radius: 4px;
       padding: 10px 1rem;
     }
 
     henk-details-group {
-      background-color: grey;
+      backdrop-filter: blur(24px);
+      background-color: #ffffff4d;
       border: 1px solid black;
     }
   }

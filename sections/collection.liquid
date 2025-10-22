@@ -38,23 +38,23 @@
                           <ul class="henk-list henk-list--no-bullets">
                             {% for value in filter.values %}
                               <li>
-                                {% if value.display.type == 'colors' %}
-                                  {% assign color_hex = value.display.value | first %}
-                                  <span
-                                    style="
-                                      width: 20px;
-                                      height: 20px;
-                                      border-radius: 50%;
-                                      display: inline-block;
-                                      background-color: {{ color_hex }};
-                                      border: 1px solid #ccc;
-                                      vertical-align: middle;
-                                    "
-                                    title="{{ value.label }}"
-                                  >
-                                  </span>
-                                {% endif %}
                                 <label>
+                                  {% if value.display.type == 'colors' %}
+                                    {%- assign color_hex = value.display.value | first -%}
+                                    <span
+                                      style="
+                                        width: 20px;
+                                        height: 20px;
+                                        border-radius: 50%;
+                                        display: inline-block;
+                                        background-color: {{ color_hex }};
+                                        border: 1px solid #ccc;
+                                        vertical-align: middle;
+                                      "
+                                      title="{{ value.label }}"
+                                    >
+                                    </span>
+                                  {% endif %}
                                   <input
                                     type="checkbox"
                                     name="{{ value.param_name }}"

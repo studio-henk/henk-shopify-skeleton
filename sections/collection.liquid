@@ -44,10 +44,6 @@
                                     <span
                                       class="swatch"
                                       style="
-                                        width: 20px;
-                                        height: 20px;
-                                        border-radius: 50%;
-                                        display: inline-block;
                                         background-color: {{ color_hex }};
                                         border: 1px solid #ccc;
                                         vertical-align: middle;
@@ -209,6 +205,10 @@
 
         .swatch {
           position: absolute;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          display: inline-block;
         }
 
         &:has(input[type='checkbox']:checked) {

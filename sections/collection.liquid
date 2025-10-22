@@ -38,7 +38,7 @@
                           <ul class="henk-list henk-list--no-bullets">
                             {% for value in filter.values %}
                               <li>
-                                {{ value.display | json }}
+                                {{ value.display }}
                                 {% if value.display.type == 'colors' %}
                                   {% assign color_hex = value.display.value | first %}
                                   <span

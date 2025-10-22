@@ -16,13 +16,7 @@
         <div class="henk-grid-options-bar__filters">
           <form>
             <details id="filters-widget">
-              <summary>
-                Filters
-
-                {% if filter.active_values.size > 0 %}
-                  ({{ filter.active_values.size }} selected)
-                {% endif %}
-              </summary>
+              <summary>Filters</summary>
               <div class="henk-details-group henk-details-group--horizontalx">
                 {% for filter in collection.filters %}
                   <details class="henk-details henk-details--plusmin" name="filter">

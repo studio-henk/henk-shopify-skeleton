@@ -38,8 +38,8 @@
                           <ul class="henk-list henk-list--no-bullets">
                             {% for value in filter.values %}
                               <li>
-                                {% if filter_value.display.type == 'colors' %}
-                                  {% assign color_hex = filter_value.display.value | first %}
+                                {% if value.display.type == 'colors' %}
+                                  {% assign color_hex = value.display.value | first %}
                                   <span
                                     style="
                                       width: 20px;
@@ -50,7 +50,7 @@
                                       border: 1px solid #ccc;
                                       vertical-align: middle;
                                     "
-                                    title="{{ filter_value.label }}"
+                                    title="{{ value.label }}"
                                   >
                                   </span>
                                 {% endif %}

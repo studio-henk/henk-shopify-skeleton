@@ -9,13 +9,8 @@
 
 {% render 'henk-section-header', title: collection.title, text: collection.description %}
 {% comment %} {{ collection.products | json }} {% endcomment %}
-{{ collection.all_products_count }}
 {% if collection.all_products_count > 0 %}
   <section class="shopify-section henk-section" id="shopify-section-lister">
-    {% comment %}
-      sorting
-      {{ collection.sort_options | json }}
-    {% endcomment %}
     {% if collection.all_products_count > 1 %}
       <div class="henk-grid-options-bar">
         <div class="henk-grid-options-bar__filters">

@@ -43,11 +43,7 @@
                                     {%- assign color_hex = value.display.value | first -%}
                                     <span
                                       class="swatch"
-                                      style="
-                                        background-color: {{ color_hex }};
-                                        border: 1px solid #ccc;
-                                        vertical-align: middle;
-                                      "
+                                      style="                                        background-color: {{ color_hex }};"
                                       title="{{ value.label }}"
                                     >
                                     </span>
@@ -209,6 +205,8 @@
           height: 20px;
           border-radius: 50%;
           display: inline-block;
+          border: 1px solid #ccc;
+          vertical-align: middle;
         }
 
         &:has(input[type='checkbox']:checked) {

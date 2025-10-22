@@ -23,7 +23,7 @@
           <form>
             <div class="henk-details-group">
               {% for filter in collection.filters %}
-                <details>
+                <details class="henk-details henk-details--plusmin" name="filter">
                   <summary>
                     {{ filter.label }}
                     {% if filter.active_values.size > 0 %}

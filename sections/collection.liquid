@@ -16,7 +16,6 @@
       sorting
       {{ collection.sort_options | json }}
     {% endcomment %}
-
     {% if collection.all_products_count > 1 %}
       <div class="henk-grid-options-bar">
         <div class="henk-grid-options-bar__filters">
@@ -145,6 +144,12 @@
   .henk-grid-options-bar__sort {
     flex-shrink: 0;
     flex-grow: 1;
+  }
+
+  .henk-details-group--horizontal {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
   }
 {% endstylesheet %}
 

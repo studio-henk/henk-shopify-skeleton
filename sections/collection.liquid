@@ -20,7 +20,7 @@
       <div class="henk-grid-options-bar">
         <div class="henk-grid-options-bar__filters">
           <form>
-            <details>
+            <details id="filters-widget">
               <summary>Filters</summary>
               <div class="henk-details-group henk-details-group--horizontalx">
                 {% for filter in collection.filters %}
@@ -133,18 +133,24 @@
 {% stylesheet %}
   .henk-grid-options-bar {
     display: flex;
-    /*justify-content: space-between;
-    align-items: center;*/
-    gap: var(--space-2);
+    justify-content: end;
+    align-items: center;
+    gap: var(--space-4);
     width: min(var(--size-width-content), 100% - 3rem);
     margin-inline: auto;
     margin-bottom: var(--space-4);
 
     background-color: lightblue;
+    position: relative;
   }
 
   .henk-grid-options-bar__filters {
     /*flex: 2;*/
+    min-width: 200px;
+    z-index: 9;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .henk-grid-options-bar__sort {
@@ -154,43 +160,16 @@
     }
   }
 
-  .henk-details-group--horizontal {
-    display: flex;
-    gap: var(--space-2);
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 9;
-  }
-
-  .henk-grid-options-bar__filters .henk-details-group--horizontal {
-    background-color: lightgreen;
-
-    .henk-details {
-      flex: 1;
-      font-size: 13px;
-    }
-
-    .henk-details__summary {
+  details#filters-widget {
+    summary {
       border: 1px solid black;
-      padding: var(--space-2);
+      border-radius: 4px;
+      padding: 10px 1rem;
     }
 
-    .henk-details[open] {
-    }
-
-    .henk-details[open] .henk-details__content {
-      background-color: yellow;
-      width: 100%;
-      position: absolute;
-      top: 24px;
-      left: 0;
-      right: 0;
-      max-width: unset;
-    }
-
-    .henk-details::details-content {
-      transition: none;
-      transition-behavior: unset;
+    henk-details-group {
+      background-color: grey;
+      border: 1px solid black;
     }
   }
 {% endstylesheet %}

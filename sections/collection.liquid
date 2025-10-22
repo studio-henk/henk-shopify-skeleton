@@ -21,7 +21,12 @@
               {% assign active_filters_count = active_filters_count | plus: filter.active_values.size %}
             {% endfor %}
             <details id="filters-widget">
-              <summary>Filters</summary>
+              <summary>
+                Filters
+                {% if active_filters_count > 0 %}
+                  ({{ active_filters_count }} applied)
+                {% endif %}
+              </summary>
               <div class="henk-details-group henk-details-group--horizontalx">
                 {% for filter in collection.filters %}
                   <details class="henk-details henk-details--plusmin" name="filter">

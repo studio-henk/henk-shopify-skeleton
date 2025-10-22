@@ -24,7 +24,7 @@
             <div class="henk-details-group">
               {% for filter in collection.filters %}
                 <details class="henk-details henk-details--plusmin" name="filter">
-                  <summary>
+                  <summary class="henk-details__summary">
                     {{ filter.label }}
                     {% if filter.active_values.size > 0 %}
                       ({{ filter.active_values.size }} selected)

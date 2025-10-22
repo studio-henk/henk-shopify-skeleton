@@ -15,6 +15,11 @@
       <div class="henk-grid-options-bar">
         <div class="henk-grid-options-bar__filters">
           <form>
+            {%- assign active_filters_count = 0 -%}
+
+            {% for filter in collection.filters %}
+              {% assign active_filters_count = active_filters_count | plus: filter.active_values.size %}
+            {% endfor %}
             <details id="filters-widget">
               <summary>Filters</summary>
               <div class="henk-details-group henk-details-group--horizontalx">

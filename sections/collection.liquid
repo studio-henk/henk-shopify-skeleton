@@ -20,29 +20,96 @@
     {% if collection.all_products_count > 1 %}
       <div class="henk-grid-options-bar">
         <div class="henk-grid-options-bar__filters">
-          filter-widget:
-
-          <hr>
           <form>
             {% for filter in collection.filters %}
-              {{ filter.label }} - {{ filter.type }}
-              <ul>
-                {% for value in filter.values %}
-                  <li>
-                    <label>
-                      <input
-                        type="checkbox"
-                        name="{{ value.param_name }}"
-                        value="{{ value.value }}"
-                        {% if value.active %}
-                          checked
-                        {% endif %}
-                      >
-                      {{ value.label }}
-                    </label>
-                  </li>
-                {% endfor %}
-              </ul>
+              {% comment %} {{ filter.label }} - {{ filter.type }} {% endcomment %}
+              <!-- <ul> -->
+              <!-- {% for value in filter.values %} -->
+              <!-- <li> -->
+              <!-- <label> -->
+              <!-- <input -->
+              <!-- type="checkbox" -->
+              <!-- name="{{ value.param_name }}" -->
+              <!-- value="{{ value.value }}" -->
+              <!-- {% if value.active %} -->
+              <!-- checked -->
+              <!-- {% endif %} -->
+              <!-- > -->
+              <!-- {{ value.label }} -->
+              <!-- </label> -->
+              <!-- </li> -->
+              <!-- {% endfor %} -->
+              <!-- </ul> -->
+              <details>
+                <summary>
+                  {{ filter.label }}
+                  {% if filter.active_values.size > 0 %}
+                    ({{ filter.active_values.size }} selected)
+                  {% endif %}
+                </summary>
+
+                <div>
+                  {% case filter.type %}
+                    {% when 'list' %}
+                      <ul>
+                        {% for value in filter.values %}
+                          <li>
+                            <label>
+                              <input
+                                type="checkbox"
+                                name="{{ value.param_name }}"
+                                value="{{ value.value }}"
+                                {% if value.active %}
+                                  checked
+                                {% endif %}
+                                {% if value.count == 0 and value.active == false %}
+                                  disabled
+                                {% endif %}
+                              >
+                              {{ value.label }}
+                              {% if value.count > 0 %}
+                                ({{ value.count }})
+                              {% endif %}
+                            </label>
+                          </li>
+                        {% endfor %}
+                      </ul>
+
+                    {% when 'price_range' %}
+                      <div>
+                        <input
+                          type="number"
+                          name="{{ filter.min_value.param_name }}"
+                          value="{{ filter.min_value.value | default: '' }}"
+                          placeholder="Min"
+                          min="0"
+                        >
+                        <input
+                          type="number"
+                          name="{{ filter.max_value.param_name }}"
+                          value="{{ filter.max_value.value | default: '' }}"
+                          placeholder="Max"
+                          min="0"
+                        >
+                      </div>
+
+                    {% when 'boolean' %}
+                      {% for value in filter.values %}
+                        <label>
+                          <input
+                            type="checkbox"
+                            name="{{ value.param_name }}"
+                            value="{{ value.value }}"
+                            {% if value.active %}
+                              checked
+                            {% endif %}
+                          >
+                          {{ value.label }}
+                        </label>
+                      {% endfor %}
+                  {% endcase %}
+                </div>
+              </details>
               {% comment %} {%- case filter.type -%} {% endcomment %}
               {% comment %}   {%- when 'boolean' -%} {% endcomment %}
               {% comment %}     bool {% endcomment %}

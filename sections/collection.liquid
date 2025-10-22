@@ -38,7 +38,7 @@
                           <ul class="henk-list henk-list--no-bullets">
                             {% for value in filter.values %}
                               <li>
-                                {%- case display.type -%}
+                                {%- case value.display.type -%}
                                   {%- when 'colors' -%}
                                     hello?
                                 {% endcase %}

@@ -25,7 +25,6 @@
           <hr>
           <form>
             {% for filter in collection.filters %}
-              {{ filter.label }} - {{ filter.type }} - {{ filter }}
               <ul>
                 {% for value in filter.values %}
                   <li>

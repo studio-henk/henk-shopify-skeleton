@@ -148,7 +148,7 @@
 
   .henk-details-group--horizontal {
     display: flex;
-    gap: var(--space-4);
+    gap: var(--space-2);
     flex-wrap: wrap;
   }
 
@@ -163,6 +163,13 @@
     .henk-details__summary {
       border: 1px solid black;
       padding: var(--space-2);
+    }
+
+    .henk-details[open] {
+    }
+
+    .henk-details[open] .henk-details__content {
+      background-color: yellow;
     }
   }
 {% endstylesheet %}

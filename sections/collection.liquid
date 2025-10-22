@@ -170,6 +170,13 @@
       border: 1px solid black;
       padding: var(--space-4);
     }
+
+    &[open] {
+      > summary {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
   }
 {% endstylesheet %}
 

@@ -20,6 +20,8 @@
       <div class="henk-grid-options-bar">
         <div class="henk-grid-options-bar__filters">
           <form>
+            <details>
+              <summary>Filters</summary>
             <div class="henk-details-group henk-details-group--horizontalx">
               {% for filter in collection.filters %}
                 <details class="henk-details henk-details--plusmin" name="filter">
@@ -96,6 +98,7 @@
             </div>
             <button type="submit">Apply</button>
           </form>
+            </details>
           {% comment %}
             {% render 'grid-filter-widget' %}
           {% endcomment %}

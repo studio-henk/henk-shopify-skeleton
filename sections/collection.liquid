@@ -28,6 +28,7 @@
                 Filters
                 {% if active_filters_count > 0 %}
                   <span class="filters-widget__active-num">({{ active_filters_count }} applied)</span>
+                  <a href="{{ collection.url }}" class="henk-button henk-button--ghost">Clear all</a>
                 {% endif %}
               </summary>
               <div class="henk-details-group henk-details-group--horizontalx">

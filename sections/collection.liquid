@@ -107,6 +107,8 @@
                               {{ value.label }}
                             </label>
                           {% endfor %}
+                        {% else %}
+                          <p>Unknown filter type: {{ filter.type }}</p>
                       {% endcase %}
                     </div>
                   </details>

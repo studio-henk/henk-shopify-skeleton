@@ -24,7 +24,12 @@ mean when pull theme develop? do we get same content?
 
 ### Lister page / collection
   - [ ] filter
-  - [ ] sort
+  - [x] sort
+
+#### Product Card 
+  - [ ] short description in admin somehwere? no uses field for
+  PDP. has a lot of text.
+    - [ ] show max 5 variants if has them
 - [ ] stores overview page
  - [ ] grid with cards?
      - [ ] card component: adjust / expand for store info?

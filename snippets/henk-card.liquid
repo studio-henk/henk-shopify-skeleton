@@ -31,13 +31,23 @@
     <p class="henk-card__title truncate">{{ product.title }}</p>
 
     {% if card_variant == null %}
-      <p class="henk-card__description truncate" title="{{ product.description }}">
-        {% if product.description != blank %}
-          {{ product.description }}
-        {% else %}
-          {{ 'card.no_description' | t }}
-        {% endif %}
-      </p>
+      {% if product.metafields.custom.short_description != blank %}
+        <p
+          class="henk-card__description truncate"
+          title="{{ product.metafields.custom.short_description }}"
+        >
+          {{ product.metafields.custom.short_description }}
+        </p>
+      {% endif %}
+      {% comment %}
+        <p class="henk-card__description truncate" title="{{ product.description }}">
+          {% if product.description != blank %}
+            {{ product.description }}
+          {% else %}
+            {{ 'card.no_description' | t }}
+          {% endif %}
+        </p>
+      {% endcomment %}
     {% else %}
       <p class="henk-card__price">
         {% if product.price_varies %}

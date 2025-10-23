@@ -164,11 +164,6 @@
             </summary>
             <div class="henk-localise__content">
               {%- form 'localization' -%}
-                <input
-                  type="hidden"
-                  name="return_to"
-                  value="{{ request.path }}"
-                >
                 <ul class="henk-list henk-list--no-bullets">
                   {% for lang in localization.available_languages %}
                     {% if lang.iso_code != localization.language.iso_code %}

@@ -9,55 +9,139 @@
 
 {% render 'henk-section-header', title: collection.title, text: collection.description %}
 {% comment %} {{ collection.products | json }} {% endcomment %}
-{{ collection.all_products_count }}
+
+{% comment %} {% assign show_variants = true %} {% endcomment %}
+{% assign show_variants = false %}
+
+{% comment %} {{ collection.all_products_count }} {% endcomment %}
 {% if collection.all_products_count > 0 %}
   <section class="shopify-section henk-section" id="shopify-section-lister">
-    {% comment %}
-      sorting
-      {{ collection.sort_options | json }}
-    {% endcomment %}
-
     {% if collection.all_products_count > 1 %}
       <div class="henk-grid-options-bar">
         <div class="henk-grid-options-bar__filters">
-          filter-widget:
-
-          <hr>
           <form>
+            {%- assign active_filters_count = 0 -%}
+
             {% for filter in collection.filters %}
-              {{ filter.label }} - {{ filter.type }}
-              <ul>
-                {% for value in filter.values %}
-                  <li>
-                    <label>
-                      <input
-                        type="checkbox"
-                        name="{{ value.param_name }}"
-                        value="{{ value.value }}"
-                        {% if value.active %}
-                          checked
-                        {% endif %}
-                      >
-                      {{ value.label }}
-                    </label>
-                  </li>
-                {% endfor %}
-              </ul>
-              {% comment %} {%- case filter.type -%} {% endcomment %}
-              {% comment %}   {%- when 'boolean' -%} {% endcomment %}
-              {% comment %}     bool {% endcomment %}
-              {% comment %}   {%- when 'list' -%} {% endcomment %}
-              {% comment %}     list {% endcomment %}
-              {% comment %}   {%- when 'price_range' -%} {% endcomment %}
-              {% comment %}     price_range {% endcomment %}
-              {% comment %} {% endcase %} {% endcomment %}
+              {% assign active_filters_count = active_filters_count | plus: filter.active_values.size %}
             {% endfor %}
-            <button type="submit">Apply</button>
+            <details id="filters-widget">
+              <summary>
+                Filters
+                {% if active_filters_count > 0 %}
+                  <span class="filters-widget__active-num">({{ active_filters_count }} applied)</span>
+                  <a
+                    href="{{ collection.url }}"
+                    class="
+                      henk-button
+                      henk-button--ghost henk-button--small
+                    "
+                    >Reset</a
+                  >
+                {% endif %}
+              </summary>
+              <div class="henk-details-group henk-details-group--horizontalx">
+                {% for filter in collection.filters %}
+                  <details class="henk-details henk-details--plusmin" name="filter">
+                    <summary class="henk-details__summary">
+                      {{ filter.label }}
+                      {% if filter.active_values.size > 0 %}
+                        ({{ filter.active_values.size }} selected)
+                      {% endif %}
+                    </summary>
+
+                    <div class="henk-details__content">
+                      {% case filter.type %}
+                        {% when 'list' %}
+                          <ul class="henk-list henk-list--no-bullets">
+                            {% for value in filter.values %}
+                              <li>
+                                <label>
+                                  {% if value.display.type == 'colors' %}
+                                    {%- assign color_hex = value.display.value | first -%}
+                                    <span
+                                      class="swatch"
+                                      style="                                        background-color: {{ color_hex }};"
+                                      title="{{ value.label }}"
+                                    >
+                                    </span>
+                                  {%- endif -%}
+                                  <input
+                                    type="checkbox"
+                                    name="{{ value.param_name }}"
+                                    value="{{ value.value }}"
+                                    {% if value.active %}
+                                      checked
+                                    {% endif %}
+                                    {% if value.count == 0 and value.active == false %}
+                                      disabled
+                                    {% endif %}
+                                  >
+                                  {{ value.label }}
+                                  {% if value.count > 0 %}
+                                    ({{ value.count }})
+                                  {% endif %}
+                                </label>
+                              </li>
+                            {% endfor %}
+                          </ul>
+
+                        {% when 'price_range' %}
+                          <div>
+                            <input
+                              type="number"
+                              name="{{ filter.min_value.param_name }}"
+                              value="{{ filter.min_value.value | default: '' }}"
+                              placeholder="Min"
+                              min="0"
+                              size="4"
+                            >
+                            <input
+                              type="number"
+                              name="{{ filter.max_value.param_name }}"
+                              value="{{ filter.max_value.value | default: '' }}"
+                              placeholder="Max"
+                              min="0"
+                              size="4"
+                            >
+                          </div>
+
+                        {% when 'boolean' %}
+                          {% for value in filter.values %}
+                            <label>
+                              <input
+                                type="checkbox"
+                                name="{{ value.param_name }}"
+                                value="{{ value.value }}"
+                                {% if value.active %}
+                                  checked
+                                {% endif %}
+                              >
+                              {{ value.label }}
+                            </label>
+                          {% endfor %}
+                        {% else %}
+                          <p>Unknown filter type: {{ filter.type }}</p>
+                      {% endcase %}
+                    </div>
+                  </details>
+                {% endfor %}
+                <div class="henk-button-group">
+                  <button type="submit" class="henk-button henk-button--small">Apply</button>
+                </div>
+              </div>
+            </details>
           </form>
           {% comment %}
             {% render 'grid-filter-widget' %}
           {% endcomment %}
         </div>
+        <!-- <div class="henk-grid-options-bar__variants"> -->
+        <!-- <form method="get"> -->
+        <!-- <input type="hidden" name="show_variants" value="true"> -->
+        <!-- <button type="submit">Show Variants</button> -->
+        <!-- </form> -->
+        <!-- </div> -->
         <div class="henk-grid-options-bar__sort">
           {% comment %}
             {% render 'grid-sort-widget' %}
@@ -69,7 +153,15 @@
     <div class="henk-lister-grid">
       {% paginate collection.products by 20 %}
         {% for product in collection.products %}
-          {% render 'henk-card', product: product, collection: collection, card_variant: null %}
+          {% if show_variants %}
+            {% for variant in product.variants %}
+              <!-- render variant card -->
+              {% render 'henk-card', product: variant, collection: collection, card_variant: null %}
+            {% endfor %}
+          {% else %}
+            <!-- render product card only -->
+            {% render 'henk-card', product: product, collection: collection, card_variant: null %}
+          {% endif %}
         {% endfor %}
         {{ paginate | default_pagination }}
       {% endpaginate %}
@@ -88,20 +180,150 @@
 {% stylesheet %}
   .henk-grid-options-bar {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
-    gap: var(--space-2);
+    gap: var(--space-4);
     width: min(var(--size-width-content), 100% - 3rem);
     margin-inline: auto;
+    margin-bottom: var(--space-4);
+    position: relative;
+  }
+
+  @media screen and (max-width: 767px) {
+    .henk-grid-options-bar {
+      .henk-grid-options-bar__filters {
+        width: 100%;
+      }
+
+      details#filters-widget {
+        .filters-widget__active-num {
+          font-size: 13px;
+
+          + .henk-button {
+            right: 8px;
+          }
+        }
+      }
+
+      .henk-grid-options-bar__sort {
+        margin-top: 72px;
+        width: 100%;
+      }
+    }
   }
 
   .henk-grid-options-bar__filters {
-    flex: 2;
+    min-width: 200px;
+    z-index: 9;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .henk-grid-options-bar__sort {
-    flex-shrink: 0;
-    flex-grow: 1;
+    .henk-labeled-select {
+      margin-bottom: 0;
+      min-width: 200px;
+    }
+  }
+
+  details#filters-widget {
+    > summary {
+      border: 1px solid black;
+      border-radius: 4px;
+      padding: 10px 1rem;
+      position: relative;
+    }
+
+    .filters-widget__active-num {
+      font-size: 13px;
+
+      + .henk-button {
+        position: absolute;
+        right: -48px;
+        top: 8px;
+      }
+    }
+
+    .henk-details-group {
+      backdrop-filter: blur(24px);
+      background-color: #ffffff4d;
+      border: 1px solid black;
+      font-size: 13px;
+      line-height: 24px;
+
+      summary {
+        padding: var(--space-2);
+      }
+    }
+
+    .henk-details__content {
+      padding-block: 0;
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        padding-left: 8px;
+        position: relative;
+
+        .swatch {
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          display: inline-block;
+          border: 1px solid #ccc;
+          vertical-align: middle;
+        }
+
+        .swatch + input[type='checkbox'] {
+          visibility: hidden;
+        }
+
+        &:has(input[type='checkbox']:checked) {
+          font-weight: 500;
+
+          .swatch {
+            border-color: black;
+            border-width: 2px;
+          }
+        }
+      }
+
+      input[type='checkbox'] {
+        margin: 0;
+      }
+    }
+
+    &[open] {
+      > summary {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      .henk-details-group {
+        border-top: none;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+
+        summary:hover {
+          background-color: black;
+          color: white;
+        }
+
+        .henk-details.henk-details--plusmin .henk-details__summary::before,
+        .henk-details.henk-details--plusmin .henk-details__summary::after {
+          top: unset;
+          right: 8px;
+        }
+
+        .henk-button-group {
+          margin-block-start: 0;
+          padding: var(--space-2);
+        }
+      }
+    }
   }
 {% endstylesheet %}
 

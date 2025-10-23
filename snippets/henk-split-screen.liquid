@@ -73,7 +73,10 @@
           {% endif %}
 
           {% if buttonUrl and buttonText %}
-            <a href="{{ buttonUrl }}" class="henk-button henk-button--{{ buttonVariant | default: 'default' }}">
+            <a
+              href="{{ buttonUrl | prepend: shop.url }}"
+              class="henk-button henk-button--{{ buttonVariant | default: 'default' }}"
+            >
               {{ buttonText }}
             </a>
           {% endif %}

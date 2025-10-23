@@ -1,14 +1,22 @@
-{% comment %} rich-text.liquid {% endcomment %}
-{% assign children = include.children %}
-{% for node in children %}
+{% comment %} henk-rich-text.liquid {% endcomment %}
+
+{% assign nodes = children %} {# `children` is passed via render #}
+
+{% for node in nodes %}
   {% case node.type %}
     {% when 'paragraph' %}
       <p>
-        {% render 'henk-rich-text', children: node.children %}
+        {% if node.children %}
+          {% render 'henk-rich-text', children: node.children %}
+        {% endif %}
       </p>
     {% when 'text' %}
       {{ node.value }}
     {% when 'link' %}
-      <a href="{{ node.url }}">{{ node.children[0].value }}</a>
+      <a href="{{ node.url }}">
+        {% if node.children %}
+          {% render 'henk-rich-text', children: node.children %}
+        {% endif %}
+      </a>
   {% endcase %}
 {% endfor %}

@@ -20,22 +20,22 @@
   </div>
 </footer>
 
-{% stylesheet %}
-  footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-  }
-  footer a {
-    text-decoration: none;
-    color: var(--color-foreground);
-  }
-  footer .footer__links,
-  footer .footer__payment {
-    display: flex;
-    gap: 1rem;
-  }
-{% endstylesheet %}
+{% comment %} {% stylesheet %} {% endcomment %}
+{% comment %}   footer { {% endcomment %}
+{% comment %}     display: flex; {% endcomment %}
+{% comment %}     justify-content: space-between; {% endcomment %}
+{% comment %}     margin-top: 2rem; {% endcomment %}
+{% comment %}   } {% endcomment %}
+{% comment %}   footer a { {% endcomment %}
+{% comment %}     text-decoration: none; {% endcomment %}
+{% comment %}     color: var(--color-foreground); {% endcomment %}
+{% comment %}   } {% endcomment %}
+{% comment %}   footer .footer__links, {% endcomment %}
+{% comment %}   footer .footer__payment { {% endcomment %}
+{% comment %}     display: flex; {% endcomment %}
+{% comment %}     gap: 1rem; {% endcomment %}
+{% comment %}   } {% endcomment %}
+{% comment %} {% endstylesheet %} {% endcomment %}
 
 {% schema %}
 {

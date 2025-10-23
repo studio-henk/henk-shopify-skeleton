@@ -11,3 +11,17 @@
 #
 # Ignore templates and sections with a regular expression:
 #   /(templates|sections)/.*\.json/
+# Node modules
+node_modules/*
+
+# Local config
+.env
+
+package.json
+package-lock.json
+
+.prettierrc
+.prettierrc.json
+.prettierignore
+
+TODO.md

@@ -1,0 +1,110 @@
+{% comment %}
+  Dynamic button component
+  Inputs:
+    element: 'button' | 'a' | 'span' (default: button)
+    href: URL (for <a>)
+    type: 'button' | 'submit' | 'reset' (only for <button>)
+    variant: 'primary' | 'secondary' | 'tertiary' | 'ghost'
+    size: 'small' | 'large'
+    label: text for button
+    title: optional title attribute
+    icon_name: optional icon name for henks-icon snippet
+    icon_position: 'left' | 'right'
+    icon_only: true/false
+    aria_label: optional
+    disabled: true/false
+    target: for <a>
+    attrs: map of additional attributes
+    extra_classes: additional classes
+{% endcomment %}
+
+{% assign element = element | default: 'button' %}
+{% assign variant = variant | default: 'tertiary' %}
+{% assign size = size | default: 'large' %}
+{% assign icon_position = icon_position | default: 'left' %}
+
+{%- comment -%} Build classes -{%- endcomment -%}
+{% assign classes = 'henk-button' %}
+
+{% if variant != 'tertiary' %}{% assign classes = classes | append: ' henk-button--' | append: variant %}{% endif %}
+
+{% if size != 'large' %}{% assign classes = classes | append: ' henk-button--' | append: size %}{% endif %}
+
+{% if extra_classes %}
+  {% assign classes = classes | append: ' ' | append: extra_classes %}
+{% endif %}
+
+{%- comment -%} Build icon HTML if needed -{%- endcomment -%}
+{% assign icon_html = '' %}
+{% if icon_name %}
+  {% capture icon_html %}
+    {% render 'henk-icon', icon_name: icon_name, size: icon_size, only: icon_only %}
+  {% endcapture %}
+{% endif %}
+
+{%- comment -%} Helper for inner content -{%- endcomment -%}
+{% capture inner_content %}
+  {% if icon_only %}
+    {{ icon_html }}
+  {% else %}
+    {% if icon_position == 'right' %}
+      {{ label }}{{ icon_html }}
+    {% else %}
+      {{ icon_html }}{{ label }}
+    {% endif %}
+  {% endif %}
+{% endcapture %}
+
+{%- comment -%} Render the correct element -{%- endcomment -%}
+{% if element == 'a' %}
+  <a
+    href="{{ href }}"
+    class="{{ classes }}"
+    {% if target %}
+      target="{{ target }}"
+    {% endif %}
+    {% if aria_label %}
+      aria-label="{{ aria_label }}"
+    {% endif %}
+    {% if icon_only %}
+      role="button"
+    {% endif %}
+    {% if attrs %}
+      {% for item in attrs %}
+        hi
+        {{ item.key }}
+      {% endfor %}
+    {% endif %}
+  >
+    {{ inner_content }}
+  </a>
+
+{% elsif element == 'button' %}
+  <button
+    type="{{ type | default: 'button' }}"
+    class="{{ classes }}"
+    {% if disabled %}
+      disabled
+    {% endif %}
+    {% if aria_label %}
+      aria-label="{{ aria_label }}"
+    {% endif %}
+    {% if attrs %}
+      {%- for item in attrs %}
+        {{ item }}
+      {%- endfor -%}
+    {% endif %}
+  >
+    {{ inner_content }}
+  </button>
+
+{% else %}
+  <span
+    class="{{ classes }}"
+    {% if aria_label %}
+      aria-label="{{ aria_label }}"
+    {% endif %}
+  >
+    {{ inner_content }}
+  </span>
+{% endif %}

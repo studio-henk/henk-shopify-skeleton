@@ -1,0 +1,84 @@
+{% comment %}
+  Section header component
+  Props:
+    id             - optional unique ID
+    caption        - optional small heading text
+    title          - main title (h2)
+    level (string: 1, 2, 3, or 'display')
+    text           - body text (plain or HTML)
+    align          - alignment class, e.g. 'left', 'center', 'right'
+    button_label   - label for the button
+    button_url     - link for the button
+    button_variant - optional variant (primary, secondary, etc.)
+    button_size    - optional size (small, large)
+    button_extra_classes - optional additional classes for button
+{% endcomment %}
+
+{% assign alignment_class = '' %}
+{% if align %}
+  {% assign alignment_class = ' henk-section-header--align-' | append: align %}
+{% endif %}
+
+{% assign heading_tag = 'h2' %}
+{% assign title_class = 'henk-section-header__title' %}
+
+{% if level == 'display' %}
+  {% assign heading_tag = 'h1' %}
+  {% assign title_class = title_class | append: ' fs-display' %}
+{% elsif level == '1' %}
+  {% assign heading_tag = 'h1' %}
+{% elsif level == '3' %}
+  {% assign heading_tag = 'h3' %}
+{% else %}
+  {% assign heading_tag = 'h2' %}
+{% endif %}
+
+<section class="shopify-section henk-section">
+  <div
+    class="henk-section henk-section-header henk-section-header{{ alignment_class }}"
+    id="section-header-{{ id | default: '1' }}"
+  >
+    <div class="henk-section-header__inner">
+      <div class="henk-section-header__content">
+        {% if caption %}
+          <p class="henk-section-header__caption">{{ caption }}</p>
+        {% endif %}
+
+        {% if title %}
+          <{{ heading_tag }} class="{{ title_class }}">{{ title }}</{{ heading_tag }}>
+        {% endif %}
+
+        {% comment %} {% if title %} {% endcomment %}
+        {% comment %}   <h2 class="henk-section-header__title">{{ title }}</h2> {% endcomment %}
+        {% comment %} {% endif %} {% endcomment %}
+        {% if text %}
+          <div class="henk-section-header__text">
+            {% assign stripped = text | strip %}
+            {% if stripped contains '<' and stripped contains '>' %}
+              {{ text }}
+              <!-- assume HTML already, render as-is -->
+            {% else %}
+              <p>{{ text }}</p>
+              <!-- wrap plain text in p -->
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if button_label and button_url %}
+          {%
+            render 'henk-button',
+            element: button_element | default: 'a',
+            href: button_url,
+            label: button_label,
+            extra_classes: 'henk-section-header__button'
+            variant: button_variant | default: 'primary',
+            icon_name: button_icon_name,
+            icon_position: button_icon_position | default: 'left',
+          %}
+          <!-- <a href="{{ button_url }}" class="henk-button henk-button--default henk-section-header__button"> -->
+          <!-- {{ button_label }} -->
+          <!-- </a> -->
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

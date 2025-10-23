@@ -1,8 +1,17 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "404": {
     "title": "404",
     "not_found": "Page not found.",
-    "back_to_shopping": "Back to shopping"
+    "back_to_shopping": "Continue shopping"
   },
   "blog": {
     "article_comments": "Comments",
@@ -17,7 +26,12 @@
     "checkout": "Checkout",
     "title": "Cart",
     "update": "Update",
-    "remove": "Remove"
+    "remove": "Remove",
+    "continue_shopping": "Continue shopping",
+    "empty": {
+      "title": "Your cart is currently empty",
+      "continue_shopping": "Discover our collection"
+    }
   },
   "customers": {
     "login": {
@@ -47,6 +61,23 @@
     "placeholder": "Search articles, pages, or products",
     "submit": "Search",
     "no_results_html": "No results found for {{ terms }}",
-    "results_for_html": "{{ count }} results found for {{ terms }}"
+    "results_for_html": "{{ count }} results found for {{ terms }}",
+    "reset": "Reset"
+  },
+  "card": {
+    "no_description": "No description available",
+    "from_label": "From"
+  },
+  "breadcrumbs": {
+    "home": "HENK"
+  },
+  "tags": {
+    "tweedekans": "Second Chance",
+    "snelle_levering": "Fast Delivery",
+    "sale": "Sale"
+  },
+  "accessibility": {
+    "loading": "Loading...",
+    "close": "Close"
   }
 }

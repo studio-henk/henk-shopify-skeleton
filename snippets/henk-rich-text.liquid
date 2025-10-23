@@ -1,0 +1,14 @@
+{% comment %} rich-text.liquid {% endcomment %}
+{% assign children = include.children %}
+{% for node in children %}
+  {% case node.type %}
+    {% when 'paragraph' %}
+      <p>
+        {% include 'rich-text', children: node.children %}
+      </p>
+    {% when 'text' %}
+      {{ node.value }}
+    {% when 'link' %}
+      <a href="{{ node.url }}">{{ node.children[0].value }}</a>
+  {% endcase %}
+{% endfor %}

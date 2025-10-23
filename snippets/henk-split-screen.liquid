@@ -1,0 +1,82 @@
+{% comment %}
+  Snippet: henk-split-screen
+  Props:
+    bgColor, id, title, caption, level, display, content,
+    imageUrl, imageAlt, imageLink, imageLinkTargetBlank,
+    buttonUrl, buttonText, buttonVariant, reverse
+{% endcomment %}
+
+<div
+  class="henk-split-screen{% if bgColor and bgColor != 'default' %} henk-split-screen--bg-{{ bgColor }}{% endif %}"
+  {% if id %}
+    id="{{ id }}"
+  {% endif %}
+>
+  <div
+    class="henk-split-screen__inner"
+    {% if reverse %}
+      data-order="reverse"
+    {% endif %}
+  >
+    <div class="henk-split-screen__grid">
+      <!-- IMAGE COLUMN -->
+      <div class="henk-split-screen__grid-item">
+        {% if imageUrl %}
+          {% if imageLink %}
+            <a
+              href="{{ imageLink }}"
+              {% if imageLinkTargetBlank %}
+                target="_blank" rel="noopener"
+              {% endif %}
+            >
+              <img
+                src="{{ imageUrl }}"
+                alt="{{ imageAlt | escape }}"
+                class="henk-split-screen__img"
+                width="1152"
+                height="1728"
+              >
+            </a>
+          {% else %}
+            <img
+              src="{{ imageUrl }}"
+              alt="{{ imageAlt | escape }}"
+              class="henk-split-screen__img"
+              width="1152"
+              height="1728"
+            >
+          {% endif %}
+        {% endif %}
+      </div>
+
+      <!-- CONTENT COLUMN -->
+      <div class="henk-split-screen__grid-item">
+        <div class="henk-split-screen__content">
+          {% if caption %}
+            <p class="henk-split-screen__caption">{{ caption }}</p>
+          {% endif %}
+
+          {% assign heading_level = level | default: 2 %}
+          {% if heading_level > 3 %}{% assign heading_level = 3 %}{% endif %}
+          {% if heading_level < 1 %}{% assign heading_level = 1 %}{% endif %}
+
+          <h{{ heading_level }} class="henk-split-screen__title{% if display %} fs-display{% endif %}">
+            {{ title }}
+          </h{{ heading_level }}>
+
+          {% if content %}
+            <div class="henk-split-screen__text">
+              {{ content }}
+            </div>
+          {% endif %}
+
+          {% if buttonUrl and buttonText %}
+            <a href="{{ buttonUrl }}" class="henk-button henk-button--{{ buttonVariant | default: 'default' }}">
+              {{ buttonText }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

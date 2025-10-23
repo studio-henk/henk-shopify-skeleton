@@ -152,7 +152,15 @@
     <div class="henk-lister-grid">
       {% paginate collection.products by 20 %}
         {% for product in collection.products %}
-          {% render 'henk-card', product: product, collection: collection, card_variant: null %}
+          {% if show_variants %}
+            {% for variant in product.variants %}
+              <!-- render variant card -->
+              {% render 'henk-card', product: product, collection: collection, card_variant: null %}
+            {% endfor %}
+          {% else %}
+            <!-- render product card only -->
+            {% render 'henk-card', product: product, collection: collection, card_variant: null %}
+          {% endif %}
         {% endfor %}
         {{ paginate | default_pagination }}
       {% endpaginate %}

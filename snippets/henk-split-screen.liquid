@@ -66,7 +66,18 @@
 
           {% if content %}
             <div class="henk-split-screen__text">
-              {{ content | raw }}
+              <!-- {{ content | raw }} -->
+              {% assign richtext = metaobject.splitscreen_text.value | parse_json %}
+
+              {% for node in richtext.children %}
+                {% if node.type == 'paragraph' %}
+                  <p>
+                    {% for child in node.children %}
+                      {{ child.value }}
+                    {% endfor %}
+                  </p>
+                {% endif %}
+              {% endfor %}
             </div>
           {% endif %}
 

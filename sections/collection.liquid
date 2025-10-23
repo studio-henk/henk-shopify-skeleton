@@ -37,6 +37,7 @@
               </summary>
               <div class="henk-details-group henk-details-group--horizontalx">
                 {% for filter in collection.filters %}
+                  {{ filter.id }}
                   <details class="henk-details henk-details--plusmin" name="filter">
                     <summary class="henk-details__summary">
                       {{ filter.label }}

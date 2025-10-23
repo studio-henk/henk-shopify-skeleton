@@ -7,13 +7,10 @@
 
 {% comment %} {{ collection | json }} {% endcomment %}
 
-{% assign show_variants = request.params.show_variants %}
-
 {% render 'henk-section-header', title: collection.title, text: collection.description %}
 {% comment %} {{ collection.products | json }} {% endcomment %}
 
-{% assign query = request.query_string %}
-{{ query }}
+{{ request | json }}
 
 {% if collection.all_products_count > 0 %}
   <section class="shopify-section henk-section" id="shopify-section-lister">

@@ -74,7 +74,7 @@
 
           {% if buttonUrl and buttonText %}
             <a
-              href="{{ buttonUrl | prepend: shop.url }}"
+              href="{{ buttonUrl | prepend: routes.root }}"
               class="henk-button henk-button--{{ buttonVariant | default: 'default' }}"
             >
               {{ buttonText }}

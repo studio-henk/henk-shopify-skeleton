@@ -1,0 +1,22 @@
+@layer colors.brand {
+  :root {
+    --taupe-gray: #9e9a98;
+    --khaki: #b39f88;
+    --dim-gray: #7f7266;
+    --silver: #afaaa5;
+    --columbia-blue: #c8dae8;
+    --white-smoke: #f3f3f2;
+
+    /* --khaki: hsl(32, 22%, 61%); */
+    --khaki-light: hsl(32, 22%, 80%);
+    --khaki-dark: hsl(32, 22%, 40%);
+
+    /* --columbia-blue: hsl(206, 41%, 84%); */
+    --columbia-blue-light: hsl(206, 41%, 90%);
+    --columbia-blue-dark: hsl(206, 41%, 70%);
+
+    /* --white-smoke, tertiary */
+    --white-smoke-light: hsl(60, 4%, 98%);
+    --white-smoke-dark: hsl(60, 4%, 80%);
+  }
+}

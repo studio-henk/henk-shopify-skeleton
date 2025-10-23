@@ -5,52 +5,21 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/collection
 {% endcomment %}
 
-<h1>{{ 'collections.title' | t }}</h1>
+{% comment %} {{ collections | json }} {% endcomment %}
+<!-- TODO: translations -->
+{% render 'henk-section-header',
+  title: 'De Studio HENK-collectie',
+  level: 1,
+  text: 'We geloven dat design zowel mooi als functioneel kan zijn. Daarom hebben we een collectie minimalistische designmeubels ontworpen die helemaal aangepast kunnen worden aan jouw interieur. Kies uit een breed aanbod aan maten, afwerkingen, stoffen en kleuren en ontwerp een uniek meubelstuk voor jouw interieur. Bekijk de collectie hieronder.'
+%}
 
-<div
-  class="collections {{ section.settings.grid_item_width }}"
-  style="--grid-gap: {{ section.settings.grid_gap }}px"
->
+<div class="henk-lister-grid henk-section henk-section --variant-macs">
   {% for collection in collections %}
-    <a class="collection-card" href="{{ collection.url }}">
-      {% if collection.featured_image %}
-        {% render 'image',
-          class: 'collection-card__image',
-          image: collection.featured_image,
-          width: 600,
-          height: 600,
-          crop: 'center'
-        %}
-      {% endif %}
-
-      <div class="collection-card__content">
-        <p>{{ collection.title }}</p>
-
-        {% if collection.description %}
-          <p>{{ collection.description | strip_html | truncatewords: 15 }}</p>
-        {% endif %}
-      </div>
-    </a>
+    {% render 'henk-collections-card', collection: collection, card_variant: 'macs' %}
   {% endfor %}
 </div>
 
 {% stylesheet %}
-  .collections {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(var(--collection-card-size), 100%), 1fr));
-    gap: var(--grid-gap);
-  }
-  .collections--compact {
-    --collection-card-size: 160px;
-  }
-  .collections--full {
-    --collection-card-size: 280px;
-  }
-  .collection-card {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
 {% endstylesheet %}
 
 {% schema %}

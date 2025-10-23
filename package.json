@@ -1,0 +1,25 @@
+{
+  "name": "henk-shopify-skeleton",
+  "version": "1.0.0",
+  "description": "henk theme",
+  "homepage": "https://github.com/studio-henk/henk-shopify-skeleton#readme",
+  "bugs": {
+    "url": "https://github.com/studio-henk/henk-shopify-skeleton/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/studio-henk/henk-shopify-skeleton.git"
+  },
+  "license": "ISC",
+  "author": "nils hendriks",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "shopify theme dev -e develop"
+  },
+  "devDependencies": {
+    "@shopify/prettier-plugin-liquid": "^1.10.0",
+    "prettier": "^3.6.2"
+  }
+}

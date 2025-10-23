@@ -4,7 +4,7 @@
   {% case node.type %}
     {% when 'paragraph' %}
       <p>
-        {% include 'rich-text', children: node.children %}
+        {% include 'henk-rich-text', children: node.children %}
       </p>
     {% when 'text' %}
       {{ node.value }}

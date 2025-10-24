@@ -13,6 +13,9 @@
     "not_found": "Seite nicht gefunden",
     "back_to_shopping": "weiter einkaufen"
   },
+  "stores": {
+    "discover_button": "Entdecken"
+  },
   "blog": {
     "article_comments": "Comments",
     "article_metadata_html": "{{ date }} by {{ author }}",

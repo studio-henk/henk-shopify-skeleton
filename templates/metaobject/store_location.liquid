@@ -41,7 +41,7 @@
 
   {% if metaobject.phone_number.value %}
     <dl>
-      <dt>Phone</dt>
+      <dt>{{ 'store_detail.phone' | t }}</dt>
       <dd>
         <a href="tel:{{ metaobject.phone_number.value | remove: ' ' | remove: '-' }}">{{ metaobject.phone_number.value }}</a>
       </dd>

@@ -22,10 +22,10 @@
   {{ metaobject.address }}
   {% capture store_content %}
   {% if metaobject.address %}
-    <p>
-      <strong>Address</strong><br>
-      {{ metaobject.address | replace: ", ", "<br>" }}
-    </p>
+    <dl>
+      <dt>Address</dt>
+      <dd>{{ metaobject.address | replace: ", ", "<br>" }}</dd>
+    </dl>
   {% endif %}
 
   {% if metaobject.phone_number.value %}

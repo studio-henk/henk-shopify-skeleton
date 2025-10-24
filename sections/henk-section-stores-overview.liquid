@@ -1,0 +1,61 @@
+{% assign sorted_stores = metaobjects.store_location.values | sort: 'store_name' %}
+
+<section class="henk-section henk-section--stores">
+  <div class="henk-section__inner">
+    <div class="henk-section__grid henk-section__grid--stores">
+      {% for store in sorted_stores %}
+        {% assign store_url = store.system.url %}
+        <div class="henk-card henk-card--store">
+          <div class="henk-card__image-container">
+            <a class="henk-card__picture-link" href="{{ store_url }}">
+              <picture class="henk-card__picture">
+                <img
+                  src="{{ store.store_key_image | image_url }}"
+                  alt="{{ store.store_key_image.alt | escape }}"
+                  class="henk-card__img"
+                  width="920"
+                  height="764"
+                >
+              </picture>
+            </a>
+          </div>
+          <div class="henk-card__content">
+            <h2 class="henk-card__title">{{ store.store_name }}</h2>
+            <a
+              href="{{ store.map_link.value.url }}"
+              class="henk-card__link henk-card__link--directions"
+              title="Get Directions to this store"
+              target="_blank"
+            >
+              {{ store.address }}
+              <i class="henk-icon icon--medium">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path d="M336.76 161l-186.53 82.35c-10.47 4.8-6.95 20.67 4.57 20.67H244a4 4 0 014 4v89.18c0 11.52 16 15 20.78 4.56L351 175.24A10.73 10.73 0 00336.76 161z"></path>
+                  <path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path>
+                </svg>
+              </i>
+            </a>
+            <a href="{{ store_url }}" class="henk-button henk-button--secondary henk-card__button">
+              {{ 'stores.discover_button' | t }}
+              {{ store.store_name }}
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Stores Overview",
+  "tag": "section",
+  "class": "shopify-section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Stores Overview"
+    }
+  ]
+}
+{% endschema %}

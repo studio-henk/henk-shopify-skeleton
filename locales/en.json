@@ -22,9 +22,9 @@
     "opening_hours": "Opening hours",
     "address": "Address",
     "phone": "Phone",
-    "parking": "Parkeren",
-    "public_transport": "Openbaar vervoer",
-    "accessibility": "Toegankelijkheid"
+    "parking": "Parking",
+    "public_transport": "Public transport",
+    "accessibility": "Accessibility"
   },
   "blog": {
     "article_comments": "Comments",

@@ -36,9 +36,10 @@
     </dl>
   {% endif %}
 {% endcapture %}
-  {% render 'henk-split-screen',
+  {%
+    render 'henk-split-screen',
     id: 'ss-2',
-    title: metaobject.splitscreen_2_heading.value,
+    title: 'store_detail.plan_your_visit' | t,
     content: store_content,
     media: metaobject.splitscreen_2_map_image,
     imageAlt: metaobject.splitscreen_2_map_image.alt,

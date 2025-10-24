@@ -1,7 +1,16 @@
 <div class="store-detail">
   {% render 'henk-section-header', title: metaobject.store_name, level: '1', align: 'center' %}
 
-  {% assign storeImageUrl = metaobject.store_key_image | image_url %}
+  {% comment %} {% assign storeImageUrl = metaobject.store_key_image | image_url %} {% endcomment %}
+
+  {% assign storeMedia = metaobject.splitscreen_media %}
+
+  {% if storeMedia.media_type == 'image' %}
+    {% assign storeMediaUrl = storeMedia | image_url %}
+  {% elsif storeMedia.media_type == 'video' %}
+    {% assign storeMediaUrl = storeMedia.sources[0].url %}
+  {% endif %}
+
   {% render 'henk-split-screen',
     bgColor: 'default',
     id: 'ss-1',
@@ -10,7 +19,7 @@
     level: 2,
     display: false,
     content: metaobject.splitscreen_text.value,
-    imageUrl: storeImageUrl,
+    imageUrl: storeMedia,
     imageAlt: metaobject.splitscreen_image.alt,
     imageLink: metaobject.splitscreen_button_url.value,
     imageLinkTargetBlank: false,

@@ -29,6 +29,7 @@
                 target="_blank" rel="noopener"
               {% endif %}
             >
+              {{ media | json }}
               <img
                 src="{{ imageUrl }}"
                 alt="{{ imageAlt | escape }}"

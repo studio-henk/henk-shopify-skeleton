@@ -100,12 +100,9 @@
 
           {% if content %}
             <div class="henk-split-screen__text">
-              <!-- {% render 'henk-rich-text', children: content.children %} -->
               {% if content.children %}
-                {# It's a rich text object #}
                 {% render 'henk-rich-text', children: content.children %}
               {% else %}
-                {# It's raw HTML #}
                 {{ content | raw }}
               {% endif %}
             </div>

@@ -35,19 +35,19 @@
               {% case media_obj.media_type %}
                 {% when 'image' %}
                   <p>image placeholder</p>
+                  <img
+                    src="{{ imageUrl }}"
+                    alt="{{ imageAlt | escape }}"
+                    class="henk-split-screen__img"
+                    width="1152"
+                    height="1728"
+                  >
                 {% when 'video' %}
                   <p>video placeholder</p>
                   <video class="henk-split-screen__img" autoplay loop muted playsinline>
                     <source src="{{ media_obj.sources[0].url }}" type="video/mp4">
                   </video>
               {% endcase %}
-              <img
-                src="{{ imageUrl }}"
-                alt="{{ imageAlt | escape }}"
-                class="henk-split-screen__img"
-                width="1152"
-                height="1728"
-              >
             </a>
           {% else %}
             <img

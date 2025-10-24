@@ -13,6 +13,9 @@
     "not_found": "Pagina niet gevonden.",
     "back_to_shopping": "Winkel verder"
   },
+  "stores": {
+    "discover_button": "Ontdek"
+  },
   "blog": {
     "article_comments": "Comments",
     "article_metadata_html": "{{ date }} by {{ author }}",

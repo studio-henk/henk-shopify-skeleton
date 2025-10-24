@@ -35,10 +35,6 @@
         <a href="tel:{{ metaobject.phone_number.value | remove: ' ' | remove: '-' }}">{{ metaobject.phone_number.value }}</a>
       </dd>
     </dl>
-    <p>
-      <strong>Phone</strong><br>
-      <a href="tel:{{ metaobject.phone_number.value | remove: ' ' | remove: '-' }}">{{ metaobject.phone_number.value }}</a>
-    </p>
   {% endif %}
 {% endcapture %}
   {% render 'henk-split-screen',

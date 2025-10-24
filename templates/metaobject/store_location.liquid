@@ -29,6 +29,12 @@
   {% endif %}
 
   {% if metaobject.phone_number.value %}
+    <dl>
+      <dt>Phone</dt>
+      <dd>
+        <a href="tel:{{ metaobject.phone_number.value | remove: ' ' | remove: '-' }}">{{ metaobject.phone_number.value }}</a>
+      </dd>
+    </dl>
     <p>
       <strong>Phone</strong><br>
       <a href="tel:{{ metaobject.phone_number.value | remove: ' ' | remove: '-' }}">{{ metaobject.phone_number.value }}</a>

@@ -20,6 +20,21 @@
   %}
 
   {{ metaobject.address }}
+  {% capture store_content %}
+  {% if metaobject.address.value %}
+    <p>
+      <strong>Address</strong><br>
+      {{ metaobject.address.value | replace: ", ", "<br>" }}
+    </p>
+  {% endif %}
+
+  {% if metaobject.phone_number.value %}
+    <p>
+      <strong>Phone</strong><br>
+      <a href="tel:{{ metaobject.phone_number.value | remove: ' ' | remove: '-' }}">{{ metaobject.phone_number.value }}</a>
+    </p>
+  {% endif %}
+{% endcapture %}
   {% render 'henk-split-screen',
     id: 'ss-2',
     title: metaobject.splitscreen_2_heading.value,

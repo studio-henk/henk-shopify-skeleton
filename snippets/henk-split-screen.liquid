@@ -23,7 +23,7 @@
     <div class="henk-split-screen__grid">
       <!-- IMAGE COLUMN -->
       <div class="henk-split-screen__grid-item">
-        {% if media %}
+        {% if media_obj %}
           {% if imageLink %}
             <a
               href="{{ imageLink }}"
@@ -31,8 +31,8 @@
                 target="_blank" rel="noopener"
               {% endif %}
             >
-              {{ media.media_type }}
-              {% case media.media_type %}
+              {{ media_obj.media_type }}
+              {% case media_obj.media_type %}
                 {% when 'image' %}
                   <p>image placeholder</p>
                 {% when 'video' %}

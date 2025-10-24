@@ -19,7 +19,9 @@
   "store_detail": {
     "plan_your_visit": "Plan je bezoek",
     "no_appointment_needed": "Ook zonder afspraak, ben je bij ons van harte welkom.",
-    "opening_hours": "Openingstijden"
+    "opening_hours": "Openingstijden",
+    "address": "Adres",
+    "phone": "Telefoon"
   },
   "blog": {
     "article_comments": "Comments",

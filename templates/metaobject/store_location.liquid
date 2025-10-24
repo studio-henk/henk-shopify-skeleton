@@ -34,7 +34,7 @@
 
   {% if metaobject.address %}
     <dl>
-      <dt>Address</dt>
+      <dt>{{ 'store_detail.address' | t }}</dt>
       <dd>{{ metaobject.address | replace: ", ", "<br>" }}</dd>
     </dl>
   {% endif %}

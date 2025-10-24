@@ -38,7 +38,8 @@
       {% endif %}
   {% endcase %}
 {% endfor %}
-{% assign nodes = children %}
+
+{% comment %} {% assign nodes = children %} {% endcomment %}
 
 {% comment %} {% for node in nodes %} {% endcomment %}
 {% comment %}   {% case node.type %} {% endcomment %}

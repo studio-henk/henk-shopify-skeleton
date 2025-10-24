@@ -24,6 +24,13 @@
   {% assign no_appointment_needed = 'store_detail.no_appointment_needed' | t %}
   <p>{{ no_appointment_needed }}</p>
 
+  {% if metaobject.store_opening_hours %}
+    <dl>
+      <dt>{{ 'store_detail.opening_hours' | t }}</dt>
+      <dd>{{ metaobject.address | replace: ", ", "<br>" }}</dd>
+    </dl>
+  {% endif %}
+
   {{ metaobject.store_opening_hours | newline_to_br }}
 
   {% if metaobject.address %}

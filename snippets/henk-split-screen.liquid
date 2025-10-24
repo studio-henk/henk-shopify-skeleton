@@ -29,7 +29,12 @@
                 target="_blank" rel="noopener"
               {% endif %}
             >
-              {{ media | json }}
+              {% case media_obj.media_type %}
+                {% when 'image' %}
+                  <p>image placeholder</p>
+                {% when 'video' %}
+                  <p>video placeholder</p>
+              {% endcase %}
               <img
                 src="{{ imageUrl }}"
                 alt="{{ imageAlt | escape }}"

@@ -21,7 +21,7 @@
 
   {{ metaobject.address }}
   {% capture store_content %}
-  {% if metaobject.address.value %}
+  {% if metaobject.address %}
     <p>
       <strong>Address</strong><br>
       {{ metaobject.address.value | replace: ", ", "<br>" }}

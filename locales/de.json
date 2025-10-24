@@ -17,7 +17,14 @@
     "discover_button": "Entdecken"
   },
   "store_detail": {
-    "plan_your_visit": "Planen Sie Ihren Besuch"
+    "plan_your_visit": "Planen Sie Ihren Besuch",
+    "no_appointment_needed": "Sie sind herzlich eingeladen, uns auch ohne Termin zu besuchen.",
+    "opening_hours": "Opening hours",
+    "address": "Address",
+    "phone": "Phone",
+    "parking": "Parking",
+    "public_transport": "Public transport",
+    "accessibility": "Accessibility"
   },
   "blog": {
     "article_comments": "Comments",

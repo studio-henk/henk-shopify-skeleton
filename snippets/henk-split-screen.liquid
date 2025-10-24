@@ -31,7 +31,6 @@
                 target="_blank" rel="noopener"
               {% endif %}
             >
-              {{ media_obj.media_type }}
               {% case media_obj.media_type %}
                 {% when 'image' %}
                   {{
@@ -40,7 +39,6 @@
                     | image_tag: imageAlt, class: 'henk-split-screen__img'
                   }}
                 {% when 'video' %}
-                  <p>video placeholder</p>
                   <video
                     class="henk-split-screen__video"
                     autoplay
@@ -55,9 +53,6 @@
                       <source src="{{ source.url }}" type="{{ source.mime_type }}">
                     {% endfor %}
                   </video>
-                  <!-- <video class="henk-split-screen__img" autoplay loop muted playsinline> -->
-                  <!-- <source src="{{ media_obj.sources[0].url }}" type="video/mp4"> -->
-                  <!-- </video> -->
               {% endcase %}
             </a>
           {% else %}

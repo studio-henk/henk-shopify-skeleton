@@ -1,8 +1,6 @@
 <div class="store-detail">
   {% render 'henk-section-header', title: metaobject.store_name, level: '1', align: 'center' %}
 
-  {{ metaobject.splitscreen_media }}
-
   {% render 'henk-split-screen',
     bgColor: 'default',
     id: 'ss-1',
@@ -21,7 +19,6 @@
     reverse: false
   %}
 
-  {{ metaobject.splitscreen_2_map_image }}
   {% render 'henk-split-screen',
     bgColor: 'default',
     id: 'ss-2',

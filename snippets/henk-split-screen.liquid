@@ -35,6 +35,11 @@
               {% case media_obj.media_type %}
                 {% when 'image' %}
                   <p>image placeholder</p>
+                  {{
+                    media_obj
+                    | image_url: width: 1152, height: 1728
+                    | img_tag: imageAlt, class: 'henk-split-screen__img'
+                  }}
                   <img
                     src="{{ imageUrl }}"
                     alt="{{ imageAlt | escape }}"

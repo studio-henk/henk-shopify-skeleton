@@ -20,6 +20,24 @@
     reverse: false
   %}
 
+  {% render 'henk-split-screen',
+    bgColor: 'default',
+    id: 'ss-3',
+    title: metaobject.splitscreen_heading.value,
+    caption: metaobject.splitscreen_caption.value,
+    level: 2,
+    display: false,
+    content: metaobject.splitscreen_text.value,
+    imageUrl: storeImageUrl,
+    imageAlt: metaobject.splitscreen_image.alt,
+    imageLink: metaobject.splitscreen_button_url.value,
+    imageLinkTargetBlank: false,
+    buttonUrl: metaobject.splitscreen_button_url.value,
+    buttonText: metaobject.splitscreen_button_text.value,
+    buttonVariant: 'default',
+    reverse: false
+  %}
+
   <p>{{ metaobject.address }}</p>
   <p>{{ metaobject.description }}</p>
   <!-- {% if metaobject.store_key_image %} -->

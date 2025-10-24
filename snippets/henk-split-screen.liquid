@@ -34,7 +34,6 @@
               {{ media_obj.media_type }}
               {% case media_obj.media_type %}
                 {% when 'image' %}
-                  <p>image placeholder</p>
                   {{
                     media_obj
                     | image_url: width: 1152, height: 1728

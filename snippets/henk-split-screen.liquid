@@ -29,6 +29,7 @@
                 target="_blank" rel="noopener"
               {% endif %}
             >
+              {{ media.media_type }}
               {% case media.media_type %}
                 {% when 'image' %}
                   <p>image placeholder</p>

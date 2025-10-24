@@ -20,6 +20,8 @@
   %}
 
   {% capture store_content %}
+
+  {% assign no_appointment_needed = 'store_detail.no_appointment_needed' | t %}
   {% if metaobject.address %}
     <dl>
       <dt>Address</dt>

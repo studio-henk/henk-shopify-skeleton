@@ -53,20 +53,7 @@
     <dl>
       <dt>{{ 'store_detail.parking' | t }}</dt>
       <dd>
-        <ul class="henk-store__parking">
-          {% for p in metaobject.store_parking.value %}
-            <li>
-              {% if p.url %}
-                <a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.name }}</a>
-              {% else %}
-                {{ p.name }}
-              {% endif %}
-              {% if p.details %}
-                , {{ p.details }}
-              {% endif %}
-            </li>
-          {% endfor %}
-        </ul>
+        {{ metaobject.store_parking_intro.value }}
       </dd>
     </dl>
   {% endif %}

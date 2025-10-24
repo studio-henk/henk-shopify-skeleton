@@ -27,11 +27,10 @@
   {% if metaobject.store_opening_hours %}
     <dl>
       <dt>{{ 'store_detail.opening_hours' | t }}</dt>
-      <dd>{{ metaobject.address | replace: ", ", "<br>" }}</dd>
+      <dd>{{ metaobject.store_opening_hours | newline_to_br }}</dd>
     </dl>
   {% endif %}
 
-  {{ metaobject.store_opening_hours | newline_to_br }}
 
   {% if metaobject.address %}
     <dl>

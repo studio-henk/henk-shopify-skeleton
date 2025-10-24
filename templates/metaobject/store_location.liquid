@@ -67,6 +67,15 @@
     </dl>
   {% endif %}
 
+  {% if metaobject.store_parking %}
+    <dl>
+      <dt>{{ 'store_detail.accessibility' | t }}</dt>
+      <dd>
+        {{ metaobject.store_parking.value }}
+      </dd>
+    </dl>
+  {% endif %}
+
 {% endcapture %}
 
   {% assign plan_visit = 'store_detail.plan_your_visit' | t %}

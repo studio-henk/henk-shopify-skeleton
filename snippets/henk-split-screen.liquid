@@ -1,0 +1,123 @@
+{% comment %}
+  Snippet: henk-split-screen
+  Props:
+    bgColor, id, title, caption, level, display, content,
+    imageUrl, imageAlt, imageLink, imageLinkTargetBlank,
+    buttonUrl, buttonText, buttonVariant, reverse
+{% endcomment %}
+
+{% assign media_obj = media.value %}
+
+<div
+  class="henk-section henk-split-screen{% if bgColor and bgColor != 'default' %} henk-split-screen--bg-{{ bgColor }}{% endif %}"
+  {% if id %}
+    id="{{ id }}"
+  {% endif %}
+>
+  <div
+    class="henk-split-screen__inner"
+    {% if reverse %}
+      data-order="reverse"
+    {% endif %}
+  >
+    <div class="henk-split-screen__grid">
+      <!-- IMAGE COLUMN -->
+      <div class="henk-split-screen__grid-item">
+        {% if media_obj %}
+          {% if imageLink %}
+            <a
+              href="{{ imageLink }}"
+              {% if imageLinkTargetBlank %}
+                target="_blank" rel="noopener"
+              {% endif %}
+            >
+              {% case media_obj.media_type %}
+                {% when 'image' %}
+                  {{
+                    media_obj
+                    | image_url: width: 1152, height: 1728
+                    | image_tag: alt: imageAlt, class: 'henk-split-screen__img'
+                  }}
+                {% when 'video' %}
+                  <video
+                    class="henk-split-screen__video"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    {% if imageAlt %}
+                      aria-label="{{ imageAlt | escape }}"
+                    {% endif %}
+                  >
+                    {% for source in media_obj.sources %}
+                      <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                    {% endfor %}
+                  </video>
+              {% endcase %}
+            </a>
+          {% else %}
+            {% case media_obj.media_type %}
+              {% when 'image' %}
+                {{
+                  media_obj
+                  | image_url: width: 1152, height: 1728
+                  | image_tag: imageAlt, class: 'henk-split-screen__img'
+                }}
+              {% when 'video' %}
+                <video
+                  class="henk-split-screen__video"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  {% if imageAlt %}
+                    aria-label="{{ imageAlt | escape }}"
+                  {% endif %}
+                >
+                  {% for source in media_obj.sources %}
+                    <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                  {% endfor %}
+                </video>
+            {% endcase %}
+          {% endif %}
+        {% endif %}
+      </div>
+
+      <!-- CONTENT COLUMN -->
+      <div class="henk-split-screen__grid-item">
+        <div class="henk-split-screen__content">
+          {% if caption %}
+            <p class="henk-split-screen__caption">{{ caption }}</p>
+          {% endif %}
+
+          {% assign heading_level = level | default: 2 %}
+          {% if heading_level > 3 %}{% assign heading_level = 3 %}{% endif %}
+          {% if heading_level < 1 %}{% assign heading_level = 1 %}{% endif %}
+
+          <h{{ heading_level }} class="henk-split-screen__title{% if display %} fs-display{% endif %}">
+            {{ title }}
+          </h{{ heading_level }}>
+
+          {% if content %}
+            <div class="henk-split-screen__text">
+              {% if content.children %}
+                {% render 'henk-rich-text', children: content.children %}
+              {% else %}
+                {{ content }}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if buttonUrl and buttonText %}
+            <a
+              href="{{ buttonUrl | prepend: routes.root }}"
+              class="henk-button henk-button--{{ buttonVariant | default: 'default' }}"
+            >
+              {{ buttonText }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

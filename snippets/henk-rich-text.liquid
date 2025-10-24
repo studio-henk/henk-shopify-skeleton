@@ -1,22 +1,60 @@
 {% comment %} henk-rich-text.liquid {% endcomment %}
 
-{% assign nodes = children %}
+{% comment %}
+  henk-rich-text.liquid
+  Recursive renderer for Shopify rich text metafields
+{% endcomment %}
 
-{% for node in nodes %}
+{% assign children = children | default: include.children %}
+
+{% for node in children %}
   {% case node.type %}
     {% when 'paragraph' %}
       <p>
-        {% if node.children %}
-          {% render 'henk-rich-text', children: node.children %}
-        {% endif %}
+        {% render 'henk-rich-text', children: node.children %}
       </p>
+
     {% when 'text' %}
-      {{ node.value }}
+      {% if node.bold %}
+        <strong>{{ node.value | newline_to_br }}</strong>
+      {% else %}
+        {{ node.value | newline_to_br }}
+      {% endif %}
+
     {% when 'link' %}
-      <a href="{{ node.url }}">
-        {% if node.children %}
-          {% render 'henk-rich-text', children: node.children %}
+      <a
+        href="{{ node.url }}"
+        {% if node.target == '_blank' %}
+          target="_blank" rel="noopener"
         {% endif %}
+      >
+        {% render 'henk-rich-text', children: node.children %}
       </a>
+
+    {% else %}
+      {# fallback for unknown node types #}
+      {% if node.children %}
+        {% render 'henk-rich-text', children: node.children %}
+      {% endif %}
   {% endcase %}
 {% endfor %}
+{% assign nodes = children %}
+
+{% comment %} {% for node in nodes %} {% endcomment %}
+{% comment %}   {% case node.type %} {% endcomment %}
+{% comment %}     {% when 'paragraph' %} {% endcomment %}
+{% comment %}       <p> {% endcomment %}
+{% comment %}         {% if node.children %} {% endcomment %}
+{% comment %}           {% render 'henk-rich-text', children: node.children %} {% endcomment %}
+{% comment %}         {% endif %} {% endcomment %}
+{% comment %}       </p> {% endcomment %}
+{% comment %}     {% when 'text' %} {% endcomment %}
+{% comment %}       {{ node.value }} {% endcomment %}
+{% comment %}     {% when 'link' %} {% endcomment %}
+{% comment %}       <a href="{{ node.url }}"> {% endcomment %}
+{% comment %}         {% if node.children %} {% endcomment %}
+{% comment %}           {% render 'henk-rich-text', children: node.children %} {% endcomment %}
+{% comment %}         {% endif %} {% endcomment %}
+{% comment %}       </a> {% endcomment %}
+{% comment %}   {% endcase %} {% endcomment %}
+{% comment %} {% endfor %} {% endcomment %}

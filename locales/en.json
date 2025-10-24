@@ -19,9 +19,9 @@
   "store_detail": {
     "plan_your_visit": "Plan your visit",
     "no_appointment_needed": "You are very welcome to visit us, even without an appointment.",
-    "opening_hours": "Openingstijden",
-    "address": "Adres",
-    "phone": "Telefoon",
+    "opening_hours": "Opening hours",
+    "address": "Address",
+    "phone": "Phone",
     "parking": "Parkeren",
     "public_transport": "Openbaar vervoer",
     "accessibility": "Toegankelijkheid"

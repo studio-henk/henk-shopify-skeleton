@@ -53,7 +53,7 @@
     <dl>
       <dt>{{ 'store_detail.parking' | t }}</dt>
       <dd>
-        {{ metaobject.store_parking.value }}
+        {{ metaobject.store_parking.value | newline_to_br }}
       </dd>
     </dl>
   {% endif %}

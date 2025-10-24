@@ -56,13 +56,29 @@
               {% endcase %}
             </a>
           {% else %}
-            <img
-              src="{{ imageUrl }}"
-              alt="{{ imageAlt | escape }}"
-              class="henk-split-screen__img"
-              width="1152"
-              height="1728"
-            >
+            {% case media_obj.media_type %}
+              {% when 'image' %}
+                {{
+                  media_obj
+                  | image_url: width: 1152, height: 1728
+                  | image_tag: imageAlt, class: 'henk-split-screen__img'
+                }}
+              {% when 'video' %}
+                <video
+                  class="henk-split-screen__video"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  {% if imageAlt %}
+                    aria-label="{{ imageAlt | escape }}"
+                  {% endif %}
+                >
+                  {% for source in media_obj.sources %}
+                    <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                  {% endfor %}
+                </video>
+            {% endcase %}
           {% endif %}
         {% endif %}
       </div>

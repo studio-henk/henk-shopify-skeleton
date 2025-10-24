@@ -13,6 +13,19 @@
     "not_found": "Pagina niet gevonden.",
     "back_to_shopping": "Winkel verder"
   },
+  "stores": {
+    "discover_button": "Ontdek"
+  },
+  "store_detail": {
+    "plan_your_visit": "Plan je bezoek",
+    "no_appointment_needed": "Ook zonder afspraak, ben je bij ons van harte welkom.",
+    "opening_hours": "Openingstijden",
+    "address": "Adres",
+    "phone": "Telefoon",
+    "parking": "Parkeren",
+    "public_transport": "Openbaar vervoer",
+    "accessibility": "Toegankelijkheid"
+  },
   "blog": {
     "article_comments": "Comments",
     "article_metadata_html": "{{ date }} by {{ author }}",

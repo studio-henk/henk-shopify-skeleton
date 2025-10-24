@@ -13,6 +13,19 @@
     "not_found": "Page not found.",
     "back_to_shopping": "Continue shopping"
   },
+  "stores": {
+    "discover_button": "Discover"
+  },
+  "store_detail": {
+    "plan_your_visit": "Plan your visit",
+    "no_appointment_needed": "You are very welcome to visit us, even without an appointment.",
+    "opening_hours": "Opening hours",
+    "address": "Address",
+    "phone": "Phone",
+    "parking": "Parking",
+    "public_transport": "Public transport",
+    "accessibility": "Accessibility"
+  },
   "blog": {
     "article_comments": "Comments",
     "article_metadata_html": "{{ date }} by {{ author }}",

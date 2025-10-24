@@ -41,9 +41,23 @@
                   }}
                 {% when 'video' %}
                   <p>video placeholder</p>
-                  <video class="henk-split-screen__img" autoplay loop muted playsinline>
-                    <source src="{{ media_obj.sources[0].url }}" type="video/mp4">
+                  <video
+                    class="henk-split-screen__img"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    {% if imageAlt %}
+                      aria-label="{{ imageAlt | escape }}"
+                    {% endif %}
+                  >
+                    {% for source in media_obj.sources %}
+                      <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                    {% endfor %}
                   </video>
+                  <!-- <video class="henk-split-screen__img" autoplay loop muted playsinline> -->
+                  <!-- <source src="{{ media_obj.sources[0].url }}" type="video/mp4"> -->
+                  <!-- </video> -->
               {% endcase %}
             </a>
           {% else %}

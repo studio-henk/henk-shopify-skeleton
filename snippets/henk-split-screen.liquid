@@ -103,7 +103,7 @@
               {% if content.children %}
                 {% render 'henk-rich-text', children: content.children %}
               {% else %}
-                {{ content | raw }}
+                {{ content }}
               {% endif %}
             </div>
           {% endif %}

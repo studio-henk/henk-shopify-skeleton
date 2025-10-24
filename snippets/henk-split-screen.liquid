@@ -68,6 +68,8 @@
             <div class="henk-split-screen__text">
               <!-- {{ content | raw }} -->
 
+              <pre>{{ content | json }}</pre>
+
               {% render 'henk-rich-text', children: content.value.children %}
             </div>
           {% endif %}

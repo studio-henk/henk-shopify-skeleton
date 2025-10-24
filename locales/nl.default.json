@@ -21,7 +21,10 @@
     "no_appointment_needed": "Ook zonder afspraak, ben je bij ons van harte welkom.",
     "opening_hours": "Openingstijden",
     "address": "Adres",
-    "phone": "Telefoon"
+    "phone": "Telefoon",
+    "parking": "Parkeren",
+    "public_transport": "Openbaar vervoer",
+    "accessibility": "Toegankelijkheid"
   },
   "blog": {
     "article_comments": "Comments",

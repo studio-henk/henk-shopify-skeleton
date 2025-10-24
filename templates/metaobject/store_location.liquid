@@ -36,10 +36,12 @@
     </dl>
   {% endif %}
 {% endcapture %}
-  {%
-    render 'henk-split-screen',
+
+  {% assign plan_visit = 'store_detail.plan_your_visit' | t %}
+
+  {% render 'henk-split-screen',
     id: 'ss-2',
-    title: {{ 'store_detail.plan_your_visit' | t }},
+    title: plan_visit,
     content: store_content,
     media: metaobject.splitscreen_2_map_image,
     imageAlt: metaobject.splitscreen_2_map_image.alt,

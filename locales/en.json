@@ -16,6 +16,9 @@
   "stores": {
     "discover_button": "Discover"
   },
+  "store_detail": {
+    "plan_your_visit": "Plan your visit"
+  },
   "blog": {
     "article_comments": "Comments",
     "article_metadata_html": "{{ date }} by {{ author }}",

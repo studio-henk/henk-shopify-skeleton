@@ -38,7 +38,7 @@
                 {% when 'video' %}
                   <p>video placeholder</p>
                   <video class="henk-split-screen__img" autoplay loop muted playsinline>
-                    <source src="{{ media.sources[0].url }}" type="video/mp4">
+                    <source src="{{ media_obj.sources[0].url }}" type="video/mp4">
                   </video>
               {% endcase %}
               <img

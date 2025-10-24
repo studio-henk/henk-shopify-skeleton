@@ -31,7 +31,6 @@
     </dl>
   {% endif %}
 
-
   {% if metaobject.address %}
     <dl>
       <dt>{{ 'store_detail.address' | t }}</dt>
@@ -50,10 +49,28 @@
     </dl>
   {% endif %}
 
+{% if metaobject.store_parking %}
     <dl>
       <dt>{{ 'store_detail.parking' | t }}</dt>
-      <dd>parkingggg</dd>
+      <dd>
+        <ul class="henk-store__parking">
+          {% for p in metaobject.store_parking.value %}
+            <li>
+              {% if p.url %}
+                <a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.name }}</a>
+              {% else %}
+                {{ p.name }}
+              {% endif %}
+              {% if p.details %}
+                , {{ p.details }}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </dd>
     </dl>
+  {% endif %}
+
 {% endcapture %}
 
   {% assign plan_visit = 'store_detail.plan_your_visit' | t %}

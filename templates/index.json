@@ -32,7 +32,7 @@
         "block1": {
           "type": "faq_item",
           "settings": {
-            "text": "This is my prefilled block! index"
+            "summary": "hello faq index"
           }
         }
       },

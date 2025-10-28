@@ -1,22 +1,17 @@
 <section class="henk-faq-section henk-section">
   <div class="henk-section__inner">
     <h2 class="henk-faq-section__title">{{ section.settings.title }}</h2>
-    <ul>
-      {% for block in section.blocks %}
-        <li>{{ block.settings.summary }}</li>
-      {% endfor %}
-    </ul>
     <div class="henk-details-group">
-      <!-- {% for block in section.blocks %} -->
-      <!-- {% render 'henk-details', -->
-      <!-- summary: block.settings.summary, -->
-      <!-- content: block.settings.content, -->
-      <!-- variant: block.settings.variant, -->
-      <!-- name: block.settings.name, -->
-      <!-- icon_name: block.settings.icon_name, -->
-      <!-- icon_size: block.settings.icon_size -->
-      <!-- %} -->
-      <!-- {% endfor %} -->
+      {% for block in section.blocks %}
+        {% render 'henk-details',
+          summary: block.settings.summary,
+          content: block.settings.content,
+          variant: block.settings.variant,
+          name: block.settings.name,
+          icon_name: block.settings.icon_name,
+          icon_size: block.settings.icon_size
+        %}
+      {% endfor %}
     </div>
   </div>
 </section>

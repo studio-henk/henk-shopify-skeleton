@@ -27,12 +27,12 @@
 
 {% schema %}
 {
-  "name": "FAQ Section",
+  "name": "Simple FAQ Section",
   "settings": [
     {
       "type": "text",
       "id": "title",
-      "label": "Section title",
+      "label": "Section Title",
       "default": "Frequently Asked Questions"
     }
   ],
@@ -43,9 +43,29 @@
       "settings": [
         {
           "type": "text",
-          "id": "summary",
+          "id": "text",
           "label": "Question",
-          "default": "What is the purpose of this component?"
+          "default": "Default question"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "category": "FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "text": "What is this?"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "text": "How does it work?"
+          }
         }
       ]
     }

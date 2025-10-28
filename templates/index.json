@@ -45,7 +45,7 @@
           }
         }
       },
-      "block_order": ["block1"]
+      "block_order": ["block1", "block2"]
     }
   },
   "order": ["section_header", "faq"]

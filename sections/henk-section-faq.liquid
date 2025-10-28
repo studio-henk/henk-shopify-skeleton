@@ -30,12 +30,30 @@
   ],
   "blocks": [
     {
-      "type": "faq",
+      "type": "faq_item",
       "name": "FAQ Item",
       "settings": [
-        { "type": "text", "id": "summary", "label": "Summary" },
-        { "type": "textarea", "id": "content", "label": "Content" },
-        { "type": "text", "id": "icon_name", "label": "Icon name" },
+        {
+          "type": "text",
+          "id": "summary",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Answer"
+        },
+        {
+          "type": "select",
+          "id": "icon_name",
+          "label": "Icon",
+          "options": [
+            { "value": "help-circle", "label": "Help Circle" },
+            { "value": "calendar", "label": "Calendar" },
+            { "value": "truck-thick", "label": "Truck" }
+          ],
+          "default": "help-circle"
+        },
         {
           "type": "select",
           "id": "icon_size",
@@ -47,83 +65,29 @@
           ],
           "default": "large"
         },
-        { "type": "text", "id": "variant", "label": "Variant", "default": "plusmin" },
-        { "type": "text", "id": "name", "label": "Group name", "default": "cc" }
+        {
+          "type": "select",
+          "id": "variant",
+          "label": "Variant",
+          "options": [
+            { "value": "default", "label": "Default" },
+            { "value": "plusmin", "label": "Plus / Minus" }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Details name",
+          "default": "cc"
+        }
       ]
     }
   ],
-  "max_blocks": 20,
   "presets": [
     {
       "name": "FAQ Section",
-      "blocks": [
-        {
-          "type": "faq",
-          "settings": {
-            "summary": "What is the purpose of this component?",
-            "content": "<p>This component is used to display a list of frequently asked questions.</p>",
-            "icon_name": "help-circle",
-            "icon_size": "large",
-            "variant": "plusmin",
-            "name": "cc"
-          }
-        },
-        {
-          "type": "faq",
-          "settings": {
-            "summary": "How many samples can I order?",
-            "content": "<p>You are free to assemble your own samples or choose from our curated sample packs, which include six material samples each. You can help us reduce waste by ordering only the samples you need.</p>",
-            "icon_name": "help-circle",
-            "icon_size": "large",
-            "variant": "plusmin",
-            "name": "cc"
-          }
-        },
-        {
-          "type": "faq",
-          "settings": {
-            "summary": "When can I expect my samples?",
-            "content": "<p>You should expect your samples within 7 days. Please contact us if you have not received your samples within one week.</p>",
-            "icon_name": "calendar",
-            "icon_size": "large",
-            "variant": "plusmin",
-            "name": "cc"
-          }
-        },
-        {
-          "type": "faq",
-          "settings": {
-            "summary": "Why do you want me to return the samples?",
-            "content": "<p>By returning your samples, you can help us ensure that nothing goes to waste. We repurpose samples by using them in the stores if they are still in good condition.</p>",
-            "icon_name": "help-circle",
-            "icon_size": "large",
-            "variant": "plusmin",
-            "name": "cc"
-          }
-        },
-        {
-          "type": "faq",
-          "settings": {
-            "summary": "How can I return my samples?",
-            "content": "<p>You can return your sample pack to any of our stores or mail it to us for free via Antwoordnummer 98189, 1000 VA Amsterdam.</p>",
-            "icon_name": "truck-thick",
-            "icon_size": "large",
-            "variant": "plusmin",
-            "name": "cc"
-          }
-        },
-        {
-          "type": "faq",
-          "settings": {
-            "summary": "Will I be reimbursed for the samples?",
-            "content": "<p>When you return the samples to one of our stores, we will reimburse the cost as a discount with your order. Unfortunately, we're not able to offer reimbursement when you return your samples to us via mail.</p>",
-            "icon_name": "help-circle",
-            "icon_size": "large",
-            "variant": "plusmin",
-            "name": "cc"
-          }
-        }
-      ]
+      "category": "FAQ"
     }
   ]
 }

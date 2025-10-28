@@ -26,7 +26,7 @@
     "faq": {
       "type": "henk-section-faq",
       "settings": {
-        "title": "My Section"
+        "title": "Frequently Asked Questions"
       },
       "blocks": {
         "block1": {

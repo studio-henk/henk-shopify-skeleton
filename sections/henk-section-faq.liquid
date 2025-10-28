@@ -1,12 +1,3 @@
-{{ section.settings }}
-{{ section.blocks }}
-
-{% for block in section.blocks %}
-  <p>{{ block.type }} — {{ block.settings.summary }}</p>
-{% else %}
-  <p>No blocks found.</p>
-{% endfor %}
-
 <section class="henk-faq-section henk-section">
   <div class="henk-section__inner">
     <h2 class="henk-faq-section__title">{{ section.settings.title }}</h2>

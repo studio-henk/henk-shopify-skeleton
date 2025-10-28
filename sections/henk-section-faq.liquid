@@ -6,6 +6,7 @@
 {% else %}
   <p>No blocks found.</p>
 {% endfor %}
+
 <section class="henk-faq-section henk-section">
   <div class="henk-section__inner">
     <h2 class="henk-faq-section__title">{{ section.settings.title }}</h2>
@@ -57,21 +58,7 @@
   "presets": [
     {
       "name": "FAQ Section",
-      "category": "FAQ",
-      "blocks": [
-        {
-          "type": "faq_item",
-          "settings": {
-            "text": "What is this?"
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "text": "How does it work?"
-          }
-        }
-      ]
+      "category": "FAQ"
     }
   ]
 }

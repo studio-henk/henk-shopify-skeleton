@@ -23,29 +23,23 @@
         "button_variant": "primary"
       }
     },
-    "faq": {
-      "type": "henk-section-faq",
+    "simple": {
+      "type": "simple-section",
       "blocks": {
-        "faq_item_1": {
-          "type": "faq_item",
+        "block_1": {
+          "type": "text_block",
           "settings": {
-            "text": "What is this?"
-          }
-        },
-        "faq_item_2": {
-          "type": "faq_item",
-          "settings": {
-            "text": "How does it work?"
+            "text": "This is my first block"
           }
         }
       },
       "settings": {
-        "title": "Frequently Asked Questions index"
+        "title": "Hello World"
       }
     }
   },
   "order": [
     "main",
-    "faq"
+    "simple"
   ]
 }

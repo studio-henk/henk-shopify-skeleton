@@ -22,7 +22,22 @@
         "button_url": "/collections",
         "button_variant": "primary"
       }
+    },
+    "main": {
+      "type": "simple-section",
+      "settings": {
+        "title": "My Section"
+      },
+      "blocks": {
+        "block1": {
+          "type": "text_block",
+          "settings": {
+            "text": "This is my prefilled block!"
+          }
+        }
+      },
+      "block_order": ["block1"]
     }
   },
-  "order": ["section_header"]
+  "order": ["section_header", "main"]
 }

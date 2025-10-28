@@ -43,10 +43,6 @@
     {{ content_for_header }}
 
     <script type="module">
-      // document.documentElement.classList.remove('no-js');
-      // document.documentElement.classList.add('js-enabled');
-
-      // import { mobileMenu } from './assets/henk-mobile-menu.min.js';
       import { mobileMenu } from '{{ "henk-mobile-menu.min.js" | asset_url }}';
 
       document.addEventListener('DOMContentLoaded', () => {

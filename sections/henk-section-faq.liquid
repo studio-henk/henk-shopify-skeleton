@@ -9,7 +9,11 @@
 <section class="henk-faq-section henk-section">
   <div class="henk-section__inner">
     <h2 class="henk-faq-section__title">{{ section.settings.title }}</h2>
-
+    <ul>
+      {% for block in section.blocks %}
+        <li>{{ block.settings.text }}</li>
+      {% endfor %}
+    </ul>
     <div class="henk-details-group">
       <!-- {% for block in section.blocks %} -->
       <!-- {% render 'henk-details', -->

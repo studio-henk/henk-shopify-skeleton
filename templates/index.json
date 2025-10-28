@@ -23,21 +23,6 @@
         "button_variant": "primary"
       }
     },
-    "simple_section": {
-      "type": "simple-section",
-      "settings": {
-        "title": "My Section"
-      },
-      "blocks": {
-        "block1": {
-          "type": "text_block",
-          "settings": {
-            "text": "This is my prefilled block!"
-          }
-        }
-      },
-      "block_order": ["block1"]
-    },
     "faq": {
       "type": "henk-section-faq",
       "settings": {
@@ -54,5 +39,5 @@
       "block_order": ["block1"]
     }
   },
-  "order": ["section_header", "simple_section", "faq"]
+  "order": ["section_header", "faq"]
 }

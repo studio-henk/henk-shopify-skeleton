@@ -22,9 +22,40 @@
         "button_url": "/collections",
         "button_variant": "primary"
       }
+    },
+    "faq": {
+      "type": "henk-section-faq",
+      "blocks": {
+        "faq_item_1": {
+          "type": "faq_item",
+          "settings": {
+            "summary": "What is the purpose of this component?",
+            "content": "<p>This component is used to display a list of frequently asked questions.</p>",
+            "icon_name": "help-circle",
+            "icon_size": "large",
+            "variant": "plusmin",
+            "name": "cc"
+          }
+        },
+        "faq_item_2": {
+          "type": "faq_item",
+          "settings": {
+            "summary": "How many samples can I order?",
+            "content": "<p>You are free to assemble your own samples or choose from our curated sample packs, which include six material samples each. You can help us reduce waste by ordering only the samples you need.</p>",
+            "icon_name": "help-circle",
+            "icon_size": "large",
+            "variant": "plusmin",
+            "name": "cc"
+          }
+        }
+      },
+      "settings": {
+        "title": "Frequently Asked Questions"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "faq"
   ]
 }

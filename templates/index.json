@@ -39,8 +39,8 @@
         "block2": {
           "type": "faq_item",
           "settings": {
-            "summary": "How can I return my samples?",
-            "content": "<p>This component is designed to provide answers to common questions users may have about our products and services.</p>",
+            "summary": "How can I return my samples? ",
+            "content": "<p>You can return your sample pack to any of our stores or mail it to us for free via Antwoordnummer 98189, 1000 VA Amsterdam.</p>",
             "icon_name": "truck-thick"
           }
         }

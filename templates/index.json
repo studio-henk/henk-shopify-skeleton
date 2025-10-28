@@ -37,7 +37,22 @@
         }
       },
       "block_order": ["block1"]
+    },
+    "faq": {
+      "type": "henk-section-faq",
+      "settings": {
+        "title": "My Section"
+      },
+      "blocks": {
+        "block1": {
+          "type": "faq_item",
+          "settings": {
+            "text": "This is my prefilled block!"
+          }
+        }
+      },
+      "block_order": ["block1"]
     }
   },
-  "order": ["section_header", "simple_section"]
+  "order": ["section_header", "simple_section", "faq"]
 }

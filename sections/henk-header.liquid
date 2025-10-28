@@ -149,6 +149,14 @@
     <!-- logo -->
     {% if template == 'index' %}
       <h1 class="henk-header__logo-heading">
+        <a
+          class="henk-logo henk-logo--transparent henk-header__logo"
+          href="{{ routes.root_url }}"
+          aria-label="Studio HENK"
+        >
+          {%- render 'henk-logo' -%}
+        </a>
+      </h1>
     {% endif %}
     <a
       class="henk-logo henk-logo--transparent henk-header__logo"
@@ -157,9 +165,6 @@
     >
       {%- render 'henk-logo' -%}
     </a>
-    {% if template == 'index' %}
-      </h1>
-    {% endif %}
     <div class="henk-header__utils" data-js-utils>
       {%- if localization and localization.available_languages.size > 0 -%}
         <div class="henk-localise">

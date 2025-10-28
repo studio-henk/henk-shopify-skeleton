@@ -16,7 +16,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "shopify theme dev -e develop"
+    "dev": "shopify theme dev -e develop",
+    "preview_staging": "open https://surf-turf-2-0.myshopify.com/?preview_theme_id=141473448097",
+    "preview_staging_admin": "open https://surf-turf-2-0.myshopify.com/admin/themes/141473448097/editor"
   },
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "^1.10.0",

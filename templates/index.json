@@ -23,7 +23,7 @@
         "button_variant": "primary"
       }
     },
-    "main": {
+    "simple_section": {
       "type": "simple-section",
       "settings": {
         "title": "My Section"
@@ -39,5 +39,5 @@
       "block_order": ["block1"]
     }
   },
-  "order": ["section_header", "main"]
+  "order": ["section_header", "simple_section"]
 }

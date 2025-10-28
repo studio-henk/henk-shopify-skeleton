@@ -32,7 +32,7 @@
         "block1": {
           "type": "faq_item",
           "settings": {
-            "summary": "hello faq index"
+            "summary": "What is the purpose of this component?"
           }
         }
       },

@@ -4,12 +4,12 @@
 - [ ] filter widget
 
 ## stores overview 
-- [ ] redo 2nd block
-- [ ] translate haarlem to nl, en, de
-- [ ] translate rotterdam to nl, en, de
-- [ ] translate utrecht to nl, en, de
-- [ ] translate antwerp to nl, en, de
-- [ ] check breadcrumbs
+- [ ] stores detail: check breadcrumbs: willen we Winkels ervoor?
+- [x] redo 2nd block
+- [x] translate haarlem to nl, en, de
+- [x] translate rotterdam to nl, en, de
+- [x] translate utrecht to nl, en, de
+- [x] translate antwerp to nl, en, de
 - [x] translate amsterdam to nl, en, de
 - [x] translations discover button
 
@@ -22,7 +22,7 @@
 ## Other
 
 - [ ] translations for info boxes?
-- [ ] check: The resource http://127.0.0.1:9292/cdn/shop/t/15/assets/NeueHaasGrotTextRound-55Roman-Web.woff2?v=110563115276511605801758284655 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+- [x] check: The resource http://127.0.0.1:9292/cdn/shop/t/15/assets/NeueHaasGrotTextRound-55Roman-Web.woff2?v=110563115276511605801758284655 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
 - [ ] wc input id...randomise? or item id?
 - [ ] favicon
 - [ ] Set focus styles / focus-visible 

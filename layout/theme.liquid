@@ -7,7 +7,11 @@
     </script>
 
     <!-- # preload fonts -->
-    {{ 'NeueHaasGrotTextRound-55Roman-Web.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2' }}
+    <!-- {{ -->
+    <!-- 'NeueHaasGrotTextRound-55Roman-Web.woff2' -->
+    <!-- | asset_url -->
+    <!-- | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' -->
+    <!-- }} -->
 
     {% # Inlined CSS Variables %}
     {% comment %} {% render 'css-variables' %} {% endcomment %}

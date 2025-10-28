@@ -1,0 +1,92 @@
+<section class="henk-faq-section henk-section">
+  <div class="henk-section__inner">
+    <h2 class="henk-faq-section__title">{{ section.settings.title }}</h2>
+    <div class="henk-details-group">
+      {% for block in section.blocks %}
+        {% render 'henk-details',
+          summary: block.settings.summary,
+          content: block.settings.content,
+          variant: block.settings.variant,
+          name: block.settings.name,
+          icon_name: block.settings.icon_name,
+          icon_size: block.settings.icon_size
+        %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Frequently Asked Questions"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        { "type": "text", "id": "summary", "label": "Question", "default": "Default question?" },
+        { "type": "richtext", "id": "content", "label": "Answer", "default": "<p>Default answer content.</p>" },
+        {
+          "type": "select",
+          "id": "variant",
+          "label": "Variant",
+          "options": [
+            { "value": "default", "label": "Default" },
+            { "value": "plusmin", "label": "Plus / Minus" }
+          ],
+          "default": "plusmin"
+        },
+        { "type": "text", "id": "name", "label": "Details name", "default": "cc" },
+        {
+          "type": "select",
+          "id": "icon_name",
+          "label": "Icon",
+          "options": [
+            { "value": "help-circle", "label": "Help Circle" },
+            { "value": "calendar", "label": "Calendar" },
+            { "value": "truck-thick", "label": "Truck" }
+          ],
+          "default": "calendar"
+        },
+        {
+          "type": "select",
+          "id": "icon_size",
+          "label": "Icon size",
+          "options": [
+            { "value": "small", "label": "Small" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "large", "label": "Large" }
+          ],
+          "default": "large"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "summary": "What is the purpose of this component?",
+            "content": "<p>This component is used to display a list of frequently asked questions.</p>",
+            "variant": "plusmin",
+            "name": "cc",
+            "icon_name": "calendar",
+            "icon_size": "large"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

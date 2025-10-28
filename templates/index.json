@@ -22,24 +22,7 @@
         "button_url": "/collections",
         "button_variant": "primary"
       }
-    },
-    "simple": {
-      "type": "simple-section",
-      "blocks": {
-        "block1": {
-          "type": "text_block",
-          "settings": {
-            "text": "This is my first block"
-          }
-        }
-      },
-      "settings": {
-        "title": "Hello World"
-      }
     }
   },
-  "order": [
-    "main",
-    "simple"
-  ]
+  "order": ["main"]
 }

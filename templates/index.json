@@ -17,7 +17,7 @@
         "title": "Ontdek onze interieurs",
         "text": "<p>Hoog....</p>",
         "level": "1",
-        "align": "center",
+        "align": "left",
         "button_label": "Koop nu",
         "button_url": "/collections",
         "button_variant": "primary"

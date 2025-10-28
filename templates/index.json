@@ -41,7 +41,7 @@
           "settings": {
             "summary": "What is the purpose of this component?",
             "content": "<p>This component is designed to provide answers to common questions users may have about our products and services.</p>",
-            "icon_name": "calendar"
+            "icon_name": "truck-thick"
           }
         }
       },

@@ -5,7 +5,6 @@
 <!-- onload="this.media='all'" -->
 <!-- > -->
 <!-- <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script> -->
-
 {% assign main_level_links = linklists['main-menu'].links %}
 <header
   class="henk-header henk-header--center henk-header--in-between"
@@ -148,13 +147,26 @@
     </ul>
 
     <!-- logo -->
-    <a
-      class="henk-logo henk-logo--transparent henk-header__logo"
-      href="{{ routes.root_url }}"
-      aria-label="Studio HENK"
-    >
-      {%- render 'henk-logo' -%}
-    </a>
+    {% if template == 'index' %}
+      <h1 class="henk-header__logo-heading">
+        <span class="visually-hidden">Studio HENK</span>
+        <a
+          class="henk-logo henk-logo--transparent henk-header__logo"
+          href="{{ routes.root_url }}"
+          aria-label="Studio HENK"
+        >
+          {%- render 'henk-logo' -%}
+        </a>
+      </h1>
+    {% else %}
+      <a
+        class="henk-logo henk-logo--transparent henk-header__logo"
+        href="{{ routes.root_url }}"
+        aria-label="Studio HENK"
+      >
+        {%- render 'henk-logo' -%}
+      </a>
+    {% endif %}
     <div class="henk-header__utils" data-js-utils>
       {%- if localization and localization.available_languages.size > 0 -%}
         <div class="henk-localise">

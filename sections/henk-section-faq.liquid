@@ -1,10 +1,10 @@
 <section class="henk-faq-section henk-section">
   <div class="henk-section__inner">
     <h2 class="henk-faq-section__title">{{ section.settings.title }}</h2>
+
     <div class="henk-details-group">
       {% for block in section.blocks %}
-        {%
-          include 'details-component' with
+        {% render 'henk-details',
           summary: block.settings.summary,
           content: block.settings.content,
           variant: block.settings.variant,

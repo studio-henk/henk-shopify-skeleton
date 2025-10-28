@@ -39,7 +39,7 @@
         "block2": {
           "type": "faq_item",
           "settings": {
-            "summary": "What is the purpose of this component?",
+            "summary": "How can I return my samples?",
             "content": "<p>This component is designed to provide answers to common questions users may have about our products and services.</p>",
             "icon_name": "truck-thick"
           }

@@ -25,10 +25,27 @@
     },
     "faq": {
       "type": "henk-section-faq",
+      "blocks": {
+        "faq_item_1": {
+          "type": "faq_item",
+          "settings": {
+            "text": "What is this?"
+          }
+        },
+        "faq_item_2": {
+          "type": "faq_item",
+          "settings": {
+            "text": "How does it work?"
+          }
+        }
+      },
       "settings": {
         "title": "Frequently Asked Questions index"
       }
     }
   },
-  "order": ["main", "faq"]
+  "order": [
+    "main",
+    "faq"
+  ]
 }

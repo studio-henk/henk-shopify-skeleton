@@ -23,6 +23,10 @@
         "button_variant": "primary"
       }
     },
+    "video_section": {
+      "type": "henk-section-video",
+      "settings": {}
+    },
     "faq": {
       "type": "henk-section-faq",
       "blocks": {
@@ -60,6 +64,7 @@
   },
   "order": [
     "section_header",
+    "video_section",
     "faq"
   ]
 }

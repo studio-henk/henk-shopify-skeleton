@@ -21,7 +21,7 @@
   {% assign poster_url = section.settings.video_poster %}
 
   {% if poster_url contains '//cdn.shopify.com' %}
-    {% unless poster_url contains 'http' %}
+    {% unless poster_url contains 'https:' %}
       {% assign poster_url = 'https:' | append: poster_url %}
     {% endunless %}
   {% else %}
@@ -30,7 +30,7 @@
 {% endif %}
 
 <section
-  class="    henk-video-section"
+  class="henk-video-section"
 >
   {% render 'henk-video',
     id: section.id,

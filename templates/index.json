@@ -23,18 +23,6 @@
         "button_variant": "primary"
       }
     },
-    "video_section": {
-      "type": "henk-section-video",
-      "settings": {
-        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
-        "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
-        "autoplay": true,
-        "loop": true,
-        "cover": true,
-        "rounded": false,
-        "description": "Studio HENK – craftsmanship in motion"
-      }
-    },
     "faq": {
       "type": "henk-section-faq",
       "blocks": {
@@ -68,11 +56,58 @@
       "settings": {
         "title": "Veelgestelde vragen"
       }
+    },
+    "henk_section_faq_qVRgUC": {
+      "type": "henk-section-faq",
+      "blocks": {
+        "faq_item_TVWfhi": {
+          "type": "faq_item",
+          "settings": {
+            "summary": "What is the purpose of this component?",
+            "content": "<p>This component is designed to provide answers to common questions users may have about our products and services.</p>",
+            "variant": "plusmin",
+            "name": "cc",
+            "icon_name": "calendar",
+            "icon_size": "large"
+          }
+        },
+        "faq_item_njtidH": {
+          "type": "faq_item",
+          "settings": {
+            "summary": "How can I return my samples?",
+            "content": "<p>You can return your sample pack to any of our stores or mail it to us for free via Antwoordnummer 98189, 1000 VA Amsterdam.</p>",
+            "variant": "plusmin",
+            "name": "cc",
+            "icon_name": "truck-thick",
+            "icon_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_TVWfhi",
+        "faq_item_njtidH"
+      ],
+      "settings": {
+        "title": "Veelgestelde vragen"
+      }
+    },
+    "video_section": {
+      "type": "henk-section-video",
+      "settings": {
+        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
+        "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
+        "autoplay": true,
+        "loop": true,
+        "cover": true,
+        "rounded": false,
+        "description": "Studio HENK – craftsmanship in motion"
+      }
     }
   },
   "order": [
     "section_header",
-    "video_section",
-    "faq"
+    "faq",
+    "henk_section_faq_qVRgUC",
+    "video_section"
   ]
 }

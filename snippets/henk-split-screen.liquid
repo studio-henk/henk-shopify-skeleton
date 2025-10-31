@@ -24,85 +24,27 @@
       <!-- IMAGE COLUMN -->
       <div class="henk-split-screen__grid-item">
         {% if media_obj %}
-          {% if imageLink %}
-            <a
-              href="{{ imageLink }}"
-              {% if imageLinkTargetBlank %}
-                target="_blank" rel="noopener"
-              {% endif %}
-            >
-              {% case media_obj.media_type %}
-                {% when 'image' %}
-                  {{
-                    media_obj
-                    | image_url: width: 1152, height: 1728
-                    | image_tag: alt: imageAlt, class: 'henk-split-screen__img'
-                  }}
-                {% when 'video' %}
-                  {% comment %} {{ media_obj | json }} {% endcomment %}
-                  {% render 'henk-video',
-                    id: id,
-                    src: media_obj,
-                    poster: media_obj.preview_image.src,
-                    autoplay: true,
-                    loop: true,
-                    cover: true,
-                    rounded: false,
-                    description: imageAlt,
-                    link: imageLink,
-                    link_target_blank: imageLinkTargetBlank
-                  %}
-                  <!-- <video -->
-                  <!-- class="henk-split-screen__video" -->
-                  <!-- autoplay -->
-                  <!-- loop -->
-                  <!-- muted -->
-                  <!-- playsinline -->
-                  <!-- {% if imageAlt %} -->
-                  <!-- aria-label="{{ imageAlt | escape }}" -->
-                  <!-- {% endif %} -->
-                  <!-- > -->
-                  <!-- {% for source in media_obj.sources %} -->
-                  <!-- <source src="{{ source.url }}" type="{{ source.mime_type }}"> -->
-                  <!-- {% endfor %} -->
-                  <!-- </video> -->
-              {% endcase %}
-            </a>
-          {% else %}
-            {% case media_obj.media_type %}
-              {% when 'image' %}
-                {{
-                  media_obj
-                  | image_url: width: 1152, height: 1728
-                  | image_tag: imageAlt, class: 'henk-split-screen__img'
-                }}
-              {% when 'video' %}
-                {% render 'henk-video',
-                  id: id,
-                  src: media_obj,
-                  poster: media_obj.preview_image.src,
-                  autoplay: true,
-                  loop: true,
-                  cover: true,
-                  rounded: false,
-                  description: imageAlt
-                %}
-                <!-- <video -->
-                <!-- class="henk-split-screen__video" -->
-                <!-- autoplay -->
-                <!-- loop -->
-                <!-- muted -->
-                <!-- playsinline -->
-                <!-- {% if imageAlt %} -->
-                <!-- aria-label="{{ imageAlt | escape }}" -->
-                <!-- {% endif %} -->
-                <!-- > -->
-                <!-- {% for source in media_obj.sources %} -->
-                <!-- <source src="{{ source.url }}" type="{{ source.mime_type }}"> -->
-                <!-- {% endfor %} -->
-                <!-- </video> -->
-            {% endcase %}
-          {% endif %}
+          {% case media_obj.media_type %}
+            {% when 'image' %}
+              {{
+                media_obj
+                | image_url: width: 1152, height: 1728
+                | image_tag: imageAlt, class: 'henk-split-screen__img'
+              }}
+            {% when 'video' %}
+              {% render 'henk-video',
+                id: id,
+                src: media_obj,
+                poster: media_obj.preview_image.src,
+                autoplay: true,
+                loop: true,
+                cover: true,
+                rounded: false,
+                description: imageAlt,
+                link: imageLink,
+                link_target_blank: imageLinkTargetBlank
+              %}
+          {% endcase %}
         {% endif %}
       </div>
 

@@ -1,0 +1,78 @@
+{% comment %}
+  henk-section-video.liquid
+  - A full-width video section.
+  - Uses the `henk-video` snippet for markup + JS behavior.
+{% endcomment %}
+
+<section
+  class="
+    henk-video-section
+    {% if section.settings.cover %} henk-video-section--cover{% endif %}
+    {% if section.settings.rounded %} henk-video-section--rounded{% endif %}
+  "
+>
+  {% render 'henk-video',
+    id: section.id,
+    src: section.settings.video_src,
+    poster: section.settings.video_poster,
+    autoplay: section.settings.autoplay,
+    loop: section.settings.loop,
+    cover: section.settings.cover,
+    rounded: section.settings.rounded,
+    description: section.settings.description
+  %}
+</section>
+
+{% schema %}
+{
+  "name": "Video Section",
+  "settings": [
+    {
+      "type": "url",
+      "id": "video_src",
+      "label": "Video URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "video_poster",
+      "label": "Poster image"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay video",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop video",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "cover",
+      "label": "Cover container (object-fit: cover)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "rounded",
+      "label": "Rounded corners",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Accessibility description (for screen readers)",
+      "default": "Background video"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Section",
+      "category": "Media"
+    }
+  ]
+}
+{% endschema %}

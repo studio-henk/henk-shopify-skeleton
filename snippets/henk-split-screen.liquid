@@ -6,7 +6,13 @@
     buttonUrl, buttonText, buttonVariant, reverse
 {% endcomment %}
 
-{% assign media_obj = media.value %}
+{% comment %} {% assign media_obj = media.value %} {% endcomment %}
+
+{% if media.value %}
+  {% assign media_obj = media.value %}
+{% else %}
+  {% assign media_obj = media %}
+{% endif %}
 
 <div
   class="henk-section henk-split-screen{% if bgColor and bgColor != 'default' %} henk-split-screen--bg-{{ bgColor }}{% endif %}"

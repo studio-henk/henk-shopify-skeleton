@@ -62,7 +62,7 @@
       "name": "Video Section",
       "settings": {
         "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
-        "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
+        "video_poster": "shopify://shop_images/LI-DISPL-8010.jpg",
         "autoplay": true,
         "loop": true,
         "cover": true,

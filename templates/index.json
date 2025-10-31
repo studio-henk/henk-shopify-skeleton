@@ -26,13 +26,12 @@
     "video_section": {
       "type": "henk-section-video",
       "settings": {
-        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
-        "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
-        "autoplay": false,
+        "video_poster": "",
+        "autoplay": true,
         "loop": true,
-        "cover": false,
+        "cover": true,
         "rounded": false,
-        "description": "Background video"
+        "description": "Studio HENK – craftsmanship in motion"
       }
     },
     "faq": {

@@ -79,9 +79,10 @@
     </button>
   {% endif %}
 </div>
-{% javascript %}
+
+<script>
   document.addEventListener('DOMContentLoaded', function () {
-    const container = document.getElementById('{{ video_id }}');
+    const container = document.getElementById('{{ video_id | escape }}');
     if (!container) return;
 
     const video = container.querySelector('video');
@@ -90,7 +91,6 @@
     const svgPlaying = button?.querySelector('.volume-2');
 
     if (button) {
-      // Initial state
       svgMuted.style.display = 'block';
       svgPlaying.style.display = 'none';
 
@@ -101,7 +101,6 @@
       });
     }
 
-    // IntersectionObserver for autoplay/pause
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -122,4 +121,4 @@
 
     observer.observe(video);
   });
-{% endjavascript %}
+</script>

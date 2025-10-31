@@ -80,23 +80,30 @@
       </video>
     {% endif %}
   {% else %}
-    <video
-      class="henk-video"
-      src="{{ src }}"
-      {% if poster %}
-        poster="{{ poster }}"
+    <a
+      href="{{ link }}"
+      {% if link_target_blank %}
+        target="_blank" rel="noopener"
       {% endif %}
-      {% if autoplay %}
-        autoplay muted playsinline
-      {% else %}
-        controls
-      {% endif %}
-      {% if loop %}
-        loop
-      {% endif %}
-      preload="auto"
-      aria-label="{{ description | escape }}"
-    ></video>
+    >
+      <video
+        class="henk-video"
+        src="{{ src }}"
+        {% if poster %}
+          poster="{{ poster }}"
+        {% endif %}
+        {% if autoplay %}
+          autoplay muted playsinline
+        {% else %}
+          controls
+        {% endif %}
+        {% if loop %}
+          loop
+        {% endif %}
+        preload="auto"
+        aria-label="{{ description | escape }}"
+      ></video>
+    </a>
   {% endif %}
 
   {% if autoplay %}

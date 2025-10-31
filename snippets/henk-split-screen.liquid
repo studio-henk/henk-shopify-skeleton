@@ -39,20 +39,30 @@
                     | image_tag: alt: imageAlt, class: 'henk-split-screen__img'
                   }}
                 {% when 'video' %}
-                  <video
-                    class="henk-split-screen__video"
-                    autoplay
-                    loop
-                    muted
-                    playsinline
-                    {% if imageAlt %}
-                      aria-label="{{ imageAlt | escape }}"
-                    {% endif %}
-                  >
-                    {% for source in media_obj.sources %}
-                      <source src="{{ source.url }}" type="{{ source.mime_type }}">
-                    {% endfor %}
-                  </video>
+                  {% render 'henk-video',
+                    id: id,
+                    src: media_obj.sources[0].url,
+                    poster: media_obj.preview_image.src,
+                    autoplay: true,
+                    loop: true,
+                    cover: false,
+                    rounded: false,
+                    description: imageAlt
+                  %}
+                  <!-- <video -->
+                  <!-- class="henk-split-screen__video" -->
+                  <!-- autoplay -->
+                  <!-- loop -->
+                  <!-- muted -->
+                  <!-- playsinline -->
+                  <!-- {% if imageAlt %} -->
+                  <!-- aria-label="{{ imageAlt | escape }}" -->
+                  <!-- {% endif %} -->
+                  <!-- > -->
+                  <!-- {% for source in media_obj.sources %} -->
+                  <!-- <source src="{{ source.url }}" type="{{ source.mime_type }}"> -->
+                  <!-- {% endfor %} -->
+                  <!-- </video> -->
               {% endcase %}
             </a>
           {% else %}

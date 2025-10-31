@@ -11,7 +11,9 @@
     description: string (optional)
 {%- endcomment -%}
 
-{%- assign video_id = id | default: section.id | append: '-video' -%}
+{% comment %} {%- assign video_id = id | default: section.id | append: '-video' -%} {% endcomment %}
+
+{%- assign video_id = id | default: 'split-screen-video-' | append: media_obj.id | append: '-video' -%}
 
 <div
   id="{{ video_id }}"

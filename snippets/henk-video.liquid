@@ -9,6 +9,9 @@
     cover: boolean (default: false)
     rounded: boolean (default: false)
     description: string (optional)
+
+                link: imageLink,
+                link_target_blank: imageLinkTargetBlank
 {%- endcomment -%}
 
 {% comment %} {%- assign video_id = id | default: section.id | append: '-video' -%} {% endcomment %}
@@ -155,7 +158,7 @@
           }
         });
       },
-      { threshold: 0.5 },
+      { threshold: 0.3 },
     );
 
     observer.observe(video);

@@ -34,12 +34,12 @@
         "caption": "captionnnnn",
         "level": 2,
         "display": false,
-        "imageAlt": "",
+        "imageAlt": "dfgdgfdgdg",
         "imageLink": "",
         "imageLinkTargetBlank": false,
-        "buttonUrl": "",
-        "buttonText": "",
-        "buttonVariant": "default",
+        "buttonUrl": "shopify://blogs/henk-visits",
+        "buttonText": "oi",
+        "buttonVariant": "primary",
         "reverse": false
       }
     },

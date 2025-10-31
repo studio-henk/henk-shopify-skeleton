@@ -6,14 +6,14 @@
 {% assign video_url = '' %}
 {% assign max_width = 0 %}
 
-{% if section.settings.video_src.sources %}
-  {% for source in section.settings.video_src.sources %}
-    {% if source.format == 'mp4' and source.width > max_width %}
-      {% assign max_width = source.width %}
-      {% assign video_url = 'https:' | append: source.url %}
-    {% endif %}
-  {% endfor %}
-{% endif %}
+{% comment %} {% if section.settings.video_src.sources %} {% endcomment %}
+{% comment %}   {% for source in section.settings.video_src.sources %} {% endcomment %}
+{% comment %}     {% if source.format == 'mp4' and source.width > max_width %} {% endcomment %}
+{% comment %}       {% assign max_width = source.width %} {% endcomment %}
+{% comment %}       {% assign video_url = 'https:' | append: source.url %} {% endcomment %}
+{% comment %}     {% endif %} {% endcomment %}
+{% comment %}   {% endfor %} {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
 
 {% assign poster_url = section.settings.video_poster | image_url: width: 1200 %}
 

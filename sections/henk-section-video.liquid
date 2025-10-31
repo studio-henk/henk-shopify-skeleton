@@ -32,7 +32,8 @@
 {% comment %}   {% endif %} {% endcomment %}
 {% comment %} {% endif %} {% endcomment %}
 
-{% assign poster_url = section.settings.video_poster | file_url %}
+{% comment %} {% assign poster_url = section.settings.video_poster | file_url %} {% endcomment %}
+{% assign poster_url = section.settings.video_poster | image_url: width: 1200 %}
 {{ poster_url }}
 
 <section

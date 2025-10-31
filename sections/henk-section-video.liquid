@@ -4,7 +4,6 @@
   - Uses the `henk-video` snippet for markup + JS behavior.
 {% endcomment %}
 
-{% assign video_id = section.id | append: '-video' %}
 {% assign video_url = '' %}
 {% assign max_width = 0 %}
 
@@ -20,8 +19,11 @@
 {% assign poster_url = '' %}
 {% if section.settings.video_poster %}
   {% assign poster_url = section.settings.video_poster %}
+
   {% if poster_url contains '//cdn.shopify.com' %}
-    {% assign poster_url = 'https:' | append: poster_url %}
+    {% unless poster_url contains 'http' %}
+      {% assign poster_url = 'https:' | append: poster_url %}
+    {% endunless %}
   {% else %}
     {% assign poster_url = poster_url | asset_url %}
   {% endif %}

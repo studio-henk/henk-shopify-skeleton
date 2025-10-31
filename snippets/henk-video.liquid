@@ -15,7 +15,7 @@
 
 {%- assign video_id = id | default: 'split-screen-video-' | append: media_obj.id | append: '-video' -%}
 
-{{ src | json }}
+{% comment %} {{ src | json }} {% endcomment %}
 
 <div
   id="{{ video_id }}"

@@ -23,6 +23,26 @@
         "button_variant": "primary"
       }
     },
+    "henk_section_splitscreen_4jCGtk": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "bgColor": "",
+        "id": "ss1",
+        "title": "my first splitscreen",
+        "content": "hello hello",
+        "caption": "captionnnnn",
+        "level": 2,
+        "display": false,
+        "imageAlt": "",
+        "imageLink": "",
+        "imageLinkTargetBlank": false,
+        "buttonUrl": "",
+        "buttonText": "",
+        "buttonVariant": "default",
+        "reverse": false
+      }
+    },
     "faq": {
       "type": "henk-section-faq",
       "blocks": {
@@ -75,6 +95,7 @@
   },
   "order": [
     "section_header",
+    "henk_section_splitscreen_4jCGtk",
     "faq",
     "henk_section_video_WJRALD"
   ]

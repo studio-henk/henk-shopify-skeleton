@@ -39,7 +39,7 @@
                     | image_tag: alt: imageAlt, class: 'henk-split-screen__img'
                   }}
                 {% when 'video' %}
-                  {{ media_obj | json }}
+                  {% comment %} {{ media_obj | json }} {% endcomment %}
                   {% render 'henk-video',
                     id: id,
                     src: media_obj.sources,

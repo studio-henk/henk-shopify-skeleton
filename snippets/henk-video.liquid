@@ -79,9 +79,8 @@
     </button>
   {% endif %}
 </div>
-
 {% javascript %}
-  (function () {
+  document.addEventListener('DOMContentLoaded', function () {
     const container = document.getElementById('{{ video_id }}');
     if (!container) return;
 
@@ -91,7 +90,7 @@
     const svgPlaying = button?.querySelector('.volume-2');
 
     if (button) {
-      // Start muted view
+      // Initial state
       svgMuted.style.display = 'block';
       svgPlaying.style.display = 'none';
 
@@ -102,7 +101,7 @@
       });
     }
 
-    // Observe visibility for autoplay/pause
+    // IntersectionObserver for autoplay/pause
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -122,5 +121,5 @@
     );
 
     observer.observe(video);
-  })();
+  });
 {% endjavascript %}

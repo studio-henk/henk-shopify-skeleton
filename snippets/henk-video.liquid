@@ -9,9 +9,8 @@
     cover: boolean (default: false)
     rounded: boolean (default: false)
     description: string (optional)
-
-                link: imageLink,
-                link_target_blank: imageLinkTargetBlank
+    link: imageLink,
+    link_target_blank: imageLinkTargetBlank
 {%- endcomment -%}
 
 {% comment %} {%- assign video_id = id | default: section.id | append: '-video' -%} {% endcomment %}
@@ -19,6 +18,7 @@
 {%- assign video_id = id | default: 'split-screen-video-' | append: media_obj.id | append: '-video' -%}
 
 {% comment %} {{ src | json }} {% endcomment %}
+{{ link }}
 
 <div
   id="{{ video_id }}"

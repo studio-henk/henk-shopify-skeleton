@@ -1,0 +1,109 @@
+{% comment %}
+  Section: henk-section-splitscreen.liquid
+  Purpose: Split-screen section with media (image or video) and text content.
+{% endcomment %}
+
+{% render 'henk-split-screen',
+  bgColor: section.settings.bg_color,
+  id: section.id,
+  title: section.settings.heading,
+  caption: section.settings.caption,
+  level: section.settings.heading_level,
+  display: section.settings.display_heading,
+  content: section.settings.text,
+  media: section.settings.media,
+  imageAlt: section.settings.media.alt,
+  imageLink: section.settings.media_link,
+  imageLinkTargetBlank: section.settings.media_link_blank,
+  buttonUrl: section.settings.button_url,
+  buttonText: section.settings.button_text,
+  buttonVariant: section.settings.button_variant,
+  reverse: section.settings.reverse
+%}
+
+{% schema %}
+{
+  "name": "Split Screen Section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bgColor",
+      "label": "Background color"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Section ID"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption"
+    },
+    {
+      "type": "number",
+      "id": "level",
+      "label": "Heading level",
+      "default": 2
+    },
+    {
+      "type": "checkbox",
+      "id": "display",
+      "label": "Display style",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "imageAlt",
+      "label": "Image alt text"
+    },
+    {
+      "type": "url",
+      "id": "imageLink",
+      "label": "Media link URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "imageLinkTargetBlank",
+      "label": "Open link in new tab",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "buttonUrl",
+      "label": "Button URL"
+    },
+    {
+      "type": "text",
+      "id": "buttonText",
+      "label": "Button text"
+    },
+    {
+      "type": "select",
+      "id": "buttonVariant",
+      "label": "Button style",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "primary", "label": "Primary" }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "Reverse order",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

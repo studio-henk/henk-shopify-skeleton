@@ -16,21 +16,21 @@
   {% endfor %}
 {% endif %}
 
-{% assign poster_url = '' %}
-{% if section.settings.video_poster %}
-  {% assign poster_url = section.settings.video_poster %}
-
-  {% if poster_url contains '//cdn.shopify.com' %}
-    oi
-    {% unless poster_url contains 'https:' %}
-      whtf
-      {% assign poster_url = 'https:' | append: poster_url %}
-    {% endunless %}
-  {% else %}
-    ?????
-    {% assign poster_url = poster_url %}
-  {% endif %}
-{% endif %}
+{% comment %} {% assign poster_url = '' %} {% endcomment %}
+{% comment %} {% if section.settings.video_poster %} {% endcomment %}
+{% comment %}   {% assign poster_url = section.settings.video_poster %} {% endcomment %}
+{% comment %}{% endcomment %}
+{% comment %}   {% if poster_url contains '//cdn.shopify.com' %} {% endcomment %}
+{% comment %}     oi {% endcomment %}
+{% comment %}     {% unless poster_url contains 'https:' %} {% endcomment %}
+{% comment %}       whtf {% endcomment %}
+{% comment %}       {% assign poster_url = 'https:' | append: poster_url %} {% endcomment %}
+{% comment %}     {% endunless %} {% endcomment %}
+{% comment %}   {% else %} {% endcomment %}
+{% comment %}     ????? {% endcomment %}
+{% comment %}     {% assign poster_url = poster_url %} {% endcomment %}
+{% comment %}   {% endif %} {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
 
 <section
   class="henk-video-section"

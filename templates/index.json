@@ -49,11 +49,31 @@
           }
         }
       },
-      "block_order": ["block1", "block2"],
+      "block_order": [
+        "block1",
+        "block2"
+      ],
       "settings": {
         "title": "Veelgestelde vragen"
       }
+    },
+    "henk_section_video_WJRALD": {
+      "type": "henk-section-video",
+      "name": "Video Section",
+      "settings": {
+        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
+        "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
+        "autoplay": true,
+        "loop": true,
+        "cover": true,
+        "rounded": false,
+        "description": "Background video"
+      }
     }
   },
-  "order": ["section_header", "faq"]
+  "order": [
+    "section_header",
+    "faq",
+    "henk_section_video_WJRALD"
+  ]
 }

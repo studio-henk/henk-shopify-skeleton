@@ -32,13 +32,15 @@
 {% comment %}   {% endif %} {% endcomment %}
 {% comment %} {% endif %} {% endcomment %}
 
+{% assign poster_url = section.settings.video_poster | file_url %}
+
 <section
   class="henk-video-section"
 >
   {% render 'henk-video',
     id: section.id,
     src: video_url,
-    poster: section.settings.video_poster,
+    poster: poster_url,
     autoplay: section.settings.autoplay,
     loop: section.settings.loop,
     cover: section.settings.cover,

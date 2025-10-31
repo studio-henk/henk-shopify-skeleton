@@ -2,6 +2,10 @@
   Section: henk-section-splitscreen.liquid
   Purpose: Split-screen section with media (image or video) and text content.
 {% endcomment %}
+{% assign media_obj = section.settings.video_src %}
+{% if media_obj == blank %}
+  {% assign media_obj = section.settings.image_src %}
+{% endif %}
 
 {% render 'henk-split-screen',
   bgColor: section.settings.bg_color,
@@ -71,6 +75,11 @@
       "type": "image_picker",
       "id": "video_poster",
       "label": "Poster image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_src",
+      "label": "Content image"
     },
     {
       "type": "text",

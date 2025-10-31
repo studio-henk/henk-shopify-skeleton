@@ -21,7 +21,9 @@
   {% assign poster_url = section.settings.video_poster %}
 
   {% if poster_url contains '//cdn.shopify.com' %}
+    oi
     {% unless poster_url contains 'https:' %}
+      whtf
       {% assign poster_url = 'https:' | append: poster_url %}
     {% endunless %}
   {% else %}

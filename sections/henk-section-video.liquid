@@ -4,6 +4,9 @@
   - Uses the `henk-video` snippet for markup + JS behavior.
 {% endcomment %}
 
+{% assign video_url = section.settings.video_src | file_url %}
+{% assign poster_url = section.settings.video_poster | file_url %}
+
 <section
   class="
     henk-video-section

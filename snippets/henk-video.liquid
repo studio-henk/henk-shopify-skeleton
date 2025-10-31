@@ -90,17 +90,29 @@
     const svgMuted = button?.querySelector('.volume-x');
     const svgPlaying = button?.querySelector('.volume-2');
 
-    if (button) {
-      svgMuted.style.display = 'block';
-      svgPlaying.style.display = 'none';
+    if (button && svgMuted && svgPlaying) {
+      // Ensure initial state matches video muted property
+      if (video.muted) {
+        svgMuted.style.display = 'block';
+        svgPlaying.style.display = 'none';
+      } else {
+        svgMuted.style.display = 'none';
+        svgPlaying.style.display = 'block';
+      }
 
       button.addEventListener('click', () => {
         video.muted = !video.muted;
-        svgMuted.style.display = video.muted ? 'block' : 'none';
-        svgPlaying.style.display = video.muted ? 'none' : 'block';
+        if (video.muted) {
+          svgMuted.style.display = 'block';
+          svgPlaying.style.display = 'none';
+        } else {
+          svgMuted.style.display = 'none';
+          svgPlaying.style.display = 'block';
+        }
       });
     }
 
+    // IntersectionObserver for autoplay/pause
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -108,7 +120,7 @@
             if (video.autoplay) video.play().catch(() => {});
           } else {
             video.pause();
-            if (button) {
+            if (button && svgMuted && svgPlaying) {
               video.muted = true;
               svgMuted.style.display = 'block';
               svgPlaying.style.display = 'none';

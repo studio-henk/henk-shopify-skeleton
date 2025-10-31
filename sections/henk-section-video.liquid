@@ -5,7 +5,8 @@
 {% endcomment %}
 {{ section.settings.video | json }}
 {% assign video_url = section.settings.video_src | asset_url %}
-{% assign poster_url = section.settings.video_poster | asset_url %}
+{% comment %} {% assign poster_url = section.settings.video_poster | asset_url %} {% endcomment %}
+{% assign poster_url = '' %}
 
 <section
   class="

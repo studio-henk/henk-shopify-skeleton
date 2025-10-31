@@ -15,7 +15,7 @@
         "id": "home-header",
         "caption": "Welkom",
         "title": "Ontdek onze interieurs",
-        "text": "Als er één ding is waar Studio HENK groot mee geworden is, dan is het de eettafel. Geen enkele van onze eettafels is hetzelfde, maar de waarden wel: met zorg vervaardigd van hout uit duurzaam beheerde bossen, lokaal en met oog voor de toekomst. Omdat we niet alleen van de aarde willen nemen, geven we daar vanaf nu ook iets voor terug. Voor elke verkochte eettafel planten we een boom en ondersteunen de groei ervan. Zo dragen we bij aan het herstel van biodiversiteit.",
+        "text": "<p>Hoog....</p>",
         "level": "1",
         "align": "center",
         "button_label": "Koop nu",
@@ -49,66 +49,11 @@
           }
         }
       },
-      "block_order": [
-        "block1",
-        "block2"
-      ],
+      "block_order": ["block1", "block2"],
       "settings": {
         "title": "Veelgestelde vragen"
-      }
-    },
-    "henk_section_faq_qVRgUC": {
-      "type": "henk-section-faq",
-      "blocks": {
-        "faq_item_TVWfhi": {
-          "type": "faq_item",
-          "settings": {
-            "summary": "What is the purpose of this component?",
-            "content": "<p>This component is designed to provide answers to common questions users may have about our products and services.</p>",
-            "variant": "plusmin",
-            "name": "cc",
-            "icon_name": "calendar",
-            "icon_size": "large"
-          }
-        },
-        "faq_item_njtidH": {
-          "type": "faq_item",
-          "settings": {
-            "summary": "How can I return my samples?",
-            "content": "<p>You can return your sample pack to any of our stores or mail it to us for free via Antwoordnummer 98189, 1000 VA Amsterdam.</p>",
-            "variant": "plusmin",
-            "name": "cc",
-            "icon_name": "truck-thick",
-            "icon_size": "large"
-          }
-        }
-      },
-      "block_order": [
-        "faq_item_TVWfhi",
-        "faq_item_njtidH"
-      ],
-      "settings": {
-        "title": "Veelgestelde vragen"
-      }
-    },
-    "henk_section_video_AYwET7": {
-      "type": "henk-section-video",
-      "name": "Video Section",
-      "settings": {
-        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
-        "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
-        "autoplay": true,
-        "loop": true,
-        "cover": true,
-        "rounded": false,
-        "description": "Background video"
       }
     }
   },
-  "order": [
-    "section_header",
-    "faq",
-    "henk_section_faq_qVRgUC",
-    "henk_section_video_AYwET7"
-  ]
+  "order": ["section_header", "faq"]
 }

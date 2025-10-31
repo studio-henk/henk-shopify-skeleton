@@ -90,24 +90,11 @@
       "settings": {
         "title": "Veelgestelde vragen"
       }
-    },
-    "video_section": {
-      "type": "henk-section-video",
-      "settings": {
-        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
-        "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
-        "autoplay": true,
-        "loop": true,
-        "cover": true,
-        "rounded": false,
-        "description": "Studio HENK – craftsmanship in motion"
-      }
     }
   },
   "order": [
     "section_header",
     "faq",
-    "henk_section_faq_qVRgUC",
-    "video_section"
+    "henk_section_faq_qVRgUC"
   ]
 }

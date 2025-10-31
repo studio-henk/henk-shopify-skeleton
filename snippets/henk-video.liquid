@@ -23,23 +23,46 @@
     {% if rounded %} henk-video-container--rounded{% endif %}
   "
 >
-  <video
-    class="henk-video"
-    src="{{ src }}"
-    {% if poster %}
-      poster="{{ poster }}"
-    {% endif %}
-    {% if autoplay %}
-      autoplay muted playsinline
-    {% else %}
-      controls
-    {% endif %}
-    {% if loop %}
-      loop
-    {% endif %}
-    preload="auto"
-    aria-label="{{ description | escape }}"
-  ></video>
+  {% if src.sources %}
+    <video
+      class="henk-video"
+      {% if poster %}
+        poster="{{ poster }}"
+      {% endif %}
+      {% if autoplay %}
+        autoplay muted playsinline
+      {% else %}
+        controls
+      {% endif %}
+      {% if loop %}
+        loop
+      {% endif %}
+      preload="auto"
+      aria-label="{{ description | escape }}"
+    >
+      {% for source in src.sources %}
+        <source src="{{ 'https:' | append: source.url }}" type="{{ source.mime_type }}">
+      {% endfor %}
+    </video>
+  {% else %}
+    <video
+      class="henk-video"
+      src="{{ src }}"
+      {% if poster %}
+        poster="{{ poster }}"
+      {% endif %}
+      {% if autoplay %}
+        autoplay muted playsinline
+      {% else %}
+        controls
+      {% endif %}
+      {% if loop %}
+        loop
+      {% endif %}
+      preload="auto"
+      aria-label="{{ description | escape }}"
+    ></video>
+  {% endif %}
 
   {% if autoplay %}
     <button

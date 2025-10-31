@@ -3,10 +3,23 @@
   - A full-width video section.
   - Uses the `henk-video` snippet for markup + JS behavior.
 {% endcomment %}
-{{ section.settings.video_src | json }}
-{% assign video_url = section.settings.video_src | asset_url %}
-{% comment %} {% assign poster_url = section.settings.video_poster | asset_url %} {% endcomment %}
+
+{% assign video_url = '' %}
+{% assign max_width = 0 %}
+
+{% if section.settings.video_src.sources %}
+  {% for source in section.settings.video_src.sources %}
+    {% if source.format == 'mp4' and source.width > max_width %}
+      {% assign max_width = source.width %}
+      {% assign video_url = source.url %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
 {% assign poster_url = '' %}
+{% if section.settings.video_poster %}
+  {% assign poster_url = section.settings.video_poster | asset_url %}
+{% endif %}
 
 <section
   class="

@@ -14,6 +14,8 @@
   {% assign media_obj = media %}
 {% endif %}
 
+{% assign poster_url = media_obj.preview_image.src | image_url: width: 1200 %}
+
 <div
   class="henk-section henk-split-screen{% if bgColor and bgColor != 'default' %} henk-split-screen--bg-{{ bgColor }}{% endif %}"
   {% if id %}

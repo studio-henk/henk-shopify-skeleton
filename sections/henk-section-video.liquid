@@ -3,7 +3,6 @@
   - A full-width video section.
   - Uses the `henk-video` snippet for markup + JS behavior.
 {% endcomment %}
-{% comment %} {{ section.settings.video_poster }} {% endcomment %}
 {% assign video_url = '' %}
 {% assign max_width = 0 %}
 
@@ -16,23 +15,6 @@
   {% endfor %}
 {% endif %}
 
-{% comment %} {% assign poster_url = '' %} {% endcomment %}
-{% comment %} {% if section.settings.video_poster %} {% endcomment %}
-{% comment %}   {% assign poster_url = section.settings.video_poster %} {% endcomment %}
-{% comment %}{% endcomment %}
-{% comment %}   {% if poster_url contains '//cdn.shopify.com' %} {% endcomment %}
-{% comment %}     oi {% endcomment %}
-{% comment %}     {% unless poster_url contains 'https:' %} {% endcomment %}
-{% comment %}       whtf {% endcomment %}
-{% comment %}       {% assign poster_url = 'https:' | append: poster_url %} {% endcomment %}
-{% comment %}     {% endunless %} {% endcomment %}
-{% comment %}   {% else %} {% endcomment %}
-{% comment %}     ????? {% endcomment %}
-{% comment %}     {% assign poster_url = poster_url %} {% endcomment %}
-{% comment %}   {% endif %} {% endcomment %}
-{% comment %} {% endif %} {% endcomment %}
-
-{% comment %} {% assign poster_url = section.settings.video_poster | file_url %} {% endcomment %}
 {% assign poster_url = section.settings.video_poster | image_url: width: 1200 %}
 
 <section

@@ -3,7 +3,7 @@
   - A full-width video section.
   - Uses the `henk-video` snippet for markup + JS behavior.
 {% endcomment %}
-{{ video | json }}
+{{ section.settings.video | json }}
 {% assign video_url = section.settings.video_src | asset_url %}
 {% assign poster_url = section.settings.video_poster | asset_url %}
 

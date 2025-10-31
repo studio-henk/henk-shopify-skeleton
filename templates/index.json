@@ -42,6 +42,28 @@
         "buttonUrl": "shopify://blogs/henk-visits",
         "buttonText": "oi",
         "buttonVariant": "primary",
+        "reverse": true
+      }
+    },
+    "henk_section_splitscreen_TJtxtk": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "bgColor": "",
+        "id": "ss1",
+        "heading": "Eén HENK eettafel, één boom",
+        "content": "Als er één ding is waar Studio HENK groot mee geworden is, dan is het de eettafel. Geen enkele van onze eettafels is hetzelfde, maar de waarden wel: met zorg vervaardigd van hout uit duurzaam beheerde bossen, lokaal en met oog voor de toekomst. Omdat we niet alleen van de aarde willen nemen, geven we daar vanaf nu ook iets voor terug. Voor elke verkochte eettafel planten we een boom en ondersteunen de groei ervan. Zo dragen we bij aan het herstel van biodiversiteit.",
+        "caption": "captionnnnn",
+        "level": 2,
+        "display": false,
+        "video_poster": "shopify://shop_images/gisele-blog-large.jpg",
+        "image_src": "shopify://shop_images/weforest_-_media--2df6f497--query.avif",
+        "imageAlt": "dfgdgfdgdg",
+        "imageLink": "",
+        "imageLinkTargetBlank": false,
+        "buttonUrl": "shopify://blogs/henk-visits",
+        "buttonText": "oi",
+        "buttonVariant": "primary",
         "reverse": false
       }
     },
@@ -98,6 +120,7 @@
   "order": [
     "section_header",
     "henk_section_splitscreen_4jCGtk",
+    "henk_section_splitscreen_TJtxtk",
     "faq",
     "henk_section_video_WJRALD"
   ]

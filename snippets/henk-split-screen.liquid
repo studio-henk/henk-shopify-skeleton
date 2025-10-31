@@ -42,7 +42,7 @@
                   {{ media_obj | json }}
                   {% render 'henk-video',
                     id: id,
-                    src: media_obj.sources[0].url,
+                    src: media_obj.sources,
                     poster: media_obj.preview_image.src,
                     autoplay: true,
                     loop: true,

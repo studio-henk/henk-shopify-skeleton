@@ -8,8 +8,9 @@
   {% assign media_obj = section.settings.image_src %}
 {% endif %}
 
+<!-- bgColor: section.settings.bg_color, -->
+
 {% render 'henk-split-screen',
-  bgColor: section.settings.bg_color,
   id: section.id,
   title: section.settings.heading,
   caption: section.settings.caption,
@@ -27,15 +28,16 @@
   rounded: section.settings.rounded_corners
 %}
 
+<!-- { -->
+<!-- "type": "color", -->
+<!-- "id": "bgColor", -->
+<!-- "label": "Background color" -->
+<!-- }, -->
+
 {% schema %}
 {
   "name": "Split Screen Section",
   "settings": [
-    {
-      "type": "color",
-      "id": "bgColor",
-      "label": "Background color"
-    },
     {
       "type": "text",
       "id": "id",

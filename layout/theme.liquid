@@ -37,13 +37,13 @@
 
   <body class="template-{{ template.name }}">
     <div class="henk-wrapper">
-      {% sections 'header-group' %}
+      {% section 'henk-header' %}
       {% render 'henk-breadcrumbs' %}
       <main class="henk-main">
         {{ content_for_layout }}
         {% render 'henk-newsletter' %}
       </main>
-      {% sections 'footer-group' %}
+      {% section 'henk-footer' %}
     </div>
   </body>
 </html>

@@ -23,6 +23,29 @@
         "button_variant": "primary"
       }
     },
+    "henk_section_splitscreen_Y4KDHY": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "bgColor": "",
+        "id": "ss1",
+        "heading": "hello world",
+        "content": "<p>jaja</p>",
+        "caption": "caption",
+        "level": 2,
+        "display": false,
+        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
+        "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
+        "rounded_corners": true,
+        "imageAlt": "",
+        "imageLink": "",
+        "imageLinkTargetBlank": false,
+        "buttonUrl": "",
+        "buttonText": "",
+        "buttonVariant": "default",
+        "reverse": false
+      }
+    },
     "faq": {
       "type": "henk-section-faq",
       "blocks": {
@@ -49,11 +72,34 @@
           }
         }
       },
-      "block_order": ["block1", "block2"],
+      "block_order": [
+        "block1",
+        "block2"
+      ],
       "settings": {
         "title": "Veelgestelde vragen"
       }
+    },
+    "henk_section_video_KNRtnW": {
+      "type": "henk-section-video",
+      "name": "Video Section",
+      "settings": {
+        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
+        "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
+        "video_link": "",
+        "video_link_target_blank": false,
+        "autoplay": true,
+        "loop": true,
+        "cover": true,
+        "rounded": false,
+        "description": "Background video"
+      }
     }
   },
-  "order": ["section_header", "faq"]
+  "order": [
+    "section_header",
+    "henk_section_splitscreen_Y4KDHY",
+    "faq",
+    "henk_section_video_KNRtnW"
+  ]
 }

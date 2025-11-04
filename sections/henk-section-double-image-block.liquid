@@ -1,0 +1,59 @@
+{% comment %} Section that renders the reusable double-image snippet {% endcomment %}
+
+{% render 'henk-double-image-block', props: section.settings %}
+
+{% schema %}
+{
+  "name": "Henk Double Image Block",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "reverse_layout",
+      "default": false,
+      "label": "Reverse layout"
+    },
+    {
+      "type": "image_picker",
+      "id": "large_image",
+      "label": "Large Image"
+    },
+    {
+      "type": "url",
+      "id": "large_image_url",
+      "label": "Large image URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "large_image_new_tab",
+      "label": "Open large image link in new tab",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "small_image",
+      "label": "Small Image"
+    },
+    {
+      "type": "url",
+      "id": "small_image_url",
+      "label": "Small image URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "small_image_new_tab",
+      "label": "Open small image link in new tab",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Henk Double Image Block",
+      "category": "HENK Blocks"
+    }
+  ]
+}
+{% endschema %}

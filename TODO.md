@@ -1,5 +1,9 @@
 # TODO
 
+- [ ] update double image block snippet and section to have video option
+- [ ] check tag for henk-header... should become header element with classname.
+
+
 ## To storybook
 - [ ] filter widget
 
@@ -73,3 +77,8 @@
   PDP. has a lot of text.
 - [x] filter
 - [x] sort
+- [x] remove background color picker from split screen?
+- [x] remove alignment right option from section-header
+- [x] limit where sections can appear
+- [x] fix cart icon button
+- [x] add video to double image block snippet and section

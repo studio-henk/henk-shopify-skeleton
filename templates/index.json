@@ -49,17 +49,11 @@
           }
         }
       },
-      "block_order": [
-        "block1",
-        "block2"
-      ],
+      "block_order": ["block1", "block2"],
       "settings": {
         "title": "Veelgestelde vragen"
       }
     }
   },
-  "order": [
-    "section_header",
-    "faq"
-  ]
+  "order": ["section_header", "faq"]
 }

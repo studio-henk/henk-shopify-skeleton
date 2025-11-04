@@ -5,24 +5,13 @@
 
 ## stores overview 
 - [ ] stores detail: check breadcrumbs: willen we Winkels ervoor?
-- [x] redo 2nd block
-- [x] translate haarlem to nl, en, de
-- [x] translate rotterdam to nl, en, de
-- [x] translate utrecht to nl, en, de
-- [x] translate antwerp to nl, en, de
-- [x] translate amsterdam to nl, en, de
-- [x] translations discover button
 
 ## Store Detail Page 
 - [ ] newsletter-block translations
-- [x] video in block iso image
-- [x] 2nd split screen block with content and map
-- [x] map integration
 
 ## Other
 
 - [ ] translations for info boxes?
-- [x] check: The resource http://127.0.0.1:9292/cdn/shop/t/15/assets/NeueHaasGrotTextRound-55Roman-Web.woff2?v=110563115276511605801758284655 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
 - [ ] wc input id...randomise? or item id?
 - [ ] favicon
 - [ ] Set focus styles / focus-visible 
@@ -43,17 +32,12 @@
 ## Lister page / collection
 - [ ] Checkbox, can't be hidden, has to be focusable 
 - [ ] discuss: weirdness and use of metaobject colour
-- [x] filter
-- [x] sort
 
 ## Product Card 
 - [ ] show max 5 variants if has them? js?
-- [x] short description in admin somehwere? no uses field for
-  PDP. has a lot of text.
 
 ## stores overview 
 - [ ] card component: adjust / expand for store info?
-- [x] grid with cards?
 
 ## stores detail page
 
@@ -73,3 +57,19 @@
 
 - [x] collections page with macs cards
 - [x] add text when no products in collection
+- [x] redo 2nd block
+- [x] translate haarlem to nl, en, de
+- [x] translate rotterdam to nl, en, de
+- [x] translate utrecht to nl, en, de
+- [x] translate antwerp to nl, en, de
+- [x] translate amsterdam to nl, en, de
+- [x] translations discover button
+- [x] video in block iso image
+- [x] 2nd split screen block with content and map
+- [x] map integration
+- [x] check: The resource http://127.0.0.1:9292/cdn/shop/t/15/assets/NeueHaasGrotTextRound-55Roman-Web.woff2?v=110563115276511605801758284655 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+- [x] grid with cards?
+- [x] short description in admin somehwere? no uses field for
+  PDP. has a lot of text.
+- [x] filter
+- [x] sort

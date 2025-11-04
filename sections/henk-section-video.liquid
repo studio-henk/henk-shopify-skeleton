@@ -1,0 +1,100 @@
+{% comment %}
+  henk-section-video.liquid
+  - A full-width video section.
+  - Uses the `henk-video` snippet for markup + JS behavior.
+{% endcomment %}
+{% comment %} {% assign video_url = '' %} {% endcomment %}
+{% comment %} {% assign max_width = 0 %} {% endcomment %}
+
+{% comment %} {% if section.settings.video_src.sources %} {% endcomment %}
+{% comment %}   {% for source in section.settings.video_src.sources %} {% endcomment %}
+{% comment %}     {% if source.format == 'mp4' and source.width > max_width %} {% endcomment %}
+{% comment %}       {% assign max_width = source.width %} {% endcomment %}
+{% comment %}       {% assign video_url = 'https:' | append: source.url %} {% endcomment %}
+{% comment %}     {% endif %} {% endcomment %}
+{% comment %}   {% endfor %} {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
+
+{% assign poster_url = section.settings.video_poster | image_url: width: 1200 %}
+
+<section
+  class="henk-video-section"
+>
+  {% render 'henk-video',
+    id: section.id,
+    src: section.settings.video_src,
+    poster: poster_url,
+    autoplay: section.settings.autoplay,
+    loop: section.settings.loop,
+    cover: section.settings.cover,
+    rounded: section.settings.rounded,
+    description: section.settings.description,
+    link: section.settings.video_link,
+    link_target_blank: section.settings.video_link_target_blank
+  %}
+</section>
+
+{% schema %}
+{
+  "name": "Video Section",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video_src",
+      "label": "Video URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "video_poster",
+      "label": "Poster image"
+    },
+    {
+      "type": "url",
+      "id": "video_link",
+      "label": "Video link"
+    },
+    {
+      "type": "checkbox",
+      "id": "video_link_target_blank",
+      "label": "Open link in new tab",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay video",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop video",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "cover",
+      "label": "Cover container (object-fit: cover)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "rounded",
+      "label": "Rounded corners",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Accessibility description (for screen readers)",
+      "default": "Background video"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Section",
+      "category": "Media"
+    }
+  ]
+}
+{% endschema %}

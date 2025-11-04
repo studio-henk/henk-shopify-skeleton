@@ -15,58 +15,12 @@
         "id": "home-header",
         "caption": "Welkom",
         "title": "Ontdek onze interieurs",
-        "text": "Als B Corp gebruiken wij de kracht van ons bedrijf om positieve verandering te bewerkstelligen. Het is onze missie om de meubelindustrie van binnenuit te hervormen en deze volledig afvalvrij te maken. Wij willen de industriestandaarden doorbreken door prachtige meubels te maken die circulair ontworpen en duurzaam zijn, en zo een positieve impact hebben op mens en planeet. Ontdek meer over onze missie en B Corp status.",
-        "level": "2",
+        "text": "<p>Hoog....</p>",
+        "level": "1",
         "align": "center",
         "button_label": "Koop nu",
         "button_url": "/collections",
         "button_variant": "primary"
-      }
-    },
-    "henk_section_splitscreen_4jCGtk": {
-      "type": "henk-section-splitscreen",
-      "name": "Split Screen",
-      "settings": {
-        "bgColor": "",
-        "id": "ss1",
-        "heading": "Eén HENK eettafel, één boom",
-        "content": "<p>Als er één ding is waar Studio HENK groot mee geworden is, dan is het de eettafel. Geen enkele van onze eettafels is hetzelfde, maar de waarden wel: met zorg vervaardigd van hout uit duurzaam beheerde bossen, lokaal en met oog voor de toekomst. </p><p>Omdat we niet alleen van de aarde willen nemen, geven we daar vanaf nu ook iets voor terug. Voor elke verkochte eettafel planten we een boom en ondersteunen de groei ervan. Zo dragen we bij aan het herstel van biodiversiteit.</p>",
-        "caption": "captionnnnn",
-        "level": 2,
-        "display": false,
-        "video_src": "shopify://files/videos/StudioHenk_AdamStore_square.mp4",
-        "video_poster": "shopify://shop_images/gisele-blog-large.jpg",
-        "rounded_corners": true,
-        "imageAlt": "dfgdgfdgdg",
-        "imageLink": "",
-        "imageLinkTargetBlank": false,
-        "buttonUrl": "shopify://blogs/henk-visits",
-        "buttonText": "oi",
-        "buttonVariant": "primary",
-        "reverse": true
-      }
-    },
-    "henk_section_splitscreen_TJtxtk": {
-      "type": "henk-section-splitscreen",
-      "name": "Split Screen",
-      "settings": {
-        "bgColor": "",
-        "id": "ss1",
-        "heading": "Eén HENK eettafel, één boom",
-        "content": "<p>Als er één ding is waar Studio HENK groot mee geworden is, dan is het de eettafel. Geen enkele van onze eettafels is hetzelfde, maar de waarden wel: met zorg vervaardigd van hout uit duurzaam beheerde bossen, lokaal en met oog voor de toekomst. Omdat we niet alleen van de aarde willen nemen, geven we daar vanaf nu ook iets voor terug. Voor elke verkochte eettafel planten we een boom en ondersteunen de groei ervan. Zo dragen we bij aan het herstel van biodiversiteit.</p>",
-        "caption": "captionnnnn",
-        "level": 2,
-        "display": false,
-        "video_poster": "shopify://shop_images/gisele-blog-large.jpg",
-        "image_src": "shopify://shop_images/weforest_-_media--2df6f497--query.avif",
-        "rounded_corners": false,
-        "imageAlt": "dfgdgfdgdg",
-        "imageLink": "",
-        "imageLinkTargetBlank": false,
-        "buttonUrl": "shopify://blogs/henk-visits",
-        "buttonText": "oi",
-        "buttonVariant": "primary",
-        "reverse": false
       }
     },
     "faq": {
@@ -95,35 +49,11 @@
           }
         }
       },
-      "block_order": [
-        "block1",
-        "block2"
-      ],
+      "block_order": ["block1", "block2"],
       "settings": {
         "title": "Veelgestelde vragen"
       }
-    },
-    "henk_section_video_WJRALD": {
-      "type": "henk-section-video",
-      "name": "Video Section",
-      "settings": {
-        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
-        "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
-        "video_link": "shopify://metaobjects/store_location/rotterdam",
-        "video_link_target_blank": false,
-        "autoplay": true,
-        "loop": true,
-        "cover": true,
-        "rounded": false,
-        "description": "Background video"
-      }
     }
   },
-  "order": [
-    "section_header",
-    "henk_section_splitscreen_4jCGtk",
-    "henk_section_splitscreen_TJtxtk",
-    "faq",
-    "henk_section_video_WJRALD"
-  ]
+  "order": ["section_header", "faq"]
 }

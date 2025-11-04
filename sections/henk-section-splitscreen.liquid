@@ -1,0 +1,142 @@
+{% comment %}
+  Section: henk-section-splitscreen.liquid
+  Purpose: Split-screen section with media (image or video) and text content.
+{% endcomment %}
+{% comment %} {{ section.settings.video_src | json }} {% endcomment %}
+{% assign media_obj = section.settings.video_src %}
+{% if media_obj == blank %}
+  {% assign media_obj = section.settings.image_src %}
+{% endif %}
+
+{% render 'henk-split-screen',
+  bgColor: section.settings.bg_color,
+  id: section.id,
+  title: section.settings.heading,
+  caption: section.settings.caption,
+  level: section.settings.heading_level,
+  display: section.settings.display_heading,
+  content: section.settings.content,
+  media: media_obj,
+  imageAlt: section.settings.media.alt,
+  imageLink: section.settings.media_link,
+  imageLinkTargetBlank: section.settings.media_link_blank,
+  buttonUrl: section.settings.buttonUrl,
+  buttonText: section.settings.buttonText,
+  buttonVariant: section.settings.buttonVariant,
+  reverse: section.settings.reverse,
+  rounded: section.settings.rounded_corners
+%}
+
+{% schema %}
+{
+  "name": "Split Screen Section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bgColor",
+      "label": "Background color"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Section ID"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption"
+    },
+    {
+      "type": "number",
+      "id": "level",
+      "label": "Heading level",
+      "default": 2
+    },
+    {
+      "type": "checkbox",
+      "id": "display",
+      "label": "Display style",
+      "default": false
+    },
+    {
+      "type": "video",
+      "id": "video_src",
+      "label": "Video URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "video_poster",
+      "label": "Poster image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_src",
+      "label": "Content image"
+    },
+    {
+      "type": "checkbox",
+      "id": "rounded_corners",
+      "label": "Rounded corners",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "imageAlt",
+      "label": "Image alt text"
+    },
+    {
+      "type": "url",
+      "id": "imageLink",
+      "label": "Media link URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "imageLinkTargetBlank",
+      "label": "Open link in new tab",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "buttonUrl",
+      "label": "Button URL"
+    },
+    {
+      "type": "text",
+      "id": "buttonText",
+      "label": "Button text"
+    },
+    {
+      "type": "select",
+      "id": "buttonVariant",
+      "label": "Button style",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "primary", "label": "Primary" }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "Reverse order",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Split Screen",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

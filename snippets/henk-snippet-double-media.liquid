@@ -37,8 +37,8 @@
         {% else %}
           {% if p.large_media_url != blank %}
             <a
-              href="{{ p.large_image_url }}"
-              {% if p.large_image_new_tab %}
+              href="{{ p.large_media_url }}"
+              {% if p.large_media_new_tab %}
                 target="_blank" rel="noopener"
               {% endif %}
             >
@@ -73,17 +73,17 @@
               autoplay: true,
               loop: true,
               cover: true,
-              link: p.small_image_url,
-              link_target_blank: p.small_image_new_tab
+              link: p.small_media_url,
+              link_target_blank: p.small_media_new_tab
             %}
           {% else %}
             {{ 'video' | placeholder_svg_tag: 'placeholder-svg-small' }}
           {% endif %}
         {% else %}
-          {% if p.small_image_url != blank %}
+          {% if p.small_media_url != blank %}
             <a
-              href="{{ p.small_image_url }}"
-              {% if p.small_image_new_tab %}
+              href="{{ p.small_media_url }}"
+              {% if p.small_media_new_tab %}
                 target="_blank" rel="noopener"
               {% endif %}
             >
@@ -103,7 +103,7 @@
             {{ 'image' | placeholder_svg_tag: 'placeholder-svg-small' }}
           {% endif %}
 
-          {% if p.small_image_url != blank %}
+          {% if p.small_media_url != blank %}
             </a>
           {% endif %}
         {% endif %}

@@ -73,7 +73,7 @@
         {% if p.small_media_type == 'video' %}
           {% assign media_obj = p.small_video | default: null %}
           {% if media_obj %}
-            {% assign poster_url = p.small_video_poster | default: null | image_url: width: 1200 %}
+            {% assign poster_url = p.video_poster_small | default: null | image_url: width: 1200 %}
             {% render 'henk-video',
               src: media_obj,
               poster: poster_url,

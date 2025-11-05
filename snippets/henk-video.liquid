@@ -124,93 +124,43 @@
     {% endif %}
   {% endif %}
 </div>
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const container = document.getElementById('{{ video_id | escape }}');
+    const container = document.getElementById('{{ id | escape }}-video');
     if (!container) return;
 
     const video = container.querySelector('video');
     if (!video) return;
 
-    // Check if video has an audio track
-    const hasAudio =
-      video.mozHasAudio || video.webkitAudioDecodedByteCount > 0 || (video.audioTracks && video.audioTracks.length > 0);
+    video.addEventListener('loadedmetadata', () => {
+      const hasAudio =
+        video.mozHasAudio ||
+        video.webkitAudioDecodedByteCount > 0 ||
+        (video.audioTracks && video.audioTracks.length > 0);
 
-    if (hasAudio) {
+      if (!hasAudio) return; // no button if silent
 
-const buttonHTML = `
-  <button
-    type="button"
-    class="henk-button henk-video-sound-toggle"
-    aria-label="Toggle video sound"
-  >
-    <svg
-      class="volume-x"
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-      <line x1="23" y1="9" x2="17" y2="15"></line>
-      <line x1="17" y1="9" x2="23" y2="15"></line>
-    </svg>
-    <svg
-      class="volume-2"
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-      <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-    </svg>
-  </button>
-`;
+      // Create button dynamically
+      const buttonHTML = `...template literal from earlier...`;
+      const temp = document.createElement('div');
+      temp.innerHTML = buttonHTML.trim();
+      const button = temp.firstChild;
+      container.appendChild(button);
 
-// Convert string literal to DOM node
-  const temp = document.createElement('div');
-  temp.innerHTML = buttonHTML.trim(); // trim() removes any accidental whitespace
-  const button = temp.firstChild;
+      const svgMuted = button.querySelector('.volume-x');
+      const svgPlaying = button.querySelector('.volume-2');
 
-  // Append button to the container
-  container.appendChild(button);
+      // Initial state
+      svgMuted.style.display = video.muted ? 'block' : 'none';
+      svgPlaying.style.display = video.muted ? 'none' : 'block';
 
-  // Query SVGs inside the newly appended button
-  const svgMuted = button.querySelector('.volume-x');
-  const svgPlaying = button.querySelector('.volume-2');
+      button.addEventListener('click', () => {
+        video.muted = !video.muted;
+        svgMuted.style.display = video.muted ? 'block' : 'none';
+        svgPlaying.style.display = video.muted ? 'none' : 'block';
+      });
+    });
 
-  // Ensure initial state matches video muted property
-  if (video.muted || video.autoplay) {
-    svgMuted.style.display = 'block';
-    svgPlaying.style.display = 'none';
-  } else {
-    svgMuted.style.display = 'none';
-    svgPlaying.style.display = 'block';
-  }
-
-  // Toggle logic
-  button.addEventListener('click', () => {
-    video.muted = !video.muted;
-    if (video.muted) {
-      svgMuted.style.display = 'block';
-      svgPlaying.style.display = 'none';
-    } else {
-      svgMuted.style.display = 'none';
-      svgPlaying.style.display = 'block';
-    }
+    // Optional: IntersectionObserver for autoplay/pause here
   });
-
-    }
 </script>

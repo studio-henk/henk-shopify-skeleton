@@ -92,20 +92,20 @@
     },
     {
       "type": "video",
-      "id": "large_video",
-      "label": "Large Video",
+      "id": "video_src",
+      "label": "Video",
       "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "checkbox",
-      "id": "large_media_has_audio",
+      "id": "video_has_audio",
       "label": "Video has audio",
       "default": false,
       "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "image_picker",
-      "id": "video_poster_large",
+      "id": "video_poster",
       "label": "Poster image",
       "visible_if": "{{ section.settings.media_type == 'video' }}"
     },

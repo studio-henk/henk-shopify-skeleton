@@ -33,10 +33,16 @@
       "label": "Title"
     },
     {
-      "type": "number",
+      "type": "select",
       "id": "level",
       "label": "Heading level",
-      "default": 2
+      "options": [
+        { "value": "1", "label": "H1" },
+        { "value": "2", "label": "H2" },
+        { "value": "3", "label": "H3" },
+        { "value": "display", "label": "Display" }
+      ],
+      "default": "2"
     },
     {
       "type": "checkbox",

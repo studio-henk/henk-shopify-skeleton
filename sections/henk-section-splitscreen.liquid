@@ -2,7 +2,7 @@
   Section: henk-section-splitscreen.liquid
   Purpose: Split-screen section with media (image or video) and text content.
 {% endcomment %}
-{% comment %} {{ section.settings.video_src | json }} {% endcomment %}
+{{ section.settings.video_src | json }}
 {% assign media_obj = section.settings.video_src %}
 {% if media_obj == blank %}
   {% assign media_obj = section.settings.image_src %}

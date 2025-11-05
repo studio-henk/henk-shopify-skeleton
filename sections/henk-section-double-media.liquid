@@ -45,12 +45,6 @@
       "label": "Large media link"
     },
     {
-      "type": "checkbox",
-      "id": "large_media_new_tab",
-      "label": "Open large media link in new tab",
-      "default": false
-    },
-    {
       "type": "video",
       "id": "large_video",
       "label": "Large Video",
@@ -61,6 +55,12 @@
       "id": "video_poster_large",
       "label": "Poster image",
       "visible_if": "{{ section.settings.large_media_type == 'video' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "large_media_new_tab",
+      "label": "Open large media link in new tab",
+      "default": false
     },
     {
       "type": "header",

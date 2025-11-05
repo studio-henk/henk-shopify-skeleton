@@ -38,32 +38,6 @@
         "small_image_new_tab": false
       }
     },
-    "henk_section_double_image_block_rxkyJC": {
-      "type": "henk-section-double-image-block",
-      "name": "Henk Double Image Block",
-      "settings": {
-        "reverse_layout": false,
-        "large_image": "shopify://shop_images/LI-DISPL-8010.jpg",
-        "large_image_url": "",
-        "large_image_new_tab": false,
-        "small_image": "shopify://shop_images/sh-rdam-poster.jpg",
-        "small_image_url": "",
-        "small_image_new_tab": false
-      }
-    },
-    "henk_section_double_image_block_TYcGDf": {
-      "type": "henk-section-double-image-block",
-      "name": "Henk Double Image Block",
-      "settings": {
-        "reverse_layout": true,
-        "large_image": "shopify://shop_images/LI-DISPL-8010.jpg",
-        "large_image_url": "",
-        "large_image_new_tab": false,
-        "small_image": "shopify://shop_images/sh-rdam-poster.jpg",
-        "small_image_url": "",
-        "small_image_new_tab": false
-      }
-    },
     "henk_section_splitscreen_Y4KDHY": {
       "type": "henk-section-splitscreen",
       "name": "Split Screen",
@@ -139,8 +113,6 @@
   "order": [
     "section_header",
     "henk_section_double_media_x7L3cH",
-    "henk_section_double_image_block_rxkyJC",
-    "henk_section_double_image_block_TYcGDf",
     "henk_section_splitscreen_Y4KDHY",
     "faq",
     "henk_section_video_KNRtnW"

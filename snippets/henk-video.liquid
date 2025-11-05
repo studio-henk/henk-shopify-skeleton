@@ -18,6 +18,7 @@
 
 {%- comment -%} fallback poster if none provided {%- endcomment -%}
 {% if poster %}
+  yesssssss
   {% assign poster_url = poster %}
 {% elsif src.preview_image %}
   {% assign poster_url = src.preview_image.src | image_url: width: 1200 %}

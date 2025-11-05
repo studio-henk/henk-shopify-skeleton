@@ -58,7 +58,7 @@
     },
     {
       "type": "image_picker",
-      "id": "video_poster",
+      "id": "video_poster_large",
       "label": "Poster image",
       "visible_if": "{{ section.settings.large_media_type == 'video' }}"
     },
@@ -97,6 +97,12 @@
       "type": "video",
       "id": "small_video",
       "label": "Small Video",
+      "visible_if": "{{ section.settings.small_media_type == 'video' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "video_poster_small",
+      "label": "Poster image",
       "visible_if": "{{ section.settings.small_media_type == 'video' }}"
     }
   ],

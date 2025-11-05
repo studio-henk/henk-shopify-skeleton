@@ -12,12 +12,11 @@
       <!-- LARGE MEDIA -->
       <div class="henk-double-media-block__grid-item">
         {% if p.large_media_type == 'video' %}
-          {{ p.video_poster_large }}
           {% if p.large_video %}
             {%
               render 'henk-video',
               src: p.large_video,
-              poster: p.large_video.video_poster_large  | default: nil,
+              poster: p.video_poster_large  | default: nil,
               autoplay: true,
               loop: true,
               cover: true,

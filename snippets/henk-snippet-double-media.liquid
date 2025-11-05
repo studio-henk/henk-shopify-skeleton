@@ -16,7 +16,7 @@
             {%
               render 'henk-video',
               src: p.large_video,
-              poster: p.video_poster_large  | default: nil,
+              poster: p.video_poster_large  | image_url,
               autoplay: true,
               loop: true,
               cover: true,

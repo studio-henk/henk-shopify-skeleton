@@ -14,7 +14,7 @@
   {% assign media_obj = media %}
 {% endif %}
 
-{% assign poster_url = media_obj.preview_image.src | image_url: width: 1200 %}
+{% comment %} {% assign poster_url = media_obj.preview_image.src | image_url: width: 1200 %} {% endcomment %}
 
 <div
   class="henk-section henk-split-screen{% if bgColor and bgColor != 'default' %} henk-split-screen--bg-{{ bgColor }}{% endif %}"
@@ -43,7 +43,7 @@
               {% render 'henk-video',
                 id: id,
                 src: media_obj,
-                poster: poster_url,
+                poster: poster,
                 autoplay: true,
                 loop: true,
                 cover: true,

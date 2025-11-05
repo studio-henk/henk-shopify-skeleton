@@ -13,15 +13,6 @@
   Normalize media object (handles either `media.value` or direct media)
 {%- endcomment -%}
 
-{% comment %} {{ p.media | json }} {% endcomment %}
-{{ section.settings }}
-
-{% comment %} {% if p.media and p.media.value %} {% endcomment %}
-{% comment %}   {% assign media_obj = p.media.value %} {% endcomment %}
-{% comment %} {% else %} {% endcomment %}
-{% comment %}   {% assign media_obj = p.media %} {% endcomment %}
-{% comment %} {% endif %} {% endcomment %}
-
 {% if p.media_type == 'video' and p.video_src != blank %}
   {% assign media_obj = p.video_src %}
 {% elsif p.media_type == 'image' and p.image_src != blank %}

@@ -128,7 +128,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     const container = document.getElementById('{{ id | escape }}-video');
     if (!container) return;
-    console.log(container);
+    // console.log(container);
 
     const video = container.querySelector('video');
     if (!video) return;
@@ -140,6 +140,7 @@
         (video.audioTracks && video.audioTracks.length > 0);
 
       if (!hasAudio) return; // no button if silent
+      console.log('Video has audio');
 
       // Create button dynamically
       const buttonHTML = `<button

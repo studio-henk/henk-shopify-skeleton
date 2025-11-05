@@ -49,28 +49,6 @@
         "small_image_new_tab": false
       }
     },
-    "henk_section_splitscreen_Y4KDHY": {
-      "type": "henk-section-splitscreen",
-      "name": "Split Screen",
-      "settings": {
-        "id": "ss1",
-        "caption": "caption",
-        "heading": "hello world",
-        "level": 2,
-        "display": false,
-        "content": "<p>jaja</p>",
-        "imageAlt": "",
-        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
-        "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
-        "rounded_corners": true,
-        "imageLink": "",
-        "imageLinkTargetBlank": false,
-        "buttonUrl": "",
-        "buttonText": "",
-        "buttonVariant": "default",
-        "reverse": false
-      }
-    },
     "faq": {
       "type": "henk-section-faq",
       "blocks": {
@@ -125,7 +103,6 @@
     "section_header",
     "henk_section_double_image_block_rxkyJC",
     "henk_section_double_image_block_TYcGDf",
-    "henk_section_splitscreen_Y4KDHY",
     "faq",
     "henk_section_video_KNRtnW"
   ]

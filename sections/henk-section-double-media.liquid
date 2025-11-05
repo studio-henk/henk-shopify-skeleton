@@ -1,0 +1,112 @@
+{% comment %}
+  Section: Henk Double Media Block
+  Renders double media (image or video) block using snippet.
+{% endcomment %}
+
+{% render 'henk-double-media-block', props: section.settings %}
+
+{% schema %}
+{
+  "name": "Henk Double Media Block",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "reverse_layout",
+      "default": false,
+      "label": "Reverse layout"
+    },
+
+    /* ---------- LARGE MEDIA ---------- */
+    {
+      "type": "header",
+      "content": "Large Media"
+    },
+    {
+      "type": "radio",
+      "id": "large_media_type",
+      "label": "Large media type",
+      "default": "image",
+      "options": [
+        { "value": "image", "label": "Image" },
+        { "value": "video", "label": "Video" }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "large_image",
+      "label": "Large Image",
+      "visible_if": "{{ section.settings.large_media_type == 'image' }}"
+    },
+    {
+      "type": "url",
+      "id": "large_image_url",
+      "label": "Large image URL",
+      "visible_if": "{{ section.settings.large_media_type == 'image' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "large_image_new_tab",
+      "label": "Open large image link in new tab",
+      "default": false,
+      "visible_if": "{{ section.settings.large_media_type == 'image' }}"
+    },
+    {
+      "type": "video",
+      "id": "large_video",
+      "label": "Large Video",
+      "visible_if": "{{ section.settings.large_media_type == 'video' }}"
+    },
+
+    /* ---------- SMALL MEDIA ---------- */
+    {
+      "type": "header",
+      "content": "Small Media"
+    },
+    {
+      "type": "radio",
+      "id": "small_media_type",
+      "label": "Small media type",
+      "default": "image",
+      "options": [
+        { "value": "image", "label": "Image" },
+        { "value": "video", "label": "Video" }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "small_image",
+      "label": "Small Image",
+      "visible_if": "{{ section.settings.small_media_type == 'image' }}"
+    },
+    {
+      "type": "url",
+      "id": "small_image_url",
+      "label": "Small image URL",
+      "visible_if": "{{ section.settings.small_media_type == 'image' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "small_image_new_tab",
+      "label": "Open small image link in new tab",
+      "default": false,
+      "visible_if": "{{ section.settings.small_media_type == 'image' }}"
+    },
+    {
+      "type": "video",
+      "id": "small_video",
+      "label": "Small Video",
+      "visible_if": "{{ section.settings.small_media_type == 'video' }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Henk Double Media Block",
+      "category": "HENK Blocks"
+    }
+  ]
+}
+{% endschema %}

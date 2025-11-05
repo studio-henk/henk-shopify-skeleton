@@ -45,12 +45,12 @@
         "reverse_layout": false,
         "large_media_type": "image",
         "large_image": "shopify://shop_images/sh-rdam-poster.jpg",
-        "large_media_url": "",
+        "large_media_url": "shopify://metaobjects/store_location/rotterdam",
         "large_media_new_tab": false,
         "small_media_type": "image",
         "small_image": "shopify://shop_images/LI-DISPL-8010.jpg",
-        "small_media_url": "",
-        "small_media_new_tab": false
+        "small_media_url": "shopify://pages/materialen-onderhoud",
+        "small_media_new_tab": true
       }
     },
     "henk_section_double_media_ygr3Ne": {

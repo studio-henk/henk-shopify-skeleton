@@ -54,7 +54,8 @@
       "type": "checkbox",
       "id": "large_media_has_audio",
       "label": "Video has audio",
-      "default": false
+      "default": false,
+      "visible_if": "{{ section.settings.large_media_type == 'video' }}"
     },
     {
       "type": "image_picker",

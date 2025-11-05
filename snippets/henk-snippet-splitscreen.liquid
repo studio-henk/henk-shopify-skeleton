@@ -10,23 +10,24 @@
 {% comment %} {{ poster | image_url }} {% endcomment %}
 {% assign p = props | default: section.settings %}
 
-{{ p }}
-
-{% if media.value %}
-  {% assign media_obj = media.value %}
+{%- comment -%}
+  Normalize media object (handles either `media.value` or direct media)
+{%- endcomment -%}
+{% if p.media and p.media.value %}
+  {% assign media_obj = p.media.value %}
 {% else %}
-  {% assign media_obj = media %}
+  {% assign media_obj = p.media %}
 {% endif %}
 
 <div
   class="henk-section henk-split-screen{% if bgColor and bgColor != 'default' %} henk-split-screen--bg-{{ bgColor }}{% endif %}"
-  {% if id %}
-    id="{{ id }}"
+  {% if p.id %}
+    id="{{ p.id }}"
   {% endif %}
 >
   <div
     class="henk-split-screen__inner"
-    {% if reverse %}
+    {% if p.reverse %}
       data-order="reverse"
     {% endif %}
   >
@@ -34,40 +35,40 @@
       <!-- IMAGE COLUMN -->
       <div class="henk-split-screen__grid-item">
         {% if media_obj %}
-          {% case media_obj.media_type %}
+          {% case p.media_type %}
             {% when 'image' %}
-              {% if imageLink %}
+              {% if p.imageLink %}
                 <a
-                  href="{{ imageLink }}"
-                  {% if imageLinkTargetBlank %}
+                  href="{{ p.imageLink }}"
+                  {% if p.imageLinkTargetBlank %}
                     target="_blank" rel="noopener"
                   {% endif %}
                 >
               {% endif %}
               <img
                 src="{{ media_obj | image_url: width: 1152, height: 1728 }}"
-                alt="{{ imageAlt | escape }}"
+                alt="{{ p.imageAlt | escape }}"
                 class="henk-split-screen__img"
                 loading="lazy"
                 width="1152"
                 height="1728"
               >
-              {% if imageLink %}
+              {% if p.imageLink %}
                 </a>
               {% endif %}
             {% when 'video' %}
               {% render 'henk-video',
-                id: id,
+                id: p.id,
                 src: media_obj,
-                poster: poster,
+                poster: p.poster,
                 autoplay: true,
-                has_audio: hasAudio,
+                has_audio: p.hasAudio,
                 loop: true,
                 cover: true,
-                rounded: rounded,
-                description: imageAlt,
-                link: imageLink,
-                link_target_blank: imageLinkTargetBlank
+                rounded: p.rounded,
+                description: p.imageAlt,
+                link: p.imageLink,
+                link_target_blank: p.imageLinkTargetBlank
               %}
           {% endcase %}
         {% endif %}
@@ -76,8 +77,8 @@
       <!-- CONTENT COLUMN -->
       <div class="henk-split-screen__grid-item">
         <div class="henk-split-screen__content">
-          {% if caption %}
-            <p class="henk-split-screen__caption">{{ caption }}</p>
+          {% if p.caption %}
+            <p class="henk-split-screen__caption">{{ p.caption }}</p>
           {% endif %}
 
           {% assign heading_level = level | default: 2 %}
@@ -88,22 +89,22 @@
             {{ title }}
           </h{{ heading_level }}>
 
-          {% if content %}
+          {% if p.content %}
             <div class="henk-split-screen__text">
-              {% if content.children %}
-                {% render 'henk-rich-text', children: content.children %}
+              {% if p.content.children %}
+                {% render 'henk-rich-text', children: p.content.children %}
               {% else %}
-                {{ content }}
+                {{ p.content }}
               {% endif %}
             </div>
           {% endif %}
 
-          {% if buttonUrl and buttonText %}
+          {% if p.buttonUrl and p.buttonText %}
             <a
-              href="{{ buttonUrl | prepend: routes.root }}"
-              class="henk-button henk-button--{{ buttonVariant | default: 'default' }}"
+              href="{{ p.buttonUrl | prepend: routes.root }}"
+              class="henk-button henk-button--{{ p.buttonVariant | default: 'default' }}"
             >
-              {{ buttonText }}
+              {{ p.buttonText }}
             </a>
           {% endif %}
         </div>

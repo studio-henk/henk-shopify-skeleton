@@ -33,7 +33,7 @@
         {% if media_obj %}
           {% case media_obj.media_type %}
             {% when 'image' %}
-              {{ imgLink }}
+              {{ imageLink }}
               <img
                 src="{{ media_obj | image_url: width: 1152, height: 1728 }}"
                 alt="{{ imageAlt | escape }}"

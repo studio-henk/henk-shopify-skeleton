@@ -70,8 +70,10 @@
       <div class="henk-double-media-block__grid-item">
         {% if p.small_media_type == 'video' %}
           {% if p.small_video %}
-            {% render 'henk-video',
+            {%
+              render 'henk-video',
               src: p.small_video,
+              poster: p.small_video.video_poster_small  | default: nil,
               autoplay: true,
               loop: true,
               cover: true,

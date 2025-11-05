@@ -16,7 +16,9 @@
           {% assign media_obj = p.large_video | default: null %}
           {% if media_obj %}
             {% assign poster_url = p.video_poster_large | default: null | image_url: width: 1200 %}
-            {% render 'henk-video',
+            {%
+              render 'henk-video',
+              id: 'large-video-' | append: section.id,
               src: media_obj,
               poster: poster_url,
               autoplay: true,
@@ -74,7 +76,9 @@
           {% assign media_obj = p.small_video | default: null %}
           {% if media_obj %}
             {% assign poster_url = p.video_poster_small | default: null | image_url: width: 1200 %}
-            {% render 'henk-video',
+            {%
+              render 'henk-video',
+              id: 'small-video-' | append: section.id,
               src: media_obj,
               poster: poster_url,
               autoplay: true,

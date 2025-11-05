@@ -171,6 +171,18 @@
     if (!container) return;
 
     const video = container.querySelector('video');
+    if (!video) return;
+
+    // Check if video has an audio track
+    const hasAudio =
+      video.mozHasAudio || video.webkitAudioDecodedByteCount > 0 || (video.audioTracks && video.audioTracks.length > 0);
+
+    if (!hasAudio) {
+      console.log('Video has no audio track.');
+      // button.remove(); // completely remove button if no audio
+      return;
+    }
+
     const button = container.querySelector('.henk-video-sound-toggle');
     const svgMuted = button?.querySelector('.volume-x');
     const svgPlaying = button?.querySelector('.volume-2');

@@ -2,6 +2,7 @@
   Snippet: henk-double-media-block
   Supports image or video for each slot.
   Avoids wrapping video in <a> since henk-video handles links internally.
+  Uses manually assigned poster images for videos.
 {% endcomment %}
 
 {% assign p = props | default: section.settings %}
@@ -12,11 +13,12 @@
       <!-- LARGE MEDIA -->
       <div class="henk-double-media-block__grid-item">
         {% if p.large_media_type == 'video' %}
-          {% if p.large_video %}
-            {%
-              render 'henk-video',
-              src: p.large_video,
-              poster: p.video_poster_large  | image_url,
+          {% assign media_obj = p.large_video | default: null %}
+          {% if media_obj %}
+            {% assign poster_url = p.video_poster_large | default: null | image_url: width: 1200 %}
+            {% render 'henk-video',
+              src: media_obj,
+              poster: poster_url,
               autoplay: true,
               loop: true,
               cover: true,
@@ -69,11 +71,12 @@
       <!-- SMALL MEDIA -->
       <div class="henk-double-media-block__grid-item">
         {% if p.small_media_type == 'video' %}
-          {% if p.small_video %}
-            {%
-              render 'henk-video',
-              src: p.small_video,
-              poster: p.small_video.video_poster_small  | default: nil,
+          {% assign media_obj = p.small_video | default: null %}
+          {% if media_obj %}
+            {% assign poster_url = p.small_video_poster | default: null | image_url: width: 1200 %}
+            {% render 'henk-video',
+              src: media_obj,
+              poster: poster_url,
               autoplay: true,
               loop: true,
               cover: true,
@@ -81,7 +84,17 @@
               link_target_blank: p.small_media_new_tab
             %}
           {% else %}
-            {{ 'video' | placeholder_svg_tag: 'placeholder-svg-small' }}
+            <!-- Inline accessible placeholder for missing video -->
+            <div
+              class="henk-media-placeholder henk-media-placeholder--small"
+              role="img"
+              aria-label="No video available"
+            >
+              <svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M3 22v-20l18 10-18 10z" fill="currentColor"/>
+              </svg>
+              <span class="visually-hidden">No video available</span>
+            </div>
           {% endif %}
         {% else %}
           {% if p.small_media_url != blank %}

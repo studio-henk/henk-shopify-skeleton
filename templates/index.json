@@ -53,7 +53,6 @@
       "type": "henk-section-splitscreen",
       "name": "Split Screen",
       "settings": {
-        "bgColor": "",
         "id": "ss1",
         "heading": "hello world",
         "content": "<p>jaja</p>",
@@ -120,6 +119,21 @@
         "rounded": false,
         "description": "Background video"
       }
+    },
+    "henk_section_double_media_x7L3cH": {
+      "type": "henk-section-double-media",
+      "name": "Henk Double Media Block",
+      "settings": {
+        "reverse_layout": false,
+        "large_media_type": "image",
+        "large_image": "shopify://shop_images/sh-rdam-poster.jpg",
+        "large_image_url": "",
+        "large_image_new_tab": false,
+        "small_media_type": "image",
+        "small_image": "shopify://shop_images/LI-DISPL-8010.jpg",
+        "small_image_url": "",
+        "small_image_new_tab": false
+      }
     }
   },
   "order": [
@@ -128,6 +142,7 @@
     "henk_section_double_image_block_TYcGDf",
     "henk_section_splitscreen_Y4KDHY",
     "faq",
-    "henk_section_video_KNRtnW"
+    "henk_section_video_KNRtnW",
+    "henk_section_double_media_x7L3cH"
   ]
 }

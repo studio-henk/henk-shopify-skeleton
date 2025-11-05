@@ -107,6 +107,13 @@
       "visible_if": "{{ section.settings.small_media_type == 'video' }}"
     },
     {
+      "type": "checkbox",
+      "id": "small_media_has_audio",
+      "label": "Video has audio",
+      "default": false,
+      "visible_if": "{{ section.settings.small_media_type == 'video' }}"
+    },
+    {
       "type": "image_picker",
       "id": "video_poster_small",
       "label": "Poster image",

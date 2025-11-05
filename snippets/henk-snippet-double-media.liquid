@@ -18,9 +18,8 @@
             {% assign poster_url = p.video_poster_large | default: null | image_url: width: 1200 %}
 
             {% assign large_video_id = 'large-video-' | append: section.id %}
-            {%
-              render 'henk-video',
-              id: 'large-video-' | append: section.id,
+            {% render 'henk-video',
+              id: large_video_id,
               src: media_obj,
               poster: poster_url,
               autoplay: true,

@@ -3,9 +3,16 @@
   Purpose: Split-screen section with media (image or video) and text content.
 {% endcomment %}
 {% comment %} {{ section.settings.video_src | json }} {% endcomment %}
-{% assign media_obj = section.settings.video_src %}
-{% if media_obj == blank %}
+{% comment %} {% assign media_obj = section.settings.video_src %} {% endcomment %}
+{% comment %} {% if media_obj == blank %} {% endcomment %}
+{% comment %}   {% assign media_obj = section.settings.image_src %} {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
+{% if section.settings.media_type == 'video' and section.settings.video_src != blank %}
+  {% assign media_obj = section.settings.video_src %}
+{% elsif section.settings.media_type == 'image' and section.settings.image_src != blank %}
   {% assign media_obj = section.settings.image_src %}
+{% else %}
+  {% assign media_obj = null %}
 {% endif %}
 
 <!-- bgColor: section.settings.bg_color, -->

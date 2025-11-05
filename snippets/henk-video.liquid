@@ -14,11 +14,17 @@
     link_target_blank: imageLinkTargetBlank
 {%- endcomment -%}
 
-{% comment %} {%- assign video_id = id | default: section.id | append: '-video' -%} {% endcomment %}
-
 {%- assign video_id = id | default: 'split-screen-video-' | append: media_obj.id | append: '-video' -%}
 
-{% comment %} {{ src | json }} {% endcomment %}
+{%- comment -%} fallback poster if none provided {%- endcomment -%}
+{% if poster %}
+  {% assign poster_url = poster %}
+{% elsif src.preview_image %}
+  {% assign poster_url = src.preview_image.src | image_url: width: 1200 %}
+{% else %}
+  {% assign poster_url = null %}
+{% endif %}
+
 <div
   id="{{ video_id }}"
   class="
@@ -37,8 +43,8 @@
       >
         <video
           class="henk-video"
-          {% if poster %}
-            poster="{{ poster }}"
+          {% if poster_url %}
+            poster="{{ poster_url }}"
           {% endif %}
           {% if autoplay %}
             autoplay muted playsinline
@@ -59,8 +65,8 @@
     {% else %}
       <video
         class="henk-video"
-        {% if poster %}
-          poster="{{ poster }}"
+        {% if poster_url %}
+          poster="{{ poster_url }}"
         {% endif %}
         {% if autoplay %}
           autoplay muted playsinline
@@ -89,8 +95,8 @@
         <video
           class="henk-video"
           src="{{ src }}"
-          {% if poster %}
-            poster="{{ poster }}"
+          {% if poster_url %}
+            poster="{{ poster_url }}"
           {% endif %}
           {% if autoplay %}
             autoplay muted playsinline
@@ -108,8 +114,8 @@
       <video
         class="henk-video"
         src="{{ src }}"
-        {% if poster %}
-          poster="{{ poster }}"
+        {% if poster_url %}
+          poster="{{ poster_url }}"
         {% endif %}
         {% if autoplay %}
           autoplay muted playsinline
@@ -124,6 +130,7 @@
       ></video>
     {% endif %}
   {% endif %}
+
   {% if has_audio %}
     <button
       type="button"

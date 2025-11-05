@@ -72,12 +72,12 @@
     },
     {
       "type": "header",
-      "content": "Large Media"
+      "content": "Media"
     },
     {
       "type": "radio",
-      "id": "large_media_type",
-      "label": "Large media type",
+      "id": "media_type",
+      "label": "Media type",
       "default": "image",
       "options": [
         { "value": "image", "label": "Image" },
@@ -88,26 +88,26 @@
       "type": "image_picker",
       "id": "large_image",
       "label": "Large Image",
-      "visible_if": "{{ section.settings.large_media_type == 'image' }}"
+      "visible_if": "{{ section.settings.media_type == 'image' }}"
     },
     {
       "type": "video",
       "id": "large_video",
       "label": "Large Video",
-      "visible_if": "{{ section.settings.large_media_type == 'video' }}"
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "checkbox",
       "id": "large_media_has_audio",
       "label": "Video has audio",
       "default": false,
-      "visible_if": "{{ section.settings.large_media_type == 'video' }}"
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "image_picker",
       "id": "video_poster_large",
       "label": "Poster image",
-      "visible_if": "{{ section.settings.large_media_type == 'video' }}"
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "video",

@@ -97,7 +97,8 @@
       "type": "checkbox",
       "id": "rounded_corners",
       "label": "Rounded corners",
-      "default": false
+      "default": false,
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "url",

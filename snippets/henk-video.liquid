@@ -91,9 +91,7 @@
         <video
           class="henk-video"
           src="{{ src }}"
-          {% if poster_url %}
-            poster="{{ poster_url }}"
-          {% endif %}
+          poster="{{ poster_url }}"
           {% if autoplay %}
             autoplay muted playsinline
           {% else %}
@@ -110,9 +108,7 @@
       <video
         class="henk-video"
         src="{{ src }}"
-        {% if poster_url %}
-          poster="{{ poster_url }}"
-        {% endif %}
+        poster="{{ poster_url }}"
         {% if autoplay %}
           autoplay muted playsinline
         {% else %}

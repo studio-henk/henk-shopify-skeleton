@@ -12,6 +12,7 @@
       <!-- LARGE MEDIA -->
       <div class="henk-double-media-block__grid-item">
         {% if p.large_media_type == 'video' %}
+          {{ p.large_video }}
           {% if p.large_video %}
             {%
               render 'henk-video',

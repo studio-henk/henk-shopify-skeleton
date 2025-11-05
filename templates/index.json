@@ -65,7 +65,7 @@
         "buttonUrl": "shopify://pages/materialen-onderhoud",
         "buttonText": "click me",
         "buttonVariant": "primary",
-        "reverse": true
+        "reverse": false
       }
     },
     "henk_section_double_media_mFKWcr": {

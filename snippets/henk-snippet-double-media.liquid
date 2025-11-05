@@ -22,7 +22,17 @@
               link_target_blank: p.large_image_new_tab
             %}
           {% else %}
-            {{ 'video' | placeholder_svg_tag: 'placeholder-svg-large' }}
+            <!-- Inline accessible placeholder for missing video -->
+            <div
+              class="henk-media-placeholder henk-media-placeholder--large"
+              role="img"
+              aria-label="No video available"
+            >
+              <svg width="80" height="80" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M3 22v-20l18 10-18 10z" fill="currentColor"/>
+              </svg>
+              <span class="visually-hidden">No video available</span>
+            </div>
           {% endif %}
         {% else %}
           {% if p.large_image_url != blank %}

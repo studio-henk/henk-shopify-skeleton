@@ -63,6 +63,7 @@
         "large_media_url": "shopify://metaobjects/store_location/rotterdam",
         "large_media_new_tab": true,
         "large_video": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
+        "video_poster_large": "shopify://shop_images/sh-rdam-poster.jpg",
         "small_media_type": "image",
         "small_image": "shopify://shop_images/LI-DISPL-8010.jpg",
         "small_media_url": "shopify://blogs/henk-visits",

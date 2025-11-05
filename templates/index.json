@@ -64,10 +64,12 @@
         "large_media_new_tab": false,
         "large_video": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
         "video_poster_large": "shopify://shop_images/sh-rdam-poster.jpg",
-        "small_media_type": "image",
+        "small_media_type": "video",
         "small_image": "shopify://shop_images/LI-DISPL-8010.jpg",
         "small_media_url": "shopify://blogs/henk-visits",
-        "small_media_new_tab": false
+        "small_media_new_tab": false,
+        "small_video": "shopify://files/videos/StudioHENK_HaarlemStore_square.mp4",
+        "video_poster_small": "shopify://shop_images/LI-DISPL-6003.jpg"
       }
     },
     "henk_section_splitscreen_Y4KDHY": {

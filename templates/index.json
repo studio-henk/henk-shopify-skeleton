@@ -76,7 +76,7 @@
         "small_media_type": "video",
         "small_image": "shopify://shop_images/LI-DISPL-8010.jpg",
         "small_video": "shopify://files/videos/visual-test-illustration.mp4",
-        "small_media_has_audio": true,
+        "small_media_has_audio": false,
         "video_poster_small": "shopify://shop_images/haarlem-kaart_-_media--2df6f497--query.avif",
         "small_media_url": "shopify://blogs/henk-visits",
         "small_media_new_tab": false

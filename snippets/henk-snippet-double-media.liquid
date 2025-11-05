@@ -18,8 +18,8 @@
               autoplay: true,
               loop: true,
               cover: true,
-              link: p.large_image_url,
-              link_target_blank: p.large_image_new_tab
+              link: p.large_media_url,
+              link_target_blank: p.large_media_new_tab
             %}
           {% else %}
             <!-- Inline accessible placeholder for missing video -->
@@ -35,7 +35,7 @@
             </div>
           {% endif %}
         {% else %}
-          {% if p.large_image_url != blank %}
+          {% if p.large_media_url != blank %}
             <a
               href="{{ p.large_image_url }}"
               {% if p.large_image_new_tab %}
@@ -58,7 +58,7 @@
             {{ 'image' | placeholder_svg_tag: 'placeholder-svg-large' }}
           {% endif %}
 
-          {% if p.large_image_url != blank %}
+          {% if p.large_media_url != blank %}
             </a>
           {% endif %}
         {% endif %}

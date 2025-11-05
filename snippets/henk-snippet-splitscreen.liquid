@@ -92,14 +92,22 @@
             <p class="henk-split-screen__caption">{{ p.caption }}</p>
           {% endif %}
 
-          {% assign heading_level = p.level | default: 2 %}
-          {% if heading_level > 3 %}{% assign heading_level = 3 %}{% endif %}
-          {% if heading_level < 1 %}{% assign heading_level = 1 %}{% endif %}
+          {% comment %} {% assign heading_level = p.level | default: 2 %} {% endcomment %}
+          {% comment %} {% if heading_level > 3 %}{% assign heading_level = 3 %}{% endif %} {% endcomment %}
+          {% comment %} {% if heading_level < 1 %}{% assign heading_level = 1 %}{% endif %} {% endcomment %}
+          {% comment %}{% endcomment %}
+          {% comment %} {% if p.title %} {% endcomment %}
+          {% comment %}   <h{{ heading_level }} class="henk-split-screen__title{% if p.display %} fs-display{% endif %}"> {% endcomment %}
+          {% comment %}     {{ p.title }} {% endcomment %}
+          {% comment %}   </h{{ heading_level }}> {% endcomment %}
+          {% comment %} {% endif %} {% endcomment %}
+
+          {% assign heading_tag = p.heading_level | default: 'h2' %}
 
           {% if p.title %}
-            <h{{ heading_level }} class="henk-split-screen__title{% if p.display %} fs-display{% endif %}">
+            <{{ heading_tag }} class="henk-split-screen__title">
               {{ p.title }}
-            </h{{ heading_level }}>
+            </{{ heading_tag }}>
           {% endif %}
 
           {% if p.content %}

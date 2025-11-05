@@ -35,31 +35,16 @@
         "large_media_new_tab": false,
         "small_media_type": "image",
         "small_image": "shopify://shop_images/LI-DISPL-8010.jpg",
+        "small_media_has_audio": false,
         "small_media_url": "",
         "small_media_new_tab": false
-      }
-    },
-    "henk_section_double_media_RMDKtV": {
-      "type": "henk-section-double-media",
-      "name": "Henk Double Media Block",
-      "settings": {
-        "reverse_layout": false,
-        "large_media_type": "image",
-        "large_image": "shopify://shop_images/sh-rdam-poster.jpg",
-        "large_media_url": "shopify://metaobjects/store_location/rotterdam",
-        "large_media_has_audio": false,
-        "large_media_new_tab": false,
-        "small_media_type": "image",
-        "small_image": "shopify://shop_images/LI-DISPL-8010.jpg",
-        "small_media_url": "shopify://pages/materialen-onderhoud",
-        "small_media_new_tab": true
       }
     },
     "henk_section_double_media_ygr3Ne": {
       "type": "henk-section-double-media",
       "name": "Henk Double Media Block",
       "settings": {
-        "reverse_layout": true,
+        "reverse_layout": false,
         "large_media_type": "video",
         "large_image": "shopify://shop_images/sh-rdam-poster.jpg",
         "large_media_url": "shopify://metaobjects/store_location/rotterdam",
@@ -69,10 +54,11 @@
         "large_media_new_tab": false,
         "small_media_type": "image",
         "small_image": "shopify://shop_images/LI-DISPL-8010.jpg",
-        "small_media_url": "shopify://blogs/henk-visits",
-        "small_media_new_tab": false,
         "small_video": "shopify://files/videos/StudioHENK_HaarlemStore_square.mp4",
-        "video_poster_small": "shopify://shop_images/LI-DISPL-6003.jpg"
+        "small_media_has_audio": false,
+        "video_poster_small": "shopify://shop_images/LI-DISPL-6003.jpg",
+        "small_media_url": "shopify://blogs/henk-visits",
+        "small_media_new_tab": false
       }
     },
     "henk_section_double_media_Xdnydq": {
@@ -89,10 +75,11 @@
         "large_media_new_tab": false,
         "small_media_type": "video",
         "small_image": "shopify://shop_images/LI-DISPL-8010.jpg",
-        "small_media_url": "shopify://blogs/henk-visits",
-        "small_media_new_tab": false,
         "small_video": "shopify://files/videos/visual-test-illustration.mp4",
-        "video_poster_small": "shopify://shop_images/haarlem-kaart_-_media--2df6f497--query.avif"
+        "small_media_has_audio": false,
+        "video_poster_small": "shopify://shop_images/haarlem-kaart_-_media--2df6f497--query.avif",
+        "small_media_url": "shopify://blogs/henk-visits",
+        "small_media_new_tab": false
       }
     },
     "henk_section_splitscreen_Y4KDHY": {
@@ -170,7 +157,6 @@
   "order": [
     "section_header",
     "henk_section_double_media_x7L3cH",
-    "henk_section_double_media_RMDKtV",
     "henk_section_double_media_ygr3Ne",
     "henk_section_double_media_Xdnydq",
     "henk_section_splitscreen_Y4KDHY",

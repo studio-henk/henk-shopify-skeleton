@@ -15,8 +15,6 @@
   {% assign media_obj = media %}
 {% endif %}
 
-{% comment %} {% assign poster_url = media_obj.preview_image.src | image_url: width: 1200 %} {% endcomment %}
-
 <div
   class="henk-section henk-split-screen{% if bgColor and bgColor != 'default' %} henk-split-screen--bg-{{ bgColor }}{% endif %}"
   {% if id %}
@@ -35,6 +33,7 @@
         {% if media_obj %}
           {% case media_obj.media_type %}
             {% when 'image' %}
+              {{ imgLink }}
               <img
                 src="{{ media_obj | image_url: width: 1152, height: 1728 }}"
                 alt="{{ imageAlt | escape }}"

@@ -102,8 +102,7 @@
           {% comment %}   </h{{ heading_level }}> {% endcomment %}
           {% comment %} {% endif %} {% endcomment %}
 
-          {% assign heading_tag = p.heading_level | default: 'h2' %}
-          {{ heading_tag }}
+          {% assign heading_tag = 'h' | append: p.heading_level | default: 'h2' %}
 
           {% if p.title %}
             <{{ heading_tag }} class="henk-split-screen__title">

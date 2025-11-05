@@ -183,7 +183,7 @@
 
     if (button && svgMuted && svgPlaying) {
       // Ensure initial state matches video muted property
-      if (video.muted) {
+      if (video.muted || video.autoplay) {
         svgMuted.style.display = 'block';
         svgPlaying.style.display = 'none';
       } else {

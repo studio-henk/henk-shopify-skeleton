@@ -128,6 +128,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     const container = document.getElementById('{{ id | escape }}-video');
     if (!container) return;
+    console.log(container);
 
     const video = container.querySelector('video');
     if (!video) return;

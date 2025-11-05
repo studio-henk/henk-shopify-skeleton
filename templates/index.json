@@ -30,7 +30,7 @@
         "id": "dfgdfg",
         "caption": "caption",
         "title": "welcome",
-        "level": "3",
+        "heading_level": "2",
         "content": "<p>fgfgfgfg</p>",
         "media_type": "image",
         "image_src": "shopify://shop_images/LI-DISPL-6003.jpg",
@@ -39,8 +39,8 @@
         "rounded_corners": false,
         "imageLink": "",
         "imageLinkTargetBlank": false,
-        "buttonUrl": "",
-        "buttonText": "",
+        "buttonUrl": "shopify://pages/materialen-onderhoud",
+        "buttonText": "click me",
         "buttonVariant": "default",
         "reverse": false
       }

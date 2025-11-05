@@ -36,7 +36,7 @@
         "media_type": "video",
         "image_src": "shopify://shop_images/LI-DISPL-6003.jpg",
         "video_src": "shopify://files/videos/StudioHENK_HaarlemStore_square.mp4",
-        "video_has_audio": false,
+        "video_has_audio": true,
         "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
         "rounded_corners": true,
         "imageAlt": "",

@@ -10,6 +10,8 @@
 {% comment %} {{ poster | image_url }} {% endcomment %}
 {% assign p = props | default: section.settings %}
 
+{{ p }}
+
 {% if media.value %}
   {% assign media_obj = media.value %}
 {% else %}

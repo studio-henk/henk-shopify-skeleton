@@ -172,32 +172,38 @@
 
     const video = container.querySelector('video');
     const button = container.querySelector('.henk-video-sound-toggle');
-    const svgMuted = button?.querySelector('.volume-x');
-    const svgPlaying = button?.querySelector('.volume-2');
+    if (!video || !button) return;
 
-    if (button && svgMuted && svgPlaying) {
-      // Ensure initial state matches video muted property
-      if (video.muted || video.autoplay) {
+    // Check if video has an audio track
+    const hasAudio =
+      video.mozHasAudio || video.webkitAudioDecodedByteCount > 0 || (video.audioTracks && video.audioTracks.length > 0);
+
+    if (!hasAudio) {
+      button.remove(); // completely remove button if no audio
+      return;
+    }
+
+    const svgMuted = button.querySelector('.volume-x');
+    const svgPlaying = button.querySelector('.volume-2');
+
+    // Ensure initial state matches video.muted
+    video.muted = true; // autoplay videos usually start muted
+    svgMuted.style.display = 'block';
+    svgPlaying.style.display = 'none';
+
+    // Toggle sound on button click
+    button.addEventListener('click', () => {
+      video.muted = !video.muted;
+      if (video.muted) {
         svgMuted.style.display = 'block';
         svgPlaying.style.display = 'none';
       } else {
         svgMuted.style.display = 'none';
         svgPlaying.style.display = 'block';
       }
+    });
 
-      button.addEventListener('click', () => {
-        video.muted = !video.muted;
-        if (video.muted) {
-          svgMuted.style.display = 'block';
-          svgPlaying.style.display = 'none';
-        } else {
-          svgMuted.style.display = 'none';
-          svgPlaying.style.display = 'block';
-        }
-      });
-    }
-
-    // IntersectionObserver for autoplay/pause
+    // IntersectionObserver to autoplay/pause
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -205,11 +211,9 @@
             if (video.autoplay) video.play().catch(() => {});
           } else {
             video.pause();
-            if (button && svgMuted && svgPlaying) {
-              video.muted = true;
-              svgMuted.style.display = 'block';
-              svgPlaying.style.display = 'none';
-            }
+            video.muted = true;
+            svgMuted.style.display = 'block';
+            svgPlaying.style.display = 'none';
           }
         });
       },

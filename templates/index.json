@@ -23,6 +23,30 @@
         "button_variant": "primary"
       }
     },
+    "henk_section_splitscreen_Y4KDHY": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "id": "ss1",
+        "heading": "hello world",
+        "content": "<p>jaja</p>",
+        "caption": "caption",
+        "level": 2,
+        "display": false,
+        "media_type": "image",
+        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
+        "video_has_audio": false,
+        "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
+        "rounded_corners": true,
+        "imageAlt": "",
+        "imageLink": "",
+        "imageLinkTargetBlank": false,
+        "buttonUrl": "",
+        "buttonText": "",
+        "buttonVariant": "default",
+        "reverse": false
+      }
+    },
     "henk_section_double_media_x7L3cH": {
       "type": "henk-section-double-media",
       "name": "Henk Double Media Block",
@@ -82,28 +106,6 @@
         "small_media_new_tab": false
       }
     },
-    "henk_section_splitscreen_Y4KDHY": {
-      "type": "henk-section-splitscreen",
-      "name": "Split Screen",
-      "settings": {
-        "id": "ss1",
-        "heading": "hello world",
-        "content": "<p>jaja</p>",
-        "caption": "caption",
-        "level": 2,
-        "display": false,
-        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
-        "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
-        "rounded_corners": true,
-        "imageAlt": "",
-        "imageLink": "",
-        "imageLinkTargetBlank": false,
-        "buttonUrl": "",
-        "buttonText": "",
-        "buttonVariant": "default",
-        "reverse": false
-      }
-    },
     "faq": {
       "type": "henk-section-faq",
       "blocks": {
@@ -156,10 +158,10 @@
   },
   "order": [
     "section_header",
+    "henk_section_splitscreen_Y4KDHY",
     "henk_section_double_media_x7L3cH",
     "henk_section_double_media_ygr3Ne",
     "henk_section_double_media_Xdnydq",
-    "henk_section_splitscreen_Y4KDHY",
     "faq",
     "henk_section_video_KNRtnW"
   ]

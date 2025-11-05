@@ -57,7 +57,7 @@
       "type": "henk-section-double-media",
       "name": "Henk Double Media Block",
       "settings": {
-        "reverse_layout": false,
+        "reverse_layout": true,
         "large_media_type": "video",
         "large_image": "shopify://shop_images/sh-rdam-poster.jpg",
         "large_media_url": "shopify://metaobjects/store_location/rotterdam",

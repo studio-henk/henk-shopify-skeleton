@@ -35,11 +35,14 @@
         {% if media_obj %}
           {% case media_obj.media_type %}
             {% when 'image' %}
-              {{
-                media_obj
-                | image_url: width: 1152, height: 1728
-                | image_tag: imageAlt, class: 'henk-split-screen__img'
-              }}
+              <img
+                src="{{ media_obj | image_url: width: 1152, height: 1728 }}"
+                alt="{{ imageAlt | escape }}"
+                class="henk-split-screen__img"
+                loading="lazy"
+                width="1152"
+                height="1728"
+              >
             {% when 'video' %}
               {% render 'henk-video',
                 id: id,

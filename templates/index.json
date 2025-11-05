@@ -38,6 +38,21 @@
         "small_image_new_tab": false
       }
     },
+    "henk_section_double_media_RMDKtV": {
+      "type": "henk-section-double-media",
+      "name": "Henk Double Media Block",
+      "settings": {
+        "reverse_layout": false,
+        "large_media_type": "image",
+        "large_image": "shopify://shop_images/sh-rdam-poster.jpg",
+        "large_image_url": "shopify://metaobjects/store_location/rotterdam",
+        "large_image_new_tab": false,
+        "small_media_type": "image",
+        "small_image": "shopify://shop_images/LI-DISPL-8010.jpg",
+        "small_image_url": "shopify://products/display-tafellamp",
+        "small_image_new_tab": false
+      }
+    },
     "henk_section_splitscreen_Y4KDHY": {
       "type": "henk-section-splitscreen",
       "name": "Split Screen",
@@ -113,6 +128,7 @@
   "order": [
     "section_header",
     "henk_section_double_media_x7L3cH",
+    "henk_section_double_media_RMDKtV",
     "henk_section_splitscreen_Y4KDHY",
     "faq",
     "henk_section_video_KNRtnW"

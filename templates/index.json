@@ -41,8 +41,8 @@
         "imageLinkTargetBlank": true,
         "buttonUrl": "shopify://pages/materialen-onderhoud",
         "buttonText": "click me",
-        "buttonVariant": "default",
-        "reverse": false
+        "buttonVariant": "primary",
+        "reverse": true
       }
     },
     "henk_section_double_media_mFKWcr": {

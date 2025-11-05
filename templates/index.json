@@ -38,7 +38,7 @@
         "video_has_audio": false,
         "rounded_corners": false,
         "imageLink": "shopify://pages/materialen-onderhoud",
-        "imageLinkTargetBlank": false,
+        "imageLinkTargetBlank": true,
         "buttonUrl": "shopify://pages/materialen-onderhoud",
         "buttonText": "click me",
         "buttonVariant": "default",

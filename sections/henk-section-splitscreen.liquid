@@ -1,47 +1,9 @@
 {% comment %}
   Section: henk-section-splitscreen.liquid
-  Purpose: Split-screen section with media (image or video) and text content.
+  Simplified version — delegates all logic to snippet.
 {% endcomment %}
-{% comment %} {{ section.settings.video_src | json }} {% endcomment %}
-{% comment %} {% assign media_obj = section.settings.video_src %} {% endcomment %}
-{% comment %} {% if media_obj == blank %} {% endcomment %}
-{% comment %}   {% assign media_obj = section.settings.image_src %} {% endcomment %}
-{% comment %} {% endif %} {% endcomment %}
-{% if section.settings.media_type == 'video' and section.settings.video_src != blank %}
-  {% assign media_obj = section.settings.video_src %}
-{% elsif section.settings.media_type == 'image' and section.settings.image_src != blank %}
-  {% assign media_obj = section.settings.image_src %}
-{% else %}
-  {% assign media_obj = null %}
-{% endif %}
 
-<!-- bgColor: section.settings.bg_color, -->
-
-{% render 'henk-split-screen',
-  id: section.id,
-  title: section.settings.heading,
-  caption: section.settings.caption,
-  level: section.settings.heading_level,
-  display: section.settings.display_heading,
-  content: section.settings.content,
-  media: media_obj,
-  poster: section.settings.video_poster,
-  hasAudio: section.settings.video_has_audio,
-  imageAlt: section.settings.imageAlt,
-  imageLink: section.settings.imageLink,
-  imageLinkTargetBlank: section.settings.imageLinkTargetBlank,
-  buttonUrl: section.settings.buttonUrl,
-  buttonText: section.settings.buttonText,
-  buttonVariant: section.settings.buttonVariant,
-  reverse: section.settings.reverse,
-  rounded: section.settings.rounded_corners
-%}
-
-<!-- { -->
-<!-- "type": "color", -->
-<!-- "id": "bgColor", -->
-<!-- "label": "Background color" -->
-<!-- }, -->
+{% render 'henk-snippet-splitscreen', props: section.settings %}
 
 {% schema %}
 {

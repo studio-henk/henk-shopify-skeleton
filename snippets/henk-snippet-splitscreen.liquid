@@ -13,7 +13,8 @@
   Normalize media object (handles either `media.value` or direct media)
 {%- endcomment -%}
 
-{{ p.media | json }}
+{% comment %} {{ p.media | json }} {% endcomment %}
+{{ section.settings }}
 
 {% if p.media and p.media.value %}
   {% assign media_obj = p.media.value %}

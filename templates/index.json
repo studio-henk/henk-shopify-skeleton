@@ -23,6 +23,28 @@
         "button_variant": "primary"
       }
     },
+    "henk_section_splitscreen_qWbEEy": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "id": "",
+        "caption": "caption",
+        "heading": "gfgfgfgfg",
+        "level": 2,
+        "display": false,
+        "content": "<p>fgfgfgfg</p>",
+        "media_type": "image",
+        "imageAlt": "",
+        "video_has_audio": false,
+        "rounded_corners": false,
+        "imageLink": "",
+        "imageLinkTargetBlank": false,
+        "buttonUrl": "",
+        "buttonText": "",
+        "buttonVariant": "default",
+        "reverse": false
+      }
+    },
     "henk_section_double_media_mFKWcr": {
       "type": "henk-section-double-media",
       "name": "Henk Double Media Block",
@@ -92,6 +114,7 @@
   },
   "order": [
     "section_header",
+    "henk_section_splitscreen_qWbEEy",
     "henk_section_double_media_mFKWcr",
     "faq",
     "henk_section_video_KNRtnW"

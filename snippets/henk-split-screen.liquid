@@ -33,7 +33,14 @@
         {% if media_obj %}
           {% case media_obj.media_type %}
             {% when 'image' %}
-              {{ imageLink }}
+              {% if imageLink %}
+                <a
+                  href="{{ imageLink }}"
+                  {% if imageLinkTargetBlank %}
+                    target="_blank" rel="noopener"
+                  {% endif %}
+                >
+              {% endif %}
               <img
                 src="{{ media_obj | image_url: width: 1152, height: 1728 }}"
                 alt="{{ imageAlt | escape }}"
@@ -42,6 +49,9 @@
                 width="1152"
                 height="1728"
               >
+              {% if imageLink %}
+                </a>
+              {% endif %}
             {% when 'video' %}
               {% render 'henk-video',
                 id: id,

@@ -2,12 +2,11 @@
   Snippet: henk-split-screen
   Props:
     bgColor, id, title, caption, level, display, content,
-    imageUrl, imageAlt, imageLink, imageLinkTargetBlank,
+    media, media_type, poster, hasAudio, rounded,
+    imageAlt, imageLink, imageLinkTargetBlank,
     buttonUrl, buttonText, buttonVariant, reverse
 {% endcomment %}
 
-{% comment %} {% assign media_obj = media.value %} {% endcomment %}
-{% comment %} {{ poster | image_url }} {% endcomment %}
 {% assign p = props | default: section.settings %}
 
 {%- comment -%}
@@ -20,7 +19,7 @@
 {% endif %}
 
 <div
-  class="henk-section henk-split-screen{% if bgColor and bgColor != 'default' %} henk-split-screen--bg-{{ bgColor }}{% endif %}"
+  class="henk-section henk-split-screen{% if p.bgColor and p.bgColor != 'default' %} henk-split-screen--bg-{{ p.bgColor }}{% endif %}"
   {% if p.id %}
     id="{{ p.id }}"
   {% endif %}
@@ -32,7 +31,7 @@
     {% endif %}
   >
     <div class="henk-split-screen__grid">
-      <!-- IMAGE COLUMN -->
+      <!-- MEDIA COLUMN -->
       <div class="henk-split-screen__grid-item">
         {% if media_obj %}
           {% case p.media_type %}
@@ -81,13 +80,15 @@
             <p class="henk-split-screen__caption">{{ p.caption }}</p>
           {% endif %}
 
-          {% assign heading_level = level | default: 2 %}
+          {% assign heading_level = p.level | default: 2 %}
           {% if heading_level > 3 %}{% assign heading_level = 3 %}{% endif %}
           {% if heading_level < 1 %}{% assign heading_level = 1 %}{% endif %}
 
-          <h{{ heading_level }} class="henk-split-screen__title{% if display %} fs-display{% endif %}">
-            {{ title }}
-          </h{{ heading_level }}>
+          {% if p.title %}
+            <h{{ heading_level }} class="henk-split-screen__title{% if p.display %} fs-display{% endif %}">
+              {{ p.title }}
+            </h{{ heading_level }}>
+          {% endif %}
 
           {% if p.content %}
             <div class="henk-split-screen__text">

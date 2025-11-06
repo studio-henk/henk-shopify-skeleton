@@ -19,32 +19,30 @@
   - Otherwise, use individual variables passed to snippet (from metaobject)
 {%- endcomment -%}
 
-{% if props %}
-  hello
-  {% assign p = props %}
-{% else %}
-  oiiiii
-  {% assign p = {} %}
-  {% assign p.id = id %}
-  {% assign p.title = title %}
-  {% assign p.caption = caption %}
-  {% assign p.level = level %}
-  {% assign p.display = display %}
-  {% assign p.content = content %}
-  {% assign p.media = media %}
-  {% assign p.media_type = media_type %}
-  {% assign p.imageAlt = imageAlt %}
-  {% assign p.imageLink = imageLink %}
-  {% assign p.imageLinkTargetBlank = imageLinkTargetBlank %}
-  {% assign p.buttonUrl = buttonUrl %}
-  {% assign p.buttonText = buttonText %}
-  {% assign p.buttonVariant = buttonVariant %}
-  {% assign p.reverse = reverse %}
-  {% assign p.bgColor = bgColor %}
-  {% assign p.rounded = rounded %}
-  {% assign p.poster = poster %}
-  {% assign p.hasAudio = hasAudio %}
-{% endif %}
+{%
+  assign p = props | default:
+  {
+  "id": id,
+  "title": title,
+  "caption": caption,
+  "level": level,
+  "display": display,
+  "content": content,
+  "media": media,
+  "media_type": media_type,
+  "imageAlt": imageAlt,
+  "imageLink": imageLink,
+  "imageLinkTargetBlank": imageLinkTargetBlank,
+  "buttonUrl": buttonUrl,
+  "buttonText": buttonText,
+  "buttonVariant": buttonVariant,
+  "reverse": reverse,
+  "bgColor": bgColor,
+  "rounded": rounded,
+  "poster": poster,
+  "hasAudio": hasAudio
+  }
+%}
 
 {{ p | json }}
 

@@ -43,18 +43,29 @@
 {% assign media_type = section_media_type %}
 
 {% if section_media %}
-  {% if section_media.src %}
+  {%- comment -%} 1. Handle VideoDrop (metaobject) {%- endcomment -%}
+  {% if section_media.sources %}
+    {% assign media_obj = section_media.sources[0].url %}
+    {% assign media_type = 'video' %}
+    {% if section_poster == blank and section_media.preview_image and section_media.preview_image.src %}
+      {% assign section_poster = section_media.preview_image.src %}
+    {% endif %}
+
+    {%- comment -%} 2. Handle File object (homepage section or metaobject image/video) {%- endcomment -%}
+  {% elsif section_media.src %}
     {% assign media_obj = section_media.src %}
     {% if section_media.content_type contains 'video' %}
       {% assign media_type = 'video' %}
     {% else %}
       {% assign media_type = 'image' %}
     {% endif %}
-  {% elsif section_media.value and section_media.value.src %}
-    {% assign media_obj = section_media.value.src %}
-    {% assign media_type = 'image' %}
+
   {% elsif section_media.value %}
-    {% assign media_obj = section_media.value %}
+    {% if section_media.value.src %}
+      {% assign media_obj = section_media.value.src %}
+    {% else %}
+      {% assign media_obj = section_media.value %}
+    {% endif %}
     {% assign media_type = 'image' %}
   {% endif %}
 {% endif %}

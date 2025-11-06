@@ -31,7 +31,7 @@
 {% comment %}   {% assign p = p | merge: { "id": id } %} {% endcomment %}
 {% comment %}   {% assign p = p | merge: { "title": title } %} {% endcomment %}
 {% comment %} {% endif %} {% endcomment %}
-{% assign p.title = p.title | default: title %}
+{% assign ss_title = p.title | default: title %}
 
 {{ p | json }}
 

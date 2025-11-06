@@ -31,7 +31,7 @@
 {% assign section_button_text = p.button_text | default: button_text %}
 {% assign section_button_variant = p.button_variant | default: button_variant %}
 {% assign section_reverse = p.reverse | default: reverse %}
-{% assign section_bg_color = p.bg_color | default: bgColor %}
+{% comment %} {% assign section_bg_color = p.bg_color | default: bg_color %} {% endcomment %}
 {% assign section_id = p.id | default: id %}
 
 {%- comment -%}
@@ -74,6 +74,14 @@
 
 <p>DEBUG: button_url = {{ section_button_url | json }}, button_text = {{ section_button_text | json }}</p>
 
+<!-- <div -->
+<!--
+  class="henk-section henk-split-screen{% if section_bg_color and section_bg_color != 'default' %} henk-split-screen--bg-{{ section_bg_color }}{% endif %}"
+-->
+<!-- {% if section_id %} -->
+<!-- id="{{ section_id }}" -->
+<!-- {% endif %} -->
+<!-- > -->
 <div
   class="henk-section henk-split-screen{% if section_bg_color and section_bg_color != 'default' %} henk-split-screen--bg-{{ section_bg_color }}{% endif %}"
   {% if section_id %}

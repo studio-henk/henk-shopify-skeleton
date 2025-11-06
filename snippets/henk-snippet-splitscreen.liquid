@@ -22,16 +22,16 @@
 {% assign section_media_type = p.media_type | default: media_type %}
 {% assign section_media = p.media | default: media %}
 {% assign section_poster = p.poster | default: poster %}
-{% assign section_has_audio = p.has_audio | default: has_audio %}
-{% assign section_rounded = p.rounded | default: rounded %}
+{% assign section_has_audio = p.video_has_audio | default: video_has_audio %}
+{% assign section_rounded = p.rounded_corners | default: rounded_corners %}
 {% assign section_image_alt = p.image_alt | default: image_alt %}
-{% assign section_image_link = p.image_link | default: imageLink %}
-{% assign section_image_link_target_blank = p.image_link_target_blank | default: imageLinkTargetBlank %}
-{% assign section_button_url = p.button_url | default: buttonUrl %}
-{% assign section_button_text = p.button_text | default: buttonText %}
-{% assign section_button_variant = p.button_variant | default: buttonVariant %}
+{% assign section_image_link = p.image_link | default: image_link %}
+{% assign section_image_link_target_blank = p.image_link_target_blank | default: image_link_target_blank %}
+{% assign section_button_url = p.button_url | default: button_url %}
+{% assign section_button_text = p.button_text | default: button_text %}
+{% assign section_button_variant = p.button_variant | default: button_variant %}
 {% assign section_reverse = p.reverse | default: reverse %}
-{% assign section_bg_color = p.bg_color | default: bgColor %}
+{% comment %} {% assign section_bg_color = p.bg_color | default: bg_color %} {% endcomment %}
 {% assign section_id = p.id | default: id %}
 
 {%- comment -%}
@@ -67,13 +67,21 @@
   {% endif %}
 {% endif %}
 
-<h2>DEBUG: SplitScreen Media</h2>
-<p>section_media_type: {{ section_media_type | json }}</p>
-<p>section_media: {{ section_media | json }}</p>
-<p>media_obj (after normalization): {{ media_obj | json }}</p>
+<!-- <h2>DEBUG: SplitScreen Media</h2> -->
+<!-- <p>section_media_type: {{ section_media_type | json }}</p> -->
+<!-- <p>section_media: {{ section_media | json }}</p> -->
+<!-- <p>media_obj (after normalization): {{ media_obj | json }}</p> -->
+<!--  -->
+<!-- <p>DEBUG: button_url = {{ section_button_url | json }}, button_text = {{ section_button_text | json }}</p> -->
 
-<p>DEBUG: button_url = {{ section_button_url | json }}, button_text = {{ section_button_text | json }}</p>
-
+<!-- <div -->
+<!--
+  class="henk-section henk-split-screen{% if section_bg_color and section_bg_color != 'default' %} henk-split-screen--bg-{{ section_bg_color }}{% endif %}"
+-->
+<!-- {% if section_id %} -->
+<!-- id="{{ section_id }}" -->
+<!-- {% endif %} -->
+<!-- > -->
 <div
   class="henk-section henk-split-screen{% if section_bg_color and section_bg_color != 'default' %} henk-split-screen--bg-{{ section_bg_color }}{% endif %}"
   {% if section_id %}

@@ -5,6 +5,9 @@
     media, media_type, poster, has_audio, rounded,
     image_alt, image_link, image_link_target_blank,
     button_url, button_text, button_variant, reverse
+  Works for:
+    - Sections (using props)
+    - Metaobjects (direct variable pass)
 {% endcomment %}
 
 {%- comment -%}
@@ -22,9 +25,9 @@
 {% assign section_media_type = p.media_type | default: media_type %}
 {% assign section_media = p.media | default: media %}
 {% assign section_poster = p.poster | default: poster %}
-{% assign section_has_audio = p.has_audio | default: has_audio %}
+{% assign section_has_audio = p.has_audio | default: has_audio | default: true %}
 {% assign section_rounded = p.rounded | default: rounded %}
-{% assign section_image_alt = p.image_alt | default: image_alt %}
+{% assign section_image_alt = p.image_alt | default: imageAlt %}
 {% assign section_image_link = p.image_link | default: imageLink %}
 {% assign section_image_link_target_blank = p.image_link_target_blank | default: imageLinkTargetBlank %}
 {% assign section_button_url = p.button_url | default: buttonUrl %}
@@ -36,35 +39,26 @@
 
 {%- comment -%}
   Normalize media object
-{%- endcomment -%}
-
-{% comment %} {% if section_media_type == 'video' and section_media != blank %} {% endcomment %}
-{% comment %}   {% assign media_obj = section_media %} {% endcomment %}
-{% comment %} {% elsif section_media_type == 'image' and section_media != blank %} {% endcomment %}
-{% comment %}   {% assign media_obj = section_media %} {% endcomment %}
-{% comment %} {% else %} {% endcomment %}
-{% comment %}   {% assign media_obj = null %} {% endcomment %}
-{% comment %} {% endif %} {% endcomment %}
-
-{%- comment -%}
-  Normalize media object
   - Handles section VideoDrop, metaobject VideoDrop, or image
 {%- endcomment -%}
 
 {% assign media_obj = null %}
+{% assign video_src = null %}
 {% assign media_type = section_media_type %}
 
-{% if section_media_type == 'video' and section_media %}
-  {%- comment -%} Section or metaobject VideoDrop {%- endcomment -%}
-  {% assign media_obj = section_media %}
+{% if section_media %}
+  {% if section_media_type == 'video' %}
+    {%- comment -%} Extract video source for metaobject VideoDrop {%- endcomment -%}
+    {% assign video_src = section_media.sources[0].url | default: section_media | default: '' %}
+    {% assign media_obj = section_media %}
 
-  {%- comment -%} Ensure poster exists (fallback to preview_image.src if needed) {%- endcomment -%}
-  {% if section_poster == blank and media_obj.preview_image and media_obj.preview_image.src %}
-    {% assign section_poster = media_obj.preview_image.src %}
+    {%- comment -%} Ensure poster exists (fallback to preview_image.src if needed) {%- endcomment -%}
+    {% if section_poster == blank and media_obj.preview_image and media_obj.preview_image.src %}
+      {% assign section_poster = media_obj.preview_image.src %}
+    {% endif %}
+  {% elsif section_media_type == 'image' %}
+    {% assign media_obj = section_media %}
   {% endif %}
-
-{% elsif section_media_type == 'image' and section_media %}
-  {% assign media_obj = section_media %}
 {% endif %}
 
 <div
@@ -83,7 +77,7 @@
       <!-- MEDIA COLUMN -->
       <div class="henk-split-screen__grid-item">
         {% if media_obj %}
-          {% case section_media_type %}
+          {% case media_type %}
             {% when 'image' %}
               {% if section_image_link %}
                 <a
@@ -104,10 +98,11 @@
               {% if section_image_link %}
                 </a>
               {% endif %}
+
             {% when 'video' %}
               {% render 'henk-video',
                 id: section_id,
-                src: media_obj,
+                src: video_src,
                 poster: section_poster,
                 autoplay: true,
                 has_audio: section_has_audio,

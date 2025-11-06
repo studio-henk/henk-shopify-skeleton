@@ -32,7 +32,7 @@
         "title": "welcome",
         "heading_level": "2",
         "content": "<p>fgfgfgfg</p>",
-        "media_type": "video",
+        "media_type": "image",
         "image_src": "shopify://shop_images/LI-DISPL-8010.jpg",
         "imageAlt": "jfjfjfjfjfj",
         "video_src": "shopify://files/videos/StudioHENK_HaarlemStore_square.mp4",
@@ -44,29 +44,6 @@
         "buttonText": "click me",
         "buttonVariant": "primary",
         "reverse": true
-      }
-    },
-    "henk_section_splitscreen_JfQQAy": {
-      "type": "henk-section-splitscreen",
-      "name": "Split Screen",
-      "settings": {
-        "id": "dfgdfg",
-        "caption": "caption",
-        "title": "welcome",
-        "heading_level": "1",
-        "content": "<p>fgfgfgfg</p>",
-        "media_type": "video",
-        "image_src": "shopify://shop_images/LI-DISPL-6003.jpg",
-        "imageAlt": "jfjfjfjfjfj",
-        "video_src": "shopify://files/videos/StudioHenk_UtrechtStore_square.mp4",
-        "video_has_audio": true,
-        "rounded_corners": true,
-        "imageLink": "shopify://pages/materialen-onderhoud",
-        "imageLinkTargetBlank": true,
-        "buttonUrl": "shopify://pages/materialen-onderhoud",
-        "buttonText": "click me",
-        "buttonVariant": "primary",
-        "reverse": false
       }
     },
     "henk_section_double_media_mFKWcr": {
@@ -139,7 +116,6 @@
   "order": [
     "section_header",
     "henk_section_splitscreen_qWbEEy",
-    "henk_section_splitscreen_JfQQAy",
     "henk_section_double_media_mFKWcr",
     "faq",
     "henk_section_video_KNRtnW"

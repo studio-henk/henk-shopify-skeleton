@@ -9,12 +9,36 @@
  */
 {
   "sections": {
+    "henk_section_splitscreen_jaEWNr": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "id": "",
+        "caption": "",
+        "title": "hello ams",
+        "heading_level": "2",
+        "content": "",
+        "media_type": "video",
+        "imageAlt": "",
+        "video_src": "shopify://files/videos/StudioHenk_AdamStore_square.mp4",
+        "video_has_audio": true,
+        "rounded_corners": true,
+        "imageLink": "",
+        "imageLinkTargetBlank": false,
+        "buttonUrl": "",
+        "buttonText": "",
+        "buttonVariant": "default",
+        "reverse": false
+      }
+    },
     "main": {
       "type": "page",
+      "disabled": true,
       "settings": {}
     }
   },
   "order": [
+    "henk_section_splitscreen_jaEWNr",
     "main"
   ]
 }

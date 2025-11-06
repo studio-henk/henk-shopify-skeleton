@@ -8,10 +8,40 @@
 {% endcomment %}
 
 {% comment %} {% assign p = props | default: section.settings %} {% endcomment %}
-{% assign p = props | default: {} %}
+{% comment %} {% assign p = props | default: {} %} {% endcomment %}
 
-{{ p | json }}
-{{ id }}
+{% comment %} {{ p | json }} {% endcomment %}
+{% comment %} {{ id }} {% endcomment %}
+
+{%- comment -%}
+  Normalize props for snippet:
+  - If `props` is passed (from a section), use it
+  - Otherwise, use individual variables passed to snippet (from metaobject)
+{%- endcomment -%}
+
+{% if props %}
+  {% assign p = props %}
+{% else %}
+  {% assign p = {} %}
+  {% assign p.title = title %}
+  {% assign p.caption = caption %}
+  {% assign p.level = level %}
+  {% assign p.display = display %}
+  {% assign p.content = content %}
+  {% assign p.media = media %}
+  {% assign p.media_type = media_type %}
+  {% assign p.imageAlt = imageAlt %}
+  {% assign p.imageLink = imageLink %}
+  {% assign p.imageLinkTargetBlank = imageLinkTargetBlank %}
+  {% assign p.buttonUrl = buttonUrl %}
+  {% assign p.buttonText = buttonText %}
+  {% assign p.buttonVariant = buttonVariant %}
+  {% assign p.reverse = reverse %}
+  {% assign p.bgColor = bgColor %}
+  {% assign p.rounded = rounded %}
+  {% assign p.poster = poster %}
+  {% assign p.hasAudio = hasAudio %}
+{% endif %}
 
 {%- comment -%}
   Normalize media object (handles either `media.value` or direct media)

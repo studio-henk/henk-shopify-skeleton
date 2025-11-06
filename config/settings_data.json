@@ -8,5 +8,38 @@
  * ------------------------------------------------------------
  */
 {
-  "current": {}
+  "current": {
+    "sections": {
+      "henk-header": {
+        "type": "henk-header",
+        "settings": {}
+      },
+      "henk-footer": {
+        "type": "henk-footer",
+        "settings": {}
+      },
+      "henk-section-splitscreen": {
+        "type": "henk-section-splitscreen",
+        "settings": {
+          "id": "",
+          "caption": "caption",
+          "title": "hello title",
+          "heading_level": "2",
+          "content": "<p>content</p>",
+          "media_type": "image",
+          "image_src": "shopify://shop_images/LI-DISPL-8010.jpg",
+          "imageAlt": "fgfgfg",
+          "video_has_audio": false,
+          "rounded_corners": false,
+          "imageLink": "",
+          "imageLinkTargetBlank": false,
+          "buttonUrl": "",
+          "buttonText": "fgfgfg",
+          "buttonVariant": "default",
+          "reverse": false
+        }
+      }
+    },
+    "content_for_index": []
+  }
 }

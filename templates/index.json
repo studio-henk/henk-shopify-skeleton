@@ -9,121 +9,22 @@
  */
 {
   "sections": {
-    "section_header": {
+    "main": {
       "type": "henk-section-header",
       "settings": {
         "id": "home-header",
-        "caption": "Welkom",
-        "title": "Ontdek onze interieurs",
-        "text": "<p>Hoog....</p>",
+        "caption": "Welcome to Studio HENK",
+        "title": "Discover Our Interiors 2",
+        "text": "<p>High-quality furniture and interior inspiration for your home.</p><p>and then some</p>",
         "level": "1",
         "align": "center",
-        "button_label": "Koop nu",
+        "button_label": "Shop Now",
         "button_url": "/collections",
         "button_variant": "primary"
-      }
-    },
-    "henk_section_double_image_block_rxkyJC": {
-      "type": "henk-section-double-image-block",
-      "name": "Henk Double Image Block",
-      "settings": {
-        "reverse_layout": false,
-        "large_image": "shopify://shop_images/LI-DISPL-8010.jpg",
-        "large_image_url": "",
-        "large_image_new_tab": false,
-        "small_image": "shopify://shop_images/sh-rdam-poster.jpg",
-        "small_image_url": "",
-        "small_image_new_tab": false
-      }
-    },
-    "henk_section_double_image_block_TYcGDf": {
-      "type": "henk-section-double-image-block",
-      "name": "Henk Double Image Block",
-      "settings": {
-        "reverse_layout": true,
-        "large_image": "shopify://shop_images/LI-DISPL-8010.jpg",
-        "large_image_url": "",
-        "large_image_new_tab": false,
-        "small_image": "shopify://shop_images/sh-rdam-poster.jpg",
-        "small_image_url": "",
-        "small_image_new_tab": false
-      }
-    },
-    "henk_section_splitscreen_Y4KDHY": {
-      "type": "henk-section-splitscreen",
-      "name": "Split Screen",
-      "settings": {
-        "id": "ss1",
-        "caption": "caption",
-        "content": "<p>jaja</p>",
-        "imageAlt": "",
-        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
-        "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
-        "rounded_corners": true,
-        "imageLink": "",
-        "imageLinkTargetBlank": false,
-        "buttonUrl": "",
-        "buttonText": "",
-        "buttonVariant": "default",
-        "reverse": false
-      }
-    },
-    "faq": {
-      "type": "henk-section-faq",
-      "blocks": {
-        "block1": {
-          "type": "faq_item",
-          "settings": {
-            "summary": "What is the purpose of this component?",
-            "content": "<p>This component is designed to provide answers to common questions users may have about our products and services.</p>",
-            "variant": "plusmin",
-            "name": "cc",
-            "icon_name": "calendar",
-            "icon_size": "large"
-          }
-        },
-        "block2": {
-          "type": "faq_item",
-          "settings": {
-            "summary": "How can I return my samples?",
-            "content": "<p>You can return your sample pack to any of our stores or mail it to us for free via Antwoordnummer 98189, 1000 VA Amsterdam.</p>",
-            "variant": "plusmin",
-            "name": "cc",
-            "icon_name": "truck-thick",
-            "icon_size": "large"
-          }
-        }
-      },
-      "block_order": [
-        "block1",
-        "block2"
-      ],
-      "settings": {
-        "title": "Veelgestelde vragen"
-      }
-    },
-    "henk_section_video_KNRtnW": {
-      "type": "henk-section-video",
-      "name": "Video Section",
-      "settings": {
-        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
-        "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
-        "video_link": "",
-        "video_link_target_blank": false,
-        "autoplay": true,
-        "loop": true,
-        "cover": true,
-        "rounded": false,
-        "description": "Background video"
       }
     }
   },
   "order": [
-    "section_header",
-    "henk_section_double_image_block_rxkyJC",
-    "henk_section_double_image_block_TYcGDf",
-    "henk_section_splitscreen_Y4KDHY",
-    "faq",
-    "henk_section_video_KNRtnW"
+    "main"
   ]
 }

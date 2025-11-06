@@ -8,5 +8,36 @@
  * ------------------------------------------------------------
  */
 {
-  "current": {}
+  "current": {
+    "sections": {
+      "henk-header": {
+        "type": "henk-header",
+        "settings": {}
+      },
+      "henk-footer": {
+        "type": "henk-footer",
+        "settings": {}
+      },
+      "henk-section-splitscreen": {
+        "type": "henk-section-splitscreen",
+        "settings": {
+          "id": "dfdfdf",
+          "content": "<p>content</p>",
+          "caption": "caption",
+          "video_src": "shopify://files/videos/StudioHENK_HaarlemStore_square.mp4",
+          "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
+          "image_src": "shopify://shop_images/LI-DISPL-8010.jpg",
+          "rounded_corners": false,
+          "imageAlt": "fgfgfg",
+          "imageLink": "",
+          "imageLinkTargetBlank": false,
+          "buttonUrl": "shopify://blogs/henk-visits",
+          "buttonText": "fgfgfg",
+          "buttonVariant": "default",
+          "reverse": false
+        }
+      }
+    },
+    "content_for_index": []
+  }
 }

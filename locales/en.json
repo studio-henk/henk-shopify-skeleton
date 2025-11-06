@@ -13,14 +13,6 @@
     "not_found": "Page not found.",
     "back_to_shopping": "Continue shopping"
   },
-  "general": {
-    "header": "Header"
-  },
-  "sections": {
-    "header": {
-      "name": "Header"
-    }
-  },
   "stores": {
     "discover_button": "Discover"
   },

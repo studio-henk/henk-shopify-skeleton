@@ -13,14 +13,6 @@
     "not_found": "Pagina niet gevonden.",
     "back_to_shopping": "Winkel verder"
   },
-  "general": {
-    "header": "Header"
-  },
-  "sections": {
-    "header": {
-      "name": "Header"
-    }
-  },
   "stores": {
     "discover_button": "Ontdek"
   },

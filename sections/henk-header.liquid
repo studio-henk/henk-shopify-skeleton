@@ -1,3 +1,11 @@
+<!-- <link -->
+<!-- rel="stylesheet" -->
+<!-- href="{{ 'component-cart-notification.css' | asset_url }}" -->
+<!-- media="print" -->
+<!-- onload="this.media='all'" -->
+<!-- > -->
+<!-- <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script> -->
+
 {% assign main_level_links = linklists['main-menu'].links %}
 <header
   class="henk-header henk-header--center henk-header--in-between"
@@ -140,26 +148,13 @@
     </ul>
 
     <!-- logo -->
-    {% if template == 'index' %}
-      <h1 class="henk-header__logo-heading">
-        <span class="visually-hidden">Studio HENK</span>
-        <a
-          class="henk-logo henk-logo--transparent henk-header__logo"
-          href="{{ routes.root_url }}"
-          aria-label="Studio HENK"
-        >
-          {%- render 'henk-logo' -%}
-        </a>
-      </h1>
-    {% else %}
-      <a
-        class="henk-logo henk-logo--transparent henk-header__logo"
-        href="{{ routes.root_url }}"
-        aria-label="Studio HENK"
-      >
-        {%- render 'henk-logo' -%}
-      </a>
-    {% endif %}
+    <a
+      class="henk-logo henk-logo--transparent henk-header__logo"
+      href="{{ routes.root_url }}"
+      aria-label="Studio HENK"
+    >
+      {%- render 'henk-logo' -%}
+    </a>
     <div class="henk-header__utils" data-js-utils>
       {%- if localization and localization.available_languages.size > 0 -%}
         <div class="henk-localise">
@@ -210,10 +205,27 @@
 
 <script src="{{ 'henk-desktop-menu.min.js' | asset_url }}" defer></script>
 
+<!-- <script src="{{ 'henk-mobile-menu.min.js' | asset_url }}" defer></script> -->
+
 {% schema %}
 {
   "name": "t:sections.header.name",
   "tag": "section",
-  "settings": []
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": true,
+      "label": "t:sections.header.settings.enable_country_selector.label",
+      "info": "t:sections.header.settings.enable_country_selector.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": true,
+      "label": "t:sections.header.settings.enable_language_selector.label",
+      "info": "t:sections.header.settings.enable_language_selector.info"
+    }
+  ]
 }
 {% endschema %}

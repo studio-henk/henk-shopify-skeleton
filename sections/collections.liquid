@@ -15,10 +15,7 @@
 
 <div class="henk-lister-grid henk-section henk-section --variant-macs">
   {% for collection in collections %}
-    {% comment %} {% if collection.all_products_count > 0 %} {% endcomment %}
-    {% if collection.products_count > 0 %}
-      {% render 'henk-collections-card', collection: collection, card_variant: 'macs' %}
-    {% endif %}
+    {% render 'henk-collections-card', collection: collection, card_variant: 'macs' %}
   {% endfor %}
 </div>
 

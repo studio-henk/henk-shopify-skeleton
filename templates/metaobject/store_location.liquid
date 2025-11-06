@@ -1,5 +1,8 @@
 <div class="store-detail">
   {% render 'henk-section-header', title: metaobject.store_name, level: '1', align: 'center' %}
+
+  {% section 'henk-section-splitscreen' %}
+
   {% assign media_obj = metaobject.splitscreen_media.value %}
   {% assign media_type = 'image' %}
   {% if media_obj and media_obj.media_type == 'video' %}

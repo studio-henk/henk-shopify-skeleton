@@ -1,0 +1,22 @@
+{%- comment -%}
+  Props:
+    summary: string
+    content: string (HTML)
+    variant: "default" | "plusmin"
+    name: string
+    icon_name: string (optional)
+    icon_size: "small" | "medium" | "large" (optional)
+    icon_only: boolean (optional, defaults to true)
+{%- endcomment -%}
+
+<details class="henk-details henk-details--{{ variant | default: 'default' }}" name="{{ name | default: 'cc' }}">
+  <summary class="henk-details__summary">
+    {% if icon_name %}
+      {% render 'henk-icon', icon_name: icon_name, size: icon_size | default: 'large', only: true %}
+    {% endif %}
+    {{ summary }}
+  </summary>
+  <div class="henk-details__content">
+    {{ content }}
+  </div>
+</details>

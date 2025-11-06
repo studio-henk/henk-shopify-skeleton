@@ -6,23 +6,10 @@
       document.documentElement.classList.add('js-enabled');
     </script>
 
-    <!-- # preload fonts -->
-    {{ 'NeueHaasGrotTextRound-55Roman-Web.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2' }}
-
-    {% # Inlined CSS Variables %}
-    {% comment %} {% render 'css-variables' %} {% endcomment %}
     {{ 'henk-tokens.min.css' | asset_url | stylesheet_tag: preload: true }}
-
-    {% # Load and preload the critical CSS %}
-    {% comment %} {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
-
     {{ 'henk-base.min.css' | asset_url | stylesheet_tag: preload: true }}
     {{ 'henk-atoms.min.css' | asset_url | stylesheet_tag: preload: true }}
     {{ 'henk-components.min.css' | asset_url | stylesheet_tag: preload: true }}
-
-    {% comment %} {{ '_henk-header.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
-    {% comment %} {{ '_henk-header-mobile.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
-    {% comment %} {{ '_henk-footer.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
 
     {% # TODO: check when site live / prod %}
     {% if theme.id != 141470990497 %}
@@ -39,10 +26,6 @@
     {{ content_for_header }}
 
     <script type="module">
-      // document.documentElement.classList.remove('no-js');
-      // document.documentElement.classList.add('js-enabled');
-
-      // import { mobileMenu } from './assets/henk-mobile-menu.min.js';
       import { mobileMenu } from '{{ "henk-mobile-menu.min.js" | asset_url }}';
 
       document.addEventListener('DOMContentLoaded', () => {
@@ -54,14 +37,13 @@
 
   <body class="template-{{ template.name }}">
     <div class="henk-wrapper">
-      {% sections 'header-group' %}
+      {% section 'henk-header' %}
       {% render 'henk-breadcrumbs' %}
       <main class="henk-main">
         {{ content_for_layout }}
-        {% comment %} newsletter {% endcomment %}
         {% render 'henk-newsletter' %}
       </main>
-      {% sections 'footer-group' %}
+      {% section 'henk-footer' %}
     </div>
   </body>
 </html>

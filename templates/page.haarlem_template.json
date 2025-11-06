@@ -8,17 +8,12 @@
  * ------------------------------------------------------------
  */
 {
-  "current": {
-    "sections": {
-      "henk-header": {
-        "type": "henk-header",
-        "settings": {}
-      },
-      "henk-footer": {
-        "type": "henk-footer",
-        "settings": {}
-      }
-    },
-    "content_for_index": []
-  }
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": ["main"]
 }

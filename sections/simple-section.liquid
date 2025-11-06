@@ -1,0 +1,52 @@
+hellooooo
+<section>
+  <h2>{{ section.settings.title }}</h2>
+
+  {% for block in section.blocks %}
+    <p>{{ block.settings.text }}</p>
+  {% else %}
+    <p>No blocks found.</p>
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "Simple Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "My Section"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_block",
+      "name": "Text Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Default text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Simple Section",
+      "blocks": [
+        {
+          "type": "text_block",
+          "settings": {
+            "text": "Prefilled block text"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

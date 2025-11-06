@@ -8,17 +8,20 @@
  * ------------------------------------------------------------
  */
 {
-  "current": {
-    "sections": {
-      "henk-header": {
-        "type": "henk-header",
-        "settings": {}
-      },
-      "henk-footer": {
-        "type": "henk-footer",
-        "settings": {}
-      }
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
     },
-    "content_for_index": []
-  }
+    "henk_section_stores_overview_VGMmTX": {
+      "type": "henk-section-stores-overview",
+      "name": "Stores Overview",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "henk_section_stores_overview_VGMmTX"
+  ]
 }

@@ -103,8 +103,8 @@
       <!-- CONTENT COLUMN -->
       <div class="henk-split-screen__grid-item">
         <div class="henk-split-screen__content">
-          {% if p.caption %}
-            <p class="henk-split-screen__caption">{{ p.caption }}</p>
+          {% if p.caption | default: caption %}
+            <p class="henk-split-screen__caption">{{ p.caption | default: caption }}</p>
           {% endif %}
 
           {% comment %} {% assign heading_level = p.level | default: 2 %} {% endcomment %}
@@ -118,7 +118,6 @@
           {% comment %} {% endif %} {% endcomment %}
 
           {% assign heading_tag = 'h' | append: p.heading_level | default: 'h2' %}
-          {{ title }}
           {% if p.title | default: title %}
             <{{ heading_tag }} class="henk-split-screen__title">
               {{ p.title | default: title }}

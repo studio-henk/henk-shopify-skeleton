@@ -35,6 +35,16 @@
 {% assign section_id = p.id | default: id %}
 
 {%- comment -%}
+  For homepage sections, map actual section settings fields to section_media
+  This ensures section_media points to the correct image/video File object
+{%- endcomment -%}
+{% if section_media_type == 'image' %}
+  {% assign section_media = p.image_src | default: section_media %}
+{% elsif section_media_type == 'video' %}
+  {% assign section_media = p.video_src | default: section_media %}
+{% endif %}
+
+{%- comment -%}
   Normalize media object
   - Handles section VideoDrop, metaobject VideoDrop, or image
 {%- endcomment -%}

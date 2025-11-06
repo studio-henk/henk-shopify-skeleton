@@ -1,59 +1,55 @@
 {% comment %}
   Snippet: henk-split-screen
-  Props:
-    bgColor, id, title, caption, level, display, content,
-    media, media_type, poster, hasAudio, rounded,
+  Props/variables supported:
+    bgColor, id, title, caption, level, content,
+    media_type, media, poster, video_has_audio, rounded,
     imageAlt, imageLink, imageLinkTargetBlank,
     buttonUrl, buttonText, buttonVariant, reverse
 {% endcomment %}
 
-{% comment %} {% assign p = props | default: section.settings %} {% endcomment %}
-{% assign p = props | default: null %}
-{% comment %} {% if props %} {% endcomment %}
-{% comment %}   {% assign p = props %} {% endcomment %}
-{% comment %} {% else %} {% endcomment %}
-{% comment %}   {% assign p = null %} {% endcomment %}
-{% comment %} {% endif %} {% endcomment %}
-
-{% comment %} {{ p | json }} {% endcomment %}
-{% comment %} {{ id }} {% endcomment %}
-
 {%- comment -%}
-  Normalize props for snippet:
-  - If `props` is passed (from a section), use it
-  - Otherwise, use individual variables passed to snippet (from metaobject)
+  Normalize all variables at the top:
+  - Use `props.*` if available (from section)
+  - Otherwise fallback to individual variables (metaobject)
 {%- endcomment -%}
 
-{% comment %} {% if props %} {% endcomment %}
-{% comment %}   {% assign p = props %} {% endcomment %}
-{% comment %} {% else %} {% endcomment %}
-{% comment %}   {% assign p = {} %} {% endcomment %}
-{% comment %}   {% assign p = p | merge: { "id": id } %} {% endcomment %}
-{% comment %}   {% assign p = p | merge: { "title": title } %} {% endcomment %}
-{% comment %} {% endif %} {% endcomment %}
-{% assign ss_title = p.title | default: title %}
+{% assign ss_id = props.id | default: id %}
+{% assign ss_title = props.title | default: title %}
+{% assign ss_caption = props.caption | default: caption %}
+{% assign ss_level = props.level | default: level | default: 2 %}
+{% assign ss_content = props.content | default: content %}
+{% assign ss_media_type = props.media_type | default: media_type %}
+{% assign ss_media = props.media | default: media %}
+{% assign ss_imageAlt = props.imageAlt | default: imageAlt %}
+{% assign ss_imageLink = props.imageLink | default: imageLink %}
+{% assign ss_imageLinkTargetBlank = props.imageLinkTargetBlank | default: imageLinkTargetBlank %}
+{% assign ss_buttonUrl = props.buttonUrl | default: buttonUrl %}
+{% assign ss_buttonText = props.buttonText | default: buttonText %}
+{% assign ss_buttonVariant = props.buttonVariant | default: buttonVariant | default: 'default' %}
+{% assign ss_reverse = props.reverse | default: reverse | default: false %}
+{% assign ss_bgColor = props.bgColor | default: bgColor | default: 'default' %}
+{% assign ss_rounded = props.rounded | default: rounded | default: false %}
+{% assign ss_poster = props.poster | default: poster %}
+{% assign ss_video_has_audio = props.video_has_audio | default: false %}
 
 {%- comment -%}
-  Normalize media object (handles either `media.value` or direct media)
+  Determine actual media object
 {%- endcomment -%}
-
-{% if p.media_type == 'video' and p.video_src != blank %}
-  {% assign media_obj = p.video_src %}
-{% elsif p.media_type == 'image' and p.image_src != blank %}
-  {% assign media_obj = p.image_src %}
+{% if ss_media_type == 'video' and ss_media != blank %}
+  {% assign media_obj = ss_media %}
+{% elsif ss_media_type == 'image' and ss_media != blank %}
+  {% assign media_obj = ss_media %}
 {% else %}
   {% assign media_obj = null %}
 {% endif %}
 
 <div
-  class="henk-section henk-split-screen{% if p.bgColor and p.bgColor != 'default' %} henk-split-screen--bg-{{ p.bgColor }}{% endif %}"
-  {% if p.id %}
-    id="{{ p.id }}"
-  {% endif %}
+  id="{{ ss_id }}"
+  class="henk-section henk-split-screen{% if ss_bgColor != 'default' %} henk-split-screen--bg-{{ ss_bgColor }}{% endif %}"
 >
   <div
     class="henk-split-screen__inner"
-    {% if p.reverse %}
+    {% if ss_reverse %}
       data-order="reverse"
     {% endif %}
   >
@@ -61,40 +57,40 @@
       <!-- MEDIA COLUMN -->
       <div class="henk-split-screen__grid-item">
         {% if media_obj %}
-          {% case p.media_type %}
+          {% case ss_media_type %}
             {% when 'image' %}
-              {% if p.imageLink %}
+              {% if ss_imageLink %}
                 <a
-                  href="{{ p.imageLink }}"
-                  {% if p.imageLinkTargetBlank %}
+                  href="{{ ss_imageLink }}"
+                  {% if ss_imageLinkTargetBlank %}
                     target="_blank" rel="noopener"
                   {% endif %}
                 >
               {% endif %}
               <img
-                src="{{ media_obj | image_url: width: 1152, height: 1728 }}"
-                alt="{{ p.imageAlt | escape }}"
+                src="{{ media_obj | image_url: width:1152, height:1728 }}"
+                alt="{{ ss_imageAlt | escape }}"
                 class="henk-split-screen__img"
                 loading="lazy"
                 width="1152"
                 height="1728"
               >
-              {% if p.imageLink %}
+              {% if ss_imageLink %}
                 </a>
               {% endif %}
             {% when 'video' %}
               {% render 'henk-video',
-                id: p.id,
+                id: ss_id,
                 src: media_obj,
-                poster: p.poster,
+                poster: ss_poster,
                 autoplay: true,
-                has_audio: p.video_has_audio,
+                has_audio: ss_video_has_audio,
                 loop: true,
                 cover: true,
-                rounded: p.rounded_corners,
-                description: p.imageAlt,
-                link: p.imageLink,
-                link_target_blank: p.imageLinkTargetBlank
+                rounded: ss_rounded,
+                description: ss_imageAlt,
+                link: ss_imageLink,
+                link_target_blank: ss_imageLinkTargetBlank
               %}
           {% endcase %}
         {% endif %}
@@ -103,34 +99,35 @@
       <!-- CONTENT COLUMN -->
       <div class="henk-split-screen__grid-item">
         <div class="henk-split-screen__content">
-          {% assign caption_value = p.caption | default: caption %}
-          {% if caption_value %}
-            {{ caption_value }}
+          {% if ss_caption %}
+            <p class="henk-split-screen__caption">{{ ss_caption }}</p>
           {% endif %}
 
-          {% assign heading_tag = 'h' | append: p.heading_level | default: 'h2' %}
+          {% assign heading_level = ss_level %}
+          {% if heading_level < 1 %}{% assign heading_level = 1 %}{% endif %}
+          {% if heading_level > 3 %}{% assign heading_level = 3 %}{% endif %}
           {% if ss_title %}
-            <{{ heading_tag }} class="henk-split-screen__title">
+            <h{{ heading_level }} class="henk-split-screen__title">
               {{ ss_title }}
-            </{{ heading_tag }}>
+            </h{{ heading_level }}>
           {% endif %}
 
-          {% if p.content %}
+          {% if ss_content %}
             <div class="henk-split-screen__text">
-              {% if p.content.children %}
-                {% render 'henk-rich-text', children: p.content.children %}
+              {% if ss_content.children %}
+                {% render 'henk-rich-text', children: ss_content.children %}
               {% else %}
-                {{ p.content }}
+                {{ ss_content }}
               {% endif %}
             </div>
           {% endif %}
 
-          {% if p.buttonUrl and p.buttonText %}
+          {% if ss_buttonUrl and ss_buttonText %}
             <a
-              href="{{ p.buttonUrl | prepend: routes.root }}"
-              class="henk-button henk-button--{{ p.buttonVariant | default: 'default' }}"
+              href="{{ ss_buttonUrl | prepend: routes.root }}"
+              class="henk-button henk-button--{{ ss_buttonVariant }}"
             >
-              {{ p.buttonText }}
+              {{ ss_buttonText }}
             </a>
           {% endif %}
         </div>

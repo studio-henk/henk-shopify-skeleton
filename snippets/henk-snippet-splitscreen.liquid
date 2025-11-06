@@ -115,6 +115,7 @@
           {% endif %}
 
           {% assign heading_tag = 'h' | append: p.heading_level | default: 'h2' %}
+          {{ p.title }}
           {% if p.title %}
             <{{ heading_tag }} class="henk-split-screen__title">
               {{ p.title | default: title }}

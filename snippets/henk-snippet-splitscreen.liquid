@@ -43,20 +43,29 @@
 {% assign media_type = section_media_type %}
 
 {% if section_media_type == 'video' and section_media %}
-  {% comment %} VideoDrop from metaobject or section {% endcomment %}
-  {% assign media_obj = section_media %}
-  {% if section_media.preview_image and section_media.preview_image.src %}
-    {% assign section_poster = section_media.preview_image.src %}
-  {% endif %}
-{% elsif section_media_type == 'image' and section_media %}
-  hello?
-
-  {% comment %} Image from section or metaobject {% endcomment %}
-  {% if section_media.src %}
-    {% assign media_obj = section_media.src %}
+  {%- comment -%} VideoDrop from section or metaobject {%- endcomment -%}
+  {% if section_media.sources %}
+    {% assign media_obj = section_media.sources[0].url %}
   {% else %}
     {% assign media_obj = section_media %}
   {% endif %}
+  {% assign media_type = 'video' %}
+
+  {%- comment -%} Ensure poster exists {%- endcomment -%}
+  {% if section_poster == blank and section_media.preview_image and section_media.preview_image.src %}
+    {% assign section_poster = section_media.preview_image.src %}
+  {% endif %}
+
+{% elsif section_media_type == 'image' and section_media %}
+  {%- comment -%} Section image_picker or metaobject File picker {%- endcomment -%}
+  {% if section_media.src %}
+    {% assign media_obj = section_media.src %}
+  {% elsif section_media.value and section_media.value.src %}
+    {% assign media_obj = section_media.value.src %}
+  {% else %}
+    {% assign media_obj = section_media %}
+  {% endif %}
+  {% assign media_type = 'image' %}
 {% endif %}
 
 {{ section_media_type }}

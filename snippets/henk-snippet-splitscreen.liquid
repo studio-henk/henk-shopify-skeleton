@@ -43,16 +43,18 @@
 {% assign media_type = section_media_type %}
 
 {% if section_media_type == 'video' and section_media %}
-  {%- comment -%} Section or metaobject VideoDrop {%- endcomment -%}
+  {% comment %} VideoDrop from metaobject or section {% endcomment %}
   {% assign media_obj = section_media %}
-
-  {%- comment -%} Ensure poster exists (fallback to preview_image.src if needed) {%- endcomment -%}
-  {% if section_poster == blank and media_obj.preview_image and media_obj.preview_image.src %}
-    {% assign section_poster = media_obj.preview_image.src %}
+  {% if section_media.preview_image and section_media.preview_image.src %}
+    {% assign section_poster = section_media.preview_image.src %}
   {% endif %}
-
 {% elsif section_media_type == 'image' and section_media %}
-  {% assign media_obj = section_media %}
+  {% comment %} Image from section or metaobject {% endcomment %}
+  {% if section_media.src %}
+    {% assign media_obj = section_media.src %}
+  {% else %}
+    {% assign media_obj = section_media %}
+  {% endif %}
 {% endif %}
 
 {{ section_media_type }}

@@ -11,10 +11,17 @@
   "sections": {
     "main": {
       "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "henk_section_stores_overview_VGMmTX": {
+      "type": "henk-section-stores-overview",
+      "name": "Stores Overview",
       "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "henk_section_stores_overview_VGMmTX"
   ]
 }

@@ -9,19 +9,36 @@
  */
 {
   "sections": {
+    "henk_section_splitscreen_ekHRwg": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "id": "",
+        "caption": "cap",
+        "title": "hello: {{ metaobjects.store_location.amsterdam.store_name.value }}",
+        "heading_level": "2",
+        "content": "",
+        "media_type": "image",
+        "image_src": "shopify://shop_images/studio-henk-showroom-amsterdam-rozengracht6-2.avif",
+        "imageAlt": "",
+        "video_has_audio": false,
+        "rounded_corners": false,
+        "imageLink": "",
+        "imageLinkTargetBlank": false,
+        "buttonUrl": "",
+        "buttonText": "",
+        "buttonVariant": "default",
+        "reverse": false
+      }
+    },
     "main": {
       "type": "page",
       "disabled": true,
       "settings": {}
-    },
-    "henk_section_stores_overview_VGMmTX": {
-      "type": "henk-section-stores-overview",
-      "name": "Stores Overview",
-      "settings": {}
     }
   },
   "order": [
-    "main",
-    "henk_section_stores_overview_VGMmTX"
+    "henk_section_splitscreen_ekHRwg",
+    "main"
   ]
 }

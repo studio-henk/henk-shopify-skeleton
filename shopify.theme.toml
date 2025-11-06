@@ -2,7 +2,7 @@ name = "Skeleton Theme"
 store = "surf-turf-2-0.myshopify.com"
 
 [environments.production]
-theme = "141470990497"
+theme = "143101526177"
 
 [environments.staging]
 theme = "141473448097"

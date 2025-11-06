@@ -5,6 +5,7 @@
     src: string (required)
     poster: string (optional)
     autoplay: boolean (default: false)
+    has_audio: boolean (default: false)
     loop: boolean (default: true)
     cover: boolean (default: false)
     rounded: boolean (default: false)
@@ -13,11 +14,17 @@
     link_target_blank: imageLinkTargetBlank
 {%- endcomment -%}
 
-{% comment %} {%- assign video_id = id | default: section.id | append: '-video' -%} {% endcomment %}
-
 {%- assign video_id = id | default: 'split-screen-video-' | append: media_obj.id | append: '-video' -%}
 
-{% comment %} {{ src | json }} {% endcomment %}
+{%- comment -%} fallback poster if none provided {%- endcomment -%}
+{% if poster %}
+  {% assign poster_url = poster | image_url: width: 1200 %}
+{% elsif src.preview_image %}
+  {% assign poster_url = src.preview_image.src | image_url: width: 1200 %}
+{% else %}
+  {% assign poster_url = null %}
+{% endif %}
+
 <div
   id="{{ video_id }}"
   class="
@@ -36,9 +43,7 @@
       >
         <video
           class="henk-video"
-          {% if poster %}
-            poster="{{ poster }}"
-          {% endif %}
+          poster="{{ poster_url }}"
           {% if autoplay %}
             autoplay muted playsinline
           {% else %}
@@ -58,9 +63,7 @@
     {% else %}
       <video
         class="henk-video"
-        {% if poster %}
-          poster="{{ poster }}"
-        {% endif %}
+        poster="{{ poster_url }}"
         {% if autoplay %}
           autoplay muted playsinline
         {% else %}
@@ -88,9 +91,7 @@
         <video
           class="henk-video"
           src="{{ src }}"
-          {% if poster %}
-            poster="{{ poster }}"
-          {% endif %}
+          poster="{{ poster_url }}"
           {% if autoplay %}
             autoplay muted playsinline
           {% else %}
@@ -107,9 +108,7 @@
       <video
         class="henk-video"
         src="{{ src }}"
-        {% if poster %}
-          poster="{{ poster }}"
-        {% endif %}
+        poster="{{ poster_url }}"
         {% if autoplay %}
           autoplay muted playsinline
         {% else %}
@@ -124,7 +123,7 @@
     {% endif %}
   {% endif %}
 
-  {% if autoplay %}
+  {% if has_audio %}
     <button
       type="button"
       class="henk-button henk-video-sound-toggle"
@@ -177,7 +176,7 @@
 
     if (button && svgMuted && svgPlaying) {
       // Ensure initial state matches video muted property
-      if (video.muted) {
+      if (video.muted || video.autoplay) {
         svgMuted.style.display = 'block';
         svgPlaying.style.display = 'none';
       } else {

@@ -8,5 +8,40 @@
  * ------------------------------------------------------------
  */
 {
-  "current": {}
+  "current": {
+    "sections": {
+      "henk-header": {
+        "type": "henk-header",
+        "settings": {}
+      },
+      "henk-footer": {
+        "type": "henk-footer",
+        "settings": {}
+      },
+      "henk-section-splitscreen": {
+        "type": "henk-section-splitscreen",
+        "settings": {
+          "id": "dfdfdf",
+          "caption": "caption",
+          "title": "hello title amster haaarlem",
+          "heading_level": "2",
+          "content": "<p>content</p>",
+          "media_type": "image",
+          "image_src": "shopify://shop_images/LI-DISPL-8010.jpg",
+          "imageAlt": "fgfgfg",
+          "video_src": "shopify://files/videos/StudioHENK_HaarlemStore_square.mp4",
+          "video_has_audio": true,
+          "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
+          "rounded_corners": false,
+          "imageLink": "",
+          "imageLinkTargetBlank": false,
+          "buttonUrl": "shopify://blogs/henk-visits",
+          "buttonText": "fgfgfg",
+          "buttonVariant": "default",
+          "reverse": false
+        }
+      }
+    },
+    "content_for_index": []
+  }
 }

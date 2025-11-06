@@ -1,0 +1,41 @@
+[
+  {
+    "type": "radio",
+    "id": "large_media_type",
+    "label": "Large media type",
+    "default": "image",
+    "options": [
+      { "value": "image", "label": "Image" },
+      { "value": "video", "label": "Video" }
+    ]
+  },
+  {
+    "type": "video_picker",
+    "id": "video_src",
+    "label": "Video file"
+  },
+  {
+    "type": "image_picker",
+    "id": "video_poster",
+    "label": "Poster image (shown before playback)"
+  },
+  {
+    "type": "checkbox",
+    "id": "video_autoplay",
+    "label": "Autoplay video",
+    "default": false
+  },
+  {
+    "type": "checkbox",
+    "id": "video_loop",
+    "label": "Loop video",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "has_audio",
+    "label": "Video has audio",
+    "default": false,
+    "visible_if": "{{ section.settings.large_media_type == 'video' }}"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "type": "select",
+  "id": "heading_level",
+  "label": "Heading level",
+  "options": [
+    { "value": "1", "label": "H1" },
+    { "value": "2", "label": "H2" },
+    { "value": "3", "label": "H3" },
+    { "value": "display", "label": "Display" }
+  ],
+  "default": "2"
+}

@@ -1,7 +1,11 @@
 # TODO
 
-- [ ] update double image block snippet and section to have video option
+- [ ] store detail page splitscreen update
+- [ ] should turning on sound on 1 video turn off all other videos sound and
+pasuse them?
 - [ ] check tag for henk-header... should become header element with classname.
+- [ ] base styles for default template, check blog article if default? or
+about
 
 
 ## To storybook
@@ -82,3 +86,6 @@
 - [x] limit where sections can appear
 - [x] fix cart icon button
 - [x] add video to double image block snippet and section
+- [x] update double image block snippet and section to have video option
+- [x] layout shift whit video mute button?
+- [x] test video without sound => no button?

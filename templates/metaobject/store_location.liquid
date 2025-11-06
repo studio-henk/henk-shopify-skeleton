@@ -1,7 +1,14 @@
 <div class="store-detail">
   {% render 'henk-section-header', title: metaobject.store_name, level: '1', align: 'center' %}
 
-  {% render 'henk-split-screen',
+  {% section 'henk-section-splitscreen' %}
+
+  {% assign media_obj = metaobject.splitscreen_media.value %}
+  {% assign media_type = 'image' %}
+  {% if media_obj and media_obj.media_type == 'video' %}
+    {% assign media_type = 'video' %}
+  {% endif %}
+  {% render 'henk-snippet-splitscreen',
     bgColor: 'default',
     id: 'ss-1',
     title: metaobject.splitscreen_heading.value,
@@ -9,7 +16,9 @@
     level: 2,
     display: false,
     content: metaobject.splitscreen_text.value,
-    media: metaobject.splitscreen_media,
+    media: media_obj,
+    media_type: media_type,
+    has_audio: true,
     imageAlt: metaobject.splitscreen_image.alt,
     imageLink: metaobject.splitscreen_button_url.value,
     imageLinkTargetBlank: false,
@@ -80,14 +89,18 @@
 
   {% assign plan_visit = 'store_detail.plan_your_visit' | t %}
 
-  {% render 'henk-split-screen',
+  {%
+    render 'henk-snippet-splitscreen',
+    props: {
     id: 'ss-2',
     title: plan_visit,
     content: store_content,
     media: metaobject.map_media,
+    media_type: 'image',
     imageAlt: metaobject.splitscreen_2_map_image.alt,
     imageLink: metaobject.map_link.value.url,
     imageLinkTargetBlank: true,
     reverse: true
+    }
   %}
 </div>

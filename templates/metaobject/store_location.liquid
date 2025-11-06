@@ -1,6 +1,19 @@
 <div class="store-detail">
   {% render 'henk-section-header', title: metaobject.store_name, level: '1', align: 'center' %}
 
+  {%
+    assign my_props = {
+    id: 'ss-1',
+    title: 'Welcome!',
+    content: 'This is my split screen content.',
+    media_type: 'image',
+    media: metaobject.splitscreen_image,
+    imageAlt: 'Alt text for image'
+    }
+  %}
+
+  {% render 'henk-snippet-splitscreen', props: my_props %}
+
   {% render 'henk-snippet-splitscreen',
     bgColor: 'default',
     id: 'ss-1',

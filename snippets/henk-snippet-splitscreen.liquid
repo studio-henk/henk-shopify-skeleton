@@ -46,6 +46,8 @@
   {% assign p.hasAudio = hasAudio %}
 {% endif %}
 
+{{ p | json }}
+
 {%- comment -%}
   Normalize media object (handles either `media.value` or direct media)
 {%- endcomment -%}

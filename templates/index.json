@@ -22,9 +22,32 @@
         "button_url": "/collections",
         "button_variant": "primary"
       }
+    },
+    "henk_section_splitscreen_pM83he": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "id": "",
+        "caption": "",
+        "title": "Eén HENK eettafel, één boom",
+        "heading_level": "2",
+        "content": "<p>Als er één ding is waar Studio HENK groot mee geworden is, dan is het de eettafel. Geen enkele van onze eettafels is hetzelfde, maar de waarden wel: met zorg vervaardigd van hout uit duurzaam beheerde bossen, lokaal en met oog voor de toekomst. </p><p>Omdat we niet alleen van de aarde willen nemen, geven we daar vanaf nu ook iets voor terug. Voor elke verkochte eettafel planten we een boom en ondersteunen de groei ervan. Zo dragen we bij aan het herstel van biodiversiteit.</p>",
+        "media_type": "image",
+        "image_src": "shopify://shop_images/weforest_-_media--2df6f497--query.avif",
+        "image_alt": "weforest logo",
+        "video_has_audio": false,
+        "rounded_corners": false,
+        "image_link": "shopify://pages/interieuradvies",
+        "image_link_target_blank": false,
+        "button_url": "shopify://pages/interieuradvies",
+        "button_text": "Lees meer",
+        "button_variant": "default",
+        "reverse": false
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "henk_section_splitscreen_pM83he"
   ]
 }

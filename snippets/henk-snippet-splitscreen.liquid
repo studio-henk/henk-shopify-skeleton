@@ -22,6 +22,7 @@
 {% if props %}
   {% assign p = props %}
 {% else %}
+  {% assign p = {} %}
   {% assign p = p | merge: { "id": id } %}
   {% assign p = p | merge: { "title": title } %}
 {% endif %}

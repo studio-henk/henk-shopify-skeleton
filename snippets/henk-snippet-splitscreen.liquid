@@ -1,55 +1,60 @@
 {% comment %}
   Snippet: henk-split-screen
-  Props/variables supported:
-    bgColor, id, title, caption, level, content,
-    media_type, media, poster, video_has_audio, rounded,
-    imageAlt, imageLink, imageLinkTargetBlank,
-    buttonUrl, buttonText, buttonVariant, reverse
+  Props:
+    bg_color, id, title, caption, level, display, content,
+    media, media_type, poster, has_audio, rounded,
+    image_alt, image_link, image_link_target_blank,
+    button_url, button_text, button_variant, reverse
 {% endcomment %}
 
 {%- comment -%}
-  Normalize all variables at the top:
-  - Use `props.*` if available (from section)
-  - Otherwise fallback to individual variables (metaobject)
+  Normalize props for snippet:
+  - If `props` is passed (from a section), use it
+  - Otherwise, fall back to individually passed variables
 {%- endcomment -%}
 
-{% assign ss_id = props.id | default: id %}
-{% assign ss_title = props.title | default: title %}
-{% assign ss_caption = props.caption | default: caption %}
-{% assign ss_level = props.level | default: level | default: 2 %}
-{% assign ss_content = props.content | default: content %}
-{% assign ss_media_type = props.media_type | default: media_type %}
-{% assign ss_media = props.media | default: media %}
-{% assign ss_imageAlt = props.imageAlt | default: imageAlt %}
-{% assign ss_imageLink = props.imageLink | default: imageLink %}
-{% assign ss_imageLinkTargetBlank = props.imageLinkTargetBlank | default: imageLinkTargetBlank %}
-{% assign ss_buttonUrl = props.buttonUrl | default: buttonUrl %}
-{% assign ss_buttonText = props.buttonText | default: buttonText %}
-{% assign ss_buttonVariant = props.buttonVariant | default: buttonVariant | default: 'default' %}
-{% assign ss_reverse = props.reverse | default: reverse | default: false %}
-{% assign ss_bgColor = props.bgColor | default: bgColor | default: 'default' %}
-{% assign ss_rounded = props.rounded | default: rounded | default: false %}
-{% assign ss_poster = props.poster | default: poster %}
-{% assign ss_video_has_audio = props.video_has_audio | default: false %}
+{% assign p = props | default: null %}
+
+{% assign section_title = p.title | default: title %}
+{% assign section_caption = p.caption | default: caption %}
+{% assign section_heading_level = p.level | default: 2 %}
+{% assign section_content = p.content | default: content %}
+{% assign section_media_type = p.media_type | default: media_type %}
+{% assign section_media = p.media | default: media %}
+{% assign section_poster = p.poster | default: poster %}
+{% assign section_has_audio = p.has_audio | default: has_audio %}
+{% assign section_rounded = p.rounded | default: rounded %}
+{% assign section_image_alt = p.image_alt | default: image_alt %}
+{% assign section_image_link = p.image_link | default: imageLink %}
+{% assign section_image_link_target_blank = p.image_link_target_blank | default: imageLinkTargetBlank %}
+{% assign section_button_url = p.button_url | default: buttonUrl %}
+{% assign section_button_text = p.button_text | default: buttonText %}
+{% assign section_button_variant = p.button_variant | default: buttonVariant %}
+{% assign section_reverse = p.reverse | default: reverse %}
+{% assign section_bg_color = p.bg_color | default: bgColor %}
+{% assign section_id = p.id | default: id %}
 
 {%- comment -%}
-  Determine actual media object
+  Normalize media object
 {%- endcomment -%}
-{% if ss_media_type == 'video' and ss_media != blank %}
-  {% assign media_obj = ss_media %}
-{% elsif ss_media_type == 'image' and ss_media != blank %}
-  {% assign media_obj = ss_media %}
+
+{% if section_media_type == 'video' and section_media != blank %}
+  {% assign media_obj = section_media %}
+{% elsif section_media_type == 'image' and section_media != blank %}
+  {% assign media_obj = section_media %}
 {% else %}
   {% assign media_obj = null %}
 {% endif %}
 
 <div
-  id="{{ ss_id }}"
-  class="henk-section henk-split-screen{% if ss_bgColor != 'default' %} henk-split-screen--bg-{{ ss_bgColor }}{% endif %}"
+  class="henk-section henk-split-screen{% if section_bg_color and section_bg_color != 'default' %} henk-split-screen--bg-{{ section_bg_color }}{% endif %}"
+  {% if section_id %}
+    id="{{ section_id }}"
+  {% endif %}
 >
   <div
     class="henk-split-screen__inner"
-    {% if ss_reverse %}
+    {% if section_reverse %}
       data-order="reverse"
     {% endif %}
   >
@@ -57,40 +62,40 @@
       <!-- MEDIA COLUMN -->
       <div class="henk-split-screen__grid-item">
         {% if media_obj %}
-          {% case ss_media_type %}
+          {% case section_media_type %}
             {% when 'image' %}
-              {% if ss_imageLink %}
+              {% if section_image_link %}
                 <a
-                  href="{{ ss_imageLink }}"
-                  {% if ss_imageLinkTargetBlank %}
+                  href="{{ section_image_link }}"
+                  {% if section_image_link_target_blank %}
                     target="_blank" rel="noopener"
                   {% endif %}
                 >
               {% endif %}
               <img
-                src="{{ media_obj | image_url: width:1152, height:1728 }}"
-                alt="{{ ss_imageAlt | escape }}"
+                src="{{ media_obj | image_url: width: 1152, height: 1728 }}"
+                alt="{{ section_image_alt | escape }}"
                 class="henk-split-screen__img"
                 loading="lazy"
                 width="1152"
                 height="1728"
               >
-              {% if ss_imageLink %}
+              {% if section_image_link %}
                 </a>
               {% endif %}
             {% when 'video' %}
               {% render 'henk-video',
-                id: ss_id,
+                id: section_id,
                 src: media_obj,
-                poster: ss_poster,
+                poster: section_poster,
                 autoplay: true,
-                has_audio: ss_video_has_audio,
+                has_audio: section_has_audio,
                 loop: true,
                 cover: true,
-                rounded: ss_rounded,
-                description: ss_imageAlt,
-                link: ss_imageLink,
-                link_target_blank: ss_imageLinkTargetBlank
+                rounded: section_rounded,
+                description: section_image_alt,
+                link: section_image_link,
+                link_target_blank: section_image_link_target_blank
               %}
           {% endcase %}
         {% endif %}
@@ -99,35 +104,33 @@
       <!-- CONTENT COLUMN -->
       <div class="henk-split-screen__grid-item">
         <div class="henk-split-screen__content">
-          {% if ss_caption %}
-            <p class="henk-split-screen__caption">{{ ss_caption }}</p>
+          {% if section_caption %}
+            <p class="henk-split-screen__caption">{{ section_caption }}</p>
           {% endif %}
 
-          {% assign heading_level = ss_level %}
-          {% if heading_level < 1 %}{% assign heading_level = 1 %}{% endif %}
-          {% if heading_level > 3 %}{% assign heading_level = 3 %}{% endif %}
-          {% if ss_title %}
-            <h{{ heading_level }} class="henk-split-screen__title">
-              {{ ss_title }}
-            </h{{ heading_level }}>
+          {% assign heading_tag = 'h' | append: section_heading_level %}
+          {% if section_title %}
+            <{{ heading_tag }} class="henk-split-screen__title">
+              {{ section_title }}
+            </{{ heading_tag }}>
           {% endif %}
 
-          {% if ss_content %}
+          {% if section_content %}
             <div class="henk-split-screen__text">
-              {% if ss_content.children %}
-                {% render 'henk-rich-text', children: ss_content.children %}
+              {% if section_content.children %}
+                {% render 'henk-rich-text', children: section_content.children %}
               {% else %}
-                {{ ss_content }}
+                {{ section_content }}
               {% endif %}
             </div>
           {% endif %}
 
-          {% if ss_buttonUrl and ss_buttonText %}
+          {% if section_button_url and section_button_text %}
             <a
-              href="{{ ss_buttonUrl | prepend: routes.root }}"
-              class="henk-button henk-button--{{ ss_buttonVariant }}"
+              href="{{ section_button_url | prepend: routes.root }}"
+              class="henk-button henk-button--{{ section_button_variant | default: 'default' }}"
             >
-              {{ ss_buttonText }}
+              {{ section_button_text }}
             </a>
           {% endif %}
         </div>

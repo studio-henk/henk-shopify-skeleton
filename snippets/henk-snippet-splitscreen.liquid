@@ -8,12 +8,12 @@
 {% endcomment %}
 
 {% comment %} {% assign p = props | default: section.settings %} {% endcomment %}
-{% comment %} {% assign p = props | default: {} %} {% endcomment %}
-{% if props %}
-  {% assign p = props %}
-{% else %}
-  {% assign p = null %}
-{% endif %}
+{% assign p = props | default: null %}
+{% comment %} {% if props %} {% endcomment %}
+{% comment %}   {% assign p = props %} {% endcomment %}
+{% comment %} {% else %} {% endcomment %}
+{% comment %}   {% assign p = null %} {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
 
 {% comment %} {{ p | json }} {% endcomment %}
 {% comment %} {{ id }} {% endcomment %}

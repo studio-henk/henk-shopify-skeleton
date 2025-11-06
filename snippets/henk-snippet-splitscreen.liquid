@@ -11,6 +11,7 @@
 {% assign p = props | default: {} %}
 
 {{ p | json }}
+{{ id }}
 
 {%- comment -%}
   Normalize media object (handles either `media.value` or direct media)

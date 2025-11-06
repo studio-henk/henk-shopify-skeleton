@@ -13,12 +13,12 @@
       "type": "henk-section-header",
       "settings": {
         "id": "home-header",
-        "caption": "Welcome to Studio HENK",
-        "title": "Discover Our Interiors 2",
-        "text": "<p>High-quality furniture and interior inspiration for your home.</p><p>and then some</p>",
-        "level": "1",
+        "caption": "Welkom bij Studio HENK",
+        "title": "Ontdek onze interieurs",
+        "text": "yadayada",
+        "level": "display",
         "align": "center",
-        "button_label": "Shop Now",
+        "button_label": "Koop nu!",
         "button_url": "/collections",
         "button_variant": "primary"
       }

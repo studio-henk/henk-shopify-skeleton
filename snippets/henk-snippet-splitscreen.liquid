@@ -22,30 +22,7 @@
 {% if props %}
   {% assign p = props %}
 {% else %}
-  {%
-    assign p =
-    {
-    "bgColor": bgColor,
-    "id": id,
-    "title": title,
-    "caption": caption,
-    "level": level,
-    "display": display,
-    "content": content,
-    "media": media,
-    "media_type": media_type,
-    "imageAlt": imageAlt,
-    "imageLink": imageLink,
-    "imageLinkTargetBlank": imageLinkTargetBlank,
-    "buttonUrl": buttonUrl,
-    "buttonText": buttonText,
-    "buttonVariant": buttonVariant,
-    "reverse": reverse,
-    "rounded": rounded,
-    "poster": poster,
-    "hasAudio": hasAudio
-    }
-  %}
+  {% assign p = { "id": id } %}
 {% endif %}
 
 {{ p | json }}

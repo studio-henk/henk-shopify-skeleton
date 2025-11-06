@@ -4,6 +4,7 @@
   {% assign media_url = metaobject.splitscreen_media.value %}
   {{ media_url }}
   {% assign media_type = media_url contains '.mp4' or media_url contains '.mov' ? 'video' : 'image' %}
+  {{ media_type }}
 
   {% render 'henk-snippet-splitscreen',
     bgColor: 'default',

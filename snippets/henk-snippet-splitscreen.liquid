@@ -44,19 +44,16 @@
 
 {% assign media_obj = null %}
 {% assign video_src = null %}
-{% assign media_type = section_media_type %}
 
 {% if section_media %}
-  {% if section_media_type == 'video' %}
-    {%- comment -%} Extract video source for metaobject VideoDrop {%- endcomment -%}
-    {% assign video_src = section_media.sources[0].url | default: section_media | default: '' %}
+  {% if section_media.media_type == 'video' %}
     {% assign media_obj = section_media %}
+    {% assign video_src = section_media.sources[0].url %}
 
-    {%- comment -%} Ensure poster exists (fallback to preview_image.src if needed) {%- endcomment -%}
-    {% if section_poster == blank and media_obj.preview_image and media_obj.preview_image.src %}
-      {% assign section_poster = media_obj.preview_image.src %}
+    {% if section_poster == blank and section_media.preview_image and section_media.preview_image.src %}
+      {% assign section_poster = section_media.preview_image.src %}
     {% endif %}
-  {% elsif section_media_type == 'image' %}
+  {% elsif section_media.media_type == 'image' %}
     {% assign media_obj = section_media %}
   {% endif %}
 {% endif %}

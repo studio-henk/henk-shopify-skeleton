@@ -23,43 +23,49 @@
         "button_variant": "primary"
       }
     },
-    "henk_section_splitscreen_fVK3CT": {
+    "henk_section_double_image_block_rxkyJC": {
+      "type": "henk-section-double-image-block",
+      "name": "Henk Double Image Block",
+      "settings": {
+        "reverse_layout": false,
+        "large_image": "shopify://shop_images/LI-DISPL-8010.jpg",
+        "large_image_url": "",
+        "large_image_new_tab": false,
+        "small_image": "shopify://shop_images/sh-rdam-poster.jpg",
+        "small_image_url": "",
+        "small_image_new_tab": false
+      }
+    },
+    "henk_section_double_image_block_TYcGDf": {
+      "type": "henk-section-double-image-block",
+      "name": "Henk Double Image Block",
+      "settings": {
+        "reverse_layout": true,
+        "large_image": "shopify://shop_images/LI-DISPL-8010.jpg",
+        "large_image_url": "",
+        "large_image_new_tab": false,
+        "small_image": "shopify://shop_images/sh-rdam-poster.jpg",
+        "small_image_url": "",
+        "small_image_new_tab": false
+      }
+    },
+    "henk_section_splitscreen_Y4KDHY": {
       "type": "henk-section-splitscreen",
       "name": "Split Screen",
       "settings": {
-        "id": "",
+        "id": "ss1",
         "caption": "caption",
-        "title": "Title",
-        "heading_level": "2",
-        "content": "<p>content</p>",
-        "media_type": "image",
-        "image_src": "shopify://shop_images/sh-rdam-poster.jpg",
-        "imageAlt": "alt text",
-        "video_has_audio": false,
-        "rounded_corners": false,
+        "content": "<p>jaja</p>",
+        "imageAlt": "",
+        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
+        "video_poster": "shopify://shop_images/sh-rdam-poster.jpg",
+        "rounded_corners": true,
         "imageLink": "",
         "imageLinkTargetBlank": false,
-        "buttonUrl": "shopify://blogs/henk-visits",
-        "buttonText": "blog",
+        "buttonUrl": "",
+        "buttonText": "",
         "buttonVariant": "default",
         "reverse": false
-      }
-    },
-    "henk_section_double_media_mFKWcr": {
-      "type": "henk-section-double-media",
-      "name": "Henk Double Media Block",
-      "settings": {
-        "reverse_layout": false,
-        "large_media_type": "image",
-        "large_image": "shopify://shop_images/LI-DISPL-6003.jpg",
-        "large_media_has_audio": false,
-        "large_media_url": "",
-        "large_media_new_tab": false,
-        "small_media_type": "image",
-        "small_image": "shopify://shop_images/Display_vase_yellow.jpg",
-        "small_media_has_audio": false,
-        "small_media_url": "",
-        "small_media_new_tab": false
       }
     },
     "faq": {
@@ -114,8 +120,9 @@
   },
   "order": [
     "section_header",
-    "henk_section_splitscreen_fVK3CT",
-    "henk_section_double_media_mFKWcr",
+    "henk_section_double_image_block_rxkyJC",
+    "henk_section_double_image_block_TYcGDf",
+    "henk_section_splitscreen_Y4KDHY",
     "faq",
     "henk_section_video_KNRtnW"
   ]

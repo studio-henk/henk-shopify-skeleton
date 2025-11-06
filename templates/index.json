@@ -23,6 +23,28 @@
         "button_variant": "primary"
       }
     },
+    "henk_section_splitscreen_fVK3CT": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "id": "",
+        "caption": "caption",
+        "title": "Title",
+        "heading_level": "2",
+        "content": "<p>content</p>",
+        "media_type": "image",
+        "image_src": "shopify://shop_images/sh-rdam-poster.jpg",
+        "imageAlt": "alt text",
+        "video_has_audio": false,
+        "rounded_corners": false,
+        "imageLink": "",
+        "imageLinkTargetBlank": false,
+        "buttonUrl": "shopify://blogs/henk-visits",
+        "buttonText": "blog",
+        "buttonVariant": "default",
+        "reverse": false
+      }
+    },
     "henk_section_double_media_mFKWcr": {
       "type": "henk-section-double-media",
       "name": "Henk Double Media Block",
@@ -92,6 +114,7 @@
   },
   "order": [
     "section_header",
+    "henk_section_splitscreen_fVK3CT",
     "henk_section_double_media_mFKWcr",
     "faq",
     "henk_section_video_KNRtnW"

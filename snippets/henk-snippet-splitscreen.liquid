@@ -7,7 +7,7 @@
     buttonUrl, buttonText, buttonVariant, reverse
 {% endcomment %}
 
-{% comment %} {% assign p = props | default: section.settings %} {% endcomment %}
+{% assign p = props | default: section.settings %}
 {% comment %} {% assign p = props | default: {} %} {% endcomment %}
 
 {% comment %} {{ p | json }} {% endcomment %}
@@ -19,13 +19,13 @@
   - Otherwise, use individual variables passed to snippet (from metaobject)
 {%- endcomment -%}
 
-{% if props %}
-  {% assign p = props %}
-{% else %}
-  {% assign p = {} %}
-  {% assign p = p | merge: { "id": id } %}
-  {% assign p = p | merge: { "title": title } %}
-{% endif %}
+{% comment %} {% if props %} {% endcomment %}
+{% comment %}   {% assign p = props %} {% endcomment %}
+{% comment %} {% else %} {% endcomment %}
+{% comment %}   {% assign p = {} %} {% endcomment %}
+{% comment %}   {% assign p = p | merge: { "id": id } %} {% endcomment %}
+{% comment %}   {% assign p = p | merge: { "title": title } %} {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
 
 {{ p | json }}
 

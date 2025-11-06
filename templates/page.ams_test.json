@@ -1,0 +1,43 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "henk_section_splitscreen_jaEWNr": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "id": "",
+        "caption": "",
+        "title": "hello ams",
+        "heading_level": "2",
+        "content": "",
+        "media_type": "video",
+        "imageAlt": "",
+        "video_src": "shopify://files/videos/StudioHenk_AdamStore_square.mp4",
+        "video_has_audio": true,
+        "rounded_corners": true,
+        "imageLink": "",
+        "imageLinkTargetBlank": false,
+        "buttonUrl": "",
+        "buttonText": "",
+        "buttonVariant": "default",
+        "reverse": false
+      }
+    },
+    "main": {
+      "type": "page",
+      "settings": {}
+    }
+  },
+  "order": [
+    "henk_section_splitscreen_jaEWNr",
+    "main"
+  ]
+}

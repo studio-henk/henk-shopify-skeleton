@@ -80,7 +80,9 @@
 
   {% assign plan_visit = 'store_detail.plan_your_visit' | t %}
 
-  {% render 'henk-snippet-splitscreen',
+  {%
+    render 'henk-snippet-splitscreen',
+    props: {
     id: 'ss-2',
     title: plan_visit,
     content: store_content,
@@ -89,5 +91,6 @@
     imageLink: metaobject.map_link.value.url,
     imageLinkTargetBlank: true,
     reverse: true
+    }
   %}
 </div>

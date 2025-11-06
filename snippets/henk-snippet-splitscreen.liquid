@@ -37,6 +37,7 @@
 {{ id | json }}
 
 {{ title }}
+{{ p.title | default: title }}
 
 {%- comment -%}
   Normalize media object (handles either `media.value` or direct media)

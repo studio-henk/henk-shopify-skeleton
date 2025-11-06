@@ -2,6 +2,7 @@
   {% render 'henk-section-header', title: metaobject.store_name, level: '1', align: 'center' %}
 
   {% assign media_url = metaobject.splitscreen_media.value %}
+  {{ media_url }}
   {% assign media_type = media_url contains '.mp4' or media_url contains '.mov' ? 'video' : 'image' %}
 
   {% render 'henk-snippet-splitscreen',

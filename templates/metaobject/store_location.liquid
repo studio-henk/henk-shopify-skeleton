@@ -1,6 +1,9 @@
 <div class="store-detail">
   {% render 'henk-section-header', title: metaobject.store_name, level: '1', align: 'center' %}
 
+  {% assign media_url = metaobject.splitscreen_media.value %}
+  {% assign media_type = media_url contains '.mp4' or media_url contains '.mov' ? 'video' : 'image' %}
+
   {% render 'henk-snippet-splitscreen',
     bgColor: 'default',
     id: 'ss-1',
@@ -10,6 +13,7 @@
     display: false,
     content: metaobject.splitscreen_text.value,
     media: metaobject.splitscreen_media,
+    media_type: media_type,
     imageAlt: metaobject.splitscreen_image.alt,
     imageLink: metaobject.splitscreen_button_url.value,
     imageLinkTargetBlank: false,

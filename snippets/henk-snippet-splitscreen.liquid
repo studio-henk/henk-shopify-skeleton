@@ -55,6 +55,8 @@
   {% assign media_obj = section_media %}
 {% endif %}
 
+{{ section_media_type }}
+
 <div
   class="henk-section henk-split-screen{% if section_bg_color and section_bg_color != 'default' %} henk-split-screen--bg-{{ section_bg_color }}{% endif %}"
   {% if section_id %}

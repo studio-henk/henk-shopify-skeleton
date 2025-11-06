@@ -26,7 +26,7 @@
           "title": "hello title",
           "heading_level": "2",
           "content": "<p>content</p>",
-          "media_type": "video",
+          "media_type": "image",
           "image_src": "shopify://shop_images/LI-DISPL-8010.jpg",
           "imageAlt": "fgfgfg",
           "video_src": "shopify://files/videos/StudioHENK_HaarlemStore_square.mp4",

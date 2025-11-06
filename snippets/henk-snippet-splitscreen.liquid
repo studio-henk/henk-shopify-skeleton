@@ -7,8 +7,8 @@
     buttonUrl, buttonText, buttonVariant, reverse
 {% endcomment %}
 
-{% assign p = props | default: section.settings %}
-{% comment %} {% assign p = props | default: {} %} {% endcomment %}
+{% comment %} {% assign p = props | default: section.settings %} {% endcomment %}
+{% assign p = props | default: {} %}
 
 {% comment %} {{ p | json }} {% endcomment %}
 {% comment %} {{ id }} {% endcomment %}

@@ -19,30 +19,34 @@
   - Otherwise, use individual variables passed to snippet (from metaobject)
 {%- endcomment -%}
 
-{%
-  assign p = props | default:
-  {
-  "id": id,
-  "title": title,
-  "caption": caption,
-  "level": level,
-  "display": display,
-  "content": content,
-  "media": media,
-  "media_type": media_type,
-  "imageAlt": imageAlt,
-  "imageLink": imageLink,
-  "imageLinkTargetBlank": imageLinkTargetBlank,
-  "buttonUrl": buttonUrl,
-  "buttonText": buttonText,
-  "buttonVariant": buttonVariant,
-  "reverse": reverse,
-  "bgColor": bgColor,
-  "rounded": rounded,
-  "poster": poster,
-  "hasAudio": hasAudio
-  }
-%}
+{% if props %}
+  {% assign p = props %}
+{% else %}
+  {%
+    assign p =
+    {
+    "bgColor": bgColor,
+    "id": id,
+    "title": title,
+    "caption": caption,
+    "level": level,
+    "display": display,
+    "content": content,
+    "media": media,
+    "media_type": media_type,
+    "imageAlt": imageAlt,
+    "imageLink": imageLink,
+    "imageLinkTargetBlank": imageLinkTargetBlank,
+    "buttonUrl": buttonUrl,
+    "buttonText": buttonText,
+    "buttonVariant": buttonVariant,
+    "reverse": reverse,
+    "rounded": rounded,
+    "poster": poster,
+    "hasAudio": hasAudio
+    }
+  %}
+{% endif %}
 
 {{ p | json }}
 

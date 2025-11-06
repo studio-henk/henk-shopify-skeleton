@@ -119,7 +119,7 @@
 
           {% if p.title %}
             <{{ heading_tag }} class="henk-split-screen__title">
-              {{ p.title }}
+              {{ p.title | default: title }}
             </{{ heading_tag }}>
           {% endif %}
 

@@ -4,7 +4,10 @@
   <div class="henk-section__inner">
     <div class="henk-section__grid henk-section__grid--stores">
       {% for store in sorted_stores %}
-        {% assign store_url = store.system.url %}
+        {% comment %} {% assign store_url = store.system.url %} {% endcomment %}
+        {% comment %} {% assign store_url = pages[store.store_name | handleize].url %} {% endcomment %}
+        {% assign city_handle = store.store_name | handleize %}
+        {% assign store_url = pages[city_handle].url %}
         <div class="henk-card henk-card--store">
           <div class="henk-card__image-container">
             <a class="henk-card__picture-link" href="{{ store_url }}">

@@ -1,11 +1,6 @@
 <div class="store-detail">
   {% render 'henk-section-header', title: metaobject.store_name, level: '1', align: 'center' %}
 
-  {% assign my_props = hash %}
-  {% assign my_props = my_props | merge: { "id": "ss-1" } %}
-
-  {% render 'henk-snippet-splitscreen', props: my_props %}
-
   {% render 'henk-snippet-splitscreen',
     bgColor: 'default',
     id: 'ss-1',

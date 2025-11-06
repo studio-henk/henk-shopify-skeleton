@@ -7,7 +7,19 @@
     buttonUrl, buttonText, buttonVariant, reverse
 {% endcomment %}
 
-{% assign p = props | default: section.settings %}
+{% comment %} {% assign p = props | default: section.settings %} {% endcomment %}
+
+{%- comment -%}
+  Normalize props:
+  - If 'props' is passed (from section.settings), use it.
+  - Otherwise fallback to locals (all individual key/value pairs passed to render).
+{%- endcomment -%}
+{% if props %}
+  {% assign p = props %}
+{% else %}
+  {% assign p = locals %}
+{% endif %}
+
 {{ p | json }}
 
 {%- comment -%}

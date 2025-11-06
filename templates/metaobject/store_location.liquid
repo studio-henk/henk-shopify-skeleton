@@ -1,7 +1,7 @@
 <div class="store-detail">
   {% render 'henk-section-header', title: metaobject.store_name, level: '1', align: 'center' %}
 
-  {% assign media_url = metaobject.splitscreen_media.value %}
+  {% assign media_url = metaobject.splitscreen_media.value.src %}
   {{ media_url }}
   {% assign media_type = media_url contains '.mp4' or media_url contains '.mov' ? 'video' : 'image' %}
   {{ media_type }}

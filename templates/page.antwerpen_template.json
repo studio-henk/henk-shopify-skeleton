@@ -24,15 +24,15 @@
         "heading_level": "2",
         "content": "<p>Onze deuren staan open voor al je vragen over onze producten of voor <br/>inspiratie om je interieur te vernieuwen. Boek een gratis adviesgesprek <br/>met een van onze interieuradviseurs in onze winkel aan de <br/>Kloosterstraat. Je bent ook zonder afspraak van harte welkom.</p>",
         "media_type": "video",
-        "imageAlt": "",
+        "image_alt": "",
         "video_src": "shopify://files/videos/StudioHenk_AntwerpStore_square.mp4",
         "video_has_audio": true,
         "rounded_corners": true,
-        "imageLink": "shopify://pages/interieuradvies",
-        "imageLinkTargetBlank": false,
-        "buttonUrl": "shopify://pages/interieuradvies",
-        "buttonText": "Maak een afspraak",
-        "buttonVariant": "default",
+        "image_link": "shopify://pages/interieuradvies",
+        "image_link_target_blank": false,
+        "button_url": "shopify://pages/interieuradvies",
+        "button_text": "maak een afspraak",
+        "button_variant": "default",
         "reverse": false
       }
     }

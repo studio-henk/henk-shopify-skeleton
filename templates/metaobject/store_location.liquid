@@ -1,13 +1,13 @@
 <div class="store-detail">
   {% render 'henk-section-header', title: metaobject.store_name, level: '1', align: 'center' %}
 
-  {% render 'henk-snippet-splitscreen',
+  {%
+    render 'henk-snippet-splitscreen', props: {
     bgColor: 'default',
     id: 'ss-1',
     title: metaobject.splitscreen_heading.value,
     caption: metaobject.splitscreen_caption.value,
     level: 2,
-    display: false,
     content: metaobject.splitscreen_text.value,
     media: metaobject.splitscreen_media,
     imageAlt: metaobject.splitscreen_image.alt,
@@ -17,6 +17,7 @@
     buttonText: metaobject.splitscreen_button_text.value,
     buttonVariant: 'default',
     reverse: false
+    }
   %}
 
   {% capture store_content %}

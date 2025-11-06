@@ -33,13 +33,6 @@
 {% comment %} {% endif %} {% endcomment %}
 {% assign ss_title = p.title | default: title %}
 
-{{ p | json }}
-
-{{ id | json }}
-
-{{ title }}
-{{ p.title | default: title }}
-
 {%- comment -%}
   Normalize media object (handles either `media.value` or direct media)
 {%- endcomment -%}
@@ -116,7 +109,7 @@
           {% endif %}
 
           {% assign heading_tag = 'h' | append: p.heading_level | default: 'h2' %}
-          {{ p.title }}
+          {{ ss_title }}
           {% if p.title %}
             <{{ heading_tag }} class="henk-split-screen__title">
               {{ p.title | default: title }}

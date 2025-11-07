@@ -6,7 +6,8 @@
 {% endcomment %}
 
 <div class="henk-section__inner">
-  hello?
+  {{ page | json }}
+
   <h1>{{ page.title }}</h1>
 
   {{ page.content }}

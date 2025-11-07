@@ -5,6 +5,15 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/page
 {% endcomment %}
 
+{% render 'henk-section-header',
+  id: 'page-{{ page.handle }}',
+  caption: 'hello',
+  title: 'title',
+  level: 1,
+  text: 'some text',
+  align: 'center'
+%}
+
 <div class="henk-section__inner">
   {{ page }}
 

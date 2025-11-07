@@ -5,8 +5,9 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/page
 {% endcomment %}
 
-{% render 'henk-section-header',
-  id: 'page-{{ page.handle }}',
+{%
+  render 'henk-section-header',
+  id: 'page-' .. page.handle,
   caption: page.metafields.custom.caption,
   title: page.title,
   level: 1,

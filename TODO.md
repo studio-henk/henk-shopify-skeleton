@@ -1,5 +1,8 @@
 # TODO
 
+- [ ] test pipeline: change in content in section on home, see if without
+pulling this gets overriden by push a/ merge of develop and staging.
+
 - [ ] store detail page splitscreen update
 - [ ] should turning on sound on 1 video turn off all other videos sound and
 pasuse them?

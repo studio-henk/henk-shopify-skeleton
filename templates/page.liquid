@@ -7,7 +7,7 @@
 
 {% render 'henk-section-header',
   id: 'page-{{ page.handle }}',
-  caption: 'hello',
+  caption: page.metafields.custom.caption,
   title: page.title,
   level: 1,
   text: 'some text',

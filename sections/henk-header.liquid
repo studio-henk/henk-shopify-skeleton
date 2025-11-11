@@ -16,20 +16,20 @@
                   <ul class="dropdown">
                     <li class="sub-level left-col">
                       {% if main_level_sub_links[0].links.size > 0 %}
-                        {% assign highlightsHeading = main_level_sub_links[0].title %}
-                        {% assign highlightsUrl = main_level_sub_links[0].url %}
-                        {% if highlightsUrl %}
-                          {% if highlightsHeading %}
+                        {% assign highlights_heading = main_level_sub_links[0].title %}
+                        {% assign highlights_url = main_level_sub_links[0].url %}
+                        {% if highlights_url %}
+                          {% if highlights_heading %}
                             <a
                               class="column__heading"
-                              href="{{ highlightsUrl }}"
+                              href="{{ highlights_url }}"
                             >
-                              {{- highlightsHeading -}}
+                              {{- highlights_heading -}}
                             </a>
                           {% endif %}
                         {% else %}
                           <span class="column__heading">
-                            {{- highlightsHeading -}}
+                            {{- highlights_heading -}}
                           </span>
                         {% endif %}
                         <ul class="dropdown__highlights">

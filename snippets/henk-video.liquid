@@ -56,7 +56,9 @@
           aria-label="{{ description | escape }}"
         >
           {% for source in src.sources %}
+            {% # theme-check-disable RemoteAsset %}
             <source src="{{ 'https:' | append: source.url }}" type="{{ source.mime_type }}">
+            {% # theme-check-enable RemoteAsset %}
           {% endfor %}
         </video>
       </a>
@@ -76,7 +78,9 @@
         aria-label="{{ description | escape }}"
       >
         {% for source in src.sources %}
+          {% # theme-check-disable RemoteAsset %}
           <source src="{{ 'https:' | append: source.url }}" type="{{ source.mime_type }}">
+          {% # theme-check-enable RemoteAsset %}
         {% endfor %}
       </video>
     {% endif %}

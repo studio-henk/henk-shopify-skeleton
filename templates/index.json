@@ -67,11 +67,26 @@
       "settings": {
         "title": "Frequently Asked Questions"
       }
+    },
+    "henk_section_video_kqTxWF": {
+      "type": "henk-section-video",
+      "name": "Video Section",
+      "settings": {
+        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
+        "video_link": "",
+        "video_link_target_blank": false,
+        "autoplay": true,
+        "loop": true,
+        "cover": true,
+        "rounded": false,
+        "description": "Background video"
+      }
     }
   },
   "order": [
     "main",
     "henk_section_splitscreen_pM83he",
-    "henk_section_faq_rFmJ7m"
+    "henk_section_faq_rFmJ7m",
+    "henk_section_video_kqTxWF"
   ]
 }

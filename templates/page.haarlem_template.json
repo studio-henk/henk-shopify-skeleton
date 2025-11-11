@@ -9,11 +9,59 @@
  */
 {
   "sections": {
+    "henk_section_splitscreen_RfKrNg": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "id": "",
+        "caption": "",
+        "title": "Bezoek ons in Haarlem",
+        "heading_level": "2",
+        "content": "<p>Onze deuren staan open voor al je vragen over onze producten of voor inspiratie om je interieur te vernieuwen. Boek een gratis adviesgesprek met een van onze interieuradviseurs in onze winkel aan de Barteljorisstraat. Je bent ook zonder afspraak van harte welkom.</p>",
+        "media_type": "video",
+        "image_alt": "",
+        "video_src": "shopify://files/videos/StudioHENK_HaarlemStore_square.mp4",
+        "video_has_audio": true,
+        "rounded_corners": true,
+        "image_link": "",
+        "image_link_target_blank": false,
+        "button_url": "",
+        "button_text": "",
+        "button_variant": "default",
+        "reverse": false
+      }
+    },
+    "henk_section_splitscreen_TVYVfK": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "id": "",
+        "caption": "",
+        "title": "Plan je bezoek",
+        "heading_level": "2",
+        "content": "<p>Ook zonder afspraak ben je van harte welkom.</p><p><strong>Openingstijden</strong><br/>Maandag: Gesloten<br/>Dinsdag t/m zaterdag: 10.00 - 17.30<br/>Zondag: 12.00 - 17.00 </p><p><strong>Aangepaste openingstijden</strong><br/>5 december (Sinterklaas): 10.00 - 17.30<br/>24 december (Kerstavond): 10.00 - 16.00<br/>25 december (1e Kerstdag): gesloten<br/>26 december (2e Kerstdag): 12.00 - 17.00<br/>31 december (Oudjaarsdag): 10.00 - 16.00<br/>1 januari (Nieuwsjaarsdag): gesloten<br/><br/><strong>Adres</strong><br/><a href=\"https://www.google.com/maps/place/Studio+HENK+Haarlem+Brand+Store/@52.3824416,4.6327778,17z/data=!3m1!4b1!4m6!3m5!1s0x47c5ef335555152b:0x258fc30442523d7c!8m2!3d52.3824384!4d4.6353527!16s%2Fg%2F11ltktwflb\">Barteljorisstraat 13<br/>2011 RA Haarlem</a><br/><a href=\"tel:+31202333820\">+31 (0) 20 - 233 38 20</a><br/><br/><strong>Parkeren</strong><br/>In de buurt zijn diverse parkeergarages op enkele minuten loopafstand, zoals parkeergarage Parkbee Jansstraat of parkeergarage De Appelaar (Damstraat 12).<br/><br/><strong>Openbaar vervoer</strong><br/>Makkelijk bereikbaar met het OV. Station Haarlem centraal is op 15 minuten lopen afstand.<br/><br/><strong>Toegankelijkheid</strong><br/>Kinderen en honden welkom.</p>",
+        "media_type": "image",
+        "image_src": "{{ metaobjects.store_location.haarlem.map_media.value }}",
+        "image_alt": "",
+        "video_has_audio": false,
+        "rounded_corners": false,
+        "image_link": "",
+        "image_link_target_blank": false,
+        "button_url": "",
+        "button_text": "",
+        "button_variant": "default",
+        "reverse": true
+      }
+    },
     "main": {
       "type": "page",
       "disabled": true,
       "settings": {}
     }
   },
-  "order": ["main"]
+  "order": [
+    "henk_section_splitscreen_RfKrNg",
+    "henk_section_splitscreen_TVYVfK",
+    "main"
+  ]
 }

@@ -6,8 +6,10 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/article
 {% endcomment %}
 
+{{ article | json }}
+
 {% render 'henk-section-header',
-  id: blog.handle,
+  id: article.id,
   caption: blog.metafields.custom.blog_section_header_caption,
   title: blog.title,
   level: '1',

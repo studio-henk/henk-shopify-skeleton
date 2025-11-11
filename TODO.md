@@ -1,6 +1,5 @@
 # TODO
 
-- [ ] push to staging and main 
 - [ ] template for diensten / services
 - [ ] change blog template (main img, max-width etc) -> new template
 - [ ] newsletter-block translations

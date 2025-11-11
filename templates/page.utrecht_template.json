@@ -35,10 +35,33 @@
         "button_variant": "default",
         "reverse": false
       }
+    },
+    "henk_section_splitscreen_yLA86g": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "id": "",
+        "caption": "",
+        "title": "Plan je bezoek",
+        "heading_level": "2",
+        "content": "<p>Ook zonder afspraak ben je van harte welkom.</p><p><strong>Openingstijden</strong><br/>Maandag: Gesloten<br/>Dinsdag t/m zaterdag: 10.00 - 17.30<br/>Zondag: 12.00 - 17.00 </p><p><strong>Aangepaste openingstijden</strong><br/>5 december (Sinterklaas): 10.00 - 17.30<br/>24 december (Kerstavond): 10.00 - 16.00<br/>25 december (1e Kerstdag): gesloten<br/>26 december (2e Kerstdag): 12.00 - 17.00<br/>31 december (Oudjaarsdag): 10.00 - 16.00<br/>1 januari (Nieuwsjaarsdag): gesloten</p><p><strong>Adres</strong><br/><a href=\"https://www.google.com/maps/place/Studio+HENK+Utrecht+Brand+Store/@52.0928178,5.118819,17z/data=!3m1!4b1!4m6!3m5!1s0x47c66f18640bb20b:0xb6d7b9e312766e86!8m2!3d52.0928145!4d5.1213939!16s%2Fg%2F11s7ndw7p8\">Janskerkhof 5,<br/>3512 BK Utrecht</a><br/><a href=\"tel:+31202333820\">+31 (0) 20 - 233 38 20</a><br/><br/><strong>Openbaar vervoer</strong><br/>Bushalte Janskerkhof - 1min lopen<br/><br/><strong>Parkeren</strong><br/>Betaald parkeren op het Janskerkhof (niet beschikbaar op zaterdagen vanwege de Bloemenmarkt) – 1 min<br/>Parking Kruisstraat, Kruisstraat 2 (betaald) – 8 min<br/>Q-Park La Vie, St Jacobsstraat 1 (betaald) – 7 min<br/><br/><strong>Toegankelijkheid</strong><br/>Gelijkvloers; rolstoel en kinderwagen vriendelijk.<br/>Kinderen en honden welkom.</p>",
+        "media_type": "image",
+        "image_src": "{{ metaobjects.store_location.utrecht.map_media.value }}",
+        "image_alt": "",
+        "video_has_audio": false,
+        "rounded_corners": false,
+        "image_link": "",
+        "image_link_target_blank": false,
+        "button_url": "",
+        "button_text": "",
+        "button_variant": "default",
+        "reverse": true
+      }
     }
   },
   "order": [
     "main",
-    "henk_section_splitscreen_7cLaz3"
+    "henk_section_splitscreen_7cLaz3",
+    "henk_section_splitscreen_yLA86g"
   ]
 }

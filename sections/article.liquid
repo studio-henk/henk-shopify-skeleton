@@ -9,10 +9,9 @@
 {{ article | json }}
 {% assign date = article.published_at | time_tag: format: 'date' %}
 
-{%
-  render 'henk-section-header',
+{% render 'henk-section-header',
   id: article.id,
-  caption: article.published_at | time_tag: format: 'date',
+  caption: date,
   title: article.title,
   level: '1',
   text: blog.metafields.custom.blog_overview_section_header_intro_text,

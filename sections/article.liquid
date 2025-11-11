@@ -18,15 +18,19 @@
   align: 'center'
 %}
 
-{% if article.image %}
-  {{ article.image | image_url: width: 1000 | image_tag }}
-{% endif %}
+<section class="henk-section">
+  <div class="henk-section__inner">
+    {% if article.image %}
+      {{ article.image | image_url: width: 1000 | image_tag }}
+    {% endif %}
 
-<!-- <h1>{{ article.title }}</h1> -->
+    <!-- <h1>{{ article.title }}</h1> -->
 
-<!-- <p>{{ 'blog.article_metadata_html' | t: date: date, author: article.author }}</p> -->
+    <!-- <p>{{ 'blog.article_metadata_html' | t: date: date, author: article.author }}</p> -->
 
-{{ article.content }}
+    {{ article.content }}
+  </div>
+</section>
 
 {% schema %}
 {

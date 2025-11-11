@@ -1,0 +1,67 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "henk_section_splitscreen_rTAxGL": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "id": "",
+        "caption": "",
+        "title": "Bezoek ons in Rotterdam",
+        "heading_level": "2",
+        "content": "<p>Onze deuren staan open voor al je <br/>vragen over onze producten of voor inspiratie om je interieur te vernieuwen. Boek een gratis adviesgesprek met een van onze interieuradviseurs in onze winkel aan de Rozengracht. Je bent ook zonder<br/> afspraak van harte welkom.</p>",
+        "media_type": "video",
+        "image_alt": "",
+        "video_src": "shopify://files/videos/StudioHenk_RotterdamStore_paid_15_square.mp4",
+        "video_has_audio": true,
+        "rounded_corners": true,
+        "image_link": "",
+        "image_link_target_blank": false,
+        "button_url": "",
+        "button_text": "",
+        "button_variant": "default",
+        "reverse": false
+      }
+    },
+    "henk_section_splitscreen_bqdKYa": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "id": "",
+        "caption": "",
+        "title": "Plan je bezoek",
+        "heading_level": "2",
+        "content": "<p>Ook zonder afspraak ben je van harte welkom.</p><p><strong>Openingstijden<br/></strong>{{ metaobjects.store_location.amsterdam.store_opening_hours | metafield_tag }}</p><p><strong>Aangepaste openingstijden</strong><br/>5 december (Sinterklaas): 10.00 - 17.30<br/>24 december (Kerstavond): 10.00 - 16.00<br/>25 december (1e Kerstdag): gesloten<br/>26 december (2e Kerstdag): 12.00 - 17.00<br/>31 december (Oudjaarsdag): 10.00 - 16.00<br/>1 januari (Nieuwsjaarsdag): gesloten</p><p><strong>Adres<br/></strong>{{ metaobjects.store_location.amsterdam.address | metafield_tag }}</p><p><strong>Openbaar vervoer<br/></strong>{{ metaobjects.store_location.amsterdam.store_public_transport | metafield_tag }}</p>",
+        "media_type": "image",
+        "image_src": "{{ metaobjects.store_location.rotterdam.map_media.value }}",
+        "image_alt": "",
+        "video_has_audio": false,
+        "rounded_corners": false,
+        "image_link": "",
+        "image_link_target_blank": false,
+        "button_url": "",
+        "button_text": "",
+        "button_variant": "default",
+        "reverse": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "henk_section_splitscreen_rTAxGL",
+    "henk_section_splitscreen_bqdKYa"
+  ]
+}

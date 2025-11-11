@@ -6,7 +6,7 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/article
 {% endcomment %}
 
-{{ article | json }}
+{% comment %} {{ article | json }} {% endcomment %}
 {% assign date = article.published_at | time_tag: format: 'date' %}
 
 {% render 'henk-section-header',

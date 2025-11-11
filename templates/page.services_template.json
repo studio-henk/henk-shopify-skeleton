@@ -19,21 +19,22 @@
       "name": "Split Screen",
       "settings": {
         "id": "",
-        "caption": "",
-        "title": "Bezoek ons in Amsterdam",
+        "caption": "Service Plan Plus",
+        "title": "Voor langdurig gebruiksgemak",
         "heading_level": "2",
-        "content": "<p>Onze deuren staan open voor al je <br/>vragen over onze producten of voor inspiratie om je interieur te vernieuwen. Boek een gratis adviesgesprek met een van onze interieuradviseurs in onze winkel aan de Rozengracht. Je bent ook zonder afspraak van harte welkom.</p>",
-        "media_type": "video",
+        "content": "<p>Het Service Plan Plus biedt jou een langere garantieduur, preventief onderhoud en extra ondersteuning. Zo ben je verzekerd van een perfect functionerend meubelstuk, jarenlang. Met onze premium service zorgen we ervoor dat jouw Studio HENK meubels er niet alleen fantastisch uitzien, maar ook in optimale conditie blijven.<br/><br/>Verkrijbaar in onze winkels.</p>",
+        "media_type": "image",
+        "image_src": "shopify://shop_images/diensten1.avif",
         "image_alt": "",
         "video_src": "shopify://files/videos/StudioHenk_AdamStore_square.mp4",
         "video_has_audio": true,
         "rounded_corners": true,
-        "image_link": "",
+        "image_link": "shopify://pages/test-page",
         "image_link_target_blank": false,
-        "button_url": "",
-        "button_text": "",
+        "button_url": "shopify://pages/test-page",
+        "button_text": "Lees meer",
         "button_variant": "default",
-        "reverse": false
+        "reverse": true
       }
     },
     "henk_section_splitscreen_bqdKYa": {

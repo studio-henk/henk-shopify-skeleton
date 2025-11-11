@@ -35,10 +35,33 @@
         "button_variant": "default",
         "reverse": false
       }
+    },
+    "henk_section_splitscreen_JFUD7C": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "id": "",
+        "caption": "",
+        "title": "Plan je bezoek",
+        "heading_level": "2",
+        "content": "<p>Ook zonder afspraak ben je van harte welkom.</p><p><strong>Openingstijden</strong><br/>Maandag: Gesloten<br/>Dinsdag t/m zaterdag: 10.00 - 17.30<br/>Zondag: 12.00 - 17.30</p><p><strong>Aangepaste openingstijden</strong><br/>11 november (Wapenstilstand): 10.00 - 17.30<br/>5 december (Sinterklaas): 10.00 - 17.30<br/>24 december (Kerstavond): 10.00 - 16.00<br/>25 december (1e Kerstdag): gesloten<br/>26 december (2e Kerstdag): 12.00 - 17.00<br/>31 december (Oudjaarsdag): 10.00 - 16.00<br/>1 januari (Nieuwsjaarsdag): gesloten</p><p><strong>Adres </strong><br/><a href=\"https://www.google.com/maps/place/Studio+HENK+Antwerpen+Flagship+store/@51.2159204,4.3922698,17z/data=!3m1!4b1!4m6!3m5!1s0x47c3f7b7562cc59d:0x9a8f18e166405e3!8m2!3d51.2159171!4d4.3948447!16s%2Fg%2F11mv5b8jrd\">Kloosterstraat 52-Rechts,<br/>2000 Antwerpen</a><br/><a href=\"http://+32038080815/\">+32 (0) 3 808 08 15</a><br/><br/><strong>Parkeren</strong><br/>Parking Cammerpoorte, Nationalestraat 38 (betaald) – 6 min<br/>Q-park, Lombardenvest 24 (betaald) – 7 min<br/>Parking Oudaen, Oudaan (betaald) – 7 min<br/>Waalsekaai (betaald) – 8 min<br/><br/>Makkelijk bereikbaar met openbaar vervoer<br/><br/><strong>Toegankelijkheid</strong><br/>Gelijkvloers; rolstoel en kinderwagen vriendelijk. Kinderen en honden welkom.</p>",
+        "media_type": "image",
+        "image_src": "{{ metaobjects.store_location.antwerpen.map_media.value }}",
+        "image_alt": "",
+        "video_has_audio": false,
+        "rounded_corners": false,
+        "image_link": "",
+        "image_link_target_blank": false,
+        "button_url": "",
+        "button_text": "",
+        "button_variant": "default",
+        "reverse": true
+      }
     }
   },
   "order": [
     "main",
-    "henk_section_splitscreen_qLiCx6"
+    "henk_section_splitscreen_qLiCx6",
+    "henk_section_splitscreen_JFUD7C"
   ]
 }

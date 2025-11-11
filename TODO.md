@@ -1,12 +1,9 @@
 # TODO
 
-- [ ] test pipeline: change in content in section on home, see if without
-pulling this gets overriden by push a/ merge of develop and staging.
-
-- [ ] store detail page splitscreen update
-- [ ] should turning on sound on 1 video turn off all other videos sound and
-pasuse them?
-- [ ] check tag for henk-header... should become header element with classname.
+- [ ] menu -> all store links to /pages/winkel name
+- [ ] remove store_location.liquid?
+- [ ] translateuon for close button menu
+- [ ] remove old ams_ template ff
 - [ ] base styles for default template, check blog article if default? or
 about
 

@@ -1,7 +1,7 @@
 <div class="store-detail">
   {% render 'henk-section-header', title: metaobject.store_name, level: '1', align: 'center' %}
 
-  {% render 'henk-split-screen',
+  {% render 'henk-snippet-splitscreen',
     bgColor: 'default',
     id: 'ss-1',
     title: metaobject.splitscreen_heading.value,
@@ -80,7 +80,7 @@
 
   {% assign plan_visit = 'store_detail.plan_your_visit' | t %}
 
-  {% render 'henk-split-screen',
+  {% render 'henk-snippet-splitscreen',
     id: 'ss-2',
     title: plan_visit,
     content: store_content,

@@ -13,7 +13,32 @@
       "type": "page",
       "disabled": true,
       "settings": {}
+    },
+    "henk_section_splitscreen_7cLaz3": {
+      "type": "henk-section-splitscreen",
+      "name": "Split Screen",
+      "settings": {
+        "id": "",
+        "caption": "",
+        "title": "Bezoek ons in Utrecht",
+        "heading_level": "2",
+        "content": "<p>Onze deuren staan open voor al je vragen over onze producten of voor inspiratie om je interieur te vernieuwen. Boek een gratis adviesgesprek met een van onze interieuradviseurs in onze winkel aan het Janskerkhof. Je bent ook zonder afspraak van harte welkom.</p>",
+        "media_type": "video",
+        "image_alt": "",
+        "video_src": "shopify://files/videos/StudioHenk_UtrechtStore_square.mp4",
+        "video_has_audio": true,
+        "rounded_corners": true,
+        "image_link": "",
+        "image_link_target_blank": false,
+        "button_url": "",
+        "button_text": "",
+        "button_variant": "default",
+        "reverse": false
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "henk_section_splitscreen_7cLaz3"
+  ]
 }

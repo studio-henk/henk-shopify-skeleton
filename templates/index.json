@@ -45,6 +45,23 @@
         "reverse": false
       }
     },
+    "henk_section_double_media_4UwQcB": {
+      "type": "henk-section-double-media",
+      "name": "Henk Double Media Block",
+      "settings": {
+        "reverse_layout": false,
+        "large_media_type": "video",
+        "large_video": "shopify://files/videos/StudioHenk_UtrechtStore_square.mp4",
+        "large_media_has_audio": true,
+        "large_media_url": "",
+        "large_media_new_tab": false,
+        "small_media_type": "image",
+        "small_image": "shopify://shop_images/Studio_Henk_2211_Blob_Grid_23.jpg",
+        "small_media_has_audio": false,
+        "small_media_url": "",
+        "small_media_new_tab": false
+      }
+    },
     "henk_section_faq_rFmJ7m": {
       "type": "henk-section-faq",
       "blocks": {
@@ -81,12 +98,22 @@
         "rounded": false,
         "description": "Background video"
       }
+    },
+    "collections_Yy89hP": {
+      "type": "collections",
+      "name": "t:general.collections_grid",
+      "settings": {
+        "grid_item_width": "collections--full",
+        "grid_gap": 10
+      }
     }
   },
   "order": [
     "main",
     "henk_section_splitscreen_pM83he",
+    "henk_section_double_media_4UwQcB",
     "henk_section_faq_rFmJ7m",
-    "henk_section_video_kqTxWF"
+    "henk_section_video_kqTxWF",
+    "collections_Yy89hP"
   ]
 }

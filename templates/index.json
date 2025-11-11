@@ -44,10 +44,34 @@
         "button_variant": "default",
         "reverse": false
       }
+    },
+    "henk_section_faq_rFmJ7m": {
+      "type": "henk-section-faq",
+      "blocks": {
+        "faq_item_qyzJcA": {
+          "type": "faq_item",
+          "settings": {
+            "summary": "What is the purpose of this component?",
+            "content": "<p>This component is used to display a list of frequently asked questions.</p>",
+            "variant": "plusmin",
+            "name": "cc",
+            "icon_name": "calendar",
+            "icon_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_qyzJcA"
+      ],
+      "name": "FAQ Section",
+      "settings": {
+        "title": "Frequently Asked Questions"
+      }
     }
   },
   "order": [
     "main",
-    "henk_section_splitscreen_pM83he"
+    "henk_section_splitscreen_pM83he",
+    "henk_section_faq_rFmJ7m"
   ]
 }

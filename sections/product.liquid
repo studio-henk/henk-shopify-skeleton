@@ -11,7 +11,21 @@
     {% comment %} {{ product | json }} {% endcomment %}
     <div class="product-images">
       {% for image in product.images %}
-        {% render 'image', class: 'product-image', image: image %}
+        {% comment %} {% render 'image', class: 'product-image', image: image %} {% endcomment %}
+        {%- assign img_width = 1200 -%}
+        {%- assign img_height = 1200 -%}
+
+        <img
+          src="{{ image | image_url: width: img_width }}"
+          alt="{{ image.alt | escape | default: product.title }}"
+          width="{{ img_width }}"
+          height="{{ img_height }}"
+          class="product-image"
+          loading="lazy"
+          {% if image.id %}
+            data-image-id="{{ image.id }}"
+          {% endif %}
+        >
       {% endfor %}
     </div>
 

@@ -17,68 +17,68 @@
   <div class="henk-section__inner">
     {% comment %} {{ product | json }} {% endcomment %}
 
-  <div class="henk-section__grid">
+    <div class="henk-section__grid">
       <div class="henk-section__grid-item">
+        <div class="product-images">
+          {% for image in product.images %}
+            {% comment %} {% render 'image', class: 'product-image', image: image %} {% endcomment %}
+            {%- assign img_width = 1200 -%}
+            {%- assign img_height = 1200 -%}
 
-    <div class="product-images">
-      {% for image in product.images %}
-        {% comment %} {% render 'image', class: 'product-image', image: image %} {% endcomment %}
-        {%- assign img_width = 1200 -%}
-        {%- assign img_height = 1200 -%}
-
-        <img
-          src="{{ image | image_url: width: img_width }}"
-          alt="{{ image.alt | escape | default: product.title }}"
-          width="{{ img_width }}"
-          height="{{ img_height }}"
-          class="product-image"
-          loading="lazy"
-          {% if image.id %}
-            data-image-id="{{ image.id }}"
-          {% endif %}
-        >
-      {% endfor %}
-    </div>
+            <img
+              src="{{ image | image_url: width: img_width }}"
+              alt="{{ image.alt | escape | default: product.title }}"
+              width="{{ img_width }}"
+              height="{{ img_height }}"
+              class="product-image"
+              loading="lazy"
+              {% if image.id %}
+                data-image-id="{{ image.id }}"
+              {% endif %}
+            >
+          {% endfor %}
+        </div>
       </div>
 
-        <div class="henk-section__grid-item">
-    <div class="product-info">
-      <h1>{{ product.title }}</h1>
-      <p>{{ product.price | money }}</p>
-      <p>{{ product.description }}</p>
-    </div>
-
-    <div class="product-form">
-      {% form 'product', product %}
-        {% assign current_variant = product.selected_or_first_available_variant %}
-
-        <div class="henk-labeled-select henk-labeled-select--dir-vertical">
-          <label class="henk-label" for="select-id">
-            <span class="henk-label-text">Variant</span>
-          </label>
-          <div class="select-wrapper">
-            <select class="henk-select" name="id">
-              {% for variant in product.variants %}
-                <option
-                  value="{{ variant.id }}"
-                  {% if variant == current_variant %}
-                    selected="selected"
-                  {% endif %}
-                >
-                  {{ variant.title }} - {{ variant.price | money }}
-                </option>
-              {% endfor %}
-            </select>
-          </div>
+      <div class="henk-section__grid-item">
+        <div class="product-info">
+          <h1>{{ product.title }}</h1>
+          <p>{{ product.price | money }}</p>
+          <p>{{ product.description }}</p>
         </div>
 
-        <input type="text" name="quantity" min="1" value="1" class="henk-input">
+        <div class="product-form">
+          {% form 'product', product %}
+            {% assign current_variant = product.selected_or_first_available_variant %}
 
-        <input type="submit" value="Add to cart" class="henk-button">
-        {{ form | payment_button }}
-      {% endform %}
-    </div>
+            <div class="henk-labeled-select henk-labeled-select--dir-vertical">
+              <label class="henk-label" for="select-id">
+                <span class="henk-label-text">Variant</span>
+              </label>
+              <div class="select-wrapper">
+                <select class="henk-select" name="id">
+                  {% for variant in product.variants %}
+                    <option
+                      value="{{ variant.id }}"
+                      {% if variant == current_variant %}
+                        selected="selected"
+                      {% endif %}
+                    >
+                      {{ variant.title }} - {{ variant.price | money }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+
+            <input type="text" name="quantity" min="1" value="1" class="henk-input">
+
+            <input type="submit" value="Add to cart" class="henk-button">
+            {{ form | payment_button }}
+          {% endform %}
         </div>
+      </div>
+    </div>
   </div>
 </section>
 

@@ -63,27 +63,34 @@
           {% form 'product', product %}
             {% assign current_variant = product.selected_or_first_available_variant %}
 
-            <div class="henk-labeled-select henk-labeled-select--dir-vertical">
-              <label class="henk-label" for="select-id">
-                <span class="henk-label-text">Variant</span>
-              </label>
-              <div class="select-wrapper">
-                <select class="henk-select" name="id">
-                  {% for variant in product.variants %}
-                    <option
-                      value="{{ variant.id }}"
-                      {% if variant == current_variant %}
-                        selected="selected"
-                      {% endif %}
-                    >
-                      {{ variant.title }} - {{ variant.price | money }}
-                    </option>
-                  {% endfor %}
-                </select>
+            {%- for option in product.options_with_values -%}
+              <div class="henk-labeled-select henk-labeled-select--dir-vertical">
+                <label class="henk-label" for="Option{{ forloop.index }}">
+                  <span class="henk-label-text">{{ option.name }}</span>
+                </label>
+                <div class="select-wrapper">
+                  <select
+                    id="Option{{ forloop.index }}"
+                    class="henk-select"
+                    name="options[{{ option.name | escape }}]"
+                  >
+                    {%- for value in option.values -%}
+                      <option
+                        value="{{ value | escape }}"
+                        {% if option.selected_value == value %}
+                          selected="selected"
+                        {% endif %}
+                      >
+                        {{ value }}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                </div>
               </div>
-            </div>
+            {%- endfor -%}
 
             <input type="text" name="quantity" min="1" value="1" class="henk-input">
+
             <div class="henk-button-group">
               <input type="submit" value="Add to cart" class="henk-button">
               {{ form | payment_button }}

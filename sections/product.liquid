@@ -5,6 +5,15 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/product
 {% endcomment %}
 
+<style>
+  .product-images {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    margin-bottom: 2rem;
+  }
+</style>
+
 <section class="henk-section">
   <div class="henk-section__inner">
     {% comment %} {{ product | json }} {% endcomment %}

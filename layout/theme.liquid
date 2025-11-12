@@ -38,7 +38,7 @@
   <body class="template-{{ template.name }}">
     <div class="henk-wrapper">
       {% section 'henk-header' %}
-      {% render 'henk-breadcrumbs' %}
+      {% comment %} {% render 'henk-breadcrumbs' %} {% endcomment %}
       <main class="henk-main">
         {{ content_for_layout }}
         {% render 'henk-newsletter' %}

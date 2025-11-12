@@ -80,9 +80,18 @@
                     >
                       🗑 Remove
                     </button>
-
                     {% assign remove_label = 'cart.remove' | t %}
 
+                    {% render 'henk-button',
+                      element: 'button',
+                      type: 'submit',
+                      label: remove_label,
+                      href: item.url_to_remove,
+                      icon_name: 'trash',
+                      icon_only: true,
+                      aria_label: remove_label,
+                      extra_classes: 'henk-cart-section__item-remove-button'
+                    %}
                     {% render 'henk-button',
                       element: 'a',
                       label: remove_label,

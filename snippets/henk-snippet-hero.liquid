@@ -6,6 +6,8 @@
   - type: 'image' or 'video'
   - image: image URL (Shopify file or object)
   - video: video URL or media object
+  - video_has_audio: boolean
+  - video_poster: image URL
   - caption, title, text: optional strings
   - button_label, button_url, button_variant: optional CTA button
 {%- endcomment -%}
@@ -18,7 +20,8 @@
         src: video,
         autoplay: true,
         loop: true,
-        has_audio: true,
+        has_audio: video_has_audio,
+        poster: video_poster,
         cover: true,
         rounded: false,
         description: title

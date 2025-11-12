@@ -14,7 +14,8 @@
     "back_to_shopping": "Continue shopping"
   },
   "general": {
-    "header": "Header"
+    "header": "Header",
+    "close": "Close"
   },
   "sections": {
     "header": {

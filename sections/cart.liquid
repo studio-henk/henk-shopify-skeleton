@@ -83,7 +83,6 @@
                     {% assign remove_label = 'cart.remove' | t %}
 
                     {% assign remove_name = 'updates[' | append: item.key | append: ']' %}
-                    {% assign remove_value = 0 %}
 
                     {%
                       render 'henk-button',
@@ -94,11 +93,10 @@
                       icon_name: 'trash',
                       icon_only: true,
                       aria_label: remove_label,
-                      extra_classes: 'henk-cart-section__item-remove-button'
-                      attrs:
-                      {
+                      extra_classes: 'henk-cart-section__item-remove-button',
+                      attrs: {
                       'name': remove_name,
-                      'value': remove_value
+                      'value': '0'
                       }
                     %}
 

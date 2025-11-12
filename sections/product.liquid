@@ -23,7 +23,7 @@ hello pdp
   {% form 'product', product %}
     {% assign current_variant = product.selected_or_first_available_variant %}
 
-    <select name="id">
+    <select name="id" class="henk-select">
       {% for variant in product.variants %}
         <option
           value="{{ variant.id }}"

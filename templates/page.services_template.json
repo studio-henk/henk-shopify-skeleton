@@ -19,51 +19,49 @@
       "name": "Split Screen",
       "settings": {
         "id": "",
-        "caption": "Service Plan Plus",
-        "title": "Voor langdurig gebruiksgemak",
+        "caption": "",
+        "title": "Bezoek ons in Amsterdam",
         "heading_level": "2",
-        "content": "<p>Het Service Plan Plus biedt jou een langere garantieduur, preventief onderhoud en extra ondersteuning. Zo ben je verzekerd van een perfect functionerend meubelstuk, jarenlang. Met onze premium service zorgen we ervoor dat jouw Studio HENK meubels er niet alleen fantastisch uitzien, maar ook in optimale conditie blijven.<br/><br/>Verkrijbaar in onze winkels.</p>",
-        "media_type": "image",
-        "image_src": "shopify://shop_images/diensten1.avif",
+        "content": "<p>Onze deuren staan open voor al je <br/>vragen over onze producten of voor inspiratie om je interieur te vernieuwen. Boek een gratis adviesgesprek met een van onze interieuradviseurs in onze winkel aan de Rozengracht. Je bent ook zonder afspraak van harte welkom.</p>",
+        "media_type": "video",
         "image_alt": "",
         "video_src": "shopify://files/videos/StudioHenk_AdamStore_square.mp4",
         "video_has_audio": true,
         "rounded_corners": true,
-        "image_link": "shopify://pages/test-page",
+        "image_link": "",
         "image_link_target_blank": false,
-        "button_url": "shopify://pages/test-page",
-        "button_text": "Lees meer",
+        "button_url": "",
+        "button_text": "",
         "button_variant": "default",
-        "reverse": true
+        "reverse": false
       }
     },
-    "henk_section_splitscreen_kcdH3V": {
+    "henk_section_splitscreen_bqdKYa": {
       "type": "henk-section-splitscreen",
       "name": "Split Screen",
       "settings": {
         "id": "",
-        "caption": "Reparatie",
-        "title": "Heb je een reparatie nodig?",
+        "caption": "",
+        "title": "Plan je bezoek",
         "heading_level": "2",
-        "content": "<p>Al onze meubels worden op maat gemaakt en met zorg behandeld en vervoerd. Wanneer het sporadisch gebeurt dat een item beschadigd raakt tijdens transport of gebruik, streven we altijd naar een reparatie op locatie. <br/><br/>In enkele gevallen wordt besloten om het meubel te vervangen. Deze meubels komen vervolgens in het jaarlijkse Re-Store event terecht, of vinden een nieuwe bestemming via de<a href=\"https://www.studio-henk.nl/nl/products/tweedekans\">Tweedekans sectie van onze website</a>.<br/><br/>Heb je een reparatie nodig? Neem dan contact op met ons serviceteam voor meer informatie.</p>",
+        "content": "<p>Ook zonder afspraak ben je van harte welkom.</p><p><strong>Openingstijden</strong><br/>Maandag: 12:00 - 17:30<br/>Dinsdag t/m zaterdag: 10.00 - 17.30<br/>Zondag: 12.00 - 17.00</p><p><strong>Aangepaste openingstijden</strong><br/>5 december (Sinterklaas): 10.00 - 17.30<br/>24 december (Kerstavond): 10.00 - 16.00<br/>25 december (1e Kerstdag): gesloten<br/>26 december (2e Kerstdag): 12.00 - 17.00<br/>31 december (Oudjaarsdag): 10.00 - 16.00<br/>1 januari (Nieuwsjaarsdag): gesloten</p><p><strong>Adres</strong><br/><a href=\"https://www.google.com/maps/place/Studio+HENK+Amsterdam+Flagship+store/@52.3726924,4.8772189,17z/data=!4m6!3m5!1s0x47c6096bedafecb5:0xcf2b8610a886605e!8m2!3d52.3726924!4d4.8772189!16s%2Fg%2F11r_xqvrvl?entry=ttu&g_ep=EgoyMDI1MDIxOS4xIKXMDSoASAFQAw%3D%3D\">Rozengracht 204,<br/>1016 NL Amsterdam</a><br/><a href=\"tel:+31202333820\">+31 (0) 20 - 233 38 20</a><br/><br/><strong>Openbaar vervoer</strong><br/>Wegens groot onderhoud aan de Rozengracht en Marnixstraat rijden er tijdelijk geen trams naar onze winkel. Plan je bezoek via een route planner of kijk op <a href=\"http://www.gvb.nl/\">gvb.nl</a>.<br/><br/><strong>Parkeren</strong><br/><a href=\"https://www.q-park.nl/nl-nl/parkeren/amsterdam/europarking/\">Q Park Europarking</a>, Marnixstraat 250 (betaald)<br/>5 min lopen<br/><br/><strong>Toegankelijkheid</strong><br/>Rolstoel en kinderwagenvriendelijk. Lift aanwezig.<br/>Kinderen en honden welkom.</p>",
         "media_type": "image",
-        "image_src": "shopify://shop_images/diensten2.avif",
+        "image_src": "{{ metaobjects.store_location.amsterdam.map_media.value }}",
         "image_alt": "",
-        "video_src": "shopify://files/videos/StudioHenk_AdamStore_square.mp4",
-        "video_has_audio": true,
-        "rounded_corners": true,
-        "image_link": "shopify://pages/test-page",
+        "video_has_audio": false,
+        "rounded_corners": false,
+        "image_link": "",
         "image_link_target_blank": false,
-        "button_url": "shopify://pages/test-page",
-        "button_text": "Contact",
+        "button_url": "",
+        "button_text": "",
         "button_variant": "default",
-        "reverse": false
+        "reverse": true
       }
     }
   },
   "order": [
     "main",
     "henk_section_splitscreen_rTAxGL",
-    "henk_section_splitscreen_kcdH3V"
+    "henk_section_splitscreen_bqdKYa"
   ]
 }

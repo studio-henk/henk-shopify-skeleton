@@ -82,6 +82,9 @@
                     </button>
                     {% assign remove_label = 'cart.remove' | t %}
 
+                    {% assign remove_name = 'updates[' | append: item.key | append: ']' %}
+                    {% assign remove_value = 0 %}
+
                     {%
                       render 'henk-button',
                       element: 'button',

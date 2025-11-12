@@ -89,6 +89,14 @@
               </div>
             {%- endfor -%}
 
+            {# Important: this hidden input ensures Shopify knows which variant to add to cart #}
+            <input
+              type="hidden"
+              name="id"
+              value="{{ current_variant.id }}"
+              id="selected-variant-id"
+            >
+
             <input type="text" name="quantity" min="1" value="1" class="henk-input">
 
             <div class="henk-button-group">

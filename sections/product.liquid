@@ -1,8 +1,7 @@
 {% comment %}
-  This section is used in the product template to render product page with
-  media, content, and add-to-cart form.
-
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/product
+  Product Section
+  Renders product media, content, and add-to-cart form.
+  Supports multiple options/variants natively.
 {% endcomment %}
 
 <style>
@@ -27,13 +26,11 @@
 
 <section class="henk-section">
   <div class="henk-section__inner">
-    {% comment %} {{ product | json }} {% endcomment %}
-
     <div class="henk-section__grid">
+      <!-- Product Images -->
       <div class="henk-section__grid-item">
         <div class="product-images">
           {% for image in product.images %}
-            {% comment %} {% render 'image', class: 'product-image', image: image %} {% endcomment %}
             {%- assign img_width = 1200 -%}
             {%- assign img_height = 1200 -%}
 
@@ -52,6 +49,7 @@
         </div>
       </div>
 
+      <!-- Product Info & Form -->
       <div class="henk-section__grid-item">
         <div class="product-info">
           <h1 class="product__title">{{ product.title }}</h1>
@@ -61,9 +59,11 @@
 
         <div class="product-form">
           {% form 'product', product %}
-            {% assign current_variant = product.selected_or_first_available_variant %}
+            {% comment %}
+              Shopify automatically maps <select name="options[Option Name]"> to the correct variant
+            {% endcomment %}
 
-            {%- for option in product.options_with_values -%}
+            {% for option in product.options_with_values %}
               <div class="henk-labeled-select henk-labeled-select--dir-vertical">
                 <label class="henk-label" for="Option{{ forloop.index }}">
                   <span class="henk-label-text">{{ option.name }}</span>
@@ -74,7 +74,7 @@
                     class="henk-select"
                     name="options[{{ option.name | escape }}]"
                   >
-                    {%- for value in option.values -%}
+                    {% for value in option.values %}
                       <option
                         value="{{ value | escape }}"
                         {% if option.selected_value == value %}
@@ -83,19 +83,11 @@
                       >
                         {{ value }}
                       </option>
-                    {%- endfor -%}
+                    {% endfor %}
                   </select>
                 </div>
               </div>
-            {%- endfor -%}
-
-            {# Important: this hidden input ensures Shopify knows which variant to add to cart #}
-            <input
-              type="hidden"
-              name="id"
-              value="{{ current_variant.id }}"
-              id="selected-variant-id"
-            >
+            {% endfor %}
 
             <input type="text" name="quantity" min="1" value="1" class="henk-input">
 

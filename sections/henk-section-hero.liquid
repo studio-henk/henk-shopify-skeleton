@@ -33,7 +33,8 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Background image"
+      "label": "Background image",
+      "visible_if": "{{ section.settings.large_media_type == 'image' }}"
     },
     {
       "type": "video",

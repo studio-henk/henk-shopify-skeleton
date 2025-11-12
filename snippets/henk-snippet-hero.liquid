@@ -1,0 +1,104 @@
+{%- comment -%}
+  hero-block.liquid
+  A flexible hero block supporting either an image or a video background.
+
+  Props:
+  - type: 'image' or 'video'
+  - image: image URL
+  - video: video URL
+  - caption: optional string
+  - title: optional string
+  - text: optional string
+  - button_label: optional string
+  - button_url: optional string
+  - button_variant: optional string (e.g. 'primary', 'secondary')
+{%- endcomment -%}
+
+<section class="henk-hero" id="henk-hero">
+  <div class="henk-hero__inner">
+    {%- if type == 'video' and video -%}
+      <div
+        class="henk-video-container henk-video-container--cover henk-hero__video"
+        id="video-block"
+      >
+        <video
+          class="henk-video"
+          src="{{ video | escape }}"
+          loop
+          muted
+          playsinline
+          preload="auto"
+        ></video>
+
+        <button
+          class="henk-button henk-video-sound-toggle"
+          aria-label="{{ 'general.video_sound_toggle' | t | default: 'Toggle video sound' }}"
+        >
+          <svg
+            class="volume-x"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+          <svg
+            class="volume-2"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="display:none;"
+          >
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+        </button>
+      </div>
+
+    {%- elsif type == 'image' and image -%}
+      <img
+        src="{{ image | image_url: width: 2000 }}"
+        alt="{{ title | escape }}"
+        class="henk-hero__image"
+        loading="lazy"
+      >
+    {%- endif -%}
+
+    <div class="henk-hero__content">
+      {%- if caption -%}
+        <p class="henk-hero__caption">{{ caption }}</p>
+      {%- endif -%}
+
+      {%- if title -%}
+        <h1 class="henk-hero__title">{{ title }}</h1>
+      {%- endif -%}
+
+      {%- if text -%}
+        <p class="henk-hero__text">{{ text }}</p>
+      {%- endif -%}
+
+      {%- if button_label and button_url -%}
+        <a
+          href="{{ button_url }}"
+          class="henk-button henk-button--{{ button_variant | default: 'primary' }} henk-hero__button"
+        >
+          {{ button_label }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>

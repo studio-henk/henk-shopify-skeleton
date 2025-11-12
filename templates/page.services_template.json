@@ -9,6 +9,20 @@
  */
 {
   "sections": {
+    "henk_section_hero_yJiRHc": {
+      "type": "henk-section-hero",
+      "name": "Hero Block",
+      "settings": {
+        "type": "image",
+        "image": "shopify://shop_images/Studio_HENK_September_Collection_2023_24.jpg",
+        "caption": "Welcome",
+        "title": "Explore Our Collection",
+        "text": "Discover the best products tailored for you.",
+        "button_label": "Shop Now",
+        "button_url": "",
+        "button_variant": "primary"
+      }
+    },
     "main": {
       "type": "page",
       "disabled": true,
@@ -60,6 +74,7 @@
     }
   },
   "order": [
+    "henk_section_hero_yJiRHc",
     "main",
     "henk_section_splitscreen_rTAxGL",
     "henk_section_splitscreen_bqdKYa"

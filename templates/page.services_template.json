@@ -33,7 +33,7 @@
         "title": "Explore Our Collection",
         "text": "Discover the best products tailored for you.",
         "button_label": "Shop Now",
-        "button_url": "",
+        "button_url": "shopify://collections",
         "button_variant": "primary"
       }
     },

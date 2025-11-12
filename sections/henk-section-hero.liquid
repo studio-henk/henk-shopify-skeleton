@@ -39,7 +39,15 @@
     {
       "type": "video",
       "id": "video",
-      "label": "Background video"
+      "label": "Background video",
+      "visible_if": "{{ section.settings.type == 'video' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "video_has_audio",
+      "label": "Video has audio",
+      "default": false,
+      "visible_if": "{{ section.settings.type == 'video' }}"
     },
     {
       "type": "text",

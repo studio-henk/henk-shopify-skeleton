@@ -86,7 +86,6 @@
                       render 'henk-button',
                       element: 'button',
                       type: 'submit',
-                      name: 'updates[{{ item.key }}]',
                       label: remove_label,
                       href: item.url_to_remove,
                       icon_name: 'trash',
@@ -99,6 +98,7 @@
                       'value': '0'
                       }
                     %}
+
                     {% render 'henk-button',
                       element: 'a',
                       label: remove_label,

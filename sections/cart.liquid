@@ -74,6 +74,9 @@
                     {% assign remove_label = 'cart.remove' | t %}
 
                     {% assign remove_attrs = '' %}
+                    {% capture remove_name %}
+  updates[{{ item.key }}]
+{% endcapture %}
                     {% capture remove_attrs %}
                       name="{{ remove_name }}" value="0"
                     {% endcapture %}

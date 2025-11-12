@@ -82,10 +82,12 @@
                     </button>
                     {% assign remove_label = 'cart.remove' | t %}
 
-                    {% assign remove_name = 'updates[' | append: item.key | append: ']' %}
+                    {% assign remove_attrs = '' %}
+                    {% capture remove_attrs %}
+  name="{{ remove_name }}" value="0"
+{% endcapture %}
 
-                    {%
-                      render 'henk-button',
+                    {% render 'henk-button',
                       element: 'button',
                       type: 'submit',
                       label: remove_label,
@@ -94,7 +96,7 @@
                       icon_only: true,
                       aria_label: remove_label,
                       extra_classes: 'henk-cart-section__item-remove-button',
-                      attrs: {'name': remove_name, 'value': '0'}
+                      attrs: remove_attrs
                     %}
 
                     {% render 'henk-button',

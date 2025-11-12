@@ -1,7 +1,7 @@
 {% comment %}
   Product Section
   Renders product media, content, and add-to-cart form.
-  Supports multiple options/variants natively.
+  Supports multiple options/variants natively (up to 3 options per Shopify limits).
 {% endcomment %}
 
 <style>
@@ -59,9 +59,7 @@
 
         <div class="product-form">
           {% form 'product', product %}
-            {% comment %}
-              Shopify automatically maps <select name="options[Option Name]"> to the correct variant
-            {% endcomment %}
+            {% assign current_variant = product.selected_or_first_available_variant %}
 
             {% for option in product.options_with_values %}
               <div class="henk-labeled-select henk-labeled-select--dir-vertical">
@@ -75,9 +73,18 @@
                     name="options[{{ option.name | escape }}]"
                   >
                     {% for value in option.values %}
+                      {% assign is_selected = false %}
+                      {% if forloop.index == 1 and current_variant.option1 == value %}
+                        {% assign is_selected = true %}
+                      {% elsif forloop.index == 2 and current_variant.option2 == value %}
+                        {% assign is_selected = true %}
+                      {% elsif forloop.index == 3 and current_variant.option3 == value %}
+                        {% assign is_selected = true %}
+                      {% endif %}
+
                       <option
                         value="{{ value | escape }}"
-                        {% if option.selected_value == value %}
+                        {% if is_selected %}
                           selected="selected"
                         {% endif %}
                       >

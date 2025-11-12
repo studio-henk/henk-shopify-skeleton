@@ -15,6 +15,7 @@
       "settings": {
         "type": "image",
         "image": "shopify://shop_images/Studio_HENK_September_Collection_2023_24.jpg",
+        "video_has_audio": false,
         "caption": "Welcome",
         "title": "Explore Our Collection",
         "text": "Discover the best products tailored for you.",
@@ -29,6 +30,7 @@
       "settings": {
         "type": "video",
         "video": "shopify://files/videos/StudioHenk_StoresMix_website.mp4",
+        "video_has_audio": false,
         "caption": "Welcome",
         "title": "Explore Our Collection",
         "text": "Discover the best products tailored for you.",
@@ -85,10 +87,16 @@
         "button_variant": "default",
         "reverse": true
       }
+    },
+    "henk_section_breadcrumbs_NAzkVW": {
+      "type": "henk-section-breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {}
     }
   },
   "order": [
     "henk_section_hero_yJiRHc",
+    "henk_section_breadcrumbs_NAzkVW",
     "henk_section_hero_NaXWHi",
     "main",
     "henk_section_splitscreen_rTAxGL",

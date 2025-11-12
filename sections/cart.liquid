@@ -71,7 +71,18 @@
                       class="henk-button henk-cart-section__item-update-button"
                       data-js-replacex
                     >
+                    <button
+                      type="submit"
+                      name="updates[{{ item.key }}]"
+                      value="0"
+                      class="henk-button henk-cart-section__item-remove-button"
+                      aria-label="{{ 'cart.remove' | t }}"
+                    >
+                      🗑 Remove
+                    </button>
+
                     {% assign remove_label = 'cart.remove' | t %}
+
                     {% render 'henk-button',
                       element: 'a',
                       label: remove_label,

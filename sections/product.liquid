@@ -1,6 +1,8 @@
 {% comment %}
-  Product Section with GET form for variant selection.
-  No JS needed: each form submission reloads the page with selected options.
+  This section is used in the product template to render product page with
+  media, content, and add-to-cart form.
+
+  https://shopify.dev/docs/storefronts/themes/architecture/templates/product
 {% endcomment %}
 
 <style>
@@ -25,13 +27,16 @@
 
 <section class="henk-section">
   <div class="henk-section__inner">
+    {% comment %} {{ product | json }} {% endcomment %}
+
     <div class="henk-section__grid">
-      <!-- Product Images -->
       <div class="henk-section__grid-item">
         <div class="product-images">
           {% for image in product.images %}
+            {% comment %} {% render 'image', class: 'product-image', image: image %} {% endcomment %}
             {%- assign img_width = 1200 -%}
             {%- assign img_height = 1200 -%}
+
             <img
               src="{{ image | image_url: width: img_width }}"
               alt="{{ image.alt | escape | default: product.title }}"
@@ -47,7 +52,6 @@
         </div>
       </div>
 
-      <!-- Product Info & Form -->
       <div class="henk-section__grid-item">
         <div class="product-info">
           <h1 class="product__title">{{ product.title }}</h1>
@@ -55,74 +59,52 @@
           <p class="product__description">{{ product.description }}</p>
         </div>
 
-        {% comment %}
-          Read selected options from GET parameters
-        {% endcomment %}
-        {% assign selected_option1 = request.params.option1 %}
-        {% assign selected_option2 = request.params.option2 %}
-        {% assign selected_option3 = request.params.option3 %}
+        <div class="product-form">
+          {% form 'product', product %}
+            {% assign current_variant = product.selected_or_first_available_variant %}
 
-        {% comment %}
-          Find current variant based on GET params
-        {% endcomment %}
-        {% assign current_variant = product.variants.first %}
-        {% for variant in product.variants %}
-          {% if variant.option1 == selected_option1 or selected_option1 == blank %}
-            {% if variant.option2 == selected_option2 or selected_option2 == blank %}
-              {% if variant.option3 == selected_option3 or selected_option3 == blank %}
-                {% assign current_variant = variant %}
-              {% endif %}
-            {% endif %}
-          {% endif %}
-        {% endfor %}
-
-        {% form 'product', product %}
-          {# Hidden input for Shopify to know which variant is selected #}
-          <input type="hidden" name="id" value="{{ current_variant.id }}">
-
-          {% for option in product.options_with_values %}
-            <div class="henk-labeled-select henk-labeled-select--dir-vertical">
-              <label class="henk-label" for="Option{{ forloop.index }}">
-                <span class="henk-label-text">{{ option.name }}</span>
-              </label>
-              <div class="select-wrapper">
-                <form method="get">
-                  <select name="option{{ forloop.index }}" onchange="this.form.submit()">
-                    {% for value in option.values %}
-                      {% assign is_selected = false %}
-                      {% if forloop.index == 1 and selected_option1 == value %}
-                        {% assign is_selected = true %}
-                      {% elsif forloop.index == 2 and selected_option2 == value %}
-                        {% assign is_selected = true %}
-                      {% elsif forloop.index == 3 and selected_option3 == value %}
-                        {% assign is_selected = true %}
-                      {% endif %}
+            {%- for option in product.options_with_values -%}
+              <div class="henk-labeled-select henk-labeled-select--dir-vertical">
+                <label class="henk-label" for="Option{{ forloop.index }}">
+                  <span class="henk-label-text">{{ option.name }}</span>
+                </label>
+                <div class="select-wrapper">
+                  <select
+                    id="Option{{ forloop.index }}"
+                    class="henk-select"
+                    name="options[{{ option.name | escape }}]"
+                  >
+                    {%- for value in option.values -%}
                       <option
-                        value="{{ value }}"
-                        {% if is_selected %}
-                          selected
+                        value="{{ value | escape }}"
+                        {% if option.selected_value == value %}
+                          selected="selected"
                         {% endif %}
                       >
                         {{ value }}
                       </option>
-                    {% endfor %}
+                    {%- endfor -%}
                   </select>
-                  {# Keep other GET params in the form #}
-                  <input type="hidden" name="option1" value="{{ selected_option1 }}">
-                  <input type="hidden" name="option2" value="{{ selected_option2 }}">
-                  <input type="hidden" name="option3" value="{{ selected_option3 }}">
-                </form>
+                </div>
               </div>
+            {%- endfor -%}
+
+            {# Important: this hidden input ensures Shopify knows which variant to add to cart #}
+            <input
+              type="hidden"
+              name="id"
+              value="{{ current_variant.id }}"
+              id="selected-variant-id"
+            >
+
+            <input type="text" name="quantity" min="1" value="1" class="henk-input">
+
+            <div class="henk-button-group">
+              <input type="submit" value="Add to cart" class="henk-button">
+              {{ form | payment_button }}
             </div>
-          {% endfor %}
-
-          <input type="text" name="quantity" min="1" value="1" class="henk-input">
-
-          <div class="henk-button-group">
-            <input type="submit" value="Add to cart" class="henk-button">
-            {{ form | payment_button }}
-          </div>
-        {% endform %}
+          {% endform %}
+        </div>
       </div>
     </div>
   </div>

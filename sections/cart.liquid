@@ -11,6 +11,10 @@
 
 {% comment %} {{ cart | json }} {% endcomment %}
 
+<pre>
+{{ cart.items | json }}
+</pre>
+
 {% if cart.item_count > 0 %}
   {% assign cart_title = 'cart.title' | t %}
   {% assign button_label = 'cart.continue_shopping' | t %}

@@ -23,6 +23,20 @@
         "button_variant": "primary"
       }
     },
+    "henk_section_hero_NaXWHi": {
+      "type": "henk-section-hero",
+      "name": "Hero Block",
+      "settings": {
+        "type": "video",
+        "video": "shopify://files/videos/StudioHenk_StoresMix_website.mp4",
+        "caption": "Welcome",
+        "title": "Explore Our Collection",
+        "text": "Discover the best products tailored for you.",
+        "button_label": "Shop Now",
+        "button_url": "",
+        "button_variant": "primary"
+      }
+    },
     "main": {
       "type": "page",
       "disabled": true,
@@ -75,6 +89,7 @@
   },
   "order": [
     "henk_section_hero_yJiRHc",
+    "henk_section_hero_NaXWHi",
     "main",
     "henk_section_splitscreen_rTAxGL",
     "henk_section_splitscreen_bqdKYa"

@@ -98,16 +98,6 @@
                       extra_classes: 'henk-cart-section__item-remove-button',
                       attrs: remove_attrs
                     %}
-
-                    {% render 'henk-button',
-                      element: 'a',
-                      label: remove_label,
-                      href: item.url_to_remove,
-                      icon_name: 'trash',
-                      icon_only: true,
-                      aria_label: remove_label,
-                      extra_classes: 'henk-cart-section__item-remove-button'
-                    %}
                   </div>
 
                   <p>{{ item.line_price | money_without_trailing_zeros }}</p>

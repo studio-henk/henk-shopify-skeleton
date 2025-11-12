@@ -84,8 +84,8 @@
 
                     {% assign remove_attrs = '' %}
                     {% capture remove_attrs %}
-  name="{{ remove_name }}" value="0"
-{% endcapture %}
+                      name="{{ remove_name }}" value="0"
+                    {% endcapture %}
 
                     {% render 'henk-button',
                       element: 'button',

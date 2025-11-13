@@ -69,7 +69,7 @@
               {% for variant in product.variants %}
                 {% assign color_obj = variant.metafields.HENK.colour.value | first %}
                 {{ color_obj | json }}
-                <label style="display:block; margin-bottom: 0.5em;">
+                <label>
                   <input
                     type="radio"
                     name="id"
@@ -81,7 +81,8 @@
                       disabled
                     {% endunless %}
                   >
-                  {{ color_obj.name | default: variant.option1 }}
+                  <span class="custom-swatch"></span>
+                  <span class="visually-hidden">{{ color_obj.name | default: variant.option1 }}</span>
                 </label>
               {% endfor %}
             </fieldset>

@@ -63,14 +63,12 @@
         <div class="product-form">
           {% form 'product', product %}
             {% assign current_variant = product.selected_or_first_available_variant %}
-
             <fieldset>
-              <legend>Colour</legend>
-              {% assign current_variant = product.selected_or_first_available_variant %}
+              <legend>Color</legend>
               {% for variant in product.variants %}
-                {{ variant | json }}
-                {% assign metafield_color = variant.metafields.custom.colour.value %}
-                <label>
+                {% assign color_values = variant.metafields.HENK.colour %}
+                {% assign color_value = color_values | first %}
+                <label style="display:block; margin-bottom: 0.5em;">
                   <input
                     type="radio"
                     name="id"
@@ -82,7 +80,7 @@
                       disabled
                     {% endunless %}
                   >
-                  {{ metafield_color | default: variant.title }}
+                  {{ color_value | default: variant.option1 }}
                 </label>
               {% endfor %}
             </fieldset>

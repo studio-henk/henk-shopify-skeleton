@@ -78,6 +78,7 @@
               <legend class="henk-legend">Colour</legend>
               {% for variant in product.variants %}
                 {% assign color_obj = variant.metafields.HENK.colour.value | first %}
+<div class="henk-labeled-input henk-labeled-input--dir-vertical">
                 <label>
                   <input
                     type="radio"
@@ -100,6 +101,7 @@
                   <span class="visually-hidden">{{ color_obj.name | default: variant.option1 }}</span>
                 </label>
               {% endfor %}
+</div>
             </fieldset>
 
             {%- comment -%}test radio buttons for options {%- endcomment -%}

@@ -90,27 +90,26 @@
                             {% endfor %}
                           </ul>
 
-                          {%- comment -%}
-                            {% when 'price_range' %}
-                              <div>
-                                <input
-                                  type="number"
-                                  name="{{ filter.min_value.param_name }}"
-                                  value="{{ filter.min_value.value | default: '' }}"
-                                  placeholder="Min"
-                                  min="0"
-                                  size="4"
-                                >
-                                <input
-                                  type="number"
-                                  name="{{ filter.max_value.param_name }}"
-                                  value="{{ filter.max_value.value | default: '' }}"
-                                  placeholder="Max"
-                                  min="0"
-                                  size="4"
-                                >
-                              </div>
-                          {%- endcomment -%}
+                        {% when 'price_range' %}
+                          <div>
+                            <input
+                              type="number"
+                              name="{{ filter.min_value.param_name }}"
+                              value="{{ filter.min_value.value | default: '' }}"
+                              placeholder="Min"
+                              min="0"
+                              size="4"
+                            >
+                            <input
+                              type="number"
+                              name="{{ filter.max_value.param_name }}"
+                              value="{{ filter.max_value.value | default: '' }}"
+                              placeholder="Max"
+                              min="0"
+                              size="4"
+                            >
+                          </div>
+
                         {% when 'boolean' %}
                           {% for value in filter.values %}
                             <label>

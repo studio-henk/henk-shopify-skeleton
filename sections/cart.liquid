@@ -11,14 +11,12 @@
 
 {% comment %} {{ cart | json }} {% endcomment %}
 
-{{ cart.items | json }}
-
 {%- comment -%}
   debug
 {%- endcomment -%}
 
 {% for item in cart.items %}
-  {{ item.variant | json }}
+  {% comment %} {{ item.variant | json }} {% endcomment %}
   <dl>
     <dt>Title</dt>
     <dd>{{ item.title }}</dd>

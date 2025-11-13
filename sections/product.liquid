@@ -68,6 +68,7 @@
               <legend>Colour</legend>
               {% for variant in product.variants %}
                 {% assign color_obj = variant.metafields.HENK.colour.value | first %}
+                {{ color_obj | json }}
                 <label style="display:block; margin-bottom: 0.5em;">
                   <input
                     type="radio"

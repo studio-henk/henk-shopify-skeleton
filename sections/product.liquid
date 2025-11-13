@@ -86,29 +86,29 @@
             </fieldset>
 
             {%- comment -%}test radio buttons for options {%- endcomment -%}
-            {% for option in product.options_with_values %}
-              <fieldset class="">
-                <legend>{{ option.name }}</legend>
-
-                {% for value in option.values %}
-                  {% assign variant_for_value = product.variants | where: option.name, value | first %}
-                  <label>
-                    <input
-                      type="radio"
-                      name="id"
-                      value="{{ variant_for_value.id }}"
-                      {% if variant_for_value.id == current_variant.id %}
-                        checked="checked"
-                      {% endif %}
-                      {% unless variant_for_value.available %}
-                        disabled
-                      {% endunless %}
-                    >
-                    {{ value }}
-                  </label>
-                {% endfor %}
-              </fieldset>
-            {% endfor %}
+            {% comment %} {% for option in product.options_with_values %} {% endcomment %}
+            {% comment %}   <fieldset class=""> {% endcomment %}
+            {% comment %}     <legend>{{ option.name }}</legend> {% endcomment %}
+            {% comment %}{% endcomment %}
+            {% comment %}     {% for value in option.values %} {% endcomment %}
+            {% comment %}       {% assign variant_for_value = product.variants | where: option.name, value | first %} {% endcomment %}
+            {% comment %}       <label> {% endcomment %}
+            {% comment %}         <input {% endcomment %}
+            {% comment %}           type="radio" {% endcomment %}
+            {% comment %}           name="id" {% endcomment %}
+            {% comment %}           value="{{ variant_for_value.id }}" {% endcomment %}
+            {% comment %}           {% if variant_for_value.id == current_variant.id %} {% endcomment %}
+            {% comment %}             checked="checked" {% endcomment %}
+            {% comment %}           {% endif %} {% endcomment %}
+            {% comment %}           {% unless variant_for_value.available %} {% endcomment %}
+            {% comment %}             disabled {% endcomment %}
+            {% comment %}           {% endunless %} {% endcomment %}
+            {% comment %}         > {% endcomment %}
+            {% comment %}         {{ value }} {% endcomment %}
+            {% comment %}       </label> {% endcomment %}
+            {% comment %}     {% endfor %} {% endcomment %}
+            {% comment %}   </fieldset> {% endcomment %}
+            {% comment %} {% endfor %} {% endcomment %}
 
             <div class="henk-labeled-select henk-labeled-select--dir-vertical">
               <label class="henk-label" for="select-id">

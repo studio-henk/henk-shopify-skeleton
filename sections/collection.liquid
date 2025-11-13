@@ -91,39 +91,39 @@
                           </ul>
 
                         {% when 'price_range' %}
-                          <div>
-                            <input
-                              type="number"
-                              name="{{ filter.min_value.param_name }}"
-                              value="{{ filter.min_value.value | default: '' }}"
-                              placeholder="Min"
-                              min="0"
-                              size="4"
-                            >
-                            <input
-                              type="number"
-                              name="{{ filter.max_value.param_name }}"
-                              value="{{ filter.max_value.value | default: '' }}"
-                              placeholder="Max"
-                              min="0"
-                              size="4"
-                            >
-                          </div>
+                          <!-- <div> -->
+                          <!-- <input -->
+                          <!-- type="number" -->
+                          <!-- name="{{ filter.min_value.param_name }}" -->
+                          <!-- value="{{ filter.min_value.value | default: '' }}" -->
+                          <!-- placeholder="Min" -->
+                          <!-- min="0" -->
+                          <!-- size="4" -->
+                          <!-- > -->
+                          <!-- <input -->
+                          <!-- type="number" -->
+                          <!-- name="{{ filter.max_value.param_name }}" -->
+                          <!-- value="{{ filter.max_value.value | default: '' }}" -->
+                          <!-- placeholder="Max" -->
+                          <!-- min="0" -->
+                          <!-- size="4" -->
+                          <!-- > -->
+                          <!-- </div> -->
 
                         {% when 'boolean' %}
-                          {% for value in filter.values %}
-                            <label>
-                              <input
-                                type="checkbox"
-                                name="{{ value.param_name }}"
-                                value="{{ value.value }}"
-                                {% if value.active %}
-                                  checked
-                                {% endif %}
-                              >
-                              {{ value.label }}
-                            </label>
-                          {% endfor %}
+                          {% comment %} {% for value in filter.values %} {% endcomment %}
+                          {% comment %}   <label> {% endcomment %}
+                          {% comment %}     <input {% endcomment %}
+                          {% comment %}       type="checkbox" {% endcomment %}
+                          {% comment %}       name="{{ value.param_name }}" {% endcomment %}
+                          {% comment %}       value="{{ value.value }}" {% endcomment %}
+                          {% comment %}       {% if value.active %} {% endcomment %}
+                          {% comment %}         checked {% endcomment %}
+                          {% comment %}       {% endif %} {% endcomment %}
+                          {% comment %}     > {% endcomment %}
+                          {% comment %}     {{ value.label }} {% endcomment %}
+                          {% comment %}   </label> {% endcomment %}
+                          {% comment %} {% endfor %} {% endcomment %}
                         {% else %}
                           <p>Unknown filter type: {{ filter.type }}</p>
                       {% endcase %}

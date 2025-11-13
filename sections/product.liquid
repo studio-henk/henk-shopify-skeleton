@@ -63,6 +63,31 @@
           {% form 'product', product %}
             {% assign current_variant = product.selected_or_first_available_variant %}
 
+            {%- comment -%}test radio buttons for options {%- endcomment -%}
+            {% for option in product.options_with_values %}
+              <fieldset class="variant-option">
+                <legend>{{ option.name }}</legend>
+
+                {% for value in option.values %}
+                  {% assign variant_for_value = product.variants | where: option.name, value | first %}
+                  <label>
+                    <input
+                      type="radio"
+                      name="id"
+                      value="{{ variant_for_value.id }}"
+                      {% if variant_for_value.id == current_variant.id %}
+                        checked="checked"
+                      {% endif %}
+                      {% unless variant_for_value.available %}
+                        disabled
+                      {% endunless %}
+                    >
+                    {{ value }}
+                  </label>
+                {% endfor %}
+              </fieldset>
+            {% endfor %}
+
             <div class="henk-labeled-select henk-labeled-select--dir-vertical">
               <label class="henk-label" for="select-id">
                 <span class="henk-label-text">Variant</span>
@@ -87,8 +112,6 @@
 
             {%- comment -%}check if has sku. if not, dont show buttons{%- endcomment -%}
             {% if current_variant.sku == blank %}
-              <p class="warning">This product cannot be added to the cart yet. Please contact us.</p>
-
               {% render 'henk-info-box',
                 variant: 'danger',
                 title: 'NO SKU ASSIGNED',

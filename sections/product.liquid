@@ -91,7 +91,13 @@
                       disabled
                     {% endunless %}
                   >
-                  <span class="custom-swatch"></span>
+                  <span
+                    class="custom-swatch"
+                    style="
+                      background-color:
+                      {{color_obj.colour}}
+                    "
+                  ></span>
                   <span class="visually-hidden">{{ color_obj.name | default: variant.option1 }}</span>
                 </label>
               {% endfor %}

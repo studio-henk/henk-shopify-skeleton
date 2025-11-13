@@ -9,48 +9,7 @@
 {% comment %}   <script type="module" src="{{ 'henk-quantity-stepper.js' | asset_url }}"></script> {% endcomment %}
 {% comment %} {% endif %} {% endcomment %}
 
-{{ cart | json }}
-
-{%- comment -%}
-  debug
-{%- endcomment -%}
-
-{% for item in cart.items %}
-  {% comment %} {{ item.variant | json }} {% endcomment %}
-  <dl>
-    <dt>Title</dt>
-    <dd>{{ item.title }}</dd>
-
-    <dt>ID</dt>
-    <dd>{{ item.id }}</dd>
-
-    <dt>Variant ID</dt>
-    <dd>{{ item.variant_id }}</dd>
-
-    <dt>Product ID</dt>
-    <dd>{{ item.product_id }}</dd>
-
-    <dt>Remove url</dt>
-    <dd>{{ item.url_to_remove }}</dd>
-
-    <dt>Key</dt>
-    <dd>{{ item.key }}</dd>
-
-    <dt>Variant Title</dt>
-    <dd>{{ item.variant.title }}</dd>
-
-    <dt>Only Default Variant?</dt>
-    <dd>{{ item.product_has_only_default_variant | default: false }}</dd>
-
-    <dt>Variant Options</dt>
-    <dd>
-      {% for option in item.variant.options %}
-        {{ option -}}
-        {%- if forloop.last == false %}, {% endif %}
-      {% endfor %}
-    </dd>
-  </dl>
-{% endfor %}
+{% comment %} {{ cart | json }} {% endcomment %}
 
 {% if cart.item_count > 0 %}
   {% assign cart_title = 'cart.title' | t %}

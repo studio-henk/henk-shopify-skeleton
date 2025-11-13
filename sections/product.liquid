@@ -110,26 +110,6 @@
             {% comment %}   </fieldset> {% endcomment %}
             {% comment %} {% endfor %} {% endcomment %}
 
-            <div class="henk-labeled-select henk-labeled-select--dir-vertical">
-              <label class="henk-label" for="select-id">
-                <span class="henk-label-text">Variant</span>
-              </label>
-              <div class="select-wrapper">
-                <select class="henk-select" name="id">
-                  {% for variant in product.variants %}
-                    <option
-                      value="{{ variant.id }}"
-                      {% if variant == current_variant %}
-                        selected="selected"
-                      {% endif %}
-                    >
-                      {{ variant.title }} - {{ variant.price | money }}
-                    </option>
-                  {% endfor %}
-                </select>
-              </div>
-            </div>
-
             <input type="text" name="quantity" min="1" value="1" class="henk-input">
 
             {%- comment -%}check if has sku. if not, dont show buttons{%- endcomment -%}

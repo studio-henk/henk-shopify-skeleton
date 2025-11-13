@@ -28,7 +28,7 @@
   <dt>variant_title</dt>
   <dd>{{ cart.items[0].variant_title }}</dd>
   <dt>product_has_only_default_variant</dt>
-  <dd>{{ cart.items[0].product_has_only_default_variant }}</dd>
+  <dd>{{ cart.items[0].product_has_only_default_variant | default: 'false' }}</dd>
   <dt>variant_options</dt>
   <dd>{{ cart.items[0].variant_options | join: ', ' }}</dd>
 </dl>

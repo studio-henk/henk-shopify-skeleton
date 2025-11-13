@@ -30,7 +30,7 @@
   <dt>product_has_only_default_variant</dt>
   <dd>{{ cart.items[0].product_has_only_default_variant }}</dd>
   <dt>variant_options</dt>
-  <dd>{{ cart.items[0].variant_options }}</dd>
+  <dd>{{ cart.items[0].variant_options | join: ', ' }}</dd>
 </dl>
 
 {% if cart.item_count > 0 %}

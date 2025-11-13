@@ -97,6 +97,7 @@
           {% form 'product', product %}
             {% assign current_variant = product.selected_or_first_available_variant %}
 
+            {{ product.variants | size }}
             <fieldset class="henk-fieldset">
               <legend class="henk-legend">Colour</legend>
               <div class="options__container">

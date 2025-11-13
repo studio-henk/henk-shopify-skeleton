@@ -28,6 +28,7 @@
 <section class="henk-section">
   <div class="henk-section__inner">
     {% comment %} {{ product | json }} {% endcomment %}
+    {{ product | json }}
 
     <div class="henk-section__grid">
       <div class="henk-section__grid-item">
@@ -65,7 +66,7 @@
 
             {%- comment -%}test radio buttons for options {%- endcomment -%}
             {% for option in product.options_with_values %}
-              <fieldset class="variant-option">
+              <fieldset class="">
                 <legend>{{ option.name }}</legend>
 
                 {% for value in option.values %}

@@ -29,7 +29,6 @@
   <div class="henk-section__inner">
     {% comment %} {{ product | json }} {% endcomment %}
     {% comment %} {{ product | json }} {% endcomment %}
-    {{ product.metafields.custom }}
 
     <div class="henk-section__grid">
       <div class="henk-section__grid-item">
@@ -64,6 +63,28 @@
         <div class="product-form">
           {% form 'product', product %}
             {% assign current_variant = product.selected_or_first_available_variant %}
+
+            <fieldset>
+              <legend>Colour</legend>
+              {% assign current_variant = product.selected_or_first_available_variant %}
+              {% for variant in product.variants %}
+                {% assign metafield_color = variant.metafields.custom.colour.value %}
+                <label>
+                  <input
+                    type="radio"
+                    name="id"
+                    value="{{ variant.id }}"
+                    {% if variant.id == current_variant.id %}
+                      checked
+                    {% endif %}
+                    {% unless variant.available %}
+                      disabled
+                    {% endunless %}
+                  >
+                  {{ metafield_color | default: variant.title }}
+                </label>
+              {% endfor %}
+            </fieldset>
 
             {%- comment -%}test radio buttons for options {%- endcomment -%}
             {% for option in product.options_with_values %}

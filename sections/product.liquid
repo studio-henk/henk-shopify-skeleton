@@ -84,6 +84,15 @@
             </div>
 
             <input type="text" name="quantity" min="1" value="1" class="henk-input">
+
+            {%- comment -%}check if has sku. if not, dont show buttons{%- endcomment -%}
+            {% if current_variant.sku == blank %}
+              <p class="warning">This product cannot be added to the cart yet. Please contact us.</p>
+              <input type="submit" value="Add to cart" class="henk-button" disabled>
+            {% else %}
+              <input type="submit" value="Add to cart" class="henk-button">
+            {% endif %}
+
             <div class="henk-button-group">
               <input type="submit" value="Add to cart" class="henk-button">
               {{ form | payment_button }}

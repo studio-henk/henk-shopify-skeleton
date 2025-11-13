@@ -12,15 +12,9 @@
     "main": {
       "type": "article",
       "settings": {}
-    },
-    "henk_section_breadcrumbs_67eQLp": {
-      "type": "henk-section-breadcrumbs",
-      "name": "Breadcrumbs",
-      "settings": {}
     }
   },
   "order": [
-    "henk_section_breadcrumbs_67eQLp",
     "main"
   ]
 }

@@ -57,15 +57,9 @@
         "button_variant": "default",
         "reverse": true
       }
-    },
-    "henk_section_breadcrumbs_m8Wc9U": {
-      "type": "henk-section-breadcrumbs",
-      "name": "Breadcrumbs",
-      "settings": {}
     }
   },
   "order": [
-    "henk_section_breadcrumbs_m8Wc9U",
     "main",
     "henk_section_splitscreen_qLiCx6",
     "henk_section_splitscreen_JFUD7C"

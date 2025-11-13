@@ -57,15 +57,9 @@
       "type": "page",
       "disabled": true,
       "settings": {}
-    },
-    "henk_section_breadcrumbs_inHi8b": {
-      "type": "henk-section-breadcrumbs",
-      "name": "Breadcrumbs",
-      "settings": {}
     }
   },
   "order": [
-    "henk_section_breadcrumbs_inHi8b",
     "henk_section_splitscreen_RfKrNg",
     "henk_section_splitscreen_TVYVfK",
     "main"

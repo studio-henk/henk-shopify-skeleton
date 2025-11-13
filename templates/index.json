@@ -9,21 +9,6 @@
  */
 {
   "sections": {
-    "henk_section_hero_xHqP8U": {
-      "type": "henk-section-hero",
-      "name": "Hero Block",
-      "settings": {
-        "type": "image",
-        "image": "shopify://shop_images/restore1.jpg",
-        "video_has_audio": false,
-        "caption": "",
-        "title": "Restore",
-        "text": "",
-        "button_label": "Bestel gratis tickets",
-        "button_url": "shopify://pages/test-page",
-        "button_variant": "primary"
-      }
-    },
     "main": {
       "type": "henk-section-header",
       "settings": {
@@ -129,7 +114,6 @@
     }
   },
   "order": [
-    "henk_section_hero_xHqP8U",
     "main",
     "henk_section_splitscreen_pM83he",
     "henk_section_double_media_4UwQcB",

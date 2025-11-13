@@ -13,6 +13,14 @@
 
 {{ cart.items | json }}
 
+{%- comment -%}
+  debug
+{%- endcomment -%}
+<dl>
+  <dt>id</dt>
+  <dd>{{ cart.id }}</dd>
+</dl>
+
 {% if cart.item_count > 0 %}
   {% assign cart_title = 'cart.title' | t %}
   {% assign button_label = 'cart.continue_shopping' | t %}

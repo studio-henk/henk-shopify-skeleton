@@ -63,12 +63,17 @@
         <div class="product-form">
           {% form 'product', product %}
             {% assign current_variant = product.selected_or_first_available_variant %}
+
             <fieldset>
-              <legend>Color</legend>
+              <legend>Colour</legend>
               {% for variant in product.variants %}
-                {% assign color_values = variant.metafields.HENK.colour %}
-                {% assign color_value = color_values | first %}
-                <label style="display:block; margin-bottom: 0.5em;">
+                {% assign color_value = variant.metafields.HENK.colour.value %}
+                {% if color_value contains '[' %}
+                  {# crude check for list #}
+                  {% assign color_value = color_value | replace: '[', '' | replace: ']', '' | replace: '"', '' %}
+                {% endif %}
+
+                <label style="display:block; margin-bottom:0.5em;">
                   <input
                     type="radio"
                     name="id"

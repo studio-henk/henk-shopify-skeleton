@@ -38,7 +38,12 @@
     <dd>{{ item.product_has_only_default_variant | default: false }}</dd>
 
     <dt>Variant Options</dt>
-    <dd>{{ item.variant_options | join: ', ' }}</dd>
+    <dd>
+      {% for option in item.variant.options %}
+        {{ option -}}
+        {%- if forloop.last == false %}, {% endif %}
+      {% endfor %}
+    </dd>
   </dl>
 {% endfor %}
 

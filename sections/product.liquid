@@ -67,13 +67,8 @@
             <fieldset>
               <legend>Colour</legend>
               {% for variant in product.variants %}
-                {% assign color_value = variant.metafields.HENK.colour.value %}
-                {% if color_value contains '[' %}
-                  {# crude check for list #}
-                  {% assign color_value = color_value | replace: '[', '' | replace: ']', '' | replace: '"', '' %}
-                {% endif %}
-
-                <label style="display:block; margin-bottom:0.5em;">
+                {% assign color_obj = variant.metafields.HENK.colour.value | first %}
+                <label style="display:block; margin-bottom: 0.5em;">
                   <input
                     type="radio"
                     name="id"
@@ -85,7 +80,7 @@
                       disabled
                     {% endunless %}
                   >
-                  {{ color_value | default: variant.option1 }}
+                  {{ color_obj.name | default: variant.option1 }}
                 </label>
               {% endfor %}
             </fieldset>

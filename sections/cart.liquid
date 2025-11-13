@@ -18,6 +18,7 @@
 {%- endcomment -%}
 
 {% for item in cart.items %}
+  {{ item.variant | json }}
   <dl>
     <dt>Title</dt>
     <dd>{{ item.title }}</dd>

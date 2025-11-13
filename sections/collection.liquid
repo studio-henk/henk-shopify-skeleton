@@ -25,15 +25,18 @@
             {% for filter in collection.filters %}
               {% assign active_filters_count = active_filters_count | plus: filter.active_values.size %}
             {% endfor %}
-            <a
-              href="{{ collection.url }}"
-              class="
-                henk-button
-                henk-button--small
-                filters-widget__reset-button
-              "
-              >Reset</a
-            >
+
+            {% if active_filters_count > 0 %}
+              <a
+                href="{{ collection.url }}"
+                class="
+                  henk-button
+                  henk-button--small
+                  filters-widget__reset-button
+                "
+                >Reset</a
+              >
+            {% endif %}
             <details id="filters-widget">
               <summary>
                 Filters

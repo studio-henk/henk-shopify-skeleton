@@ -74,8 +74,8 @@
           {% form 'product', product %}
             {% assign current_variant = product.selected_or_first_available_variant %}
 
-            <fieldset>
-              <legend>Colour</legend>
+            <fieldset class="henk-fieldset">
+              <legend class="henk-legend">Colour</legend>
               {% for variant in product.variants %}
                 {% assign color_obj = variant.metafields.HENK.colour.value | first %}
                 <label>

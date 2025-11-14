@@ -34,7 +34,7 @@
         {% assign max_variants = 5 %}
         {% for variant in product.variants limit: max_variants %}
           {% if variant.featured_image %}
-            {%- comment -%}TODO: SWATCH{%- endcomment -%}
+            {%- comment -%}:SWATCH{%- endcomment -%}
             <a
               href="{{ product.url }}?variant={{ variant.id }}"
               class="henk-card__variant-swatch"

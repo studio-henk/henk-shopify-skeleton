@@ -261,8 +261,15 @@
               %}
             {% else %}
               <div class="henk-button-group">
-                <input type="submit" value="Add to cart" class="henk-button">
-                {{ form | payment_button }}
+                <input
+                  type="submit"
+                  value="Add to cart"
+                  class="
+                    henk-button
+                    henk-button--primary
+                  "
+                >
+                <!-- {{ form | payment_button }} -->
               </div>
             {% endif %}
           {% endform %}

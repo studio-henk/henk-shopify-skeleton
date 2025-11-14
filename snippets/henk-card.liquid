@@ -11,6 +11,7 @@
   <a
     href="{{ card_url }}"
     class="henk-card__image-link"
+    id="image-link-{{ product.id }}"
   >
     <figure class="henk-card__image-container">
       {% assign img = variant.featured_image | default: product.featured_image %}

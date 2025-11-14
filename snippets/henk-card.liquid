@@ -40,6 +40,7 @@
               class="henk-card__variant-swatch"
               data-main-id="card-{{ product.id }}"
               data-variant-img="{{ variant.featured_image | image_url: width: 1134 }}"
+              data-variant-title="{{ variant.title }}"
             >
               <img
                 src="{{ variant.featured_image | image_url: width: 44, height: 44 }}"

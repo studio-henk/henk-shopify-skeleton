@@ -33,7 +33,12 @@
         {% assign max_variants = 5 %}
         {% for variant in product.variants limit: max_variants %}
           {% if variant.featured_image %}
-            <a href="{{ product.url }}?variant={{ variant.id }}" class="henk-card__variant-swatch">
+            <a
+              href="{{ product.url }}?variant={{ variant.id }}"
+              class="henk-card__variant-swatch"
+              data-main-id="card-{{ product.id }}"
+              data-variant-img="{{ variant.featured_image | image_url: width: 1134 }}"
+            >
               <img
                 src="{{ variant.featured_image | image_url: width: 44, height: 44 }}"
                 alt="{{ variant.title }}"
@@ -41,6 +46,14 @@
                 height="44"
               >
             </a>
+            <!-- <a href="{{ product.url }}?variant={{ variant.id }}" class="henk-card__variant-swatch"> -->
+            <!-- <img -->
+            <!-- src="{{ variant.featured_image | image_url: width: 44, height: 44 }}" -->
+            <!-- alt="{{ variant.title }}" -->
+            <!-- width="44" -->
+            <!-- height="44" -->
+            <!-- > -->
+            <!-- </a> -->
           {% endif %}
         {% endfor %}
       {% endif %}

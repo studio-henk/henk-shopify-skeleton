@@ -116,7 +116,7 @@
         <div class="product-info">
           {% assign display_title = current_variant.name | default: product.title %}
           <h1 class="product__title">{{ display_title }}</h1>
-          <small>{{ current_variant.sku }}</small>
+          <small>SKU: {{ current_variant.sku }}</small>
           <p class="product__price">{{ product.price | money }}</p>
           <p class="product__description">{{ product.description }}</p>
         </div>

@@ -148,7 +148,8 @@
           {% if show_variants %}
             {% for variant in product.variants %}
               <!-- render variant card -->
-              {% render 'henk-card', product: variant, collection: collection, card_variant: null %}
+              {% render 'henk-card', product: product, variant: variant, collection: collection %}
+              {% comment %} {% render 'henk-card', product: variant, collection: collection, card_variant: null %} {% endcomment %}
             {% endfor %}
           {% else %}
             <!-- render product card only -->

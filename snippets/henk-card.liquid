@@ -102,7 +102,13 @@
         {% assign price_label = product.price | money_without_trailing_zeros %}
       {% endif %}
 
-      {% render 'henk-button', element: 'a', href: card_url, label: price_label, extra_classes: 'henk-card__button' %}
+      {% render 'henk-button',
+        element: 'a',
+        href: card_url,
+        label: price_label,
+        extra_classes: 'henk-card__button',
+        id: 'price-link-#{product.id}'
+      %}
     {% endif %}
   </div>
   {% if product.tags != blank %}

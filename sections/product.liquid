@@ -161,7 +161,8 @@
                             {% endfor %}
 
                             {% if is_new %}
-                              {% assign seen_frames = seen_frames | push: frame_obj.id %}
+                              {% comment %} add id to seen_frames using concat and split {% endcomment %}
+                              {% assign seen_frames = seen_frames | concat: frame_obj.id | split: ',' %}
 
                               <div class="henk-labeled-input henk-labeled-input--dir-verticalx">
                                 <label class="henk-label">

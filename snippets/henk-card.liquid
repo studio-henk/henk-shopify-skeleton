@@ -196,7 +196,7 @@
       subtitle.textContent = activeSwatch.dataset.variantTitle;
       imageLink.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
       priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
-      priceButton.textContent = activeSwatch.dataset.variantPrice;
+      priceButton.textContent = activeSwatch.dataset.variantPrice.trim();
 
       // Hover behavior
       swatches.forEach((swatch) => {
@@ -205,7 +205,7 @@
           subtitle.textContent = swatch.dataset.variantTitle;
           imageLink.href = `${card.dataset.baseUrl}?variant=${swatch.dataset.variantId}`;
           priceButton.href = `${card.dataset.baseUrl}?variant=${swatch.dataset.variantId}`;
-          priceButton.textContent = swatch.dataset.variantPrice;
+          priceButton.textContent = swatch.dataset.variantPrice.trim();
 
           swatches.forEach((s) => s.classList.remove('is-active'));
           swatch.classList.add('is-active');

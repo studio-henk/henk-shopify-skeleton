@@ -168,6 +168,9 @@
                       </div>
                     </fieldset>
 
+                  {% when "Upholstery material" %}
+                        <!-- render fabric swatches from your fabric metaobject/metafield -->
+                        stof here
                   {% when 'Frame afwerking' %}
                     <fieldset class="henk-fieldset">
                       <legend class="henk-legend">Frame afwerking</legend>
@@ -330,10 +333,10 @@
         if (sku && skuEl) skuEl.textContent = 'SKU: ' + sku;
 
         // TODO: price?
-// update browser URL
-      const url = new URL(window.location.href);
-      url.searchParams.set('variant', variantId);
-      window.history.replaceState({}, '', url);
+        // update browser URL
+        const url = new URL(window.location.href);
+        url.searchParams.set('variant', variantId);
+        window.history.replaceState({}, '', url);
       });
     });
   });

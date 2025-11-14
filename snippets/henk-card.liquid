@@ -16,6 +16,7 @@
       {% assign img = variant.featured_image | default: product.featured_image %}
       {% if img %}
         <img
+          id="card-{{ product.id }}"
           class="henk-card__img"
           src="{{ img | image_url: width: 1134 }}"
           alt="{{ img.alt | default: product.title }}"

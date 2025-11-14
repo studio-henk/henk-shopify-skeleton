@@ -75,7 +75,7 @@
       <div class="henk-section__grid-item">
         <figure class="henk-card__image-container">
           {% assign current_variant = product.selected_or_first_available_variant %}
-          {{ current_variant.name | json }}
+          {{ current_variant | json }}
           {% if current_variant.featured_image %}
             <img
               id="ProductFeaturedImage"
@@ -114,7 +114,7 @@
 
       <div class="henk-section__grid-item">
         <div class="product-info">
-          {% assign display_title = current_variant.title | default: product.title %}
+          {% assign display_title = current_variant.name | default: product.title %}
           <h1 class="product__title">{{ display_title }}</h1>
           <p class="product__price">{{ product.price | money }}</p>
           <p class="product__description">{{ product.description }}</p>

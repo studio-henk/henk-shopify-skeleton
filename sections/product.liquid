@@ -305,7 +305,9 @@
           mainImage.src = imgUrl;
         }
 
-        // later: can update SKU, URL, and active swatch here
+        // update SKU
+        const sku = this.dataset.sku;
+        if (sku && skuEl) skuEl.textContent = 'SKU: ' + sku;
       });
     });
   });

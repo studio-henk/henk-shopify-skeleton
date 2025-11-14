@@ -249,31 +249,6 @@
               {% endfor %}
             {% endif %}
 
-            {%- comment -%}test radio buttons for options {%- endcomment -%}
-            {% comment %} {% for option in product.options_with_values %} {% endcomment %}
-            {% comment %}   <fieldset class=""> {% endcomment %}
-            {% comment %}     <legend>{{ option.name }}</legend> {% endcomment %}
-            {% comment %}{% endcomment %}
-            {% comment %}     {% for value in option.values %} {% endcomment %}
-            {% comment %}       {% assign variant_for_value = product.variants | where: option.name, value | first %} {% endcomment %}
-            {% comment %}       <label> {% endcomment %}
-            {% comment %}         <input {% endcomment %}
-            {% comment %}           type="radio" {% endcomment %}
-            {% comment %}           name="id" {% endcomment %}
-            {% comment %}           value="{{ variant_for_value.id }}" {% endcomment %}
-            {% comment %}           {% if variant_for_value.id == current_variant.id %} {% endcomment %}
-            {% comment %}             checked="checked" {% endcomment %}
-            {% comment %}           {% endif %} {% endcomment %}
-            {% comment %}           {% unless variant_for_value.available %} {% endcomment %}
-            {% comment %}             disabled {% endcomment %}
-            {% comment %}           {% endunless %} {% endcomment %}
-            {% comment %}         > {% endcomment %}
-            {% comment %}         {{ value }} {% endcomment %}
-            {% comment %}       </label> {% endcomment %}
-            {% comment %}     {% endfor %} {% endcomment %}
-            {% comment %}   </fieldset> {% endcomment %}
-            {% comment %} {% endfor %} {% endcomment %}
-
             <input type="text" name="quantity" min="1" value="1" class="henk-input">
 
             {%- comment -%}check if has sku. if not, dont show buttons{%- endcomment -%}

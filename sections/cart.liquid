@@ -48,7 +48,10 @@
                 >
                 <div class="henk-cart-section__item-info">
                   <p class="henk-cart-section__item-title">{{ item.product.title }}</p>
-                  <p class="henk-cart-section__item-variant">{{ item.variant_options | join: ', ' }}</p>
+                  <p class="henk-cart-section__item-variant">
+                    {{ variant.option1 -}}
+                    {%- if variant.option2 %} / {{ variant.option2 }}{% endif %}
+                  </p>
                   <!-- {{ item | json }} -->
                   <!-- {{ item.variant_title }} -->
                   <!-- {{ item.product.title }} -->

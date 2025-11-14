@@ -25,10 +25,10 @@
           "type": "faq_item",
           "settings": {
             "summary": "Lees meer",
-            "content": "<p>This component is used to display a list of frequently asked questions.</p><p>{{ product.metafields.custom.short_description.value }}</p>",
+            "content": "<p>This component is used to display a list of frequently asked questions.</p><p>{{ product.metafields.custom.short_description.value }}{{ product.title }}</p>",
             "variant": "plusmin",
             "name": "cc",
-            "icon_name": "calendar",
+            "icon_name": "help-circle",
             "icon_size": "large"
           }
         }

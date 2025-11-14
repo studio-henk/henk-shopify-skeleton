@@ -29,7 +29,7 @@
   </a>
   {% if show_variants_on_card %}
     <div class="henk-card__variant-selector">
-      {{ variant }}
+      {{ products.variants | json }}
     </div>
   {% endif %}
   <div class="henk-card__content">

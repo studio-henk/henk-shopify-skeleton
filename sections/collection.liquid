@@ -158,7 +158,7 @@
       {% paginate collection.products by 20 %}
         {% for product in collection.products %}
           {% if show_variants %}
-            {{ product.variants | json }}
+            <pre>{{ product.variants | json }}</pre>
             {% for variant in product.variants %}
               <!-- render variant card -->
               {% render 'henk-card', product: variant, collection: collection, card_variant: null %}

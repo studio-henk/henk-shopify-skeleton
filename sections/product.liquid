@@ -211,6 +211,7 @@
                                   data-material-name="{{ material_obj.name }}"
                                   data-featured-image="{{ variant.featured_image | image_url: width: 1134 }}"
                                   data-sku="{{ variant.sku }}"
+                                  data-price="{{ variant.price }}"
                                   {% if variant.id == current_variant.id %}
                                     checked
                                   {% endif %}

@@ -62,13 +62,13 @@
   }
 </style>
 
-{% assign option_count = product.options.size %}
-{% for i in (0..10) %}
-  {% if i < option_count %}
-    {% assign option_name = product.options[i] %}
-    <p>{{ i }} - {{ option_name }}</p>
-  {% endif %}
-{% endfor %}
+{% comment %} {% assign option_count = product.options.size %} {% endcomment %}
+{% comment %} {% for i in (0..10) %} {% endcomment %}
+{% comment %}   {% if i < option_count %} {% endcomment %}
+{% comment %}     {% assign option_name = product.options[i] %} {% endcomment %}
+{% comment %}     <p>{{ i }} - {{ option_name }}</p> {% endcomment %}
+{% comment %}   {% endif %} {% endcomment %}
+{% comment %} {% endfor %} {% endcomment %}
 <section class="henk-section">
   <div class="henk-section__inner">
     <div class="henk-section__grid">

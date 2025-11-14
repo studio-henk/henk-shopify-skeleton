@@ -284,6 +284,24 @@
 </section>
 
 <hr>
+<section class="henk-section">
+  <div class="henk-section__inner">
+    <div class="henk-section__grid">
+      <div class="henk-section__grid-item">
+        <h2>Product details</h2>
+        <p>{{ product.description }}</p>
+      </div>
+
+      <div class="henk-section__grid-item">
+        <h2>Specifications</h2>
+        <ul>
+          {% for spec in product.metafields.specs.specifications %}
+            <li>{{ spec }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const mainImage = document.getElementById('ProductFeaturedImage');

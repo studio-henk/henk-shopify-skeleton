@@ -7,7 +7,7 @@
   {% assign card_url = product.url | append: '?variant=' | append: variant.id %}
 {% endif %}
 
-<div class="henk-card {% if card_variant %} henk-card--{{ card_variant }}{% endif %}">
+<div class="henk-card {% if card_variant %} henk-card--{{ card_variant }}{% endif %}" data-base-url="{{ product.url }}">
   <a
     href="{{ card_url }}"
     class="henk-card__image-link"

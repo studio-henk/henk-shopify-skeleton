@@ -124,7 +124,7 @@
 
           {% comment %} {{ current_variant | json }} {% endcomment %}
           <p id="ProductPrice" class="product__price">
-            {{ current_variant.price | money }}
+            {{ current_variant.price | money_without_trailing_zeros }}
           </p>
 
           <!-- <p class="product__price">{{ product.price | money }}</p> -->

@@ -285,6 +285,35 @@
     </div>
   </div>
 </section>
+<script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const mainImage = document.getElementById('ProductFeaturedImage');
+
+    // get all variant radio buttons
+    const variantRadios = document.querySelectorAll('.henk-radio');
+
+    variantRadios.forEach((radio) => {
+      radio.addEventListener('change', function () {
+        if (!this.checked) return;
+
+        // find the variant ID from the radio
+        const variantId = this.value;
+
+        // get the corresponding featured image URL from a data attribute or dataset
+        // we'll add it via Liquid for each input
+        const imgUrl = this.dataset.featuredImage;
+
+        if (imgUrl && mainImage) {
+          mainImage.src = imgUrl;
+        }
+
+        // later: can update SKU, URL, and active swatch here
+      });
+    });
+  });
+  </script>
+</script>
 
 {% schema %}
 {

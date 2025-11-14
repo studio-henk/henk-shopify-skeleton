@@ -154,9 +154,11 @@
             {% endfor %}
           {% else %}
             {% assign first_variant = product.variants | first %}
-            {%
-              render 'henk-card', product: product, variant: first_variant,
-              collection: collection, show_variants_on_card
+            {% render 'henk-card',
+              product: product,
+              variant: first_variant,
+              collection: collection,
+              show_variants_on_card: show_variants_on_card
             %}
           {% endif %}
         {% endfor %}

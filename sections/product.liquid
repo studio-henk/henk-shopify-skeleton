@@ -70,11 +70,24 @@
 {% endfor %}
 <section class="henk-section">
   <div class="henk-section__inner">
-    {{ request | json }}
-    {% comment %} {{ product | json }} {% endcomment %}
-
     <div class="henk-section__grid">
       <div class="henk-section__grid-item">
+        <figure class="henk-card__image-container">
+          {% assign current_variant = product.selected_or_first_available_variant %}
+          {% if current_variant.featured_image %}
+            <img
+              id="ProductFeaturedImage"
+              class="henk-card__img"
+              src="{{ current_variant.featured_image | image_url: width: 1134 }}"
+              alt="{{ product.title }}"
+              width="1134"
+              height="1134"
+            >
+          {% else %}
+            {{ 'image' | placeholder_svg_tag }}
+          {% endif %}
+        </figure>
+
         <div class="product-images">
           {% for image in product.images %}
             {% comment %} {% render 'image', class: 'product-image', image: image %} {% endcomment %}

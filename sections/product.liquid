@@ -171,6 +171,10 @@
                   {% when "Upholstery material" %}
                         <!-- render fabric swatches from your fabric metaobject/metafield -->
                         stof here
+
+                        {% for variant in product.variants %}
+                          <pre>{{ variant | json }}</pre>
+                        {% endfor %}
                   {% when 'Frame afwerking' %}
                     <fieldset class="henk-fieldset">
                       <legend class="henk-legend">Frame afwerking</legend>

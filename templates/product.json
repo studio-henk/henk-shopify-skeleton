@@ -17,34 +17,10 @@
     "main": {
       "type": "product",
       "settings": {}
-    },
-    "henk_section_faq_ze3Pfw": {
-      "type": "henk-section-faq",
-      "blocks": {
-        "faq_item_qWV7i9": {
-          "type": "faq_item",
-          "settings": {
-            "summary": "Lees meer",
-            "content": "<p>This component is used to display a list of frequently asked questions.</p><p>{{ product.metafields.custom.short_description.value }}{{ product.title }}</p>",
-            "variant": "plusmin",
-            "name": "cc",
-            "icon_name": "help-circle",
-            "icon_size": "large"
-          }
-        }
-      },
-      "block_order": [
-        "faq_item_qWV7i9"
-      ],
-      "name": "FAQ Section",
-      "settings": {
-        "title": "Frequently Asked Questions"
-      }
     }
   },
   "order": [
     "henk_section_breadcrumbs_kLg7f6",
-    "main",
-    "henk_section_faq_ze3Pfw"
+    "main"
   ]
 }

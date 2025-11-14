@@ -24,6 +24,14 @@
   <div class="henk-card__content">
     <p class="henk-card__title truncate">{{ product.title }}</p>
 
+    {% if variant %}
+      <p class="henk-card__subtitle">{{ variant.title }}</p>
+      <img src="{{ variant.featured_image.src }}" alt="{{ variant.featured_image.alt | default: product.title }}">
+    {% else %}
+      <p class="henk-card__subtitle">&nbsp;</p>
+      <img src="{{ product.featured_image.src }}" alt="{{ product.title }}">
+    {% endif %}
+
     {% if card_variant == null %}
       {% if product.metafields.custom.short_description != blank %}
         <p

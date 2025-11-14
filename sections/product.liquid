@@ -70,7 +70,7 @@
 {% endfor %}
 <section class="henk-section">
   <div class="henk-section__inner">
-    {{ request }}
+    {{ request | json }}
     {% comment %} {{ product | json }} {% endcomment %}
 
     <div class="henk-section__grid">

@@ -140,6 +140,10 @@
                                 type="radio"
                                 name="id"
                                 value="{{ variant.id }}"
+                                title="
+                                  {{ color_obj.name | default:
+                                  variant.option1 }}
+                                "
                                 {% if variant.id == current_variant.id %}
                                   checked
                                 {% endif %}
@@ -150,10 +154,6 @@
 
                               <span
                                 class="custom-swatch"
-                                title="
-                                  {{ color_obj.name | default:
-                                  variant.option1 }}
-                                "
                                 style="background-color: {{ color_obj.colour }};"
                               >
                               </span>

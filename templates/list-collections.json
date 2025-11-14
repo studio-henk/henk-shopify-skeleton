@@ -11,10 +11,19 @@
   "sections": {
     "main": {
       "type": "collections",
+      "settings": {
+        "grid_item_width": "collections--full",
+        "grid_gap": 10
+      }
+    },
+    "henk_section_breadcrumbs_xmKcat": {
+      "type": "henk-section-breadcrumbs",
+      "name": "Breadcrumbs",
       "settings": {}
     }
   },
   "order": [
+    "henk_section_breadcrumbs_xmKcat",
     "main"
   ]
 }

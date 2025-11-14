@@ -145,35 +145,40 @@
                     <fieldset class="henk-fieldset">
                       <legend class="henk-legend">Frame afwerking</legend>
                       <div class="options__container">
+                        {% assign seen_frames = '' | split: ',' %}
+
                         {% for variant in product.variants %}
-                          {% assign frame_metaobj = variant.metafields.HENK.frame_finish.value %}
+                          {% assign frame_obj = variant.metafields.HENK.frame_finish.value %}
 
-                          <div class="henk-labeled-input henk-labeled-input--dir-verticalx">
-                            <label class="henk-label">
-                              <input
-                                class="henk-radio"
-                                type="radio"
-                                name="id"
-                                value="{{ variant.id }}"
-                                {% if variant.id == current_variant.id %}
-                                  checked
-                                {% endif %}
-                                {% unless variant.available %}
-                                  disabled
-                                {% endunless %}
-                              >
+                          {% unless seen_frames contains frame_obj.id %}
+                            {% assign seen_frames = seen_frames | push: frame_obj.id %}
 
-                              <span
-                                class="custom-swatch"
-                                style="background-color: {{ frame_metaobj.fields.colour }};"
-                              >
-                              </span>
+                            <div class="henk-labeled-input henk-labeled-input--dir-verticalx">
+                              <label class="henk-label">
+                                <input
+                                  class="henk-radio"
+                                  type="radio"
+                                  name="id"
+                                  value="{{ variant.id }}"
+                                  {% if variant.id == current_variant.id %}
+                                    checked
+                                  {% endif %}
+                                  {% unless variant.available %}
+                                    disabled
+                                  {% endunless %}
+                                >
 
-                              <span class="visually-hidden">
-                                {{ frame_metaobj.fields.name | default: variant.option2 }}
-                              </span>
-                            </label>
-                          </div>
+                                <span
+                                  class="custom-swatch"
+                                  style="background-color: {{ frame_obj.fields.colour }};"
+                                ></span>
+
+                                <span class="visually-hidden">
+                                  {{ frame_obj.fields.name | default: variant.option2 }}
+                                </span>
+                              </label>
+                            </div>
+                          {% endunless %}
                         {% endfor %}
                       </div>
                     </fieldset>

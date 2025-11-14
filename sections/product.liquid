@@ -116,7 +116,6 @@
         <div class="product-info">
           {% assign display_title = current_variant.name | default: product.title %}
           <h1 class="product__title">{{ display_title }}</h1>
-          <small id="ProductSKU">SKU: {{ current_variant.sku }}</small>
           <p class="product__price">{{ product.price | money }}</p>
           <p class="product__description">{{ product.description }}</p>
         </div>
@@ -294,6 +293,7 @@
 
       <div class="henk-section__grid-item">
         <h2>Specifications</h2>
+          <small id="ProductSKU">SKU: {{ current_variant.sku }}</small>
         <ul>
           {% for spec in product.metafields.specs.specifications %}
             <li>{{ spec }}</li>

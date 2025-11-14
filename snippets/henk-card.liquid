@@ -131,21 +131,18 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.henk-card__variant-swatch').forEach((swatch) => {
-      const mainId = swatch.dataset.mainId;
+      const mainImg = document.getElementById(swatch.dataset.mainId);
+      const subtitle = document.getElementById(swatch.dataset.titleId);
+
+      if (!mainImg || !subtitle) return;
+
       const variantImg = swatch.dataset.variantImg;
-      const mainImg = document.getElementById(mainId);
-
-      if (!mainImg) return;
-
-      const original = mainImg.src;
+      const variantTitle = swatch.dataset.variantTitle;
 
       swatch.addEventListener('mouseenter', () => {
         mainImg.src = variantImg;
+        subtitle.textContent = variantTitle;
       });
-
-      // swatch.addEventListener('mouseleave', () => {
-      //   mainImg.src = original;
-      // });
     });
   });
 </script>

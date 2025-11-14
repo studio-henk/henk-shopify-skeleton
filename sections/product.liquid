@@ -102,7 +102,6 @@
 
             {% if product.variants.size > 1 %}
               {% for option in product.options_with_values %}
-                {{ option.name }}
                 {% case option.name %}
                   {% when 'Color' %}
                     <!-- Your metafield-driven COLOR radios -->
@@ -141,6 +140,9 @@
                         {% endfor %}
                       </div>
                     </fieldset>
+
+                  {% when 'Frame afwerking' %}
+                    hello
 
                   {% else %}
                     <!-- Default Shopify radios for all other options -->

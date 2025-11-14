@@ -61,6 +61,8 @@
   }
 </style>
 
+{{ product.selected_or_first_available_variant }}
+
 {% assign option_count = product.options.size %}
 {% for i in (0..10) %}
   {% if i < option_count %}

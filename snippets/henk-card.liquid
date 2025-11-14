@@ -135,31 +135,37 @@
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.henk-card__variant-swatch').forEach((swatch) => {
-      const mainImg = document.getElementById(swatch.dataset.mainId);
-      const subtitle = document.getElementById(swatch.dataset.subtitleId);
-
-      const card = swatch.closest('.henk-card');
+    document.querySelectorAll('.henk-card').forEach((card) => {
       const baseUrl = card.dataset.baseUrl;
-
       const imageLink = card.querySelector('.henk-card__image-link');
       const priceButton = card.querySelector('.henk-card__button');
+      const mainImg = card.querySelector('.henk-card__img');
+      const subtitle = card.querySelector('.henk-card__subtitle');
+      const swatches = card.querySelectorAll('.henk-card__variant-swatch');
 
-      if (!mainImg || !subtitle || !imageLink || !priceButton) return;
+      if (!imageLink || !priceButton || !mainImg || !subtitle || swatches.length === 0) {
+        return;
+      }
 
-      const variantImg = swatch.dataset.variantImg;
-      const variantTitle = swatch.dataset.variantTitle;
-      const variantId = swatch.dataset.variantId;
+      swatches.forEach((swatch) => {
+        swatch.addEventListener('mouseenter', () => {
+          const variantImg = swatch.dataset.variantImg;
+          const variantTitle = swatch.dataset.variantTitle;
+          const variantId = swatch.dataset.variantId;
 
-      swatch.addEventListener('mouseenter', () => {
-        // Update visual feedback
-        mainImg.src = variantImg;
-        subtitle.textContent = variantTitle;
+          // Update visuals
+          mainImg.src = variantImg;
+          subtitle.textContent = variantTitle;
 
-        // Update both main links
-        const newHref = `${baseUrl}?variant=${variantId}`;
-        imageLink.href = newHref;
-        priceButton.href = newHref;
+          // Update links
+          const newHref = `${baseUrl}?variant=${variantId}`;
+          imageLink.href = newHref;
+          priceButton.href = newHref;
+
+          // Highlight this swatch
+          swatches.forEach((s) => s.classList.remove('is-active'));
+          swatch.classList.add('is-active');
+        });
       });
     });
   });

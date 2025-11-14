@@ -165,12 +165,12 @@
 
                               <span
                                 class="custom-swatch"
-                                style="background-color: {{ color_obj.colour }};"
+                                style="background-color: {{ frame_metaobj.fields.colour }};"
                               >
                               </span>
 
                               <span class="visually-hidden">
-                                {{ color_obj.name | default: variant.option1 }}
+                                {{ frame_metaobj.fields.name | default: variant.option2 }}
                               </span>
                             </label>
                           </div>

@@ -48,6 +48,8 @@
                 <div class="henk-cart-section__item-info">
                   <p class="henk-cart-section__item-title">{{ item.title }}</p>
                   {{ item | json }}
+                  {{ item.variant_title }}
+                  {{ item.product.title }}
 
                   <div class="henk-cart-section__item-controls">
                     <henk-quantity-stepper

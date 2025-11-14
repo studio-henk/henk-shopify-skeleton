@@ -76,6 +76,7 @@
         <figure class="henk-card__image-container">
           {% assign current_variant = product.selected_or_first_available_variant %}
           {% comment %} {{ current_variant | json }} {% endcomment %}
+          {{ current_variant.sku }}
           {% if current_variant.featured_image %}
             <img
               id="ProductFeaturedImage"

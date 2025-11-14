@@ -146,7 +146,7 @@
                       <legend class="henk-legend">Frame afwerking</legend>
                       <div class="options__container">
                         {% for variant in product.variants %}
-                          {% assign color_obj = variant.metafields.HENK.framefinish.value | first %}
+                          {% assign color_obj = variant.metafields.HENK.frame_finish.value | first %}
 
                           <div class="henk-labeled-input henk-labeled-input--dir-verticalx">
                             <label class="henk-label">

@@ -398,6 +398,13 @@
         const sku = this.dataset.sku;
         if (sku && skuEl) skuEl.textContent = 'SKU: ' + sku;
 
+        // update MATERIAL NAME
+        const materialNameEl = document.getElementById('SelectedMaterial');
+        const materialName = this.dataset.materialName;
+        if (materialNameEl && materialName) {
+          materialNameEl.textContent = materialName;
+        }
+
         // TODO: price?
         // update browser URL
         const url = new URL(window.location.href);

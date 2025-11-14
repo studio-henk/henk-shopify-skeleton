@@ -26,10 +26,8 @@
 
     {% if variant %}
       <p class="henk-card__subtitle">{{ variant.title }}</p>
-      <img src="{{ variant.featured_image.src }}" alt="{{ variant.featured_image.alt | default: product.title }}">
     {% else %}
-      <p class="henk-card__subtitle">&nbsp;</p>
-      <img src="{{ product.featured_image.src }}" alt="{{ product.title }}">
+      <p class="henk-card__subtitle">???</p>
     {% endif %}
 
     {% if card_variant == null %}

@@ -150,7 +150,7 @@
 
                         {% for variant in product.variants %}
                           {% assign frame_obj = variant.metafields.HENK.frame_finish.value %}
-                          {{ frame_obj | json }}
+                          {% comment %} {{ frame_obj | json }} {% endcomment %}
 
                           {% if frame_obj %}
                             {% assign is_new = true %}
@@ -179,9 +179,13 @@
                                     {% endunless %}
                                   >
 
+                                  <!-- <span -->
+                                  <!-- class="custom-swatch" -->
+                                  <!-- style="background-color: {{ frame_obj.colour }};" -->
+                                  <!-- ></span> -->
                                   <span
                                     class="custom-swatch"
-                                    style="background-color: {{ frame_obj.colour }};"
+                                    style="background-image: url({{ frame_obj.swatch | img_url: '100x100' }});"
                                   ></span>
 
                                   <span class="visually-hidden">

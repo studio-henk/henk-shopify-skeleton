@@ -122,10 +122,12 @@
             <p id="SelectedMaterial" class="product__material">{{ current_material.name }}</p>
           {% endif %}
 
-          <p class="product__price">{{ product.price | money }}</p>
           <p id="ProductPrice" class="product__price">
             {{ current_variant.price | money }}
           </p>
+
+          <p class="product__price">{{ product.price | money }}</p>
+
           <p class="product__description">{{ product.description }}</p>
         </div>
 

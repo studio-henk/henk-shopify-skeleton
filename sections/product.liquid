@@ -145,6 +145,7 @@
                                 value="{{ variant.id }}"
                                 title="{{ color_obj.name | default:variant.option1 }}"
                                 data-featured-image="{{ variant.featured_image | image_url: width: 1134 }}"
+                                data-sku="{{ variant.sku }}"
                                 {% if variant.id == current_variant.id %}
                                   checked
                                 {% endif %}

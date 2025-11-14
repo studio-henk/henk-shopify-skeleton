@@ -412,7 +412,16 @@
           materialNameEl.textContent = materialName;
         }
 
-        // TODO: price?
+        // update PRICE
+        const priceEl = document.getElementById('ProductPrice');
+        const price = this.dataset.price;
+        if (priceEl && price) {
+          priceEl.textContent = new Intl.NumberFormat('nl-NL', {
+            style: 'currency',
+            currency: 'EUR',
+          }).format(price / 100);
+        }
+
         // update browser URL
         const url = new URL(window.location.href);
         url.searchParams.set('variant', variantId);

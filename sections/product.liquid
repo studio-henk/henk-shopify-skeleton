@@ -117,10 +117,10 @@
           {% assign display_title = current_variant.name | default: product.title %}
           <h1 class="product__title">{{ display_title }}</h1>
 
-{% assign current_material = current_variant.metafields.HENK.material.value | first %}
-{% if current_material %}
-  <p id="SelectedMaterial" class="product__material">{{ current_material.name }}</p>
-{% endif %}
+          {% assign current_material = current_variant.metafields.HENK.material.value | first %}
+          {% if current_material %}
+            <p id="SelectedMaterial" class="product__material">{{ current_material.name }}</p>
+          {% endif %}
 
           <p class="product__price">{{ product.price | money }}</p>
           <p class="product__description">{{ product.description }}</p>
@@ -174,64 +174,67 @@
                       </div>
                     </fieldset>
 
-                  {% when "Upholstery material" %}
+                  {% when 'Upholstery material' %}
                     <fieldset class="henk-fieldset">
-                        <legend class="henk-legend">Upholstery material</legend>
-                        <div class="options__container">
+                      <legend class="henk-legend">Upholstery material</legend>
+                      <div class="options__container">
+                        {% assign seen_materials = '' | split: ',' %}
 
-                          {% assign seen_materials = '' | split: ',' %}
+                        {% for variant in product.variants %}
+                          {% assign material_obj = variant.metafields.HENK.material.value | first %}
+                          {% comment %} {{ material_obj | json }} {% endcomment %}
 
-                          {% for variant in product.variants %}
-                            {% assign material_obj = variant.metafields.HENK.material.value | first %}
-                            {% comment %} {{ material_obj | json }} {% endcomment %}
-
-                            {% assign is_new = true %}
-                            {% for seen in seen_materials %}
-                              {% if seen == material_obj.id %}
-                                {% assign is_new = false %}
-                              {% endif %}
-                            {% endfor %}
-
-                            {% if is_new %}
-                              {% assign seen_materials = seen_materials | concat: material_obj.id | split: ',' %}
-
-                              <div class="henk-labeled-input">
-                                <label class="henk-label">
-                                  <input
-                                    class="henk-radio"
-                                    type="radio"
-                                    name="id"
-                                    value="{{ variant.id }}"
-                                    title="{{ material_obj.name }}"
-                                    data-featured-image="{{ variant.featured_image | image_url: width: 1134 }}"
-                                    data-sku="{{ variant.sku }}"
-                                    {% if variant.id == current_variant.id %}
-                                      checked
-                                    {% endif %}
-                                    {% unless variant.available %}
-                                      disabled
-                                    {% endunless %}
-                                  >
-
-                                  <span class="custom-swatch">
-                                    <img src="{{ material_obj.swatch | image_url: width: 44, height: 44 }}" alt="{{ material_obj.name }}" width="44" height="44">
-                                  </span>
-
-                                  <span class="visually-hidden">{{ material_obj.name }}</span>
-                                </label>
-                              </div>
+                          {% assign is_new = true %}
+                          {% for seen in seen_materials %}
+                            {% if seen == material_obj.id %}
+                              {% assign is_new = false %}
                             {% endif %}
-                            {% comment %}
-                              Use this to see if the metafield is present and what fields it has:
-                              - name
-                              - swatch (image)
-                              - image
-                              etc.
-                            {% endcomment %}
-
                           {% endfor %}
-                        </div>
-                      </fieldset>
+
+                          {% if is_new %}
+                            {% assign seen_materials = seen_materials | concat: material_obj.id | split: ',' %}
+
+                            <div class="henk-labeled-input">
+                              <label class="henk-label">
+                                <input
+                                  class="henk-radio"
+                                  type="radio"
+                                  name="id"
+                                  value="{{ variant.id }}"
+                                  title="{{ material_obj.name }}"
+                                  data-featured-image="{{ variant.featured_image | image_url: width: 1134 }}"
+                                  data-sku="{{ variant.sku }}"
+                                  {% if variant.id == current_variant.id %}
+                                    checked
+                                  {% endif %}
+                                  {% unless variant.available %}
+                                    disabled
+                                  {% endunless %}
+                                >
+
+                                <span class="custom-swatch">
+                                  <img
+                                    src="{{ material_obj.swatch | image_url: width: 44, height: 44 }}"
+                                    alt="{{ material_obj.name }}"
+                                    width="44"
+                                    height="44"
+                                  >
+                                </span>
+
+                                <span class="visually-hidden">{{ material_obj.name }}</span>
+                              </label>
+                            </div>
+                          {% endif %}
+                          {% comment %}
+                            Use this to see if the metafield is present and what fields it has:
+                            - name
+                            - swatch (image)
+                            - image
+                            etc.
+                          {% endcomment %}
+                        {% endfor %}
+                      </div>
+                    </fieldset>
                   {% when 'Frame afwerking' %}
                     <fieldset class="henk-fieldset">
                       <legend class="henk-legend">Frame afwerking</legend>
@@ -366,6 +369,7 @@
       </div>
     </div>
   </div>
+</section>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const mainImage = document.getElementById('ProductFeaturedImage');

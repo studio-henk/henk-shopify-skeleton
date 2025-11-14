@@ -10,8 +10,8 @@
 {% render 'henk-section-header', title: collection.title, text: collection.description %}
 {% comment %} {{ collection.products | json }} {% endcomment %}
 
-{% comment %} {% assign show_variants = true %} {% endcomment %}
-{% assign show_variants = false %}
+{% assign show_variants = true %}
+{% comment %} {% assign show_variants = false %} {% endcomment %}
 
 {% comment %} {{ collection.all_products_count }} {% endcomment %}
 {% if collection.all_products_count > 0 %}

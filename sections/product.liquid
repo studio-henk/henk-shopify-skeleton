@@ -142,12 +142,11 @@
                     </fieldset>
 
                   {% when 'Frame afwerking' %}
-                    hello
                     <fieldset class="henk-fieldset">
-                      <legend class="henk-legend">Colour</legend>
+                      <legend class="henk-legend">Frame afwerking</legend>
                       <div class="options__container">
                         {% for variant in product.variants %}
-                          {% assign color_obj = variant.metafields.HENK.colour.value | first %}
+                          {% assign color_obj = variant.metafields.HENK.framefinish.value | first %}
 
                           <div class="henk-labeled-input henk-labeled-input--dir-verticalx">
                             <label class="henk-label">

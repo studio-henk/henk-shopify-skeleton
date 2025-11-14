@@ -181,7 +181,8 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.henk-card').forEach((card) => {
+    document.querySelectorAll('.henk-card').forEach((card, index) => {
+      console.log('Card', index, card.dataset.baseUrl);
       const imageLink = card.querySelector('.henk-card__image-link');
       const priceButton = card.querySelector('.henk-card__button');
       console.log('priceButton:', priceButton);

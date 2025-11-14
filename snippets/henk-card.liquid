@@ -2,8 +2,6 @@
 {% comment %} {{ product | json }} {% endcomment %}
 {% comment %} {{ product.tags | json }} {% endcomment %}
 
-{{ show_variants_on_card }}
-
 {% assign card_url = product.url %}
 {% if variant %}
   {% assign card_url = product.url | append: '?variant=' | append: variant.id %}

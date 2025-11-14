@@ -133,8 +133,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.henk-card__variant-swatch').forEach((swatch) => {
       const mainImg = document.getElementById(swatch.dataset.mainId);
-      const subtitle = document.getElementById(swatch.dataset.titleId);
-
+      const subtitle = document.getElementById(swatch.dataset.subtitleId);
       if (!mainImg || !subtitle) return;
 
       const variantImg = swatch.dataset.variantImg;

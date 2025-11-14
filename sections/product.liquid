@@ -148,6 +148,8 @@
                         {% assign seen_frames = '' | split: ',' %}
 
                         {% for variant in product.variants %}
+                          {{ variant | json }}
+
                           {% assign frame_obj = variant.metafields.HENK.frame_finish.value %}
 
                           {% unless seen_frames contains frame_obj.id %}

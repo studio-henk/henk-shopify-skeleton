@@ -122,6 +122,7 @@
             <p id="SelectedMaterial" class="product__material">{{ current_material.name }}</p>
           {% endif %}
 
+          {{ current_variant | json }}
           <p id="ProductPrice" class="product__price">
             {{ current_variant.price | money }}
           </p>

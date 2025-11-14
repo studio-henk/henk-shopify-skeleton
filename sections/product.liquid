@@ -98,38 +98,73 @@
             {% assign current_variant = product.selected_or_first_available_variant %}
 
             {% if product.variants.size > 1 %}
-              <fieldset class="henk-fieldset">
-                <legend class="henk-legend">Colour</legend>
-                <div class="options__container">
-                  {% for variant in product.variants %}
-                    {% assign color_obj = variant.metafields.HENK.colour.value | first %}
-                    <div class="henk-labeled-input henk-labeled-input--dir-verticalx">
-                      <label class="henk-label">
-                        <input
-                          class="henk-radio"
-                          type="radio"
-                          name="id"
-                          value="{{ variant.id }}"
-                          {% if variant.id == current_variant.id %}
-                            checked
-                          {% endif %}
-                          {% unless variant.available %}
-                            disabled
-                          {% endunless %}
-                        >
-                        <span
-                          class="custom-swatch"
-                          style="
-                            background-color:
-                            {{color_obj.colour}}
-                          "
-                        ></span>
-                        <span class="visually-hidden">{{ color_obj.name | default: variant.option1 }}</span>
-                      </label>
-                    </div>
-                  {% endfor %}
-                </div>
-              </fieldset>
+              {% for option in product.options_with_values %}
+                {% case option.name %}
+                  {% when 'Color' %}
+                    <!-- Your metafield-driven COLOR radios -->
+                    <fieldset class="henk-fieldset">
+                      <legend class="henk-legend">Colour</legend>
+                      <div class="options__container">
+                        {% for variant in product.variants %}
+                          {% assign color_obj = variant.metafields.HENK.colour.value | first %}
+
+                          <div class="henk-labeled-input henk-labeled-input--dir-verticalx">
+                            <label class="henk-label">
+                              <input
+                                class="henk-radio"
+                                type="radio"
+                                name="id"
+                                value="{{ variant.id }}"
+                                {% if variant.id == current_variant.id %}
+                                  checked
+                                {% endif %}
+                                {% unless variant.available %}
+                                  disabled
+                                {% endunless %}
+                              >
+
+                              <span
+                                class="custom-swatch"
+                                style="background-color: {{ color_obj.colour }};"
+                              >
+                              </span>
+
+                              <span class="visually-hidden">
+                                {{ color_obj.name | default: variant.option1 }}
+                              </span>
+                            </label>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </fieldset>
+
+                  {% else %}
+                    <!-- Default Shopify radios for all other options -->
+                    <fieldset class="henk-fieldset">
+                      <legend class="henk-legend">{{ option.name }}</legend>
+                      <div class="options__container">
+                        {% for value in option.values %}
+                          {% assign variant_match = product.variants | where: option.name, value | first %}
+                          <label class="henk-label">
+                            <input
+                              class="henk-radio"
+                              type="radio"
+                              name="option-{{ option.position }}"
+                              value="{{ value }}"
+                              {% if current_variant[option.name] == value %}
+                                checked
+                              {% endif %}
+                              {% unless variant_match.available %}
+                                disabled
+                              {% endunless %}
+                            >
+                            {{ value }}
+                          </label>
+                        {% endfor %}
+                      </div>
+                    </fieldset>
+                {% endcase %}
+              {% endfor %}
             {% endif %}
 
             {%- comment -%}test radio buttons for options {%- endcomment -%}

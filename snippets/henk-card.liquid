@@ -39,7 +39,7 @@
             {%- comment -%}:SWATCH{%- endcomment -%}
             <a
               href="{{ product.url }}?variant={{ variant.id }}"
-              class="henk-card__variant-swatch"
+              class="henk-card__variant-swatch {% if variant.id == first_variant.id %}is-active{% endif %}"
               data-main-id="card-{{ product.id }}"
               data-subtitle-id="subtitle-{{ product.id }}"
               data-variant-img="{{ variant.featured_image | image_url: width: 1134 }}"

@@ -125,3 +125,25 @@
     aspect-ratio: 1 / 1;
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.henk-card__variant-swatch').forEach((swatch) => {
+      const mainId = swatch.dataset.mainId;
+      const variantImg = swatch.dataset.variantImg;
+      const mainImg = document.getElementById(mainId);
+
+      if (!mainImg) return;
+
+      const original = mainImg.src;
+
+      swatch.addEventListener('mouseenter', () => {
+        mainImg.src = variantImg;
+      });
+
+      swatch.addEventListener('mouseleave', () => {
+        mainImg.src = original;
+      });
+    });
+  });
+</script>

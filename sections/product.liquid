@@ -140,10 +140,7 @@
                                 type="radio"
                                 name="id"
                                 value="{{ variant.id }}"
-                                title="
-                                  {{ color_obj.name | default:
-                                  variant.option1 }}
-                                "
+                                title="{{ color_obj.name | default:variant.option1 }}"
                                 {% if variant.id == current_variant.id %}
                                   checked
                                 {% endif %}

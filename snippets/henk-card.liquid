@@ -30,6 +30,7 @@
   {% if show_variants_on_card %}
     <div class="henk-card__variant-selector">
       <!-- {{ product.variants | json }} -->
+      {{ product.variants | size | json }}
       {% assign max_variants = 5 %}
       {% for variant in product.variants limit: max_variants %}
         {% if variant.featured_image %}

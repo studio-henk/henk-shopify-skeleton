@@ -2,9 +2,14 @@
 {% comment %} {{ product | json }} {% endcomment %}
 {% comment %} {{ product.tags | json }} {% endcomment %}
 
+{% assign card_url = product.url %}
+{% if variant %}
+  {% assign card_url = product.url | append: '?variant=' | append: variant.id %}
+{% endif %}
+
 <div class="henk-card {% if card_variant %} henk-card--{{ card_variant }}{% endif %}">
   <a
-    href="{{ product.url }}"
+    href="{{ card_url }}"
     class="henk-card__image-link"
   >
     <figure class="henk-card__image-container">

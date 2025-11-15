@@ -118,10 +118,10 @@
           <h1 class="product__title">{{ display_title }}</h1>
 
           {% assign current_material = current_variant.metafields.HENK.material.value | first %}
-          {% if current_material %}
-            <p id="SelectedMaterial" class="product__material">{{ current_material.name }}</p>
-          {% endif %}
-          {{ current_variant.title }}
+          {% comment %} {% if current_material %} {% endcomment %}
+          {% comment %}   <p id="SelectedMaterial" class="product__material">{{ current_material.name }}</p> {% endcomment %}
+          {% comment %} {% endif %} {% endcomment %}
+          <p id="SelectedMaterial">{{ current_variant.title }}</p>
 
           {% comment %} {{ current_variant | json }} {% endcomment %}
           <p id="ProductPrice" class="product__price">

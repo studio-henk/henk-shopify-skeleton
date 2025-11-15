@@ -105,7 +105,7 @@
 
         <div class="product-form">
           {% form 'product', product %}
-            <!-- Hidden variant ID input (mandatory for Shopify forms) -->
+            <!-- Hidden variant ID input -->
             <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">
 
             {% assign option_index = 0 %}
@@ -114,6 +114,7 @@
                 <legend class="henk-legend">{{ option.name }}</legend>
                 <div class="options__container">
                   {% assign seen_values = '' | split: ',' %}
+
                   {% for variant in product.variants %}
                     {% assign value_obj = null %}
                     {% case option.name %}
@@ -127,11 +128,13 @@
                         {% assign value_obj = variant[option.name] %}
                     {% endcase %}
 
-                    {% assign option_value_id = value_obj.id | default: value_obj %}
+                    {% assign option_value_id = value_obj.id | default: value_obj | append: '' %}
+
                     {% if seen_values contains option_value_id %}
                       {% continue %}
                     {% endif %}
-                    {% assign seen_values = seen_values | concat: option_value_id | split: ',' %}
+
+                    {% assign seen_values = seen_values | push: option_value_id %}
 
                     <div class="henk-labeled-input">
                       <label class="henk-label">
@@ -256,19 +259,14 @@ document.addEventListener('DOMContentLoaded', function () {
     );
     if (!variant) return;
 
-    // Update hidden input for Add to Cart
     hiddenId.value = variant.id;
 
-    // Update image
     if (variant.featured_image && mainImage) mainImage.src = variant.featured_image.src;
 
-    // Update price
     if (priceEl) priceEl.textContent = formatPrice(variant.price);
 
-    // Update SKU
     if (skuEl) skuEl.textContent = variant.sku ? `SKU: ${variant.sku}` : 'SKU: —';
 
-    // Update material
     if (materialEl) {
       const currentRadio = document.querySelector('input[data-variant-id="' + variant.id + '"]');
       if (currentRadio && currentRadio.dataset.materialName) {
@@ -276,7 +274,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // Update URL
     try {
       const url = new URL(window.location.href);
       url.searchParams.set('variant', variant.id);

@@ -1,9 +1,8 @@
 {% comment %}
-  Product template supporting:
-  - Multi-option products with Shopify-style variant lookup
-  - Unique swatches for Color, Upholstery material, Frame finish
-  - Auto-updating featured image, price, SKU, material
-  - Hidden variant ID input for Add to Cart
+  This section is used in the product template to render product page with
+  media, content, and add-to-cart form.
+
+  https://shopify.dev/docs/storefronts/themes/architecture/templates/product
 {% endcomment %}
 
 <style>
@@ -12,30 +11,44 @@
     gap: 1rem;
     overflow-x: auto;
   }
+
   .product-image {
     margin: 0;
   }
+
   .henk-input[name='quantity'] {
     display: none;
   }
+
   .product__title {
     margin-top: 0;
   }
+
   .options__container {
     display: flex;
     gap: 1rem;
+
+    .henk-label {
+      position: relative;
+    }
   }
-  .henk-label {
-    position: relative;
-  }
+
   .henk-radio {
+    margin: 0;
+  }
+
+  .henk-labeled-input {
+    margin-bottom: 0;
+  }
+
+  .options__container .henk-radio {
     position: absolute;
     opacity: 0;
     cursor: pointer;
     width: 44px;
     height: 44px;
-    margin: 0;
   }
+
   .custom-swatch {
     display: block;
     width: 44px;
@@ -43,18 +56,26 @@
     border-radius: 4px;
     border: 1px solid #ccc;
   }
+
   input[type='radio']:checked + .custom-swatch {
     border: 4px solid var(--color-blue-40);
   }
 </style>
 
+{% comment %} {% assign option_count = product.options.size %} {% endcomment %}
+{% comment %} {% for i in (0..10) %} {% endcomment %}
+{% comment %}   {% if i < option_count %} {% endcomment %}
+{% comment %}     {% assign option_name = product.options[i] %} {% endcomment %}
+{% comment %}     <p>{{ i }} - {{ option_name }}</p> {% endcomment %}
+{% comment %}   {% endif %} {% endcomment %}
+{% comment %} {% endfor %} {% endcomment %}
 <section class="henk-section">
   <div class="henk-section__inner">
     <div class="henk-section__grid">
-      <!-- LEFT: Media -->
       <div class="henk-section__grid-item">
-        {% assign current_variant = product.selected_or_first_available_variant %}
         <figure class="henk-card__image-container">
+          {% assign current_variant = product.selected_or_first_available_variant %}
+          {% comment %} {{ current_variant | json }} {% endcomment %}
           {% if current_variant.featured_image %}
             <img
               id="ProductFeaturedImage"
@@ -69,14 +90,18 @@
           {% endif %}
         </figure>
 
-        <h3>Gallery</h3>
+        <h3>gallery</h3>
         <div class="product-images">
           {% for image in product.images %}
+            {% comment %} {% render 'image', class: 'product-image', image: image %} {% endcomment %}
+            {%- assign img_width = 1200 -%}
+            {%- assign img_height = 1200 -%}
+
             <img
-              src="{{ image | image_url: width: 1200 }}"
+              src="{{ image | image_url: width: img_width }}"
               alt="{{ image.alt | escape | default: product.title }}"
-              width="1200"
-              height="1200"
+              width="{{ img_width }}"
+              height="{{ img_height }}"
               class="product-image"
               loading="lazy"
               {% if image.id %}
@@ -87,7 +112,6 @@
         </div>
       </div>
 
-      <!-- RIGHT: Info & Form -->
       <div class="henk-section__grid-item">
         <div class="product-info">
           {% assign display_title = current_variant.name | default: product.title %}
@@ -98,94 +122,204 @@
             <p id="SelectedMaterial" class="product__material">{{ current_material.name }}</p>
           {% endif %}
 
+          {% comment %} {{ current_variant | json }} {% endcomment %}
           <p id="ProductPrice" class="product__price">
             {{ current_variant.price | money_without_trailing_zeros }}
           </p>
+
           <p class="product__description">{{ product.description }}</p>
         </div>
 
         <div class="product-form">
           {% form 'product', product %}
-            <!-- Hidden variant ID input -->
-            <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">
+            {% assign current_variant = product.selected_or_first_available_variant %}
 
-            {% assign option_index = 0 %}
-            {% for option in product.options_with_values %}
-              <fieldset class="henk-fieldset">
-                <legend class="henk-legend">{{ option.name }}</legend>
-                <div class="options__container">
-                  {% assign seen_values = '' | split: ',' %}
-                  {% for variant in product.variants %}
-                    {% assign value_obj = null %}
-                    {% case option.name %}
-                      {% when 'Color' %}
-                        {% assign value_obj = variant.metafields.HENK.colour.value | first %}
-                      {% when 'Upholstery material' %}
-                        {% assign value_obj = variant.metafields.HENK.material.value | first %}
-                      {% when 'Frame afwerking' %}
-                        {% assign value_obj = variant.metafields.HENK.frame_finish.value %}
-                      {% else %}
-                        {% assign value_obj = variant[option.name] %}
-                    {% endcase %}
+            {% if product.variants.size > 1 %}
+              {% for option in product.options_with_values %}
+                {% case option.name %}
+                  {% when 'Color' %}
+                    <!-- Your metafield-driven COLOR radios -->
+                    <fieldset class="henk-fieldset">
+                      <legend class="henk-legend">Colour</legend>
+                      <div class="options__container">
+                        {% for variant in product.variants %}
+                          {% assign color_obj = variant.metafields.HENK.colour.value | first %}
 
-                    {% assign option_value_id = value_obj.id | default: value_obj %}
-                    {% if seen_values contains option_value_id %}
-                      {% continue %}
-                    {% endif %}
-                    {% assign seen_values = seen_values | append: option_value_id | append: ',' %}
+                          <div class="henk-labeled-input henk-labeled-input--dir-verticalx">
+                            <label class="henk-label">
+                              <input
+                                class="henk-radio"
+                                type="radio"
+                                name="id"
+                                value="{{ variant.id }}"
+                                title="{{ color_obj.name | default:variant.option1 }}"
+                                data-featured-image="{{ variant.featured_image | image_url: width: 1134 }}"
+                                data-sku="{{ variant.sku }}"
+                                {% if variant.id == current_variant.id %}
+                                  checked
+                                {% endif %}
+                                {% unless variant.available %}
+                                  disabled
+                                {% endunless %}
+                              >
 
-                    <div class="henk-labeled-input">
-                      <label class="henk-label">
-                        <input
-                          class="henk-radio"
-                          type="radio"
-                          name="option-{{ option_index }}"
-                          value="{{ value_obj.name | default: value_obj | escape }}"
-                          {% if current_variant[option.name] == value_obj.name
-                            or current_variant[option.name] == value_obj
-                          %}
-                            checked
+                              <span
+                                class="custom-swatch"
+                                style="background-color: {{ color_obj.colour }};"
+                              >
+                              </span>
+
+                              <span class="visually-hidden">
+                                {{ color_obj.name | default: variant.option1 }}
+                              </span>
+                            </label>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </fieldset>
+
+                  {% when 'Upholstery material' %}
+                    <fieldset class="henk-fieldset">
+                      <legend class="henk-legend">Upholstery material</legend>
+                      <div class="options__container">
+                        {% assign seen_materials = '' | split: ',' %}
+
+                        {% for variant in product.variants %}
+                          {% assign material_obj = variant.metafields.HENK.material.value | first %}
+                          {% comment %} {{ material_obj | json }} {% endcomment %}
+
+                          {% assign is_new = true %}
+                          {% for seen in seen_materials %}
+                            {% if seen == material_obj.id %}
+                              {% assign is_new = false %}
+                            {% endif %}
+                          {% endfor %}
+
+                          {% if is_new %}
+                            {% assign seen_materials = seen_materials | concat: material_obj.id | split: ',' %}
+
+                            <div class="henk-labeled-input">
+                              <label class="henk-label">
+                                <input
+                                  class="henk-radio"
+                                  type="radio"
+                                  name="id"
+                                  value="{{ variant.id }}"
+                                  title="{{ material_obj.name }}"
+                                  data-material-name="{{ material_obj.name }}"
+                                  data-featured-image="{{ variant.featured_image | image_url: width: 1134 }}"
+                                  data-sku="{{ variant.sku }}"
+                                  data-price="{{ variant.price }}"
+                                  {% if variant.id == current_variant.id %}
+                                    checked
+                                  {% endif %}
+                                  {% unless variant.available %}
+                                    disabled
+                                  {% endunless %}
+                                >
+
+                                <span class="custom-swatch">
+                                  <img
+                                    src="{{ material_obj.swatch | image_url: width: 44, height: 44 }}"
+                                    alt="{{ material_obj.name }}"
+                                    width="44"
+                                    height="44"
+                                  >
+                                </span>
+
+                                <span class="visually-hidden">{{ material_obj.name }}</span>
+                              </label>
+                            </div>
                           {% endif %}
-                          {% unless variant.available %}
-                            disabled
-                          {% endunless %}
-                          data-variant-id="{{ variant.id }}"
-                          data-featured-image="{{ variant.featured_image | image_url: width: 1134 }}"
-                          data-sku="{{ variant.sku }}"
-                          data-price="{{ variant.price }}"
-                          {% if value_obj.name %}
-                            data-material-name="{{ value_obj.name }}"
+                        {% endfor %}
+                      </div>
+                    </fieldset>
+                  {% when 'Frame afwerking' %}
+                    <fieldset class="henk-fieldset">
+                      <legend class="henk-legend">Frame afwerking</legend>
+
+                      <div class="options__container">
+                        {% assign seen_frames = '' | split: ',' %}
+
+                        {% for variant in product.variants %}
+                          {% assign frame_obj = variant.metafields.HENK.frame_finish.value %}
+                          {% comment %} {{ frame_obj | json }} {% endcomment %}
+
+                          {% if frame_obj %}
+                            {% assign is_new = true %}
+                            {% for seen_id in seen_frames %}
+                              {% if seen_id == frame_obj.id %}
+                                {% assign is_new = false %}
+                              {% endif %}
+                            {% endfor %}
+
+                            {% if is_new %}
+                              {% comment %} add id to seen_frames using concat and split {% endcomment %}
+                              {% assign seen_frames = seen_frames | concat: frame_obj.id | split: ',' %}
+
+                              <div class="henk-labeled-input henk-labeled-input--dir-verticalx">
+                                <label class="henk-label">
+                                  <input
+                                    class="henk-radio"
+                                    type="radio"
+                                    name="id"
+                                    value="{{ variant.id }}"
+                                    {% if variant.id == current_variant.id %}
+                                      checked
+                                    {% endif %}
+                                    {% unless variant.available %}
+                                      disabled
+                                    {% endunless %}
+                                  >
+
+                                  <span
+                                    class="custom-swatch"
+                                    style="background-image: url({{ frame_obj.swatch | img_url: '100x100' }});"
+                                  ></span>
+
+                                  <span class="visually-hidden">
+                                    {{ frame_obj.name | default: variant.option2 }}
+                                  </span>
+                                </label>
+                              </div>
+                            {% endif %}
                           {% endif %}
-                        >
+                        {% endfor %}
+                      </div>
+                    </fieldset>
 
-                        <span
-                          class="custom-swatch"
-                          {% case option.name %}
-                            {% when 'Color' %}
-                              style="background-color: {{ value_obj.colour }};"
-                            {% when 'Upholstery material' %}
-                              {%- if value_obj.swatch %}
-                                style="background-image:url({{ value_obj.swatch | image_url: width:44, height:44 }});"
+                  {% else %}
+                    <!-- Default Shopify radios for all other options -->
+                    <fieldset class="henk-fieldset">
+                      <legend class="henk-legend">{{ option.name }}</legend>
+                      <div class="options__container">
+                        {% for value in option.values %}
+                          {% assign variant_match = product.variants | where: option.name, value | first %}
+                          <label class="henk-label">
+                            <input
+                              class="henk-radio"
+                              type="radio"
+                              name="option-{{ option.position }}"
+                              value="{{ value }}"
+                              {% if current_variant[option.name] == value %}
+                                checked
                               {% endif %}
-                            {% when 'Frame afwerking' %}
-                              {%- if value_obj.swatch %}
-                                style="background-image:url({{ value_obj.swatch | img_url: '100x100' }});"
-                              {% endif %}
-                          {% endcase %}
-                        >
-                        </span>
-
-                        <span class="visually-hidden">{{ value_obj.name | default: value_obj }}</span>
-                      </label>
-                    </div>
-                  {% endfor %}
-                </div>
-              </fieldset>
-              {% assign option_index = option_index | plus: 1 %}
-            {% endfor %}
+                              {% unless variant_match.available %}
+                                disabled
+                              {% endunless %}
+                            >
+                            {{ value }}
+                          </label>
+                        {% endfor %}
+                      </div>
+                    </fieldset>
+                {% endcase %}
+              {% endfor %}
+            {% endif %}
 
             <input type="text" name="quantity" min="1" value="1" class="henk-input">
 
+            {%- comment -%}check if has sku. if not, dont show buttons{%- endcomment -%}
             {% if current_variant.sku == blank %}
               {% render 'henk-info-box',
                 variant: 'danger',
@@ -196,7 +330,15 @@
             {% else %}
               <div class="henk-button-group henk-button-group--left">
                 <a href="" class="henk-button henk-button--ghost">Bekijk in winkel</a>
-                <input type="submit" value="Add to cart" class="henk-button henk-button--primary">
+                <input
+                  type="submit"
+                  value="Add to cart"
+                  class="
+                    henk-button
+                    henk-button--primary
+                  "
+                >
+                <!-- {{ form | payment_button }} -->
               </div>
             {% endif %}
           {% endform %}
@@ -207,7 +349,6 @@
 </section>
 
 <hr>
-
 <section class="henk-section">
   <div class="henk-section__inner">
     <div class="henk-section__grid">
@@ -215,6 +356,7 @@
         <h2>Product details</h2>
         <p>{{ product.description }}</p>
       </div>
+
       <div class="henk-section__grid-item">
         <h2>Specifications</h2>
         <small id="ProductSKU">SKU: {{ current_variant.sku }}</small>
@@ -227,62 +369,93 @@
     </div>
   </div>
 </section>
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const mainImage = document.getElementById('ProductFeaturedImage');
-  const priceEl = document.getElementById('ProductPrice');
-  const skuEl = document.getElementById('ProductSKU');
-  const materialEl = document.getElementById('SelectedMaterial');
-  const hiddenId = document.getElementById('SelectedVariantId');
-
-  const variants = {{ product.variants | json }};
-  const radios = document.querySelectorAll('.henk-radio');
-
-  function formatPrice(cents) {
-    const euros = Number(cents)/100;
-    return new Intl.NumberFormat('nl-NL', { style:'currency', currency:'EUR' }).format(euros).replace(',00','');
-  }
-
-  function updateVariant() {
-    const optionCount = {{ product.options.size }};
-    const selected = [];
-    for (let i=0; i<optionCount; i++) {
-      const r = document.querySelector('input[name="option-'+i+'"]:checked');
-      selected.push(r ? r.value : null);
+  document.addEventListener('DOMContentLoaded', function () {
+    // --- helpers (declare once) ---
+    function formatPriceEUR(amountInCents) {
+      // defensive parse
+      const cents = Number(amountInCents);
+      if (isNaN(cents)) return '';
+      const euros = cents / 100;
+      // format and remove trailing ",00"
+      const formatted = new Intl.NumberFormat('nl-NL', {
+        style: 'currency',
+        currency: 'EUR',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }).format(euros);
+      return formatted.replace(',00', '');
     }
 
-    const variant = variants.find(v => v.options.every((opt,i) => opt === selected[i]));
-    if (!variant) return;
+    // --- cache elements ---
+    const mainImage = document.getElementById('ProductFeaturedImage');
+    const skuEl = document.getElementById('ProductSKU');
+    const materialNameEl = document.getElementById('SelectedMaterial');
+    const priceEl = document.getElementById('ProductPrice');
 
-    hiddenId.value = variant.id;
+    // get all variant radio buttons (your class)
+    const variantRadios = document.querySelectorAll('.henk-radio');
 
-    if (variant.featured_image && mainImage) mainImage.src = variant.featured_image.src;
-    if (priceEl) priceEl.textContent = formatPrice(variant.price);
-    if (skuEl) skuEl.textContent = variant.sku ? `SKU: ${variant.sku}` : 'SKU: —';
-    if (materialEl) {
-      const currentRadio = document.querySelector('input[data-variant-id="'+variant.id+'"]');
-      if (currentRadio && currentRadio.dataset.materialName) {
-        materialEl.textContent = currentRadio.dataset.materialName;
-      }
-    }
+    if (!variantRadios.length) return;
 
-    // Update URL
-    try {
-      const url = new URL(window.location.href);
-      url.searchParams.set('variant', variant.id);
-      window.history.replaceState({}, '', url);
-    } catch(e){}
-  }
+    variantRadios.forEach((radio) => {
+      radio.addEventListener('change', function () {
+        if (!this.checked) return;
 
-  radios.forEach(r => r.addEventListener('change', updateVariant));
-});
+        // variant id
+        const variantId = this.value;
+
+        // image
+        const imgUrl = this.dataset.featuredImage;
+        if (imgUrl && mainImage) {
+          // keep existing alt if provided on data-alt, otherwise leave as-is
+          mainImage.src = imgUrl;
+          if (this.dataset.featuredAlt) {
+            mainImage.alt = this.dataset.featuredAlt;
+          }
+        }
+
+        // SKU
+        const sku = this.dataset.sku;
+        if (skuEl) {
+          skuEl.textContent = sku ? 'SKU: ' + sku : 'SKU: —';
+        }
+
+        // MATERIAL NAME (metafield friendly)
+        const materialName = this.dataset.materialName || this.dataset.materialname || '';
+        if (materialNameEl) {
+          materialNameEl.textContent = materialName || '';
+        }
+
+        // PRICE
+        const price = this.dataset.price; // expected in cents (integer)
+        if (priceEl) {
+          const formatted = formatPriceEUR(price);
+          if (formatted) {
+            priceEl.textContent = formatted;
+          }
+        }
+
+        // update browser URL without reload
+        try {
+          const url = new URL(window.location.href);
+          url.searchParams.set('variant', variantId);
+          window.history.replaceState({}, '', url);
+        } catch (e) {
+          // fallback for older browsers
+          // no-op
+        }
+      });
+    });
+  });
 </script>
 
 {% schema %}
 {
   "name": "t:general.product",
   "settings": [],
-  "disabled_on": { "groups": ["header", "footer"] }
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
 }
 {% endschema %}

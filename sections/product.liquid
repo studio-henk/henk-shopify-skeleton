@@ -149,7 +149,7 @@
 
             {% if product.variants.size > 1 %}
               {% for option in product.options_with_values %}
-                {{ option | json }}
+                {% comment %} {{ option | json }} {% endcomment %}
                 {% case option.name %}
                   {% when 'Color' %}
                     <fieldset class="henk-fieldset">

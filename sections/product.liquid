@@ -126,7 +126,9 @@
               {% for option in product.options_with_values %}
                 {% case option.name %}
                   {% when 'Color' %}
-                    {{ option.swatch.color | json }}
+                    {% for value in option.values %}
+                      <dd>{{ value.swatch.color | json }}</dd>
+                    {% endfor %}
 
                     <fieldset class="henk-fieldset">
                       <legend class="henk-legend">Color</legend>

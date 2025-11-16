@@ -79,7 +79,7 @@
               <input type="hidden" name="id" value="{{ current_variant.id }}">
             {% elsif product.variants.size > 1 %}
               {% for option in product.options_with_values %}
-                {% comment %} {{ option | json }} {% endcomment %}
+                {{ option | json }}
                 {% case option.name %}
                   {% when 'Color' %}
                     <fieldset class="henk-fieldset">

@@ -10,8 +10,8 @@
 {% render 'henk-section-header', title: collection.title, text: collection.description %}
 {% comment %} {{ collection.products | json }} {% endcomment %}
 
-{% comment %} {% assign show_variants = true %} {% endcomment %}
-{% assign show_variants = false %}
+{% assign show_variants = true %}
+{% comment %} {% assign show_variants = false %} {% endcomment %}
 {% assign show_variants_on_card = true %}
 {% assign card_variant = null %}
 {% comment %} {% assign card_variant = 'macs' %} {% endcomment %}

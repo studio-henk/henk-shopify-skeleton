@@ -19,7 +19,7 @@
   <dd>{{ product.options_with_values | json }}</dd>
   <dd>test: {{ product.options_with_values[0] | json }}</dd>
   <dd>test: {{ product.options_with_values[0].values | json }}</dd>
-  <dd>test: {{ product.options_with_values[0].values[3] | json }}</dd>
+  <dd>test: {{ product.options_with_values[0].values[3].swatch | json }}</dd>
   <dt>product.selected_variant</dt>
   <dd>{{ product.selected_variant | json }}</dd>
   <dt>product.selected_variant.</dt>

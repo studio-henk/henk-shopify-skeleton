@@ -121,6 +121,8 @@
                     </fieldset>
 
                   {% when 'Upholstery material' %}
+                    {% assign material_obj = variant.metafields.HENK.material.value | first %}
+                    {% comment %} {{ material_obj | json }} {% endcomment %}
                     <fieldset class="henk-fieldset">
                       <legend class="henk-legend">Upholstery material</legend>
 

@@ -150,6 +150,12 @@
                                 class="custom-swatch"
                                 style="background-color: {{ colorcode }};"
                               >
+                                <img
+                                  src="{{ value.swatch.img | image_url: width: 44, height: 44 }}"
+                                  alt="{{ colorname }}"
+                                  width="44"
+                                  height="44"
+                                >
                               </span>
 
                               <span class="visually-hidden">

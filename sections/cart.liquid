@@ -37,8 +37,9 @@
           <ul class="henk-cart-section__list">
             {% for item in cart.items %}
               {% comment %} {{ item | json }} {% endcomment %}
-              {{ item.error_message | json }}
-              {{ item.product | json }}
+              {% comment %} {{ item.error_message | json }} {% endcomment %}
+              {% comment %} {{ item.product | json }} {% endcomment %}
+              {{ item.variant | json }}
               {% assign variant = item.product.variants | where: 'id', item.variant_id | first %}
               <li class="henk-cart-section__list-item">
                 <img

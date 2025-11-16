@@ -40,7 +40,7 @@
               {% comment %} {{ item.error_message | json }} {% endcomment %}
               {% comment %} {{ item.product | json }} {% endcomment %}
               {{ item.variant.title | json }}
-              {% assign variant = item.product.variants | where: 'id', item.variant_id | first %}
+              {% comment %} {% assign variant = item.product.variants | where: 'id', item.variant_id | first %} {% endcomment %}
               <li class="henk-cart-section__list-item">
                 <img
                   class="henk-cart-section__item-image"
@@ -52,10 +52,10 @@
                 <div class="henk-cart-section__item-info">
                   <p class="henk-cart-section__item-title">{{ item.product.title }}</p>
                   <p class="henk-cart-section__item-variant">
-                    {{ variant.option1 -}}
-                    {%- if variant.option2 %} / {{ variant.option2 }}{% endif %}
+                    {% comment %} {{ variant.option1 -}} {% endcomment %}
+                    {% comment %} {%- if variant.option2 %} / {{ variant.option2 }}{% endif %} {% endcomment %}
+                    {{ item.variant.title }}
                   </p>
-                  {{ item.variant.title }}
 
                   <div class="henk-cart-section__item-controls">
                     <henk-quantity-stepper

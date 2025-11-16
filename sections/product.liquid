@@ -23,6 +23,13 @@
   <!-- <dd>{{ product.options_with_values[0].values | json }}</dd> -->
   <!-- <dd>{{ product.options_with_values[0].values[1] | json }}</dd> -->
 
+  <dt>product_option - returned by product.options_with_values</dt>
+  {% for option in product.options_with_values %}
+    <dd>option.name: {{ option.name | json }}</dd>
+    <dd>option.position: {{ option.position | json }}</dd>
+    <dd>option.values: {{ option.values | json }}</dd>
+  {% endfor %}
+
   <dt>product.options_with_values - swatches?</dt>
   {% for option in product.options_with_values %}
     {% for value in option.values %}

@@ -21,12 +21,12 @@
   <dd>{{ product.options_with_values | json }}</dd>
 
   <dt>product_option - returned by product.options_with_values</dt>
-  {% for option in product.options_with_values %}
-    <dd>option.name: {{ option.name | json }}</dd>
-    <dd>option.position: {{ option.position | json }}</dd>
-    <dd>option.selected_value: {{ option.selected_value }}</dd>
-    <dd>option.values: {{ option.values | json }}</dd>
-  {% endfor %}
+  <!-- {% for option in product.options_with_values %} -->
+  <!-- <dd>option.name: {{ option.name | json }}</dd> -->
+  <!-- <dd>option.position: {{ option.position | json }}</dd> -->
+  <!-- <dd>option.selected_value: {{ option.selected_value }}</dd> -->
+  <!-- <dd>option.values: {{ option.values | json }}</dd> -->
+  <!-- {% endfor %} -->
 
   {% assign product_option = product.options_with_values %}
   {{ product_option | json }}

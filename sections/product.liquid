@@ -29,7 +29,7 @@
     {% endfor %}
   {% endfor %}
 
-  {% comment %} {{ product.metafields.HENK.material }} {% endcomment %}
+  {{ product.metafields.HENK.material }}
 
   {{ product.selected_variant.metafields.HENK.material.value | json }}
 

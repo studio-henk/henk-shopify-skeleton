@@ -127,11 +127,11 @@
                       <div class="options__container">
                         {% for value in option.values %}
                           {% comment %} {{ value.variant | json }} {% endcomment %}
-                          {% assign material_name = value.name %}
-                          {% assign material_id = value.id %}
-
-                          {% assign material_obj = value.variant.metafields.HENK.material.value %}
-                          {{ material_obj.values | json }}
+                          {% comment %} {% assign material_name = value.name %} {% endcomment %}
+                          {% comment %} {% assign material_id = value.id %} {% endcomment %}
+                          {% comment %}{% endcomment %}
+                          {% comment %} {% assign material_obj = value.variant.metafields.HENK.material.value %} {% endcomment %}
+                          {% comment %} {{ material_obj.values | json }} {% endcomment %}
 
                           <div class="henk-labeled-input">
                             <label class="henk-label">

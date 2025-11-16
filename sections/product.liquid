@@ -134,6 +134,7 @@
                           {% comment %} {{ material_obj | json }} {% endcomment %}
 
                           {% assign material_swatch = material_obj %}
+                          {% assign material_swatch_name = material_swatch.name %}
                           {{ material_swatch }}
                           {% comment %} {{ material_id }} {% endcomment %}
 

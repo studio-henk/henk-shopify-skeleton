@@ -129,7 +129,7 @@
                           {% assign material_obj = value.variant.metafields.HENK.material.value | first %}
                           {{ material_obj | json }}
 
-                          {% assign colorcode = value.swatch.color %}
+                          {% assign colorcode = material_obj.swatch.color %}
                           {% assign colorname = value.name %}
 
                           <div class="henk-labeled-input">

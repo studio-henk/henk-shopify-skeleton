@@ -16,16 +16,11 @@
   <dt>product.options</dt>
   <dd>{{ product.options | json }}</dd>
   <dt>product.options_with_values</dt>
-  <!-- <dd>{{ product.options_with_values | json }}</dd> -->
-  <!-- <dd>test: {{ product.options_with_values[0] | json }}</dd> -->
   {% for option in product.options_with_values %}
     {% for value in option.values %}
       <dd>{{ value.swatch.color | json }}</dd>
     {% endfor %}
   {% endfor %}
-  <!-- <dd>test: {{ product.options_with_values[0].values | json }}</dd> -->
-  <!-- <dd>test: {{ product.options_with_values[0].values[3].swatch.color | json }}</dd> -->
-  <!-- <span style="background-color: {{ product.options_with_values[0].values[3].swatch.color}};">swatch</span> -->
 
   <dt>product.selected_variant</dt>
   <dd>{{ product.selected_variant | json }}</dd>
@@ -33,7 +28,6 @@
   <dd>id: {{ product.selected_variant.id }}</dd>
   <dd>incoming: {{ product.selected_variant.incoming }}</dd>
   <dd>matched?: {{ product.selected_variant.matched }}</dd>
-  <!-- <dd>{{ product.selected_variant.product | json }}</dd> -->
   <dd>title: {{ product.selected_variant.title }}</dd>
   <dd>variant options: {{ product.selected_variant.options | json }}</dd>
   {{ product.selected_variant.options }}

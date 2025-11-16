@@ -170,38 +170,38 @@
                             </label>
                           </div>
 
-                          <div class="henk-labeled-input">
-                            <label class="henk-label">
-                              <input
-                                class="henk-radio"
-                                type="radio"
-                                name="id"
-                                value="{{ material_obj.variant.id }}"
-                                title="{{ material_obj.name }}"
-                                data-material-name="{{ material_obj.name }}"
-                                data-featured-image="{{ variant.featured_image | image_url: width: 1134 }}"
-                                data-sku="{{ variant.sku }}"
-                                data-price="{{ variant.price }}"
-                                {% if variant.id == current_variant.id %}
-                                  checked
-                                {% endif %}
-                                {% unless variant.available %}
-                                  disabled
-                                {% endunless %}
-                              >
-
-                              <span class="custom-swatch">
-                                <img
-                                  src="{{ material_obj.swatch | image_url: width: 44, height: 44 }}"
-                                  alt="{{ material_obj.name }}"
-                                  width="44"
-                                  height="44"
-                                >
-                              </span>
-
-                              <span class="visually-hidden">{{ material_obj.name }}</span>
-                            </label>
-                          </div>
+                          <!-- <div class="henk-labeled-input"> -->
+                          <!-- <label class="henk-label"> -->
+                          <!-- <input -->
+                          <!-- class="henk-radio" -->
+                          <!-- type="radio" -->
+                          <!-- name="id" -->
+                          <!-- value="{{ material_obj.variant.id }}" -->
+                          <!-- title="{{ material_obj.name }}" -->
+                          <!-- data-material-name="{{ material_obj.name }}" -->
+                          <!-- data-featured-image="{{ variant.featured_image | image_url: width: 1134 }}" -->
+                          <!-- data-sku="{{ variant.sku }}" -->
+                          <!-- data-price="{{ variant.price }}" -->
+                          <!-- {% if variant.id == current_variant.id %} -->
+                          <!-- checked -->
+                          <!-- {% endif %} -->
+                          <!-- {% unless variant.available %} -->
+                          <!-- disabled -->
+                          <!-- {% endunless %} -->
+                          <!-- > -->
+                          <!--  -->
+                          <!-- <span class="custom-swatch"> -->
+                          <!-- <img -->
+                          <!-- src="{{ material_obj.swatch | image_url: width: 44, height: 44 }}" -->
+                          <!-- alt="{{ material_obj.name }}" -->
+                          <!-- width="44" -->
+                          <!-- height="44" -->
+                          <!-- > -->
+                          <!-- </span> -->
+                          <!--  -->
+                          <!-- <span class="visually-hidden">{{ material_obj.name }}</span> -->
+                          <!-- </label> -->
+                          <!-- </div> -->
                         {% endfor %}
                       </div>
                       <!-- <div class="options__container"> -->

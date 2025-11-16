@@ -126,7 +126,7 @@
 
                       <div class="options__container">
                         {% for value in option.values %}
-                          {{ value.variant | json }}
+                          {% comment %} {{ value.variant | json }} {% endcomment %}
                           {% assign material_name = value.name %}
                           {% assign material_id = value.id %}
 
@@ -134,7 +134,7 @@
                           {% comment %} {{ material_obj | json }} {% endcomment %}
 
                           {% assign material_color_code = material_obj %}
-                          {{ material_color_code }}
+                          {{ material_color_code | json }}
                           {% comment %} {{ material_id }} {% endcomment %}
 
                           <div class="henk-labeled-input">

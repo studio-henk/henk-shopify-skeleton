@@ -20,11 +20,11 @@
   <dt>product.selected_variant</dt>
   <dd>{{ product.selected_variant | json }}</dd>
   <dt>product.selected_variant.public_title</dt>
-  <dd>{{ product.selected_variant.id }}</dd>
-  <dd>{{ product.selected_variant.incoming }}</dd>
-  <dd>{{ product.selected_variant.matched }}</dd>
+  <dd>id: {{ product.selected_variant.id }}</dd>
+  <dd>incoming: {{ product.selected_variant.incoming }}</dd>
+  <dd>matched?: {{ product.selected_variant.matched }}</dd>
   <!-- <dd>{{ product.selected_variant.product | json }}</dd> -->
-  <dd>{{ product.selected_variant.title }}</dd>
+  <dd>title: {{ product.selected_variant.title }}</dd>
   <dt>product.variants</dt>
   <dd>{{ product.variants | json }}</dd>
 </dl>

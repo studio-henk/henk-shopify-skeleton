@@ -20,7 +20,7 @@
   <!-- <dd>test: {{ product.options_with_values[0] | json }}</dd> -->
   {% for option in product.options_with_values %}
     {% for value in option.values %}
-      <dd>{{ value | json }}</dd>
+      <dd>{{ value.swatch.color | json }}</dd>
     {% endfor %}
   {% endfor %}
   <!-- <dd>test: {{ product.options_with_values[0].values | json }}</dd> -->

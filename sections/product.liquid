@@ -133,8 +133,8 @@
                           {% assign material_obj = value.variant.metafields.HENK.material.value | first %}
                           {% comment %} {{ material_obj | json }} {% endcomment %}
 
-                          {% assign material_color_code = material_obj.swatch %}
-                          {{ material_color_code }}
+                          {% assign material_swatch = material_obj.swatch %}
+                          {{ material_swatch }}
                           {% comment %} {{ material_id }} {% endcomment %}
 
                           <div class="henk-labeled-input">

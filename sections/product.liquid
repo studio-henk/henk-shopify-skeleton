@@ -141,7 +141,7 @@
                             {% endif %}
                           {% endfor %}
 
-                          {{ value.name }}
+                          {% comment %} {{ value.name }} {% endcomment %}
                           {% if matched_variant %}
                             {{ matched_variant.metafields.HENK.material.value | json }}
                             <img

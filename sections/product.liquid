@@ -6,6 +6,9 @@
 {% endcomment %}
 
 {% comment %} {{ product | json }} {% endcomment %}
+
+{% assign current_variant = product.selected_or_first_available_variant %}
+
 <section class="henk-section">
   <div class="henk-section__inner">
     <div class="henk-section__grid">
@@ -55,9 +58,6 @@
           <h1 class="product__title">{{ display_title }}</h1>
 
           {% assign current_material = current_variant.metafields.HENK.material.value | first %}
-          {% comment %} {% if current_material %} {% endcomment %}
-          {% comment %}   <p id="SelectedMaterial" class="product__material">{{ current_material.name }}</p> {% endcomment %}
-          {% comment %} {% endif %} {% endcomment %}
           <p id="SelectedMaterial">{{ current_variant.title }}</p>
 
           {% comment %} {{ current_variant | json }} {% endcomment %}

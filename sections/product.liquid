@@ -20,16 +20,14 @@
   <dt>product.options_with_values</dt>
   <dd>{{ product.options_with_values | json }}</dd>
 
-  <dt>product_option - returned by product.options_with_values</dt>
-  <!-- {% for option in product.options_with_values %} -->
-  <!-- <dd>option.name: {{ option.name | json }}</dd> -->
-  <!-- <dd>option.position: {{ option.position | json }}</dd> -->
-  <!-- <dd>option.selected_value: {{ option.selected_value }}</dd> -->
-  <!-- <dd>option.values: {{ option.values | json }}</dd> -->
-  <!-- {% endfor %} -->
-
-  {% assign product_option = product.options_with_values %}
-  {{ product_option.name }}
+  <dt>product_options - returned by product.options_with_values</dt>
+  {% assign product_options = product.options_with_values %}
+  {% for product_option in product_options %}
+    <dd>name: {{ product_option.name | json }}</dd>
+    <dd>position: {{ product_option.position | json }}</dd>
+    <dd>selected_value: {{ product_option.selected_value }}</dd>
+    <dd>values: {{ product_option.values | json }}</dd>
+  {% endfor %}
 
   <dt>product_option_value - returned by product_option.values / variant.options</dt>
   {% for option in product.options_with_values %}

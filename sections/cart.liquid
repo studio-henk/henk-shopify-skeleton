@@ -39,7 +39,7 @@
               {% comment %} {{ item | json }} {% endcomment %}
               {% comment %} {{ item.error_message | json }} {% endcomment %}
               {% comment %} {{ item.product | json }} {% endcomment %}
-              {{ item.variant.title | json }}
+              {% comment %} {{ item.variant.title | json }} {% endcomment %}
               {{ item.id | json }}
               {{ item.key | json }}
               {% comment %} {% assign variant = item.product.variants | where: 'id', item.variant_id | first %} {% endcomment %}

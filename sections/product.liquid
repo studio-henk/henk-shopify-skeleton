@@ -122,7 +122,7 @@
 
                   {% when 'Upholstery material' %}
                     {% assign material_obj = variant.metafields.HENK.material.value | first %}
-                    {% comment %} {{ material_obj | json }} {% endcomment %}
+                    {{ material_obj | json }}
                     <fieldset class="henk-fieldset">
                       <legend class="henk-legend">Upholstery material</legend>
 
@@ -171,7 +171,7 @@
                                 class="henk-radio"
                                 type="radio"
                                 name="id"
-                                value="{{ value.variant.id }}"
+                                value="{{ material_obj.variant.id }}"
                                 title="{{ material_obj.name }}"
                                 data-material-name="{{ material_obj.name }}"
                                 data-featured-image="{{ variant.featured_image | image_url: width: 1134 }}"

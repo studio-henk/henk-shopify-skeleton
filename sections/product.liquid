@@ -84,10 +84,6 @@
                         {% for value in option.values %}
                           {% assign colorcode = value.swatch.color %}
                           {% assign colorname = value.name %}
-                          {{ colorcode }}
-                          {{ colorname }}
-                          {% comment %} {{ value.variant | json }}} {% endcomment %}
-                          {{ value.variant.id }}
 
                           <div class="henk-labeled-input">
                             <label class="henk-label">

@@ -29,6 +29,8 @@
     {% endfor %}
   {% endfor %}
 
+  {% comment %} {{ product.metafields.HENK.material }} {% endcomment %}
+
   {{ product.selected_variant.metafields.HENK.material.value | json }}
 
   <dt>product.selected_variant</dt>
@@ -43,14 +45,14 @@
   <dt>product.variants</dt>
   <dd>{{ product.variants | json }}</dd>
 
-  {% comment %} {% for variant in product.variants %} {% endcomment %}
-  {% comment %}   <dt>variant id {{ variant.id }}</dt> {% endcomment %}
-  {% comment %}   <dd>title: {{ variant.title }}</dd> {% endcomment %}
-  {% comment %}   <dd>options: {{ variant.options | json }}</dd> {% endcomment %}
-  {% comment %}   <dd>metafields.HENK.material: {{ variant.metafields.HENK.material.value | json }}</dd> {% endcomment %}
-  {% comment %}   <dd>metafields.HENK.colour: {{ variant.metafields.HENK.colour.value | json }}</dd> {% endcomment %}
-  {% comment %}   <dd>metafields.HENK.frame_finish: {{ variant.metafields.HENK.frame_finish.value | json }}</dd> {% endcomment %}
-  {% comment %} {% endfor %} {% endcomment %}
+  {% for variant in product.variants %}
+    <dt>variant id {{ variant.id }}</dt>
+    <dd>title: {{ variant.title }}</dd>
+    <dd>options: {{ variant.options | json }}</dd>
+    <dd>metafields.HENK.material: {{ variant.metafields.HENK.material.value | json }}</dd>
+    <dd>metafields.HENK.colour: {{ variant.metafields.HENK.colour.value | json }}</dd>
+    <dd>metafields.HENK.frame_finish: {{ variant.metafields.HENK.frame_finish.value | json }}</dd>
+  {% endfor %}
 </dl>
 
 <section class="henk-section">

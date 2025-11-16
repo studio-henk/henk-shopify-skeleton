@@ -126,13 +126,12 @@
               {% for option in product.options_with_values %}
                 {% case option.name %}
                   {% when 'Color' %}
-                    {% for value in option.values %}
-                      <dd>{{ value.swatch.color | json }}</dd>
-                    {% endfor %}
-
                     <fieldset class="henk-fieldset">
                       <legend class="henk-legend">Color</legend>
                       <div class="options__container">
+                        {% for value in option.values %}
+                          <dd>{{ value.swatch.color | json }}</dd>
+                        {% endfor %}
                         {% for variant in product.variants %}
                           {% assign color_obj = variant.metafields.HENK.colour.value | first %}
 

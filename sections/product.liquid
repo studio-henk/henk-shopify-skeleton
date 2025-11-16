@@ -8,6 +8,7 @@
 {% comment %} {{ product | json }} {% endcomment %}
 
 {% assign current_variant = product.selected_or_first_available_variant %}
+{{ current_variant | json }}
 
 <section class="henk-section">
   <div class="henk-section__inner">

@@ -147,7 +147,8 @@
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
                             {% assign material = matched_variant.metafields.HENK.material %}
                             {{ material.value | json }}
-                            {% assign swatch_image = material.value.image %}
+
+                            {% assign swatch_image = material %}
 
                             {% comment %} {{ matched_variant.metafields.HENK.material | image_url: width: 800 | image_tag }} {% endcomment %}
 

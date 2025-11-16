@@ -9,18 +9,12 @@
  */
 {
   "sections": {
-    "henk_section_breadcrumbs_kLg7f6": {
-      "type": "henk-section-breadcrumbs",
-      "name": "Breadcrumbs",
-      "settings": {}
-    },
     "main": {
       "type": "product",
       "settings": {}
     }
   },
   "order": [
-    "henk_section_breadcrumbs_kLg7f6",
     "main"
   ]
 }

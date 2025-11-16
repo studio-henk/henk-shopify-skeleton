@@ -157,14 +157,14 @@
 
                         {% for value in option.values %}
                           {% comment %} {{ value | json }} {% endcomment %}
-                          {{ value.selected | json }}
-                          {{ value.name | json }}
-                          {{ value.id | json }}
-                          {{ value.variant.id | json }}
-                          {{ value.variant.selected | json }}
+                          {% comment %} {{ value.selected | json }} {% endcomment %}
+                          {% comment %} {{ value.name | json }} {% endcomment %}
+                          {% comment %} {{ value.id | json }} {% endcomment %}
+                          {% comment %} {{ value.variant.id | json }} {% endcomment %}
+                          {% comment %} {{ value.variant.selected | json }} {% endcomment %}
                           {% comment %} {{ value.variant.metafields.HENK.material.type | json }} {% endcomment %}
-                          {{ value.variant.metafields.HENK.material.value | json }}
-                          {{ value.variant.metafields.HENK.material.value }}
+                          {% comment %} {{ value.variant.metafields.HENK.material.value | json }} {% endcomment %}
+                          {% comment %} {{ value.variant.metafields.HENK.material.value }} {% endcomment %}
 
                           {% comment %} {{ value.variant | json }} {% endcomment %}
                           {% comment %} {% assign material_name = value.name %} {% endcomment %}

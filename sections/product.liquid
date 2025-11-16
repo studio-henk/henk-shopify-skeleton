@@ -23,7 +23,7 @@
   <dd>{{ product.selected_variant.id }}</dd>
   <dd>{{ product.selected_variant.incoming }}</dd>
   <dd>{{ product.selected_variant.matched }}</dd>
-  <dd>{{ product.selected_variant.product }}</dd>
+  <dd>{{ product.selected_variant.product | json }}</dd>
   <dd>{{ product.selected_variant.title }}</dd>
   <dt>product.variants</dt>
   <dd>{{ product.variants | json }}</dd>

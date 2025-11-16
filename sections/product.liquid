@@ -76,7 +76,6 @@
 
             {% if product.variants.size == 1 %}
               <!-- single variant, no options -->
-              <p>This product is only available in one version.</p>
               <input type="hidden" name="id" value="{{ current_variant.id }}">
             {% elsif product.variants.size > 1 %}
               {% for option in product.options_with_values %}

@@ -160,7 +160,8 @@
                           {% assign colorname = value.name %}
                           {{ colorcode }}
                           {{ colorname }}
-                          {{ value.variant | json }}}
+                          {% comment %} {{ value.variant | json }}} {% endcomment %}
+                          {{ value.variant.id }}
 
                           <div class="henk-labeled-input">
                             <label class="henk-label">

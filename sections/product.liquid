@@ -94,6 +94,7 @@
                                 value="{{ value.variant.id }}"
                                 title="{{ colorname }}"
                                 data-featured-image="{{ value.variant.featured_image | image_url: width: 1134 }}"
+                                data-material-name="{{ current_material.name }}"
                                 data-sku="{{ value.variant.sku }}"
                                 {% if value.variant.id == current_variant.id %}
                                   checked
@@ -115,39 +116,6 @@
                             </label>
                           </div>
                         {% endfor %}
-                        {% comment %} {% for variant in product.variants %} {% endcomment %}
-                        {% comment %}   {% assign color_obj = variant.metafields.HENK.colour.value | first %} {% endcomment %}
-                        {% comment %}{% endcomment %}
-                        {% comment %}   <div class="henk-labeled-input henk-labeled-input--dir-verticalx"> {% endcomment %}
-                        {% comment %}     <label class="henk-label"> {% endcomment %}
-                        {% comment %}       <input {% endcomment %}
-                        {% comment %}         class="henk-radio" {% endcomment %}
-                        {% comment %}         type="radio" {% endcomment %}
-                        {% comment %}         name="id" {% endcomment %}
-                        {% comment %}         value="{{ variant.id }}" {% endcomment %}
-                        {% comment %}         title="{{ color_obj.name | default:variant.option1 }}" {% endcomment %}
-                        {% comment %}         data-featured-image="{{ variant.featured_image | image_url: width: 1134 }}" {% endcomment %}
-                        {% comment %}         data-sku="{{ variant.sku }}" {% endcomment %}
-                        {% comment %}         {% if variant.id == current_variant.id %} {% endcomment %}
-                        {% comment %}           checked {% endcomment %}
-                        {% comment %}         {% endif %} {% endcomment %}
-                        {% comment %}         {% unless variant.available %} {% endcomment %}
-                        {% comment %}           disabled {% endcomment %}
-                        {% comment %}         {% endunless %} {% endcomment %}
-                        {% comment %}       > {% endcomment %}
-                        {% comment %}{% endcomment %}
-                        {% comment %}       <span {% endcomment %}
-                        {% comment %}         class="custom-swatch" {% endcomment %}
-                        {% comment %}         style="background-color: {{ color_obj.colour }};" {% endcomment %}
-                        {% comment %}       > {% endcomment %}
-                        {% comment %}       </span> {% endcomment %}
-                        {% comment %}{% endcomment %}
-                        {% comment %}       <span class="visually-hidden"> {% endcomment %}
-                        {% comment %}         {{ color_obj.name | default: variant.option1 }} {% endcomment %}
-                        {% comment %}       </span> {% endcomment %}
-                        {% comment %}     </label> {% endcomment %}
-                        {% comment %}   </div> {% endcomment %}
-                        {% comment %} {% endfor %} {% endcomment %}
                       </div>
                     </fieldset>
                     <!-- Your metafield-driven COLOR radios -->

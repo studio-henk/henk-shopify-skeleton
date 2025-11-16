@@ -18,17 +18,6 @@
   <dt>product.options_with_values</dt>
   <dd>{{ product.options_with_values | json }}</dd>
   <dd>test: {{ product.options_with_values[0].name }}</dd>
-  {% if option.name == 'Color' %}
-    {% for value in option.values %}
-      {% assign swatch = value.swatch %}
-      {% if swatch.color %}
-        <div style="background-color: {{ swatch.color.hex }};"></div>
-      {% endif %}
-      {% if swatch.image %}
-        <img src="{{ swatch.image | image_url }}" alt="{{ value.name }} swatch">
-      {% endif %}
-    {% endfor %}
-  {% endif %}
   <dt>product.selected_variant</dt>
   <dd>{{ product.selected_variant | json }}</dd>
   <dt>product.selected_variant.</dt>

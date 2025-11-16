@@ -19,7 +19,7 @@
   <dt>product.options_with_values</dt>
   <dd>{{ product.options_with_values | json }}</dd>
 
-  <dt>product.options_with_values</dt>
+  <dt>product.options_with_values - swatches?</dt>
   {% for option in product.options_with_values %}
     {% for value in option.values %}
       <dd>{{ value.swatch.color | json }}</dd>

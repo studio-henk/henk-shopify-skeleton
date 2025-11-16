@@ -24,6 +24,7 @@
   {% for option in product.options_with_values %}
     <dd>option.name: {{ option.name | json }}</dd>
     <dd>option.position: {{ option.position | json }}</dd>
+    <dd>option.selected_value: {{ option.selected_value }}</dd>
     <dd>option.values: {{ option.values | json }}</dd>
   {% endfor %}
 

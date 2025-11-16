@@ -180,11 +180,15 @@
   <script type="module" src="{{ 'henk-quantity-stepper.js' | asset_url }}"></script>
 
   <script>
-    customElements.whenDefined('henk-quantity-stepper').then(() => {
-      // find all non-JS inputs you want to replace
-      document.querySelectorAll('[data-js-replace]').forEach((input) => {
-        input.remove(); // safely remove after the component is ready
-      });
+    // customElements.whenDefined('henk-quantity-stepper').then(() => {
+    //   // find all non-JS inputs you want to replace
+    //   document.querySelectorAll('[data-js-replace]').forEach((input) => {
+    //     input.remove(); // safely remove after the component is ready
+    //   });
+    // });
+
+    document.querySelectorAll('[data-js-replace]').forEach((input) => {
+      input.remove();
     });
 
     const steppers = document.querySelectorAll('henk-quantity-stepper');

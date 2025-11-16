@@ -31,9 +31,9 @@
 
   <dt>product_option_value - returned by product_option.values / variant.options</dt>
   {% assign product_option_values = product.options_with_values %}
-  {{ product_option_values | json }}
+  {% comment %} {{ product_option_values | json }} {% endcomment %}
   {% for product_option_value in product_option_values %}
-    <dd>{{ product_option_value | json }}</dd>
+    <dd>{{ product_option_value.values | json }}</dd>
   {% endfor %}
 
   <hr>

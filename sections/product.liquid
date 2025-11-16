@@ -144,30 +144,11 @@
                           {% comment %} {{ value.name }} {% endcomment %}
                           {% if matched_variant %}
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
-                            {% comment %} {{ matched_variant.metafields.HENK.material.value | json }} {% endcomment %}
+                            {{ matched_variant.metafields.HENK.material.value | json }}
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
                             {% comment %} {% assign material = matched_variant.metafields.HENK.material %} {% endcomment %}
                             {% comment %} {{ material.value | json }} {% endcomment %}
                             {% comment %} {{ material }} {% endcomment %}
-
-                            {% for material in matched_variant.metafields.HENK.material %}
-                              {{ material | json }}
-                              {{ material.name.value }}
-                              {% if material.image %}
-                                <img src="{{ material.image | image_url: width: 44 }}">
-                              {% endif %}
-                            {% endfor %}
-
-                            {% assign swatch_image = material.image %}
-
-                            {% comment %} {{ matched_variant.metafields.HENK.material | image_url: width: 800 | image_tag }} {% endcomment %}
-
-                            <img
-                              src="{{ swatch_image | image_url: width: 44 }}"
-                              width="44"
-                              height="44"
-                              alt="{{ material.name }}"
-                            >
                           {% endif %}
                         {% endfor %}
 

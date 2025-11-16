@@ -129,7 +129,9 @@
 
                       <div class="options__container">
                         {% for value in option.values %}
-                          hello
+                          {% assign material_obj = value.variant.metafields.HENK.material.value | first %}
+                          {{ material_obj | json }}
+
                           {% assign colorcode = value.swatch.color %}
                           {% assign colorname = value.name %}
 

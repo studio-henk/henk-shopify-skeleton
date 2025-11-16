@@ -71,7 +71,7 @@
         <div class="product-form">
           {% form 'product', product %}
             {% assign current_variant = product.selected_or_first_available_variant %}
-            {{ current_variant.options.size | json }}
+            {% comment %} {{ current_variant.options.size | json }} {% endcomment %}
 
             {% if product.variants.size > 1 %}
               {% for option in product.options_with_values %}
@@ -295,6 +295,8 @@
                     </fieldset>
                 {% endcase %}
               {% endfor %}
+            {% else %}
+              more options?
             {% endif %}
 
             <input type="text" name="quantity" min="1" value="1" class="henk-input">

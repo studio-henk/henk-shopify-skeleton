@@ -133,6 +133,7 @@
                           {% assign material_name = value.name %}
                           {% assign material_id = value.id %}
                           {{ material_id }}
+                          {{ value.variant | json }}
 
                           <div class="henk-labeled-input">
                             <label class="henk-label">

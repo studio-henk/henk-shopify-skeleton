@@ -160,10 +160,7 @@
                           {% assign colorname = value.name %}
                           {{ colorcode }}
                           {{ colorname }}
-                          {%- capture input_id -%}
-                            {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
-                          {%- endcapture -%}
-                          {{ input_id }}
+                          {{ value.variant }}
 
                           <div class="henk-labeled-input">
                             <label class="henk-label">

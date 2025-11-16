@@ -137,6 +137,10 @@
                           {% assign material_swatch_name = material_swatch.name %}
                           {% assign material_swatch_image = material_swatch.image %}
                           {% assign material_swatch_id = material_swatch.id %}
+                          {{ material_swatch | json }}
+
+                          {% assign material_color_code = material_obj.swatch.color %}
+                          {% comment %} {{ material_color_code }} {% endcomment %}
                           {{ material_swatch_name }}
                           {{ material_swatch_image }}
                           {{ material_swatch_id }}

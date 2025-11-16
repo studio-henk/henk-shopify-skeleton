@@ -40,6 +40,21 @@
   <dd>title: {{ product.selected_variant.title }}</dd>
   <dd>variant options: {{ product.selected_variant.options | json }}</dd>
 </dl>
+<h2>all variants</h2>
+<dl>
+  <dt>product.variants</dt>
+  <dd>{{ product.variants | json }}</dd>
+
+  {% comment %} {% for variant in product.variants %} {% endcomment %}
+  {% comment %}   <dt>variant id {{ variant.id }}</dt> {% endcomment %}
+  {% comment %}   <dd>title: {{ variant.title }}</dd> {% endcomment %}
+  {% comment %}   <dd>options: {{ variant.options | json }}</dd> {% endcomment %}
+  {% comment %}   <dd>metafields.HENK.material: {{ variant.metafields.HENK.material.value | json }}</dd> {% endcomment %}
+  {% comment %}   <dd>metafields.HENK.colour: {{ variant.metafields.HENK.colour.value | json }}</dd> {% endcomment %}
+  {% comment %}   <dd>metafields.HENK.frame_finish: {{ variant.metafields.HENK.frame_finish.value | json }}</dd> {% endcomment %}
+  {% comment %} {% endfor %} {% endcomment %}
+</dl>
+
 <section class="henk-section">
   <div class="henk-section__inner">
     <div class="henk-section__grid">

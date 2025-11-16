@@ -144,7 +144,13 @@
                           {{ value.name }}
                           {% if matched_variant %}
                             {{ matched_variant.metafields.HENK.material.value }}
-                            <img src="{{ matched_variant.metafields.HENK.material.value | img_url: '100x' }}">
+                            <img
+                              src="
+                                {{
+                                matched_variant.metafields.HENK.material.value |
+                                image_url: '100x' }}
+                              "
+                            >
                           {% endif %}
                         {% endfor %}
 

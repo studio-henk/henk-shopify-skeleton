@@ -9,8 +9,15 @@
 <dl>
   <dt>product.title</dt>
   <dd>{{ product.title }}</dd>
+  <dt>product.handle</dt>
+  <dd>{{ product.handle }}</dd>
+  <dt>product.id</dt>
+  <dd>{{ product.id }}</dd>
+  <dt>product.variants</dt>
+  <dd>{{ product.variants | json }}</dd>
+  <dt>product.options_with_values</dt>
+  <dd>{{ product.options_with_values | json }}</dd>
 </dl>
-{{ product.title }}
 <section class="henk-section">
   <div class="henk-section__inner">
     <div class="henk-section__grid">

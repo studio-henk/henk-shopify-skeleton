@@ -28,6 +28,10 @@
     <dd>option.values: {{ option.values | json }}</dd>
   {% endfor %}
 
+  <dt>product_option_value - returned by product_option.values / variant.options</dt>
+
+  <hr>
+
   <dt>product.options_with_values - swatches?</dt>
   {% for option in product.options_with_values %}
     {% for value in option.values %}

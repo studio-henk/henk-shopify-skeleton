@@ -34,6 +34,10 @@
   {% comment %} {{ product_option_values | json }} {% endcomment %}
   {% for product_option_value in product_option_values %}
     <dd>{{ product_option_value.values.size | json }}</dd>
+    {% for value in product_option_value.values %}
+      <dd>value name: {{ value.name | json }}</dd>
+      <dd>value swatch: {{ value.swatch | json }}</dd>
+    {% endfor %}
   {% endfor %}
 
   <hr>

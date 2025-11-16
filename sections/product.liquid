@@ -31,7 +31,7 @@
 
   {% comment %} {{ product.metafields.HENK.material }} {% endcomment %}
 
-  {{ product.selected_variant.metafields.HENK.material }}
+  {{ product.selected_variant.metafields.HENK.material.value }}
 
   <dt>product.selected_variant</dt>
   <dd>{{ product.selected_variant | json }}</dd>

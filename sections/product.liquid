@@ -37,8 +37,10 @@
     {% for value in product_option_value.values %}
       <dd>value name: {{ value.name | json }}</dd>
       <dd>value swatch: {{ value.swatch.color | json }}</dd>
-      <dd>value {{ value.available }}</dd>
-      <dd>value {{ value.id }}</dd>
+      <dd>value available: {{ value.available }}</dd>
+      <dd>value id: {{ value.id }}</dd>
+      <dd>value url: {{ value.product_url | json }}</dd>
+      <dd>value selected: {{ value.selected }}</dd>
     {% endfor %}
   {% endfor %}
 

@@ -73,7 +73,10 @@
             {% assign current_variant = product.selected_or_first_available_variant %}
             {% comment %} {{ current_variant.options.size | json }} {% endcomment %}
 
-            {% if product.variants.size > 1 %}
+            {% if product.variants.size == 1 %}
+              <!-- single variant, no options -->
+              <p>This product is only available in one version.</p>
+            {% elsif product.variants.size > 1 %}
               {% for option in product.options_with_values %}
                 {% comment %} {{ option | json }} {% endcomment %}
                 {% case option.name %}

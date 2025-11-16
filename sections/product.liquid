@@ -61,7 +61,7 @@
       <div class="henk-section__grid-item">
         <figure class="henk-card__image-container">
           {% assign current_variant = product.selected_or_first_available_variant %}
-          {{ current_variant | json }}
+          {% comment %} {{ current_variant | json }} {% endcomment %}
           {% if current_variant.featured_image %}
             <img
               id="ProductFeaturedImage"
@@ -120,6 +120,7 @@
         <div class="product-form">
           {% form 'product', product %}
             {% assign current_variant = product.selected_or_first_available_variant %}
+            {{ current_variant | json }}
 
             {% if product.variants.size > 1 %}
               {% for option in product.options_with_values %}

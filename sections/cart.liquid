@@ -42,6 +42,7 @@
               {% comment %} {{ item.variant.title | json }} {% endcomment %}
               {{ item.id | json }}
               {{ item.key | json }}
+              {{ item.sku | json }}
               {% comment %} {% assign variant = item.product.variants | where: 'id', item.variant_id | first %} {% endcomment %}
               <li class="henk-cart-section__list-item">
                 <img

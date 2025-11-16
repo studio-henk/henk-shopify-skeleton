@@ -151,7 +151,7 @@
                             {% comment %} {{ material }} {% endcomment %}
 
                             {% for material in matched_variant.metafields.HENK.material %}
-                              {{ material.type }}
+                              {{ material | json }}
                               {{ material.name.value }}
                               {% if material.image %}
                                 <img src="{{ material.image | image_url: width: 44 }}">

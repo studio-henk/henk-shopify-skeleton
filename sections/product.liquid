@@ -132,6 +132,36 @@
                         {% for value in option.values %}
                           {% assign colorcode = value.swatch.color %}
                           {{ colorcode }}
+
+                          <div class="henk-labeled-input henk-labeled-input--dir-verticalx">
+                            <label class="henk-label">
+                              <input
+                                class="henk-radio"
+                                type="radio"
+                                name="id"
+                                value="{{ variant.id }}"
+                                title="{{ color_obj.name | default:variant.option1 }}"
+                                data-featured-image="{{ variant.featured_image | image_url: width: 1134 }}"
+                                data-sku="{{ variant.sku }}"
+                                {% if variant.id == current_variant.id %}
+                                  checked
+                                {% endif %}
+                                {% unless variant.available %}
+                                  disabled
+                                {% endunless %}
+                              >
+
+                              <span
+                                class="custom-swatch"
+                                style="background-color: {{ color_obj.colour }};"
+                              >
+                              </span>
+
+                              <span class="visually-hidden">
+                                {{ color_obj.name | default: variant.option1 }}
+                              </span>
+                            </label>
+                          </div>
                         {% endfor %}
                         {% comment %} {% for variant in product.variants %} {% endcomment %}
                         {% comment %}   {% assign color_obj = variant.metafields.HENK.colour.value | first %} {% endcomment %}

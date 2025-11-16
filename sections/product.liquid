@@ -130,7 +130,7 @@
                           {% assign material_name = value.name %}
                           {% assign material_id = value.id %}
 
-                          {% assign material_obj = value.variant.metafields.HENK.material.value %}
+                          {% assign material_obj = value.variant.metafields.HENK.material.values %}
                           {% comment %} {{ material_obj | json }} {% endcomment %}
 
                           {% assign material_swatch = material_obj %}

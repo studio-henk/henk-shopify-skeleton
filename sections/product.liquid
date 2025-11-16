@@ -131,9 +131,11 @@
                       <div class="options__container">
                         {% for value in option.values %}
                           {% assign colorcode = value.swatch.color %}
+                          {% assign colorname = value.swatch.name %}
                           {{ colorcode }}
+                          {{ colorname }}
 
-                          <div class="henk-labeled-input henk-labeled-input--dir-verticalx">
+                          <div class="henk-labeled-input">
                             <label class="henk-label">
                               <input
                                 class="henk-radio"

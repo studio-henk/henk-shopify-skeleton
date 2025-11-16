@@ -144,7 +144,9 @@
                           {% comment %} {{ value.name }} {% endcomment %}
                           {% if matched_variant %}
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
-                            {{ matched_variant.metafields.HENK.material.value | json }}
+                            {% comment %} {{ matched_variant.metafields.HENK.material.value | json }} {% endcomment %}
+
+                            {{ matched_variant.metafields.HENK.material | json }}
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
                             {% assign material = matched_variant.metafields.HENK.material %}
                             {% comment %} {{ material.value | json }} {% endcomment %}

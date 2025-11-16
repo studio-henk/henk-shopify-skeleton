@@ -25,7 +25,7 @@
   <dd>matched?: {{ product.selected_variant.matched }}</dd>
   <!-- <dd>{{ product.selected_variant.product | json }}</dd> -->
   <dd>title: {{ product.selected_variant.title }}</dd>
-  <dd>mf: {{ product.selected_variant.metafields | json }}</dd>
+  <dd>mf: {{ product.selected_variant.metafields.custom | json }}</dd>
   <dt>product.variants</dt>
   <dd>{{ product.variants | json }}</dd>
 </dl>

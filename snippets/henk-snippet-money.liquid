@@ -6,8 +6,32 @@
 {% assign euros = amount | divided_by: 100 %}
 {% assign cents = amount | modulo: 100 %}
 
+{% comment %} {% if cents > 0 %} {% endcomment %}
+{% comment %}   € {{ euros }},{{ cents | prepend: '0' }} {% endcomment %}
+{% comment %} {% else %} {% endcomment %}
+{% comment %}   € {{ euros }} {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
+
+{%- comment -%}
+  Add thousand separators to euros
+{%- endcomment -%}
+{% assign euros_str = euros | append: '' %}
+{% assign reversed = euros_str | split: '' | reverse %}
+{% assign grouped = '' %}
+{% for i in (0..reversed.size) %}
+  {% if i > 0 and i modulo 3 == 0 %}
+    {% assign grouped = grouped | append: '.' %}
+  {% endif %}
+  {% assign grouped = grouped | append: reversed[i] %}
+{% endfor %}
+{% assign formatted_euros = grouped | split: '' | reverse | join: '' %}
+
+{%- comment -%}
+  Render final price: include cents only if > 0
+{%- endcomment -%}
 {% if cents > 0 %}
-  € {{ euros }},{{ cents | prepend: '0' }}
+  {% assign cents_str = cents | prepend: '0' | slice: -2, 2 %}
+  € {{ formatted_euros }},{{ cents_str }}
 {% else %}
-  € {{ euros }}
+  € {{ formatted_euros }}
 {% endif %}

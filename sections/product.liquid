@@ -65,9 +65,7 @@
 
         <div class="product-form">
           {% form 'product', product %}
-            {{ current_variant.options.size | json }}
-
-            {{ product.options_with_values.size | json }}
+            {% assign number_of_product_options = product.options_with_values.size %}
 
             {% if product.variants.size == 1 %}
               1 option, 1 variant

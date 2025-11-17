@@ -13,17 +13,22 @@
 {% comment %} {% endif %} {% endcomment %}
 
 {%- comment -%}
-  Add thousand separators to euros
+  Convert euros to string and reverse for grouping
 {%- endcomment -%}
 {% assign euros_str = euros | append: '' %}
 {% assign reversed = euros_str | split: '' | reverse %}
 {% assign grouped = '' %}
+
 {% for i in (0..reversed.size) %}
-  {% if i > 0 and i modulo 3 == 0 %}
-    {% assign grouped = grouped | append: '.' %}
+  {% if i > 0 %}
+    {% assign mod = i | modulo: 3 %}
+    {% if mod == 0 %}
+      {% assign grouped = grouped | append: '.' %}
+    {% endif %}
   {% endif %}
   {% assign grouped = grouped | append: reversed[i] %}
 {% endfor %}
+
 {% assign formatted_euros = grouped | split: '' | reverse | join: '' %}
 
 {%- comment -%}

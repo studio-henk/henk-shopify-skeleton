@@ -172,8 +172,9 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    console.log('product options multi script loaded');
-    // --- format price helper ---
+    console.log('Multi-option product script loaded');
+
+    // --- helpers ---
     function formatPriceEUR(cents) {
       const euros = Number(cents) / 100;
       return new Intl.NumberFormat('nl-NL', {
@@ -186,33 +187,33 @@
         .replace(',00', '');
     }
 
-    // --- cache elements ---
+    // --- cache DOM elements ---
     const mainImage = document.getElementById('ProductFeaturedImage');
     const skuEl = document.getElementById('ProductSKU');
     const materialEl = document.getElementById('SelectedMaterial');
     const priceEl = document.getElementById('ProductPrice');
-
-    // --- get radios ---
-    const radios = document.querySelectorAll('.henk-radio');
-    if (!radios.length) return;
+    const hiddenInput = document.getElementById('SelectedVariantId');
 
     // --- parse variants JSON ---
     const productVariants = JSON.parse(document.getElementById('ProductVariantsJSON').textContent);
 
-    // --- track current selections ---
+    // --- get all radios ---
+    const radios = document.querySelectorAll('.henk-radio');
+    if (!radios.length) return;
+
+    // --- build initial selected options ---
     const selectedOptions = {};
     radios.forEach((radio) => {
-      selectedOptions[radio.dataset.optionIndex] = radio.checked
-        ? radio.value
-        : selectedOptions[radio.dataset.optionIndex];
+      const idx = radio.dataset.optionIndex;
+      if (radio.checked) selectedOptions[idx] = radio.value;
     });
 
-    // --- find variant from selected options ---
+    // --- find variant matching selected options ---
     function findVariant() {
       return productVariants.find((v) => v.options.every((opt, i) => selectedOptions[i] === opt));
     }
 
-    // --- update UI ---
+    // --- update UI with variant ---
     function updateUI(variant) {
       if (!variant) return;
 
@@ -220,30 +221,30 @@
       if (skuEl) skuEl.textContent = variant.sku ? 'SKU: ' + variant.sku : 'SKU: —';
       if (materialEl) materialEl.textContent = variant.material_name || '';
       if (priceEl) priceEl.textContent = formatPriceEUR(variant.price);
-
-      // update hidden input for form submission
-      const hiddenInput = document.getElementById('SelectedVariantId');
       if (hiddenInput) hiddenInput.value = variant.id;
 
-      // update URL param
+      // Update URL param
       try {
         const url = new URL(window.location.href);
         url.searchParams.set('variant', variant.id);
         window.history.replaceState({}, '', url);
-      } catch (e) {}
+      } catch (e) {
+        // fallback: do nothing
+      }
     }
 
-    // --- attach listeners ---
+    // --- listen for radio changes ---
     radios.forEach((radio) => {
       radio.addEventListener('change', function () {
-        console.log('option changed:', this.dataset.optionIndex, this.value);
-        selectedOptions[this.dataset.optionIndex] = this.value;
+        const idx = this.dataset.optionIndex;
+        selectedOptions[idx] = this.value;
+
         const variant = findVariant();
         updateUI(variant);
       });
     });
 
-    // --- initial UI ---
+    // --- initial UI update ---
     const initialVariant = findVariant();
     updateUI(initialVariant);
   });

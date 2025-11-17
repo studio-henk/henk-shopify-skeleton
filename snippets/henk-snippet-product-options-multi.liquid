@@ -205,3 +205,87 @@
       something else here?
   {% endcase %}
 {% endfor %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    // --- helpers ---
+    function formatPriceEUR(amountInCents) {
+      const cents = Number(amountInCents);
+      if (isNaN(cents)) return '';
+      const euros = cents / 100;
+      const formatted = new Intl.NumberFormat('nl-NL', {
+        style: 'currency',
+        currency: 'EUR',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(euros);
+      return formatted.replace(',00', '');
+    }
+
+    // --- cache elements ---
+    const mainImage = document.getElementById('ProductFeaturedImage');
+    const skuEl = document.getElementById('ProductSKU');
+    const materialNameEl = document.getElementById('SelectedMaterial');
+    const priceEl = document.getElementById('ProductPrice');
+
+    // --- get all radios ---
+    const variantRadios = document.querySelectorAll('.henk-radio');
+    if (!variantRadios.length) return;
+
+    // --- create current selections object ---
+    const selectedOptions = {};
+    variantRadios.forEach(radio => {
+      const index = radio.dataset.optionIndex;
+      if (radio.checked) selectedOptions[index] = radio.value;
+    });
+
+    // --- product variants JSON (from Liquid) ---
+    const productVariants = {{ product.variants | json }};
+
+    function findMatchingVariant() {
+      return productVariants.find(v =>
+        v.options.every((opt, i) => selectedOptions[i] === opt)
+      );
+    }
+
+    function updateUI(variant) {
+      if (!variant) return;
+
+      // Main image
+      if (mainImage && variant.featured_image && variant.featured_image.src) {
+        mainImage.src = variant.featured_image.src;
+        if (variant.featured_image.alt) mainImage.alt = variant.featured_image.alt;
+      }
+
+      // SKU
+      if (skuEl) skuEl.textContent = variant.sku ? 'SKU: ' + variant.sku : 'SKU: —';
+
+      // Material name (optional)
+      if (materialNameEl) materialNameEl.textContent = variant.metafields?.HENK?.material?.value?.[0]?.name || '';
+
+      // Price
+      if (priceEl) priceEl.textContent = formatPriceEUR(variant.price);
+
+      // URL
+      const url = new URL(window.location.href);
+      url.searchParams.set('variant', variant.id);
+      window.history.replaceState({}, '', url);
+    }
+
+    // --- listen for changes ---
+    variantRadios.forEach(radio => {
+      radio.addEventListener('change', function () {
+        const index = this.dataset.optionIndex;
+        selectedOptions[index] = this.value;
+
+        const matchedVariant = findMatchingVariant();
+        updateUI(matchedVariant);
+      });
+    });
+
+    // --- initial UI update ---
+    const initialVariant = findMatchingVariant();
+    updateUI(initialVariant);
+
+  });
+</script>

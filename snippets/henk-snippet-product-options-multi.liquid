@@ -2,4 +2,41 @@
 
 {%- for option in product.options_with_values -%}
   {{ option.name }}
+
+  {% assign option_index = forloop.index0 %}
+  <fieldset>
+    <legend>{{ option.name }}</legend>
+
+    {% for value in option.values %}
+      {% case option.name %}
+        {% when 'Color' %}
+          <!-- render color swatch -->
+          <input
+            type="radio"
+            name="option-{{ option_index }}"
+            value="{{ value.name }}"
+          >
+        {% when 'Upholstery material' %}
+          <!-- render material swatch using metafield -->
+          {% assign matched_variant = product.variants
+            | where: 'options['
+            | append: option_index
+            | append: ']', value.name
+            | first
+          %}
+          <input
+            type="radio"
+            name="option-{{ option_index }}"
+            value="{{ matched_variant.id }}"
+          >
+        {% else %}
+          <!-- default radio -->
+          <input
+            type="radio"
+            name="option-{{ option_index }}"
+            value="{{ value.name }}"
+          >
+      {% endcase %}
+    {% endfor %}
+  </fieldset>
 {%- endfor -%}

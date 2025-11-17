@@ -83,9 +83,7 @@
               {% endif %}
 
             {% elsif number_of_product_options > 1 %}
-              options: {{ number_of_product_options }}, variants: {{ number_of_product_variants }}
-
-              {% render 'henk-snippet-product-options', product: product, current_variant: current_variant %}
+              {% render 'henk-snippet-product-options-multi', product: product, current_variant: current_variant %}
             {% endif %}
 
             <input type="text" name="quantity" min="1" value="1" class="henk-input">

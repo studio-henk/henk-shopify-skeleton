@@ -9,7 +9,8 @@
 
 {% for c in euros_str %}
   {% assign pos_from_right = len | minus: i | minus: 1 %}
-  {% assign mod3 = pos_from_right | modulo: 3 %}
+  {% comment %} {% assign mod3 = pos_from_right | modulo: 3 %} {% endcomment %}
+  {% assign mod3 = (i | plus: 1) | modulo: 3 %}
 
   {% assign formatted_euros = formatted_euros | append: c %}
 

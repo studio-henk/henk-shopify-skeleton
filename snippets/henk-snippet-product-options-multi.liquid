@@ -152,13 +152,21 @@
           {% assign option_index = forloop.index0 %}
 
           {% for value in option.values %}
-            {% assign colorcode = value.swatch.color %}
-            {% assign colorname = value.name %}
             {% assign matched_variant = null %}
-
-            {%- comment -%} find the variant that matches this option value {%- endcomment -%}
             {% for v in product.variants %}
-              {% if v.options[option_index] == value.name %}
+              {% assign matches = true %}
+              {% for i in (0..v.options['size-1']) %}
+                {% if i == option_index %}
+                  {% assign expected = value.name %}
+                {% else %}
+                  {% assign expected = selected_options[i] %}
+                {% endif %}
+                {% if v.options[i] != expected %}
+                  {% assign matches = false %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+              {% if matches %}
                 {% assign matched_variant = v %}
                 {% break %}
               {% endif %}

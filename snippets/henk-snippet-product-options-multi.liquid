@@ -6,6 +6,10 @@
   {{ key }}: {{ product.metafields.HENK[key].value }}
 {% endfor %}
 
+{% for key in current_variant.metafields.HENK %}
+  {{ key }}: {{ current_variant.metafields.HENK[key].value }}
+{% endfor %}
+
 <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">
 {% for option in product.options_with_values %}
   {% assign option_index = forloop.index0 %}

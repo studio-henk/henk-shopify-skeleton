@@ -146,7 +146,7 @@
 
                           {% comment %} {{ value.name }} {% endcomment %}
                           {% if matched_variant %}
-                            {{ matched_variant.metafields.HENK.material.value | image_url: width: 44 }}
+                            {{ matched_variant.metafields.HENK.material.value | media_image | image_url: width: 44 }}
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
                             {% comment %} {{ matched_variant.metafields.HENK.material.value | json }} {% endcomment %}
 

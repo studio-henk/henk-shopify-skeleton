@@ -79,11 +79,9 @@
                     {% if current_variant.options[option_index] == value.name %}
                       checked
                     {% endif %}
-
-                    value="{{ matched_variant.id }}"
-                    {% if matched_variant.id == current_variant.id %}
-                      checked
-                    {% endif %}
+                    data-featured-image="{{ matched_variant.featured_image | image_url: width: 1134 }}"
+                    data-sku="{{ matched_variant.sku }}"
+                    data-price="{{ matched_variant.price }}"
                   >
                   <span class="custom-swatch" style="background-color: {{ value.swatch.color }};"></span>
                   <span class="visually-hidden">{{ value.name }}</span>

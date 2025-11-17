@@ -65,8 +65,7 @@
 
         <div class="product-form">
           {% form 'product', product %}
-            {% comment %} {% assign current_variant = product.selected_or_first_available_variant %} {% endcomment %}
-            {% comment %} {{ current_variant.options.size | json }} {% endcomment %}
+            {{ current_variant.options.size | json }}
 
             {{ product.options_with_values.size | json }}
 

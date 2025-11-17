@@ -66,6 +66,8 @@
         <div class="product-form">
           {% form 'product', product %}
             {% assign number_of_product_options = product.options_with_values.size %}
+            {% assign number_of_product_variants = product.variants.size %}
+
             {% if number_of_product_options == 0 %}
               0 options
             {% elsif number_of_product_options == 1 %}

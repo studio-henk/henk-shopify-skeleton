@@ -59,8 +59,9 @@
           <p id="SelectedMaterial">{{ current_variant.title }}</p>
 
           {% assign current_variant_price = current_variant.price | money_without_trailing_zeros %}
-          {% assign current_variant_price = current_variant_price | money_without_currency %}
+          {% assign current_variant_price2 = current_variant_price | money_without_currency %}
           {{ current_variant_price }}
+          {{ current_variant_price2 }}
 
           <p id="ProductPrice" class="product__price">
             {{ current_variant.price | money_without_trailing_zeros }}

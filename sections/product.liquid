@@ -152,9 +152,9 @@
 
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
                             {% assign material_gid = matched_variant.metafields.HENK.material %}
-                            {% assign material = material_gid | metaobject %}
+                            {% comment %} {% assign material = material_gid | metaobject %} {% endcomment %}
                             {% comment %} {{ material.value | json }} {% endcomment %}
-                            {{ material }}
+                            {% comment %} {{ material }} {% endcomment %}
                           {% endif %}
                         {% endfor %}
 

@@ -70,6 +70,9 @@
             {% assign number_of_product_options = product.options_with_values.size %}
             {% assign number_of_product_variants = product.variants.size %}
 
+            {% comment %}
+              TODO: remove, Debug info:
+            {% endcomment %}
             {% if number_of_product_options == 0 %}
               options: {{ number_of_product_options }}
             {% elsif number_of_product_options == 1 %}

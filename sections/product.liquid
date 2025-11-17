@@ -78,7 +78,8 @@
                 <input type="hidden" name="id" value="{{ current_variant.id }}">
               {% else %}
                 {% comment %} NOTE: multiple variants, show options {% endcomment %}
-                show options here
+
+                {% render 'henk-snippet-product-options' %}
               {% endif %}
 
             {% elsif number_of_product_options > 1 %}

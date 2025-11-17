@@ -154,7 +154,7 @@
                             {% assign material_data = matched_variant.metafields.HENK.material.value | first %}
                             {{ material_data.name }}
                             {{ material_data.color }}
-                            {{ material_data.swatch | replace: 'gid://', '//cdn.shopify.com/' }}
+                            {% comment %} {{ material_data.swatch | replace: 'gid://', '//cdn.shopify.com/' }} {% endcomment %}
 
                             {% assign swatch_gid = material_data.swatch %}
                             {% assign swatch_image = swatch_gid | image_url %}

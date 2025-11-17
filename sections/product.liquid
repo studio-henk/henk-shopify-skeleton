@@ -154,6 +154,7 @@
                             {% assign material_data = matched_variant.metafields.HENK.material.value | first %}
                             {{ material_data.name }}
                             {{ material_data.color }}
+                            {{ material_data.swatch }}
 
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
                             {% assign material_gid = matched_variant.metafields.HENK.material %}

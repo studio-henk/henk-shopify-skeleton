@@ -160,12 +160,6 @@
                             {% assign swatch_image = swatch_gid | image_url %}
                             <img src="{{ swatch_image | image_url: '44x44' }}" width="44" height="44">
 
-                            <!-- <img -->
-                            <!-- src="{{ material_data.swatch | replace: 'gid://', '//cdn.shopify.com/' }}" -->
-                            <!-- width="44" -->
-                            <!-- height="44" -->
-                            <!-- > -->
-
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
                             {% assign material_gid = matched_variant.metafields.HENK.material %}
                             {% comment %} {% assign material = material_gid | metaobject %} {% endcomment %}

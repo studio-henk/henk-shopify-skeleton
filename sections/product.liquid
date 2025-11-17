@@ -155,6 +155,11 @@
                             {{ material_data.name }}
                             {{ material_data.color }}
                             {{ material_data.swatch | replace: 'gid://', '//cdn.shopify.com/' }}
+                            <img
+                              src="{{ material_data.swatch | replace: 'gid://', '//cdn.shopify.com/' }}"
+                              width="44"
+                              height="44"
+                            >
 
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
                             {% assign material_gid = matched_variant.metafields.HENK.material %}

@@ -157,7 +157,7 @@
                             {{ material_data.swatch | replace: 'gid://', '//cdn.shopify.com/' }}
 
                             {% assign swatch_gid = material_data.swatch %}
-                            {% assign swatch_image = swatch_gid | media_image %}
+                            {% assign swatch_image = swatch_gid | image_url %}
                             <img src="{{ swatch_image | image_url: '44x44' }}" width="44" height="44">
 
                             <!-- <img -->

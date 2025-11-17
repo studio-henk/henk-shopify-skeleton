@@ -151,6 +151,8 @@
                             {{ matched_variant.metafields.HENK.material.value | json }}
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
                             {% comment %} {{ matched_variant.metafields.HENK.material.value | json }} {% endcomment %}
+                            {% assign material_data = matched_variant.metafields.HENK.material.value | first %}
+                            {{ material_data.name }} {# "Rewool2 0198" #} {{ material_data.color }} {# "#848484" #}
 
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
                             {% assign material_gid = matched_variant.metafields.HENK.material %}

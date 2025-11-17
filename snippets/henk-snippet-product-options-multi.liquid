@@ -93,7 +93,7 @@
       <fieldset class="henk-fieldset">
         <legend class="henk-legend">{{ option.name }}</legend>
         <div class="options__container">
-          {% assign option_index = forloop.index0 %}
+          <!-- {% assign option_index = forloop.index0 %} -->
           {% for value in option.values %}
             {% assign matched_variant = null %}
             {% for v in product.variants %}

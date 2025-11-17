@@ -137,42 +137,86 @@
       <fieldset class="henk-fieldset">
         <legend class="henk-legend">{{ option.name }}</legend>
         <div class="options__container">
-          {% assign seen_frames = '' | split: ',' %}
-          {% for variant in product.variants %}
-            {% assign frame_obj = variant.metafields.HENK.frame_finish.value %}
-            {% if frame_obj %}
-              {% assign is_new = true %}
-              {% for seen_id in seen_frames %}
-                {% if seen_id == frame_obj.id %}{% assign is_new = false %}{% endif %}
-              {% endfor %}
-              {% if is_new %}
-                {% assign seen_frames = seen_frames | concat: frame_obj.id | split: ',' %}
-                <div class="henk-labeled-input">
-                  <label class="henk-label">
-                    <input
-                      class="henk-radio"
-                      type="radio"
-                      name="option-{{ option_index }}"
-                      value="{{ variant.id }}"
-                      {% if variant.id == current_variant.id %}
-                        checked
-                      {% endif %}
-                      {% unless variant.available %}
-                        disabled
-                      {% endunless %}
-                    >
-                    <span
-                      class="custom-swatch"
-                      style="background-image: url({{ frame_obj.swatch | img_url: '100x100' }});"
-                    ></span>
-                    <span class="visually-hidden">{{ frame_obj.name | default: variant.options[option_index] }}</span>
-                  </label>
-                </div>
+          {% for value in option.values %}
+            {% assign colorcode = value.swatch.color %}
+            {% assign colorname = value.name %}
+            {% assign matched_variant = null %}
+
+            {%- comment -%} find the variant that matches this option value {%- endcomment -%}
+            {% assign option_index = forloop.index0 %}
+            {% for v in product.variants %}
+              {% if v.options[option_index] == value.name %}
+                {% assign matched_variant = v %}
+                {% break %}
               {% endif %}
+            {% endfor %}
+
+            {% if matched_variant %}
+              <div class="henk-labeled-input">
+                <label class="henk-label">
+                  <input
+                    class="henk-radio"
+                    type="radio"
+                    name="option-{{ option_index }}"
+                    value="{{ matched_variant.id }}"
+                    title="{{ colorname }}"
+                    data-featured-image="{{ matched_variant.featured_image | image_url: width: 1134 }}"
+                    data-sku="{{ matched_variant.sku }}"
+                    data-price="{{ matched_variant.price }}"
+                    {% if matched_variant.id == current_variant.id %}
+                      checked
+                    {% endif %}
+                  >
+                  <span
+                    class="custom-swatch"
+                    style="background-color: {{ colorcode }};"
+                  ></span>
+                  <span class="visually-hidden">{{ colorname }}</span>
+                </label>
+              </div>
             {% endif %}
           {% endfor %}
         </div>
       </fieldset>
+      <!-- <fieldset class="henk-fieldset"> -->
+      <!-- <legend class="henk-legend">{{ option.name }}</legend> -->
+      <!-- <div class="options__container"> -->
+      <!-- {% assign seen_frames = '' | split: ',' %} -->
+      <!-- {% for variant in product.variants %} -->
+      <!-- {% assign frame_obj = variant.metafields.HENK.frame_finish.value %} -->
+      <!-- {% if frame_obj %} -->
+      <!-- {% assign is_new = true %} -->
+      <!-- {% for seen_id in seen_frames %} -->
+      <!-- {% if seen_id == frame_obj.id %}{% assign is_new = false %}{% endif %} -->
+      <!-- {% endfor %} -->
+      <!-- {% if is_new %} -->
+      <!-- {% assign seen_frames = seen_frames | concat: frame_obj.id | split: ',' %} -->
+      <!-- <div class="henk-labeled-input"> -->
+      <!-- <label class="henk-label"> -->
+      <!-- <input -->
+      <!-- class="henk-radio" -->
+      <!-- type="radio" -->
+      <!-- name="option-{{ option_index }}" -->
+      <!-- value="{{ variant.id }}" -->
+      <!-- {% if variant.id == current_variant.id %} -->
+      <!-- checked -->
+      <!-- {% endif %} -->
+      <!-- {% unless variant.available %} -->
+      <!-- disabled -->
+      <!-- {% endunless %} -->
+      <!-- > -->
+      <!-- <span -->
+      <!-- class="custom-swatch" -->
+      <!-- style="background-image: url({{ frame_obj.swatch | img_url: '100x100' }});" -->
+      <!-- ></span> -->
+      <!-- <span class="visually-hidden">{{ frame_obj.name | default: variant.options[option_index] }}</span> -->
+      <!-- </label> -->
+      <!-- </div> -->
+      <!-- {% endif %} -->
+      <!-- {% endif %} -->
+      <!-- {% endfor %} -->
+      <!-- </div> -->
+      <!-- </fieldset> -->
 
     {% else %}
       <!-- Default radios for other options -->

@@ -166,12 +166,12 @@
                     class="henk-radio"
                     type="radio"
                     name="option-{{ option_index }}"
-                    value="{{ matched_variant.id }}"
+                    value="{{ value.name }}"
                     title="{{ colorname }}"
                     data-featured-image="{{ matched_variant.featured_image | image_url: width: 1134 }}"
                     data-sku="{{ matched_variant.sku }}"
                     data-price="{{ matched_variant.price }}"
-                    {% if matched_variant.id == current_variant.id %}
+                    {% if current_variant.options[option_index] == value.name %}
                       checked
                     {% endif %}
                   >

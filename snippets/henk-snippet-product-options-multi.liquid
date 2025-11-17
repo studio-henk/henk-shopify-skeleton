@@ -201,19 +201,19 @@
     const radios = document.querySelectorAll('.henk-radio');
     if (!radios.length) return;
 
-    // --- build initial selected options ---
+    // --- build initial selected options mapping: optionIndex -> selected variant value ---
     const selectedOptions = {};
     radios.forEach((radio) => {
       const idx = radio.dataset.optionIndex;
       if (radio.checked) selectedOptions[idx] = radio.value;
     });
 
-    // --- find variant matching selected options ---
+    // --- find variant matching current selections ---
     function findVariant() {
       return productVariants.find((v) => v.options.every((opt, i) => selectedOptions[i] === opt));
     }
 
-    // --- update UI with variant ---
+    // --- update UI with given variant ---
     function updateUI(variant) {
       if (!variant) return;
 
@@ -223,21 +223,19 @@
       if (priceEl) priceEl.textContent = formatPriceEUR(variant.price);
       if (hiddenInput) hiddenInput.value = variant.id;
 
-      // Update URL param
+      // Update browser URL param
       try {
         const url = new URL(window.location.href);
         url.searchParams.set('variant', variant.id);
         window.history.replaceState({}, '', url);
-      } catch (e) {
-        // fallback: do nothing
-      }
+      } catch (e) {}
     }
 
-    // --- listen for radio changes ---
+    // --- listen for changes ---
     radios.forEach((radio) => {
       radio.addEventListener('change', function () {
         const idx = this.dataset.optionIndex;
-        selectedOptions[idx] = this.value;
+        selectedOptions[idx] = this.value; // set selection to variant option value
 
         const variant = findVariant();
         updateUI(variant);

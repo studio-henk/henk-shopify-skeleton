@@ -85,9 +85,6 @@
             {% endif %}
 
             {% if product.variants.size == 1 %}
-              1 option, 1 variant
-              {%- comment -%} NOTE: single variant, no options {%- endcomment -%}
-              <!-- <input type="hidden" name="id" value="{{ current_variant.id }}"> -->
             {% elsif product.variants.size > 1 %}
               1 option, more variants
               {% comment %} NOTE: multiple variants, show options {% endcomment %}

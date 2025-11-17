@@ -147,11 +147,10 @@
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
                             {% comment %} {{ matched_variant.metafields.HENK.material.value | json }} {% endcomment %}
 
-                            {{ matched_variant.metafields.HENK.material }}
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
                             {% assign material = matched_variant.metafields.HENK.material %}
                             {% comment %} {{ material.value | json }} {% endcomment %}
-                            {% comment %} {{ material }} {% endcomment %}
+                            {{ material }}
                           {% endif %}
                         {% endfor %}
 

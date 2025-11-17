@@ -75,6 +75,11 @@
                     class="henk-radio"
                     type="radio"
                     name="option-{{ option_index }}"
+                    value="{{ value.name }}"
+                    {% if current_variant.options[option_index] == value.name %}
+                      checked
+                    {% endif %}
+
                     value="{{ matched_variant.id }}"
                     {% if matched_variant.id == current_variant.id %}
                       checked

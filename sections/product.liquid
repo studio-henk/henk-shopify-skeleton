@@ -58,7 +58,9 @@
           {% assign current_material = current_variant.metafields.HENK.material.value | first %}
           <p id="SelectedMaterial">{{ current_variant.title }}</p>
 
-          <p id="ProductPrice" class="product__price">{{ current_variant.price | money_without_trailing_zeros }}</p>
+          <p id="ProductPrice" class="product__price">
+            {{ current_variant.price | money_without_trailing_zeros | money_without_currency }}
+          </p>
 
           <p class="product__description">{{ product.description }}</p>
         </div>

@@ -63,7 +63,8 @@
 
           {% comment %} {{ current_variant | json }} {% endcomment %}
           <p id="ProductPrice" class="product__price">
-            {{ current_variant.price | money_without_trailing_zeros }}
+            {{ current_variant.price | money_without_trailing_zeros }} -
+            {{ matched_variant.compare_at_price | money_without_trailing_zeros }}
           </p>
 
           <p class="product__description">{{ product.description }}</p>

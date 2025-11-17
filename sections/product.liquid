@@ -149,7 +149,7 @@
                             hello
                             {{ matched_variant | json }}
 
-                            {{ matched_variant.metafields.HENK.material }}
+                            {% comment %} {{ matched_variant.metafields.HENK.material }} {% endcomment %}
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
                             {% comment %} {{ matched_variant.metafields.HENK.material.value | json }} {% endcomment %}
 

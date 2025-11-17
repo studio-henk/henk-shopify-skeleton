@@ -71,6 +71,8 @@
             {% comment %} {% assign current_variant = product.selected_or_first_available_variant %} {% endcomment %}
             {% comment %} {{ current_variant.options.size | json }} {% endcomment %}
 
+            {{ product.options_with_values | json }}
+
             {% if product.variants.size == 1 %}
               {%- comment -%} NOTE: single variant, no options {%- endcomment -%}
               <input type="hidden" name="id" value="{{ current_variant.id }}">

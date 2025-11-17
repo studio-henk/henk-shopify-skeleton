@@ -63,7 +63,7 @@
 
           {% comment %} {{ current_variant_price_in_euro }} {% endcomment %}
 
-          {% render 'money_euro', amount: current_variant.price %}
+          {% render 'henk-snippet-money', amount: current_variant.price %}
 
           <p id="ProductPrice" class="product__price">
             {{ current_variant.price | money_without_trailing_zeros }}

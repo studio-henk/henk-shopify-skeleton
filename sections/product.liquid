@@ -59,7 +59,7 @@
           <p id="SelectedMaterial">{{ current_variant.title }}</p>
 
           <p id="ProductPrice" class="product__price">
-            {{ current_variant.price | money_without_trailing_zeros | money_without_currency }}
+            {{ current_variant.price | money_without_trailing_zeros | replace: '€', ' €' }}
           </p>
 
           <p class="product__description">{{ product.description }}</p>

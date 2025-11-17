@@ -75,6 +75,7 @@
             {% comment %} {{ current_variant.options.size | json }} {% endcomment %}
 
             {% if product.variants.size == 1 %}
+              hello 1 option product
               <!-- single variant, no options -->
               <input type="hidden" name="id" value="{{ current_variant.id }}">
             {% elsif product.variants.size > 1 %}

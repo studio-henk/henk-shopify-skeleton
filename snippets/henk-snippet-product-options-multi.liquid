@@ -115,6 +115,10 @@
                     class="henk-radio"
                     type="radio"
                     name="option-{{ option_index }}"
+                    value="{{ value.name }}"
+                    {% if current_variant.options[option_index] == value.name %}
+                      checked
+                    {% endif %}
                     value="{{ matched_variant.id }}"
                     title="{{ material_data.name }}"
                     data-featured-image="{{ matched_variant.featured_image | image_url: width: 1134 }}"

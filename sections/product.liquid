@@ -144,27 +144,14 @@
                             {% endif %}
                           {% endfor %}
 
-                          {% comment %} {{ value.name }} {% endcomment %}
                           {% if matched_variant %}
-                            {% comment %} {{ matched_variant | json }} {% endcomment %}
-
-                            {% comment %} {{ matched_variant.metafields.HENK.material.value | json }} {% endcomment %}
-                            {% comment %} {{ matched_variant | json }} {% endcomment %}
-                            {% comment %} {{ matched_variant.metafields.HENK.material.value | json }} {% endcomment %}
                             {% assign material_data = matched_variant.metafields.HENK.material.value | first %}
                             {{ material_data.name }}
                             {{ material_data.color }}
-                            {% comment %} {{ material_data.swatch | replace: 'gid://', '//cdn.shopify.com/' }} {% endcomment %}
 
                             {% assign swatch_gid = material_data.swatch %}
                             {% assign swatch_image = swatch_gid | image_url %}
                             <img src="{{ swatch_image | image_url: '44x44' }}" width="44" height="44">
-
-                            {% comment %} {{ matched_variant | json }} {% endcomment %}
-                            {% assign material_gid = matched_variant.metafields.HENK.material %}
-                            {% comment %} {% assign material = material_gid | metaobject %} {% endcomment %}
-                            {% comment %} {{ material.value | json }} {% endcomment %}
-                            {% comment %} {{ material }} {% endcomment %}
                           {% endif %}
                         {% endfor %}
 

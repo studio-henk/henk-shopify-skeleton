@@ -167,10 +167,10 @@
                                   data-material-name="{{ material_data.name }}"
                                   data-sku="{{ value.variant.sku }}"
                                   data-price="{{ matched_variant.price | times: 100 }}"
-                                >
-                                {% if value.variant.id == current_variant.id %}
-                                  checked
-                                {% endif %}
+
+                                  {% if value.variant.id == current_variant.id %}
+                                    checked
+                                  {% endif %}
                                 >
 
                                 <span

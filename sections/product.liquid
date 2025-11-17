@@ -73,7 +73,7 @@
             {% elsif number_of_product_options == 1 %}
               1 option - check number of variants variants: {{ number_of_product_variants }}
             {% elsif number_of_product_options > 1 %}
-              more than 1 option
+              more than 1 option variants: {{ number_of_product_variants }}
             {% endif %}
 
             {% if product.variants.size == 1 %}

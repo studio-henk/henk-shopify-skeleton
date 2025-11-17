@@ -76,7 +76,7 @@
             {% if number_of_product_options == 0 %}
               options: {{ number_of_product_options }}
             {% elsif number_of_product_options == 1 %}
-              options: {{ number_of_product_options }} - variants: {{ number_of_product_variants }}
+              <!-- options: {{ number_of_product_options }} - variants: {{ number_of_product_variants }} -->
 
               {% if number_of_product_variants == 1 %}
                 {%- comment -%} NOTE: single variant, no options {%- endcomment -%}

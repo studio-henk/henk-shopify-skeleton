@@ -1,21 +1,21 @@
 {% comment %}
   Usage:
-    {% render 'henk-snippet-money', amount: current_variant.price %}
+    {% render 'henk-money', amount: current_variant.price %}
 {% endcomment %}
 
 {% assign euros = amount | divided_by: 100 %}
 {% assign cents = amount | modulo: 100 %}
 
-{% comment %}
-  Format euros with thousand separator dot
-{% endcomment %}
 {% assign euros_str = euros | append: '' %}
 {% assign formatted_euros = '' %}
-{% assign i = 0 %}
-{% for c in euros_str | reverse %}
+{% assign len = euros_str | size %}
+
+{% for i in (0..len-1) %}
+  {% assign c = euros_str | slice: len-1-i, 1 %}
   {% assign formatted_euros = c | append: formatted_euros %}
-  {% assign i = i | plus: 1 %}
-  {% if i > 0 and i modulo 3 == 0 and forloop.last == false %}
+
+  {% assign pos_from_right = i | plus: 1 %}
+  {% if pos_from_right modulo 3 == 0 and pos_from_right != len %}
     {% assign formatted_euros = '.' | append: formatted_euros %}
   {% endif %}
 {% endfor %}
@@ -26,44 +26,3 @@
 {% else %}
   €&nbsp;{{ formatted_euros }}
 {% endif %}
-
-{% comment %}
-  Usage:
-    {% render 'henk-snippet-money', amount: current_variant.price %}
-{% endcomment %}
-
-{% comment %} {% assign euros = amount | divided_by: 100 %} {% endcomment %}
-{% comment %} {% assign cents = amount | modulo: 100 %} {% endcomment %}
-{% comment %}{% endcomment %}
-{% comment %}
-  {%- comment -%} {% endcomment %}
-  {% comment %}   Convert euros to string and reverse for grouping {% endcomment %}
-  {% comment %} {%- endcomment -%}
-{% endcomment %}
-{% comment %} {% assign euros_str = euros | append: '' %} {% endcomment %}
-{% comment %} {% assign reversed = euros_str | split: '' | reverse %} {% endcomment %}
-{% comment %} {% assign grouped = '' %} {% endcomment %}
-{% comment %}{% endcomment %}
-{% comment %} {% for i in (0..reversed.size) %} {% endcomment %}
-{% comment %}   {% if i > 0 %} {% endcomment %}
-{% comment %}     {% assign mod = i | modulo: 3 %} {% endcomment %}
-{% comment %}     {% if mod == 0 %} {% endcomment %}
-{% comment %}       {% assign grouped = grouped | append: '.' %} {% endcomment %}
-{% comment %}     {% endif %} {% endcomment %}
-{% comment %}   {% endif %} {% endcomment %}
-{% comment %}   {% assign grouped = grouped | append: reversed[i] %} {% endcomment %}
-{% comment %} {% endfor %} {% endcomment %}
-{% comment %}{% endcomment %}
-{% comment %} {% assign formatted_euros = grouped | split: '' | reverse | join: '' %} {% endcomment %}
-{% comment %}{% endcomment %}
-{% comment %}
-  {%- comment -%} {% endcomment %}
-  {% comment %}   Render final price: include cents only if > 0 {% endcomment %}
-  {% comment %} {%- endcomment -%}
-{% endcomment %}
-{% comment %} {% if cents > 0 %} {% endcomment %}
-{% comment %}   {% assign cents_str = cents | prepend: '0' | slice: -2, 2 %} {% endcomment %}
-{% comment %}   € {{ formatted_euros }},{{ cents_str }} {% endcomment %}
-{% comment %} {% else %} {% endcomment %}
-{% comment %}   € {{ formatted_euros }} {% endcomment %}
-{% comment %} {% endif %} {% endcomment %}

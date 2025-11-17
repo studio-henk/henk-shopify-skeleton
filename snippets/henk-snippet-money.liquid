@@ -7,7 +7,7 @@
 {% assign cents = amount | modulo: 100 %}
 
 {% if cents > 0 %}
-  {{ euros }},{{ cents | prepend: '0' }} €
+  € {{ euros }},{{ cents | prepend: '0' }}
 {% else %}
-  {{ euros }} €
+  € {{ euros }}
 {% endif %}

@@ -210,7 +210,10 @@
 
     // --- find variant matching current selections ---
     function findVariant() {
-      return productVariants.find((v) => v.options.every((opt, i) => selectedOptions[i] === opt));
+      // return productVariants.find((v) => v.options.every((opt, i) => selectedOptions[i] === opt));
+      const variant = productVariants.find((v) => v.options.every((opt, i) => selectedOptions[i] === opt));
+      console.log('findVariant -> selectedOptions:', selectedOptions, 'matched variant:', variant);
+      return variant;
     }
 
     // --- update UI with given variant ---

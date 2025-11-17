@@ -52,7 +52,7 @@
 
             {% if matched_variant %}
               {% assign material_data = matched_variant.metafields.HENK.material.value | first %}
-              {{ material_data | json }}
+              {% comment %} {{ material_data | json }} {% endcomment %}
               {% assign swatch_gid = material_data.swatch %}
               {% assign swatch_image = swatch_gid | image_url %}
 

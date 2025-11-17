@@ -1,6 +1,10 @@
 {% comment %} {{ product.metafields | json }} {% endcomment %}
 {% comment %} {{ product.options | json }} {% endcomment %}
-{{ product.options_by_name | json }}
+{% comment %} {{ product.options_by_name | json }} {% endcomment %}
+
+{% for key in product.metafields.HENK %}
+  {{ key }}: {{ product.metafields.HENK[key].value }}
+{% endfor %}
 
 <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">
 {% for option in product.options_with_values %}

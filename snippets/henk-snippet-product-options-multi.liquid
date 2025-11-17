@@ -156,87 +156,96 @@
       something else here?
   {% endcase %}
 {% endfor %}
+
+<!-- Product Variants JSON for JS -->
+<script type="application/json" id="ProductVariantsJSON">
+  [
+  {% for v in product.variants %}
+    {
+      "id": {{ v.id }},
+      "options": [{% for opt in v.options %}"{{ opt }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+      "price": {{ v.price }},
+      "sku": "{{ v.sku }}",
+      "featured_image": "{{ v.featured_image.src | default: '' }}",
+      "material_name": "{{ v.metafields.HENK.material.value[0].name | default: '' }}"
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ]
+</script>
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-
-    // --- helpers ---
-    function formatPriceEUR(amountInCents) {
-      const cents = Number(amountInCents);
-      if (isNaN(cents)) return '';
-      const euros = cents / 100;
-      const formatted = new Intl.NumberFormat('nl-NL', {
+    // --- format price helper ---
+    function formatPriceEUR(cents) {
+      const euros = Number(cents) / 100;
+      return new Intl.NumberFormat('nl-NL', {
         style: 'currency',
         currency: 'EUR',
         minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      }).format(euros);
-      return formatted.replace(',00', '');
+        maximumFractionDigits: 2,
+      })
+        .format(euros)
+        .replace(',00', '');
     }
 
     // --- cache elements ---
     const mainImage = document.getElementById('ProductFeaturedImage');
     const skuEl = document.getElementById('ProductSKU');
-    const materialNameEl = document.getElementById('SelectedMaterial');
+    const materialEl = document.getElementById('SelectedMaterial');
     const priceEl = document.getElementById('ProductPrice');
 
-    // --- get all radios ---
-    const variantRadios = document.querySelectorAll('.henk-radio');
-    if (!variantRadios.length) return;
+    // --- get radios ---
+    const radios = document.querySelectorAll('.henk-radio');
+    if (!radios.length) return;
 
-    // --- create current selections object ---
+    // --- parse variants JSON ---
+    const productVariants = JSON.parse(document.getElementById('ProductVariantsJSON').textContent);
+
+    // --- track current selections ---
     const selectedOptions = {};
-    variantRadios.forEach(radio => {
-      const index = radio.dataset.optionIndex;
-      if (radio.checked) selectedOptions[index] = radio.value;
+    radios.forEach((radio) => {
+      selectedOptions[radio.dataset.optionIndex] = radio.checked
+        ? radio.value
+        : selectedOptions[radio.dataset.optionIndex];
     });
 
-    // --- product variants JSON (from Liquid) ---
-    const productVariants = {{ product.variants | json }};
-
-    function findMatchingVariant() {
-      return productVariants.find(v =>
-        v.options.every((opt, i) => selectedOptions[i] === opt)
-      );
+    // --- find variant from selected options ---
+    function findVariant() {
+      return productVariants.find((v) => v.options.every((opt, i) => selectedOptions[i] === opt));
     }
 
+    // --- update UI ---
     function updateUI(variant) {
       if (!variant) return;
 
-      // Main image
-      if (mainImage && variant.featured_image && variant.featured_image.src) {
-        mainImage.src = variant.featured_image.src;
-        if (variant.featured_image.alt) mainImage.alt = variant.featured_image.alt;
-      }
-
-      // SKU
+      if (mainImage && variant.featured_image) mainImage.src = variant.featured_image;
       if (skuEl) skuEl.textContent = variant.sku ? 'SKU: ' + variant.sku : 'SKU: —';
-
-      // Material name (optional)
-      if (materialNameEl) materialNameEl.textContent = variant.metafields?.HENK?.material?.value?.[0]?.name || '';
-
-      // Price
+      if (materialEl) materialEl.textContent = variant.material_name || '';
       if (priceEl) priceEl.textContent = formatPriceEUR(variant.price);
 
-      // URL
-      const url = new URL(window.location.href);
-      url.searchParams.set('variant', variant.id);
-      window.history.replaceState({}, '', url);
+      // update hidden input for form submission
+      const hiddenInput = document.getElementById('SelectedVariantId');
+      if (hiddenInput) hiddenInput.value = variant.id;
+
+      // update URL param
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.set('variant', variant.id);
+        window.history.replaceState({}, '', url);
+      } catch (e) {}
     }
 
-    // --- listen for changes ---
-    variantRadios.forEach(radio => {
+    // --- attach listeners ---
+    radios.forEach((radio) => {
       radio.addEventListener('change', function () {
-        const index = this.dataset.optionIndex;
-        selectedOptions[index] = this.value;
-
-        const matchedVariant = findMatchingVariant();
-        updateUI(matchedVariant);
+        selectedOptions[this.dataset.optionIndex] = this.value;
+        const variant = findVariant();
+        updateUI(variant);
       });
     });
 
-    // --- initial UI update ---
-    const initialVariant = findMatchingVariant();
+    // --- initial UI ---
+    const initialVariant = findVariant();
     updateUI(initialVariant);
-
   });
 </script>

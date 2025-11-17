@@ -26,6 +26,7 @@
                     type="radio"
                     name="option-{{ option_index }}"
                     value="{{ value.name }}"
+                    data-option-index="{{ option_index }}"
                     {% if current_variant.options[option_index] == value.name %}
                       checked
                     {% endif %}

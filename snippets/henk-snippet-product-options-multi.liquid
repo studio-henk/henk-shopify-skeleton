@@ -238,12 +238,30 @@
       }
       console.log('updateUI -> Updating UI with variant:', variant);
 
+      // if (mainImage && variant.featured_image) mainImage.src = variant.featured_image;
+      // if (skuEl) skuEl.textContent = variant.sku ? 'SKU: ' + variant.sku : 'SKU: —';
+      // if (materialEl) materialEl.textContent = variant.material_name || '';
+      // if (priceEl)
+      //   priceEl.textContent = (variant.price / 100).toLocaleString('nl-NL', { style: 'currency', currency: 'EUR' });
+      // if (hiddenInput) hiddenInput.value = variant.id;
+
+      // Update main image
       if (mainImage && variant.featured_image) mainImage.src = variant.featured_image;
+
+      // SKU
       if (skuEl) skuEl.textContent = variant.sku ? 'SKU: ' + variant.sku : 'SKU: —';
-      if (materialEl) materialEl.textContent = variant.material_name || '';
-      if (priceEl)
-        priceEl.textContent = (variant.price / 100).toLocaleString('nl-NL', { style: 'currency', currency: 'EUR' });
+
+      // Price
+      if (priceEl) priceEl.textContent = formatPriceEUR(variant.price);
+
+      // Hidden input for form submission
       if (hiddenInput) hiddenInput.value = variant.id;
+
+      // Selected material / options text
+      if (materialEl) {
+        // Join all selected options with " / "
+        materialEl.textContent = variant.options.join(' / ');
+      }
 
       try {
         const url = new URL(window.location.href);
@@ -251,22 +269,6 @@
         window.history.replaceState({}, '', url);
       } catch (e) {}
     }
-    // function updateUI(variant) {
-    //   if (!variant) return;
-    //
-    //   if (mainImage && variant.featured_image) mainImage.src = variant.featured_image;
-    //   if (skuEl) skuEl.textContent = variant.sku ? 'SKU: ' + variant.sku : 'SKU: —';
-    //   if (materialEl) materialEl.textContent = variant.material_name || '';
-    //   if (priceEl) priceEl.textContent = formatPriceEUR(variant.price);
-    //   if (hiddenInput) hiddenInput.value = variant.id;
-    //
-    //   // Update browser URL param
-    //   try {
-    //     const url = new URL(window.location.href);
-    //     url.searchParams.set('variant', variant.id);
-    //     window.history.replaceState({}, '', url);
-    //   } catch (e) {}
-    // }
 
     // --- listen for changes ---
     radios.forEach((radio) => {

@@ -6,12 +6,6 @@
 {% assign euros = amount | divided_by: 100 %}
 {% assign cents = amount | modulo: 100 %}
 
-{% comment %} {% if cents > 0 %} {% endcomment %}
-{% comment %}   € {{ euros }},{{ cents | prepend: '0' }} {% endcomment %}
-{% comment %} {% else %} {% endcomment %}
-{% comment %}   € {{ euros }} {% endcomment %}
-{% comment %} {% endif %} {% endcomment %}
-
 {%- comment -%}
   Convert euros to string and reverse for grouping
 {%- endcomment -%}

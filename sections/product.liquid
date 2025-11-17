@@ -72,6 +72,13 @@
               options: {{ number_of_product_options }}
             {% elsif number_of_product_options == 1 %}
               options: {{ number_of_product_options }} - variants: {{ number_of_product_variants }}
+
+              {%- comment -%} NOTE: single variant, no options {%- endcomment -%}
+              {% if number_of_product_variants == 1 %}
+              {% else %}
+
+              {% endif %}
+
             {% elsif number_of_product_options > 1 %}
               more than 1 option variants: {{ number_of_product_variants }}
             {% endif %}

@@ -1,28 +1,27 @@
-{% comment %}
-  Usage:
-    {% render 'henk-money', amount: current_variant.price %}
-{% endcomment %}
-
 {% assign euros = amount | divided_by: 100 %}
 {% assign cents = amount | modulo: 100 %}
 
 {% assign euros_str = euros | append: '' %}
 {% assign formatted_euros = '' %}
+
 {% assign len = euros_str | size %}
+{% assign i = 0 %}
 
-{% for i in (0..len-1) %}
-  {% assign c = euros_str | slice: len-1-i, 1 %}
-  {% assign formatted_euros = c | append: formatted_euros %}
+{% for c in euros_str %}
+  {% assign pos_from_right = len | minus: i | minus: 1 %}
+  {% assign mod3 = pos_from_right | modulo: 3 %}
 
-  {% assign pos_from_right = i | plus: 1 %}
-  {% if pos_from_right modulo 3 == 0 and pos_from_right != len %}
-    {% assign formatted_euros = '.' | append: formatted_euros %}
+  {% assign formatted_euros = formatted_euros | append: c %}
+
+  {% if mod3 == 0 and pos_from_right != 0 %}
+    {% assign formatted_euros = formatted_euros | append: '.' %}
   {% endif %}
+
+  {% assign i = i | plus: 1 %}
 {% endfor %}
 
 {% if cents > 0 %}
-  {% assign cents_str = cents | prepend: '0' | slice: -2, 2 %}
-  €&nbsp;{{ formatted_euros }},{{ cents_str }}
+  €&nbsp;{{ formatted_euros }},{{ cents | prepend: '0' }}
 {% else %}
   €&nbsp;{{ formatted_euros }}
 {% endif %}

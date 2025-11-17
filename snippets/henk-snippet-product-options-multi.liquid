@@ -257,8 +257,8 @@
     // --- listen for changes ---
     radios.forEach((radio) => {
       radio.addEventListener('change', function () {
-        const idx = this.dataset.optionIndex;
-        selectedOptions[idx] = this.value; // set selection to variant option value
+        console.log('Radio changed -> index:', this.dataset.optionIndex, 'value:', this.value);
+        selectedOptions[this.dataset.optionIndex] = this.value;
 
         const variant = findVariant();
         updateUI(variant);

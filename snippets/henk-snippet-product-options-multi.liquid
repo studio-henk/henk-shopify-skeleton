@@ -184,6 +184,7 @@
                     data-featured-image="{{ matched_variant.featured_image | image_url: width: 1134 }}"
                     data-sku="{{ matched_variant.sku }}"
                     data-price="{{ matched_variant.price }}"
+                    data-option-index="{{ option_index }}"
                     {% if current_variant.options[option_index] == value.name %}
                       checked
                     {% endif %}

@@ -69,9 +69,9 @@
             {% assign number_of_product_variants = product.variants.size %}
 
             {% if number_of_product_options == 0 %}
-              0 options
+              options: {{ number_of_product_options }}
             {% elsif number_of_product_options == 1 %}
-              1 option - variants: {{ number_of_product_variants }}
+              options: {{ number_of_product_options }} - variants: {{ number_of_product_variants }}
             {% elsif number_of_product_options > 1 %}
               more than 1 option variants: {{ number_of_product_variants }}
             {% endif %}

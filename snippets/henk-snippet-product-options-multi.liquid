@@ -129,10 +129,10 @@
                     class="henk-radio"
                     type="radio"
                     name="option-{{ option_index }}"
-                    value="{{ matched_variant.options[option_index] }}"
+                    value="{{ value.name }}"
                     title="{{ value.name }}"
                     data-option-index="{{ option_index }}"
-                    {% if current_variant.options[option_index] == matched_variant.options[option_index] %}
+                    {% if current_variant.options[option_index] == value.name %}
                       checked
                     {% endif %}
                   >

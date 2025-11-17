@@ -146,7 +146,7 @@
 
                           {% if matched_variant %}
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
-                            {{ matched_variant.featured_image | json }}
+                            {% comment %} {{ matched_variant.featured_image | json }} {% endcomment %}
                             {% assign material_data = matched_variant.metafields.HENK.material.value | first %}
                             {% comment %} {{ material_data | json }} {% endcomment %}
                             {% comment %} {{ material_data.name }} {% endcomment %}

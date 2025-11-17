@@ -162,7 +162,7 @@
                                   value="{{ value.variant.id }}"
                                   title="{{ material_data.name }}"
                                   data-featured-image="{{ material_data.variant.featured_image | image_url: width: 1134 }}"
-                                  data-material-name="{{ material_name }}"
+                                  data-material-name="{{ material_data.name }}"
                                   data-sku="{{ value.variant.sku }}"
                                   {% if value.variant.id == current_variant.id %}
                                     checked

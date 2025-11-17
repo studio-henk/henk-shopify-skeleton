@@ -2,12 +2,46 @@
 {% comment %} {{ product.options | json }} {% endcomment %}
 {% comment %} {{ product.options_by_name | json }} {% endcomment %}
 
-{% for key in product.metafields.HENK %}
-  {{ key }}: {{ product.metafields.HENK[key].value }}
-{% endfor %}
+{% comment %} {% for key in product.metafields.HENK %} {% endcomment %}
+{% comment %}   {{ key }}: {{ product.metafields.HENK[key].value }} {% endcomment %}
+{% comment %} {% endfor %} {% endcomment %}
+{% comment %}{% endcomment %}
+{% comment %} {% for key in current_variant.metafields.HENK %} {% endcomment %}
+{% comment %}   {{ key }}: {{ current_variant.metafields.HENK[key].value }} {% endcomment %}
+{% comment %} {% endfor %} {% endcomment %}
 
-{% for key in current_variant.metafields.HENK %}
-  {{ key }}: {{ current_variant.metafields.HENK[key].value }}
+{% comment %}
+  Loop through all variants of the product
+  Show:
+    - variant.id
+    - variant title
+    - built-in options (Color, Size, etc.)
+    - any metafields in HENK namespace
+{% endcomment %}
+
+{% for variant in product.variants %}
+  <h3>Variant: {{ variant.title }} (ID: {{ variant.id }})</h3>
+
+  <ul>
+    {% for i in (1..3) %}
+      {% assign option_value = variant["option" | append: i ] %}
+      {% if option_value %}
+        <li>Option {{ i }}: {{ option_value }}</li>
+      {% endif %}
+    {% endfor %}
+
+    {% for key in variant.metafields.HENK %}
+      {% assign mf = variant.metafields.HENK[key] %}
+      <li>
+        Metafield {{ key }}:
+        {% if mf.value %}
+          {{ mf.value | json }}
+        {% else %}
+          empty
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
 {% endfor %}
 
 <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">

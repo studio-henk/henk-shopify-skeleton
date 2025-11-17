@@ -166,9 +166,11 @@
                                   data-featured-image="{{ matched_variant.featured_image | image_url: width: 1134 }}"
                                   data-material-name="{{ material_data.name }}"
                                   data-sku="{{ value.variant.sku }}"
-                                  {% if value.variant.id == current_variant.id %}
-                                    checked
-                                  {% endif %}
+                                  data-price="{{ matched_variant.price | times: 100 }}"
+                                >
+                                {% if value.variant.id == current_variant.id %}
+                                  checked
+                                {% endif %}
                                 >
 
                                 <span

@@ -218,21 +218,41 @@
 
     // --- update UI with given variant ---
     function updateUI(variant) {
-      if (!variant) return;
+      if (!variant) {
+        console.log('updateUI -> No variant matched!');
+        return;
+      }
+      console.log('updateUI -> Updating UI with variant:', variant);
 
       if (mainImage && variant.featured_image) mainImage.src = variant.featured_image;
       if (skuEl) skuEl.textContent = variant.sku ? 'SKU: ' + variant.sku : 'SKU: —';
       if (materialEl) materialEl.textContent = variant.material_name || '';
-      if (priceEl) priceEl.textContent = formatPriceEUR(variant.price);
+      if (priceEl)
+        priceEl.textContent = (variant.price / 100).toLocaleString('nl-NL', { style: 'currency', currency: 'EUR' });
       if (hiddenInput) hiddenInput.value = variant.id;
 
-      // Update browser URL param
       try {
         const url = new URL(window.location.href);
         url.searchParams.set('variant', variant.id);
         window.history.replaceState({}, '', url);
       } catch (e) {}
     }
+    // function updateUI(variant) {
+    //   if (!variant) return;
+    //
+    //   if (mainImage && variant.featured_image) mainImage.src = variant.featured_image;
+    //   if (skuEl) skuEl.textContent = variant.sku ? 'SKU: ' + variant.sku : 'SKU: —';
+    //   if (materialEl) materialEl.textContent = variant.material_name || '';
+    //   if (priceEl) priceEl.textContent = formatPriceEUR(variant.price);
+    //   if (hiddenInput) hiddenInput.value = variant.id;
+    //
+    //   // Update browser URL param
+    //   try {
+    //     const url = new URL(window.location.href);
+    //     url.searchParams.set('variant', variant.id);
+    //     window.history.replaceState({}, '', url);
+    //   } catch (e) {}
+    // }
 
     // --- listen for changes ---
     radios.forEach((radio) => {

@@ -148,7 +148,8 @@
                             {% comment %} {{ matched_variant.metafields.HENK.material.value | json }} {% endcomment %}
 
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
-                            {% assign material = matched_variant.metafields.HENK.material %}
+                            {% assign material_gid = matched_variant.metafields.HENK.material %}
+                            {% assign material = material_gid | metaobject %}
                             {% comment %} {{ material.value | json }} {% endcomment %}
                             {{ material }}
                           {% endif %}

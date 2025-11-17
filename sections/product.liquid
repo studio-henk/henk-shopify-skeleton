@@ -79,7 +79,7 @@
               {% else %}
                 {% comment %} NOTE: multiple variants, show options {% endcomment %}
 
-                {% render 'henk-snippet-product-options' %}
+                {% render 'henk-snippet-product-options', product: product, current_variant: current_variant %}
               {% endif %}
 
             {% elsif number_of_product_options > 1 %}

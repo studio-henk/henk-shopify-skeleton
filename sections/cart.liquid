@@ -40,9 +40,9 @@
               {% comment %} {{ item.error_message | json }} {% endcomment %}
               {% comment %} {{ item.product | json }} {% endcomment %}
               {% comment %} {{ item.variant.title | json }} {% endcomment %}
-              {{ item.id | json }}
-              {{ item.key | json }}
-              {{ item.sku | json }}
+              {% comment %} {{ item.id | json }} {% endcomment %}
+              {% comment %} {{ item.key | json }} {% endcomment %}
+              {% comment %} {{ item.sku | json }} {% endcomment %}
               {% comment %} {% assign variant = item.product.variants | where: 'id', item.variant_id | first %} {% endcomment %}
               <li class="henk-cart-section__list-item">
                 <img

@@ -145,8 +145,9 @@
                           {% endfor %}
 
                           {% if matched_variant %}
+                            {{ matched_variant | json }}
                             {% assign material_data = matched_variant.metafields.HENK.material.value | first %}
-                            {{ material_data | json }}
+                            {% comment %} {{ material_data | json }} {% endcomment %}
                             {% comment %} {{ material_data.name }} {% endcomment %}
                             {% comment %} {{ material_data.color }} {% endcomment %}
 

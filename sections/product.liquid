@@ -155,11 +155,16 @@
                             {{ material_data.name }}
                             {{ material_data.color }}
                             {{ material_data.swatch | replace: 'gid://', '//cdn.shopify.com/' }}
-                            <img
-                              src="{{ material_data.swatch | replace: 'gid://', '//cdn.shopify.com/' }}"
-                              width="44"
-                              height="44"
-                            >
+
+                            {% assign swatch_gid = material_data.swatch %}
+                            {% assign swatch_image = swatch_gid | media_image %}
+                            <img src="{{ swatch_image | image_url: '44x44' }}" width="44" height="44">
+
+                            <!-- <img -->
+                            <!-- src="{{ material_data.swatch | replace: 'gid://', '//cdn.shopify.com/' }}" -->
+                            <!-- width="44" -->
+                            <!-- height="44" -->
+                            <!-- > -->
 
                             {% comment %} {{ matched_variant | json }} {% endcomment %}
                             {% assign material_gid = matched_variant.metafields.HENK.material %}

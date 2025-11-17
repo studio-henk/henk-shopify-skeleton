@@ -132,7 +132,7 @@
                     value="{{ matched_variant.options[option_index] }}"
                     title="{{ value.name }}"
                     data-option-index="{{ option_index }}"
-                    {% if current_variant.options[option_index] == value.name %}
+                    {% if current_variant.options[option_index] == matched_variant.options[option_index] %}
                       checked
                     {% endif %}
                   >

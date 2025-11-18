@@ -232,7 +232,7 @@
           //   priceButton.href = `${card.dataset.baseUrl}?variant=${swatch.dataset.variantId}`;
           //   priceButton.textContent = swatch.dataset.variantPrice.trim();
           // }
-
+          console.log('Swatch hovered:', swatch.dataset.variantPrice, 'priceEl:', priceEl);
           if (isMacs && priceEl) {
             priceEl.textContent = activeSwatch.dataset.variantPrice.trim();
           } else if (priceButton) {

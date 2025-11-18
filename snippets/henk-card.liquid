@@ -2,34 +2,71 @@
 {% comment %} {{ product | json }} {% endcomment %}
 {% comment %} {{ product.tags | json }} {% endcomment %}
 
-<div class="henk-card {% if card_variant %} henk-card--{{ card_variant }}{% endif %}">
+{% assign card_url = product.url %}
+{% if variant %}
+  {% assign card_url = product.url | append: '?variant=' | append: variant.id %}
+{% endif %}
+
+<div class="henk-card {% if card_variant %} henk-card--{{ card_variant }}{% endif %}" data-base-url="{{ product.url }}">
   <a
-    href="{{ product.url }}"
+    href="{{ card_url }}"
     class="henk-card__image-link"
+    id="image-link-{{ product.id }}"
   >
     <figure class="henk-card__image-container">
-      {% if product.featured_image %}
+      {% assign img = variant.featured_image | default: product.featured_image %}
+      {% if img %}
         <img
+          id="card-{{ product.id }}"
           class="henk-card__img"
-          src="{{ product.featured_image | image_url: width: 1134}}"
-          alt="{{ product.title }}"
+          src="{{ img | image_url: width: 1134 }}"
+          alt="{{ img.alt | default: product.title }}"
           width="1134"
           height="1134"
         >
       {% else %}
         {{ 'image' | placeholder_svg_tag }}
-        <!-- <img -->
-        <!-- class="henk-card__img" -->
-        <!-- src="https://placehold.co/1000x1000" -->
-        <!-- alt="No image available" -->
-        <!-- width="1000" -->
-        <!-- height="1000" -->
-        <!-- > -->
       {% endif %}
     </figure>
   </a>
+  {% if show_variants_on_card %}
+    <div class="henk-card__variant-selector">
+      {% if product.variants.size > 1 %}
+        {% assign max_variants = 5 %}
+        {% assign first_variant = product.variants.first %}
+        {% for variant in product.variants limit: max_variants %}
+          {% if variant.featured_image %}
+            {%- comment -%}:SWATCH{%- endcomment -%}
+            <a
+              href="{{ product.url }}?variant={{ variant.id }}"
+              class="henk-card__variant-swatch {% if variant.id == first_variant.id %}is-active{% endif %}"
+              data-main-id="card-{{ product.id }}"
+              data-subtitle-id="subtitle-{{ product.id }}"
+              data-variant-img="{{ variant.featured_image | image_url: width: 1134 }}"
+              data-variant-title="{{ variant.title }}"
+              data-variant-id="{{ variant.id }}"
+              data-variant-price="{{ variant.price | money_without_trailing_zeros }}"
+            >
+              <img
+                src="{{ variant.featured_image | image_url: width: 44, height: 44 }}"
+                alt="{{ variant.title }}"
+                width="44"
+                height="44"
+              >
+            </a>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endif %}
   <div class="henk-card__content">
     <p class="henk-card__title truncate">{{ product.title }}</p>
+
+    {% if variant %}
+      <p class="henk-card__subtitle" id="subtitle-{{ product.id }}">{{ variant.title }}</p>
+    {% else %}
+      <p class="henk-card__subtitle">???</p>
+    {% endif %}
 
     {% if card_variant == null %}
       {% if product.metafields.custom.short_description != blank %}
@@ -40,15 +77,6 @@
           {{ product.metafields.custom.short_description }}
         </p>
       {% endif %}
-      {% comment %}
-        <p class="henk-card__description truncate" title="{{ product.description }}">
-          {% if product.description != blank %}
-            {{ product.description }}
-          {% else %}
-            {{ 'card.no_description' | t }}
-          {% endif %}
-        </p>
-      {% endcomment %}
     {% else %}
       <p class="henk-card__price">
         {% if product.price_varies %}
@@ -71,9 +99,10 @@
 
       {% render 'henk-button',
         element: 'a',
-        href: product.url,
+        href: card_url,
         label: price_label,
-        extra_classes: 'henk-card__button'
+        extra_classes: 'henk-card__button',
+        id: 'price-link-#{product.id}'
       %}
     {% endif %}
   </div>
@@ -85,3 +114,25 @@
     </div>
   {% endif %}
 </div>
+<style>
+  .henk-card__variant-selector {
+    display: flex;
+    gap: 8px;
+  }
+
+  .henk-card__variant-swatch {
+    border-radius: 100%;
+    aspect-ratio: 1 / 1;
+    border: 1px solid transparent;
+  }
+
+  .henk-card__variant-swatch.is-active {
+    border: 1px solid black;
+  }
+
+  .henk-card__variant-swatch img {
+    margin-bottom: 0;
+    border-radius: 100%;
+    aspect-ratio: 1 / 1;
+  }
+</style>

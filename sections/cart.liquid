@@ -36,6 +36,14 @@
         <div class="henk-cart-section__grid-item">
           <ul class="henk-cart-section__list">
             {% for item in cart.items %}
+              {% comment %} {{ item | json }} {% endcomment %}
+              {% comment %} {{ item.error_message | json }} {% endcomment %}
+              {% comment %} {{ item.product | json }} {% endcomment %}
+              {% comment %} {{ item.variant.title | json }} {% endcomment %}
+              {% comment %} {{ item.id | json }} {% endcomment %}
+              {% comment %} {{ item.key | json }} {% endcomment %}
+              {% comment %} {{ item.sku | json }} {% endcomment %}
+              {% comment %} {% assign variant = item.product.variants | where: 'id', item.variant_id | first %} {% endcomment %}
               <li class="henk-cart-section__list-item">
                 <img
                   class="henk-cart-section__item-image"
@@ -46,16 +54,24 @@
                 >
                 <div class="henk-cart-section__item-info">
                   <p class="henk-cart-section__item-title">{{ item.product.title }}</p>
+                  <p class="henk-cart-section__item-variant">
+                    {% comment %} {{ variant.option1 -}} {% endcomment %}
+                    {% comment %} {%- if variant.option2 %} / {{ variant.option2 }}{% endif %} {% endcomment %}
+                    {{ item.variant.title }}
+                  </p>
 
                   <div class="henk-cart-section__item-controls">
-                    <henk-quantity-stepper name="updates[]" value="{{item.quantity}}"></henk-quantity-stepper>
+                    <henk-quantity-stepper
+                      name="updates[{{ item.key }}]"
+                      value="{{item.quantity}}"
+                    ></henk-quantity-stepper>
                     <input
                       class="henk-cart-section__item-quantity"
                       data-js-replace
                       type="text"
                       inputmode="numeric"
                       pattern="[0-9]*"
-                      name="updates[]"
+                      name="updates[{{ item.key }}]"
                       value="{{ item.quantity }}"
                     >
                     <input
@@ -64,7 +80,9 @@
                       class="henk-button henk-cart-section__item-update-button"
                       data-js-replacex
                     >
+
                     {% assign remove_label = 'cart.remove' | t %}
+
                     {% render 'henk-button',
                       element: 'a',
                       label: remove_label,
@@ -162,11 +180,15 @@
   <script type="module" src="{{ 'henk-quantity-stepper.js' | asset_url }}"></script>
 
   <script>
-    customElements.whenDefined('henk-quantity-stepper').then(() => {
-      // find all non-JS inputs you want to replace
-      document.querySelectorAll('[data-js-replace]').forEach((input) => {
-        input.remove(); // safely remove after the component is ready
-      });
+    // customElements.whenDefined('henk-quantity-stepper').then(() => {
+    //   // find all non-JS inputs you want to replace
+    //   document.querySelectorAll('[data-js-replace]').forEach((input) => {
+    //     input.remove(); // safely remove after the component is ready
+    //   });
+    // });
+
+    document.querySelectorAll('[data-js-replace]').forEach((input) => {
+      input.remove();
     });
 
     const steppers = document.querySelectorAll('henk-quantity-stepper');
@@ -216,8 +238,13 @@
 
   .henk-cart-section__item-title {
     margin-block-start: 0;
+    margin-block-end: 0;
     font-size: 31px;
     font-weight: 500;
+  }
+
+  .henk-cart-section__item-variant {
+    margin-block-start: 0;
   }
 
   .henk-cart-section__item-image {

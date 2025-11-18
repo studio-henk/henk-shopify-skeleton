@@ -1,0 +1,66 @@
+{%- comment -%}
+  hero-block.liquid
+  A flexible hero block supporting either an image or a video background.
+
+  Props:
+  - type: 'image' or 'video'
+  - image: image URL (Shopify file or object)
+  - video: video URL or media object
+  - video_has_audio: boolean
+  - video_poster: image URL
+  - caption, title, text: optional strings
+  - button_label, button_url, button_variant: optional CTA button
+{%- endcomment -%}
+
+<section class="henk-hero" id="henk-hero">
+  <div class="henk-hero__inner">
+    {%- if type == 'video' and video -%}
+      {%- render 'henk-video',
+        id: 'hero-video',
+        src: video,
+        autoplay: true,
+        loop: true,
+        has_audio: video_has_audio,
+        poster: video_poster,
+        cover: true,
+        rounded: false,
+        description: title
+      -%}
+
+    {%- elsif type == 'image' and image -%}
+      {%- assign img_width = 2000 -%}
+      {%- assign img_height = 1125 -%}
+      <img
+        src="{{ image | image_url: width: img_width }}"
+        alt="{{ title | escape }}"
+        width="{{ img_width }}"
+        height="{{ img_height }}"
+        class="henk-hero__image"
+        loading="lazy"
+      >
+    {%- endif -%}
+
+    <div class="henk-hero__content">
+      {%- if caption -%}
+        <p class="henk-hero__caption">{{ caption }}</p>
+      {%- endif -%}
+
+      {%- if title -%}
+        <h1 class="henk-hero__title">{{ title }}</h1>
+      {%- endif -%}
+
+      {%- if text -%}
+        <p class="henk-hero__text">{{ text }}</p>
+      {%- endif -%}
+
+      {%- if button_label and button_url -%}
+        <a
+          href="{{ button_url }}"
+          class="henk-button henk-button--{{ button_variant | default: 'primary' }} henk-hero__button"
+        >
+          {{ button_label }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>

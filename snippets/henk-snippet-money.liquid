@@ -1,0 +1,58 @@
+{% assign euros = amount | divided_by: 100 %}
+{% assign cents = amount | modulo: 100 %}
+
+{% assign euros_str = euros | append: '' %}
+{% assign reversed = euros_str | split: '' | reverse %}
+{% assign formatted_reversed = '' %}
+
+{% assign i = 0 %}
+{% for c in reversed %}
+  {% assign formatted_reversed = formatted_reversed | append: c %}
+
+  {% assign i = i | plus: 1 %}
+  {% assign mod3 = i | modulo: 3 %}
+
+  {% if mod3 == 0 and forloop.last == false %}
+    {% assign formatted_reversed = formatted_reversed | append: '.' %}
+  {% endif %}
+{% endfor %}
+
+{% assign formatted_euros = formatted_reversed | split: '' | reverse | join: '' %}
+
+{% if cents > 0 %}
+  €&nbsp;{{ formatted_euros }},{{ cents | prepend: '0' }}
+{% else %}
+  €&nbsp;{{ formatted_euros }}
+{% endif %}
+
+{% comment %} {% assign euros = amount | divided_by: 100 %} {% endcomment %}
+{% comment %} {% assign cents = amount | modulo: 100 %} {% endcomment %}
+{% comment %}{% endcomment %}
+{% comment %} {% assign euros_str = euros | append: '' %} {% endcomment %}
+{% comment %} {% assign formatted_euros = '' %} {% endcomment %}
+{% comment %}{% endcomment %}
+{% comment %} {% assign len = euros_str | size %} {% endcomment %}
+{% comment %} {% assign i = 0 %} {% endcomment %}
+{% comment %}{% endcomment %}
+{% comment %} {% for c in euros_str %} {% endcomment %}
+{% comment %}   {% assign pos_from_right = len | minus: i | minus: 1 %} {% endcomment %}
+{% comment %}   {% comment %} {% assign mod3 = pos_from_right | modulo: 3 %} {% endcomment %} {% endcomment %}
+{% comment %}   {% comment %} {% assign mod3 = (i | plus: 1) | modulo: 3 %} {% endcomment %} {% endcomment %}
+{% comment %}{% endcomment %}
+{% comment %}   {%- assign pos_adj = pos_from_right | plus: 1 -%} {% endcomment %}
+{% comment %}   {%- assign mod3 = pos_adj | modulo: 3 -%} {% endcomment %}
+{% comment %}{% endcomment %}
+{% comment %}   {% assign formatted_euros = formatted_euros | append: c %} {% endcomment %}
+{% comment %}{% endcomment %}
+{% comment %}   {% if mod3 == 0 and pos_from_right != 0 %} {% endcomment %}
+{% comment %}     {% assign formatted_euros = formatted_euros | append: '.' %} {% endcomment %}
+{% comment %}   {% endif %} {% endcomment %}
+{% comment %}{% endcomment %}
+{% comment %}   {% assign i = i | plus: 1 %} {% endcomment %}
+{% comment %} {% endfor %} {% endcomment %}
+{% comment %}{% endcomment %}
+{% comment %} {% if cents > 0 %} {% endcomment %}
+{% comment %}   €&nbsp;{{ formatted_euros }},{{ cents | prepend: '0' }} {% endcomment %}
+{% comment %} {% else %} {% endcomment %}
+{% comment %}   €&nbsp;{{ formatted_euros }} {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}

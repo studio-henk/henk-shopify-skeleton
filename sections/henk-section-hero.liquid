@@ -1,0 +1,109 @@
+{% comment %}
+  Hero Block Section
+  Uses the 'hero-block' snippet for rendering.
+  Supports both image and video types.
+{% endcomment %}
+
+{% render 'henk-snippet-hero',
+  type: section.settings.type,
+  image: section.settings.image,
+  video: section.settings.video,
+  video_has_audio: section.settings.video_has_audio,
+  video_poster: section.settings.video_poster,
+  caption: section.settings.caption,
+  title: section.settings.title,
+  text: section.settings.text,
+  button_label: section.settings.button_label,
+  button_url: section.settings.button_url,
+  button_variant: section.settings.button_variant
+%}
+
+{% schema %}
+{
+  "name": "Hero Block",
+  "settings": [
+    {
+      "type": "select",
+      "id": "type",
+      "label": "Hero type",
+      "options": [
+        { "value": "image", "label": "Image" },
+        { "value": "video", "label": "Video" }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image",
+      "visible_if": "{{ section.settings.type == 'image' }}"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Background video",
+      "visible_if": "{{ section.settings.type == 'video' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "video_has_audio",
+      "label": "Video has audio",
+      "default": false,
+      "visible_if": "{{ section.settings.type == 'video' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "video_poster",
+      "label": "Video poster image",
+      "visible_if": "{{ section.settings.type == 'video' }}"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption",
+      "default": "Welcome"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Explore Our Collection"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Discover the best products tailored for you."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "button_variant",
+      "label": "Button style",
+      "options": [
+        { "value": "primary", "label": "Primary" },
+        { "value": "secondary", "label": "Secondary" },
+        { "value": "tertiary", "label": "Tertiary" },
+        { "value": "ghost", "label": "Ghost" }
+      ],
+      "default": "primary"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Block",
+      "category": "HENK Sections"
+    }
+  ]
+}
+{% endschema %}

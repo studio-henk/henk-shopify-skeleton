@@ -12,11 +12,14 @@
 
 {% comment %} {% assign show_variants = true %} {% endcomment %}
 {% assign show_variants = false %}
+{% assign show_variants_on_card = true %}
+{% assign card_variant = null %}
+{% comment %} {% assign card_variant = 'macs' %} {% endcomment %}
 
 {% comment %} {{ collection.all_products_count }} {% endcomment %}
 {% if collection.all_products_count > 0 %}
   <section class="shopify-section henk-section" id="shopify-section-lister">
-    {% if collection.all_products_count > 1 %}
+    {% if collection.all_products_count > 0 %}
       <div class="henk-grid-options-bar">
         <div class="henk-grid-options-bar__filters">
           <form>
@@ -25,19 +28,26 @@
             {% for filter in collection.filters %}
               {% assign active_filters_count = active_filters_count | plus: filter.active_values.size %}
             {% endfor %}
+
+            {% if active_filters_count > 0 %}
+              <a
+                href="{{ collection.url }}"
+                class="
+                  henk-button
+                  henk-button--small
+                  filters-widget__reset-button
+                "
+                >Reset</a
+              >
+            {% endif %}
+
+            {% comment %} {{ collection.filters.size | json }} {% endcomment %}
+
             <details id="filters-widget">
               <summary>
                 Filters
                 {% if active_filters_count > 0 %}
                   <span class="filters-widget__active-num">({{ active_filters_count }} applied)</span>
-                  <a
-                    href="{{ collection.url }}"
-                    class="
-                      henk-button
-                      henk-button--ghost henk-button--small
-                    "
-                    >Reset</a
-                  >
                 {% endif %}
               </summary>
               <div class="henk-details-group henk-details-group--horizontalx">
@@ -132,20 +142,8 @@
               </div>
             </details>
           </form>
-          {% comment %}
-            {% render 'grid-filter-widget' %}
-          {% endcomment %}
         </div>
-        <!-- <div class="henk-grid-options-bar__variants"> -->
-        <!-- <form method="get"> -->
-        <!-- <input type="hidden" name="show_variants" value="true"> -->
-        <!-- <button type="submit">Show Variants</button> -->
-        <!-- </form> -->
-        <!-- </div> -->
         <div class="henk-grid-options-bar__sort">
-          {% comment %}
-            {% render 'grid-sort-widget' %}
-          {% endcomment %}
           {% render 'henk-collection-sort' %}
         </div>
       </div>
@@ -156,11 +154,23 @@
           {% if show_variants %}
             {% for variant in product.variants %}
               <!-- render variant card -->
-              {% render 'henk-card', product: variant, collection: collection, card_variant: null %}
+              {% render 'henk-card',
+                product: product,
+                variant: variant,
+                collection: collection,
+                card_variant: card_variant
+              %}
+              {% comment %} {% render 'henk-card', product: variant, collection: collection, card_variant: null %} {% endcomment %}
             {% endfor %}
           {% else %}
-            <!-- render product card only -->
-            {% render 'henk-card', product: product, collection: collection, card_variant: null %}
+            {% assign first_variant = product.variants | first %}
+            {% render 'henk-card',
+              product: product,
+              variant: first_variant,
+              collection: collection,
+              card_variant: card_variant,
+              show_variants_on_card: show_variants_on_card
+            %}
           {% endif %}
         {% endfor %}
         {{ paginate | default_pagination }}
@@ -177,6 +187,44 @@
     %}
   </div>
 {% endif %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.henk-card').forEach((card) => {
+      const imageLink = card.querySelector('.henk-card__image-link');
+      const priceButton = card.querySelector('.henk-card__button');
+      const mainImg = card.querySelector('.henk-card__img');
+      const subtitle = card.querySelector('.henk-card__subtitle');
+      const swatches = card.querySelectorAll('.henk-card__variant-swatch');
+
+      if (!imageLink || !priceButton || !mainImg || !subtitle || swatches.length === 0) return;
+
+      // --- Set default active swatch ---
+      const activeSwatch = card.querySelector('.henk-card__variant-swatch.is-active') || swatches[0];
+      mainImg.src = activeSwatch.dataset.variantImg;
+      subtitle.textContent = activeSwatch.dataset.variantTitle;
+      imageLink.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
+      priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
+      priceButton.textContent = activeSwatch.dataset.variantPrice.trim();
+
+      // --- Hover behavior ---
+      swatches.forEach((swatch) => {
+        swatch.addEventListener('mouseenter', () => {
+          mainImg.src = swatch.dataset.variantImg;
+          subtitle.textContent = swatch.dataset.variantTitle;
+          imageLink.href = `${card.dataset.baseUrl}?variant=${swatch.dataset.variantId}`;
+          priceButton.href = `${card.dataset.baseUrl}?variant=${swatch.dataset.variantId}`;
+          priceButton.textContent = swatch.dataset.variantPrice.trim();
+
+          // Highlight active swatch
+          swatches.forEach((s) => s.classList.remove('is-active'));
+          swatch.classList.add('is-active');
+        });
+      });
+    });
+  });
+</script>
+
 {% stylesheet %}
   .henk-grid-options-bar {
     display: flex;
@@ -227,6 +275,12 @@
     }
   }
 
+  .filters-widget__reset-button {
+    position: absolute;
+    right: -96px;
+    top: 0;
+  }
+
   details#filters-widget {
     > summary {
       border: 1px solid black;
@@ -237,12 +291,6 @@
 
     .filters-widget__active-num {
       font-size: 13px;
-
-      + .henk-button {
-        position: absolute;
-        right: -48px;
-        top: 8px;
-      }
     }
 
     .henk-details-group {

@@ -208,18 +208,11 @@
       mainImg.src = activeSwatch.dataset.variantImg;
 
       if (subtitle) subtitle.textContent = activeSwatch.dataset.variantTitle;
-      // if (priceButton) {
-      //   priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
-      //   priceButton.textContent = activeSwatch.dataset.variantPrice.trim();
-      // }
 
       // price
-      // if (isMacs && priceEl) {
-      //   priceEl.textContent = activeSwatch.dataset.variantPrice.trim();
-      // } else if (priceButton) {
-      //   priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
-      //   priceButton.textContent = activeSwatch.dataset.variantPrice.trim();
-      // }
+      if (isMacs && priceNumberEl) {
+        priceNumberEl.textContent = activeSwatch.dataset.variantPrice.trim();
+      }
       if (isMacs && priceEl) {
         const nodes = Array.from(priceEl.childNodes).filter((n) => n.nodeType === Node.TEXT_NODE);
         if (nodes.length) {

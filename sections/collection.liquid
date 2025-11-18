@@ -228,9 +228,16 @@
           mainImg.src = swatch.dataset.variantImg;
 
           if (subtitle) subtitle.textContent = swatch.dataset.variantTitle;
-          if (priceButton) {
-            priceButton.href = `${card.dataset.baseUrl}?variant=${swatch.dataset.variantId}`;
-            priceButton.textContent = swatch.dataset.variantPrice.trim();
+          // if (priceButton) {
+          //   priceButton.href = `${card.dataset.baseUrl}?variant=${swatch.dataset.variantId}`;
+          //   priceButton.textContent = swatch.dataset.variantPrice.trim();
+          // }
+
+          if (isMacs && priceEl) {
+            priceEl.textContent = activeSwatch.dataset.variantPrice.trim();
+          } else if (priceButton) {
+            priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
+            priceButton.textContent = activeSwatch.dataset.variantPrice.trim();
           }
 
           imageLink.href = `${card.dataset.baseUrl}?variant=${swatch.dataset.variantId}`;

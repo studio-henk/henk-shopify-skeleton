@@ -62,10 +62,12 @@
   <div class="henk-card__content">
     <p class="henk-card__title truncate">{{ product.title }}</p>
 
-    {% if variant and card_variant == null %}
-      <p class="henk-card__subtitle" id="subtitle-{{ product.id }}">{{ variant.title }}</p>
-    {% else %}
-      <p class="henk-card__subtitle">???</p>
+    {% if card_variant == null %}
+      {% if variant %}
+        <p class="henk-card__subtitle" id="subtitle-{{ product.id }}">{{ variant.title }}</p>
+      {% else %}
+        <p class="henk-card__subtitle">???</p>
+      {% endif %}
     {% endif %}
 
     {% if card_variant == null %}

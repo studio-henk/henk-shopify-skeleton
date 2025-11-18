@@ -12,9 +12,15 @@
     "main": {
       "type": "product",
       "settings": {}
+    },
+    "henk_section_breadcrumbs_EDBWmC": {
+      "type": "henk-section-breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {}
     }
   },
   "order": [
+    "henk_section_breadcrumbs_EDBWmC",
     "main"
   ]
 }

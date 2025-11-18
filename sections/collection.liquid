@@ -195,6 +195,8 @@
       const mainImg = card.querySelector('.henk-card__img');
       const subtitle = card.querySelector('.henk-card__subtitle'); // optional
       const swatches = card.querySelectorAll('.henk-card__variant-swatch');
+      const priceEl = card.querySelector('.henk-card__price');
+      const isMacs = card.classList.contains('henk-card--macs');
 
       // Only require: imageLink, mainImg, swatches
       if (!imageLink || !mainImg || swatches.length === 0) return;

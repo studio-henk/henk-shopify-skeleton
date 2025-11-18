@@ -229,6 +229,7 @@
         priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
         priceButton.textContent = activeSwatch.dataset.variantPrice.trim();
       }
+
       imageLink.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
 
       // --- Hover behavior ---
@@ -241,9 +242,20 @@
           //   priceButton.href = `${card.dataset.baseUrl}?variant=${swatch.dataset.variantId}`;
           //   priceButton.textContent = swatch.dataset.variantPrice.trim();
           // }
-          console.log('Swatch hovered:', swatch.dataset.variantPrice, 'priceEl:', priceEl);
+          // console.log('Swatch hovered:', swatch.dataset.variantPrice, 'priceEl:', priceEl);
+          // if (isMacs && priceEl) {
+          //   priceEl.textContent = activeSwatch.dataset.variantPrice.trim();
+          // } else if (priceButton) {
+          //   priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
+          //   priceButton.textContent = activeSwatch.dataset.variantPrice.trim();
+          // }
+
           if (isMacs && priceEl) {
-            priceEl.textContent = activeSwatch.dataset.variantPrice.trim();
+            const nodes = Array.from(priceEl.childNodes).filter((n) => n.nodeType === Node.TEXT_NODE);
+            if (nodes.length) {
+              // Update the last text node (price)
+              nodes[nodes.length - 1].textContent = swatch.dataset.variantPrice.trim();
+            }
           } else if (priceButton) {
             priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
             priceButton.textContent = activeSwatch.dataset.variantPrice.trim();

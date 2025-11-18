@@ -190,6 +190,8 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.henk-card').forEach((card) => {
+      const isMacs = card.classList.contains('henk-card--macs');
+
       const imageLink = card.querySelector('.henk-card__image-link');
       const priceButton = card.querySelector('.henk-card__button');
       const mainImg = card.querySelector('.henk-card__img');
@@ -200,6 +202,7 @@
 
       // --- Set default active swatch ---
       const activeSwatch = card.querySelector('.henk-card__variant-swatch.is-active') || swatches[0];
+
       mainImg.src = activeSwatch.dataset.variantImg;
       subtitle.textContent = activeSwatch.dataset.variantTitle;
       imageLink.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;

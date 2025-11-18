@@ -83,7 +83,7 @@
       <p class="henk-card__price">
         {%- if product.price_varies -%}
           {{ 'card.from_label' | t }}
-          {{ product.price_min | money_without_trailing_zeros }}
+          <span class="henk-card__price-number">{{ product.price_min | money_without_trailing_zeros }}</span>
         {%- else -%}
           {{ product.price | money_without_trailing_zeros }}
         {%- endif -%}

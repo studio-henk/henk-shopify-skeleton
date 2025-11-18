@@ -1,11 +1,5 @@
 # TODO
 
-## CRUCIAL !!!!
-
-- [ ] how to show color / swatch image for upholstery material -> material metaobject?
-  - [ ] debug upholstery material and material 
-  - [ ] test with different one? frame afwerking?
-- [ ] add breadcumbs section to default product template
 - [ ] lister: when 1 variant, dont show swatches
 - [ ] PDP: main image when no options from product not variant
 

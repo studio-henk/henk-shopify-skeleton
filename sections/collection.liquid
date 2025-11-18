@@ -234,7 +234,7 @@
           // }
           console.log('Swatch hovered:', swatch.dataset.variantPrice, 'priceEl:', priceEl);
           if (isMacs && priceEl) {
-            priceEl.innerHTML = activeSwatch.dataset.variantPrice.trim();
+            priceEl.textContent = activeSwatch.dataset.variantPrice.trim();
           } else if (priceButton) {
             priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
             priceButton.textContent = activeSwatch.dataset.variantPrice.trim();

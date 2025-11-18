@@ -108,6 +108,39 @@
       %}
     {% endif %}
   </div>
+
+  {% comment %} NOTE: variant selector {% endcomment %}
+  {% if show_variants_on_card and card_variant == 'macs' %}
+    <div class="henk-card__variant-selector">
+      {% if product.variants.size > 1 %}
+        {% assign max_variants = 5 %}
+        {% assign first_variant = product.variants.first %}
+        {% for variant in product.variants limit: max_variants %}
+          {% if variant.featured_image %}
+            {%- comment -%}:SWATCH{%- endcomment -%}
+            <a
+              href="{{ product.url }}?variant={{ variant.id }}"
+              class="henk-card__variant-swatch {% if variant.id == first_variant.id %}is-active{% endif %}"
+              data-main-id="card-{{ product.id }}"
+              data-subtitle-id="subtitle-{{ product.id }}"
+              data-variant-img="{{ variant.featured_image | image_url: width: 1134 }}"
+              data-variant-title="{{ variant.title }}"
+              data-variant-id="{{ variant.id }}"
+              data-variant-price="{{ variant.price | money_without_trailing_zeros }}"
+            >
+              <img
+                src="{{ variant.featured_image | image_url: width: 44, height: 44 }}"
+                alt="{{ variant.title }}"
+                width="44"
+                height="44"
+              >
+            </a>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endif %}
+
   {% if product.tags != blank %}
     <div class="henk-card__tags">
       {% for tag in product.tags limit: 1 %}

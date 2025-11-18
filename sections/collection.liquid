@@ -223,7 +223,7 @@
         const nodes = Array.from(priceEl.childNodes).filter((n) => n.nodeType === Node.TEXT_NODE);
         if (nodes.length) {
           // Update the last text node (price)
-          nodes[nodes.length - 1].textContent = swatch.dataset.variantPrice.trim();
+          nodes[nodes.length - 1].textContent = activeSwatch.dataset.variantPrice.trim();
         }
       } else if (priceButton) {
         priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
@@ -254,7 +254,7 @@
             const nodes = Array.from(priceEl.childNodes).filter((n) => n.nodeType === Node.TEXT_NODE);
             if (nodes.length) {
               // Update the last text node (price)
-              nodes[nodes.length - 1].textContent = swatch.dataset.variantPrice.trim();
+              nodes[nodes.length - 1].textContent = activeSwatch.dataset.variantPrice.trim();
             }
           } else if (priceButton) {
             priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;

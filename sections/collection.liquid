@@ -225,13 +225,10 @@
           mainImg.src = swatch.dataset.variantImg;
 
           if (subtitle) subtitle.textContent = swatch.dataset.variantTitle;
+
           // price
-          if (isMacs && priceEl) {
-            const nodes = Array.from(priceEl.childNodes).filter((n) => n.nodeType === Node.TEXT_NODE);
-            if (nodes.length) {
-              // Update the last text node (price)
-              nodes[nodes.length - 1].textContent = swatch.dataset.variantPrice.trim();
-            }
+          if (isMacs && priceNumberEl) {
+            priceNumberEl.textContent = swatch.dataset.variantPrice.trim();
           } else if (priceButton) {
             priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
             priceButton.textContent = activeSwatch.dataset.variantPrice.trim();

@@ -190,33 +190,40 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.henk-card').forEach((card) => {
-      const isMacs = card.classList.contains('henk-card--macs');
-
       const imageLink = card.querySelector('.henk-card__image-link');
-      const priceButton = card.querySelector('.henk-card__button');
+      const priceButton = card.querySelector('.henk-card__button'); // optional
       const mainImg = card.querySelector('.henk-card__img');
-      const subtitle = card.querySelector('.henk-card__subtitle');
+      const subtitle = card.querySelector('.henk-card__subtitle'); // optional
       const swatches = card.querySelectorAll('.henk-card__variant-swatch');
 
-      if (!imageLink || !priceButton || !mainImg || !subtitle || swatches.length === 0) return;
+      // Only require: imageLink, mainImg, swatches
+      if (!imageLink || !mainImg || swatches.length === 0) return;
 
       // --- Set default active swatch ---
       const activeSwatch = card.querySelector('.henk-card__variant-swatch.is-active') || swatches[0];
 
       mainImg.src = activeSwatch.dataset.variantImg;
-      subtitle.textContent = activeSwatch.dataset.variantTitle;
+
+      if (subtitle) subtitle.textContent = activeSwatch.dataset.variantTitle;
+      if (priceButton) {
+        priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
+        priceButton.textContent = activeSwatch.dataset.variantPrice.trim();
+      }
+
       imageLink.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
-      priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
-      priceButton.textContent = activeSwatch.dataset.variantPrice.trim();
 
       // --- Hover behavior ---
       swatches.forEach((swatch) => {
         swatch.addEventListener('mouseenter', () => {
           mainImg.src = swatch.dataset.variantImg;
-          subtitle.textContent = swatch.dataset.variantTitle;
+
+          if (subtitle) subtitle.textContent = swatch.dataset.variantTitle;
+          if (priceButton) {
+            priceButton.href = `${card.dataset.baseUrl}?variant=${swatch.dataset.variantId}`;
+            priceButton.textContent = swatch.dataset.variantPrice.trim();
+          }
+
           imageLink.href = `${card.dataset.baseUrl}?variant=${swatch.dataset.variantId}`;
-          priceButton.href = `${card.dataset.baseUrl}?variant=${swatch.dataset.variantId}`;
-          priceButton.textContent = swatch.dataset.variantPrice.trim();
 
           // Highlight active swatch
           swatches.forEach((s) => s.classList.remove('is-active'));
@@ -226,6 +233,45 @@
     });
   });
 </script>
+<!-- <script> -->
+<!-- document.addEventListener('DOMContentLoaded', function () { -->
+<!-- document.querySelectorAll('.henk-card').forEach((card) => { -->
+<!-- const isMacs = card.classList.contains('henk-card--macs'); -->
+<!--  -->
+<!-- const imageLink = card.querySelector('.henk-card__image-link'); -->
+<!-- const priceButton = card.querySelector('.henk-card__button'); -->
+<!-- const mainImg = card.querySelector('.henk-card__img'); -->
+<!-- const subtitle = card.querySelector('.henk-card__subtitle'); -->
+<!-- const swatches = card.querySelectorAll('.henk-card__variant-swatch'); -->
+<!--  -->
+<!-- if (!imageLink || !priceButton || !mainImg || !subtitle || swatches.length === 0) return; -->
+<!--  -->
+<!-- // --- Set default active swatch --- -->
+<!-- const activeSwatch = card.querySelector('.henk-card__variant-swatch.is-active') || swatches[0]; -->
+<!--  -->
+<!-- mainImg.src = activeSwatch.dataset.variantImg; -->
+<!-- subtitle.textContent = activeSwatch.dataset.variantTitle; -->
+<!-- imageLink.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`; -->
+<!-- priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`; -->
+<!-- priceButton.textContent = activeSwatch.dataset.variantPrice.trim(); -->
+<!--  -->
+<!-- // --- Hover behavior --- -->
+<!-- swatches.forEach((swatch) => { -->
+<!-- swatch.addEventListener('mouseenter', () => { -->
+<!-- mainImg.src = swatch.dataset.variantImg; -->
+<!-- subtitle.textContent = swatch.dataset.variantTitle; -->
+<!-- imageLink.href = `${card.dataset.baseUrl}?variant=${swatch.dataset.variantId}`; -->
+<!-- priceButton.href = `${card.dataset.baseUrl}?variant=${swatch.dataset.variantId}`; -->
+<!-- priceButton.textContent = swatch.dataset.variantPrice.trim(); -->
+<!--  -->
+<!-- // Highlight active swatch -->
+<!-- swatches.forEach((s) => s.classList.remove('is-active')); -->
+<!-- swatch.classList.add('is-active'); -->
+<!-- }); -->
+<!-- }); -->
+<!-- }); -->
+<!-- }); -->
+<!-- </script> -->
 
 {% stylesheet %}
   .henk-grid-options-bar {

@@ -42,6 +42,10 @@
 
             {% comment %} {{ collection.filters.size | json }} {% endcomment %}
 
+            {% render 'henk-snippet-filters-widget',
+              filters: collection_filters,
+              active_filters_count: active_filters_count
+            %}
             <details id="filters-widget">
               <summary>
                 Filters

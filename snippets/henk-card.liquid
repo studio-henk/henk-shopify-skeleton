@@ -118,6 +118,7 @@
         {% for variant in product.variants limit: max_variants %}
           {% if variant.featured_image %}
             {%- comment -%}:SWATCH{%- endcomment -%}
+            {{ variant | json }}
             <a
               href="{{ product.url }}?variant={{ variant.id }}"
               class="henk-card__variant-swatch {% if variant.id == first_variant.id %}is-active{% endif %}"

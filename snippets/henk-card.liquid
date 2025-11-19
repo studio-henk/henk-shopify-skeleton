@@ -120,7 +120,8 @@
             NOTE: we want the first option (Fabric?) and its color
             value
           {%- endcomment -%}
-          {{ variant.product.options_with_values | json }}
+          {% comment %} {{ variant.product.options_with_values | json }} {% endcomment %}
+          {{ variant.product.metafields | json }}
           {% if variant.featured_image %}
             {%- comment -%}:SWATCH{%- endcomment -%}
             {% comment %} {{ variant | json }} {% endcomment %}

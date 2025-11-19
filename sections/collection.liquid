@@ -41,6 +41,7 @@
               >
             {% endif %}
 
+            {%- comment -%} NOTE: render filters-widget {%- endcomment -%}
             {% render 'henk-snippet-filters-widget',
               filters: collection.filters,
               active_filters_count: active_filters_count

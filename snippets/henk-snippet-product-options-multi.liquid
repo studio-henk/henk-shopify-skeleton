@@ -88,9 +88,10 @@
 
             {% if matched_variant %}
               {% assign material_data = matched_variant.metafields.HENK.material.value | first %}
-              {% assign fabric_metafield_data = matched_variant.metafields.HENK.fabric %}
-              {{ fabric_metafield_data.value | json }}
-              {% assign swatch_gid = material_data.swatch %}
+              {% assign fabric_metafield_data = matched_variant.metafields.HENK.fabric.value %}
+              {% comment %} {{ fabric_metafield_data.value | json }} {% endcomment %}
+              {% comment %} {% assign swatch_gid = material_data.swatch %} {% endcomment %}
+              {% assign swatch_gid = fabric_metafield_data.swatch %}
               {% assign swatch_image = swatch_gid | image_url %}
 
               <div class="henk-labeled-input">

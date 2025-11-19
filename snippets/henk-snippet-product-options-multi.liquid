@@ -75,25 +75,6 @@
             {% endfor %}
 
             {% if matched_variant %}
-              {% assign swatch = value.swatch %}
-              {{ value | json }}
-              {% if swatch %}
-                <span class="custom-swatch" style="background-color: {{ swatch.color }};">
-                  {% if swatch.image %}
-                    <img
-                      src="{{ swatch.image | image_url: width: 44, height: 44 }}"
-                      width="44"
-                      height="44"
-                      alt="{{ value.name }}"
-                    >
-                  {% endif %}
-                </span>
-              {% else %}
-                fallback?
-              {% endif %}
-            {% endif %}
-
-            {% if matched_variant %}
               {% assign material_data = matched_variant.metafields.HENK.material.value | first %}
               {% assign swatch_gid = material_data.swatch %}
               {% assign swatch_image = swatch_gid | image_url %}

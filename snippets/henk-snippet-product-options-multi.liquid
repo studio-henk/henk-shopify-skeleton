@@ -183,6 +183,73 @@
   {% endcase %}
 
   what happens here?
+
+  <fieldset class="henk-fieldset">
+    <legend class="henk-legend">{{ option.name }}</legend>
+    <div class="options__container">
+      {% assign selected_options = current_variant.options %}
+      {% assign option_index = forloop.index0 %}
+
+      {% for value in option.values %}
+        {% assign matched_variant = null %}
+
+        {%- comment -%} Find the variant that matches this option value and the other currently selected options {%- endcomment -%}
+        {% for v in product.variants %}
+          {% assign matches = true %}
+          {% for i in (0..v.options['size-1']) %}
+            {% if i == option_index %}
+              {% assign expected = value.name %}
+            {% else %}
+              {% assign expected = selected_options[i] %}
+            {% endif %}
+            {% if v.options[i] != expected %}
+              {% assign matches = false %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+
+          {% if matches %}
+            {% assign matched_variant = v %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+        {% if matched_variant %}
+          {% comment %} {% assign material_data = matched_variant.metafields.HENK.material.value | first %} {% endcomment %}
+          {% assign fabric_metafield_data = matched_variant.metafields.HENK.fabric.value %}
+          {% comment %} {{ fabric_metafield_data.value | json }} {% endcomment %}
+          {% comment %} {% assign swatch_gid = material_data.swatch %} {% endcomment %}
+          {% assign swatch_gid = fabric_metafield_data.swatch %}
+          {% assign swatch_image = swatch_gid | image_url %}
+
+          <div class="henk-labeled-input">
+            <label class="henk-label">
+              <input
+                class="henk-radio"
+                type="radio"
+                name="option-{{ option_index }}"
+                value="{{ value.name }}"
+                data-option-index="{{ option_index }}"
+                title="{{ material_data.name }}"
+                {% if current_variant.options[option_index] == value.name %}
+                  checked
+                {% endif %}
+              >
+              <span class="custom-swatch" style="background-color: {{ material_data.color }};">
+                <img
+                  src="{{ swatch_image | image_url: width: 44, height: 44 }}"
+                  alt="{{ material_data.name }}"
+                  width="44"
+                  height="44"
+                >
+              </span>
+              <span class="visually-hidden">{{ material_data.name }}</span>
+            </label>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </fieldset>
 {% endfor %}
 
 <!-- Product Variants JSON for JS -->

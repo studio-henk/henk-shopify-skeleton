@@ -121,7 +121,7 @@
             value
           {%- endcomment -%}
           {% comment %} {{ variant.product.options_with_values | json }} {% endcomment %}
-          {{ variant.product.metafields | json }}
+          {{ variant.product.metafields.HENK.material.value | json }}
           {% if variant.featured_image %}
             {%- comment -%}:SWATCH{%- endcomment -%}
             {% comment %} {{ variant | json }} {% endcomment %}

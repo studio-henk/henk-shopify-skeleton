@@ -51,26 +51,6 @@
           {% assign option_index = forloop.index0 %}
 
           {% for value in option.values %}
-            {% for value in option.values %}
-              {% assign matched_variant = ... %} {# your variant matching logic #}
-              {% if matched_variant %}
-                {% assign swatch = value.swatch %}
-                {% if swatch %}
-                  <span class="custom-swatch" style="background-color: {{ swatch.color }};">
-                    {% if swatch.image %}
-                      <img
-                        src="{{ swatch.image | image_url: width: 44, height: 44 }}"
-                        width="44"
-                        height="44"
-                      >
-                    {% endif %}
-                  </span>
-                {% else %}
-                  {# fallback to metafield or other logic #}
-                {% endif %}
-              {% endif %}
-            {% endfor %}
-
             {% assign matched_variant = null %}
 
             {%- comment -%} Find the variant that matches this option value and the other currently selected options {%- endcomment -%}
@@ -93,6 +73,24 @@
                 {% break %}
               {% endif %}
             {% endfor %}
+
+            {% if matched_variant %}
+              {% assign swatch = value.swatch %}
+              {% if swatch %}
+                <span class="custom-swatch" style="background-color: {{ swatch.color }};">
+                  {% if swatch.image %}
+                    <img
+                      src="{{ swatch.image | image_url: width: 44, height: 44 }}"
+                      width="44"
+                      height="44"
+                      alt="{{ value.name }}"
+                    >
+                  {% endif %}
+                </span>
+              {% else %}
+                {# fallback to metafield or other logic #}
+              {% endif %}
+            {% endif %}
 
             {% if matched_variant %}
               {% assign material_data = matched_variant.metafields.HENK.material.value | first %}

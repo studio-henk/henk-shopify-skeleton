@@ -1,32 +1,26 @@
 # TODO
 
-- [ ] lister: when 1 variant, dont show swatches
-- [ ] PDP: main image when no options from product not variant
+- [ ] menu: connect all collections
+- [ ] lister: when 1 variant, dont show swatches: issue with how a product is
+setup. sofa uses different option.
 
 
 - [ ] how to deal with lister filter widget showing fabrics under Color (remove
   from Color?)
 - [ ] use money snippet also on cat page
 
-- [x] add diff pricing for lean lounge chair
-- [x] add variant title below title
 - [ ] add variant gallery images / slider?
 
 ## lister
-- [x] js -> update price on hover
 - [ ] storybook: henk-fugure, add to css
-- [ ] henk-card variant names: use colour, our names
-- [ ] lister: filters widget 2px too high: must be 44px like buttons
+- lister: http://127.0.0.1:9292/collections/fauteuils double material filer?
+upholstery and material?
 - [ ] lister: find out how not to show price and availability filters?
-- [ ] details comp: open - icon utf issue? was in filter widget, but dont see it
-  now?
 
 - [ ] quoteblock
 - [ ] change blog template (main img, max-width etc) -> new template
 - [ ] newsletter-block translations
 - [ ] translations for info boxes?
-- [ ] PDP
-- [ ] check select arrow position
 
 ## To storybook
 - [ ] filter widget

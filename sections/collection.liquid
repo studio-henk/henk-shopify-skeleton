@@ -13,10 +13,9 @@
 {% comment %} {% assign show_variants = true %} {% endcomment %}
 {% assign show_variants = false %}
 {% assign show_variants_on_card = true %}
-{% assign card_variant = null %}
-{% comment %} {% assign card_variant = 'macs' %} {% endcomment %}
+{% comment %} {% assign card_variant = null %} {% endcomment %}
+{% assign card_variant = 'macs' %}
 
-{% comment %} {{ collection.all_products_count }} {% endcomment %}
 {% if collection.all_products_count > 0 %}
   <section class="shopify-section henk-section" id="shopify-section-lister">
     {% if collection.all_products_count > 0 %}
@@ -43,104 +42,10 @@
 
             {% comment %} {{ collection.filters.size | json }} {% endcomment %}
 
-            <details id="filters-widget">
-              <summary>
-                Filters
-                {% if active_filters_count > 0 %}
-                  <span class="filters-widget__active-num">({{ active_filters_count }} applied)</span>
-                {% endif %}
-              </summary>
-              <div class="henk-details-group henk-details-group--horizontalx">
-                {% for filter in collection.filters %}
-                  <details class="henk-details henk-details--plusmin" name="filter">
-                    <summary class="henk-details__summary">
-                      {{ filter.label }}
-                      {% if filter.active_values.size > 0 %}
-                        ({{ filter.active_values.size }} selected)
-                      {% endif %}
-                    </summary>
-
-                    <div class="henk-details__content">
-                      {% case filter.type %}
-                        {% when 'list' %}
-                          <ul class="henk-list henk-list--no-bullets">
-                            {% for value in filter.values %}
-                              <li>
-                                <label>
-                                  {% if value.display.type == 'colors' %}
-                                    {%- assign color_hex = value.display.value | first -%}
-                                    <span
-                                      class="swatch"
-                                      style="                                        background-color: {{ color_hex }};"
-                                      title="{{ value.label }}"
-                                    >
-                                    </span>
-                                  {%- endif -%}
-                                  <input
-                                    type="checkbox"
-                                    name="{{ value.param_name }}"
-                                    value="{{ value.value }}"
-                                    {% if value.active %}
-                                      checked
-                                    {% endif %}
-                                    {% if value.count == 0 and value.active == false %}
-                                      disabled
-                                    {% endif %}
-                                  >
-                                  {{ value.label }}
-                                  {% if value.count > 0 %}
-                                    ({{ value.count }})
-                                  {% endif %}
-                                </label>
-                              </li>
-                            {% endfor %}
-                          </ul>
-
-                        {% when 'price_range' %}
-                          <div>
-                            <input
-                              type="number"
-                              name="{{ filter.min_value.param_name }}"
-                              value="{{ filter.min_value.value | default: '' }}"
-                              placeholder="Min"
-                              min="0"
-                              size="4"
-                            >
-                            <input
-                              type="number"
-                              name="{{ filter.max_value.param_name }}"
-                              value="{{ filter.max_value.value | default: '' }}"
-                              placeholder="Max"
-                              min="0"
-                              size="4"
-                            >
-                          </div>
-
-                        {% when 'boolean' %}
-                          {% for value in filter.values %}
-                            <label>
-                              <input
-                                type="checkbox"
-                                name="{{ value.param_name }}"
-                                value="{{ value.value }}"
-                                {% if value.active %}
-                                  checked
-                                {% endif %}
-                              >
-                              {{ value.label }}
-                            </label>
-                          {% endfor %}
-                        {% else %}
-                          <p>Unknown filter type: {{ filter.type }}</p>
-                      {% endcase %}
-                    </div>
-                  </details>
-                {% endfor %}
-                <div class="henk-button-group">
-                  <button type="submit" class="henk-button henk-button--small">Apply</button>
-                </div>
-              </div>
-            </details>
+            {% render 'henk-snippet-filters-widget',
+              filters: collection.filters,
+              active_filters_count: active_filters_count
+            %}
           </form>
         </div>
         <div class="henk-grid-options-bar__sort">
@@ -148,7 +53,7 @@
         </div>
       </div>
     {% endif %}
-    <div class="henk-lister-grid">
+    <div class="henk-lister-grid --variant-macs">
       {% paginate collection.products by 20 %}
         {% for product in collection.products %}
           {% if show_variants %}
@@ -192,29 +97,50 @@
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.henk-card').forEach((card) => {
       const imageLink = card.querySelector('.henk-card__image-link');
-      const priceButton = card.querySelector('.henk-card__button');
+      const priceButton = card.querySelector('.henk-card__button'); // optional
       const mainImg = card.querySelector('.henk-card__img');
-      const subtitle = card.querySelector('.henk-card__subtitle');
+      const subtitle = card.querySelector('.henk-card__subtitle'); // optional
       const swatches = card.querySelectorAll('.henk-card__variant-swatch');
+      // const priceEl = card.querySelector('.henk-card__price');
+      const priceNumberEl = card.querySelector('.henk-card__price-number');
+      const isMacs = card.classList.contains('henk-card--macs');
 
-      if (!imageLink || !priceButton || !mainImg || !subtitle || swatches.length === 0) return;
+      // Only require: imageLink, mainImg, swatches
+      if (!imageLink || !mainImg || swatches.length === 0) return;
 
       // --- Set default active swatch ---
       const activeSwatch = card.querySelector('.henk-card__variant-swatch.is-active') || swatches[0];
+
       mainImg.src = activeSwatch.dataset.variantImg;
-      subtitle.textContent = activeSwatch.dataset.variantTitle;
+
+      if (subtitle) subtitle.textContent = activeSwatch.dataset.variantTitle;
+
+      // price
+      if (isMacs && priceNumberEl) {
+        priceNumberEl.textContent = activeSwatch.dataset.variantPrice.trim();
+      } else if (priceButton) {
+        priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
+        priceButton.textContent = activeSwatch.dataset.variantPrice.trim();
+      }
+
       imageLink.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
-      priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
-      priceButton.textContent = activeSwatch.dataset.variantPrice.trim();
 
       // --- Hover behavior ---
       swatches.forEach((swatch) => {
         swatch.addEventListener('mouseenter', () => {
           mainImg.src = swatch.dataset.variantImg;
-          subtitle.textContent = swatch.dataset.variantTitle;
+
+          if (subtitle) subtitle.textContent = swatch.dataset.variantTitle;
+
+          // price
+          if (isMacs && priceNumberEl) {
+            priceNumberEl.textContent = swatch.dataset.variantPrice.trim();
+          } else if (priceButton) {
+            priceButton.href = `${card.dataset.baseUrl}?variant=${activeSwatch.dataset.variantId}`;
+            priceButton.textContent = activeSwatch.dataset.variantPrice.trim();
+          }
+
           imageLink.href = `${card.dataset.baseUrl}?variant=${swatch.dataset.variantId}`;
-          priceButton.href = `${card.dataset.baseUrl}?variant=${swatch.dataset.variantId}`;
-          priceButton.textContent = swatch.dataset.variantPrice.trim();
 
           // Highlight active swatch
           swatches.forEach((s) => s.classList.remove('is-active'));
@@ -224,156 +150,6 @@
     });
   });
 </script>
-
-{% stylesheet %}
-  .henk-grid-options-bar {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    gap: var(--space-4);
-    width: min(var(--size-width-content), 100% - 3rem);
-    margin-inline: auto;
-    margin-bottom: var(--space-4);
-    position: relative;
-  }
-
-  @media screen and (max-width: 767px) {
-    .henk-grid-options-bar {
-      .henk-grid-options-bar__filters {
-        width: 100%;
-      }
-
-      details#filters-widget {
-        .filters-widget__active-num {
-          font-size: 13px;
-
-          + .henk-button {
-            right: 8px;
-          }
-        }
-      }
-
-      .henk-grid-options-bar__sort {
-        margin-top: 72px;
-        width: 100%;
-      }
-    }
-  }
-
-  .henk-grid-options-bar__filters {
-    min-width: 200px;
-    z-index: 9;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .henk-grid-options-bar__sort {
-    .henk-labeled-select {
-      margin-bottom: 0;
-      min-width: 200px;
-    }
-  }
-
-  .filters-widget__reset-button {
-    position: absolute;
-    right: -96px;
-    top: 0;
-  }
-
-  details#filters-widget {
-    > summary {
-      border: 1px solid black;
-      border-radius: 4px;
-      padding: 10px 1rem;
-      position: relative;
-    }
-
-    .filters-widget__active-num {
-      font-size: 13px;
-    }
-
-    .henk-details-group {
-      backdrop-filter: blur(24px);
-      background-color: #ffffff4d;
-      border: 1px solid black;
-      font-size: 13px;
-      line-height: 24px;
-
-      summary {
-        padding: var(--space-2);
-      }
-    }
-
-    .henk-details__content {
-      padding-block: 0;
-
-      label {
-        display: flex;
-        align-items: center;
-        gap: var(--space-3);
-        padding-left: 8px;
-        position: relative;
-
-        .swatch {
-          position: absolute;
-          width: 20px;
-          height: 20px;
-          border-radius: 50%;
-          display: inline-block;
-          border: 1px solid #ccc;
-          vertical-align: middle;
-        }
-
-        .swatch + input[type='checkbox'] {
-          visibility: hidden;
-        }
-
-        &:has(input[type='checkbox']:checked) {
-          font-weight: 500;
-
-          .swatch {
-            border-color: black;
-            border-width: 2px;
-          }
-        }
-      }
-
-      input[type='checkbox'] {
-        margin: 0;
-      }
-    }
-
-    &[open] {
-      > summary {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-
-      .henk-details-group {
-        border-top: none;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-
-        summary:hover {
-          background-color: black;
-          color: white;
-        }
-
-        .henk-details.henk-details--plusmin .henk-details__summary::before,
-        .henk-details.henk-details--plusmin .henk-details__summary::after {
-          top: unset;
-          right: 8px;
-        }
-
-        .henk-button-group {
-          margin-block-start: 0;
-          padding: var(--space-2);
-        }
-      }
-    }
-  }
-{% endstylesheet %}
 
 {% schema %}
 {

@@ -1,4 +1,9 @@
-<form method="get" action="{{ collection.url }}" class="henk-collection-sort-form">
+<form
+  method="get"
+  action="{{ collection.url }}"
+  class="henk-collection-sort-form"
+  id="form_collection_sort_by"
+>
   <div
     class="henk-labeled-select henk-labeled-select--dir-vertical henk-labeled-select--floating"
   >
@@ -21,7 +26,7 @@
           </option>
         {% endfor %}
       </select>
-      <label class="henk-label" for="form_invoiceAddressCountry">
+      <label class="henk-label" for="sort-by">
         <span class="henk-label-text">Sort by</span>
       </label>
     </div>

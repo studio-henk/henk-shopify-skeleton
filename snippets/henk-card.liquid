@@ -29,7 +29,7 @@
       {% endif %}
     </figure>
   </a>
-  {% if show_variants_on_card %}
+  {% if show_variants_on_card and card_variant == null %}
     <div class="henk-card__variant-selector">
       {% if product.variants.size > 1 %}
         {% assign max_variants = 5 %}
@@ -62,10 +62,12 @@
   <div class="henk-card__content">
     <p class="henk-card__title truncate">{{ product.title }}</p>
 
-    {% if variant %}
-      <p class="henk-card__subtitle" id="subtitle-{{ product.id }}">{{ variant.title }}</p>
-    {% else %}
-      <p class="henk-card__subtitle">???</p>
+    {% if card_variant == null %}
+      {% if variant %}
+        <p class="henk-card__subtitle" id="subtitle-{{ product.id }}">{{ variant.title }}</p>
+      {% else %}
+        <p class="henk-card__subtitle">???</p>
+      {% endif %}
     {% endif %}
 
     {% if card_variant == null %}
@@ -79,12 +81,12 @@
       {% endif %}
     {% else %}
       <p class="henk-card__price">
-        {% if product.price_varies %}
+        {%- if product.price_varies -%}
           {{ 'card.from_label' | t }}
-          {{ product.price_min | money_without_trailing_zeros }}
-        {% else %}
+          <span class="henk-card__price-number">{{ product.price_min | money_without_trailing_zeros }}</span>
+        {%- else -%}
           {{ product.price | money_without_trailing_zeros }}
-        {% endif %}
+        {%- endif -%}
       </p>
     {% endif %}
 
@@ -106,6 +108,40 @@
       %}
     {% endif %}
   </div>
+
+  {% comment %} NOTE: variant selector {% endcomment %}
+  {% if show_variants_on_card and card_variant == 'macs' %}
+    <div class="henk-card__variant-selector">
+      {% if product.variants.size > 1 %}
+        {% assign max_variants = 5 %}
+        {% assign first_variant = product.variants.first %}
+        {% for variant in product.variants limit: max_variants %}
+          {% if variant.featured_image %}
+            {%- comment -%}:SWATCH{%- endcomment -%}
+            {% comment %} {{ variant | json }} {% endcomment %}
+            <a
+              href="{{ product.url }}?variant={{ variant.id }}"
+              class="henk-card__variant-swatch {% if variant.id == first_variant.id %}is-active{% endif %}"
+              data-main-id="card-{{ product.id }}"
+              data-subtitle-id="subtitle-{{ product.id }}"
+              data-variant-img="{{ variant.featured_image | image_url: width: 1134 }}"
+              data-variant-title="{{ variant.title }}"
+              data-variant-id="{{ variant.id }}"
+              data-variant-price="{{ variant.price | money_without_trailing_zeros }}"
+            >
+              <img
+                src="{{ variant.featured_image | image_url: width: 44, height: 44 }}"
+                alt="{{ variant.title }}"
+                width="44"
+                height="44"
+              >
+            </a>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endif %}
+
   {% if product.tags != blank %}
     <div class="henk-card__tags">
       {% for tag in product.tags limit: 1 %}
@@ -134,5 +170,10 @@
     margin-bottom: 0;
     border-radius: 100%;
     aspect-ratio: 1 / 1;
+  }
+
+  .henk-card--macs .henk-card__variant-selector {
+    justify-self: flex-start;
+    width: 100%;
   }
 </style>

@@ -9,6 +9,18 @@
       <fieldset class="henk-fieldset">
         <legend class="henk-legend">Color</legend>
         <div class="options__container">
+          {%- comment -%}
+            COLOR OPTION HANDLING
+            ---------------------
+            For each color value, we determine which product variant corresponds to that
+            color. We do this by looping through all variants and comparing the variant’s
+            option value at the current option_index with the color value.name.
+
+            When they match, that variant becomes "matched_variant". This ensures that
+            each color swatch is linked to the correct variant, so we can display variant-
+            specific data (images, metafields, availability, etc.) for each color option.
+          {%- endcomment -%}
+
           {% for value in option.values %}
             {% assign matched_variant = null %}
             {% for v in product.variants %}

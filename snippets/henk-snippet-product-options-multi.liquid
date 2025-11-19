@@ -2,7 +2,7 @@
 {% for option in product.options_with_values %}
   {% assign option_index = forloop.index0 %}
 
-  {% comment %} {{ option | json }} {% endcomment %}
+  {{ option | json }}
 
   {% case option.name %}
     {% when 'Color' %}

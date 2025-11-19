@@ -76,6 +76,7 @@
 
             {% if matched_variant %}
               {% assign swatch = value.swatch %}
+              {{ value | json }}
               {% if swatch %}
                 <span class="custom-swatch" style="background-color: {{ swatch.color }};">
                   {% if swatch.image %}

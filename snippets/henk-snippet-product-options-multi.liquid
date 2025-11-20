@@ -41,7 +41,12 @@
   <dt>selected_options:</dt>
   <dd>{{ selected_options | json }}</dd>
 </dl>
+<hr>
 
+<dt>variants metafields:</dt>
+{% for v in product.variants %}
+  <dd>Variant ID: {{ v.id }} - Metafields: {{ v.metafields.HENK | json }}</dd>
+{% endfor %}
 <hr>
 <h3>Current product all options</h3>
 {% for option in product.options_with_values %}
@@ -57,10 +62,6 @@
     {% endfor %}
     <dt>option selected value:</dt>
     <dd>{{ option.selected_value }}</dd>
-    <dt>variants metafields:</dt>
-    {% for v in product.variants %}
-      <dd>Variant ID: {{ v.id }} - Metafields: {{ v.metafields.HENK | json }}</dd>
-    {% endfor %}
   </dl>
   <hr>
 {% endfor %}

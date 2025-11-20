@@ -15,7 +15,7 @@
               type="radio"
               name="option-{{ option_name }}"
               value="{{ value }}"
-              {% if current_variant.options[forloop.index0] == value %}
+              {% if current_variant.options[forloop.parentloop.index0] == value %}
                 checked
               {% endif %}
             >

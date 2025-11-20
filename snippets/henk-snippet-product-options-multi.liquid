@@ -38,29 +38,6 @@
             {% endif %}
           {% endfor %}
         {% endif %}
-        {% comment %} {% assign matched_variant = null %} {% endcomment %}
-        {% comment %}{% endcomment %}
-        {% comment %} {% for v in product.variants %} {% endcomment %}
-        {% comment %}   {% assign matches = true %} {% endcomment %}
-        {% comment %}{% endcomment %}
-        {% comment %}   {% for i in (0..v.options['size-1']) %} {% endcomment %}
-        {% comment %}     {% if i == option_index %} {% endcomment %}
-        {% comment %}       {% assign expected = value.name %} {% endcomment %}
-        {% comment %}     {% else %} {% endcomment %}
-        {% comment %}       {% assign expected = selected_options[i] %} {% endcomment %}
-        {% comment %}     {% endif %} {% endcomment %}
-        {% comment %}{% endcomment %}
-        {% comment %}     {% if v.options[i] != expected %} {% endcomment %}
-        {% comment %}       {% assign matches = false %} {% endcomment %}
-        {% comment %}       {% break %} {% endcomment %}
-        {% comment %}     {% endif %} {% endcomment %}
-        {% comment %}   {% endfor %} {% endcomment %}
-        {% comment %}{% endcomment %}
-        {% comment %}   {% if matches %} {% endcomment %}
-        {% comment %}     {% assign matched_variant = v %} {% endcomment %}
-        {% comment %}     {% break %} {% endcomment %}
-        {% comment %}   {% endif %} {% endcomment %}
-        {% comment %} {% endfor %} {% endcomment %}
 
         {% if matched_variant %}
           {%- comment -%}

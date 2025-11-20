@@ -43,6 +43,16 @@
     <dd>{{ option.name }}</dd>
     <dt>option values:</dt>
     <dd>{{ option.values | json }}</dd>
+    <dt>metafields</dt>
+    <dd>
+      {% for value in option.values %}
+        <strong>value name:</strong> {{ value.name -}}
+        <br>
+        <strong>swatch metafield:</strong> {{ value.swatch | json -}}
+        <br>
+        <br>
+      {% endfor %}
+    </dd>
   </dl>
 {% endfor %}
 

@@ -12,29 +12,55 @@
           STEP 1: Match the variant that corresponds to THIS option value
         {%- endcomment -%}
 
-        {% assign matched_variant = null %}
+        {% if option.name == 'Finish' %}
+          {% assign matched_variant = current_variant %}
+        {% else %}
+          {% assign matched_variant = null %}
+          {% for v in product.variants %}
+            {% assign matches = true %}
 
-        {% for v in product.variants %}
-          {% assign matches = true %}
+            {% for i in (0..v.options['size-1']) %}
+              {% if i == option_index %}
+                {% assign expected = value.name %}
+              {% else %}
+                {% assign expected = selected_options[i] %}
+              {% endif %}
 
-          {% for i in (0..v.options['size-1']) %}
-            {% if i == option_index %}
-              {% assign expected = value.name %}
-            {% else %}
-              {% assign expected = selected_options[i] %}
-            {% endif %}
+              {% if v.options[i] != expected %}
+                {% assign matches = false %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
 
-            {% if v.options[i] != expected %}
-              {% assign matches = false %}
+            {% if matches %}
+              {% assign matched_variant = v %}
               {% break %}
             {% endif %}
           {% endfor %}
-
-          {% if matches %}
-            {% assign matched_variant = v %}
-            {% break %}
-          {% endif %}
-        {% endfor %}
+        {% endif %}
+        {% comment %} {% assign matched_variant = null %} {% endcomment %}
+        {% comment %}{% endcomment %}
+        {% comment %} {% for v in product.variants %} {% endcomment %}
+        {% comment %}   {% assign matches = true %} {% endcomment %}
+        {% comment %}{% endcomment %}
+        {% comment %}   {% for i in (0..v.options['size-1']) %} {% endcomment %}
+        {% comment %}     {% if i == option_index %} {% endcomment %}
+        {% comment %}       {% assign expected = value.name %} {% endcomment %}
+        {% comment %}     {% else %} {% endcomment %}
+        {% comment %}       {% assign expected = selected_options[i] %} {% endcomment %}
+        {% comment %}     {% endif %} {% endcomment %}
+        {% comment %}{% endcomment %}
+        {% comment %}     {% if v.options[i] != expected %} {% endcomment %}
+        {% comment %}       {% assign matches = false %} {% endcomment %}
+        {% comment %}       {% break %} {% endcomment %}
+        {% comment %}     {% endif %} {% endcomment %}
+        {% comment %}   {% endfor %} {% endcomment %}
+        {% comment %}{% endcomment %}
+        {% comment %}   {% if matches %} {% endcomment %}
+        {% comment %}     {% assign matched_variant = v %} {% endcomment %}
+        {% comment %}     {% break %} {% endcomment %}
+        {% comment %}   {% endif %} {% endcomment %}
+        {% comment %} {% endfor %} {% endcomment %}
 
         {% if matched_variant %}
           {%- comment -%}

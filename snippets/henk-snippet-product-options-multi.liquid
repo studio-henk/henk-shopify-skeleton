@@ -23,7 +23,7 @@
   {% for key in current_variant.metafields.HENK %}
     {% comment %} <dt>{{ key[0] }}:</dt> {% endcomment %}
     {% comment %} <dd>{{ key[1] }}</dd> {% endcomment %}
-    <dd>{{ key[1].value }}</dd>
+    <dd>{{ key[1].value | json }}</dd>
   {% endfor %}
 </dl>
 

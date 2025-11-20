@@ -53,9 +53,19 @@
               {% assign swatch_data = matched_variant.metafields.HENK.fabric.value %}
             {% when 'Finish' %}
               {% comment %} {% assign swatch_data = matched_variant.metafields.HENK.frame_finish.value %} {% endcomment %}
+              {% comment %} {% assign finish_value = matched_variant.metafields.HENK.frame_finish.value %} {% endcomment %}
+              {% comment %} {% if finish_value.name == value.name %} {% endcomment %}
+              {% comment %}   {% assign swatch_data = finish_value %} {% endcomment %}
+              {% comment %} {% else %} {% endcomment %}
+              {% comment %}   {% assign swatch_data = null %} {% endcomment %}
+              {% comment %} {% endif %} {% endcomment %}
               {% assign finish_value = matched_variant.metafields.HENK.frame_finish.value %}
-              {% if finish_value.name == value.name %}
-                {% assign swatch_data = finish_value %}
+              {% if finish_value %}
+                {% if finish_value.name == value.name %}
+                  {% assign swatch_data = finish_value %}
+                {% else %}
+                  {% assign swatch_data = null %}
+                {% endif %}
               {% else %}
                 {% assign swatch_data = null %}
               {% endif %}

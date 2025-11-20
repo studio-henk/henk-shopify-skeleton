@@ -5,6 +5,14 @@
   <dd>
     {{ current_variant.id }}
   </dd>
+  <dt>options:</dt>
+  <dd>
+    {{ current_variant.options | json }}
+  </dd>
+  <dt>metafields:</dt>
+  <dd>
+    {{ current_variant.metafields | json }}
+  </dd>
 </dl>
 
 <hr>

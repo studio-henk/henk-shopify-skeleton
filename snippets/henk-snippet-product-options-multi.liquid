@@ -61,7 +61,7 @@
     <dt>option values name:</dt>
     {% for value in option.values %}
       <dd>{{ value.name }}</dd>
-      also show me data for this connected to the finish metafield
+      <hr>
       {% if option.name == 'Finish' %}
         <dt>Finish metafield data for value {{ value.name }}:</dt>
         {% assign matched_variant = null %}

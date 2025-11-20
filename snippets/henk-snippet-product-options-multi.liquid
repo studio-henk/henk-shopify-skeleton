@@ -1,82 +1,122 @@
-<div id="product-options"></div>
-
 <script>
-  const handle = 'otto-s-pouf'; // replace with your product handle
-  const token = '814f20a74301d4a0f54af3e46525bded'; // replace with your Storefront API token
+  const SHOP = 'surf-turf-2-0.myshopify.com';
+  const TOKEN = '814f20a74301d4a0f54af3e46525bded';
+  const HANDLE = 'otto-s-pouf';
 
-  fetch(`https://surf-turf-2-0.myshopify.com/api/2025-10/graphql.json`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Shopify-Storefront-Access-Token': token,
-    },
-    body: JSON.stringify({
-      query: `
-      query {
-        productByHandle(handle: "${handle}") {
-          options {
-            name
-            values
+  // State
+  let productData = null;
+  let selectedOptions = { Fabric: null, Finish: null };
+  let selectedVariantId = null;
+
+  async function fetchProduct() {
+    const query = `
+  query getProduct($handle: String!) {
+    productByHandle(handle: $handle) {
+      id
+      title
+      variants(first: 10) {
+        edges {
+          node {
+            id
+            selectedOptions {
+              name
+              value
+            }
           }
         }
       }
-    `,
-    }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      const container = document.getElementById('product-options');
-      const options = data.data.productByHandle.options;
+    }
+  }`;
 
-      options.forEach((option) => {
-        const section = document.createElement('div');
-        section.innerHTML = `<h3>${option.name}</h3>`;
+    const res = await fetch(`https://${SHOP}/api/2025-07/graphql.json`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': TOKEN,
+      },
+      body: JSON.stringify({ query, variables: { handle: HANDLE } }),
+    });
 
-        option.values.forEach((value) => {
-          const button = document.createElement('button');
-          button.textContent = value;
-          button.dataset.optionName = option.name;
-          button.dataset.optionValue = value;
-          section.appendChild(button);
-        });
+    const data = await res.json();
+    productData = data.data.productByHandle;
+    buildOptionButtons();
+    setDefaultSelection();
+  }
 
-        container.appendChild(section);
+  function buildOptionButtons() {
+    // Collect all option values
+    const fabrics = new Set();
+    const finishes = new Set();
+    productData.variants.edges.forEach((v) => {
+      v.node.selectedOptions.forEach((opt) => {
+        if (opt.name === 'Fabric') fabrics.add(opt.value);
+        if (opt.name === 'Finish') finishes.add(opt.value);
       });
-    })
-    .catch((err) => console.error(err));
+    });
+
+    // Create Fabric buttons
+    const fabricContainer = document.createElement('div');
+    fabricContainer.id = 'fabric-options';
+    fabrics.forEach((fabric) => {
+      const btn = document.createElement('button');
+      btn.textContent = fabric;
+      btn.addEventListener('click', () => selectOption('Fabric', fabric));
+      fabricContainer.appendChild(btn);
+    });
+    document.body.appendChild(fabricContainer);
+
+    // Create Finish buttons
+    const finishContainer = document.createElement('div');
+    finishContainer.id = 'finish-options';
+    finishes.forEach((finish) => {
+      const btn = document.createElement('button');
+      btn.textContent = finish;
+      btn.addEventListener('click', () => selectOption('Finish', finish));
+      finishContainer.appendChild(btn);
+    });
+    document.body.appendChild(finishContainer);
+  }
+
+  function setDefaultSelection() {
+    // Pick first available variant as default
+    const firstVariant = productData.variants.edges[0].node;
+    firstVariant.selectedOptions.forEach((opt) => {
+      selectedOptions[opt.name] = opt.value;
+    });
+    updateSelectedVariant();
+    updateButtonHighlights();
+  }
+
+  function selectOption(name, value) {
+    selectedOptions[name] = value;
+    updateSelectedVariant();
+    updateButtonHighlights();
+  }
+
+  function updateSelectedVariant() {
+    // Find variant matching selected options
+    const variant = productData.variants.edges.find((v) => {
+      return v.node.selectedOptions.every((opt) => selectedOptions[opt.name] === opt.value);
+    });
+    selectedVariantId = variant ? variant.node.id : null;
+    console.log('Selected Variant ID:', selectedVariantId);
+  }
+
+  function updateButtonHighlights() {
+    // Highlight selected buttons
+    Object.keys(selectedOptions).forEach((optionName) => {
+      const containerId = optionName.toLowerCase() + '-options';
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      Array.from(container.children).forEach((btn) => {
+        btn.style.backgroundColor = btn.textContent === selectedOptions[optionName] ? '#ccc' : '';
+      });
+    });
+  }
+
+  // Initialize
+  fetchProduct();
 </script>
-
-{% comment %} {% assign first_variant = product.variants.first %} {% endcomment %}
-{% comment %} {% assign current_variant = first_variant %} {% endcomment %}
-
-<!-- Options -->
-{% comment %} {% for option in product.options_with_values %} {% endcomment %}
-{% comment %}   {% assign option_name = option.name | downcase | replace: ' ', '-' %} {% endcomment %}
-{% comment %}   <fieldset class="henk-fieldsetx"> {% endcomment %}
-{% comment %}     <legend class="henk-legendx">{{ option.name }}</legend> {% endcomment %}
-{% comment %}     <div class="options__container"> {% endcomment %}
-{% comment %}       {% for value in option.values %} {% endcomment %}
-{% comment %}         <div class="henk-labeled-inputx"> {% endcomment %}
-{% comment %}           <label class="henk-labelx"> {% endcomment %}
-{% comment %}             <input {% endcomment %}
-{% comment %}               class="henk-radiox" {% endcomment %}
-{% comment %}               type="radio" {% endcomment %}
-{% comment %}               name="option-{{ option_name }}" {% endcomment %}
-{% comment %}               value="{{ value }}" {% endcomment %}
-{% comment %}               {% if current_variant.options[forloop.parentloop.index0] == value %} {% endcomment %}
-{% comment %}                 checked {% endcomment %}
-{% comment %}               {% endif %} {% endcomment %}
-{% comment %}             > {% endcomment %}
-{% comment %}             <span class="custom-swatchx"> {% endcomment %}
-{% comment %}               {{ value }} {% endcomment %}
-{% comment %}             </span> {% endcomment %}
-{% comment %}           </label> {% endcomment %}
-{% comment %}         </div> {% endcomment %}
-{% comment %}       {% endfor %} {% endcomment %}
-{% comment %}     </div> {% endcomment %}
-{% comment %}   </fieldset> {% endcomment %}
-{% comment %} {% endfor %} {% endcomment %}
-
 <!-- Hidden input for form -->
 <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">
 
@@ -93,7 +133,7 @@
   </pre>
 {% endfor %}
 
-<input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">
+<!-- <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}"> -->
 <h3>current variant</h3>
 <dl>
   <dt>id:</dt>

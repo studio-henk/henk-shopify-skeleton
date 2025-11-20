@@ -9,6 +9,13 @@
     <dt>selected_options:</dt>
     <dd>{{ selected_options | json }}</dd>
   </dl>
+{% endfor %}
+
+<hr>
+
+{% for option in product.options_with_values %}
+  {% assign option_index = forloop.index0 %}
+  {% assign selected_options = current_variant.options %}
 
   <fieldset class="henk-fieldset">
     <legend class="henk-legend">{{ option.name }}</legend>

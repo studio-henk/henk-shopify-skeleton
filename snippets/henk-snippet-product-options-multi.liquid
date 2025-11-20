@@ -58,6 +58,8 @@
               {% assign swatch_data = finish_values | where: 'name', value.name | first %}
           {% endcase %}
 
+          {{ swatch_data | json }}
+
           {%- comment -%}
             STEP 3 (FIXED):
             Reset swatch vars BEFORE assigning

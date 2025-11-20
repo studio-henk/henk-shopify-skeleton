@@ -1,10 +1,13 @@
 <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">
 
+current variant: {{ current_variant | json }}
+
+<hr>
+
 {% for option in product.options_with_values %}
   <dl>
     <dt>options:</dt>
     <dd>{{ option | json }}</dd>
-    {% assign option_index = forloop.index0 %}
     {% assign selected_options = current_variant.options %}
     <dt>selected_options:</dt>
     <dd>{{ selected_options | json }}</dd>

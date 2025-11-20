@@ -1,16 +1,46 @@
 <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">
 {% for option in product.options_with_values %}
+  {% assign selected_options = current_variant.options %}
   {% assign option_index = forloop.index0 %}
 
-  {% comment %} {{ option | json }} {% endcomment %}
-  {% case option.name %}
-    {% when 'Fabric' %}
-      {% assign swatch_data = matched_variant.metafields.HENK.fabric.value %}
-    {% when 'Material' %}
-      {% assign swatch_data = matched_variant.metafields.HENK.material.value %}
-    {% when 'Finish' %}
-      {% assign swatch_data = matched_variant.metafields.HENK.finish.value %}
-  {% endcase %}
+  {% for value in option.values %}
+    {% assign matched_variant = null %}
+
+    {%- comment -%} Find the variant that matches this option value and the other currently selected options {%- endcomment -%}
+    {% for v in product.variants %}
+      {% assign matches = true %}
+      {% for i in (0..v.options['size-1']) %}
+        {% if i == option_index %}
+          {% assign expected = value.name %}
+        {% else %}
+          {% assign expected = selected_options[i] %}
+        {% endif %}
+        {% if v.options[i] != expected %}
+          {% assign matches = false %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+
+      {% if matches %}
+        {% assign matched_variant = v %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+    {% if matched_variant %}
+      {% comment %} {{ option | json }} {% endcomment %}
+      {% case option.name %}
+        {% when 'Fabric' %}
+          {% assign swatch_data = matched_variant.metafields.HENK.fabric.value %}
+        {% when 'Material' %}
+          {% assign swatch_data = matched_variant.metafields.HENK.material.value %}
+        {% when 'Finish' %}
+          {% assign swatch_data = matched_variant.metafields.HENK.finish.value %}
+      {% endcase %}
+
+      hello?
+    {% endif %}
+  {% endfor %}
 
   what happens here?
 

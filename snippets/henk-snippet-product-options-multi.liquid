@@ -54,6 +54,7 @@
             {% when 'Finish' %}
               {% comment %} {% assign swatch_data = matched_variant.metafields.HENK.frame_finish.value | first %} {% endcomment %}
               {% assign finish_values = matched_variant.metafields.HENK.frame_finish.value %}
+              {% comment %} {% assign swatch_data = finish_values | where: 'name', value.name | first %} {% endcomment %}
               {% assign swatch_data = finish_values | where: 'name', value.name | first %}
           {% endcase %}
 

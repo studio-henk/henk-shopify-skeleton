@@ -65,20 +65,6 @@
 
             {% when 'Upholstery material' %}
               {% assign swatch_data = matched_variant.metafields.HENK.fabric.value %}
-
-              {% comment %} {% when 'Finish' %} {% endcomment %}
-              {% comment %} {% assign swatch_data = value.swatch %} {% endcomment %}
-              {% comment %} {% assign swatch_data = matched_variant.metafields.HENK.frame_finish.value %} {% endcomment %}
-              {% comment %} {% assign swatch_data = current_variant.metafields.HENK.frame_finish.value %} {% endcomment %}
-
-              {% comment %} {% when 'Finish' %} {% endcomment %}
-              {% comment %}
-                {% comment %} {% endcomment %}
-                {% comment %}     Use Finish metafield array instead of value.name {% endcomment %}
-                {% comment %}   {% endcomment %}
-              {% endcomment %}
-              {% comment %}   {% assign finish_values = matched_variant.metafields.HENK.frame_finish.value %} {% endcomment %}
-              {% comment %}   {% assign swatch_data = finish_values[forloop.index0] %} {% endcomment %}
           {% endcase %}
 
           {%- comment -%}

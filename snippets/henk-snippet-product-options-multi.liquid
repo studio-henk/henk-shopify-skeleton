@@ -20,6 +20,11 @@
     <dd>{{ key[0] }}</dd>
   {% endfor %}
   <dt>metafield values:</dt>
+  {% for key in current_variant.metafields.HENK %}
+    {% comment %} <dt>{{ key[0] }}:</dt> {% endcomment %}
+    {% comment %} <dd>{{ key[1] }}</dd> {% endcomment %}
+    <dd>{{ key.value }}</dd>
+  {% endfor %}
 </dl>
 
 <hr>

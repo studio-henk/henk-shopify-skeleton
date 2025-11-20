@@ -13,10 +13,11 @@
       {% assign variable = 'HENK.fabric' %}
     {% when 'Upholstery material' %}
       upholstery material
-      {% assign variable = 'HENK.meaterial' %}
+      {% assign variable = 'HENK.material' %}
     {% else %}
       else here
   {% endcase %}
+  {{ variable | json }}
 
   <hr>
   {% case option.name %}

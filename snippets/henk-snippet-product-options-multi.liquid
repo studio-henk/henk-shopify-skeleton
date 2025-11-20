@@ -36,7 +36,7 @@
         {% endfor %}
 
         {% if matched_variant %}
-          {{ matched_variant | json }}
+          {% comment %} {{ matched_variant | json }} {% endcomment %}
           {%- comment -%}
             STEP 2:
             Determine which metafield to use based on option.name.

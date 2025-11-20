@@ -68,12 +68,14 @@
               {% comment %} {% assign swatch_data = matched_variant.metafields.HENK.frame_finish.value %} {% endcomment %}
               {% comment %} {% assign swatch_data = current_variant.metafields.HENK.frame_finish.value %} {% endcomment %}
 
-            {% when 'Finish' %}
+              {% comment %} {% when 'Finish' %} {% endcomment %}
               {% comment %}
-                Use Finish metafield array instead of value.name
+                {% comment %} {% endcomment %}
+                {% comment %}     Use Finish metafield array instead of value.name {% endcomment %}
+                {% comment %}   {% endcomment %}
               {% endcomment %}
-              {% assign finish_values = matched_variant.metafields.HENK.frame_finish.value %}
-              {% assign swatch_data = finish_values[forloop.index0] %}
+              {% comment %}   {% assign finish_values = matched_variant.metafields.HENK.frame_finish.value %} {% endcomment %}
+              {% comment %}   {% assign swatch_data = finish_values[forloop.index0] %} {% endcomment %}
           {% endcase %}
 
           {%- comment -%}

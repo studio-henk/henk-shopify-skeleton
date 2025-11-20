@@ -58,6 +58,7 @@
 
             {% when 'Frame afwerking' %}
               {% assign swatch_data = value.swatch %}
+              {{ swatch_data | json }}
 
               {% comment %} {% when 'Finish' %} {% endcomment %}
               {% comment %}   {% assign swatch_data = matched_variant.metafields.HENK.finish.value %} {% endcomment %}

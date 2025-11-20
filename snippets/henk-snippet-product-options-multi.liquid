@@ -36,6 +36,7 @@
         {% endfor %}
 
         {% if matched_variant %}
+          {{ matched_variant | json }}
           {%- comment -%}
             STEP 2:
             Determine which metafield to use based on option.name.
@@ -52,9 +53,9 @@
             {% when 'Upholstery material' %}
               {% assign swatch_data = matched_variant.metafields.HENK.fabric.value %}
             {% when 'Finish' %}
-              {{ matched_variant.metafields.HENK.frame_finish.list? | json }}
-              {{ matched_variant.metafields.HENK.frame_finish.type | json }}
-              {{ matched_variant.metafields.HENK.frame_finish.value | json }}
+              {% comment %} {{ matched_variant.metafields.HENK.frame_finish.list? | json }} {% endcomment %}
+              {% comment %} {{ matched_variant.metafields.HENK.frame_finish.type | json }} {% endcomment %}
+              {% comment %} {{ matched_variant.metafields.HENK.frame_finish.value | json }} {% endcomment %}
               {% assign swatch_data = null %}
               {% assign finish_value = matched_variant.metafields.HENK.frame_finish.value %}
               {% comment %} {{ finish_value | json }} {% endcomment %}

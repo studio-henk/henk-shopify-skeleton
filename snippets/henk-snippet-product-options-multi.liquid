@@ -43,7 +43,7 @@
             directly into "swatch_data".
           {%- endcomment -%}
 
-          {% comment %} {% assign swatch_data = null %} {% endcomment %}
+          {% assign swatch_data = null %}
           {% case option.name %}
             {% when 'Color' %}
               {% assign swatch_data = value.swatch %}
@@ -52,6 +52,10 @@
             {% when 'Upholstery material' %}
               {% assign swatch_data = matched_variant.metafields.HENK.fabric.value %}
             {% when 'Finish' %}
+              {% assign finish_value = matched_variant.metafields.HENK.frame_finish.value %}
+              {% if finish_value and finish_value.name == value.name %}
+                {% assign swatch_data = finish_value %}
+              {% endif %}
               {% comment %} {% assign swatch_data = matched_variant.metafields.HENK.frame_finish.value %} {% endcomment %}
               {% comment %} {% assign finish_value = matched_variant.metafields.HENK.frame_finish.value %} {% endcomment %}
               {% comment %} {% if finish_value.name == value.name %} {% endcomment %}

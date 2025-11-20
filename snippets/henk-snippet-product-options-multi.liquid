@@ -3,14 +3,14 @@
 
 <!-- Options -->
 {% for option in product.options_with_values %}
-  <fieldset class="henk-fieldset">
-    <legend class="henk-legend">{{ option.name }}</legend>
+  <fieldset class="henk-fieldsetx">
+    <legend class="henk-legendx">{{ option.name }}</legend>
     <div class="options__container">
       {% for value in option.values %}
-        <div class="henk-labeled-input">
-          <label class="henk-label">
+        <div class="henk-labeled-inputx">
+          <label class="henk-labelx">
             <input
-              class="henk-radio"
+              class="henk-radiox"
               type="radio"
               name="option-{{ forloop.index0 }}"
               value="{{ value }}"
@@ -18,7 +18,7 @@
                 checked
               {% endif %}
             >
-            <span class="custom-swatch">
+            <span class="custom-swatchx">
               {{ value }}
             </span>
           </label>

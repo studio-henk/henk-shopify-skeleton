@@ -54,8 +54,13 @@
             {% when 'Finish' %}
               {% comment %} {% assign swatch_data = matched_variant.metafields.HENK.frame_finish.value | first %} {% endcomment %}
               {% assign finish_values = matched_variant.metafields.HENK.frame_finish.value %}
+
+              {% assign matching_finish = finish_values | where: 'name', value.name %}
+              {{ value.name }} -> {{ matching_finish | json }}
+              {% assign swatch_data = matching_finish | first %}
+
               {% comment %} {% assign swatch_data = finish_values | where: 'name', value.name | first %} {% endcomment %}
-              {% assign swatch_data = finish_values | where: 'name', value.name | first %}
+              {% comment %} {% assign swatch_data = finish_values | where: 'name', value.name | first %} {% endcomment %}
           {% endcase %}
 
           {{ swatch_data | json }}

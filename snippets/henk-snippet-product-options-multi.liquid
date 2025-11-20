@@ -1,44 +1,49 @@
-<script>
-  const SHOP = 'surf-turf-2-0.myshopify.com';
-  const TOKEN = '814f20a74301d4a0f54af3e46525bded';
-  const HANDLE = 'otto-s-pouf';
+<div id="product-options"></div>
 
-  async function fetchProduct() {
-    const query = `
-    query getProduct($handle: String!) {
-      productByHandle(handle: $handle) {
-        id
-        title
-        variants(first: 5) {
-          edges {
-            node {
-              id
-              title
-              selectedOptions {
-                name
-                value
-              }
-            }
+<script>
+  const handle = 'YOUR_PRODUCT_HANDLE'; // replace with your product handle
+  const token = 'YOUR_PUBLIC_TOKEN'; // replace with your Storefront API token
+
+  fetch(`https://YOURSHOP.myshopify.com/api/2025-10/graphql.json`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Shopify-Storefront-Access-Token': token,
+    },
+    body: JSON.stringify({
+      query: `
+      query {
+        productByHandle(handle: "${handle}") {
+          options {
+            name
+            values
           }
         }
       }
-    }
-  `;
+    `,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      const container = document.getElementById('product-options');
+      const options = data.data.productByHandle.options;
 
-    const res = await fetch(`https://${SHOP}/api/2025-07/graphql.json`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Shopify-Storefront-Access-Token': TOKEN,
-      },
-      body: JSON.stringify({ query, variables: { handle: HANDLE } }),
-    });
+      options.forEach((option) => {
+        const section = document.createElement('div');
+        section.innerHTML = `<h3>${option.name}</h3>`;
 
-    const data = await res.json();
-    console.log('Product data:', data.data.productByHandle);
-  }
+        option.values.forEach((value) => {
+          const button = document.createElement('button');
+          button.textContent = value;
+          button.dataset.optionName = option.name;
+          button.dataset.optionValue = value;
+          section.appendChild(button);
+        });
 
-  fetchProduct();
+        container.appendChild(section);
+      });
+    })
+    .catch((err) => console.error(err));
 </script>
 
 {% assign first_variant = product.variants.first %}

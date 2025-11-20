@@ -1,12 +1,41 @@
-{% assign my_options = 'soil-natural01,Eiken zwarte lak' | split: ',' %}
+{% assign first_variant = product.variants.first %}
+{% assign current_variant = first_variant %}
 
-<p>Testing options: {{ my_options | json }}</p>
+<!-- Options -->
+{% for option in product.options_with_values %}
+  <fieldset class="henk-fieldset">
+    <legend class="henk-legend">{{ option.name }}</legend>
+    <div class="options__container">
+      {% for value in option.values %}
+        <div class="henk-labeled-input">
+          <label class="henk-label">
+            <input
+              class="henk-radio"
+              type="radio"
+              name="option-{{ forloop.index0 }}"
+              value="{{ value }}"
+              {% if current_variant.options[forloop.index0] == value %}
+                checked
+              {% endif %}
+            >
+            <span class="custom-swatch">
+              {{ value }}
+            </span>
+          </label>
+        </div>
+      {% endfor %}
+    </div>
+  </fieldset>
+{% endfor %}
 
-{% assign v = product.variants | variant_by_options: my_options %}
+<!-- Hidden input for form -->
+<input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">
 
-<p>Result variant:</p>
-<pre>{{ v | json }}</pre>
+<!-- Initial debug -->
+<p>Current variant ID: {{ current_variant.id }}</p>
+<p>Options: {{ current_variant.options | json }}</p>
 
+<hr>
 <h2>VARIANT DUMP</h2>
 {% for v in product.variants %}
   <pre>

@@ -44,16 +44,14 @@
           {%- endcomment -%}
 
           {% comment %} {% assign swatch_data = null %} {% endcomment %}
-          {% if option.name != 'Finish' %}
-            {% case option.name %}
-              {% when 'Color' %}
-                {% assign swatch_data = value.swatch %}
-              {% when 'Fabric' %}
-                {% assign swatch_data = matched_variant.metafields.HENK.fabric.value %}
-              {% when 'Upholstery material' %}
-                {% assign swatch_data = matched_variant.metafields.HENK.fabric.value %}
-            {% endcase %}
-          {% endif %}
+          {% case option.name %}
+            {% when 'Color' %}
+              {% assign swatch_data = value.swatch %}
+            {% when 'Fabric' %}
+              {% assign swatch_data = matched_variant.metafields.HENK.fabric.value %}
+            {% when 'Upholstery material' %}
+              {% assign swatch_data = matched_variant.metafields.HENK.fabric.value %}
+          {% endcase %}
 
           {%- comment -%}
             STEP 3 (FIXED):

@@ -58,10 +58,27 @@
               {% comment %} {% endif %} {% endcomment %}
               {% comment %} {% assign all_finishes = product.metafields.HENK.frame_finish.value %} {% endcomment %}
               {% comment %} {% assign swatch_data = all_finishes | where: 'name', value.name | first %} {% endcomment %}
-              {% assign swatch_data = null %}
-              {% assign finish_value = matched_variant.metafields.HENK.frame_finish.value %}
-              {% if finish_value %}
-                {% assign swatch_data = finish_value %}
+              {% comment %} {% assign swatch_data = null %} {% endcomment %}
+              {% comment %} {% assign finish_value = matched_variant.metafields.HENK.frame_finish.value %} {% endcomment %}
+              {% comment %} {% if finish_value %} {% endcomment %}
+              {% comment %}   {% assign swatch_data = finish_value %} {% endcomment %}
+              {% comment %} {% endif %} {% endcomment %}
+              {%- comment -%}
+                Get the Finish metafield from the matched variant
+              {%- endcomment -%}
+              {% assign variant_finish = matched_variant.metafields.HENK.frame_finish.value %}
+
+              {%- comment -%}
+                Check if this option value matches the variant's Finish
+              {%- endcomment -%}
+              {% if variant_finish %}
+                {% if variant_finish.name == value %}
+                  {% assign swatch_data = variant_finish %}
+                {% else %}
+                  {% assign swatch_data = null %}
+                {% endif %}
+              {% else %}
+                {% assign swatch_data = null %}
               {% endif %}
           {% endcase %}
 

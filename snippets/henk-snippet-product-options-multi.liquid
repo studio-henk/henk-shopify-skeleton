@@ -14,8 +14,9 @@
     {{ current_variant.metafields.HENK | json }}
   </dd>
   {% for key in current_variant.metafields.HENK %}
-    <dt>{{ key[0] }}:</dt>
-    <dd>{{ key[1] }}</dd>
+    {% comment %} <dt>{{ key[0] }}:</dt> {% endcomment %}
+    {% comment %} <dd>{{ key[1] }}</dd> {% endcomment %}
+    {{ key }}
   {% endfor %}
 </dl>
 

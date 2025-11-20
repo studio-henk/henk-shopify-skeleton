@@ -50,10 +50,6 @@
           {%- endcomment -%}
 
           {% comment %} {% assign swatch_data = null %} {% endcomment %}
-          {% if option.name != 'Finish' %}
-            {% assign swatch_data = null %}
-          {% endif %}
-
           {% case option.name %}
             {% when 'Color' %}
               {% assign swatch_data = value.swatch %}
@@ -63,9 +59,6 @@
 
             {% when 'Upholstery material' %}
               {% assign swatch_data = matched_variant.metafields.HENK.fabric.value %}
-
-            {% when 'Finish' %}
-
           {% endcase %}
 
           {%- comment -%}

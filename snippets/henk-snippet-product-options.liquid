@@ -63,13 +63,11 @@
             {% endfor %}
 
             {% if matched_variant %}
-              {% comment %} {{ matched_variant | json }} {% endcomment %}
-              {% comment %} {{ matched_variant.featured_image | json }} {% endcomment %}
-              {% comment %} {{ matched_variant.price }} {% endcomment %}
-              {% assign material_data = matched_variant.metafields.HENK.material.value | first %}
-              {% comment %} {{ material_data | json }} {% endcomment %}
-              {% comment %} {{ material_data.name }} {% endcomment %}
-              {% comment %} {{ material_data.color }} {% endcomment %}
+              {% if option.name == 'Fabric' %}
+                {% assign material_data = matched_variant.metafields.HENK.fabric.value | first %}
+              {% else %}
+                {% assign material_data = matched_variant.metafields.HENK.material.value | first %}
+              {% endif %}
 
               {% assign swatch_gid = material_data.swatch %}
               {% assign swatch_image = swatch_gid | image_url %}

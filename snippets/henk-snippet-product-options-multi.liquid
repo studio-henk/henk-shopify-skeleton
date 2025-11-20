@@ -43,8 +43,6 @@
     <dd>{{ option.name }}</dd>
     <dt>option values:</dt>
     <dd>{{ option.values | json }}</dd>
-    <dt>metafields</dt>
-    <dd>{{ product.metafields.HENK.value | json }}</dd>
     <dd>
       {% for value in option.values %}
         <strong>value name:</strong> {{ value.name -}}

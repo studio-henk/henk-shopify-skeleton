@@ -7,10 +7,13 @@
   {% case option.name %}
     {% when 'Color' %}
       color
+      {% assign variable = 'Color' %}
     {% when 'Fabric' %}
       fabric
+      {% assign variable = 'HENK.fabric' %}
     {% when 'Upholstery material' %}
       upholstery material
+      {% assign variable = 'HENK.meaterial' %}
     {% else %}
       else here
   {% endcase %}

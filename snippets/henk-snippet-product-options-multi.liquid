@@ -1,6 +1,8 @@
 <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">
-
-current variant: {{ current_variant | json }}
+<dl>
+  <dt>current variant:</dt>
+  <dd>{{ current_variant | json }}</dd>
+</dl>
 
 <hr>
 

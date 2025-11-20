@@ -52,7 +52,7 @@
             {% when 'Upholstery material' %}
               {% assign swatch_data = matched_variant.metafields.HENK.fabric.value %}
             {% when 'Finish' %}
-              {% assign swatch_data = matched_variant.metafields.HENK.frame_finish.value %}
+              {% assign swatch_data = matched_variant.metafields.HENK.finish.value %}
           {% endcase %}
 
           {%- comment -%}

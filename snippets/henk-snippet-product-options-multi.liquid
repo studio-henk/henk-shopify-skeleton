@@ -26,17 +26,23 @@
     <dd>{{ key[1].value | json }}</dd>
   {% endfor %}
 </dl>
+<hr>
+<h3>Current selected variant</h3>
+<dl>
+  {% assign selected_options = current_variant.options %}
+  <dt>selected_options:</dt>
+  <dd>{{ selected_options | json }}</dd>
+</dl>
 
 <hr>
 <h3>Current product all options</h3>
 {% for option in product.options_with_values %}
-  {{ option.selected_value | json }}
+  {% comment %} {{ option.selected_value | json }} {% endcomment %}
   <dl>
-    <dt>options:</dt>
-    <dd>{{ option | json }}</dd>
-    {% assign selected_options = current_variant.options %}
-    <dt>selected_options:</dt>
-    <dd>{{ selected_options | json }}</dd>
+    <dt>option name:</dt>
+    <dd>{{ option.name }}</dd>
+    <!-- <dt>options:</dt> -->
+    <!-- <dd>{{ option | json }}</dd> -->
   </dl>
 {% endfor %}
 

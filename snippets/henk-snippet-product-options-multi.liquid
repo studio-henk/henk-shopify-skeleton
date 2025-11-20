@@ -58,11 +58,6 @@
 
             {% when 'Frame afwerking' %}
               {% assign swatch_data = value.swatch %}
-              {{ swatch_data.color | json }}
-              {{ swatch_data.swatch | json }}
-
-              {% comment %} {% when 'Finish' %} {% endcomment %}
-              {% comment %}   {% assign swatch_data = matched_variant.metafields.HENK.finish.value %} {% endcomment %}
           {% endcase %}
 
           {%- comment -%}
@@ -74,6 +69,7 @@
             {% assign swatch_image = swatch_data.swatch | image_url %}
             {% assign swatch_color = swatch_data.color %}
           {% endif %}
+          {{ swatch_image }}
 
           <div class="henk-labeled-input">
             <label class="henk-label">

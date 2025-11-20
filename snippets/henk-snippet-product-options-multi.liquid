@@ -48,7 +48,6 @@
 
           {% case option.name %}
             {% when 'Color' %}
-              {# Color uses option.values.swatch — not a metafield #}
               {% assign swatch_data = value.swatch %}
 
             {% when 'Fabric' %}
@@ -58,10 +57,10 @@
               {% assign swatch_data = matched_variant.metafields.HENK.material.value | first %}
 
             {% when 'Frame afwerking' %}
-              {% assign swatch_data = matched_variant.metafields.HENK.finish.value %}
+              {% assign swatch_data = value.swatch %}
 
-            {% when 'Finish' %}
-              {% assign swatch_data = matched_variant.metafields.HENK.finish.value %}
+              {% comment %} {% when 'Finish' %} {% endcomment %}
+              {% comment %}   {% assign swatch_data = matched_variant.metafields.HENK.finish.value %} {% endcomment %}
           {% endcase %}
 
           {%- comment -%}

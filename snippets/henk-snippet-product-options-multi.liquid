@@ -100,17 +100,8 @@
             Reset swatch vars BEFORE assigning
           {%- endcomment -%}
 
-          {% assign swatch_image = null %}
-          {% assign swatch_color = null %}
-
-          {% if swatch_data %}
-            {% if swatch_data.swatch %}
-              {% assign swatch_image = swatch_data.swatch | image_url %}
-            {% endif %}
-            {% if swatch_data.color %}
-              {% assign swatch_color = swatch_data.color %}
-            {% endif %}
-          {% endif %}
+          {% assign swatch_image = swatch_data.swatch | image_url %}
+          {% assign swatch_color = swatch_data.color %}
 
           <div class="henk-labeled-input">
             <label class="henk-label">

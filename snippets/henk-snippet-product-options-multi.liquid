@@ -74,7 +74,7 @@
               {% comment %} {% assign swatch_data = finish_values | where: 'name', value.name | first %} {% endcomment %}
           {% endcase %}
 
-          {{ swatch_data | json }}
+          {% comment %} {{ swatch_data | json }} {% endcomment %}
 
           {%- comment -%}
             STEP 3 (FIXED):

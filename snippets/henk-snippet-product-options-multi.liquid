@@ -30,6 +30,7 @@
 <hr>
 <h3>Current product all options</h3>
 {% for option in product.options_with_values %}
+  {{ option.selected_value | json }}
   <dl>
     <dt>options:</dt>
     <dd>{{ option | json }}</dd>

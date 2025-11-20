@@ -51,7 +51,10 @@
             directly into "swatch_data".
           {%- endcomment -%}
 
-          {% assign swatch_data = null %}
+          {% comment %} {% assign swatch_data = null %} {% endcomment %}
+          {% if option.name != 'Finish' %}
+            {% assign swatch_data = null %}
+          {% endif %}
 
           {% case option.name %}
             {% when 'Color' %}

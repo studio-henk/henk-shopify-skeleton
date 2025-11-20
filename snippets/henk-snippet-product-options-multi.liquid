@@ -73,39 +73,40 @@
 
           {% assign swatch_image = swatch_data.swatch | image_url %}
           {% assign swatch_color = swatch_data.color %}
+          {% if swatch_data %}
+            <div class="henk-labeled-input">
+              <label class="henk-label">
+                <input
+                  class="henk-radio"
+                  type="radio"
+                  name="option-{{ option_index }}"
+                  value="{{ value.name }}"
+                  data-option-index="{{ option_index }}"
+                  {% if current_variant.options[option_index] == value.name %}
+                    checked
+                  {% endif %}
+                >
 
-          <div class="henk-labeled-input">
-            <label class="henk-label">
-              <input
-                class="henk-radio"
-                type="radio"
-                name="option-{{ option_index }}"
-                value="{{ value.name }}"
-                data-option-index="{{ option_index }}"
-                {% if current_variant.options[option_index] == value.name %}
-                  checked
-                {% endif %}
-              >
+                <span
+                  class="custom-swatch"
+                  style="{% if swatch_color %}background-color: {{ swatch_color }};{% endif %}"
+                >
+                  {% if swatch_image %}
+                    <img
+                      src="{{ swatch_image | image_url: width: 44, height: 44 }}"
+                      alt="{{ swatch_data.name }}"
+                      width="44"
+                      height="44"
+                    >
+                  {% endif %}
+                </span>
 
-              <span
-                class="custom-swatch"
-                style="{% if swatch_color %}background-color: {{ swatch_color }};{% endif %}"
-              >
-                {% if swatch_image %}
-                  <img
-                    src="{{ swatch_image | image_url: width: 44, height: 44 }}"
-                    alt="{{ swatch_data.name }}"
-                    width="44"
-                    height="44"
-                  >
-                {% endif %}
-              </span>
-
-              <span class="visually-hidden">
-                {{ swatch_data.name | default: value.name }}
-              </span>
-            </label>
-          </div>
+                <span class="visually-hidden">
+                  {{ swatch_data.name | default: value.name }}
+                </span>
+              </label>
+            </div>
+          {% endif %}
         {% endif %}
       {% endfor %}
     </div>

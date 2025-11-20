@@ -56,8 +56,13 @@
               {% comment %} {% if finish_value and finish_value.name == value.name %} {% endcomment %}
               {% comment %}   {% assign swatch_data = finish_value %} {% endcomment %}
               {% comment %} {% endif %} {% endcomment %}
-              {% assign all_finishes = product.metafields.HENK.frame_finish.value %}
-              {% assign swatch_data = all_finishes | where: 'name', value.name | first %}
+              {% comment %} {% assign all_finishes = product.metafields.HENK.frame_finish.value %} {% endcomment %}
+              {% comment %} {% assign swatch_data = all_finishes | where: 'name', value.name | first %} {% endcomment %}
+              {% assign swatch_data = null %}
+              {% assign finish_value = matched_variant.metafields.HENK.frame_finish.value %}
+              {% if finish_value %}
+                {% assign swatch_data = finish_value %}
+              {% endif %}
           {% endcase %}
 
           {% comment %} {{ swatch_data | json }} {% endcomment %}

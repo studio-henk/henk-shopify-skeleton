@@ -56,7 +56,7 @@
               {% comment %} {% if finish_value and finish_value.name == value.name %} {% endcomment %}
               {% comment %}   {% assign swatch_data = finish_value %} {% endcomment %}
               {% comment %} {% endif %} {% endcomment %}
-              {% assign all_finishes = product.metafields.HENK.frame_finish_options.value %}
+              {% assign all_finishes = product.metafields.HENK.frame_finish.value %}
               {% assign swatch_data = all_finishes | where: 'name', value.name | first %}
           {% endcase %}
 

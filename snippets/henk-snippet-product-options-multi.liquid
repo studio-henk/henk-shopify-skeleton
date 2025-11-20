@@ -54,6 +54,7 @@
             {% when 'Finish' %}
               {{ matched_variant.metafields.HENK.frame_finish.list? | json }}
               {{ matched_variant.metafields.HENK.frame_finish.type | json }}
+              {{ matched_variant.metafields.HENK.frame_finish.value | json }}
               {% assign swatch_data = null %}
               {% assign finish_value = matched_variant.metafields.HENK.frame_finish.value %}
               {% comment %} {{ finish_value | json }} {% endcomment %}

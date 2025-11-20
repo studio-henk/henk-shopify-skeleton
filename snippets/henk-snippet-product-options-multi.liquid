@@ -1,10 +1,12 @@
 <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">
 
 {% for option in product.options_with_values %}
-  {{ option | json }}
-  {% assign option_index = forloop.index0 %}
-  {% assign selected_options = current_variant.options %}
-  {{ selected_options | json }}
+  <dl>
+    <dd>{{ option | json }}</dd>
+    {% assign option_index = forloop.index0 %}
+    {% assign selected_options = current_variant.options %}
+    <dd>{{ selected_options | json }}</dd>
+  </dl>
 
   <fieldset class="henk-fieldset">
     <legend class="henk-legend">{{ option.name }}</legend>

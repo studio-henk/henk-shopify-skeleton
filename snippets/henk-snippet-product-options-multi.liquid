@@ -3,6 +3,14 @@
   {% assign option_index = forloop.index0 %}
 
   {% comment %} {{ option | json }} {% endcomment %}
+  {% case option.name %}
+    {% when 'Fabric' %}
+      {% assign swatch_data = matched_variant.metafields.HENK.fabric.value %}
+    {% when 'Material' %}
+      {% assign swatch_data = matched_variant.metafields.HENK.material.value %}
+    {% when 'Finish' %}
+      {% assign swatch_data = matched_variant.metafields.HENK.finish.value %}
+  {% endcase %}
 
   what happens here?
 

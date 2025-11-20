@@ -1,3 +1,46 @@
+<script>
+  const SHOP = 'surf-turf-2-0.myshopify.com';
+  const TOKEN = '814f20a74301d4a0f54af3e46525bded';
+  const HANDLE = 'otto-s-pouf';
+
+  async function fetchProduct() {
+    const query = `
+    query getProduct($handle: String!) {
+      productByHandle(handle: $handle) {
+        id
+        title
+        variants(first: 5) {
+          edges {
+            node {
+              id
+              title
+              selectedOptions {
+                name
+                value
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+    const res = await fetch(`https://${SHOP}/api/2025-07/graphql.json`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': TOKEN,
+      },
+      body: JSON.stringify({ query, variables: { handle: HANDLE } }),
+    });
+
+    const data = await res.json();
+    console.log('Product data:', data.data.productByHandle);
+  }
+
+  fetchProduct();
+</script>
+
 {% assign first_variant = product.variants.first %}
 {% assign current_variant = first_variant %}
 

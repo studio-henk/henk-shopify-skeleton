@@ -93,13 +93,6 @@
               {% endcomment %}
               {% assign finish_values = matched_variant.metafields.HENK.frame_finish.value %}
               {% assign swatch_data = finish_values[forloop.index0] %}
-              {% assign swatch_data = null %}
-              {% for fv in finish_values %}
-                {% if fv.name == value.name %}
-                  {% assign swatch_data = fv %}
-                  {% break %}
-                {% endif %}
-              {% endfor %}
           {% endcase %}
 
           {%- comment -%}

@@ -61,6 +61,25 @@
     <dt>option values name:</dt>
     {% for value in option.values %}
       <dd>{{ value.name }}</dd>
+      also show me data for this connected to the finish metafield
+      {% if option.name == 'Finish' %}
+        <dt>Finish metafield data for value {{ value.name }}:</dt>
+        {% assign matched_variant = null %}
+        {% for v in product.variants %}
+          {% if v.options[forloop.parent.index0] == value.name %}
+            {% assign matched_variant = v %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+        {% if matched_variant %}
+          <dd>
+            {% assign finish_value = matched_variant.metafields.HENK.frame_finish.value %}
+            {{ finish_value | json }}
+          </dd>
+        {% else %}
+          <dd>No matched variant found for this finish value.</dd>
+        {% endif %}
+      {% endif %}
     {% endfor %}
     <dt>option selected value:</dt>
     <dd>{{ option.selected_value }}</dd>

@@ -69,40 +69,6 @@
 
           <p class="product__description">{{ product.description }}</p>
         </div>
-
-        <form method="get" action="">
-          <fieldset>
-            <legend>Fabric</legend>
-            <label>
-              <input type="radio" name="option-fabric" value="orion graphite66" checked>
-              Orion Graphite66
-            </label>
-            <label>
-              <input type="radio" name="option-fabric" value="soil-natural01">
-              Soil Natural01
-            </label>
-          </fieldset>
-
-          <fieldset>
-            <legend>Finish</legend>
-            <label>
-              <input type="radio" name="option-finish" value="Eiken witte lak" checked>
-              Eiken Witte Lak
-            </label>
-            <label>
-              <input type="radio" name="option-finish" value="Eiken zwarte lak">
-              Eiken Zwarte Lak
-            </label>
-          </fieldset>
-
-          <button type="submit">Submit</button>
-        </form>
-        {% assign selected_fabric = request.params['option-fabric'] %}
-        {% assign selected_finish = request.params['option-finish'] %}
-
-        <p>Fabric selected: {{ selected_fabric }}</p>
-        <p>Finish selected: {{ selected_finish }}</p>
-        <hr>
         <div class="product-form">
           {% form 'product', product %}
             {% assign number_of_product_options = product.options_with_values.size %}

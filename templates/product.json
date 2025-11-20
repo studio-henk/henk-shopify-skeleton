@@ -9,58 +9,18 @@
  */
 {
   "sections": {
-    "henk_section_breadcrumbs_EDBWmC": {
-      "type": "henk-section-breadcrumbs",
-      "name": "Breadcrumbs",
-      "settings": {}
-    },
-    "henk_section_header_BtaNKQ": {
-      "type": "henk-section-header",
-      "name": "Section Header",
-      "settings": {
-        "id": "p01",
-        "caption": "{{ product.metafields.custom.short_description.value }}",
-        "title": "{{ product.title }}",
-        "text": "",
-        "level": "2",
-        "align": "center",
-        "button_label": "",
-        "button_url": "",
-        "button_variant": "primary"
-      }
-    },
     "main": {
       "type": "product",
       "settings": {}
     },
-    "henk_section_faq_NPNJrN": {
-      "type": "henk-section-faq",
-      "blocks": {
-        "faq_item_GjxwEg": {
-          "type": "faq_item",
-          "settings": {
-            "summary": "What is the purpose of this component?",
-            "content": "<p>This component is used to display a list of frequently asked questions.</p>{{ product.description }}",
-            "variant": "plusmin",
-            "name": "cc",
-            "icon_name": "calendar",
-            "icon_size": "large"
-          }
-        }
-      },
-      "block_order": [
-        "faq_item_GjxwEg"
-      ],
-      "name": "FAQ Section",
-      "settings": {
-        "title": "Frequently Asked Questions"
-      }
+    "henk_section_breadcrumbs_EDBWmC": {
+      "type": "henk-section-breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {}
     }
   },
   "order": [
     "henk_section_breadcrumbs_EDBWmC",
-    "henk_section_header_BtaNKQ",
-    "main",
-    "henk_section_faq_NPNJrN"
+    "main"
   ]
 }

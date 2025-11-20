@@ -69,6 +69,18 @@
     <dt>option values name:</dt>
     {% for value in option.values %}
       <dd>{{ value.name }}</dd>
+
+      <hr>
+      {%- assign updated_options = selected_options | clone -%}
+      {%- assign updated_options = updated_options | splice: option_index, 1, value -%}
+
+      {% assign matched_variant = product.variant_by_options updated_options %}
+
+      <div>
+        Value: {{ value -}}
+        <br>
+        Variant ID: {{ matched_variant.id }}
+      </div>
     {% endfor %}
     <dt>option selected value:</dt>
     <dd>{{ option.selected_value }}</dd>

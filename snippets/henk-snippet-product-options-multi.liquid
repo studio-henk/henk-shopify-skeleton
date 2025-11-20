@@ -46,36 +46,36 @@
     .catch((err) => console.error(err));
 </script>
 
-{% assign first_variant = product.variants.first %}
-{% assign current_variant = first_variant %}
+{% comment %} {% assign first_variant = product.variants.first %} {% endcomment %}
+{% comment %} {% assign current_variant = first_variant %} {% endcomment %}
 
 <!-- Options -->
-{% for option in product.options_with_values %}
-  {% assign option_name = option.name | downcase | replace: ' ', '-' %}
-  <fieldset class="henk-fieldsetx">
-    <legend class="henk-legendx">{{ option.name }}</legend>
-    <div class="options__container">
-      {% for value in option.values %}
-        <div class="henk-labeled-inputx">
-          <label class="henk-labelx">
-            <input
-              class="henk-radiox"
-              type="radio"
-              name="option-{{ option_name }}"
-              value="{{ value }}"
-              {% if current_variant.options[forloop.parentloop.index0] == value %}
-                checked
-              {% endif %}
-            >
-            <span class="custom-swatchx">
-              {{ value }}
-            </span>
-          </label>
-        </div>
-      {% endfor %}
-    </div>
-  </fieldset>
-{% endfor %}
+{% comment %} {% for option in product.options_with_values %} {% endcomment %}
+{% comment %}   {% assign option_name = option.name | downcase | replace: ' ', '-' %} {% endcomment %}
+{% comment %}   <fieldset class="henk-fieldsetx"> {% endcomment %}
+{% comment %}     <legend class="henk-legendx">{{ option.name }}</legend> {% endcomment %}
+{% comment %}     <div class="options__container"> {% endcomment %}
+{% comment %}       {% for value in option.values %} {% endcomment %}
+{% comment %}         <div class="henk-labeled-inputx"> {% endcomment %}
+{% comment %}           <label class="henk-labelx"> {% endcomment %}
+{% comment %}             <input {% endcomment %}
+{% comment %}               class="henk-radiox" {% endcomment %}
+{% comment %}               type="radio" {% endcomment %}
+{% comment %}               name="option-{{ option_name }}" {% endcomment %}
+{% comment %}               value="{{ value }}" {% endcomment %}
+{% comment %}               {% if current_variant.options[forloop.parentloop.index0] == value %} {% endcomment %}
+{% comment %}                 checked {% endcomment %}
+{% comment %}               {% endif %} {% endcomment %}
+{% comment %}             > {% endcomment %}
+{% comment %}             <span class="custom-swatchx"> {% endcomment %}
+{% comment %}               {{ value }} {% endcomment %}
+{% comment %}             </span> {% endcomment %}
+{% comment %}           </label> {% endcomment %}
+{% comment %}         </div> {% endcomment %}
+{% comment %}       {% endfor %} {% endcomment %}
+{% comment %}     </div> {% endcomment %}
+{% comment %}   </fieldset> {% endcomment %}
+{% comment %} {% endfor %} {% endcomment %}
 
 <!-- Hidden input for form -->
 <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">

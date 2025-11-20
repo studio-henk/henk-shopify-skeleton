@@ -57,11 +57,9 @@
     {% endfor %}
     <dt>option selected value:</dt>
     <dd>{{ option.selected_value }}</dd>
-    <dt>option selected value name:</dt>
-    {% for value in option.values %}
-      {% if value.name == option.selected_value %}
-        <dd>{{ value.name }}</dd>
-      {% endif %}
+    <dt>variants metafields:</dt>
+    {% for v in product.variants %}
+      <dd>Variant ID: {{ v.id }} - Metafields: {{ v.metafields.HENK | json }}</dd>
     {% endfor %}
   </dl>
   <hr>

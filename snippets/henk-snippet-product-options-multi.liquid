@@ -1,3 +1,13 @@
+{% assign my_options = 'soil-natural01,Eiken zwarte lak' | split: ',' %}
+
+<p>Testing:</p>
+<p>Options: {{ my_options | json }}</p>
+
+{% assign v = product.variant_by_options my_options %}
+
+<p>Result variant:</p>
+<pre>{{ v | json }}</pre>
+
 <h2>VARIANT DUMP</h2>
 {% for v in product.variants %}
   <pre>
@@ -71,16 +81,6 @@
       <dd>{{ value.name }}</dd>
 
       <hr>
-      {%- assign updated_options = selected_options | clone -%}
-      {%- assign updated_options = updated_options | splice: option_index, 1, value -%}
-
-      {% assign matched_variant = product.variant_by_options updated_options %}
-
-      <div>
-        Value: {{ value -}}
-        <br>
-        Variant ID: {{ matched_variant.id }}
-      </div>
     {% endfor %}
     <dt>option selected value:</dt>
     <dd>{{ option.selected_value }}</dd>

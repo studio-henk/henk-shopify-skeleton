@@ -56,26 +56,6 @@
               {% if finish_value and finish_value.name == value.name %}
                 {% assign swatch_data = finish_value %}
               {% endif %}
-              {% comment %} {% assign swatch_data = matched_variant.metafields.HENK.frame_finish.value %} {% endcomment %}
-              {% comment %} {% assign finish_value = matched_variant.metafields.HENK.frame_finish.value %} {% endcomment %}
-              {% comment %} {% if finish_value.name == value.name %} {% endcomment %}
-              {% comment %}   {% assign swatch_data = finish_value %} {% endcomment %}
-              {% comment %} {% else %} {% endcomment %}
-              {% comment %}   {% assign swatch_data = null %} {% endcomment %}
-              {% comment %} {% endif %} {% endcomment %}
-              {% assign finish_value = matched_variant.metafields.HENK.frame_finish.value %}
-              {% if finish_value %}
-                {% if finish_value.name == value.name %}
-                  {% assign swatch_data = finish_value %}
-                {% else %}
-                  {% assign swatch_data = null %}
-                {% endif %}
-              {% else %}
-                {% assign swatch_data = null %}
-              {% endif %}
-              {% comment %} {% assign finish_values = matched_variant.metafields.HENK.frame_finish.value %} {% endcomment %}
-              {% comment %} {% assign swatch_data = finish_values | where: 'name', value.name | first %} {% endcomment %}
-              {% comment %} {% assign swatch_data = finish_values | where: 'name', value.name | first %} {% endcomment %}
           {% endcase %}
 
           {% comment %} {{ swatch_data | json }} {% endcomment %}
@@ -85,9 +65,9 @@
             Reset swatch vars BEFORE assigning
           {%- endcomment -%}
 
-          {% assign swatch_image = swatch_data.swatch | image_url %}
-          {% assign swatch_color = swatch_data.color %}
           {% if swatch_data %}
+            {% assign swatch_image = swatch_data.swatch | image_url %}
+            {% assign swatch_color = swatch_data.color %}
             <div class="henk-labeled-input">
               <label class="henk-label">
                 <input

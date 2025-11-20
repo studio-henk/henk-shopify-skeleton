@@ -25,6 +25,14 @@
   {% for key in current_variant.metafields.HENK %}
     <dd>{{ key[1].value.color }}</dd>
   {% endfor %}
+  <dt>metafield name</dt>
+  {% for key in current_variant.metafields.HENK %}
+    <dd>{{ key[1].value.name }}</dd>
+  {% endfor %}
+  <dt>metafield swatch</dt>
+  {% for key in current_variant.metafields.HENK %}
+    <dd>{{ key[1].value.swatch | image_url }}</dd>
+  {% endfor %}
 </dl>
 <hr>
 <h3>Current selected variant</h3>
@@ -43,17 +51,18 @@
     <dd>{{ option.name }}</dd>
     <dt>option values:</dt>
     <dd>{{ option.values | json }}</dd>
-    <!-- <dd> -->
-    <!-- {% for value in option.values %} -->
-    <!-- <strong>value name:</strong> {{ value.name -}} -->
-    <!-- {% endfor %} -->
-    <!-- </dd> -->
     <dt>option values name:</dt>
     {% for value in option.values %}
       <dd>{{ value.name }}</dd>
     {% endfor %}
     <dt>option selected value:</dt>
     <dd>{{ option.selected_value }}</dd>
+    <dt>option selected value name:</dt>
+    {% for value in option.values %}
+      {% if value.name == option.selected_value %}
+        <dd>{{ value.name }}</dd>
+      {% endif %}
+    {% endfor %}
   </dl>
   <hr>
 {% endfor %}

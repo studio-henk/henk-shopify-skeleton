@@ -14,10 +14,8 @@
 
         {% if option.name == 'Finish' %}
           {% assign matched_variant = current_variant %}
-          {% assign swatch_data = matched_variant.metafields.HENK.frame_finish.value
-            | where: 'name', value.name
-            | first
-          %}
+          {% assign finish_values = matched_variant.metafields.HENK.frame_finish.value %}
+          {% assign swatch_data = finish_values[forloop.index0] %}
         {% else %}
           {% assign matched_variant = null %}
           {% for v in product.variants %}

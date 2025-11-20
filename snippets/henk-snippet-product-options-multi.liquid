@@ -43,11 +43,11 @@
     <dd>{{ option.name }}</dd>
     <dt>option values:</dt>
     <dd>{{ option.values | json }}</dd>
-    <dd>
-      {% for value in option.values %}
-        <strong>value name:</strong> {{ value.name -}}
-      {% endfor %}
-    </dd>
+    <!-- <dd> -->
+    <!-- {% for value in option.values %} -->
+    <!-- <strong>value name:</strong> {{ value.name -}} -->
+    <!-- {% endfor %} -->
+    <!-- </dd> -->
     <dt>option values name:</dt>
     {% for value in option.values %}
       <dd>{{ value.name }}</dd>
@@ -55,6 +55,7 @@
     <dt>option selected value:</dt>
     <dd>{{ option.selected_value }}</dd>
   </dl>
+  <hr>
 {% endfor %}
 
 <hr>

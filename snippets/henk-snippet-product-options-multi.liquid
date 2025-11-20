@@ -4,7 +4,6 @@
 <!-- Options -->
 {% for option in product.options_with_values %}
   {% assign option_name = option.name | downcase | replace: ' ', '-' %}
-  {{ option_name }}
   <fieldset class="henk-fieldsetx">
     <legend class="henk-legendx">{{ option.name }}</legend>
     <div class="options__container">
@@ -14,7 +13,7 @@
             <input
               class="henk-radiox"
               type="radio"
-              name="option-{{ forloop.index0 }}"
+              name="option-{{ option_name }}"
               value="{{ value }}"
               {% if current_variant.options[forloop.index0] == value %}
                 checked

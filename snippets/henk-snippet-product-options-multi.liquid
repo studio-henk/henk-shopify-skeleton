@@ -52,14 +52,14 @@
             {% when 'Upholstery material' %}
               {% assign swatch_data = matched_variant.metafields.HENK.fabric.value %}
             {% when 'Finish' %}
-              {% comment %} {% assign finish_value = matched_variant.metafields.HENK.frame_finish.value %} {% endcomment %}
-              {% comment %} {% if finish_value and finish_value.name == value.name %} {% endcomment %}
-              {% comment %}   {% assign swatch_data = finish_value %} {% endcomment %}
-              {% comment %} {% endif %} {% endcomment %}
-              {% comment %} {% assign all_finishes = product.metafields.HENK.frame_finish.value %} {% endcomment %}
-              {% comment %} {% assign swatch_data = all_finishes | where: 'name', value.name | first %} {% endcomment %}
               {% assign swatch_data = null %}
+              {{ matched_variant.metafields.HENK.finish.value | json }}
+              {% assign finish_value = matched_variant.metafields.HENK.finish.value %}
+              {% if finish_value %}
+                {% assign swatch_data = finish_value %}
+              {% endif %}
               {% assign finish_value = matched_variant.metafields.HENK.frame_finish.value %}
+              {{ finish_value | json }}
               {% if finish_value %}
                 {% assign swatch_data = finish_value %}
               {% endif %}

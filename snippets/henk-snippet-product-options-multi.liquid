@@ -13,6 +13,10 @@
   <dd>
     {{ current_variant.metafields.HENK | json }}
   </dd>
+  {% for item in current_variant.metafields.HENK %}
+    <dt>{{ item[0] }}:</dt>
+    <dd>{{ item[1] | json }}</dd>
+  {% endfor %}
 </dl>
 
 <hr>

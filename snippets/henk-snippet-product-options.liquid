@@ -18,8 +18,8 @@
         {% for key in variant.metafields.HENK %}
           {% assign metafield_name = key[0] %}
           {% assign metafield_value = key[1].value %}
-          {{ metafield_name | json }} -
-          {{ metafield_value | json }}
+          <!-- {{ metafield_name | json }} - -->
+          <!-- {{ metafield_value | json }} -->
           <hr>
           {{ metafield_value.name | json }}
           {{ metafield_value.color }}

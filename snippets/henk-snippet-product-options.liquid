@@ -6,7 +6,8 @@
     {%- if number_of_metafields_used == 0 -%}
       {% render 'henk-snippet-option-color', option: option, current_variant: current_variant %}
     {% else %}
-      do metafield swatch
+      do metafield swatch: which one?
+      {{ product.variants.first.metafields.HENK | json }}
     {%- endif -%}
 
   {% else %}

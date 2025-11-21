@@ -9,7 +9,8 @@
       do metafield swatch: which one?
       {%- comment -%} loop through variants {%- endcomment -%}
       {% for variant in product.variants %}
-        {{ variant | json }}
+        {% comment %} {{ variant | json }} {% endcomment %}
+        {{ variant.metafields.HENK | json }}
       {% endfor %}
     {%- endif -%}
 

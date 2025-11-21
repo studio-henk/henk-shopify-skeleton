@@ -4,57 +4,57 @@
 
   <div class="options__container">
     {% for value in option.values %}
-      <!-- <div class="henk-labeled-input"> -->
-      <!-- <label class="henk-label"> -->
-      <!-- <input -->
-      <!-- type="radio" -->
-      <!-- name="option-{{ metafield_name }}" -->
-      <!-- value=" -->
-      <!-- {{ -->
-      <!-- option_value }} -->
-      <!-- " -->
-      <!-- > -->
-      <!-- <span class="custom-swatch" style="background-color: {{ option_color }}"> -->
-      <!-- <img -->
-      <!-- src="{{ option_swatch | image_url: '44x44' }}" -->
-      <!-- alt="{{ option_name }}" -->
-      <!-- width="44" -->
-      <!-- height="44" -->
-      <!-- > -->
-      <!-- </span> -->
-      <!-- <input -->
-      <!-- class="henk-radio" -->
-      <!-- type="radio" -->
-      <!-- name="{{ metafield_name}}" -->
-      <!-- value="{{ option.value }}" -->
-      <!-- title="{{ swatch_name }}" -->
-      <!-- data-featured-image="{{ matched_variant.featured_image | image_url: width: 1134 }}" -->
-      <!-- data-material-name="{{ swatch_name }}" -->
-      <!-- data-sku="{{ value.variant.sku }}" -->
-      <!-- data-price="{{ matched_variant.price }}" -->
-      <!--  -->
-      <!-- {% if value.variant.id == current_variant.id %} -->
-      <!-- checked -->
-      <!-- {% endif %} -->
-      <!-- > -->
-      <!--  -->
-      <!-- <span -->
-      <!-- class="custom-swatch" -->
-      <!-- style="background-color: {{ swatch_color }};" -->
-      <!-- > -->
-      <!-- <img -->
-      <!-- src="{{ swatch_image | image_url: '44x44' }}" -->
-      <!-- alt="{{ swatch_name }}" -->
-      <!-- width="44" -->
-      <!-- height="44" -->
-      <!-- > -->
-      <!-- </span> -->
-      <!--  -->
-      <!-- <span class="visually-hidden"> -->
-      <!-- {{ swatch_name }} -->
-      <!-- </span> -->
-      <!-- </label> -->
-      <!-- </div> -->
+      <div class="henk-labeled-input">
+        <label class="henk-label">
+          <input
+            type="radio"
+            name="option-{{ metafield_name }}"
+            value="
+              {{
+              option_value }}
+            "
+          >
+          <span class="custom-swatch" style="background-color: {{ option_color }}">
+            <img
+              src="{{ option_swatch | image_url: '44x44' }}"
+              alt="{{ option_name }}"
+              width="44"
+              height="44"
+            >
+          </span>
+          <input
+            class="henk-radio"
+            type="radio"
+            name="{{ metafield_name}}"
+            value="{{ option.value }}"
+            title="{{ swatch_name }}"
+            data-featured-image="{{ matched_variant.featured_image | image_url: width: 1134 }}"
+            data-material-name="{{ swatch_name }}"
+            data-sku="{{ value.variant.sku }}"
+            data-price="{{ matched_variant.price }}"
+
+            {% if value.variant.id == current_variant.id %}
+              checked
+            {% endif %}
+          >
+
+          <span
+            class="custom-swatch"
+            style="background-color: {{ swatch_color }};"
+          >
+            <img
+              src="{{ swatch_image | image_url: '44x44' }}"
+              alt="{{ swatch_name }}"
+              width="44"
+              height="44"
+            >
+          </span>
+
+          <span class="visually-hidden">
+            {{ swatch_name }}
+          </span>
+        </label>
+      </div>
     {% endfor %}
   </div>
 </fieldset>

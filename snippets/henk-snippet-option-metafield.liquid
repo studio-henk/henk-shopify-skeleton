@@ -24,7 +24,7 @@
             >
 
             <span class="custom-swatch" style="background-color: {{ option_color }};">
-              <img src="{{ option_swatch }}" alt="{{ option_name }}" width="44" height="44">
+              <img src="{{ option_swatch | image_url: '44x44' }}" alt="{{ option_name }}" width="44" height="44">
             </span>
 
             <span class="visually-hidden">{{ option_name }}</span>

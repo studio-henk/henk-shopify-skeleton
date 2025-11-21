@@ -14,6 +14,27 @@
         {% assign option_swatch = metafield_value.swatch | image_url %}
         {% assign option_value = variant.id %}
         here?
+
+        <div class="henk-labeled-input">
+          <label class="henk-label">
+            <input
+              class="henk-radio"
+              type="radio"
+              name="option-{{ option.name }}"
+              value="{{ option_value }}"
+              title="{{ option_name }}"
+              {% if variant.id == current_variant.id %}
+                checked
+              {% endif %}
+            >
+
+            <span class="custom-swatch" style="background-color: {{ option_color }};">
+              <img src="{{ option_swatch }}" alt="{{ option_name }}" width="44" height="44">
+            </span>
+
+            <span class="visually-hidden">{{ option_name }}</span>
+          </label>
+        </div>
         <div class="henk-labeled-input">
           <label class="henk-label">
             <input

@@ -24,11 +24,11 @@
           {% assign option_swatch = metafield_value.swatch | image_url %}
           {% assign option_value = variant.id %}
         {% endfor %}
-        {%
-          render 'henk-snippet-option-metafield', option: option,
-          current_variant: current_variant, metafield_value
-        %}
       {% endfor %}
+      {%
+        render 'henk-snippet-option-metafield', option: option,
+        current_variant: current_variant, metafield_value
+      %}
     {% else %}
       <!-- No variants have a metafield -->
       {% render 'henk-snippet-option-color', option: option, current_variant: current_variant %}

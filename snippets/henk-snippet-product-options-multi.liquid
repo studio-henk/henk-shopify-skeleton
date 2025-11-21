@@ -1,128 +1,36 @@
-<script>
-  const SHOP = 'surf-turf-2-0.myshopify.com';
-  const TOKEN = '814f20a74301d4a0f54af3e46525bded';
-  const HANDLE = 'otto-s-pouf';
+{% assign first_variant = product.variants.first %}
+{% assign current_variant = first_variant %}
 
-  let productData = null;
-  let selectedOptions = { Fabric: null, Finish: null };
-  let selectedVariantId = null;
-
-  async function fetchProduct() {
-    const query = `
-    query getProduct($handle: String!) {
-      productByHandle(handle: $handle) {
-        id
-        title
-        variants(first: 10) {
-          edges {
-            node {
-              id
-              selectedOptions {
-                name
-                value
-              }
-            }
-          }
-        }
-      }
-    }
-  `;
-
-    const res = await fetch(`https://${SHOP}/api/2025-07/graphql.json`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Shopify-Storefront-Access-Token': TOKEN,
-      },
-      body: JSON.stringify({ query, variables: { handle: HANDLE } }),
-    });
-
-    const data = await res.json();
-    productData = data.data.productByHandle;
-    buildOptionButtons();
-    setDefaultSelection();
-  }
-
-  function buildOptionButtons() {
-    const fabrics = new Set();
-    const finishes = new Set();
-    productData.variants.edges.forEach((v) => {
-      v.node.selectedOptions.forEach((opt) => {
-        if (opt.name === 'Fabric') fabrics.add(opt.value);
-        if (opt.name === 'Finish') finishes.add(opt.value);
-      });
-    });
-
-    // Fabric buttons
-    const fabricContainer = document.createElement('div');
-    fabricContainer.id = 'fabric-options';
-    fabricContainer.style.marginBottom = '1em';
-    fabrics.forEach((fabric) => {
-      const btn = document.createElement('button');
-      btn.textContent = fabric;
-      btn.style.marginRight = '0.5em';
-      btn.addEventListener('click', () => selectOption('Fabric', fabric));
-      fabricContainer.appendChild(btn);
-    });
-
-    // Finish buttons
-    const finishContainer = document.createElement('div');
-    finishContainer.id = 'finish-options';
-    finishes.forEach((finish) => {
-      const btn = document.createElement('button');
-      btn.textContent = finish;
-      btn.style.marginRight = '0.5em';
-      btn.addEventListener('click', () => selectOption('Finish', finish));
-      finishContainer.appendChild(btn);
-    });
-
-    // Append to DOM
-    const container = document.createElement('div');
-    container.id = 'product-options';
-    container.appendChild(fabricContainer);
-    container.appendChild(finishContainer);
-
-    document.body.appendChild(container);
-  }
-
-  function setDefaultSelection() {
-    const firstVariant = productData.variants.edges[0].node;
-    firstVariant.selectedOptions.forEach((opt) => {
-      selectedOptions[opt.name] = opt.value;
-    });
-    updateSelectedVariant();
-    updateButtonHighlights();
-  }
-
-  function selectOption(name, value) {
-    selectedOptions[name] = value;
-    updateSelectedVariant();
-    updateButtonHighlights();
-  }
-
-  function updateSelectedVariant() {
-    const variant = productData.variants.edges.find((v) =>
-      v.node.selectedOptions.every((opt) => selectedOptions[opt.name] === opt.value),
-    );
-    selectedVariantId = variant ? variant.node.id : null;
-    console.log('Selected Variant ID:', selectedVariantId);
-  }
-
-  function updateButtonHighlights() {
-    Object.keys(selectedOptions).forEach((optionName) => {
-      const container = document.getElementById(optionName.toLowerCase() + '-options');
-      if (!container) return;
-      Array.from(container.children).forEach((btn) => {
-        btn.style.backgroundColor = btn.textContent === selectedOptions[optionName] ? '#ccc' : '';
-      });
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', fetchProduct);
-</script>
+<!-- Options -->
+{% for option in product.options_with_values %}
+  {% assign option_name = option.name | downcase | replace: ' ', '-' %}
+  <fieldset class="henk-fieldsetx">
+    <legend class="henk-legendx">{{ option.name }}</legend>
+    <div class="options__container">
+      {% for value in option.values %}
+        <div class="henk-labeled-inputx">
+          <label class="henk-labelx">
+            <input
+              class="henk-radiox"
+              type="radio"
+              name="option-{{ option_name }}"
+              value="{{ value }}"
+              {% if current_variant.options[forloop.parentloop.index0] == value %}
+                checked
+              {% endif %}
+            >
+            <span class="custom-swatchx">
+              {{ value }}
+            </span>
+          </label>
+        </div>
+      {% endfor %}
+    </div>
+  </fieldset>
+{% endfor %}
 
 <!-- Hidden input for form -->
-<!-- <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}"> -->
+<input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">
 
 <!-- Initial debug -->
 <p>Current variant ID: {{ current_variant.id }}</p>
@@ -137,7 +45,7 @@
   </pre>
 {% endfor %}
 
-<!-- <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}"> -->
+<input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">
 <h3>current variant</h3>
 <dl>
   <dt>id:</dt>

@@ -23,6 +23,7 @@
           {% assign option_swatch = metafield_value.swatch | image_url %}
 
           {{ metafield_name }}
+          {{ current_variant.id | json }}
           <input
             type="radio"
             name="option-{{ option_index }}"

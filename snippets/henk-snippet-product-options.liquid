@@ -1,8 +1,5 @@
 {% for option in product.options_with_values %}
   {%- if option.values.first.swatch -%}
-    we are here?
-    {{ product.variants.first.metafields.HENK | json }}
-
     {% assign number_of_metafields_used = product.variants.first.metafields.HENK | size %}
 
     {%- comment -%} if > 0, we want to override the Color swatch with a metafield  {%- endcomment -%}

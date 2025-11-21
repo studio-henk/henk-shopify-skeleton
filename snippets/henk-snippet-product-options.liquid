@@ -63,9 +63,6 @@
             {% endfor %}
 
             {% if matched_variant %}
-              {% comment %} {{ matched_variant | json }} {% endcomment %}
-              {% assign colorname = value.name %}
-              {{ colorname }}
               {% assign material_data = matched_variant.metafields.HENK.fabric.value %}
               {%- if material_data -%}
                 {% assign swatch_name = material_data.name %}
@@ -102,14 +99,14 @@
                   >
                     <img
                       src="{{ swatch_image | image_url: '44x44' }}"
-                      alt="{{ colorname }}"
+                      alt="{{ swatch_name }}"
                       width="44"
                       height="44"
                     >
                   </span>
 
                   <span class="visually-hidden">
-                    {{ colorname }}
+                    {{ swatch_name }}
                   </span>
                 </label>
               </div>

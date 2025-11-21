@@ -28,7 +28,15 @@
           {% assign option_color = metafield_value.color %}
           {% assign option_swatch = metafield_value.swatch | image_url %}
 
-          <input type="radio" name="option-{{ option_index }}" value="{{ option_name }}">
+          <input
+            type="radio"
+            name="option-{{ option_index }}"
+            value="
+              {{
+              option_name }}
+            "
+          >
+          {{- option_name }}
           <span class="custom-swatch" style="background-color: {{ option_color }}">
             <img
               src="{{ option_swatch }}"

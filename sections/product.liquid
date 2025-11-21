@@ -60,13 +60,11 @@
           {% assign display_title = current_variant.name | default: product.title %}
           <h1 class="product__title">{{ display_title }}</h1>
 
-          <!-- {% assign current_material = current_variant.metafields.HENK.material.value | first %} -->
-          <!-- {{ current_variant.metafields.HENK.frame_finish.value.name | json }} -->
-
           {% for key in current_variant.metafields.HENK %}
-            {{ key[1].value.name }}
+            {% assign current_material = key[1].value.name %}
           {% endfor %}
-          <p id="SelectedMaterial">{{ current_variant.title }}</p>
+          {{ current_material | json }}
+          <p id="SelectedMaterial">{{ current_material }}</p>
 
           <p id="ProductPrice" class="product__price">
             {% render 'henk-snippet-money', amount: current_variant.price %}

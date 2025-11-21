@@ -1,8 +1,7 @@
-{{ product.variants.first.metafields.HENK | json }}
-
 {% for option in product.options_with_values %}
   {%- if option.values.first.swatch -%}
     we are here?
+    {{ product.variants.first.metafields.HENK | json }}
 
     {% render 'henk-snippet-option-color', option: option, current_variant: current_variant %}
 

@@ -8,7 +8,7 @@
     {% else %}
       do metafield swatch: which one?
       {{ product.variants.first.metafields.HENK | json }}
-      {{ product.variants.first.metafields.HENK.frame_finish.avlue | json }}
+      {{ product.variants.first.metafields.HENK.frame_finish.value | json }}
     {%- endif -%}
 
   {% else %}

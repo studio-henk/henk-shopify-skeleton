@@ -27,6 +27,7 @@
           {{ option_name }}
           {{ option_value }}
           {{ option_swatch }}
+          {% render 'henk-snippet-option-metafield', option: option, current_variant: current_variant %}
         {% endfor %}
       {% endfor %}
     {% else %}

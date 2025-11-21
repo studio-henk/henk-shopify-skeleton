@@ -11,7 +11,7 @@
 
 {% for option in product.options_with_values %}
 
-  {{ option | json}}
+  {{ option.values | json}}
 
 
   <h3>{{ option.name }}</h3>

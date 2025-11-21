@@ -1,6 +1,5 @@
 <h2>Determine which product option is used like Color or ?
 
-  <!-- {{ product.metafields.HENK.value | json }} -->
   {{ product.variants.first.metafields.HENK | json }}
   number of metafields used: {{ product.variants.first.metafields.HENK | size | json }}
   {% assign number_of_metafields_used =  product.variants.first.metafields.HENK | size %}

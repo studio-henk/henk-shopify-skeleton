@@ -7,10 +7,10 @@
 
     {%- comment -%} if > 0, we want to override the Color swatch with a metafield  {%- endcomment -%}
     {%- if number_of_metafields_used == 0 -%}
-      must be color
+      {% render 'henk-snippet-option-color', option: option, current_variant: current_variant %}
+    {% else %}
+      do metafield swatch
     {%- endif -%}
-
-    {% render 'henk-snippet-option-color', option: option, current_variant: current_variant %}
 
   {% else %}
     no swatch

@@ -69,6 +69,7 @@
               {% assign material_data = matched_variant.metafields.HENK.fabric.value %}
               {%- if material_data -%}
                 {% assign swatch_name = material_data.name %}
+                {% assign swatch_color = material_data.color %}
                 {% assign swatch_gid = material_data.swatch %}
                 {% assign swatch_image = swatch_gid | image_url %}
               {% else %}

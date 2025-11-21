@@ -15,7 +15,7 @@
       <!-- At least one variant has a metafield -->
       {% for variant in product.variants %}
         {{ variant.metafields.HENK | json }}
-        {% for key in current_variant.metafields.HENK %}
+        {% for key in variant.metafields.HENK %}
           <dd>{{ key[0] }}</dd>
         {% endfor %}
       {% endfor %}

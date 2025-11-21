@@ -59,6 +59,10 @@
       radio.addEventListener('change', function () {
         if (!this.checked) return;
 
+        // 🔥 FIX #1 — ensure only this one is checked
+        variantRadios.forEach((r) => (r.checked = false));
+        this.checked = true;
+
         // variant id
         const variantId = this.value;
 

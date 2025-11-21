@@ -73,6 +73,7 @@
               {% else %}
                 {% assign swatch_image = 'https://cdn.shopify.com/s/files/1/0578/9705/8465/files/no-image.png?v=1763713910' %}
               {%- endif -%}
+              {{ swatch_image }}
 
               <!-- <img src="{{ swatch_image | image_url: '44x44' }}" width="44" height="44"> -->
               <img src="{{ swatch_image | asset_url }}" width="44" height="44">

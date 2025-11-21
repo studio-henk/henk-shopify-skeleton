@@ -7,8 +7,10 @@
       {% render 'henk-snippet-option-color', option: option, current_variant: current_variant %}
     {% else %}
       do metafield swatch: which one?
-      {{ product.variants.metafields.HENK | json }}
-      {{ product.variants.first.metafields.HENK.frame_finish.value | json }}
+      {%- comment -%} loop through variants {%- endcomment -%}
+      {% for variant in product.variants %}
+        {{ variant | json }}
+      {% endfor %}
     {%- endif -%}
 
   {% else %}

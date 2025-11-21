@@ -9,14 +9,12 @@
 {% comment %}   must be color {% endcomment %}
 {% comment %} {%- endif -%} {% endcomment %}
 
-{{ current_variant | json }}
+{% comment %} {{ current_variant | json }} {% endcomment %}
 
 {% for option in product.options_with_values %}
   {% comment %} {{ option.values.first.swatch }} {% endcomment %}
   {%- if option.values.first.swatch -%}
-    has swatch so must be Color
-
-    {% render 'henk-snippet-option-color', option: option %}
+    {% render 'henk-snippet-option-color', option: option, current_variant: current_variant %}
 
   {% else %}
     no swatch

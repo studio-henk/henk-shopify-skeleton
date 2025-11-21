@@ -1,17 +1,4 @@
 {{ metafield_value.name | json }}
-
-{% for variant in product.variants %}
-  {% comment %} {{ variant.metafields.HENK | json }} {% endcomment %}
-  {% for key in variant.metafields.HENK %}
-    {% assign metafield_name = key[0] %}
-    {% assign metafield_value = key[1].value %}
-    {% comment %} {% assign option = metafield_name %} {% endcomment %}
-    {% assign option_name = metafield_value.name %}
-    {% assign option_color = metafield_value.color %}
-    {% assign option_swatch = metafield_value.swatch | image_url %}
-    {% assign option_value = variant.id %}
-  {% endfor %}
-{% endfor %}
 <fieldset class="henk-fieldset">
   <legend class="henk-legend">{{ option.name }}</legend>
 

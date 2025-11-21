@@ -20,7 +20,7 @@
           {% assign metafield_value = key[1].value %}
           {% assign option_name = metafield_value.name %}
           {% assign option_color = metafield_value.color %}
-          {% assign option_swatch = metafield_value.swatch | image_url %}
+          {% assign option_swatch = metafield_value.swatch | image_url: '44x44' %}
           {% assign option_value = variant.id %}
 
           {{ option_name }}

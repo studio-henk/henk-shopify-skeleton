@@ -12,7 +12,6 @@
 {% comment %} {{ current_variant | json }} {% endcomment %}
 
 {% for option in product.options_with_values %}
-  {% comment %} {{ option.values.first.swatch }} {% endcomment %}
   {%- if option.values.first.swatch -%}
     {% render 'henk-snippet-option-color', option: option, current_variant: current_variant %}
 

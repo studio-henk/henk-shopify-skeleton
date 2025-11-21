@@ -60,7 +60,7 @@
           {% assign display_title = current_variant.name | default: product.title %}
           <h1 class="product__title">{{ display_title }}</h1>
 
-          {% assign current_material = current_variant.metafields.HENK.material.value | first %}
+          <!-- {% assign current_material = current_variant.metafields.HENK.material.value | first %} -->
           {{ current_variant.metafields.HENK.frame_finish.value.name | json }}
           <p id="SelectedMaterial">{{ current_variant.title }}</p>
 

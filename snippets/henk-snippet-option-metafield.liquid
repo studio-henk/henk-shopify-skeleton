@@ -16,45 +16,48 @@
         {% assign option_color = metafield_value.color %}
         {% assign option_swatch = metafield_value.swatch | image_url %}
         {% assign option_value = variant.id %}
+        here?
       {% endfor %}
     {% endfor %}
 
-    {% for value in option.values %}
-      <div class="henk-labeled-input">
-        <label class="henk-label">
-          <input
-            class="henk-radio"
-            type="radio"
-            name="option-{{ option.name }}"
-            value="{{ value.variant.id }}"
-            title="{{ option_name }}"
-            data-featured-image="{{ value.variant.featured_image | image_url: width: 1134 }}"
-            data-material-name="{{ option_name }}"
-            data-sku="{{ value.variant.sku }}"
-            data-price="{{ value.variant.price }}"
+    {% comment %} {% for value in option.values %} {% endcomment %}
+    <div class="henk-labeled-input">
+      <label class="henk-label">
+        <input
+          class="henk-radio"
+          type="radio"
+          name="option-{{ option.name }}"
+          value="{{ value.variant.id }}"
+          title="{{ option_name }}"
+          data-featured-image="{{ value.variant.featured_image | image_url: width: 1134 }}"
+          data-material-name="{{ option_name }}"
+          data-sku="{{ value.variant.sku }}"
+          data-price="{{ value.variant.price }}"
 
-            {% if value.variant.id == current_variant.id %}
-              checked
-            {% endif %}
+          {% if value.variant.id == current_variant.id %}
+            checked
+          {% endif %}
+        >
+
+        <span
+          class="custom-swatch"
+          style="background-color: {{ swatch_color }};"
+        >
+          <img
+            src="{{ swatch_image | image_url: '44x44' }}"
+            alt="{{ swatch_name }}"
+            width="44"
+            height="44"
           >
+        </span>
 
-          <span
-            class="custom-swatch"
-            style="background-color: {{ swatch_color }};"
-          >
-            <img
-              src="{{ swatch_image | image_url: '44x44' }}"
-              alt="{{ swatch_name }}"
-              width="44"
-              height="44"
-            >
-          </span>
-
-          <span class="visually-hidden">
-            {{ swatch_name }}
-          </span>
-        </label>
-      </div>
-    {% endfor %}
+        <span class="visually-hidden">
+          {{ swatch_name }}
+        </span>
+      </label>
+    </div>
+    {%- comment -%}
+      {% endfor %}
+    {%- endcomment -%}
   </div>
 </fieldset>

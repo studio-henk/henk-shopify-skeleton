@@ -68,7 +68,7 @@
               {% comment %}   {% assign material_data = matched_variant.metafields.HENK.fabric.value | first %} {% endcomment %}
               {% comment %} {% else %} {% endcomment %}
               {% comment %} {% endif %} {% endcomment %}
-              {% assign material_data = matched_variant.metafields.HENK.material.value %}
+              {% assign material_data = matched_variant.metafields.HENK.fabric.value %}
               {{ material_data | json }}
 
               {% assign swatch_gid = material_data.swatch %}

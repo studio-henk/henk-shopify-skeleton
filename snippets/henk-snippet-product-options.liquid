@@ -12,25 +12,17 @@
 
     {% if has_metafield %}
       <!-- At least one variant has a metafield -->
-      has at least 1 metafield assigned
+      {% for variant in product.variants %}
+        {{ variant.metafields.HENK | size | json }}
+      {% endfor %}
     {% else %}
       <!-- No variants have a metafield -->
       {% render 'henk-snippet-option-color', option: option, current_variant: current_variant %}
     {% endif %}
 
-    {% assign number_of_metafields_used = product.variants.first.metafields.HENK | size %}
+    {% comment %} {% assign number_of_metafields_used = product.variants.first.metafields.HENK | size %} {% endcomment %}
 
     {%- comment -%} if > 0, we want to override the Color swatch with a metafield  {%- endcomment -%}
-    {%- if number_of_metafields_used == 0 -%}
-    {% else %}
-      do metafield swatch: which one?
-      {%- comment -%} loop through variants {%- endcomment -%}
-      {% for variant in product.variants %}
-        {% comment %} {{ variant | json }} {% endcomment %}
-        {{ variant.metafields.HENK | size | json }}
-      {% endfor %}
-    {%- endif -%}
-
   {% else %}
     no swatch
   {%- endif -%}

@@ -6,7 +6,8 @@
   {% assign number_of_metafields_used =  product.variants.first.metafields.HENK | size %}
 
   {%- comment -%} if 0 then must be Color {%- endcomment -%}
-  {%- if condition -%}
+  {%- if number_of_metafields_used == 0 -%}
+    must be color
 
   {%- endif -%}
 

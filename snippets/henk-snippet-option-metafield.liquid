@@ -1,0 +1,72 @@
+<fieldset class="henk-fieldset">
+  <legend class="henk-legend">Upholstery material</legend>
+
+  <div class="options__container">
+    {% assign option_index = forloop.index0 %}
+    <!-- index of current option (0-based) -->
+
+    {% for value in option.values %}
+      {% comment %}
+        Find 1 variant whose value for this option matches the option value
+      {% endcomment %}
+      {% assign matched_variant = null %}
+
+      {% for v in product.variants %}
+        {% if v.options[option_index] == value.name %}
+          {% assign matched_variant = v %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+
+      {% if matched_variant %}
+        {% assign material_data = matched_variant.metafields.HENK.fabric.value %}
+        {%- if material_data -%}
+          {% assign swatch_name = material_data.name %}
+          {% assign swatch_color = material_data.color %}
+          {% assign swatch_gid = material_data.swatch %}
+          {% assign swatch_image = swatch_gid | image_url %}
+        {% else %}
+          {% assign swatch_name = value.name %}
+          {% assign swatch_color = '#f8f8f8' %}
+          {% assign swatch_image = '/cdn/shop/files/no-image.png?v=1763713910' %}
+        {%- endif -%}
+
+        <div class="henk-labeled-input">
+          <label class="henk-label">
+            <input
+              class="henk-radio"
+              type="radio"
+              name="id"
+              value="{{ value.variant.id }}"
+              title="{{ swatch_name }}"
+              data-featured-image="{{ matched_variant.featured_image | image_url: width: 1134 }}"
+              data-material-name="{{ swatch_name }}"
+              data-sku="{{ value.variant.sku }}"
+              data-price="{{ matched_variant.price }}"
+
+              {% if value.variant.id == current_variant.id %}
+                checked
+              {% endif %}
+            >
+
+            <span
+              class="custom-swatch"
+              style="background-color: {{ swatch_color }};"
+            >
+              <img
+                src="{{ swatch_image | image_url: '44x44' }}"
+                alt="{{ swatch_name }}"
+                width="44"
+                height="44"
+              >
+            </span>
+
+            <span class="visually-hidden">
+              {{ swatch_name }}
+            </span>
+          </label>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</fieldset>

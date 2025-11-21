@@ -4,6 +4,9 @@
 
 {% for option in product.options_with_values %}
   {% comment %} {{ option | json }} {% endcomment %}
+
+  <h3>{{ option.name }}</h3>
+
   {% case option.name %}
     {% when 'Color' %}
       <fieldset class="henk-fieldset">

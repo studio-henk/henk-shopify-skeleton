@@ -63,7 +63,6 @@
           {% for key in current_variant.metafields.HENK %}
             {% assign current_material = key[1].value.name %}
           {% endfor %}
-          {{ current_material | json }}
           <p id="SelectedMaterial">{{ current_material }}</p>
 
           <p id="ProductPrice" class="product__price">

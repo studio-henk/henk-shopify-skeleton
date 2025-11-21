@@ -1,5 +1,21 @@
 {% for option in product.options_with_values %}
+  {%- comment -%}check if has swatch, if true, then is Color option metaobject {%- endcomment -%}
   {%- if option.values.first.swatch -%}
+    {% assign has_metafield = false %}
+
+    {% for v in product.variants %}
+      {% if v.metafields.HENK != blank %}
+        {% assign has_metafield = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+    {% if has_metafield %}
+      <!-- At least one variant has a metafield -->
+    {% else %}
+      <!-- No variants have a metafield -->
+    {% endif %}
+
     {% assign number_of_metafields_used = product.variants.first.metafields.HENK | size %}
 
     {%- comment -%} if > 0, we want to override the Color swatch with a metafield  {%- endcomment -%}

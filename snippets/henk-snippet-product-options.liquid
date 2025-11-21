@@ -24,7 +24,8 @@
           {% assign option_value = metafield_value.value %}
 
           {{ metafield_name }}
-          {{ current_variant.id | json }}
+          {% comment %} {{ current_variant.id | json }} {% endcomment %}
+          {{ option_value }}
           <input
             type="radio"
             name="option-{{ option_index }}"

@@ -1,8 +1,9 @@
 {{ metafield_value.name | json }}
 
-{{ product | json }}
+{% comment %} {{ product.variants | json }} {% endcomment %}
 
 {% for variant in product.variants %}
+  {{ variant | json }}
   {% comment %} {{ variant.metafields.HENK | json }} {% endcomment %}
   {% for key in variant.metafields.HENK %}
     {% assign metafield_name = key[0] %}

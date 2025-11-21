@@ -63,12 +63,12 @@
             {% endfor %}
 
             {% if matched_variant %}
-              {{ matched_variant.metafields.HENK.fabric.value | json }}
-              {% if option.name == 'Fabric' %}
-                {% assign material_data = matched_variant.metafields.HENK.fabric.value | first %}
-              {% else %}
-                {% assign material_data = matched_variant.metafields.HENK.material.value | first %}
-              {% endif %}
+              {% comment %} {{ matched_variant.metafields.HENK.fabric.value | json }} {% endcomment %}
+              {% comment %} {% if option.name == 'Fabric' %} {% endcomment %}
+              {% comment %}   {% assign material_data = matched_variant.metafields.HENK.fabric.value | first %} {% endcomment %}
+              {% comment %} {% else %} {% endcomment %}
+              {% comment %} {% endif %} {% endcomment %}
+              {% assign material_data = matched_variant.metafields.HENK.material.value %}
               {{ material_data | json }}
 
               {% assign swatch_gid = material_data.swatch %}

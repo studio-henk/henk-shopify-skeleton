@@ -16,14 +16,14 @@
   <div class="henk-section__inner">
     <div class="henk-section__grid">
       <div class="henk-section__grid-item">
-        <figure class="">
+        <figure class="henk-figure">
           {% assign display_image = current_variant.featured_image | default: product.featured_image %}
 
           {% comment %} {% if current_variant.featured_image %} {% endcomment %}
           {% if display_image %}
             <img
               id="ProductFeaturedImage"
-              class="henk-card__img"
+              class="henk-figure__img"
               src="{{ display_image | image_url: width: 1134 }}"
               alt="{{ product.title }}"
               width="1134"

@@ -21,6 +21,8 @@
               {% if variant.id == current_variant.id %}
                 checked
               {% endif %}
+
+              data-featured-image="{{ variant.featured_image | image_url: width: 1134 }}"
             >
 
             <span class="custom-swatch" style="background-color: {{ option_color }};">

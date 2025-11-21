@@ -3,7 +3,6 @@
 {% comment %} {{ product.variants | json }} {% endcomment %}
 
 {% for variant in product.variants %}
-  {{ variant | json }}
   {% comment %} {{ variant.metafields.HENK | json }} {% endcomment %}
   {% for key in variant.metafields.HENK %}
     {% assign metafield_name = key[0] %}
@@ -28,7 +27,7 @@
             name="{{ metafield_name}}"
             value="{{ option.value }}"
             title="{{ swatch_name }}"
-            data-featured-image="{{ matched_variant.featured_image | image_url: width: 1134 }}"
+            data-featured-image="{{ value.variant.featured_image | image_url: width: 1134 }}"
             data-material-name="{{ swatch_name }}"
             data-sku="{{ value.variant.sku }}"
             data-price="{{ matched_variant.price }}"

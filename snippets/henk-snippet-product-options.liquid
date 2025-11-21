@@ -1,16 +1,3 @@
-<!-- <h2>Determine which product option is used like Color or ? -->
-
-{% comment %} {{ product.variants.first.metafields.HENK | json }} {% endcomment %}
-{% comment %} number of metafields used: {{ product.variants.first.metafields.HENK | size | json }} {% endcomment %}
-{% comment %} {% assign number_of_metafields_used = product.variants.first.metafields.HENK | size %} {% endcomment %}
-
-{%- comment -%} if 0 then must be Color {%- endcomment -%}
-{% comment %} {%- if number_of_metafields_used == 0 -%} {% endcomment %}
-{% comment %}   must be color {% endcomment %}
-{% comment %} {%- endif -%} {% endcomment %}
-
-{% comment %} {{ current_variant | json }} {% endcomment %}
-
 {% for option in product.options_with_values %}
   {%- if option.values.first.swatch -%}
     {% render 'henk-snippet-option-color', option: option, current_variant: current_variant %}

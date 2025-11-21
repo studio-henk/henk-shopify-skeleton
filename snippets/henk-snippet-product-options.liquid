@@ -2,7 +2,7 @@
 
   <!-- {{ product.metafields.HENK.value | json }} -->
   {{ product.variants.first.metafields.HENK | json }}
-  neumber of metafields used: {{ product.variants.first.metafields.HENK | size | json }}
+  number of metafields used: {{ product.variants.first.metafields.HENK | size | json }}
 
 {% for option in product.options_with_values %}
   {% comment %} {{ option | json }} {% endcomment %}

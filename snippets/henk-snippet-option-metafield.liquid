@@ -3,17 +3,12 @@
 
   <div class="options__container">
     {% for variant in product.variants %}
-      {% comment %} {{ variant.metafields.HENK | json }} {% endcomment %}
       {% for key in variant.metafields.HENK %}
-        {% assign metafield_name = key[0] %}
         {% assign metafield_value = key[1].value %}
-        {% comment %} {% assign option = metafield_name %} {% endcomment %}
         {% assign option_name = metafield_value.name %}
-        {{ option_name }}
         {% assign option_color = metafield_value.color %}
         {% assign option_swatch = metafield_value.swatch | image_url %}
         {% assign option_value = variant.id %}
-        here?
 
         <div class="henk-labeled-input">
           <label class="henk-label">
@@ -35,53 +30,7 @@
             <span class="visually-hidden">{{ option_name }}</span>
           </label>
         </div>
-        <div class="henk-labeled-input">
-          <label class="henk-label">
-            <input
-              class="henk-radio"
-              type="radio"
-              name="option-{{ option.name }}"
-              value="{{ value.variant.id }}"
-              title="{{ option_name }}"
-              data-featured-image="{{ value.variant.featured_image | image_url: width: 1134 }}"
-              data-material-name="{{ option_name }}"
-              data-sku="{{ value.variant.sku }}"
-              data-price="{{ value.variant.price }}"
-
-              {% if value.variant.id == current_variant.id %}
-                checked
-              {% endif %}
-            >
-
-            <span
-              class="custom-swatch"
-              style="background-color: {{ swatch_color }};"
-            >
-              <img
-                src="{{ swatch_image | image_url: '44x44' }}"
-                alt="{{ swatch_name }}"
-                width="44"
-                height="44"
-              >
-            </span>
-
-            <span class="visually-hidden">
-              {{ swatch_name }}
-            </span>
-          </label>
-        </div>
-        {% comment %} {% for value in option.values %} {% endcomment %}
-        {%- comment -%}
-          {% endfor %}
-        {%- endcomment -%}
       {% endfor %}
-      {% comment %} {{ option_name }} {% endcomment %}
     {% endfor %}
-
-    {% comment %} {% for value in option.values %} {% endcomment %}
-    {% comment %}   hier? {% endcomment %}
-    {% comment %}{% endcomment %}
-    {% comment %}{% endcomment %}
-    {% comment %} {% endfor %} {% endcomment %}
   </div>
 </fieldset>

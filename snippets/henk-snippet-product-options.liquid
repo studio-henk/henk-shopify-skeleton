@@ -27,7 +27,10 @@
           {% comment %} {{ option_name }} {% endcomment %}
           {% comment %} {{ option_value }} {% endcomment %}
           {% comment %} {{ option_swatch }} {% endcomment %}
-          {% render 'henk-snippet-option-metafield', option: option, current_variant: current_variant %}
+          {%
+            render 'henk-snippet-option-metafield', option: option,
+            current_variant: current_variant, metafield_value
+          %}
         {% endfor %}
       {% endfor %}
     {% else %}

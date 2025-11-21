@@ -12,6 +12,12 @@
 {% for option in product.options_with_values %}
 
   {{ option.values.first.swatch}}
+  {%- if option.values.first.swatch -%}
+    has swatch
+
+  {% else %}
+    no swatch
+  {%- endif -%}
 
 
   <h3>{{ option.name }}</h3>

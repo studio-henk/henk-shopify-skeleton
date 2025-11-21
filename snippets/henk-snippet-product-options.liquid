@@ -60,7 +60,8 @@
         if (!this.checked) return;
 
         // 🔥 FIX #1 — ensure only this one is checked
-        variantRadios.forEach((r) => (r.checked = false));
+        // variantRadios.forEach((r) => (r.checked = false));
+        variantRadios.forEach((r) => r.removeAttribute('checked'));
         this.checked = true;
         this.setAttribute('checked', 'checked');
 

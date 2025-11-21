@@ -12,7 +12,9 @@
 {% for option in product.options_with_values %}
   {% comment %} {{ option.values.first.swatch }} {% endcomment %}
   {%- if option.values.first.swatch -%}
-    has swatch
+    has swatch so must be Color
+
+    {% render 'henk-snippet-option-color', option: option %}
 
   {% else %}
     no swatch

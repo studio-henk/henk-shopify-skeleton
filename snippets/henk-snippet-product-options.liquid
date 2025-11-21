@@ -75,6 +75,8 @@
               {%- if material_data -%}
                 {% assign swatch_gid = material_data.swatch %}
                 {% assign swatch_image = swatch_gid | image_url %}
+              {% else %}
+                {% assign swatch_image = '' %}
               {%- endif -%}
 
               <!-- <img src="{{ swatch_image | image_url: '44x44' }}" width="44" height="44"> -->

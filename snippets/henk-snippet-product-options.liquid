@@ -17,6 +17,7 @@
         {% comment %} {{ variant.metafields.HENK | json }} {% endcomment %}
         {% for key in variant.metafields.HENK %}
           {% assign metafield_name = key[0] %}
+          {{ metafield_name | json }}
         {% endfor %}
       {% endfor %}
     {% else %}

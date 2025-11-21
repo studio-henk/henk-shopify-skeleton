@@ -24,6 +24,9 @@
           {{ metafield_value.name | json }}
           {{ metafield_value.color }}
           {{ metafield_value.swatch | image_url }}
+          {% assign option_name = metafield_value.name %}
+          {% assign option_color = metafield_value.color %}
+          {% assign option_swatch = metafield_value.swatch | image_url %}
         {% endfor %}
       {% endfor %}
     {% else %}

@@ -20,7 +20,7 @@
           {% assign metafield_value = key[1].value %}
           {% assign option_name = metafield_value.name %}
           {% assign option_color = metafield_value.color %}
-          {% assign option_swatch = metafield_value.swatch | image_url: '44x44' %}
+          {% assign option_swatch = metafield_value.swatch %}
           {% assign option_value = variant.id %}
 
           {{ option_name }}
@@ -35,7 +35,7 @@
           >
           <span class="custom-swatch" style="background-color: {{ option_color }}">
             <img
-              src="{{ option_swatch }}"
+              src="{{ option_swatch | image_url: '44x44' }}"
               alt="{{ option_name }}"
               width="44"
               height="44"

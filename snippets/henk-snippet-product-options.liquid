@@ -10,7 +10,7 @@
       {%- comment -%} loop through variants {%- endcomment -%}
       {% for variant in product.variants %}
         {% comment %} {{ variant | json }} {% endcomment %}
-        {{ variant.metafields.HENK | json }}
+        {{ variant.metafields.HENK | size | json }}
       {% endfor %}
     {%- endif -%}
 

@@ -1,22 +1,3 @@
-{% for option in product.options_with_values %}
-
-  {% if option.swatch %}
-      <!-- OFFICIAL SHOPIFY COLOR OPTION -->
-      {% for val in option.values %}
-        {{ option.swatch.values[val] | json }}
-      {% endfor %}
-
-  {% else %}
-      <!-- CUSTOM OPTION → USE OUR METAFIELD -->
-      {% for val in option.values %}
-        {{ product.metafields.custom.swatches[val] | json }}
-      {% endfor %}
-  {% endif %}
-
-{% endfor %}
-
-
-<hr>
 <h2>Determine which product option is used like Color or ?
 
   {{ product.variants.first.metafields.HENK | json }}

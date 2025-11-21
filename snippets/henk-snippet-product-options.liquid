@@ -1,6 +1,6 @@
 <h2>Determine which product option is used like Color or ?
 
-  {{ product_variant | json }}
+  {{ product.category | json }}
 
 {% for option in product.options_with_values %}
   {% comment %} {{ option | json }} {% endcomment %}

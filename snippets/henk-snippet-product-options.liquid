@@ -20,6 +20,7 @@
           {% assign metafield_value = key[1].value %}
           {{ metafield_name | json }} -
           {{ metafield_value | json }}
+          {{ metafield_value.name | json }}
         {% endfor %}
       {% endfor %}
     {% else %}

@@ -66,11 +66,6 @@
               {% comment %} {{ matched_variant | json }} {% endcomment %}
               {% assign colorname = value.name %}
               {{ colorname }}
-              {% comment %} {{ matched_variant.metafields.HENK.fabric.value | json }} {% endcomment %}
-              {% comment %} {% if option.name == 'Fabric' %} {% endcomment %}
-              {% comment %}   {% assign material_data = matched_variant.metafields.HENK.fabric.value | first %} {% endcomment %}
-              {% comment %} {% else %} {% endcomment %}
-              {% comment %} {% endif %} {% endcomment %}
               {% assign material_data = matched_variant.metafields.HENK.fabric.value %}
               {%- if material_data -%}
                 {% assign swatch_gid = material_data.swatch %}

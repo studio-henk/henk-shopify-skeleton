@@ -14,7 +14,7 @@
     {% if has_metafield %}
       <!-- At least one variant has a metafield -->
       {% for variant in product.variants %}
-        {{ variant | json }}
+        {{ variant.metafields.HENK | json }}
       {% endfor %}
     {% else %}
       <!-- No variants have a metafield -->

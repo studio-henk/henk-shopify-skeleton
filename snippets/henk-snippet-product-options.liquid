@@ -23,46 +23,6 @@
   <h3>{{ option.name }}</h3>
 
   {% case option.name %}
-      {% comment %} {% when 'Color' %} {% endcomment %}
-      {% comment %}   <fieldset class="henk-fieldset"> {% endcomment %}
-      {% comment %}     <legend class="henk-legend">{{ option.name }}</legend> {% endcomment %}
-      {% comment %}     <div class="options__container"> {% endcomment %}
-      {% comment %}       {% for value in option.values %} {% endcomment %}
-      {% comment %}         {% assign colorcode = value.swatch.color %} {% endcomment %}
-      {% comment %}         {% assign colorname = value.name %} {% endcomment %}
-      {% comment %}{% endcomment %}
-      {% comment %}         <div class="henk-labeled-input"> {% endcomment %}
-      {% comment %}           <label class="henk-label"> {% endcomment %}
-      {% comment %}             <input {% endcomment %}
-      {% comment %}               class="henk-radio" {% endcomment %}
-      {% comment %}               type="radio" {% endcomment %}
-      {% comment %}               name="id" {% endcomment %}
-      {% comment %}               value="{{ value.variant.id }}" {% endcomment %}
-      {% comment %}               title="{{ colorname }}" {% endcomment %}
-      {% comment %}               data-featured-image="{{ value.variant.featured_image | image_url: width: 1134 }}" {% endcomment %}
-      {% comment %}               data-material-name="{{ colorname }}" {% endcomment %}
-      {% comment %}               data-sku="{{ value.variant.sku }}" {% endcomment %}
-      {% comment %}               data-price="{{ value.variant.price }}" {% endcomment %}
-      {% comment %}               {% if value.variant.id == current_variant.id %} {% endcomment %}
-      {% comment %}                 checked {% endcomment %}
-      {% comment %}               {% endif %} {% endcomment %}
-      {% comment %}             > {% endcomment %}
-      {% comment %}{% endcomment %}
-      {% comment %}             <span {% endcomment %}
-      {% comment %}               class="custom-swatch" {% endcomment %}
-      {% comment %}               style="background-color: {{ colorcode }};" {% endcomment %}
-      {% comment %}             > {% endcomment %}
-      {% comment %}             </span> {% endcomment %}
-      {% comment %}{% endcomment %}
-      {% comment %}             <span class="visually-hidden"> {% endcomment %}
-      {% comment %}               {{ colorname }} {% endcomment %}
-      {% comment %}             </span> {% endcomment %}
-      {% comment %}           </label> {% endcomment %}
-      {% comment %}         </div> {% endcomment %}
-      {% comment %}       {% endfor %} {% endcomment %}
-      {% comment %}     </div> {% endcomment %}
-      {% comment %}   </fieldset> {% endcomment %}
-
     {% when 'Upholstery material', 'Fabric' %}
       <fieldset class="henk-fieldset">
         <legend class="henk-legend">Upholstery material</legend>

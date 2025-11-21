@@ -1,13 +1,13 @@
 <!-- <h2>Determine which product option is used like Color or ? -->
 
-{{ product.variants.first.metafields.HENK | json }}
-number of metafields used: {{ product.variants.first.metafields.HENK | size | json }}
-{% assign number_of_metafields_used = product.variants.first.metafields.HENK | size %}
+{% comment %} {{ product.variants.first.metafields.HENK | json }} {% endcomment %}
+{% comment %} number of metafields used: {{ product.variants.first.metafields.HENK | size | json }} {% endcomment %}
+{% comment %} {% assign number_of_metafields_used = product.variants.first.metafields.HENK | size %} {% endcomment %}
 
 {%- comment -%} if 0 then must be Color {%- endcomment -%}
-{%- if number_of_metafields_used == 0 -%}
-  must be color
-{%- endif -%}
+{% comment %} {%- if number_of_metafields_used == 0 -%} {% endcomment %}
+{% comment %}   must be color {% endcomment %}
+{% comment %} {%- endif -%} {% endcomment %}
 
 {% for option in product.options_with_values %}
   {{ option.values.first.swatch }}

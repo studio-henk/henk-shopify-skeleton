@@ -74,6 +74,7 @@
                 {% assign swatch_image = swatch_gid | image_url %}
               {% else %}
                 {% assign swatch_name = value.name %}
+                {% assign swatch_color = value.color %}
                 {% assign swatch_image = '/cdn/shop/files/no-image.png?v=1763713910' %}
                 {% assign material_data[name] = colorname %}
               {%- endif -%}
@@ -98,7 +99,7 @@
 
                   <span
                     class="custom-swatch"
-                    style="background-color: {{ material_data.color }};"
+                    style="background-color: {{ swatch_color }};"
                   >
                     <img
                       src="{{ swatch_image | image_url: '44x44' }}"

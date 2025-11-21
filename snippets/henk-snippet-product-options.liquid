@@ -26,22 +26,6 @@
           {{ option_name }}
           {{ option_value }}
           {{ option_swatch }}
-          <input
-            type="radio"
-            name="option-{{ metafield_name }}"
-            value="
-              {{
-              option_value }}
-            "
-          >
-          <span class="custom-swatch" style="background-color: {{ option_color }}">
-            <img
-              src="{{ option_swatch | image_url: '44x44' }}"
-              alt="{{ option_name }}"
-              width="44"
-              height="44"
-            >
-          </span>
         {% endfor %}
       {% endfor %}
     {% else %}

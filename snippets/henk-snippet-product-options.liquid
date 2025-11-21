@@ -9,6 +9,8 @@
 {% comment %}   must be color {% endcomment %}
 {% comment %} {%- endif -%} {% endcomment %}
 
+{{ current_variant | json }}
+
 {% for option in product.options_with_values %}
   {% comment %} {{ option.values.first.swatch }} {% endcomment %}
   {%- if option.values.first.swatch -%}

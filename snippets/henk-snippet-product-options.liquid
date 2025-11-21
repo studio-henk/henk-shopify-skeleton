@@ -12,22 +12,6 @@
 {% for option in product.options_with_values %}
 
 
-  {% if option.swatch %}
-      <!-- OFFICIAL SHOPIFY COLOR -->
-      {% for val in option.values %}
-        {% assign sw = option.swatch.values | where: "value", val.name | first %}
-        {{ sw | json }}
-      {% endfor %}
-
-  {% else %}
-      <!-- CUSTOM OPTION USING METAFIELDS -->
-      {% for val in option.values %}
-        {{ product.metafields.custom.swatches[val.name] | json }}
-      {% endfor %}
-
-  {% endif %}
-
-
   <h3>{{ option.name }}</h3>
 
   {% case option.name %}

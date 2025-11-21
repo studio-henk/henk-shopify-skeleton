@@ -12,8 +12,10 @@
 
     {% if has_metafield %}
       <!-- At least one variant has a metafield -->
+      has at least 1 metafield assigned
     {% else %}
       <!-- No variants have a metafield -->
+      no metafields assigned
     {% endif %}
 
     {% assign number_of_metafields_used = product.variants.first.metafields.HENK | size %}

@@ -62,6 +62,7 @@
         // 🔥 FIX #1 — ensure only this one is checked
         variantRadios.forEach((r) => (r.checked = false));
         this.checked = true;
+        this.setAttribute('checked', 'checked');
 
         // variant id
         const variantId = this.value;

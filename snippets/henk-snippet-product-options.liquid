@@ -3,6 +3,12 @@
     we are here?
     {{ product.variants.first.metafields.HENK | json }}
 
+    {% assign number_of_metafields_used = product.variants.first.metafields.HENK | size %}
+
+    {%- if number_of_metafields_used == 0 -%}
+      must be color
+    {%- endif -%}
+
     {% render 'henk-snippet-option-color', option: option, current_variant: current_variant %}
 
   {% else %}
@@ -124,7 +130,7 @@
 
                     <span
                       class="custom-swatch"
-                      style="background-image: url({{ frame_obj.swatch | img_url: '100x100' }});"
+                      style="background-image: url({{ frame_obj.swatch | image_url: '100x100' }});"
                     ></span>
 
                     <span class="visually-hidden">

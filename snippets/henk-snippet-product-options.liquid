@@ -60,10 +60,13 @@
         if (!this.checked) return;
 
         // 🔥 FIX #1 — ensure only this one is checked
-        variantRadios.forEach((r) => (r.checked = false));
-        variantRadios.forEach((r) => r.removeAttribute('checked'));
+        variantRadios.forEach((r) => {
+          r.checked = false;
+          r.removeAttribute('checked');
+        });
+
         this.checked = true;
-        this.setAttribute('checked', 'checked');
+        this.setAttribute('checked', '');
 
         // variant id
         const variantId = this.value;

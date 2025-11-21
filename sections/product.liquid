@@ -61,6 +61,7 @@
           <h1 class="product__title">{{ display_title }}</h1>
 
           {% assign current_material = current_variant.metafields.HENK.material.value | first %}
+          {{ current_variant.metafields.HENK | json }}
           <p id="SelectedMaterial">{{ current_variant.title }}</p>
 
           <p id="ProductPrice" class="product__price">

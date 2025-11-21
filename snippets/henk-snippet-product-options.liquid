@@ -23,15 +23,11 @@
           {% assign option_color = metafield_value.color %}
           {% assign option_swatch = metafield_value.swatch | image_url %}
           {% assign option_value = variant.id %}
-
-          {% comment %} {{ option_name }} {% endcomment %}
-          {% comment %} {{ option_value }} {% endcomment %}
-          {% comment %} {{ option_swatch }} {% endcomment %}
-          {%
-            render 'henk-snippet-option-metafield', option: option,
-            current_variant: current_variant, metafield_value
-          %}
         {% endfor %}
+        {%
+          render 'henk-snippet-option-metafield', option: option,
+          current_variant: current_variant, metafield_value
+        %}
       {% endfor %}
     {% else %}
       <!-- No variants have a metafield -->

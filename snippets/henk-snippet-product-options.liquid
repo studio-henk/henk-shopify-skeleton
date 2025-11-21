@@ -72,6 +72,7 @@
                 {% assign swatch_image = swatch_gid | image_url %}
               {% else %}
                 {% assign swatch_image = '/cdn/shop/files/no-image.png?v=1763713910' %}
+                {% assign material_data.name = colorname %}
               {%- endif -%}
 
               <div class="henk-labeled-input">

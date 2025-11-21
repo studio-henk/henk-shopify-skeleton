@@ -7,7 +7,7 @@
       {% render 'henk-snippet-option-color', option: option, current_variant: current_variant %}
     {% else %}
       do metafield swatch: which one?
-      {{ product.variants.first.metafields.HENK | json }}
+      {{ product.variants.metafields.HENK | json }}
       {{ product.variants.first.metafields.HENK.frame_finish.value | json }}
     {%- endif -%}
 

@@ -63,8 +63,8 @@
             {% endfor %}
 
             {% if matched_variant %}
+              {{ matched_variant | json }}
               {% if option.name == 'Fabric' %}
-                hello
                 {% assign material_data = matched_variant.metafields.HENK.fabric.value | first %}
               {% else %}
                 {% assign material_data = matched_variant.metafields.HENK.material.value | first %}

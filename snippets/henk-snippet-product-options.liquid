@@ -24,9 +24,9 @@
           {% assign option_swatch = metafield_value.swatch | image_url %}
           {% assign option_value = variant.id %}
 
-          {{ option_name }}
-          {{ option_value }}
-          {{ option_swatch }}
+          {% comment %} {{ option_name }} {% endcomment %}
+          {% comment %} {{ option_value }} {% endcomment %}
+          {% comment %} {{ option_swatch }} {% endcomment %}
           {% render 'henk-snippet-option-metafield', option: option, current_variant: current_variant %}
         {% endfor %}
       {% endfor %}

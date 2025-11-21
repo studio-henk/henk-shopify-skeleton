@@ -18,6 +18,7 @@
         {% for key in variant.metafields.HENK %}
           {% assign metafield_name = key[0] %}
           {% assign metafield_value = key[1].value %}
+          {% comment %} {% assign option = metafield_name %} {% endcomment %}
           {% assign option_name = metafield_value.name %}
           {% assign option_color = metafield_value.color %}
           {% assign option_swatch = metafield_value.swatch | image_url %}

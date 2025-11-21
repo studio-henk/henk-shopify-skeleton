@@ -23,6 +23,9 @@
               {% endif %}
 
               data-featured-image="{{ variant.featured_image | image_url: width: 1134 }}"
+              data-material-name="{{ swatch_name }}"
+              data-sku="{{ variant.sku }}"
+              data-price="{{ variant.price }}"
             >
 
             <span class="custom-swatch" style="background-color: {{ option_color }};">

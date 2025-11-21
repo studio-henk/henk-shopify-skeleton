@@ -5,6 +5,7 @@
 
     {% assign number_of_metafields_used = product.variants.first.metafields.HENK | size %}
 
+    {%- comment -%} if > 0, we want to override the Color swatch with a metafield  {%- endcomment -%}
     {%- if number_of_metafields_used == 0 -%}
       must be color
     {%- endif -%}

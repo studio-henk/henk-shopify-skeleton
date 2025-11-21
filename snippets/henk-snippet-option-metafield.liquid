@@ -30,7 +30,7 @@
             data-featured-image="{{ value.variant.featured_image | image_url: width: 1134 }}"
             data-material-name="{{ option_name }}"
             data-sku="{{ value.variant.sku }}"
-            data-price="{{ variant.price }}"
+            data-price="{{ value.variant.price }}"
 
             {% if value.variant.id == current_variant.id %}
               checked

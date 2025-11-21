@@ -20,7 +20,9 @@
           {% assign metafield_value = key[1].value %}
           {{ metafield_name | json }} -
           {{ metafield_value | json }}
+          <hr>
           {{ metafield_value.name | json }}
+          {{ metafield_value.color | json }}
         {% endfor %}
       {% endfor %}
     {% else %}

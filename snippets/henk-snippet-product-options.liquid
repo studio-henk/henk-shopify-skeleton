@@ -63,7 +63,7 @@
             {% endfor %}
 
             {% if matched_variant %}
-              {{ matched_variant | json }}
+              {% comment %} {{ matched_variant | json }} {% endcomment %}
               {% assign colorname = value.name %}
               {{ colorname }}
               {% comment %} {{ matched_variant.metafields.HENK.fabric.value | json }} {% endcomment %}

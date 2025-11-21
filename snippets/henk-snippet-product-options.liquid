@@ -23,7 +23,7 @@
           <hr>
           {{ metafield_value.name | json }}
           {{ metafield_value.color }}
-          {{ metafield.value.swatch.value }}
+          {{ metafield.value.swatch | json }}
         {% endfor %}
       {% endfor %}
     {% else %}

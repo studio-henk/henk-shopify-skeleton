@@ -64,7 +64,8 @@
 
             {% if matched_variant %}
               {% if option.name == 'Fabric' %}
-                {% assign material_data = matched_variant.metafields.HENK.fabric.value | first %}
+                hello
+                {% assign material_data = matched_variant.metafields.HENK.fabric.value %}
               {% else %}
                 {% assign material_data = matched_variant.metafields.HENK.material.value | first %}
               {% endif %}

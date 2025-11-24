@@ -38,6 +38,48 @@
         "button_variant": "primary"
       }
     },
+    "1763995645a965d4a3": {
+      "type": "apps",
+      "blocks": {
+        "reviews_io_reviewsio_card_carousel_aRimAW": {
+          "type": "shopify://apps/reviews-io/blocks/reviewsio-card-carousel/92a082e5-b297-4e88-b428-ac96cbc505f9",
+          "settings": {
+            "star": "#000",
+            "review_type": "product",
+            "reviews_shown": 20,
+            "header_bg_colour": "#000",
+            "header_colour": "#fff",
+            "header_star_colour": "#fff",
+            "heading_text_colour": "#0E1311",
+            "heading_font": "sans_serif_n4",
+            "body_text_colour": "#0E1311",
+            "badge_icon_colour": "#0E1311",
+            "badge_text_colour": "#0E1311",
+            "bg_start_colour": "#ffffff",
+            "bg_end_colour": "#ffffff",
+            "item_border_width": "0px",
+            "item_border_colour": "#F2F2F2",
+            "item_border_radius": "0px",
+            "item_shadow_size": "10px",
+            "item_shadow_colour": "#F2F2F2",
+            "enable_rich_snippets": false,
+            "disable_same_customer": false,
+            "logo_colour": "var(--logo-inverted)"
+          }
+        },
+        "reviews_io_reviewsio_rating_bar_mjcB6T": {
+          "type": "shopify://apps/reviews-io/blocks/reviewsio-rating-bar/92a082e5-b297-4e88-b428-ac96cbc505f9",
+          "settings": {
+            "widget_id": "0hO47WK2se9YTLIy"
+          }
+        }
+      },
+      "block_order": [
+        "reviews_io_reviewsio_card_carousel_aRimAW",
+        "reviews_io_reviewsio_rating_bar_mjcB6T"
+      ],
+      "settings": {}
+    },
     "henk_section_splitscreen_pM83he": {
       "type": "henk-section-splitscreen",
       "name": "Split Screen",
@@ -131,6 +173,7 @@
   "order": [
     "henk_section_hero_jcRw4Q",
     "main",
+    "1763995645a965d4a3",
     "henk_section_splitscreen_pM83he",
     "henk_section_double_media_4UwQcB",
     "henk_section_faq_rFmJ7m",

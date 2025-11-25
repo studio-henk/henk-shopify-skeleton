@@ -1,34 +1,17 @@
 {% assign first_variant = product.variants.first %}
 {% assign current_variant = first_variant %}
 
-<p>has metafields?: {{ current_variant.metafields.HENK.size | json }}</p>
-<p>which metafields?: {{ current_variant.metafields.HENK | json }}</p>
-<p>check2 has swatch: {{ product.variants.first.swatch | json }}</p>
-<p>check2 has swatch: {{ product.variants | json }}</p>
-<p>check has mf: {{ product.variants.first.metafields.HENK.size | json }}</p>
-<p>check has mf: {{ product.variants.metafields.HENK.size | json }}</p>
+<!-- <p>has metafields?: {{ current_variant.metafields.HENK.size | json }}</p> -->
+<!-- <p>which metafields?: {{ current_variant.metafields.HENK | json }}</p> -->
+<!-- <p>check2 has swatch: {{ product.variants.first.swatch | json }}</p> -->
+<!-- <p>check2 has swatch: {{ product.variants | json }}</p> -->
+<!-- <p>check has mf: {{ product.variants.first.metafields.HENK.size | json }}</p> -->
+<!-- <p>check has mf: {{ product.variants.metafields.HENK.size | json }}</p> -->
 
 <hr>
 
 <!-- Options -->
 {% for option in product.options_with_values %}
-  {% comment %} {{ option | json }} {% endcomment %}
-  {% comment %} {{ option.values.first.swatch | json }} {% endcomment %}
-  {{ option.values.first | json }}
-
-  {%- if option.values.first.swatch -%}
-    {% assign has_metafield = false %}
-
-    {% for v in product.variants %}
-      {% if v.metafields.HENK != blank %}
-        {% assign has_metafield = true %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-
-  {{ has_metafield | json }}
-
   {% assign option_name = option.name | downcase | replace: ' ', '-' %}
   <fieldset class="henk-fieldsetx">
     <legend class="henk-legendx">{{ option.name }}</legend>

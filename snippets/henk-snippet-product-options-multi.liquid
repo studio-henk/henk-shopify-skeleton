@@ -37,8 +37,7 @@
 <!-- Options -->
 {% for option in product.options_with_values %}
   {% assign idx = forloop.index0 %}
-  {% assign mf_json = meta_vals[idx] %}
-  {% assign mf = mf_json | parse_json %}
+  {% assign mf_value = current_variant.metafields.HENK[meta_keys[idx]] %}
 
   {% for value in option.values %}
     {% if value.swatch %}
@@ -46,9 +45,9 @@
       {{ value.swatch }}
     {% else %}
       <!-- use metafield -->
-      {{ mf.name }}
-      {{ mf.color }}
-      {{ mf.swatch | image_url }}
+      {{ mf_value.value.name }}
+      {{ mf_value.value.color }}
+      {{ mf_value.value.swatch | image_url }}
     {% endif %}
   {% endfor %}
 {% endfor %}

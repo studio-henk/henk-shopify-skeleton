@@ -49,7 +49,7 @@
         {% assign swatch = null %}
         {% for variant in product.variants %}
           {% for key in variant.metafields.HENK %}
-            {{ key | json }}
+            {{ key[1] | json }}
             {% assign mf_value = key[1].value %}
             {% if mf_value.name == value %}
               {% assign swatch = mf_value.swatch | image_url %}

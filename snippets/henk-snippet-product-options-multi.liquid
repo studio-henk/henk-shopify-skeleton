@@ -18,7 +18,9 @@
       has swatch
 
     {% else %}
-      no swatch
+      no swatch: check metafiels
+
+      {{ current_variant.metafields.HENK | json }}
     {%- endif -%}
   {% endfor %}
 

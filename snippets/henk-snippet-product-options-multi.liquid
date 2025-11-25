@@ -12,8 +12,16 @@
 
             {% assign norm_value = value | downcase | replace: '-', ' ' | strip %}
             {% assign norm_mf = mf_value.name | downcase | replace: '-', ' ' | strip %}
+            {% comment %} {% if norm_value == norm_mf %} {% endcomment %}
+            {% comment %}   {% assign swatch = mf_value.swatch | image_url %} {% endcomment %}
+            {% comment %}   {% break %} {% endcomment %}
+            {% comment %} {% endif %} {% endcomment %}
             {% if norm_value == norm_mf %}
-              {% assign swatch = mf_value.swatch | image_url %}
+              {%- if mf_value.swatch != blank -%}
+                {%- assign swatch = mf_value.swatch | image_url -%}
+              {%- else -%}
+                {%- assign swatch = value.swatch -%}
+              {%- endif -%}
               {% break %}
             {% endif %}
           {% endfor %}

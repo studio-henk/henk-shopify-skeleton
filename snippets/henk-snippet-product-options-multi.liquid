@@ -73,7 +73,7 @@
             <input
               class="henk-radio"
               type="radio"
-              name="option-{{ option_name | downcase }}"
+              name="option-{{ option.name | downcase }}"
               value="{{ value }}"
               {% if current_variant.options[forloop.parentloop.index0] == value %}
                 checked

@@ -6,6 +6,8 @@
 
 <!-- Options -->
 {% for option in product.options_with_values %}
+  {{ option | json }}
+
   {% assign option_name = option.name | downcase | replace: ' ', '-' %}
   <fieldset class="henk-fieldsetx">
     <legend class="henk-legendx">{{ option.name }}</legend>

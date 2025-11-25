@@ -1,7 +1,7 @@
 {% assign first_variant = product.variants.first %}
 {% assign current_variant = first_variant %}
 
-<!-- <p>has metafields?: {{ current_variant.metafields.HENK.size | json }}</p> -->
+<p>has metafields?: {{ current_variant.metafields.HENK.size | json }}</p>
 <!-- <p>which metafields?: {{ current_variant.metafields.HENK | json }}</p> -->
 <!-- <p>check2 has swatch: {{ product.variants.first.swatch | json }}</p> -->
 <!-- <p>check2 has swatch: {{ product.variants | json }}</p> -->
@@ -11,6 +11,9 @@
 <!-- Options -->
 {% for option in product.options_with_values %}
   {% assign option_name = option.name | downcase | replace: ' ', '-' %}
+
+  <!-- we need to figure out how to get either swatch here if Color or metafield if -->
+  <!-- Fabric/Finish -->
 
   <fieldset class="henk-fieldsetx">
     <legend class="henk-legendx">{{ option.name }}</legend>

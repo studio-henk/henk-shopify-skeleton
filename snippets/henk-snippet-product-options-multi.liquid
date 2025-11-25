@@ -35,6 +35,9 @@
 {% comment %} {{ meta_keys[0] }} {% endcomment %}
 {% assign meta_vals = henk_vals | split: '|' | slice: 0, current_variant.metafields.HENK.size %}
 
+{% capture mf_names %}{% for key in current_variant.metafields.HENK %}{{ key[1].value.name }}|{% endfor %}{% endcapture %}
+{{ mf_names | json }}
+
 <!-- Options -->
 {% for option in product.options_with_values %}
   {% assign idx = forloop.index0 %}

@@ -52,7 +52,7 @@
       <!-- use metafield -->
       hi
       <!-- {{ mf_value }} -->
-      - {{ mf_data[1] }}
+      - {{ mf_data[1].value.name }}
       {% comment %} {{ mf_value.value.color }} {% endcomment %}
       {% comment %} {{ mf_value.value.swatch | image_url }} {% endcomment %}
     {% endif %}

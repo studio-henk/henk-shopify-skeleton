@@ -10,7 +10,8 @@
 
 <!-- Options -->
 {% for option in product.options_with_values %}
-  {{ option | json }}
+  {% comment %} {{ option | json }} {% endcomment %}
+  {{ option.values.first.swatch | json }}
 
   {% assign option_name = option.name | downcase | replace: ' ', '-' %}
   <fieldset class="henk-fieldsetx">

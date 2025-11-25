@@ -6,10 +6,10 @@
 <!-- <p>check has mf: {{ product.variants.first.metafields.HENK.size | json }}</p> -->
 <!-- <p>check has mf: {{ product.variants.metafields.HENK.size | json }}</p> -->
 
-<p>which metafields?: {{ current_variant.metafields.HENK | json }}</p>
-{% for key in current_variant.metafields.HENK %}
-  <p>key: {{ key[0] }} | value: {{ key[1] | json }}</p>
-{% endfor %}
+<!-- <p>which metafields?: {{ current_variant.metafields.HENK | json }}</p> -->
+<!-- {% for key in current_variant.metafields.HENK %} -->
+<!-- <p>key: {{ key[0] }} | value: {{ key[1] | json }}</p> -->
+<!-- {% endfor %} -->
 
 {%- comment -%}
   Grab metafield keys and values in order, and turn them into arrays.
@@ -28,8 +28,11 @@
   {% endfor %}
 {% endcapture %}
 
-{% assign meta_keys = henk_keys | split: '|' %}
-{% assign meta_vals = henk_vals | split: '|' %}
+{% comment %} {% assign meta_keys = henk_keys | split: '|' %} {% endcomment %}
+{% comment %} {% assign meta_vals = henk_vals | split: '|' %} {% endcomment %}
+
+{% assign meta_keys = henk_keys | split: '|' | slice: 0, current_variant.metafields.HENK.size %}
+{% assign meta_vals = henk_vals | split: '|' | slice: 0, current_variant.metafields.HENK.size %}
 
 <!-- Options -->
 {% for option in product.options_with_values %}

@@ -38,7 +38,8 @@
 <!-- Options -->
 {% for option in product.options_with_values %}
   {% assign idx = forloop.index0 %}
-  {% assign mf_value = current_variant.metafields.HENK[meta_keys[idx]] %}
+  {% comment %} {% assign mf_value = current_variant.metafields.HENK[meta_keys[idx]] %} {% endcomment %}
+  {% assign mf_value = meta_keys[idx] %}
   {{ mf_value | json }}
 
   {% for value in option.values %}

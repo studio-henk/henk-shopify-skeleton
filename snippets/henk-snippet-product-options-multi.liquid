@@ -42,7 +42,7 @@
   {% assign mf_value = meta_keys[idx] %}
   <!-- option /metafield name: {{ mf_value }} -->
   {% assign mf_data = meta_vals %}
-  {{ mf_data[idx].swatch }}
+  {% comment %} {{ mf_data[idx] }} {% endcomment %}
 
   {% for value in option.values %}
     {% if value.swatch %}

@@ -74,6 +74,10 @@
             {% endfor %}
           {% else %}
             get from Color
+
+            <!-- {% assign colorname = value.name %} -->
+            {{ current_variant.option1 }}
+            {% assign current_material = colorname %}
           {%- endif -%}
           <p id="SelectedMaterial">{{ current_material }}</p>
 

@@ -69,19 +69,30 @@
           {% endif %}
         {% endfor %}
         <div class="henk-labeled-inputx">
-          <input type="radio" name="option-{{ option.name | downcase }}" value="{{ value }}">
-          <span class="custom-swatch">
-            {% if swatch %}
-              <img
-                src="{{ swatch | image_url: width: 44, height: 44 }}"
-                alt="{{ value }}"
-                width="44"
-                height="44"
-              >
-            {% else %}
-              {{ value }}
-            {% endif %}
-          </span>
+          <label class="henk-labelx">
+            <input
+              class="henk-radio"
+              type="radio"
+              name="option-{{ option_name | downcase }}"
+              value="{{ value }}"
+              {% if current_variant.options[forloop.parentloop.index0] == value %}
+                checked
+              {% endif %}
+            >
+
+            <span class="custom-swatch">
+              {% if swatch %}
+                <img
+                  src="{{ swatch | image_url: width: 44, height: 44 }}"
+                  alt="{{ value }}"
+                  width="44"
+                  height="44"
+                >
+              {% else %}
+                {{ value }}
+              {% endif %}
+            </span>
+          </label>
         </div>
       {% endfor %}
     </div>

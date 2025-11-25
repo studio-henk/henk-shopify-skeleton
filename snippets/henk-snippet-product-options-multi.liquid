@@ -63,7 +63,12 @@
         <input type="radio" name="option-{{ option.name | downcase }}" value="{{ value }}">
         <span class="custom-swatch">
           {% if swatch %}
-            <img src="{{ swatch }}" alt="{{ value }}" width="44" height="44">
+            <img
+              src="{{ swatch | image_url: width: 44, height: 44 }}"
+              alt="{{ value }}"
+              width="44"
+              height="44"
+            >
           {% else %}
             {{ value }}
           {% endif %}

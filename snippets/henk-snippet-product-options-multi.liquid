@@ -12,6 +12,7 @@
 
             {% assign norm_value = value | downcase | replace: '-', ' ' | strip %}
             {% assign norm_mf = mf_value.name | downcase | replace: '-', ' ' | strip %}
+            {{ norm_value }} vs {{ norm_mf }}
             {% if norm_value == norm_mf %}
               {% assign swatch = mf_value.swatch | image_url %}
               {% break %}
@@ -46,7 +47,6 @@
                 >
               {% else %}
                 ??
-                {{ swatch }}
                 {{ value }}
               {% endif %}
             </span>

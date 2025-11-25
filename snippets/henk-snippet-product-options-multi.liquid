@@ -42,43 +42,6 @@
 <!-- Options -->
 
 {% for option in product.options_with_values %}
-  {% assign option_name = option.name | downcase | replace: ' ', '-' %}
-  {% assign option_idx = forloop.index0 %}
-
-  <fieldset>
-    <legend>{{ option.name }}</legend>
-    <div>
-      {% for value in option.values %}
-        {% assign swatch = null %}
-
-        {% for variant in product.variants %}
-          {% if variant.options[option_idx] == value %}
-            {% for key in variant.metafields.HENK %}
-              {% assign mf_value = key[1].value %}
-              {% if mf_value.name == value %}
-                {% assign swatch = mf_value.swatch | image_url %}
-                {% break %}
-              {% endif %}
-            {% endfor %}
-          {% endif %}
-
-          {% if swatch %}{% break %}{% endif %}
-        {% endfor %}
-
-        <input type="radio" name="option-{{ option_name }}" value="{{ value }}">
-        <span class="custom-swatch">
-          {% if swatch %}
-            <img src="{{ swatch | image_url: width: 44, height: 44 }}" alt="{{ value }}" width="44" height="44">
-          {% else %}
-            {{ value }}
-          {% endif %}
-        </span>
-      {% endfor %}
-    </div>
-  </fieldset>
-{% endfor %}
-
-{% for option in product.options_with_values %}
   <fieldset>
     <legend>{{ option.name }}</legend>
     <div>

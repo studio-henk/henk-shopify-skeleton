@@ -59,7 +59,9 @@
         <div class="product-info">
           {% assign display_title = current_variant.name | default: product.title %}
           <h1 class="product__title">{{ display_title }}</h1>
+          hello
 
+          {{ current_variant | json }}
           {% for key in current_variant.metafields.HENK %}
             {% assign current_material = key[1].value.name %}
             {{ key[1] }}

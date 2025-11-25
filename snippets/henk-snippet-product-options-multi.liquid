@@ -17,6 +17,7 @@
     <legend class="henk-legendx">{{ option.name }}</legend>
     <div class="options__container">
       {% for value in option.values %}
+        {{ value | json }}
         <div class="henk-labeled-inputx">
           <label class="henk-labelx">
             <input

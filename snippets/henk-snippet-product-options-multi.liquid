@@ -41,19 +41,36 @@
 
 <!-- Options -->
 {% for option in product.options_with_values %}
-  {% assign swatch = null %}
-  {% for variant in product.variants %}
-    {% for key in variant.metafields.HENK %}
-      {% assign mf_value = key[1].value %}
-      {% if mf_value.name == value %}
-        {% assign swatch = mf_value.swatch | image_url %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-    {% if swatch %}
-      {% break %}
-    {% endif %}
-  {% endfor %}
+  <fieldset>
+    <legend>{{ option.name }}</legend>
+    <div>
+      {% for value in option.values %}
+        {% comment %}Check if this value should have a swatch{% endcomment %}
+        {% assign swatch = null %}
+        {% for variant in product.variants %}
+          {% for key in variant.metafields.HENK %}
+            {% assign mf_value = key[1].value %}
+            {% if mf_value.name == value %}
+              {% assign swatch = mf_value.swatch | image_url %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          {% if swatch %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+        <input type="radio" name="option-{{ option.name | downcase }}" value="{{ value }}">
+        <span class="custom-swatch">
+          {% if swatch %}
+            <img src="{{ swatch }}" alt="{{ value }}">
+          {% else %}
+            {{ value }}
+          {% endif %}
+        </span>
+      {% endfor %}
+    </div>
+  </fieldset>
 {% endfor %}
 
 <hr>

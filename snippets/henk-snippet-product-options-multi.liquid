@@ -6,16 +6,19 @@
 <!-- <p>check has mf: {{ product.variants.first.metafields.HENK.size | json }}</p> -->
 <!-- <p>check has mf: {{ product.variants.metafields.HENK.size | json }}</p> -->
 
-{%- assign meta_keys = '' | split: '' -%}
-{%- assign meta_values = '' | split: '' -%}
+{%- comment -%}
+  Grab metafield keys and values in order, and turn them into arrays.
+  This works in Shopify because capturing strings + splitting does work.
+{%- endcomment -%}
 
-{%- for pair in current_variant.metafields.HENK -%}
-  {%- assign meta_keys = meta_keys | push: pair[0] -%}
-  {%- assign meta_values = meta_values | push: pair[1] -%}
-{%- endfor -%}
+{% capture henk_keys %}{% for pair in current_variant.metafields.HENK %}{{ pair[0] }}|{% endfor %}{% endcapture %}
+{% capture henk_vals %}{% for pair in current_variant.metafields.HENK %}{{ pair[1] }}|{% endfor %}{% endcapture %}
+
+{% assign meta_keys = henk_keys | split: '|' %}
+{% assign meta_vals = henk_vals | split: '|' %}
 
 {{ meta_keys | json }}
-{{ meta_values | json }}
+{{ meta_vals | json }}
 
 <!-- Options -->
 {% for option in product.options_with_values %}

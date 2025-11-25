@@ -3,6 +3,7 @@
 
 <p>has metafields?: {{ current_variant.metafields.HENK.size | json }}</p>
 <p>which metafields?: {{ current_variant.metafields.HENK | json }}</p>
+<p>check2: {{ product.variants.first.swatch | json }}</p>
 
 <!-- Options -->
 {% for option in product.options_with_values %}

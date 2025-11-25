@@ -13,7 +13,7 @@
 {% for option in product.options_with_values %}
   {% comment %} {{ option | json }} {% endcomment %}
   {% comment %} {{ option.values.first.swatch | json }} {% endcomment %}
-  {{ option.values | json }}
+  {{ option.values.first | json }}
 
   {%- if option.values.first.swatch -%}
     {% assign has_metafield = false %}

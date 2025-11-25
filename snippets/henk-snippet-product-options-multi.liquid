@@ -11,37 +11,64 @@
   This works in Shopify because capturing strings + splitting does work.
 {%- endcomment -%}
 
-{% capture henk_keys %}{% for pair in current_variant.metafields.HENK %}{{ pair[0] }}|{% endfor %}{% endcapture %}
-{% capture henk_vals %}{% for pair in current_variant.metafields.HENK %}{{ pair[1] }}|{% endfor %}{% endcapture %}
+{% capture henk_keys %}
+  {% for pair in current_variant.metafields.HENK %}
+    {{ pair[0] }}|
+  {% endfor %}
+{% endcapture %}
+
+{% capture henk_vals %}
+  {% for pair in current_variant.metafields.HENK %}
+    {{ pair[1] }}|
+  {% endfor %}
+{% endcapture %}
 
 {% assign meta_keys = henk_keys | split: '|' %}
 {% assign meta_vals = henk_vals | split: '|' %}
-
-{{ meta_keys | json }}
-{{ meta_vals | json }}
-
 <!-- Options -->
 {% for option in product.options_with_values %}
+  {% assign option_index = forloop.index0 %}
   {% assign option_name = option.name | downcase | replace: ' ', '-' %}
 
-  <!-- we need to figure out how to get either swatch here if Color or metafield if -->
-  <!-- Fabric/Finish -->
-  {% for value in option.values %}
-    {{ value.swatch }}
-    {%- if value.swatch -%}
-      has swatch
-
-    {% else %}
-      no swatch: check metafiels loopindex: {{ forloop.parentloop.index0 }}
-      {{ current_variant.metafields.HENK | json }}
-    {%- endif -%}
-  {% endfor %}
+  {% comment %}
+    Get the metafield for this option index
+    meta_vals[idx] is a reference to a metaobject
+  {% endcomment %}
+  {% assign metafield_ref = meta_vals[option_index] %}
+  {% if metafield_ref %}
+    {% assign meta_obj = metafield_ref | metafield_text %}
+  {% endif %}
+  {% comment %} {% assign option_name = option.name | downcase | replace: ' ', '-' %} {% endcomment %}
 
   <fieldset class="henk-fieldsetx">
     <legend class="henk-legendx">{{ option.name }}</legend>
+
     <div class="options__container">
       {% for value in option.values %}
-        <!-- has_swatch?: {{ value.swatch }} -->
+        {% assign is_color_swatch = value.swatch %}
+
+        {%- comment -%}
+          Determine label + swatch image:
+          - If Color → use Shopify swatch
+          - Else → use metafield assigned to this option index
+        {%- endcomment -%}
+
+        {% if is_color_swatch %}
+          {% assign display_name = value %}
+          {% assign swatch_img = value.swatch | image_url %}
+          {% assign swatch_color = '' %}
+
+        {% else %}
+          {% if meta_obj %}
+            {% assign display_name = meta_obj.name %}
+            {% assign swatch_img = meta_obj.swatch | image_url: width: 64 %}
+            {% assign swatch_color = meta_obj.color %}
+          {% else %}
+            {% assign display_name = value %}
+            {% assign swatch_img = '' %}
+            {% assign swatch_color = '' %}
+          {% endif %}
+        {% endif %}
 
         <div class="henk-labeled-inputx">
           <label class="henk-labelx">
@@ -50,12 +77,22 @@
               type="radio"
               name="option-{{ option_name }}"
               value="{{ value }}"
-              {% if current_variant.options[forloop.parentloop.index0] == value %}
+              {% if current_variant.options[option_index] == value %}
                 checked
               {% endif %}
             >
-            <span class="custom-swatchx">
-              {{ value }}
+
+            <span
+              class="custom-swatchx"
+              {% if swatch_color %}
+                style="background-color: {{ swatch_color }}"
+              {% endif %}
+            >
+              {% if swatch_img %}
+                <img src="{{ swatch_img }}" alt="{{ display_name }}">
+              {% endif %}
+
+              {{ display_name }}
             </span>
           </label>
         </div>

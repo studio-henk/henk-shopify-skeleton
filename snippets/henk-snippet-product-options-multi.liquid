@@ -6,6 +6,8 @@
 <!-- <p>check has mf: {{ product.variants.first.metafields.HENK.size | json }}</p> -->
 <!-- <p>check has mf: {{ product.variants.metafields.HENK.size | json }}</p> -->
 
+<p>which metafields?: {{ current_variant.metafields.HENK | json }}</p>
+
 {%- comment -%}
   Grab metafield keys and values in order, and turn them into arrays.
   This works in Shopify because capturing strings + splitting does work.

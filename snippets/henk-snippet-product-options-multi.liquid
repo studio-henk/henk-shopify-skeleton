@@ -46,7 +46,7 @@
 
   {% for key in meta_obj %}
     {% comment %} {% assign metafield_value = key[0].value %} {% endcomment %}
-    {{ key | json }}
+    {{ key.value | json }}
   {% endfor %}
 
   {% comment %} {{ metafield_value | json }} {% endcomment %}

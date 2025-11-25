@@ -12,7 +12,11 @@
 
   <!-- we need to figure out how to get either swatch here if Color or metafield if -->
   <!-- Fabric/Finish -->
-  {{ option.first }}
+
+  {% for value in option.values %}
+
+  {% endfor %}
+      <div class="options__container">
 
   <fieldset class="henk-fieldsetx">
     <legend class="henk-legendx">{{ option.name }}</legend>

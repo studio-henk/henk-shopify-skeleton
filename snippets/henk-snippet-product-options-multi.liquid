@@ -40,7 +40,7 @@
   {% assign idx = forloop.index0 %}
   {% comment %} {% assign mf_value = current_variant.metafields.HENK[meta_keys[idx]] %} {% endcomment %}
   {% assign mf_value = meta_keys[idx] %}
-  option /metafield name: {{ mf_value }}
+  <!-- option /metafield name: {{ mf_value }} -->
   {% assign mf_data = meta_vals %}
   {{ mf_data[idx] }}
 

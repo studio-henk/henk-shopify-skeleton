@@ -18,7 +18,8 @@
 
 {% if collection.all_products_count > 0 %}
   <section class="shopify-section henk-section" id="shopify-section-lister">
-    {% if collection.all_products_count > 0 %}
+    {%- comment -%} NOTE: only show options bar when more than 1 card {%- endcomment -%}
+    {% if collection.all_products_count > 1 %}
       <div class="henk-grid-options-bar">
         <div class="henk-grid-options-bar__filters">
           <form>
@@ -40,8 +41,7 @@
               >
             {% endif %}
 
-            {% comment %} {{ collection.filters.size | json }} {% endcomment %}
-
+            {%- comment -%} NOTE: render filters-widget {%- endcomment -%}
             {% render 'henk-snippet-filters-widget',
               filters: collection.filters,
               active_filters_count: active_filters_count

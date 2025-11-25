@@ -36,7 +36,8 @@
 {% assign meta_vals = henk_vals | split: '|' | slice: 0, current_variant.metafields.HENK.size %}
 
 {% capture mf_names %}{% for key in current_variant.metafields.HENK %}{{ key[1].value.name }}|{% endfor %}{% endcapture %}
-{{ mf_names | json }}
+{% assign mf_names_array = mf_names | split: '|' %}
+{{ mf_names_array | json }}
 
 <!-- Options -->
 {% for option in product.options_with_values %}

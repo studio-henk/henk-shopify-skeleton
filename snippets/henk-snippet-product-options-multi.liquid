@@ -4,6 +4,7 @@
 <p>has metafields?: {{ current_variant.metafields.HENK.size | json }}</p>
 <p>which metafields?: {{ current_variant.metafields.HENK | json }}</p>
 <p>check2 has swatch: {{ product.variants.first.swatch | json }}</p>
+<p>check2 has swatch: {{ product.variants | json }}</p>
 <p>check has mf: {{ product.variants.first.metafields.HENK.size | json }}</p>
 <p>check has mf: {{ product.variants.metafields.HENK.size | json }}</p>
 

@@ -24,6 +24,8 @@
     {% endfor %}
   {% endif %}
 
+  {{ has_metafield | json }}
+
   {% assign option_name = option.name | downcase | replace: ' ', '-' %}
   <fieldset class="henk-fieldsetx">
     <legend class="henk-legendx">{{ option.name }}</legend>

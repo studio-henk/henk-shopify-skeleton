@@ -60,6 +60,7 @@
 
         {% else %}
           {% if meta_obj %}
+            hello
             {% assign display_name = meta_obj.name %}
             {% assign swatch_img = meta_obj.swatch | image_url: width: 64 %}
             {% assign swatch_color = meta_obj.color %}

@@ -13,6 +13,17 @@
   {% comment %} {{ option | json }} {% endcomment %}
   {{ option.values.first.swatch | json }}
 
+  {%- if option.values.first.swatch -%}
+    {% assign has_metafield = false %}
+
+    {% for v in product.variants %}
+      {% if v.metafields.HENK != blank %}
+        {% assign has_metafield = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
   {% assign option_name = option.name | downcase | replace: ' ', '-' %}
   <fieldset class="henk-fieldsetx">
     <legend class="henk-legendx">{{ option.name }}</legend>

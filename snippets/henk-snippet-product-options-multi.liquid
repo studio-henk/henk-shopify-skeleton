@@ -12,7 +12,8 @@
 <!-- Options -->
 {% for option in product.options_with_values %}
   {% comment %} {{ option | json }} {% endcomment %}
-  {{ option.values.first.swatch | json }}
+  {% comment %} {{ option.values.first.swatch | json }} {% endcomment %}
+  {{ option.values | json }}
 
   {%- if option.values.first.swatch -%}
     {% assign has_metafield = false %}

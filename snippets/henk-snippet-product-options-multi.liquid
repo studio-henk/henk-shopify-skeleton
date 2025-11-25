@@ -19,7 +19,17 @@
 
     {% else %}
       no swatch: check metafiels loopindex: {{ forloop.parentloop.index0 }}
-      {{ current_variant.metafields.HENK.[0] | json }}
+      {% comment %} {{ current_variant.metafields.HENK.fabric | json }} {% endcomment %}
+      {% assign idx = 0 %}
+      {% for pair in current_variant.metafields.HENK %}
+        {% assign key = pair[0] %}
+        {% assign metafield_object = pair[1] %}
+        {% assign metafield_value = metafield_object.value %}
+
+        {{ idx }} → {{ key }} → {{ metafield_value | json }}
+
+        {% assign idx = idx | plus: 1 %}
+      {% endfor %}
     {%- endif -%}
   {% endfor %}
 

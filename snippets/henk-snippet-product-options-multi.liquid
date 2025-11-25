@@ -32,7 +32,7 @@
 {% comment %} {% assign meta_vals = henk_vals | split: '|' %} {% endcomment %}
 
 {% assign meta_keys = henk_keys | split: '|' | slice: 0, current_variant.metafields.HENK.size %}
-{{ meta_keys[0] }}
+{% comment %} {{ meta_keys[0] }} {% endcomment %}
 {% assign meta_vals = henk_vals | split: '|' | slice: 0, current_variant.metafields.HENK.size %}
 
 <!-- Options -->

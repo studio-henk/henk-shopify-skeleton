@@ -19,7 +19,7 @@
 
     {% else %}
       no swatch: check metafiels loopindex: {{ forloop.parentloop.index0 }}
-      {{ current_variant.metafields.HENK | json }}
+      {{ current_variant.metafields.HENK[0] | json }}
     {%- endif -%}
   {% endfor %}
 

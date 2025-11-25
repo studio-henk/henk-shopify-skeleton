@@ -62,6 +62,8 @@
 
           <!-- {{ current_variant | json }} -->
           {{ current_variant.metafields.HENK | size | json }}
+          {{ product.metafields.HENK | size | json }}
+          {% comment %}loop through metafields to get material name{% endcomment %}
           {% for key in current_variant.metafields.HENK %}
             {{ key }}
             {% assign current_material = key[1].value.name %}

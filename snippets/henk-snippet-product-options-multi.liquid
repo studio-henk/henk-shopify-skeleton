@@ -47,7 +47,7 @@
       <!-- use metafield -->
       {{ mf_value.value.name }}
       {{ mf_value.value.color }}
-      {{ mf_value.value.swatch | image_url }}
+      {% comment %} {{ mf_value.value.swatch | image_url }} {% endcomment %}
     {% endif %}
   {% endfor %}
 {% endfor %}

@@ -45,7 +45,7 @@
   {{ meta_obj | json }}
 
   {% for key in meta_obj %}
-    {% assign metafield_value = key[1].value %}
+    {% assign metafield_value = key[0].value %}
   {% endfor %}
 
   {{ metafield_value | json }}

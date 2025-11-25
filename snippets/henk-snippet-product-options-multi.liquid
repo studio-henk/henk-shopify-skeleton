@@ -42,7 +42,7 @@
     {% assign meta_obj = metafield_ref %}
   {% endif %}
   {% comment %} {% assign option_name = option.name | downcase | replace: ' ', '-' %} {% endcomment %}
-  {{ meta_obj.value | json }}
+  {{ meta_obj.size | json }}
 
   <fieldset class="henk-fieldsetx">
     <legend class="henk-legendx">{{ option.name }}</legend>

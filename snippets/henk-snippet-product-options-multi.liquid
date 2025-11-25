@@ -51,10 +51,10 @@
           {% for key in variant.metafields.HENK %}
             {{ key[1].value | json }}
             {% assign mf_value = key[1].value %}
-            {% comment %} {% if mf_value.name == value %} {% endcomment %}
-            {% assign swatch = mf_value.swatch | image_url %}
-            {% break %}
-            {% comment %} {% endif %} {% endcomment %}
+            {% if mf_value.name == value %}
+              {% assign swatch = mf_value.swatch | image_url %}
+              {% break %}
+            {% endif %}
           {% endfor %}
           {% if swatch %}
             {% break %}

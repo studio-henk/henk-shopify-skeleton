@@ -65,12 +65,16 @@
             if uses metafield get it from it if not then get from
             Color metaobject
           {%- endcomment -%}
-          {% comment %}loop through metafields to get material name{% endcomment %}
-          {% for key in current_variant.metafields.HENK %}
-            {{ key }}
-            {% assign current_material = key[1].value.name %}
-            {{ key[1] }}
-          {% endfor %}
+          {%- if current_variant.metafields.HENK.size > 0 -%}
+            {% comment %}loop through metafields to get material name{% endcomment %}
+            {% for key in current_variant.metafields.HENK %}
+              {{ key }}
+              {% assign current_material = key[1].value.name %}
+              {{ key[1] }}
+            {% endfor %}
+          {% else %}
+            get from Color
+          {%- endif -%}
           <p id="SelectedMaterial">{{ current_material }}</p>
 
           <p id="ProductPrice" class="product__price">

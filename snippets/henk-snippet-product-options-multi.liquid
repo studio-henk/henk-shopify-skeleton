@@ -26,9 +26,6 @@
 {% assign meta_keys = henk_keys | split: '|' %}
 {% assign meta_vals = henk_vals | split: '|' %}
 
-{% comment %} {{ meta_keys | json }} {% endcomment %}
-{{ meta_vals | json }}
-
 <!-- Options -->
 {% for option in product.options_with_values %}
   {% assign option_index = forloop.index0 %}
@@ -41,9 +38,11 @@
   {% assign metafield_ref = meta_vals[option_index] %}
   {% if metafield_ref %}
     {% comment %} {{ metafield_ref | json }} {% endcomment %}
-    {% assign meta_obj = metafield_ref | metafield_text %}
+    {% comment %} {% assign meta_obj = metafield_ref | metafield_text %} {% endcomment %}
+    {% assign meta_obj = metafield_ref %}
   {% endif %}
   {% comment %} {% assign option_name = option.name | downcase | replace: ' ', '-' %} {% endcomment %}
+  {{ meta_obj | json }}
 
   <fieldset class="henk-fieldsetx">
     <legend class="henk-legendx">{{ option.name }}</legend>

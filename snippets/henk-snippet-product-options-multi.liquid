@@ -40,6 +40,7 @@
             >
 
             <span class="custom-swatch">
+              {{ swatch | json }}
               {% if swatch %}
                 <img
                   src="{{ swatch | image_url: width: 44, height: 44 }}"

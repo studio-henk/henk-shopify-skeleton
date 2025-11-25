@@ -14,6 +14,12 @@
   <!-- Fabric/Finish -->
   {% for value in option.values %}
     {{ value.swatch }}
+    {%- if value.swatch -%}
+      has swatch
+
+    {% else %}
+      no swatch
+    {%- endif -%}
   {% endfor %}
 
   <fieldset class="henk-fieldsetx">

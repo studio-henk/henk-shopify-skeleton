@@ -52,10 +52,18 @@
           {% for key in variant.metafields.HENK %}
             {{ key[1].value | json }}
             {% assign mf_value = key[1].value %}
-            {% if mf_value.name == value %}
+
+            {% assign norm_value = value | downcase | replace: '-', ' ' | strip %}
+            {% assign norm_mf = mf_value.name | downcase | replace: '-', ' ' | strip %}
+            {% if norm_value == norm_mf %}
               {% assign swatch = mf_value.swatch | image_url %}
               {% break %}
             {% endif %}
+
+            {% comment %} {% if mf_value.name == value %} {% endcomment %}
+            {% comment %}   {% assign swatch = mf_value.swatch | image_url %} {% endcomment %}
+            {% comment %}   {% break %} {% endcomment %}
+            {% comment %} {% endif %} {% endcomment %}
           {% endfor %}
           {% if swatch %}
             {% break %}

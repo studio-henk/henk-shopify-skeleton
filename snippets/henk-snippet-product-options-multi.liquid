@@ -54,3 +54,92 @@
 
 <!-- Hidden input for form -->
 <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // --- helpers (declare once) ---
+    function formatPriceEUR(amountInCents) {
+      // defensive parse
+      const cents = Number(amountInCents);
+      if (isNaN(cents)) return '';
+      const euros = cents / 100;
+      // format and remove trailing ",00"
+      const formatted = new Intl.NumberFormat('nl-NL', {
+        style: 'currency',
+        currency: 'EUR',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }).format(euros);
+      return formatted.replace(',00', '');
+    }
+
+    // --- cache elements ---
+    const mainImage = document.getElementById('ProductFeaturedImage');
+    const skuEl = document.getElementById('ProductSKU');
+    const materialNameEl = document.getElementById('SelectedMaterial');
+    const priceEl = document.getElementById('ProductPrice');
+
+    // get all variant radio buttons (your class)
+    const variantRadios = document.querySelectorAll('.henk-radio');
+
+    if (!variantRadios.length) return;
+
+    variantRadios.forEach((radio) => {
+      radio.addEventListener('change', function () {
+        if (!this.checked) return;
+
+        // 🔥 FIX #1 — ensure only this one is checked
+        variantRadios.forEach((r) => {
+          r.checked = false;
+          r.removeAttribute('checked');
+        });
+
+        this.checked = true;
+        this.setAttribute('checked', '');
+
+        // variant id
+        const variantId = this.value;
+
+        // image
+        const imgUrl = this.dataset.featuredImage;
+        if (imgUrl && mainImage) {
+          // keep existing alt if provided on data-alt, otherwise leave as-is
+          mainImage.src = imgUrl;
+          if (this.dataset.featuredAlt) {
+            mainImage.alt = this.dataset.featuredAlt;
+          }
+        }
+
+        // SKU
+        const sku = this.dataset.sku;
+        if (skuEl) {
+          skuEl.textContent = sku ? 'SKU: ' + sku : 'SKU: —';
+        }
+
+        // MATERIAL NAME (metafield friendly)
+        const materialName = this.dataset.materialName || this.dataset.materialname || '';
+        if (materialNameEl) {
+          materialNameEl.textContent = materialName || '';
+        }
+
+        // PRICE
+        const price = this.dataset.price; // expected in cents (integer)
+        if (priceEl) {
+          const formatted = formatPriceEUR(price);
+          if (formatted) {
+            priceEl.textContent = formatted;
+          }
+        }
+
+        // update browser URL without reload
+        try {
+          const url = new URL(window.location.href);
+          url.searchParams.set('variant', variantId);
+          window.history.replaceState({}, '', url);
+        } catch (e) {
+          // fallback for older browsers
+          // no-op
+        }
+      });
+    });
+  });
+</script>

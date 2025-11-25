@@ -50,8 +50,8 @@
       {{ value.swatch }}
     {% else %}
       <!-- use metafield -->
-      {{ mf_value.value.name }}
-      {{ mf_value.value.color }}
+      {{ mf_value }}
+      {% comment %} {{ mf_value.value.color }} {% endcomment %}
       {% comment %} {{ mf_value.value.swatch | image_url }} {% endcomment %}
     {% endif %}
   {% endfor %}

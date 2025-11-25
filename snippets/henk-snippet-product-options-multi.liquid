@@ -1,46 +1,4 @@
-{% comment %} {% assign first_variant = product.variants.first %} {% endcomment %}
-{% comment %} {% assign current_variant = first_variant %} {% endcomment %}
-
-<!-- <p>has metafields?: {{ current_variant.metafields.HENK.size | json }}</p> -->
-<!-- <p>which metafields?: {{ current_variant.metafields.HENK | json }}</p> -->
-<!-- <p>check has mf: {{ product.variants.first.metafields.HENK.size | json }}</p> -->
-<!-- <p>check has mf: {{ product.variants.metafields.HENK.size | json }}</p> -->
-
-<!-- <p>which metafields?: {{ current_variant.metafields.HENK | json }}</p> -->
-<!-- {% for key in current_variant.metafields.HENK %} -->
-<!-- <p>key: {{ key[0] }} | value: {{ key[1] | json }}</p> -->
-<!-- {% endfor %} -->
-
-{%- comment -%}
-  Grab metafield keys and values in order, and turn them into arrays.
-  This works in Shopify because capturing strings + splitting does work.
-{%- endcomment -%}
-
-{% comment %} {% capture henk_keys %} {% endcomment %}
-{% comment %}   {% for pair in current_variant.metafields.HENK %} {% endcomment %}
-{% comment %}     {{ pair[0] }}| {% endcomment %}
-{% comment %}   {% endfor %} {% endcomment %}
-{% comment %} {% endcapture %} {% endcomment %}
-
-{% comment %} {% capture henk_vals %} {% endcomment %}
-{% comment %}   {% for pair in current_variant.metafields.HENK %} {% endcomment %}
-{% comment %}     {{ pair[1] }}| {% endcomment %}
-{% comment %}   {% endfor %} {% endcomment %}
-{% comment %} {% endcapture %} {% endcomment %}
-
-{% comment %} {% assign meta_keys = henk_keys | split: '|' %} {% endcomment %}
-{% comment %} {% assign meta_vals = henk_vals | split: '|' %} {% endcomment %}
-
-{% comment %} {% assign meta_keys = henk_keys | split: '|' | slice: 0, current_variant.metafields.HENK.size %} {% endcomment %}
-{% comment %} {% comment %} {{ meta_keys[0] }} {% endcomment %} {% endcomment %}
-{% comment %} {% assign meta_vals = henk_vals | split: '|' | slice: 0, current_variant.metafields.HENK.size %} {% endcomment %}
-{% comment %}{% endcomment %}
-{% comment %} {% capture mf_names %}{% for key in current_variant.metafields.HENK %}{{ key[1].value.name }}|{% endfor %}{% endcapture %} {% endcomment %}
-{% comment %} {% assign mf_names_array = mf_names | split: '|' %} {% endcomment %}
-{% comment %} {{ mf_names_array | json }} {% endcomment %}
-
 <!-- Options -->
-
 {% for option in product.options_with_values %}
   <fieldset class="henk-fieldset">
     <legend class="henk-legend">{{ option.name }}</legend>
@@ -58,11 +16,6 @@
               {% assign swatch = mf_value.swatch | image_url %}
               {% break %}
             {% endif %}
-
-            {% comment %} {% if mf_value.name == value %} {% endcomment %}
-            {% comment %}   {% assign swatch = mf_value.swatch | image_url %} {% endcomment %}
-            {% comment %}   {% break %} {% endcomment %}
-            {% comment %} {% endif %} {% endcomment %}
           {% endfor %}
           {% if swatch %}
             {% break %}

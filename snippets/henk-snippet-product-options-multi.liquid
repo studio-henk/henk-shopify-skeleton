@@ -118,6 +118,33 @@
       return variant;
     }
 
+    // --- disable impossible combinations ---
+    function updateDisabledOptions() {
+      radios.forEach((radio) => {
+        const optionIndex = Number(radio.dataset.optionIndex);
+        const optionValue = radio.dataset.optionValue;
+
+        // hypothetical selection if user picks this radio
+        const hypothetical = { ...selectedOptions };
+        hypothetical[optionIndex] = optionValue;
+
+        // check if ANY variant matches the hypothetical combination
+        const exists = productVariants.some((v) =>
+          v.options.every((opt, i) => {
+            if (hypothetical[i] === undefined) return true;
+            return hypothetical[i] === opt;
+          }),
+        );
+
+        radio.disabled = !exists;
+
+        // optional css class toggle
+        if (radio.closest('label')) {
+          radio.closest('label').classList.toggle('disabled', !exists);
+        }
+      });
+    }
+
     // --- update UI with given variant ---
     function updateUI(variant) {
       if (!variant) {
@@ -159,6 +186,7 @@
 
         const variant = findVariant();
         updateUI(variant);
+        updateDisabledOptions();
       });
     });
 

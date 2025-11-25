@@ -6,6 +6,14 @@
 <!-- <p>check has mf: {{ product.variants.first.metafields.HENK.size | json }}</p> -->
 <!-- <p>check has mf: {{ product.variants.metafields.HENK.size | json }}</p> -->
 
+{%- assign meta_keys = '' | split: '' -%}
+{%- assign meta_values = '' | split: '' -%}
+
+{%- for pair in current_variant.metafields.HENK -%}
+  {%- assign meta_keys = meta_keys | push: pair[0] -%}
+  {%- assign meta_values = meta_values | push: pair[1] -%}
+{%- endfor -%}
+
 <!-- Options -->
 {% for option in product.options_with_values %}
   {% assign option_name = option.name | downcase | replace: ' ', '-' %}

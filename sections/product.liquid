@@ -61,6 +61,7 @@
           <h1 class="product__title">{{ display_title }}</h1>
 
           <!-- {{ current_variant | json }} -->
+          {{ current_variant.metafields.HENK | size | json }}
           {% for key in current_variant.metafields.HENK %}
             {{ key }}
             {% assign current_material = key[1].value.name %}

@@ -7,34 +7,6 @@
 <!-- Options -->
 {% for option in product.options_with_values %}
   {% assign option_name = option.name | downcase | replace: ' ', '-' %}
-
-  {%- if option.values.first.swatch -%}
-    {% assign has_metafield = false %}
-
-    {% for v in product.variants %}
-      {% if v.metafields.HENK != blank %}
-        {% assign has_metafield = true %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-
-    {%- comment -%} if > 0, we want to override the Color swatch with a metafield  {%- endcomment -%}
-    {% if has_metafield %}
-      <!-- At least one variant has a metafield -->
-      {%
-        render 'henk-snippet-option-metafield', option: option,
-        current_variant: current_variant, metafield_value, product: product
-      %}
-    {% else %}
-      <!-- No variants have a metafield -->
-      {% render 'henk-snippet-option-color', option: option, current_variant: current_variant %}
-    {% endif %}
-
-  {% else %}
-    no swatch
-  {%- endif -%}
-
-  <hr>
   <fieldset class="henk-fieldsetx">
     <legend class="henk-legendx">{{ option.name }}</legend>
     <div class="options__container">

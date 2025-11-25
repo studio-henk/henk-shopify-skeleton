@@ -16,47 +16,42 @@
   This works in Shopify because capturing strings + splitting does work.
 {%- endcomment -%}
 
-{% capture henk_keys %}
-  {% for pair in current_variant.metafields.HENK %}
-    {{ pair[0] }}|
-  {% endfor %}
-{% endcapture %}
+{% comment %} {% capture henk_keys %} {% endcomment %}
+{% comment %}   {% for pair in current_variant.metafields.HENK %} {% endcomment %}
+{% comment %}     {{ pair[0] }}| {% endcomment %}
+{% comment %}   {% endfor %} {% endcomment %}
+{% comment %} {% endcapture %} {% endcomment %}
 
-{% capture henk_vals %}
-  {% for pair in current_variant.metafields.HENK %}
-    {{ pair[1] }}|
-  {% endfor %}
-{% endcapture %}
+{% comment %} {% capture henk_vals %} {% endcomment %}
+{% comment %}   {% for pair in current_variant.metafields.HENK %} {% endcomment %}
+{% comment %}     {{ pair[1] }}| {% endcomment %}
+{% comment %}   {% endfor %} {% endcomment %}
+{% comment %} {% endcapture %} {% endcomment %}
 
 {% comment %} {% assign meta_keys = henk_keys | split: '|' %} {% endcomment %}
 {% comment %} {% assign meta_vals = henk_vals | split: '|' %} {% endcomment %}
 
-{% assign meta_keys = henk_keys | split: '|' | slice: 0, current_variant.metafields.HENK.size %}
-{% comment %} {{ meta_keys[0] }} {% endcomment %}
-{% assign meta_vals = henk_vals | split: '|' | slice: 0, current_variant.metafields.HENK.size %}
-
-{% capture mf_names %}{% for key in current_variant.metafields.HENK %}{{ key[1].value.name }}|{% endfor %}{% endcapture %}
-{% assign mf_names_array = mf_names | split: '|' %}
+{% comment %} {% assign meta_keys = henk_keys | split: '|' | slice: 0, current_variant.metafields.HENK.size %} {% endcomment %}
+{% comment %} {% comment %} {{ meta_keys[0] }} {% endcomment %} {% endcomment %}
+{% comment %} {% assign meta_vals = henk_vals | split: '|' | slice: 0, current_variant.metafields.HENK.size %} {% endcomment %}
+{% comment %}{% endcomment %}
+{% comment %} {% capture mf_names %}{% for key in current_variant.metafields.HENK %}{{ key[1].value.name }}|{% endfor %}{% endcapture %} {% endcomment %}
+{% comment %} {% assign mf_names_array = mf_names | split: '|' %} {% endcomment %}
 {% comment %} {{ mf_names_array | json }} {% endcomment %}
 
 <!-- Options -->
 {% for option in product.options_with_values %}
-  {% assign idx = forloop.index0 %}
-  {% comment %} {% assign mf_value = current_variant.metafields.HENK[meta_keys[idx]] %} {% endcomment %}
-  {% assign mf_value = meta_keys[idx] %}
-  <!-- option /metafield name: {{ mf_value }} -->
-  {% assign mf_data = meta_vals %}
-  {% comment %} {{ mf_data[idx] }} {% endcomment %}
-
-  {% for value in option.values %}
-    {% if value.swatch %}
-      <!-- official Color swatch -->
-      {{ value.swatch }}
-    {% else %}
-      <!-- use metafield -->
-      {{ mf_names_array[idx] }}
-      {% comment %} {{ mf_value.value.color }} {% endcomment %}
-      {% comment %} {{ mf_value.value.swatch | image_url }} {% endcomment %}
+  {% assign swatch = null %}
+  {% for variant in product.variants %}
+    {% for key in variant.metafields.HENK %}
+      {% assign mf_value = key[1].value %}
+      {% if mf_value.name == value %}
+        {% assign swatch = mf_value.swatch | image_url %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% if swatch %}
+      {% break %}
     {% endif %}
   {% endfor %}
 {% endfor %}

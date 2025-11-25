@@ -18,8 +18,7 @@
       has swatch
 
     {% else %}
-      no swatch: check metafiels
-
+      no swatch: check metafiels loopindex: {{ forloop.parentloop.index0 }}
       {{ current_variant.metafields.HENK | json }}
     {%- endif -%}
   {% endfor %}

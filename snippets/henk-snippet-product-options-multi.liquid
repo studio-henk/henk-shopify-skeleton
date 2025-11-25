@@ -36,7 +36,7 @@
   {% endcomment %}
   {% assign metafield_ref = meta_vals[option_index] %}
   {% if metafield_ref %}
-    hello
+    {{ metafield_ref | json }}
     {% assign meta_obj = metafield_ref | metafield_text %}
   {% endif %}
   {% comment %} {% assign option_name = option.name | downcase | replace: ' ', '-' %} {% endcomment %}

@@ -42,13 +42,14 @@
     {% assign meta_obj = metafield_ref %}
   {% endif %}
   {% comment %} {% assign option_name = option.name | downcase | replace: ' ', '-' %} {% endcomment %}
-  {{ meta_obj | json }}
+  {% comment %} {{ meta_obj | json }} {% endcomment %}
 
   {% for key in meta_obj %}
-    {% assign metafield_value = key[0].value %}
+    {% comment %} {% assign metafield_value = key[0].value %} {% endcomment %}
+    {{ key }}
   {% endfor %}
 
-  {{ metafield_value | json }}
+  {% comment %} {{ metafield_value | json }} {% endcomment %}
 
   <fieldset class="henk-fieldsetx">
     <legend class="henk-legendx">{{ option.name }}</legend>

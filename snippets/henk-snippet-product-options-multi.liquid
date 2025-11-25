@@ -36,89 +36,21 @@
 
 <!-- Options -->
 {% for option in product.options_with_values %}
-  {% assign option_index = forloop.index0 %}
-  {% assign option_name = option.name | downcase | replace: ' ', '-' %}
+  {% assign idx = forloop.index0 %}
+  {% assign mf_json = meta_vals[idx] %}
+  {% assign mf = mf_json | parse_json %}
 
-  {% comment %}
-    Get the metafield for this option index
-    meta_vals[idx] is a reference to a metaobject
-  {% endcomment %}
-  {% assign metafield_ref = meta_vals[option_index] %}
-  {% if metafield_ref %}
-    {% comment %} {{ metafield_ref | json }} {% endcomment %}
-    {% comment %} {% assign meta_obj = metafield_ref | metafield_text %} {% endcomment %}
-    {% assign meta_obj = metafield_ref %}
-  {% endif %}
-  {% comment %} {% assign option_name = option.name | downcase | replace: ' ', '-' %} {% endcomment %}
-  {% comment %} {{ meta_obj | json }} {% endcomment %}
-
-  {% for key in meta_obj %}
-    {% comment %} {% assign metafield_value = key[0].value %} {% endcomment %}
-    {{ key }}
+  {% for value in option.values %}
+    {% if value.swatch %}
+      <!-- official Color swatch -->
+      {{ value.swatch }}
+    {% else %}
+      <!-- use metafield -->
+      {{ mf.name }}
+      {{ mf.color }}
+      {{ mf.swatch | image_url }}
+    {% endif %}
   {% endfor %}
-
-  {% comment %} {{ metafield_value | json }} {% endcomment %}
-
-  <fieldset class="henk-fieldsetx">
-    <legend class="henk-legendx">{{ option.name }}</legend>
-
-    <div class="options__container">
-      {% for value in option.values %}
-        {% assign is_color_swatch = value.swatch %}
-
-        {%- comment -%}
-          Determine label + swatch image:
-          - If Color → use Shopify swatch
-          - Else → use metafield assigned to this option index
-        {%- endcomment -%}
-
-        {% if is_color_swatch %}
-          {% assign display_name = value %}
-          {% assign swatch_img = value.swatch | image_url %}
-          {% assign swatch_color = '' %}
-
-        {% else %}
-          {% if meta_obj %}
-            {% comment %} {{ meta_obj | json }} {% endcomment %}
-            {% assign display_name = meta_obj.name %}
-            {% assign swatch_img = meta_obj.swatch | image_url: width: 64 %}
-            {% assign swatch_color = meta_obj.color %}
-          {% else %}
-            {% assign display_name = value %}
-            {% assign swatch_img = '' %}
-            {% assign swatch_color = '' %}
-          {% endif %}
-        {% endif %}
-
-        <div class="henk-labeled-inputx">
-          <label class="henk-labelx">
-            <input
-              class="henk-radiox"
-              type="radio"
-              name="option-{{ option_name }}"
-              value="{{ value }}"
-              {% if current_variant.options[option_index] == value %}
-                checked
-              {% endif %}
-            >
-
-            <span
-              class="custom-swatchx"
-              {% if swatch_color %}
-                style="background-color: {{ swatch_color }}"
-              {% endif %}
-            >
-              {% if swatch_img %}
-                <img src="{{ swatch_img }}" alt="{{ display_name }}" width="44" height="44">
-              {% endif %}
-
-              {{ display_name }}
-            </span>
-          </label>
-        </div>
-      {% endfor %}
-    </div>
-  </fieldset>
 {% endfor %}
 
 <hr>

@@ -42,15 +42,14 @@
 <!-- Options -->
 
 {% for option in product.options_with_values %}
-  <fieldset>
-    <legend>{{ option.name }}</legend>
-    <div>
+  <fieldset class="henk-fieldset">
+    <legend class="henk-legend">{{ option.name }}</legend>
+    <div class="options__container">
       {% for value in option.values %}
         {% comment %}Check if this value should have a swatch{% endcomment %}
         {% assign swatch = null %}
         {% for variant in product.variants %}
           {% for key in variant.metafields.HENK %}
-            {{ key[1].value | json }}
             {% assign mf_value = key[1].value %}
 
             {% assign norm_value = value | downcase | replace: '-', ' ' | strip %}
@@ -69,20 +68,21 @@
             {% break %}
           {% endif %}
         {% endfor %}
-
-        <input type="radio" name="option-{{ option.name | downcase }}" value="{{ value }}">
-        <span class="custom-swatch">
-          {% if swatch %}
-            <img
-              src="{{ swatch | image_url: width: 44, height: 44 }}"
-              alt="{{ value }}"
-              width="44"
-              height="44"
-            >
-          {% else %}
-            {{ value }}
-          {% endif %}
-        </span>
+        <div class="henk-labeled-inputx">
+          <input type="radio" name="option-{{ option.name | downcase }}" value="{{ value }}">
+          <span class="custom-swatch">
+            {% if swatch %}
+              <img
+                src="{{ swatch | image_url: width: 44, height: 44 }}"
+                alt="{{ value }}"
+                width="44"
+                height="44"
+              >
+            {% else %}
+              {{ value }}
+            {% endif %}
+          </span>
+        </div>
       {% endfor %}
     </div>
   </fieldset>

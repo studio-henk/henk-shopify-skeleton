@@ -37,7 +37,8 @@
 <!-- Initial debug -->
 <p>Current variant ID: {{ current_variant.id }}</p>
 <p>Options: {{ current_variant.options | json }}</p>
-<p>metafields?: {{ current_variant.metafields.HENK | json }}</p>
+<p>has metafields?: {{ current_variant.metafields.HENK.size | json }}</p>
+<p>which metafields?: {{ current_variant.metafields.HENK | json }}</p>
 
 {% for option in product.options_with_values %}
   {% assign option_index = forloop.index0 %}

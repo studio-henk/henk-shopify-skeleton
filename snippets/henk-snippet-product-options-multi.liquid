@@ -29,6 +29,7 @@
               name="option-{{ option.name | downcase }}"
               value="{{ value }}"
               data-option-index="{{ forloop.parentloop.index0 }}"
+              data-option-value="{{ value }}"
               {% if current_variant.options[forloop.parentloop.index0] == value %}
                 checked
               {% endif %}

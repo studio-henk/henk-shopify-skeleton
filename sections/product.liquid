@@ -60,9 +60,11 @@
           {% assign display_title = current_variant.name | default: product.title %}
           <h1 class="product__title">{{ display_title }}</h1>
 
-          <!-- {{ current_variant | json }} -->
           {{ current_variant.metafields.HENK | size | json }}
-          {{ product.metafields.HENK | size | json }}
+          {%- comment -%}
+            if uses metafield get it from it if not then get from
+            Color metaobject
+          {%- endcomment -%}
           {% comment %}loop through metafields to get material name{% endcomment %}
           {% for key in current_variant.metafields.HENK %}
             {{ key }}

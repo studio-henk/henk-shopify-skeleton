@@ -120,8 +120,9 @@
     <div class="henk-card__variant-selector">
       {% if product.variants.size > 1 %}
         {% assign max_variants = 5 %}
-        {% assign first_variant = product.variants.first %}
+        {% comment %} {% assign first_variant = product.variants.first %} {% endcomment %}
         {% assign sorted_variants = product.variants | sort: 'title' %}
+        {% assign first_variant = sorted_variants.first %}
 
         {% comment %} {% for variant in product.variants limit: max_variants %} {% endcomment %}
         {% for variant in sorted_variants limit: max_variants %}
@@ -129,11 +130,6 @@
             NOTE: we want the first option (Fabric?) and its color
             value
           {%- endcomment -%}
-          {% comment %} {{ variant.product.options_with_values | json }} {% endcomment %}
-          {% comment %} {{ variant.product.metafields.HENK.material.value | json }} {% endcomment %}
-          {% comment %} {{ variant.metafields.HENK.material.value | json }} {% endcomment %}
-          {% comment %} {{ variant | json }} {% endcomment %}
-          {% comment %} {{ variant.metafields.HENK | json }} {% endcomment %}
 
           {% assign first_metafield_value = '' %}
           {% for kv in variant.metafields.HENK %}

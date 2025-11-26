@@ -53,7 +53,7 @@
                 {% comment %} {{ value.swatch | json }} {% endcomment %}
                 {% if value.swatch %}
                   hello
-                  {{ current_variant.option[forloop.parentloop.index0] | json }}
+                  {{ current_variant.options[forloop.parentloop.index0] | json }}
                 {% endif %}
                 {% comment %} {{ value }} {% endcomment %}
               {% endif %}

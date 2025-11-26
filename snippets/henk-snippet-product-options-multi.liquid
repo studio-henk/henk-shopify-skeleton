@@ -11,15 +11,12 @@
     {% assign swatch_color = null %}
     {% assign swatch_name = value.name %}
 
-    {#-------------------------------#} {# A) Shopify Color swatch #} {#-------------------------------#}
     {% if value.swatch %}
       {% assign swatch = value.swatch.swatch | image_url %}
       {% assign swatch_color = value.swatch.color %}
       {% assign swatch_name = value.swatch.name %}
     {% endif %}
 
-    {#-----------------------------------------#} {# B) HENK metafield swatch fallback #}
-    {#-----------------------------------------#}
     {% if swatch == null %}
       {% for variant in product.variants %}
         {% for key in variant.metafields.HENK %}
@@ -44,9 +41,6 @@
         {% endif %}
       {% endfor %}
     {% endif %}
-
-    {#-----------------------------------------------#} {# YOUR HTML – UNCHANGED #}
-    {#-----------------------------------------------#}
 
     <div class="henk-labeled-input">
       <label class="henk-label">

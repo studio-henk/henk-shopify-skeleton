@@ -223,7 +223,7 @@
           {% endif %}
 
           {%- comment -%}exception; when just using Color option, no metafield{%- endcomment -%}
-          {%- if first_metafield_value === false -%}
+          {%- if first_metafield_value == false -%}
             no mf?
           {%- endif -%}
         {% endfor %}

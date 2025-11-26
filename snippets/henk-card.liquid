@@ -225,7 +225,7 @@
           {%- comment -%}exception; when just using Color option, no metafield{%- endcomment -%}
           {%- if first_metafield_value == empty -%}
             no mf?
-            {{ value | json }}
+            {{ current_variant | json }}
 
             <a
               href="{{ product.url }}?variant={{ variant.id }}"

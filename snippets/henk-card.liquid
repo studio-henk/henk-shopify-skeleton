@@ -137,7 +137,23 @@
           {% endfor %}
 
           {% comment %} {{ first_metafield_value | json }} {% endcomment %}
-          {{ first_metafield_value.color }}
+          {% comment %} {{ first_metafield_value.color }} {% endcomment %}
+
+          {%- comment -%}show color code swatch {%- endcomment -%}
+          {% if first_metafield_value.color and show_variant_color_on_card %}
+            <a
+              href="{{ product.url }}?variant={{ variant.id }}"
+              class="henk-card__variant-swatch {% if variant.id == first_variant.id %}is-active{% endif %}"
+              data-main-id="card-{{ product.id }}"
+              data-subtitle-id="subtitle-{{ product.id }}"
+              data-variant-img="{{ variant.featured_image | image_url: width: 1134 }}"
+              data-variant-title="{{ variant.title }}"
+              data-variant-id="{{ variant.id }}"
+              data-variant-price="{{ variant.price | money_without_trailing_zeros }}"
+            >
+              {{ first_metafield_value.color }}
+            </a>
+          {% endif %}
 
           {% if variant.featured_image and show_variant_image_on_card %}
             <a

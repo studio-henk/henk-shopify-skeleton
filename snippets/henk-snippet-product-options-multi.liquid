@@ -49,10 +49,11 @@
                   height="44"
                 >
               {% else %}
-                {{ option.name | json }}
-                {{ value.swatch | json }}
+                {% comment %} {{ option.name | json }} {% endcomment %}
+                {% comment %} {{ value.swatch | json }} {% endcomment %}
                 {% if value.swatch %}
                   hello
+                  {{ current_variant | json }}
                 {% endif %}
                 {% comment %} {{ value }} {% endcomment %}
               {% endif %}

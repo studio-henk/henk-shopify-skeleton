@@ -225,6 +225,28 @@
           {%- comment -%}exception; when just using Color option, no metafield{%- endcomment -%}
           {%- if first_metafield_value == empty -%}
             no mf?
+
+            <a
+              href="{{ product.url }}?variant={{ variant.id }}"
+              class="henk-card__variant-swatch {% if variant.id == first_variant.id %}is-active{% endif %}"
+              title="{{ variant.title }}"
+              data-main-id="card-{{ product.id }}"
+              data-subtitle-id="subtitle-{{ product.id }}"
+              data-variant-img="{{ variant.featured_image | image_url: width: 1134 }}"
+              data-variant-title="{{ variant.title }}"
+              data-variant-id="{{ variant.id }}"
+              data-variant-price="{{ variant.price | money_without_trailing_zeros }}"
+            >
+              <span
+                class="custom-swatch"
+                style="
+                  background-color: {{
+                  variant.swatch.color }};
+                "
+              >
+                <span class="visually-hidden">{{ variant.title }}</span>
+              </span>
+            </a>
           {%- endif -%}
         {% endfor %}
       {% endif %}

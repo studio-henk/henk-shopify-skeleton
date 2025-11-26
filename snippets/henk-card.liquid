@@ -124,7 +124,16 @@
           {% comment %} {{ variant.product.metafields.HENK.material.value | json }} {% endcomment %}
           {% comment %} {{ variant.metafields.HENK.material.value | json }} {% endcomment %}
           {% comment %} {{ variant | json }} {% endcomment %}
-          {{ variant.metafields.HENK | json }}
+          {% comment %} {{ variant.metafields.HENK | json }} {% endcomment %}
+
+          {% assign first_metafield_value = '' %}
+          {% for kv in variant.metafields.HENK %}
+            {% assign first_metafield_value = kv[1].value %}
+            {% break %}
+          {% endfor %}
+
+          {{ first_metafield_value | json }}
+
           {% if variant.featured_image %}
             {%- comment -%}:SWATCH{%- endcomment -%}
             {% comment %} {{ variant | json }} {% endcomment %}

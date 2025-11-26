@@ -165,7 +165,11 @@
             </a>
           {% endif %}
 
-          {{ first_metafield_value.swatch | json }}
+          {% comment %} {{ first_metafield_value.swatch | json }} {% endcomment %}
+          {% assign swatch_image = first_metafield_value.swatch | image_url: '44x44' %}
+          {{ swatch_image }}
+
+          {%- comment -%}show image from metafield swatch {%- endcomment -%}
 
           {% if first_metafield_value.color and show_variant_mf_image_on_card %}
             <a

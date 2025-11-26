@@ -1,78 +1,82 @@
 <!-- Options -->
 {% for option in product.options_with_values %}
-  {% for value in option.values %}
-    {%- comment -%}
-      SWATCH DETECTION
-      1. If value.swatch exists → use Shopify Color swatch
-      2. Else → check HENK metafields (your original logic)
-    {%- endcomment -%}
+  <fieldset class="henk-fieldset" data-option-index="{{ option_index }}">
+    <legend class="henk-legend">{{ option.name }}</legend>
 
-    {% assign swatch = null %}
-    {% assign swatch_color = null %}
-    {% assign swatch_name = value.name %}
+    {% for value in option.values %}
+      {%- comment -%}
+        SWATCH DETECTION
+        1. If value.swatch exists → use Shopify Color swatch
+        2. Else → check HENK metafields (your original logic)
+      {%- endcomment -%}
 
-    {% if value.swatch %}
-      {% assign swatch = value.swatch.swatch | image_url %}
-      {% assign swatch_color = value.swatch.color %}
-      {% assign swatch_name = value.swatch.name %}
-    {% endif %}
+      {% assign swatch = null %}
+      {% assign swatch_color = null %}
+      {% assign swatch_name = value.name %}
 
-    {% if swatch == null %}
-      {% for variant in product.variants %}
-        {% for key in variant.metafields.HENK %}
-          {% assign mf_value = key[1].value %}
+      {% if value.swatch %}
+        {% assign swatch = value.swatch.swatch | image_url %}
+        {% assign swatch_color = value.swatch.color %}
+        {% assign swatch_name = value.swatch.name %}
+      {% endif %}
 
-          {% assign norm_value = value | downcase | replace: '-', ' ' | strip %}
-          {% assign norm_mf = mf_value.name | downcase | replace: '-', ' ' | strip %}
+      {% if swatch == null %}
+        {% for variant in product.variants %}
+          {% for key in variant.metafields.HENK %}
+            {% assign mf_value = key[1].value %}
 
-          {% if norm_value == norm_mf %}
-            {% if mf_value.swatch %}
-              {% assign swatch = mf_value.swatch | image_url %}
+            {% assign norm_value = value | downcase | replace: '-', ' ' | strip %}
+            {% assign norm_mf = mf_value.name | downcase | replace: '-', ' ' | strip %}
+
+            {% if norm_value == norm_mf %}
+              {% if mf_value.swatch %}
+                {% assign swatch = mf_value.swatch | image_url %}
+              {% endif %}
+              {% if mf_value.color %}
+                {% assign swatch_color = mf_value.color %}
+              {% endif %}
+              {% assign swatch_name = mf_value.name %}
+              {% break %}
             {% endif %}
-            {% if mf_value.color %}
-              {% assign swatch_color = mf_value.color %}
-            {% endif %}
-            {% assign swatch_name = mf_value.name %}
+          {% endfor %}
+          {% if swatch %}
             {% break %}
           {% endif %}
         {% endfor %}
-        {% if swatch %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
+      {% endif %}
 
-    <div class="henk-labeled-input">
-      <label class="henk-label">
-        <input
-          class="henk-radio"
-          type="radio"
-          name="option-{{ option_index }}"
-          value="{{ value.name }}"
-          data-option-index="{{ option_index }}"
-          {% if current_variant.options[option_index] == value.name %}
-            checked
-          {% endif %}
-        >
+      <div class="henk-labeled-input">
+        <label class="henk-label">
+          <input
+            class="henk-radio"
+            type="radio"
+            name="option-{{ option_index }}"
+            value="{{ value.name }}"
+            data-option-index="{{ option_index }}"
+            {% if current_variant.options[option_index] == value.name %}
+              checked
+            {% endif %}
+          >
 
-        <span
-          class="custom-swatch"
-          style="{% if swatch_color %}background-color: {{ swatch_color }};{% endif %}"
-        >
-          {% if swatch %}
-            <img
-              src="{{ swatch }}"
-              alt="{{ swatch_name }}"
-              width="44"
-              height="44"
-            >
-          {% endif %}
-        </span>
+          <span
+            class="custom-swatch"
+            style="{% if swatch_color %}background-color: {{ swatch_color }};{% endif %}"
+          >
+            {% if swatch %}
+              <img
+                src="{{ swatch }}"
+                alt="{{ swatch_name }}"
+                width="44"
+                height="44"
+              >
+            {% endif %}
+          </span>
 
-        <span class="visually-hidden">{{ swatch_name }}</span>
-      </label>
-    </div>
-  {% endfor %}
+          <span class="visually-hidden">{{ swatch_name }}</span>
+        </label>
+      </div>
+    {% endfor %}
+  </fieldset>
 {% endfor %}
 
 <!-- Hidden input for form -->

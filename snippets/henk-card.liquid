@@ -121,7 +121,7 @@
       {% if product.variants.size > 1 %}
         {% assign max_variants = 5 %}
         {% assign first_variant = product.variants.first %}
-        {% for variant in product.variants limit: max_variants %}
+        {% for variant in product.variants limit: max_variants | sort: 'title' %}
           {%- comment -%}
             NOTE: we want the first option (Fabric?) and its color
             value

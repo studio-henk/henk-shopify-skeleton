@@ -44,6 +44,7 @@
             {% assign swatch_color = value.swatch.color %}
           {% endif %}
         {% endunless %}
+        {{ swatch_image | json }}
 
         <div class="henk-labeled-input">
           <label class="henk-label">

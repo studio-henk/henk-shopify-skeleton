@@ -123,6 +123,7 @@
           {% comment %} {{ variant.product.options_with_values | json }} {% endcomment %}
           {% comment %} {{ variant.product.metafields.HENK.material.value | json }} {% endcomment %}
           {% comment %} {{ variant.metafields.HENK.material.value | json }} {% endcomment %}
+          {{ variant | json }}
           {% if variant.featured_image %}
             {%- comment -%}:SWATCH{%- endcomment -%}
             {% comment %} {{ variant | json }} {% endcomment %}

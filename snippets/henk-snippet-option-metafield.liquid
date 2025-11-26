@@ -1,8 +1,9 @@
+{% assign sorted_variants = product.variants | sort: 'title' %}
 <fieldset class="henk-fieldset">
   <legend class="henk-legend">{{ option.name }}</legend>
 
   <div class="options__container">
-    {% for variant in product.variants %}
+    {% for variant in sorted_variants %}
       {% for key in variant.metafields.HENK %}
         {% assign metafield_value = key[1].value %}
         {% assign swatch_name = metafield_value.name %}

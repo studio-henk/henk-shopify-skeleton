@@ -1,10 +1,11 @@
 # TODO
 
 ## PDP 
+- [ ] lister: variants in card also sorted alphabetcally?
+- [ ] add counters to options: pebbles sofa: afwerking now 1 choice, so no need
+to show it?
 
-- [ ] Vazen -> Translate subtitle Variant name, option label : Color
 
-- [ ] pebbles sofa -> Upholstery -> material but we do "when Upholstery material"
 - [ ] lister -> cards -> swatches show color, not mini image? try for eetkamerbanken
 - [ ] show different product level images and variant images on PDP
 - [ ] add variant gallery images / slider?
@@ -62,3 +63,13 @@ setup. sofa uses different option.
 - [x] remove metafield Material from variant detail page?
 - [x] storybook: henk-fugure, add to css
 - [x] filter widget
+- [x] display vase: on load -> variant material not showing
+- [x] Vazen -> Translate subtitle Variant name, option label : Color
+- [x] add eiken to poefs
+- [x] add 2 more versions for ode chair, 2 fabrics.
+- [x] fix Lean lounge chair
+- [x] check pebbles sofa
+- [x] grid light
+- [x] blob vase
+- [x] display vase
+- [x] redo base bar stool swathes

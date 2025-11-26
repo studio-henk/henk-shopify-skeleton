@@ -2,6 +2,12 @@
 {% comment %} {{ product | json }} {% endcomment %}
 {% comment %} {{ product.tags | json }} {% endcomment %}
 
+{% assign show_variant_image_on_card = false %}
+{% comment %} {% assign show_variant_mf_color_on_card = true %} {% endcomment %}
+{% comment %} {% assign show_variant_mf_color_on_card = false %} {% endcomment %}
+{% comment %} {% assign show_variant_mf_image_on_card = false %} {% endcomment %}
+{% assign show_variant_mf_image_on_card = true %}
+
 {% assign card_url = product.url %}
 {% if variant %}
   {% assign card_url = product.url | append: '?variant=' | append: variant.id %}
@@ -114,21 +120,91 @@
     <div class="henk-card__variant-selector">
       {% if product.variants.size > 1 %}
         {% assign max_variants = 5 %}
-        {% assign first_variant = product.variants.first %}
-        {% for variant in product.variants limit: max_variants %}
+        {% comment %} {% assign first_variant = product.variants.first %} {% endcomment %}
+        {% assign sorted_variants = product.variants | sort: 'title' %}
+        {% assign first_variant = sorted_variants.first %}
+
+        {% comment %} {% for variant in product.variants limit: max_variants %} {% endcomment %}
+        {% for variant in sorted_variants limit: max_variants %}
           {%- comment -%}
             NOTE: we want the first option (Fabric?) and its color
             value
           {%- endcomment -%}
-          {% comment %} {{ variant.product.options_with_values | json }} {% endcomment %}
-          {% comment %} {{ variant.product.metafields.HENK.material.value | json }} {% endcomment %}
-          {% comment %} {{ variant.metafields.HENK.material.value | json }} {% endcomment %}
-          {% if variant.featured_image %}
-            {%- comment -%}:SWATCH{%- endcomment -%}
-            {% comment %} {{ variant | json }} {% endcomment %}
+
+          {% assign first_metafield_value = '' %}
+          {% for kv in variant.metafields.HENK %}
+            {% assign first_metafield_value = kv[1].value %}
+            {% break %}
+          {% endfor %}
+
+          {% comment %} {{ first_metafield_value | json }} {% endcomment %}
+          {% comment %} {{ first_metafield_value.color }} {% endcomment %}
+
+          {%- comment -%}show color code swatch {%- endcomment -%}
+          {% if first_metafield_value.color and show_variant_mf_color_on_card %}
             <a
               href="{{ product.url }}?variant={{ variant.id }}"
               class="henk-card__variant-swatch {% if variant.id == first_variant.id %}is-active{% endif %}"
+              title="{{ variant.title }}"
+              data-main-id="card-{{ product.id }}"
+              data-subtitle-id="subtitle-{{ product.id }}"
+              data-variant-img="{{ variant.featured_image | image_url: width: 1134 }}"
+              data-variant-title="{{ variant.title }}"
+              data-variant-id="{{ variant.id }}"
+              data-variant-price="{{ variant.price | money_without_trailing_zeros }}"
+            >
+              <span
+                class="custom-swatch"
+                style="
+                  background-color: {{
+                  first_metafield_value.color }};
+                "
+              >
+                <span class="visually-hidden">{{ variant.title }}</span>
+              </span>
+            </a>
+          {% endif %}
+
+          {% comment %} {{ first_metafield_value.swatch | json }} {% endcomment %}
+          {% assign swatch_image = first_metafield_value.swatch | image_url: '44x44' %}
+
+          {%- comment -%}show image from metafield swatch {%- endcomment -%}
+
+          {% if first_metafield_value.color and show_variant_mf_image_on_card %}
+            <a
+              href="{{ product.url }}?variant={{ variant.id }}"
+              class="henk-card__variant-swatch {% if variant.id == first_variant.id %}is-active{% endif %}"
+              title="{{ variant.title }}"
+              data-main-id="card-{{ product.id }}"
+              data-subtitle-id="subtitle-{{ product.id }}"
+              data-variant-img="{{ variant.featured_image | image_url: width: 1134 }}"
+              data-variant-title="{{ variant.title }}"
+              data-variant-id="{{ variant.id }}"
+              data-variant-price="{{ variant.price | money_without_trailing_zeros }}"
+            >
+              <span
+                class="custom-swatch"
+                style="
+                  background-color: {{
+                  first_metafield_value.color }};
+                "
+              >
+                <span class="visually-hidden">{{ variant.title }}</span>
+                <img
+                  src="{{ swatch_image | image_url: width: 44, height: 44 }}"
+                  alt="{{ variant.title }}"
+                  width="44"
+                  height="44"
+                >
+              </span>
+            </a>
+          {% endif %}
+
+          {% if variant.featured_image and show_variant_image_on_card %}
+            <a
+              href="{{ product.url }}?variant={{ variant.id }}"
+              class="henk-card__variant-swatch {% if variant.id == first_variant.id %}is-active{% endif %}"
+              title="{{ variant.title }}"
               data-main-id="card-{{ product.id }}"
               data-subtitle-id="subtitle-{{ product.id }}"
               data-variant-img="{{ variant.featured_image | image_url: width: 1134 }}"
@@ -144,6 +220,33 @@
               >
             </a>
           {% endif %}
+
+          {%- comment -%}exception; when just using Color option, no metafield{%- endcomment -%}
+          {%- if first_metafield_value == empty -%}
+            <!-- {{ variant.options.first.swatch.color | json }} -->
+
+            <a
+              href="{{ product.url }}?variant={{ variant.id }}"
+              class="henk-card__variant-swatch {% if variant.id == first_variant.id %}is-active{% endif %}"
+              title="{{ variant.title }}"
+              data-main-id="card-{{ product.id }}"
+              data-subtitle-id="subtitle-{{ product.id }}"
+              data-variant-img="{{ variant.featured_image | image_url: width: 1134 }}"
+              data-variant-title="{{ variant.title }}"
+              data-variant-id="{{ variant.id }}"
+              data-variant-price="{{ variant.price | money_without_trailing_zeros }}"
+            >
+              <span
+                class="custom-swatch"
+                style="
+                  background-color: {{
+                  variant.options.first.swatch.color }};
+                "
+              >
+                <span class="visually-hidden">{{ variant.title }}</span>
+              </span>
+            </a>
+          {%- endif -%}
         {% endfor %}
       {% endif %}
     </div>
@@ -167,6 +270,14 @@
     border-radius: 100%;
     aspect-ratio: 1 / 1;
     border: 1px solid transparent;
+
+    .custom-swatch {
+      width: 44px;
+      height: 44px;
+      display: block;
+      border-radius: 100%;
+      border: 1px solid #ccc;
+    }
   }
 
   .henk-card__variant-swatch.is-active {

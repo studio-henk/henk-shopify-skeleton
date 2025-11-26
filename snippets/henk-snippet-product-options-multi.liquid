@@ -1,150 +1,218 @@
-{% assign first_variant = product.variants.first %}
-{% assign current_variant = first_variant %}
-
-<!-- Options -->
 {% for option in product.options_with_values %}
-  {% assign option_name = option.name | downcase | replace: ' ', '-' %}
-  <fieldset class="henk-fieldsetx">
-    <legend class="henk-legendx">{{ option.name }}</legend>
+  <fieldset class="henk-fieldset">
+    <legend class="henk-legend">{{ option.name }}</legend>
     <div class="options__container">
+      {% assign option_index = forloop.index0 %}
+
       {% for value in option.values %}
-        <div class="henk-labeled-inputx">
-          <label class="henk-labelx">
+        {% assign swatch_image = null %}
+        {% assign swatch_color = null %}
+        {% assign found_metafield = false %}
+
+        {%- comment -%} Find a variant that has this value in this option slot {%- endcomment -%}
+        {% for variant in product.variants %}
+          {% if variant.options[option_index] == value %}
+            {% for key in variant.metafields.HENK %}
+              {% assign mf_value = key[1].value %}
+              {% assign norm_value = value | downcase | replace: '-', ' ' | strip %}
+              {% assign norm_mf = mf_value.name | downcase | replace: '-', ' ' | strip %}
+              {% if norm_value == norm_mf %}
+                {% assign swatch_image = mf_value.swatch | image_url %}
+                {% assign swatch_color = mf_value.color %}
+                {% assign found_metafield = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+
+            {% if found_metafield %}
+              {% break %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
+        {% unless found_metafield %}
+          {% if value.swatch %}
+            {% assign swatch_image = value.swatch | image_url %}
+            {% assign swatch_color = value.swatch.color %}
+          {% elsif value.color %}
+            {% assign swatch_color = value.color %}
+          {% endif %}
+        {% endunless %}
+
+        <div class="henk-labeled-input">
+          <label class="henk-label">
             <input
-              class="henk-radiox"
+              class="henk-radio"
               type="radio"
-              name="option-{{ option_name }}"
+              name="option-{{ option.name | downcase }}"
               value="{{ value }}"
-              {% if current_variant.options[forloop.parentloop.index0] == value %}
+              title="{{ value }}"
+              data-option-index="{{ option_index }}"
+              data-option-value="{{ value }}"
+              {% if current_variant.options[option_index] == value %}
                 checked
               {% endif %}
             >
-            <span class="custom-swatchx">
-              {{ value }}
+
+            <span class="custom-swatch" style="{% if swatch_color %}background-color: {{ swatch_color }};{% endif %}">
+              {% if swatch_image %}
+                <img
+                  src="{{ swatch_image | image_url: width: 44, height: 44 }}"
+                  alt="{{ value }}"
+                  width="44"
+                  height="44"
+                  class="swatch__image"
+                >
+              {% endif %}
             </span>
+
+            <span class="visually-hidden">{{ value }}</span>
           </label>
         </div>
       {% endfor %}
     </div>
   </fieldset>
 {% endfor %}
-
 <!-- Hidden input for form -->
 <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">
 
-<!-- Initial debug -->
-<p>Current variant ID: {{ current_variant.id }}</p>
-<p>Options: {{ current_variant.options | json }}</p>
-
-{% for option in product.options_with_values %}
-  {% assign option_index = forloop.index0 %}
-  {% assign selected_options = current_variant.options %}
-
-  <fieldset class="henk-fieldset">
-    <legend class="henk-legend">{{ option.name }}</legend>
-    <div class="options__container">
-      {% for value in option.values %}
-        {%- comment -%}
-          STEP 1: Match the variant that corresponds to THIS option value
-        {%- endcomment -%}
-
-        {% assign matched_variant = null %}
-        {% for v in product.variants %}
-          {% assign matches = true %}
-
-          {% for i in (0..v.options['size-1']) %}
-            {% if i == option_index %}
-              {% assign expected = value.name %}
-            {% else %}
-              {% assign expected = selected_options[i] %}
-            {% endif %}
-
-            {% if v.options[i] != expected %}
-              {% assign matches = false %}
-              {% break %}
-            {% endif %}
-          {% endfor %}
-
-          {% if matches %}
-            {% assign matched_variant = v %}
-            {% break %}
-          {% endif %}
-        {% endfor %}
-
-        {% if matched_variant %}
-          {% comment %} {{ matched_variant | json }} {% endcomment %}
-          {%- comment -%}
-            STEP 2:
-            Determine which metafield to use based on option.name.
-            For each case, we assign the ACTUAL metafield object
-            directly into "swatch_data".
-          {%- endcomment -%}
-
-          {% assign swatch_data = null %}
-          {% case option.name %}
-            {% when 'Color' %}
-              {% assign swatch_data = value.swatch %}
-            {% when 'Fabric' %}
-              {% assign swatch_data = matched_variant.metafields.HENK.fabric.value %}
-            {% when 'Upholstery material' %}
-              {% assign swatch_data = matched_variant.metafields.HENK.fabric.value %}
-            {% when 'Finish' %}
-              {% comment %} {{ matched_variant.metafields.HENK.frame_finish.list? | json }} {% endcomment %}
-              {% comment %} {{ matched_variant.metafields.HENK.frame_finish.type | json }} {% endcomment %}
-              {% comment %} {{ matched_variant.metafields.HENK.frame_finish.value | json }} {% endcomment %}
-              {% assign swatch_data = null %}
-              {% assign finish_value = matched_variant.metafields.HENK.frame_finish.value %}
-              {% comment %} {{ finish_value | json }} {% endcomment %}
-              {% if finish_value %}
-                {% assign swatch_data = finish_value %}
-              {% endif %}
-          {% endcase %}
-
-          {% comment %} {{ swatch_data | json }} {% endcomment %}
-
-          {%- comment -%}
-            STEP 3 (FIXED):
-            Reset swatch vars BEFORE assigning
-          {%- endcomment -%}
-
-          {% if swatch_data %}
-            {% assign swatch_image = swatch_data.swatch | image_url %}
-            {% assign swatch_color = swatch_data.color %}
-            <div class="henk-labeled-input">
-              <label class="henk-label">
-                <input
-                  class="henk-radio"
-                  type="radio"
-                  name="option-{{ option_index }}"
-                  value="{{ value.name }}"
-                  data-option-index="{{ option_index }}"
-                  {% if current_variant.options[option_index] == value.name %}
-                    checked
-                  {% endif %}
-                >
-
-                <span
-                  class="custom-swatch"
-                  style="{% if swatch_color %}background-color: {{ swatch_color }};{% endif %}"
-                >
-                  {% if swatch_image %}
-                    <img
-                      src="{{ swatch_image | image_url: width: 44, height: 44 }}"
-                      alt="{{ swatch_data.name }}"
-                      width="44"
-                      height="44"
-                    >
-                  {% endif %}
-                </span>
-
-                <span class="visually-hidden">
-                  {{ swatch_data.name | default: value.name }}
-                </span>
-              </label>
-            </div>
-          {% endif %}
-        {% endif %}
+<!-- Product Variants JSON for JS -->
+<script type="application/json" id="ProductVariantsJSON">
+      [
+      {% for v in product.variants %}
+        {
+          "id": {{ v.id }},
+          "options": [{% for opt in v.options %}"{{ opt }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+          "price": {{ v.price }},
+          "sku": "{{ v.sku }}",
+    "featured_image": "{{ v.featured_image | image_url: width: 1134 | escape }}",
+  "material_name": "{% assign mat = v.metafields.HENK.material.value | first %}{{ mat.name | default: '' }}"
+        }{% unless forloop.last %},{% endunless %}
       {% endfor %}
-    </div>
-  </fieldset>
-{% endfor %}
+      ]
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    console.log('Multi-option product script loaded');
+
+    // --- helpers ---
+    function formatPriceEUR(cents) {
+      const euros = Number(cents) / 100;
+      return new Intl.NumberFormat('nl-NL', {
+        style: 'currency',
+        currency: 'EUR',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      })
+        .format(euros)
+        .replace(',00', '');
+    }
+
+    // --- cache DOM elements ---
+    const mainImage = document.getElementById('ProductFeaturedImage');
+    const skuEl = document.getElementById('ProductSKU');
+    const materialEl = document.getElementById('SelectedMaterial');
+    const priceEl = document.getElementById('ProductPrice');
+    const hiddenInput = document.getElementById('SelectedVariantId');
+
+    // --- parse variants JSON ---
+    const productVariants = JSON.parse(document.getElementById('ProductVariantsJSON').textContent);
+
+    // --- get all radios ---
+    const radios = document.querySelectorAll('.henk-radio');
+    if (!radios.length) return;
+
+    // --- build initial selected options mapping: optionIndex -> selected variant value ---
+    const selectedOptions = {};
+    radios.forEach((radio) => {
+      const idx = radio.dataset.optionIndex;
+      if (radio.checked) selectedOptions[idx] = radio.value;
+    });
+
+    // --- find variant matching current selections ---
+    function findVariant() {
+      // return productVariants.find((v) => v.options.every((opt, i) => selectedOptions[i] === opt));
+      const variant = productVariants.find((v) => v.options.every((opt, i) => selectedOptions[i] === opt));
+      console.log('findVariant -> selectedOptions:', selectedOptions, 'matched variant:', variant);
+      return variant;
+    }
+
+    // --- disable impossible combinations ---
+    function updateDisabledOptions() {
+      radios.forEach((radio) => {
+        const optionIndex = Number(radio.dataset.optionIndex);
+        const optionValue = radio.dataset.optionValue;
+
+        // hypothetical selection if user picks this radio
+        const hypothetical = { ...selectedOptions };
+        hypothetical[optionIndex] = optionValue;
+
+        // check if ANY variant matches the hypothetical combination
+        const exists = productVariants.some((v) =>
+          v.options.every((opt, i) => {
+            if (hypothetical[i] === undefined) return true;
+            return hypothetical[i] === opt;
+          }),
+        );
+
+        radio.disabled = !exists;
+
+        // optional css class toggle
+        if (radio.closest('label')) {
+          radio.closest('label').classList.toggle('disabled', !exists);
+        }
+      });
+    }
+
+    // --- update UI with given variant ---
+    function updateUI(variant) {
+      if (!variant) {
+        console.log('updateUI -> No variant matched!');
+        return;
+      }
+      console.log('updateUI -> Updating UI with variant:', variant);
+
+      // Update main image
+      if (mainImage && variant.featured_image) mainImage.src = variant.featured_image;
+
+      // SKU
+      if (skuEl) skuEl.textContent = variant.sku ? 'SKU: ' + variant.sku : 'SKU: —';
+
+      // Price
+      if (priceEl) priceEl.textContent = formatPriceEUR(variant.price);
+
+      // Hidden input for form submission
+      if (hiddenInput) hiddenInput.value = variant.id;
+
+      // Selected material / options text
+      if (materialEl) {
+        // Join all selected options with " / "
+        materialEl.textContent = variant.options.join(' / ');
+      }
+
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.set('variant', variant.id);
+        window.history.replaceState({}, '', url);
+      } catch (e) {}
+    }
+
+    // --- listen for changes ---
+    radios.forEach((radio) => {
+      radio.addEventListener('change', function () {
+        console.log('Radio changed -> index:', this.dataset.optionIndex, 'value:', this.value);
+        selectedOptions[this.dataset.optionIndex] = this.value;
+
+        const variant = findVariant();
+        updateUI(variant);
+        updateDisabledOptions();
+      });
+    });
+
+    // --- initial UI update ---
+    const initialVariant = findVariant();
+    updateUI(initialVariant);
+    updateDisabledOptions();
+  });
+</script>

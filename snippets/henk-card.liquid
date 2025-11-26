@@ -151,7 +151,15 @@
               data-variant-id="{{ variant.id }}"
               data-variant-price="{{ variant.price | money_without_trailing_zeros }}"
             >
-              {{ first_metafield_value.color }}
+              <span
+                class="custom-swatch"
+                style="
+                  background-color: {{
+                  first_metafield_value.color }};
+                "
+              >
+                {{ first_metafield_value.color }}
+              </span>
             </a>
           {% endif %}
 

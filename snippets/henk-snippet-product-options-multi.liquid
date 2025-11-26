@@ -9,17 +9,34 @@
         {% assign swatch_color = null %}
         {% assign found_metafield = false %}
 
-        {% for key in current_variant.metafields.HENK %}
-          {% assign mf_value = key[1].value %}
-          {% assign norm_value = value | downcase | replace: '-', ' ' | strip %}
-          {% assign norm_mf = mf_value.name | downcase | replace: '-', ' ' | strip %}
-          {% if norm_value == norm_mf %}
-            {% assign swatch_image = mf_value.swatch | image_url %}
-            {% assign swatch_color = mf_value.color %}
-            {% assign found_metafield = true %}
+        {% for variant in product.variants %}
+          {% for key in variant.metafields.HENK %}
+            {% assign mf_value = key[1].value %}
+            {% assign norm_value = value | downcase | replace: '-', ' ' | strip %}
+            {% assign norm_mf = mf_value.name | downcase | replace: '-', ' ' | strip %}
+            {% if norm_value == norm_mf %}
+              {% assign swatch_image = mf_value.swatch | image_url %}
+              {% assign swatch_color = mf_value.color %}
+              {% assign found_metafield = true %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          {% if found_metafield %}
             {% break %}
           {% endif %}
         {% endfor %}
+
+        {% comment %} {% for key in current_variant.metafields.HENK %} {% endcomment %}
+        {% comment %}   {% assign mf_value = key[1].value %} {% endcomment %}
+        {% comment %}   {% assign norm_value = value | downcase | replace: '-', ' ' | strip %} {% endcomment %}
+        {% comment %}   {% assign norm_mf = mf_value.name | downcase | replace: '-', ' ' | strip %} {% endcomment %}
+        {% comment %}   {% if norm_value == norm_mf %} {% endcomment %}
+        {% comment %}     {% assign swatch_image = mf_value.swatch | image_url %} {% endcomment %}
+        {% comment %}     {% assign swatch_color = mf_value.color %} {% endcomment %}
+        {% comment %}     {% assign found_metafield = true %} {% endcomment %}
+        {% comment %}     {% break %} {% endcomment %}
+        {% comment %}   {% endif %} {% endcomment %}
+        {% comment %} {% endfor %} {% endcomment %}
 
         {% unless found_metafield %}
           {% if value.swatch %}

@@ -167,7 +167,6 @@
 
           {% comment %} {{ first_metafield_value.swatch | json }} {% endcomment %}
           {% assign swatch_image = first_metafield_value.swatch | image_url: '44x44' %}
-          {{ swatch_image }}
 
           {%- comment -%}show image from metafield swatch {%- endcomment -%}
 
@@ -190,7 +189,13 @@
                 "
               >
                 <span class="visually-hidden">{{ variant.title }}</span>
-                show image from fabric?
+
+                <img
+                  src="{{ swatch_image | image_url: width: 44, height: 44 }}"
+                  alt="{{ variant.title }}"
+                  width="44"
+                  height="44"
+                >
               </span>
             </a>
           {% endif %}

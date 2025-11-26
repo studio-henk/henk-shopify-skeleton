@@ -225,9 +225,9 @@
           {{ first_metafield_value | json }}
 
           {%- comment -%}exception; when just using Color option, no metafield{%- endcomment -%}
-          {% comment %} {%- if first_metafield_value === null -%} {% endcomment %}
-          {% comment %}   no mf? {% endcomment %}
-          {% comment %} {%- endif -%} {% endcomment %}
+          {%- if first_metafield_value is empty -%}
+            no mf?
+          {%- endif -%}
         {% endfor %}
       {% endif %}
     </div>

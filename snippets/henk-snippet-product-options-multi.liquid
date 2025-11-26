@@ -51,6 +51,9 @@
               {% else %}
                 {{ option.name | json }}
                 {{ value.swatch | json }}
+                {% if value.swatch %}
+                  hello
+                {% endif %}
                 {% comment %} {{ value }} {% endcomment %}
               {% endif %}
             </span>

@@ -160,7 +160,33 @@
                   first_metafield_value.color }};
                 "
               >
-                <span class="visually-hidden">{{ first_metafield_value.color }}</span>
+                <span class="visually-hidden">{{ variant.title }}</span>
+              </span>
+            </a>
+          {% endif %}
+
+          {{ first_metafield_value.image }}
+
+          {% if first_metafield_value.color and show_variant_mf_image_on_card %}
+            <a
+              href="{{ product.url }}?variant={{ variant.id }}"
+              class="henk-card__variant-swatch {% if variant.id == first_variant.id %}is-active{% endif %}"
+              data-main-id="card-{{ product.id }}"
+              data-subtitle-id="subtitle-{{ product.id }}"
+              data-variant-img="{{ variant.featured_image | image_url: width: 1134 }}"
+              data-variant-title="{{ variant.title }}"
+              data-variant-id="{{ variant.id }}"
+              data-variant-price="{{ variant.price | money_without_trailing_zeros }}"
+            >
+              <span
+                class="custom-swatch"
+                style="
+                  background-color: {{
+                  first_metafield_value.color }};
+                "
+              >
+                <span class="visually-hidden">{{ variant.title }}</span>
+                show image from fabric?
               </span>
             </a>
           {% endif %}

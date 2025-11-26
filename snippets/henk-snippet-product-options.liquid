@@ -1,6 +1,9 @@
 hello
 {% for option in product.options_with_values %}
   {%- comment -%}check if has swatch, if true, then is Color option metaobject {%- endcomment -%}
+
+  {{ option.values.first.swatch }}
+
   {%- if option.values.first.swatch -%}
     {% assign has_metafield = false %}
 

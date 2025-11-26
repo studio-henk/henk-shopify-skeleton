@@ -53,6 +53,10 @@
                 {% comment %} {{ value.swatch | json }} {% endcomment %}
                 {% if value.swatch %}
                   hello this is Color but we want meta anyway
+
+                  {% for key in current_variant.metafields.HENK %}
+                    {% assign current_material = key[1].value.name %}
+                  {% endfor %}
                 {% else %}
                   do regular Color swatch here
                 {% endif %}

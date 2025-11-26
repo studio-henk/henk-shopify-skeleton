@@ -52,8 +52,9 @@
                 {% comment %} {{ option.name | json }} {% endcomment %}
                 {% comment %} {{ value.swatch | json }} {% endcomment %}
                 {% if value.swatch %}
-                  hello
-                  {{ current_variant.options[forloop.parentloop.index0].metafields.HENK | json }}
+                  hello this is Color but we want meta anyway
+                {% else %}
+                  do regular Color swatch here
                 {% endif %}
                 {% comment %} {{ value }} {% endcomment %}
               {% endif %}

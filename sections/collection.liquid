@@ -58,7 +58,8 @@
         {% for product in collection.products %}
           {% if show_variants %}
             {% assign sorted_variants = product.variants | sort: 'title' %}
-            {% for variant in product.variants %}
+            {% comment %} {% for variant in product.variants %} {% endcomment %}
+            {% for variant in sorted_variants %}
               <!-- render variant card -->
               {% render 'henk-card',
                 product: product,

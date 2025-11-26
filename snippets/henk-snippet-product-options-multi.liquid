@@ -1,41 +1,22 @@
 <!-- Options -->
 {% for option in product.options_with_values %}
-  <fieldset class="henk-fieldset" data-option-index="{{ option_index }}">
+  <fieldset class="henk-fieldset">
     <legend class="henk-legend">{{ option.name }}</legend>
-
-    {% for value in option.values %}
-      {%- comment -%}
-        SWATCH DETECTION
-        1. If value.swatch exists → use Shopify Color swatch
-        2. Else → check HENK metafields (your original logic)
-      {%- endcomment -%}
-
-      {% assign swatch = null %}
-      {% assign swatch_color = null %}
-      {% assign swatch_name = value.name %}
-
-      {% if value.swatch %}
-        {% assign swatch = value.swatch.swatch | image_url %}
-        {% assign swatch_color = value.swatch.color %}
-        {% assign swatch_name = value.swatch.name %}
-      {% endif %}
-
-      {% if swatch == null %}
+    <div class="options__container">
+      {% for value in option.values %}
+        {% comment %}Check if this value should have a swatch{% endcomment %}
+        {% assign swatch = null %}
         {% for variant in product.variants %}
           {% for key in variant.metafields.HENK %}
             {% assign mf_value = key[1].value %}
 
             {% assign norm_value = value | downcase | replace: '-', ' ' | strip %}
             {% assign norm_mf = mf_value.name | downcase | replace: '-', ' ' | strip %}
-
+            {% comment %} {{ norm_value | json }} {% endcomment %}
+            {% comment %} {{ norm_mf }} {% endcomment %}
             {% if norm_value == norm_mf %}
-              {% if mf_value.swatch %}
-                {% assign swatch = mf_value.swatch | image_url %}
-              {% endif %}
-              {% if mf_value.color %}
-                {% assign swatch_color = mf_value.color %}
-              {% endif %}
-              {% assign swatch_name = mf_value.name %}
+              {% assign swatch = mf_value.swatch | image_url %}
+              {{ swatch | json }}
               {% break %}
             {% endif %}
           {% endfor %}
@@ -43,39 +24,50 @@
             {% break %}
           {% endif %}
         {% endfor %}
-      {% endif %}
+        <div class="henk-labeled-input">
+          <label class="henk-label">
+            <input
+              class="henk-radio"
+              type="radio"
+              name="option-{{ option.name | downcase }}"
+              value="{{ value }}"
+              title="{{ value }}"
+              data-option-index="{{ forloop.parentloop.index0 }}"
+              data-option-value="{{ value }}"
+              {% if current_variant.options[forloop.parentloop.index0] == value %}
+                checked
+              {% endif %}
+            >
 
-      <div class="henk-labeled-input">
-        <label class="henk-label">
-          <input
-            class="henk-radio"
-            type="radio"
-            name="option-{{ option_index }}"
-            value="{{ value.name }}"
-            data-option-index="{{ option_index }}"
-            {% if current_variant.options[option_index] == value.name %}
-              checked
-            {% endif %}
-          >
+            <span class="custom-swatch">
+              <!-- {{ swatch | json }} -->
+              {% if swatch %}
+                <img
+                  src="{{ swatch | image_url: width: 44, height: 44 }}"
+                  alt="{{ value }}"
+                  width="44"
+                  height="44"
+                >
+              {% else %}
+                {% comment %} {{ option.name | json }} {% endcomment %}
+                {% comment %} {{ value.swatch | json }} {% endcomment %}
+                {% if value.swatch %}
+                  hello this is Color but we want meta anyway
 
-          <span
-            class="custom-swatch"
-            style="{% if swatch_color %}background-color: {{ swatch_color }};{% endif %}"
-          >
-            {% if swatch %}
-              <img
-                src="{{ swatch }}"
-                alt="{{ swatch_name }}"
-                width="44"
-                height="44"
-              >
-            {% endif %}
-          </span>
-
-          <span class="visually-hidden">{{ swatch_name }}</span>
-        </label>
-      </div>
-    {% endfor %}
+                  {% for key in current_variant.metafields.HENK %}
+                    {% assign current_material = key[1].value.name %}
+                  {% endfor %}
+                  {{ current_material | json }}
+                {% else %}
+                  do regular Color swatch here
+                {% endif %}
+                {% comment %} {{ value }} {% endcomment %}
+              {% endif %}
+            </span>
+          </label>
+        </div>
+      {% endfor %}
+    </div>
   </fieldset>
 {% endfor %}
 

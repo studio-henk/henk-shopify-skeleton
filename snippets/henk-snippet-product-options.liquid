@@ -2,8 +2,6 @@ hello
 {% for option in product.options_with_values %}
   {%- comment -%}check if has swatch, if true, then is Color option metaobject {%- endcomment -%}
 
-  {{ option.values.first | json }}
-
   {%- if option.values.first.swatch -%}
     {% assign has_metafield = false %}
 
@@ -27,7 +25,10 @@ hello
     {% endif %}
 
   {% else %}
-    no swatch
+    {%
+      render 'henk-snippet-option-metafield', option: option,
+      current_variant: current_variant, metafield_value, product: product
+    %}
   {%- endif -%}
 {% endfor %}
 <script>

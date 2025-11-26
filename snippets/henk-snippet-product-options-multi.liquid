@@ -49,7 +49,7 @@
                   height="44"
                 >
               {% else %}
-                {{ option | json }}
+                {{ option.name | json }}
                 {% comment %} {{ value }} {% endcomment %}
               {% endif %}
             </span>

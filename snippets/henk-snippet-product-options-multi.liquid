@@ -4,21 +4,29 @@
     <legend class="henk-legend">{{ option.name }}</legend>
     <div class="options__container">
       {% for value in option.values %}
-        {% comment %}Check if this value has a metafield swatch{% endcomment %}
-        {% assign swatch = null %}
+        {% comment %}Check if this value has a metafield override{% endcomment %}
+        {% assign swatch_image = null %}
         {% assign swatch_color = null %}
+        {% assign found_metafield = false %}
 
         {% for key in current_variant.metafields.HENK %}
           {% assign mf_value = key[1].value %}
           {% assign norm_value = value | downcase | replace: '-', ' ' | strip %}
           {% assign norm_mf = mf_value.name | downcase | replace: '-', ' ' | strip %}
-
           {% if norm_value == norm_mf %}
-            {% assign swatch = mf_value.swatch | image_url %}
+            {% assign swatch_image = mf_value.swatch | image_url %}
             {% assign swatch_color = mf_value.color %}
+            {% assign found_metafield = true %}
             {% break %}
           {% endif %}
         {% endfor %}
+
+        {% unless found_metafield %}
+          {% if value.swatch %}
+            {% assign swatch_image = value.swatch | image_url %}
+            {% assign swatch_color = value.swatch.color %}
+          {% endif %}
+        {% endunless %}
 
         <div class="henk-labeled-input">
           <label class="henk-label">
@@ -27,6 +35,7 @@
               type="radio"
               name="option-{{ option.name | downcase }}"
               value="{{ value }}"
+              title="{{ value }}"
               data-option-index="{{ forloop.parentloop.index0 }}"
               data-option-value="{{ value }}"
               {% if current_variant.options[forloop.parentloop.index0] == value %}
@@ -34,28 +43,23 @@
               {% endif %}
             >
 
-            <span class="custom-swatch">
-              {% if swatch %}
-                hello
+            <span
+              class="custom-swatch"
+              style="{% if swatch_color %}background-color: {{ swatch_color }};{% endif %}"
+            >
+              {% if swatch_image %}
                 <img
-                  src="{{ swatch | image_url: width:44, height:44 }}"
+                  src="{{ swatch_image | image_url: width: 44, height: 44 }}"
                   alt="{{ value }}"
                   width="44"
                   height="44"
                 >
-              {% elsif value.swatch %}
-                <img
-                  src="{{ value.swatch | image_url: width:44, height:44 }}"
-                  alt="{{ value }}"
-                  width="44"
-                  height="44"
-                >
-              {% elsif swatch_color %}
-                <span style="background-color: {{ swatch_color }};"></span>
               {% endif %}
             </span>
 
-            <span class="visually-hidden">{{ value }}</span>
+            <span class="visually-hidden">
+              {{ value }}
+            </span>
           </label>
         </div>
       {% endfor %}

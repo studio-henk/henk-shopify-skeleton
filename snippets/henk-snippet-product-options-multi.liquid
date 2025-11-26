@@ -1,50 +1,43 @@
-<!-- Options -->
 {% for option in product.options_with_values %}
   <fieldset class="henk-fieldset">
     <legend class="henk-legend">{{ option.name }}</legend>
     <div class="options__container">
+      {% assign option_index = forloop.index0 %}
+
       {% for value in option.values %}
-        {% comment %}Check if this value has a metafield override{% endcomment %}
         {% assign swatch_image = null %}
         {% assign swatch_color = null %}
         {% assign found_metafield = false %}
 
+        {%- comment -%} Find a variant that has this value in this option slot {%- endcomment -%}
         {% for variant in product.variants %}
-          {% for key in variant.metafields.HENK %}
-            {% assign mf_value = key[1].value %}
-            {% assign norm_value = value | downcase | replace: '-', ' ' | strip %}
-            {% assign norm_mf = mf_value.name | downcase | replace: '-', ' ' | strip %}
-            {% if norm_value == norm_mf %}
-              {% assign swatch_image = mf_value.swatch | image_url %}
-              {% assign swatch_color = mf_value.color %}
-              {% assign found_metafield = true %}
+          {% if variant.options[option_index] == value %}
+            {% for key in variant.metafields.HENK %}
+              {% assign mf_value = key[1].value %}
+              {% assign norm_value = value | downcase | replace: '-', ' ' | strip %}
+              {% assign norm_mf = mf_value.name | downcase | replace: '-', ' ' | strip %}
+              {% if norm_value == norm_mf %}
+                {% assign swatch_image = mf_value.swatch | image_url %}
+                {% assign swatch_color = mf_value.color %}
+                {% assign found_metafield = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+
+            {% if found_metafield %}
               {% break %}
             {% endif %}
-          {% endfor %}
-          {% if found_metafield %}
-            {% break %}
           {% endif %}
         {% endfor %}
-
-        {% comment %} {% for key in current_variant.metafields.HENK %} {% endcomment %}
-        {% comment %}   {% assign mf_value = key[1].value %} {% endcomment %}
-        {% comment %}   {% assign norm_value = value | downcase | replace: '-', ' ' | strip %} {% endcomment %}
-        {% comment %}   {% assign norm_mf = mf_value.name | downcase | replace: '-', ' ' | strip %} {% endcomment %}
-        {% comment %}   {% if norm_value == norm_mf %} {% endcomment %}
-        {% comment %}     {% assign swatch_image = mf_value.swatch | image_url %} {% endcomment %}
-        {% comment %}     {% assign swatch_color = mf_value.color %} {% endcomment %}
-        {% comment %}     {% assign found_metafield = true %} {% endcomment %}
-        {% comment %}     {% break %} {% endcomment %}
-        {% comment %}   {% endif %} {% endcomment %}
-        {% comment %} {% endfor %} {% endcomment %}
 
         {% unless found_metafield %}
           {% if value.swatch %}
             {% assign swatch_image = value.swatch | image_url %}
             {% assign swatch_color = value.swatch.color %}
+          {% elsif value.color %}
+            {% assign swatch_color = value.color %}
           {% endif %}
         {% endunless %}
-        {{ swatch_image | json }}
 
         <div class="henk-labeled-input">
           <label class="henk-label">
@@ -54,17 +47,14 @@
               name="option-{{ option.name | downcase }}"
               value="{{ value }}"
               title="{{ value }}"
-              data-option-index="{{ forloop.parentloop.index0 }}"
+              data-option-index="{{ option_index }}"
               data-option-value="{{ value }}"
-              {% if current_variant.options[forloop.parentloop.index0] == value %}
+              {% if current_variant.options[option_index] == value %}
                 checked
               {% endif %}
             >
 
-            <span
-              class="custom-swatch"
-              style="{% if swatch_color %}background-color: {{ swatch_color }};{% endif %}"
-            >
+            <span class="custom-swatch" style="{% if swatch_color %}background-color: {{ swatch_color }};{% endif %}">
               {% if swatch_image %}
                 <img
                   src="{{ swatch_image | image_url: width: 44, height: 44 }}"
@@ -75,16 +65,13 @@
               {% endif %}
             </span>
 
-            <span class="visually-hidden">
-              {{ value }}
-            </span>
+            <span class="visually-hidden">{{ value }}</span>
           </label>
         </div>
       {% endfor %}
     </div>
   </fieldset>
 {% endfor %}
-
 <!-- Hidden input for form -->
 <input type="hidden" name="id" id="SelectedVariantId" value="{{ current_variant.id }}">
 

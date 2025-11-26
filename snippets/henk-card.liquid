@@ -137,7 +137,7 @@
             {% break %}
           {% endfor %}
 
-          {{ first_metafield_value | json }}
+          {% comment %} {{ first_metafield_value | json }} {% endcomment %}
           {% comment %} {{ first_metafield_value.color }} {% endcomment %}
 
           {%- comment -%}show color code swatch {%- endcomment -%}

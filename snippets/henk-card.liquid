@@ -165,7 +165,7 @@
             </a>
           {% endif %}
 
-          {{ first_metafield_value.image }}
+          {{ first_metafield_value | json }}
 
           {% if first_metafield_value.color and show_variant_mf_image_on_card %}
             <a

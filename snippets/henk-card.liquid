@@ -3,10 +3,10 @@
 {% comment %} {{ product.tags | json }} {% endcomment %}
 
 {% assign show_variant_image_on_card = false %}
-{% assign show_variant_mf_color_on_card = true %}
+{% comment %} {% assign show_variant_mf_color_on_card = true %} {% endcomment %}
 {% comment %} {% assign show_variant_mf_color_on_card = false %} {% endcomment %}
 {% comment %} {% assign show_variant_mf_image_on_card = false %} {% endcomment %}
-{% comment %} {% assign show_variant_mf_image_on_card = true %} {% endcomment %}
+{% assign show_variant_mf_image_on_card = true %}
 
 {% assign card_url = product.url %}
 {% if variant %}
@@ -137,7 +137,7 @@
             {% break %}
           {% endfor %}
 
-          {% comment %} {{ first_metafield_value | json }} {% endcomment %}
+          {{ first_metafield_value | json }}
           {% comment %} {{ first_metafield_value.color }} {% endcomment %}
 
           {%- comment -%}show color code swatch {%- endcomment -%}

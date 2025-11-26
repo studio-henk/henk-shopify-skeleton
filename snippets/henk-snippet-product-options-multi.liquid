@@ -15,6 +15,7 @@
 
           {% if norm_value == norm_mf %}
             {% assign swatch = mf_value.swatch | image_url %}
+            {{ swatch | json }}
             {% assign swatch_color = mf_value.color %}
             {% break %}
           {% endif %}

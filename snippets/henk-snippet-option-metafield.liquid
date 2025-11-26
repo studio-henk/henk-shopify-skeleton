@@ -1,0 +1,49 @@
+{% assign sorted_variants = product.variants | sort: 'title' %}
+<fieldset class="henk-fieldset">
+  <legend class="henk-legend">{{ option.name }}</legend>
+
+  <div class="options__container">
+    {% for variant in sorted_variants %}
+      {% for key in variant.metafields.HENK %}
+        {% assign metafield_value = key[1].value %}
+        {% assign swatch_name = metafield_value.name %}
+        {% assign swatch_color = metafield_value.color %}
+        {% assign swatch_image = metafield_value.swatch %}
+
+        <div class="henk-labeled-input">
+          <label class="henk-label">
+            <input
+              class="henk-radio"
+              type="radio"
+              name="id"
+              value="{{ variant.id }}"
+              title="{{ swatch_name }}"
+
+              data-featured-image="{{ variant.featured_image | image_url: width: 1134 }}"
+              data-material-name="{{ swatch_name }}"
+              data-sku="{{ variant.sku }}"
+              data-price="{{ variant.price }}"
+
+              {% if variant.id == current_variant.id %}
+                checked
+              {% endif %}
+            >
+
+            <span class="custom-swatch" style="background-color: {{ swatch_color }};">
+              {% if swatch_image %}
+                <img
+                  src="{{ swatch_image | image_url: width: 44 }}"
+                  alt="{{ swatch_name }}"
+                  width="44"
+                  height="44"
+                >
+              {% endif %}
+            </span>
+
+            <span class="visually-hidden">{{ swatch_name }}</span>
+          </label>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</fieldset>

@@ -1,41 +1,31 @@
 # TODO
 
-## CRUCIAL !!!!
-
-- [ ] how to show color / swatch image for upholstery material -> material metaobject?
-  - [ ] debug upholstery material and material 
-  - [ ] test with different one? frame afwerking?
-- [ ] add breadcumbs section to default product template
-- [ ] lister: when 1 variant, dont show swatches
-- [ ] PDP: main image when no options from product not variant
+## PDP 
+- [ ] lister: variants in card also sorted alphabetcally?
+- [ ] add counters to options: pebbles sofa: afwerking now 1 choice, so no need
+to show it?
 
 
+- [ ] lister -> cards -> swatches show color, not mini image? try for eetkamerbanken
+- [ ] show different product level images and variant images on PDP
+- [ ] add variant gallery images / slider?
 - [ ] how to deal with lister filter widget showing fabrics under Color (remove
   from Color?)
 - [ ] use money snippet also on cat page
 
-- [x] add diff pricing for lean lounge chair
-- [x] add variant title below title
-- [ ] add variant gallery images / slider?
+## UNCLEAR ?
+
+- [ ] menu -> shop -> highlights -> where?
 
 ## lister
-- [x] js -> update price on hover
-- [ ] storybook: henk-fugure, add to css
-- [ ] henk-card variant names: use colour, our names
-- [ ] lister: filters widget 2px too high: must be 44px like buttons
+- [ ] lister: http://127.0.0.1:9292/collections/fauteuils double material filer?
+upholstery and material?
 - [ ] lister: find out how not to show price and availability filters?
-- [ ] details comp: open - icon utf issue? was in filter widget, but dont see it
-  now?
 
 - [ ] quoteblock
 - [ ] change blog template (main img, max-width etc) -> new template
 - [ ] newsletter-block translations
 - [ ] translations for info boxes?
-- [ ] PDP
-- [ ] check select arrow position
-
-## To storybook
-- [ ] filter widget
 
 ## stores overview 
 - [ ] stores detail: check breadcrumbs: willen we Winkels ervoor?
@@ -56,15 +46,30 @@
 - [ ] shipping calculator
 - [ ] discounts?
 - [ ] downpayment?
-- [ ] ajaxify quantity change?
 
-## Lister page / collection
-- [ ] Checkbox, can't be hidden, has to be focusable 
-- [ ] discuss: weirdness and use of metaobject colour
+## NOTES / HELP / References 
+- https://www.shopify.com/partners/blog/swatches
 
-## stores overview 
-- [ ] card component: adjust / expand for store info?
+## DONE
 
-## PDP product page: image gallery?
-- [ ] template 
-
+- [x] menu: connect all collections
+- [X] again: filters too high, check css
+- [x] lister: dont show filter widget if only 1 card
+- [x] header logo is blue? check storybook
+- [x] lister: when 1 variant, dont show swatches: issue with how a product is
+setup. sofa uses different option.
+- [x] poef -> fabric as option name -> connect to Shopify 'upholstery material' -> variant has fabric metafield -> uses Material as MetaObject
+- [x] poef -> finish as option name -> connected to Shopify 'Fixtures'???? -> variant has finish metafield -> uses Material as MetaObject
+- [x] remove metafield Material from variant detail page?
+- [x] storybook: henk-fugure, add to css
+- [x] filter widget
+- [x] display vase: on load -> variant material not showing
+- [x] Vazen -> Translate subtitle Variant name, option label : Color
+- [x] add eiken to poefs
+- [x] add 2 more versions for ode chair, 2 fabrics.
+- [x] fix Lean lounge chair
+- [x] check pebbles sofa
+- [x] grid light
+- [x] blob vase
+- [x] display vase
+- [x] redo base bar stool swathes

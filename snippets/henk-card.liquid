@@ -140,7 +140,7 @@
           {% comment %} {{ first_metafield_value.color }} {% endcomment %}
 
           {%- comment -%}show color code swatch {%- endcomment -%}
-          {% if first_metafield_value.color and show_variant_color_on_card %}
+          {% if first_metafield_value.color and show_variant_mf_color_on_card %}
             <a
               href="{{ product.url }}?variant={{ variant.id }}"
               class="henk-card__variant-swatch {% if variant.id == first_variant.id %}is-active{% endif %}"

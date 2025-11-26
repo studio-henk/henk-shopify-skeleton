@@ -122,8 +122,9 @@
           {%- endcomment -%}
           {% comment %} {{ variant.product.options_with_values | json }} {% endcomment %}
           {% comment %} {{ variant.product.metafields.HENK.material.value | json }} {% endcomment %}
-          {{ variant.metafields.HENK.material | json }}
+          {% comment %} {{ variant.metafields.HENK.material.value | json }} {% endcomment %}
           {% comment %} {{ variant | json }} {% endcomment %}
+          {{ variant.metafields.HENK | json }}
           {% if variant.featured_image %}
             {%- comment -%}:SWATCH{%- endcomment -%}
             {% comment %} {{ variant | json }} {% endcomment %}

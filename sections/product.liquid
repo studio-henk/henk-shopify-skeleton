@@ -118,19 +118,20 @@
             {% else %}
               <div class="henk-button-group henk-button-group--left">
                 <a href="" class="henk-button henk-button--ghost">Bekijk in winkel</a>
-                <input
-                  type="submit"
-                  value="Add to cart"
-                  class="
-                    henk-button
-                    henk-button--primary
-                  "
-                >
+                <!-- <input -->
+                <!-- type="submit" -->
+                <!-- value="Add to cart" -->
+                <!-- class=" -->
+                <!-- henk-button -->
+                <!-- henk-button--primary -->
+                <!-- " -->
+                <!-- > -->
 
                 {% render 'henk-button',
                   element: 'button',
                   type: 'submit',
                   label: 'Add to cart',
+                  value: 'Add to cart',
                   variant: 'tertiary',
                   icon_name: 'feather-shopping-bag'
                 %}

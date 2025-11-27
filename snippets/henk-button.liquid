@@ -39,7 +39,7 @@
 {% assign icon_html = '' %}
 {% if icon_name %}
   {% capture icon_html %}
-    {% render 'henk-icon', icon_name: icon_name, size: icon_size, only: icon_only %}
+    {% comment %} {% render 'henk-icon', icon_name: icon_name, size: icon_size, only: icon_only %} {% endcomment %}
     {% render 'henk-icon-test', icon_name: icon_name, size: icon_size, only: icon_only %}
   {% endcapture %}
 {% endif %}

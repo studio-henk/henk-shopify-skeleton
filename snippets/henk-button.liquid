@@ -41,7 +41,7 @@
   {% capture icon_html %}
     {% comment %} {% render 'henk-icon', icon_name: icon_name, size: icon_size, only: icon_only %} {% endcomment %}
     {% comment %} {% render 'henk-icon', icon_name: icon_name, size: icon_size, only: icon_only %} {% endcomment %}
-        {% render 'henk-icon', name: 'feather-shopping-cart', class: 'icon--only' %}
+        {% render 'henk-icon', name: icon_name, class: 'icon--only' %}
   {% endcapture %}
 {% endif %}
 

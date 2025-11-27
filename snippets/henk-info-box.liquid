@@ -28,7 +28,9 @@
       {% assign icon_html = '' %}
       {% if icon_name %}
         {% capture icon_html %}
-          {% render 'henk-icon', icon_name: icon_name, size: icon_size, only: icon_only %}
+          <i class="info-box__icon henk-icon">
+          {% render 'henk-icon', name: icon_name, size: icon_size, only: icon_only %}
+          </i>
         {% endcapture %}
       {% endif %}
 

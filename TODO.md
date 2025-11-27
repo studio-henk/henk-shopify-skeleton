@@ -1,5 +1,7 @@
 # TODO
 
+- [ ] logo color again !!! check storybook?
+
 ## PDP 
 - [ ] lister: variants in card also sorted alphabetcally?
 - [ ] add counters to options: pebbles sofa: afwerking now 1 choice, so no need

@@ -4,6 +4,7 @@
     element: 'button' | 'a' | 'span' (default: button)
     href: URL (for <a>)
     type: 'button' | 'submit' | 'reset' (only for <button>)
+    value: value attribute (only for <button>)
     variant: 'primary' | 'secondary' | 'tertiary' | 'ghost'
     size: 'small' | 'large'
     label: text for button
@@ -38,7 +39,9 @@
 {% assign icon_html = '' %}
 {% if icon_name %}
   {% capture icon_html %}
-    {% render 'henk-icon', icon_name: icon_name, size: icon_size, only: icon_only %}
+    {% comment %} {% render 'henk-icon', icon_name: icon_name, size: icon_size, only: icon_only %} {% endcomment %}
+    {% comment %} {% render 'henk-icon', icon_name: icon_name, size: icon_size, only: icon_only %} {% endcomment %}
+        {% render 'henk-icon', name: icon_name, class: 'icon--only' %}
   {% endcapture %}
 {% endif %}
 
@@ -83,6 +86,12 @@
   <button
     type="{{ type | default: 'button' }}"
     class="{{ classes }}"
+    {% if value %}
+      value="{{ value }}"
+    {% endif %}
+    {% if title %}
+      title="{{ title }}"
+    {% endif %}
     {% if disabled %}
       disabled
     {% endif %}

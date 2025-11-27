@@ -23,7 +23,7 @@
     button_label: button_label,
     button_url: routes.collections_url,
     button_variant: 'ghost',
-    button_icon_name: 'chevron-left'
+    button_icon_name: 'feather-chevron-left'
   %}
 
   <section class="henk-cart-section">
@@ -87,7 +87,7 @@
                       element: 'a',
                       label: remove_label,
                       href: item.url_to_remove,
-                      icon_name: 'trash',
+                      icon_name: 'feather-trash',
                       icon_only: true,
                       aria_label: remove_label,
                       extra_classes: 'henk-cart-section__item-remove-button'
@@ -158,7 +158,7 @@
     title: 'Bezorgen op afspraak',
     content: '<p>Onze transporteur neemt contact met je op als jouw bestelling binnen is. Je kunt vervolgens zelf het gewenste
     aflevermoment kiezen.</p>',
-    icon_name: 'calendar'
+    icon_name: 'feather-calendar'
   %}
 
   {% render 'henk-info-box',
@@ -166,14 +166,14 @@
     content: '<p>Onze producten worden gratis geleverd en gemonteerd in
       Nederland en België (muv Waddeneilanden en Wallonië).</p>
       <p class="fs-small">*Met uitzondering van wandplanken, tweedekansjes en niet-meubelproducten.</p>',
-    icon_name: 'truck-thick'
+    icon_name: 'feather-truck'
   %}
 
   {% render 'henk-info-box',
     title: 'Bezorgen op afspraak',
     content: '<p>Onze transporteur neemt contact met je op als jouw bestelling binnen is. Je kunt vervolgens zelf het gewenste
     aflevermoment kiezen.</p>',
-    icon_name: 'info-open'
+    icon_name: 'feather-info'
   %}
 </section>
 {% if template == 'cart' %}

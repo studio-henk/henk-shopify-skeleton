@@ -113,19 +113,21 @@
                 variant: 'danger',
                 title: 'NO SKU ASSIGNED',
                 content: '<p>This product cannot be added to the cart yet. Please contact us.</p>',
-                icon_name: 'danger'
+                icon_name: 'feather-alert-circle'
               %}
             {% else %}
               <div class="henk-button-group henk-button-group--left">
                 <a href="" class="henk-button henk-button--ghost">Bekijk in winkel</a>
-                <input
-                  type="submit"
-                  value="Add to cart"
-                  class="
-                    henk-button
-                    henk-button--primary
-                  "
-                >
+
+                {% render 'henk-button',
+                  element: 'button',
+                  type: 'submit',
+                  label: 'Add to cart',
+                  value: 'Add to cart',
+                  variant: 'tertiary',
+                  icon_name: 'feather-shopping-cart',
+                  icon_position: 'right'
+                %}
                 <!-- {{ form | payment_button }} -->
               </div>
             {% endif %}

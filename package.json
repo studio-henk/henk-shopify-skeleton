@@ -22,6 +22,8 @@
   },
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "^1.10.0",
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.11",
     "prettier": "^3.6.2"
   }
 }

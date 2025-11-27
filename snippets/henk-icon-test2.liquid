@@ -1,0 +1,11 @@
+{%- comment -%} Simple icon snippet: use name and optional class {%- endcomment -%}
+{%- assign file_name = name | append: '.svg' -%}
+{%- assign svg_content = file_name | inline_asset_content -%}
+
+{%- if svg_content != blank -%}
+  <i class="henk-icon {{ class }}">
+    {{ svg_content }}
+  </i>
+{%- else -%}
+  <!-- Icon "{{ name }}" not found -->
+{%- endif -%}

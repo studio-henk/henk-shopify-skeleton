@@ -29,7 +29,7 @@
       {% if icon_name %}
         {% capture icon_html %}
           <i class="info-box__icon henk-icon">
-          {% render 'henk-icon', icon_name: icon_name, size: icon_size, only: icon_only %}
+          {% render 'henk-icon', name: icon_name, size: icon_size, only: icon_only %}
           </i>
         {% endcapture %}
       {% endif %}

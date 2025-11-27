@@ -126,6 +126,8 @@
                     henk-button--primary
                   "
                 >
+
+                {% render 'henk-button', element: 'a', href: button_url, label: button_label, variant: 'tertiary' %}
                 <button>icon: {% render 'henk-icon-test', name: 'feather-shopping-bag' %}</button>
                 <!-- {{ form | payment_button }} -->
               </div>

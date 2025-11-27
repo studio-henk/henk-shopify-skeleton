@@ -127,7 +127,13 @@
                   "
                 >
 
-                {% render 'henk-button', element: 'button', label: 'Add to cart', variant: 'tertiary' %}
+                {% render 'henk-button',
+                  element: 'button',
+                  label: 'Add to
+                cart',
+                  variant: 'tertiary',
+                  icon_name: 'feather-shopping-bag'
+                %}
                 <button>icon: {% render 'henk-icon-test', name: 'feather-shopping-bag' %}</button>
                 <!-- {{ form | payment_button }} -->
               </div>

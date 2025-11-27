@@ -4,6 +4,7 @@
     element: 'button' | 'a' | 'span' (default: button)
     href: URL (for <a>)
     type: 'button' | 'submit' | 'reset' (only for <button>)
+    value: value attribute (only for <button>)
     variant: 'primary' | 'secondary' | 'tertiary' | 'ghost'
     size: 'small' | 'large'
     label: text for button
@@ -84,6 +85,12 @@
   <button
     type="{{ type | default: 'button' }}"
     class="{{ classes }}"
+    {% if value %}
+      value="{{ value }}"
+    {% endif %}
+    {% if title %}
+      title="{{ title }}"
+    {% endif %}
     {% if disabled %}
       disabled
     {% endif %}

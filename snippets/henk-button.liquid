@@ -39,6 +39,7 @@
 {% if icon_name %}
   {% capture icon_html %}
     {% render 'henk-icon', icon_name: icon_name, size: icon_size, only: icon_only %}
+    {% render 'henk-icon-test', icon_name: icon_name, size: icon_size, only: icon_only %}
   {% endcapture %}
 {% endif %}
 

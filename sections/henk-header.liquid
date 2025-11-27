@@ -201,6 +201,8 @@
         <i class="henk-icon icon--only">
           {{ 'icon-bag.svg' | inline_asset_content }}
           {{ 'feather-shopping-cart.svg' | inline_asset_content }}
+          {% assign test_icon_name = 'feather-shopping-cart.svg' %}
+          {{ test_icon_name | inline_asset_content }}
         </i>
         {% if cart.item_count > 0 %}
           <sup class="henk-notification-badge">{{ cart.item_count }} </sup>

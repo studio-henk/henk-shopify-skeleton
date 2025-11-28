@@ -194,7 +194,7 @@
         </div>
       {%- endif -%}
       {% comment %} {% render 'header-search', input_id: 'Search-In-Modal' %} {% endcomment %}
-
+      {{ routes.search_url | json }}
       {% render 'henk-button', element: 'a', href: routes__url, label: 'Zoeken', variant: 'tertiary' %}
       <a
         href="{{ routes.search }}"

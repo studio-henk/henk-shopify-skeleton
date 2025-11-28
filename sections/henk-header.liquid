@@ -194,6 +194,16 @@
         </div>
       {%- endif -%}
       {% comment %} {% render 'header-search', input_id: 'Search-In-Modal' %} {% endcomment %}
+      {% render 'henk-button',
+        element: 'a',
+        href: routes.search_url,
+        label: 'Zoeken',
+        variant: 'ghost',
+        icon_name: 'feather-search',
+        icon_only: true,
+        extra_classes: 'henk-header__utils-item
+        henk-header__utils-item--search'
+      %}
       <a
         href="{{ routes.cart_url }}"
         class="henk-button henk-button--ghost henk-header__utils-item henk-header__utils-item--cart"
@@ -208,7 +218,8 @@
   </div>
 </header>
 
-<script src="{{ 'henk-desktop-menu.min.js' | asset_url }}" defer></script>
+<script src="{{ 'henk-mobile-menu.min.js' | asset_url }}" type="module"></script>
+<script src="{{ 'henk-desktop-menu.min.js' | asset_url }}" type="module"></script>
 
 {% schema %}
 {

@@ -7,13 +7,16 @@
 <h1>{{ 'search.title' | t }}</h1>
 
 <form action="{{ routes.search_url }}" method="get" role="search">
-  <input
-    type="search"
-    size="50"
-    name="q"
-    value="{{ search.terms | escape }}"
-    placeholder="{{ 'search.placeholder' | t }}"
-  >
+  <div lass="henk-labeled-input henk-labeled-input--dir-vertical henk-labeled-input--floating henk-labeled-input--required">
+    <input
+      type="search"
+      size="50"
+      name="q"
+      value="{{ search.terms | escape }}"
+      placeholder="{{ 'search.placeholder' | t }}"
+      class="henk-input"
+    >
+  </div>
   <button type="submit">{{ 'search.submit' | t }}</button>
 </form>
 

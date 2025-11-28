@@ -194,6 +194,12 @@
         </div>
       {%- endif -%}
       {% comment %} {% render 'header-search', input_id: 'Search-In-Modal' %} {% endcomment %}
+
+      <a
+        href="{{ routes.search_url }}"
+        class="henk-button henk-button--ghost henk-header__utils-item henk-header__utils-item--cart"
+        >search</a
+      >
       <a
         href="{{ routes.cart_url }}"
         class="henk-button henk-button--ghost henk-header__utils-item henk-header__utils-item--cart"

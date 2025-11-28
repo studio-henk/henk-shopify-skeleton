@@ -8,23 +8,34 @@
   <div class="henk-section__inner">
     <h1>{{ 'search.title' | t }}</h1>
 
-    <form action="{{ routes.search_url }}" method="get" role="search">
-      <div lass="henk-labeled-input henk-labeled-input--dir-vertical henk-labeled-input--floating henk-labeled-input--required">
-        <input
-          type="search"
-          name="q"
-          value="{{ search.terms | escape }}"
-          placeholder="{{ 'search.placeholder' | t }}"
-          class="henk-input"
-        >
-        <label class="henk-label" for="newsletter-email">
-          <span class="henk-label-text">
-            Zoeken
-            <span class="required-indicator">*</span>
-          </span>
-        </label>
+    <form
+      action="{{ routes.search_url }}"
+      method="get"
+      role="search"
+      class="henk-form"
+    >
+      <div class="henk-form-grid">
+        <div class="henk-form-grid__item">
+          <div class="henk-labeled-input henk-labeled-input--dir-vertical henk-labeled-input--floating henk-labeled-input--required">
+            <input
+              type="search"
+              name="q"
+              value="{{ search.terms | escape }}"
+              placeholder="{{ 'search.placeholder' | t }}"
+              class="henk-input"
+            >
+            <label class="henk-label" for="newsletter-email">
+              <span class="henk-label-text">
+                Zoeken
+                <span class="required-indicator">*</span>
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="henk-form-grid__item">
+          <button type="submit">{{ 'search.submit' | t }}</button>
+        </div>
       </div>
-      <button type="submit">{{ 'search.submit' | t }}</button>
     </form>
 
     {% if search.performed %}

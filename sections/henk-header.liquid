@@ -194,15 +194,15 @@
         </div>
       {%- endif -%}
       {% comment %} {% render 'header-search', input_id: 'Search-In-Modal' %} {% endcomment %}
-      {%
-        render 'henk-button',
+      {% render 'henk-button',
         element: 'a',
         href: routes.search_url,
         label: 'Zoeken',
         variant: 'ghost',
         icon_name: 'feather-search',
-        icon_only: true
-        extra_classes: 'henk-header__utils-item henk-header__utils-item--search
+        icon_only: true,
+        extra_classes: 'henk-header__utils-item
+        henk-header__utils-item--search'
       %}
       <a
         href="{{ routes.cart_url }}"

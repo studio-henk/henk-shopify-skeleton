@@ -1,21 +1,18 @@
 {% comment %}
   Fake products array for development
 {% endcomment %}
-
-{{ all_products['ode-lounge-chair'] | json }}
-{% assign featured_product = all_products['ode-lounge-chair'] %}
-
-{{ featured_product }}
+{% assign product = all_products['ode-lounge-chair'] %}
+{% assign first_variant = product.variants.first %}
 
 <div class="media-scroller-container">
   <div class="media-scroller snaps-inline">
     <div class="media-element">
       {% render 'henk-card',
-        product: products[0],
+        product: product,
         variant: first_variant,
-        collection: collection,
+        collection: null,
         card_variant: 'macs',
-        show_variants_on_card: show_variants_on_card
+        show_variants_on_card: false
       %}
     </div>
 

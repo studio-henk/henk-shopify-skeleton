@@ -19,7 +19,15 @@
       %}
     </div>
 
-    <div class="media-element">card</div>
+    <div class="media-element">
+      {% render 'henk-card',
+        product: product,
+        variant: first_variant,
+        collection: null,
+        card_variant: 'macs',
+        show_variants_on_card: false
+      %}
+    </div>
 
     <div class="media-element">card</div>
   </div>

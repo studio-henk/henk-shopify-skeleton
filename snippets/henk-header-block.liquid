@@ -6,10 +6,8 @@
   - classes: string (optional extra classes)
 {% endcomment %}
 
-{%- assign align_class = '' -%}
-{%- if align != blank -%}
-  {%- assign align_class = 'henk-header-block--align-' | append: align -%}
-{%- endif -%}
+{%- assign align = align | default: 'left' -%}
+{%- assign align_class = 'henk-header-block--align-' | append: align -%}
 
 {%- assign heading_tag = 'h2' -%}
 {%- assign title_class = 'henk-header-block__title' -%}

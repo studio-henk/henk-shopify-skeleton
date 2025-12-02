@@ -5,7 +5,7 @@
     {'title':'Product 2','url':'#','image':'/path/to/img2.jpg'},
     {'title':'Product 3','url':'#','image':'/path/to/img3.jpg'}]" %}
 
-{{ products = products | json }}
+{{ products = products[0] | json }}
 
 <div class="media-scroller-container">
   <div class="media-scroller snaps-inline">

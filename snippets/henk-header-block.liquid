@@ -33,3 +33,14 @@
     <{{ heading_tag }} class="{{ title_class }}">{{ title }}</{{ heading_tag }}>
   {%- endif -%}
 </header>
+{% stylesheet %}
+  .henk-header-block {
+    display: flex;
+    flex-direction: column;
+    margin-inline: auto;
+    place-items: center;
+    text-align: center;
+    text-wrap: balance;
+    width: min(540px, 100%);
+  }
+{% endstylesheet %}

@@ -6,8 +6,13 @@
   - classes: string (optional extra classes)
 {% endcomment %}
 
+{%- assign align_class = '' -%}
+{%- if align != blank -%}
+  {%- assign align_class = 'henk-header-block--align-' | append: align -%}
+{%- endif -%}
+
 {%- assign heading_tag = 'h2' -%}
-{%- assign title_class = 'henk-section-header__title' -%}
+{%- assign title_class = 'henk-header-block__title' -%}
 
 {%- case level -%}
   {%- when 'display' -%}
@@ -21,9 +26,9 @@
     {%- assign heading_tag = 'h2' -%}
 {%- endcase -%}
 
-<header class="henk-section-header {{ classes }}">
+<header class="henk-header-block {{ classes }}">
   {%- if caption != blank -%}
-    <p class="henk-section-header__caption">{{ caption }}</p>
+    <p class="henk-header-block__caption">{{ caption }}</p>
   {%- endif -%}
 
   {%- if title != blank -%}

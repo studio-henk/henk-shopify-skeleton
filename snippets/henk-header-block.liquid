@@ -37,8 +37,10 @@
   .henk-header-block {
     display: flex;
     flex-direction: column;
-    margin-inline: auto;
-    text-wrap: balance;
+
+    > * {
+      margin-block: 0;
+    }
 
     &.henk-header-block--align-center {
       place-items: center;

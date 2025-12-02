@@ -19,20 +19,6 @@
   {% assign alignment_class = 'henk-section-header--align-' | append: align %}
 {% endif %}
 
-{% comment %} {% assign heading_tag = 'h2' %} {% endcomment %}
-{% comment %} {% assign title_class = 'henk-section-header__title' %} {% endcomment %}
-{% comment %}{% endcomment %}
-{% comment %} {% if level == 'display' %} {% endcomment %}
-{% comment %}   {% assign heading_tag = 'h1' %} {% endcomment %}
-{% comment %}   {% assign title_class = title_class | append: ' fs-display' %} {% endcomment %}
-{% comment %} {% elsif level == '1' %} {% endcomment %}
-{% comment %}   {% assign heading_tag = 'h1' %} {% endcomment %}
-{% comment %} {% elsif level == '3' %} {% endcomment %}
-{% comment %}   {% assign heading_tag = 'h3' %} {% endcomment %}
-{% comment %} {% else %} {% endcomment %}
-{% comment %}   {% assign heading_tag = 'h2' %} {% endcomment %}
-{% comment %} {% endif %} {% endcomment %}
-
 <section
   class="henk-section henk-section-header {{ alignment_class }}"
   id="section-header-{{ id | default: '1' }}"

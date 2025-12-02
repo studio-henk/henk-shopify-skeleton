@@ -4,6 +4,9 @@
 {% assign products = "[{'title':'Product 1','url':'#','image':'/path/to/img1.jpg'},
     {'title':'Product 2','url':'#','image':'/path/to/img2.jpg'},
     {'title':'Product 3','url':'#','image':'/path/to/img3.jpg'}]" %}
+
+{{ products = products | json }}
+
 <div class="media-scroller-container">
   <div class="media-scroller snaps-inline">
     <div class="media-element">

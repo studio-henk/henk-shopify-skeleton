@@ -47,9 +47,6 @@
         <{{ heading_tag }} class="{{ title_class }}">{{ title }}</{{ heading_tag }}>
       {% endif %}
 
-      {% comment %} {% if title %} {% endcomment %}
-      {% comment %}   <h2 class="henk-section-header__title">{{ title }}</h2> {% endcomment %}
-      {% comment %} {% endif %} {% endcomment %}
       {% if text %}
         <div class="henk-section-header__text">
           {% assign stripped = text | strip %}
@@ -73,11 +70,7 @@
           icon_name: button_icon_name,
           icon_position: button_icon_position | default: 'left',
         %}
-        <!-- <a href="{{ button_url }}" class="henk-button henk-button--default henk-section-header__button"> -->
-        <!-- {{ button_label }} -->
-        <!-- </a> -->
       {% endif %}
     </div>
   </div>
 </section>
-<!-- </section> -->

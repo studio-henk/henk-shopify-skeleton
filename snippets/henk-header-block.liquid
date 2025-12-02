@@ -33,32 +33,34 @@
     <{{ heading_tag }} class="{{ title_class }}">{{ title }}</{{ heading_tag }}>
   {%- endif -%}
 </header>
-{% stylesheet %}
-  .henk-header-block {
-    display: flex;
-    flex-direction: column;
-    row-gap: var(--vertical-rhythm);
+{% comment %} {% stylesheet %} {% endcomment %}
+<style>
+    .henk-header-block {
+      display: flex;
+      flex-direction: column;
+      row-gap: var(--vertical-rhythm);
 
-    > * {
-      margin-block: 0;
+      > * {
+        margin-block: 0;
+      }
     }
-  }
 
-  .henk-header-block--align-center {
-    place-items: center;
-    text-align: center;
-  }
+    .henk-header-block--align-center {
+      place-items: center;
+      text-align: center;
+    }
 
-  .henk-header-block__caption {
-    font-weight: var(--type-caption-font-weight);
-    font-size: var(--type-caption-font-size);
-    line-height: var(--type-caption-line-height);
-    letter-spacing: var(--type-caption-letter-spacing);
-  }
+    .henk-header-block__caption {
+      font-weight: var(--type-caption-font-weight);
+      font-size: var(--type-caption-font-size);
+      line-height: var(--type-caption-line-height);
+      letter-spacing: var(--type-caption-letter-spacing);
+    }
 
-  .henk-header-block__title {
-    font-weight: var(--type-title-font-weight);
-    font-size: var(--type-title-font-size);
-    line-height: var(--type-title-line-height);
-  }
-{% endstylesheet %}
+    .henk-header-block__title {
+      /* font-weight: var(--type-title-font-weight); */
+      /* font-size: var(--type-title-font-size); */
+      /* line-height: var(--type-title-line-height); */
+    }
+  {% comment %} {% endstylesheet %} {% endcomment %}
+</style>

@@ -14,10 +14,10 @@
     button_extra_classes - optional additional classes for button
 {% endcomment %}
 
-{% assign alignment_class = '' %}
-{% if align %}
-  {% assign alignment_class = 'henk-section-header--align-' | append: align %}
-{% endif %}
+{% comment %} {% assign alignment_class = '' %} {% endcomment %}
+{% comment %} {% if align %} {% endcomment %}
+{% comment %}   {% assign alignment_class = 'henk-section-header--align-' | append: align %} {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
 
 <section
   class="henk-section henk-product-block {{ alignment_class }}"

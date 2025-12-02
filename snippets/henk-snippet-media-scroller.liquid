@@ -51,4 +51,20 @@
     background-color: var(--color-primary, blue);
     border-radius: 100vw;
   }
+  .media-scroller-container {
+    container-type: inline-size; /* or size */
+  }
+
+  @container (min-width: 60rem) {
+    .media-scroller {
+      grid-auto-flow: row;
+      grid-template-columns: repeat(6, 1fr);
+      overflow-x: visible;
+      scroll-snap-type: none;
+    }
+
+    .media-scroller > * {
+      scroll-snap-align: none;
+    }
+  }
 </style>

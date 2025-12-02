@@ -37,7 +37,16 @@
   class="henk-section henk-section-header {{ alignment_class }}"
   id="section-header-{{ id | default: '1' }}"
 >
-  <div class="henk-section-header__inner">
+  <div class="henk-section__inner">
+    <header>
+      {% if caption %}
+        <p class="henk-section-header__caption">{{ caption }}</p>
+      {% endif %}
+
+      {% if title %}
+        <{{ heading_tag }} class="{{ title_class }}">{{ title }}</{{ heading_tag }}>
+      {% endif %}
+    </header>
     <div class="henk-section-header__content">
       {% if caption %}
         <p class="henk-section-header__caption">{{ caption }}</p>

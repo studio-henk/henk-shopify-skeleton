@@ -5,7 +5,7 @@
     {'title':'Product 2','url':'#','image':'/path/to/img2.jpg'},
     {'title':'Product 3','url':'#','image':'/path/to/img3.jpg'}]" %}
 
-{{ products | json }}
+{% comment %} {{ products | json }} {% endcomment %}
 
 {% for product in products %}
   {{ product.title }}

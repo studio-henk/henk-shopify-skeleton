@@ -15,6 +15,8 @@
   id="section-product-{{ id | default: '1' }}"
 >
   <div class="henk-section__inner">
-    {% render 'henk-header-block', caption: caption, level: level, title: title, align: align %}
+    {% render 'henk-header-block', caption: caption, level: level, title: title, align: align, classes: classes %}
+
+    <div class="henk-header-block__content">here</div>
   </div>
 </section>

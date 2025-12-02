@@ -2,7 +2,8 @@
   Fake products array for development
 {% endcomment %}
 
-{% assign featured_product = all_products.fauteuils %}
+{{ all_products['ode-lounge-chair'] | json }}
+{% assign featured_product = all_products['ode-lounge-chair'] %}
 
 {{ featured_product }}
 

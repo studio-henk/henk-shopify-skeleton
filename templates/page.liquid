@@ -14,7 +14,14 @@
   align: 'center'
 %}
 
-hello
+{% render 'henk-snippet-product-block',
+  id: page.handle,
+  caption: page.metafields.custom.caption,
+  title: page.title,
+  level: '1',
+  text: page.metafields.custom.page_section_header_intro_text,
+  align: 'center'
+%}
 
 <section class="henk-section">
   <div class="henk-section__inner">

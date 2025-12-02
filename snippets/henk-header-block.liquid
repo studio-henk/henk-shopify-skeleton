@@ -1,0 +1,9 @@
+<header class="section-header {{ classes }}">
+  {% if caption != blank %}
+    <p class="section-header__caption">{{ caption }}</p>
+  {% endif %}
+
+  {% if title != blank %}
+    <h2 class="section-header__title">{{ title }}</h2>
+  {% endif %}
+</header>

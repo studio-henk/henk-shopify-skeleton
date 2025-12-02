@@ -14,47 +14,11 @@
     button_extra_classes - optional additional classes for button
 {% endcomment %}
 
-{% comment %} {% assign alignment_class = '' %} {% endcomment %}
-{% comment %} {% if align %} {% endcomment %}
-{% comment %}   {% assign alignment_class = 'henk-section-header--align-' | append: align %} {% endcomment %}
-{% comment %} {% endif %} {% endcomment %}
-
 <section
   class="henk-section henk-product-block {{ alignment_class }}"
   id="section-product-{{ id | default: '1' }}"
 >
   <div class="henk-section__inner">
     {% render 'henk-header-block', caption: 'test caption', title: 'test title' %}
-
-    <div class="henk-section-header__content">
-      {% if text %}
-        <div class="henk-section-header__text">
-          {% assign stripped = text | strip %}
-          {% if stripped contains '<' and stripped contains '>' %}
-            {{ text }}
-            <!-- assume HTML already, render as-is -->
-          {% else %}
-            <p>{{ text }}</p>
-            <!-- wrap plain text in p -->
-          {% endif %}
-        </div>
-      {% endif %}
-      {% if button_label and button_url %}
-        {%
-          render 'henk-button',
-          element: button_element | default: 'a',
-          href: button_url,
-          label: button_label,
-          extra_classes: 'henk-section-header__button'
-          variant: button_variant | default: 'primary',
-          icon_name: button_icon_name,
-          icon_position: button_icon_position | default: 'left',
-        %}
-        <!-- <a href="{{ button_url }}" class="henk-button henk-button--default henk-section-header__button"> -->
-        <!-- {{ button_label }} -->
-        <!-- </a> -->
-      {% endif %}
-    </div>
   </div>
 </section>
-<!-- </section> -->

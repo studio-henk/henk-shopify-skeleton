@@ -1,15 +1,10 @@
 {% comment %}
   Fake products array for development
 {% endcomment %}
-{% assign products = "[{'title':'Product 1','url':'#','image':'/path/to/img1.jpg'},
-    {'title':'Product 2','url':'#','image':'/path/to/img2.jpg'},
-    {'title':'Product 3','url':'#','image':'/path/to/img3.jpg'}]" %}
 
-{% comment %} {{ products | json }} {% endcomment %}
+{% assign featured_product = all_products['my-product-handle'] %}
 
-{% for product in products %}
-  {{ product.title }}
-{% endfor %}
+{{ featured_product | json }}
 
 <div class="media-scroller-container">
   <div class="media-scroller snaps-inline">

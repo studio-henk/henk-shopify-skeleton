@@ -72,4 +72,20 @@
     overscroll-behavior-inline: contain;
     padding: 1rem 0;
   }
+
+  .snaps-inline > * {
+    scroll-snap-align: start;
+  }
+
+  .media-element {
+    background: var(--surface-2);
+    border-radius: var(--radius-2, 8px);
+    grid-template-rows: auto;
+  }
+
+  .media-element,
+  .media-group {
+    display: grid;
+    gap: var(--_spacer);
+  }
 </style>

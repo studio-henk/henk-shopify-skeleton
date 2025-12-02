@@ -26,7 +26,7 @@
     {%- assign heading_tag = 'h2' -%}
 {%- endcase -%}
 
-<header class="henk-header-block {{ classes }}">
+<header class="henk-header-block {{ align_class }} {{ classes }}">
   {%- if caption != blank -%}
     <p class="henk-header-block__caption">{{ caption }}</p>
   {%- endif -%}

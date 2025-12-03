@@ -12,9 +12,32 @@
     "main": {
       "type": "article",
       "settings": {}
+    },
+    "henk_section_product_block_nwy9ym": {
+      "type": "henk-section-product-block",
+      "blocks": {
+        "product_TtQR7e": {
+          "type": "product",
+          "settings": {
+            "product_handle": "blob-vase"
+          }
+        }
+      },
+      "block_order": [
+        "product_TtQR7e"
+      ],
+      "name": "HENK Product Block",
+      "settings": {
+        "caption": "caption",
+        "title": "Test Title",
+        "level": "2",
+        "align": "left",
+        "classes": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "henk_section_product_block_nwy9ym"
   ]
 }

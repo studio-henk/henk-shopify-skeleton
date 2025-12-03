@@ -9,8 +9,8 @@
     %}
 
     <div class="henk-header-block__content">
-      {%- assign metafield_variants = article.metafields.HENK.featured_product_variant.value -%}
-      {{ metafield_variants | json }}
+      {%- assign metafield_variants = article.metafields.HENK.featured_product_variant.value | default: empty -%}
+      {% comment %} {{ metafield_variants | json }} {% endcomment %}
 
       {% if metafield_variants != empty %}
         {% comment %}
@@ -18,7 +18,7 @@
         {% endcomment %}
         <div class="media-scroller snaps-inline">
           {% for variant in metafield_variants %}
-            {{ variant | json }}
+            {% comment %} {{ variant | json }} {% endcomment %}
             {% assign product = variant.product %}
             <div class="media-element">
               {% render 'henk-card',

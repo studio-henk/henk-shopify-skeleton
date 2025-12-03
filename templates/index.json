@@ -45,12 +45,20 @@
           "type": "product",
           "settings": {
             "product_handle": "lean-lounge-chair",
+            "variant_id": "45382391824545"
+          }
+        },
+        "product_e9XpHW": {
+          "type": "product",
+          "settings": {
+            "product_handle": "lean-lounge-chair",
             "variant_id": "45375940133025"
           }
         }
       },
       "block_order": [
-        "product_3Vg4AF"
+        "product_3Vg4AF",
+        "product_e9XpHW"
       ],
       "name": "HENK Product Block",
       "settings": {

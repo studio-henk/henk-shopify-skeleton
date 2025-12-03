@@ -99,6 +99,15 @@
     {% endif %}
 
     <p class="henk-card__subtitle" id="subtitle-{{ product.id }}">{{ variant.title }}</p>
+
+    {%- comment -%}
+      if has compare at price
+    {%- endcomment -%}
+
+    {%- if variant.compare_at_price -%}
+      yo
+    {%- endif -%}
+
     <p class="henk-card__price henk-card__price--discounted">
       <span class="henk-card__price henk-card__price--old">
         {{- variant.compare_at_price | money_without_trailing_zeros -}}

@@ -41,6 +41,15 @@
     "henk_section_product_block_t6JCiz": {
       "type": "henk-section-product-block",
       "blocks": {
+        "product_3Vg4AF": {
+          "type": "product",
+          "settings": {
+            "product_handle": "soft-coffee-table",
+            "manual_title": "",
+            "manual_price": "",
+            "manual_url": ""
+          }
+        },
         "product_zyYGRT": {
           "type": "product",
           "settings": {
@@ -53,6 +62,7 @@
         }
       },
       "block_order": [
+        "product_3Vg4AF",
         "product_zyYGRT"
       ],
       "name": "HENK Product Block",

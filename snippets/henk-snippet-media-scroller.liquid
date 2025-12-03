@@ -24,12 +24,25 @@
     {% elsif blocks.size > 0 %}
       {% comment %} Render products from section blocks {% endcomment %}
       {% for block in blocks %}
-        {% assign product = all_products[block.settings.product_handle] %}
-        {% assign variant = product.variants.first %}
+        {% if block.settings.product_handle != blank %}
+          {% assign product = all_products[block.settings.product_handle] %}
+          {% assign variant = product.variants.first %}
+          {% assign manual = false %}
+        {% else %}
+          {% assign product = null %}
+          {% assign variant = null %}
+          {% assign manual = true %}
+        {% endif %}
+
         <div class="media-element">
           {% render 'henk-card',
             product: product,
             variant: variant,
+            manual: manual,
+            manual_title: block.settings.manual_title,
+            manual_price: block.settings.manual_price,
+            manual_url: block.settings.manual_url,
+            manual_image: block.settings.manual_image,
             collection: null,
             card_variant: 'macs',
             show_variants_on_card: false

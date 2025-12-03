@@ -45,25 +45,12 @@
           "type": "product",
           "settings": {
             "product_handle": "lean-lounge-chair",
-            "manual_title": "",
-            "manual_price": "",
-            "manual_url": ""
-          }
-        },
-        "product_zyYGRT": {
-          "type": "product",
-          "settings": {
-            "product_handle": "",
-            "manual_title": "Some product variant",
-            "manual_price": "90000",
-            "manual_url": "/products/display-tafellamp?variant=45234923929761",
-            "manual_image": "shopify://shop_images/LI-DISPL-6003.jpg"
+            "variant_id": "45375940133025"
           }
         }
       },
       "block_order": [
-        "product_3Vg4AF",
-        "product_zyYGRT"
+        "product_3Vg4AF"
       ],
       "name": "HENK Product Block",
       "settings": {

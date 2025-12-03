@@ -41,6 +41,12 @@
     "henk_section_product_block_t6JCiz": {
       "type": "henk-section-product-block",
       "blocks": {
+        "product_zyYGRT": {
+          "type": "product",
+          "settings": {
+            "product_handle": "display-tafellamp"
+          }
+        },
         "product_CaJDKW": {
           "type": "product",
           "settings": {
@@ -49,6 +55,7 @@
         }
       },
       "block_order": [
+        "product_zyYGRT",
         "product_CaJDKW"
       ],
       "name": "HENK Product Block",

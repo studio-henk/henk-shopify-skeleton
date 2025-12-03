@@ -1,0 +1,91 @@
+<section class="henk-section henk-product-block" id="section-product-{{ section.id }}">
+  <div class="henk-section__inner">
+    {% render 'henk-header-block',
+      caption: section.settings.caption,
+      title: section.settings.title,
+      level: section.settings.level,
+      align: section.settings.align,
+      classes: section.settings.classes
+    %}
+
+    <div class="henk-header-block__content">
+      {%- assign metafield_variants = article.metafields.custom.featured_variant.value | default: empty -%}
+
+      {% if metafield_variants != empty %}
+        {# Render variants from blog post metafield #}
+        <div class="media-scroller snaps-inline">
+          {% for variant in metafield_variants %}
+            {% assign product = variant.product %}
+            <div class="media-element">
+              {% render 'henk-card',
+                product: product,
+                variant: variant,
+                card_variant: 'macs',
+                show_variants_on_card: false
+              %}
+            </div>
+          {% endfor %}
+        </div>
+
+      {% elsif section.blocks.size > 0 %}
+        {# Render products from section blocks for homepage/landing page #}
+        <div class="media-scroller snaps-inline">
+          {% for block in section.blocks %}
+            {% assign product = all_products[block.settings.product_handle] %}
+            {% assign variant = product.variants.first %}
+            <div class="media-element">
+              {% render 'henk-card',
+                product: product,
+                variant: variant,
+                card_variant: 'macs',
+                show_variants_on_card: true
+              %}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "HENK Product Block",
+  "settings": [
+    { "type": "text", "id": "caption", "label": "Caption" },
+    { "type": "text", "id": "title", "label": "Title" },
+    {
+      "type": "select",
+      "id": "level",
+      "label": "Heading level",
+      "options": [
+        { "value": "1", "label": "H1" },
+        { "value": "2", "label": "H2" },
+        { "value": "3", "label": "H3" },
+        { "value": "display", "label": "Display" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    { "type": "text", "id": "classes", "label": "Extra CSS classes" }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [{ "type": "product", "id": "product_handle", "label": "Product" }]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [{ "name": "HENK Product Block" }]
+}
+{% endschema %}

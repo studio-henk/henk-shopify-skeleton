@@ -26,30 +26,32 @@
       {% for block in blocks %}
         {% if block.settings.product_handle != blank %}
           {% assign product = all_products[block.settings.product_handle] %}
-          {% assign variant = product.variants.first %}
-          {%- comment -%}here we know the chosen product variants {%- endcomment -%}
-          {{ product.variants | size }}
-          {% assign manual = false %}
-        {% else %}
-          {% assign product = null %}
-          {% assign variant = null %}
-          {% assign manual = true %}
-        {% endif %}
+          {% assign target_variant_id = block.settings.variant_id | plus: 0 %}
+          {% assign found_variant = null %}
 
-        <div class="media-element">
-          {% render 'henk-card',
-            product: product,
-            variant: variant,
-            manual: manual,
-            manual_title: block.settings.manual_title,
-            manual_price: block.settings.manual_price,
-            manual_url: block.settings.manual_url,
-            manual_image: block.settings.manual_image,
-            collection: null,
-            card_variant: 'macs',
-            show_variants_on_card: false
-          %}
-        </div>
+          {% for variant in product.variants %}
+            {% if variant.id == target_variant_id %}
+              {% assign found_variant = variant %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+
+          {% if found_variant %}
+            {% assign variant = found_variant %}
+          {% else %}
+            {% assign variant = product.variants.first %}
+          {% endif %}
+
+          <div class="media-element">
+            {% render 'henk-card',
+              product: product,
+              variant: variant,
+              collection: null,
+              card_variant: 'macs',
+              show_variants_on_card: false
+            %}
+          </div>
+        {% endif %}
       {% endfor %}
 
     {% else %}

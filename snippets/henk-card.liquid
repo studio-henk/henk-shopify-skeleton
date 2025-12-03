@@ -71,11 +71,11 @@
     {% comment %}
       {% if card_variant == null %}
     {% endcomment %}
-    {% if variant %}
-      <p class="henk-card__subtitle" id="subtitle-{{ product.id }}">{{ variant.title }}</p>
-    {% else %}
-      <p class="henk-card__subtitle">???</p>
-    {% endif %}
+    {% comment %} {% if variant %} {% endcomment %}
+    {% comment %}   <p class="henk-card__subtitle" id="subtitle-{{ product.id }}">{{ variant.title }}</p> {% endcomment %}
+    {% comment %} {% else %} {% endcomment %}
+    {% comment %}   <p class="henk-card__subtitle">???</p> {% endcomment %}
+    {% comment %} {% endif %} {% endcomment %}
     {% comment %} {% endif %} {% endcomment %}
 
     {% if card_variant == null %}

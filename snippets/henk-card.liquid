@@ -280,17 +280,17 @@
 <style>
   .henk-card.henk-card--macs .henk-card__content {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* two equal columns */
-    grid-auto-rows: auto; /* rows adjust to content height */
+    grid-template-columns: 2fr 1fr;
+    grid-auto-rows: auto;
     gap: 0;
   }
 
   .henk-card.henk-card--macs .henk-card__content > :nth-child(odd) {
-    justify-self: start; /* left column items */
+    justify-self: start;
   }
 
   .henk-card.henk-card--macs .henk-card__content > :nth-child(even) {
-    justify-self: end; /* right column items */
+    justify-self: end;
   }
 
   .henk-card__subtitle {

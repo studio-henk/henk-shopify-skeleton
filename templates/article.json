@@ -15,17 +15,6 @@
     },
     "henk_section_product_block_nwy9ym": {
       "type": "henk-section-product-block",
-      "blocks": {
-        "product_TtQR7e": {
-          "type": "product",
-          "settings": {
-            "product_handle": "display-vaas"
-          }
-        }
-      },
-      "block_order": [
-        "product_TtQR7e"
-      ],
       "name": "HENK Product Block",
       "settings": {
         "caption": "caption",

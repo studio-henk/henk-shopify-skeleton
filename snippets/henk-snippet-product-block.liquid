@@ -10,22 +10,11 @@
     {% render 'henk-header-block', caption: caption, level: level, title: title, align: align, classes: classes %}
 
     <div class="henk-header-block__content">
-      {%- assign metafield_variants = article.metafields.HENK.featured_product_variant.value | default: empty -%}
-
-      {% if metafield_variants != empty %}
-        {% comment %}Render variants from blog post metafield{% endcomment %}
-        {% render 'henk-snippet-media-scroller', variants: metafield_variants %}
-
-      {% elsif blocks.size > 0 %}
-        {% comment %}Render products from section blocks{% endcomment %}
-        {% assign products_data = '' | split: ',' %}
-        {% for block in blocks %}
-          {% assign product = all_products[block.settings.product_handle] %}
-          {% assign variant = product.variants.first %}
-          {% assign products_data = products_data | push: product | push: variant %}
-        {% endfor %}
-        {% render 'henk-snippet-media-scroller', products: products_data %}
-      {% endif %}
+      {%
+        render 'henk-snippet-media-scroller',
+        blocks: blocks,
+        metafield_variants: article.metafields.HENK.featured_product_variant.value | default: empty
+      %}
     </div>
   </div>
 </section>

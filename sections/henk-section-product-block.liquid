@@ -1,56 +1,13 @@
-<section class="henk-section henk-product-block" id="section-product-{{ section.id }}">
-  <div class="henk-section__inner">
-    {% render 'henk-header-block',
-      caption: section.settings.caption,
-      title: section.settings.title,
-      level: section.settings.level,
-      align: section.settings.align,
-      classes: section.settings.classes
-    %}
-
-    <div class="henk-header-block__content">
-      {%- assign metafield_variants = article.metafields.HENK.featured_product_variant.value | default: empty -%}
-      {% comment %} {{ metafield_variants | json }} {% endcomment %}
-
-      {% if metafield_variants != empty %}
-        {% comment %}
-          Render variants from blog post metafield
-        {% endcomment %}
-        <div class="media-scroller snaps-inline">
-          {% for variant in metafield_variants %}
-            {% comment %} {{ variant | json }} {% endcomment %}
-            {% assign product = variant.product %}
-            <div class="media-element">
-              {% render 'henk-card',
-                product: product,
-                variant: variant,
-                card_variant: 'macs',
-                show_variants_on_card: false
-              %}
-            </div>
-          {% endfor %}
-        </div>
-
-      {% elsif section.blocks.size > 0 %}
-        <!-- Render products from section blocks for homepage/landing page -->
-        <div class="media-scroller snaps-inline">
-          {% for block in section.blocks %}
-            {% assign product = all_products[block.settings.product_handle] %}
-            {% assign variant = product.variants.first %}
-            <div class="media-element">
-              {% render 'henk-card',
-                product: product,
-                variant: variant,
-                card_variant: 'macs',
-                show_variants_on_card: false
-              %}
-            </div>
-          {% endfor %}
-        </div>
-      {% endif %}
-    </div>
-  </div>
-</section>
+{% render 'henk-snippet-product-block',
+  caption: section.settings.caption,
+  title: section.settings.title,
+  level: section.settings.level,
+  align: section.settings.align,
+  classes: section.settings.classes,
+  blocks: section.blocks,
+  section_id: section.id,
+  article: article
+%}
 
 {% schema %}
 {

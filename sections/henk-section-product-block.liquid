@@ -12,7 +12,9 @@
       {%- assign metafield_variants = article.metafields.custom.featured_variant.value | default: empty -%}
 
       {% if metafield_variants != empty %}
-        {# Render variants from blog post metafield #}
+        {% comment %}
+          Render variants from blog post metafield
+        {% endcomment %}
         <div class="media-scroller snaps-inline">
           {% for variant in metafield_variants %}
             {% assign product = variant.product %}
@@ -28,7 +30,7 @@
         </div>
 
       {% elsif section.blocks.size > 0 %}
-        {# Render products from section blocks for homepage/landing page #}
+        <!-- Render products from section blocks for homepage/landing page -->
         <div class="media-scroller snaps-inline">
           {% for block in section.blocks %}
             {% assign product = all_products[block.settings.product_handle] %}

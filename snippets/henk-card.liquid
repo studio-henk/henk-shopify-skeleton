@@ -89,7 +89,6 @@
       {% endif %}
     {% else %}
       <p class="henk-card__price">
-        here?
         {%- if product.price_varies -%}
           {{ 'card.from_label' | t }}
           <span class="henk-card__price-number">{{ product.price_min | money_without_trailing_zeros }}</span>
@@ -98,6 +97,8 @@
         {%- endif -%}
       </p>
     {% endif %}
+
+    <p class="henk-card__subtitle" id="subtitle-{{ product.id }}">{{ variant.title }}</p>
 
     {% if card_variant == null %}
       {% assign min_price = product.price_min | money_without_trailing_zeros %}

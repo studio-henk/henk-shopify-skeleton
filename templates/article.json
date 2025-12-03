@@ -25,8 +25,8 @@
         "caption": "caption",
         "title": "Test Title",
         "level": "2",
-        "align": "left",
-        "classes": ""
+        "align": "center",
+        "classes": "test-class"
       }
     }
   },

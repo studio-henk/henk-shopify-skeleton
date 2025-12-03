@@ -271,6 +271,15 @@
     grid-auto-rows: auto; /* rows adjust to content height */
     gap: 10px;
   }
+
+  .henk-card.henk-card--macs .henk-card__content > :nth-child(odd) {
+    justify-self: start; /* left column items */
+  }
+
+  .container > :nth-child(even) {
+    justify-self: end; /* right column items */
+  }
+
   .henk-card__subtitle {
     margin: 0;
   }

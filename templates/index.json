@@ -50,20 +50,10 @@
             "manual_url": "/products/display-tafellamp?variant=45234923929761",
             "manual_image": "shopify://shop_images/LI-DISPL-6003.jpg"
           }
-        },
-        "product_CaJDKW": {
-          "type": "product",
-          "settings": {
-            "product_handle": "base-bar-stool",
-            "manual_title": "",
-            "manual_price": "",
-            "manual_url": ""
-          }
         }
       },
       "block_order": [
-        "product_zyYGRT",
-        "product_CaJDKW"
+        "product_zyYGRT"
       ],
       "name": "HENK Product Block",
       "settings": {

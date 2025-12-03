@@ -57,8 +57,8 @@
       ],
       "name": "HENK Product Block",
       "settings": {
-        "caption": "",
-        "title": "",
+        "caption": "caption",
+        "title": "Check out this thing!",
         "level": "2",
         "align": "left",
         "classes": ""

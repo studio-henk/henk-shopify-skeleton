@@ -25,9 +25,10 @@
       {% comment %} Render products from section blocks {% endcomment %}
       {% for block in blocks %}
         {% if block.settings.product_handle != blank %}
-          hello
           {% assign product = all_products[block.settings.product_handle] %}
           {% assign variant = product.variants.first %}
+          {%- comment -%}here we know the chosen product variants {%- endcomment -%}
+          {{ product.variants | size }}
           {% assign manual = false %}
         {% else %}
           {% assign product = null %}

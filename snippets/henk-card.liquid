@@ -101,6 +101,7 @@
     <p class="henk-card__subtitle" id="subtitle-{{ product.id }}">{{ variant.title }}</p>
     <p class="henk-card__price henk-card__price--discounted">new</p>
     {{ variant.price | money_without_trailing_zeros }}
+    {{ variant.discounted_price | money_without_trailing_zeros }}
 
     {% if card_variant == null %}
       {% assign min_price = product.price_min | money_without_trailing_zeros %}

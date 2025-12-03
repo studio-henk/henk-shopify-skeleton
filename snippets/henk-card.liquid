@@ -105,15 +105,13 @@
     {%- endcomment -%}
 
     {%- if variant.compare_at_price -%}
-      yo
+      <p class="henk-card__price henk-card__price--discounted">
+        <span class="henk-card__price henk-card__price--old">
+          {{- variant.compare_at_price | money_without_trailing_zeros -}}
+        </span>
+        - <span class="henk-card__price henk-card__price--new">{{ variant.price | money_without_trailing_zeros }}</span>
+      </p>
     {%- endif -%}
-
-    <p class="henk-card__price henk-card__price--discounted">
-      <span class="henk-card__price henk-card__price--old">
-        {{- variant.compare_at_price | money_without_trailing_zeros -}}
-      </span>
-      - <span class="henk-card__price henk-card__price--new">{{ variant.price | money_without_trailing_zeros }}</span>
-    </p>
 
     {% if card_variant == null %}
       {% assign min_price = product.price_min | money_without_trailing_zeros %}

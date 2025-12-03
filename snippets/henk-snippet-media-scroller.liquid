@@ -24,6 +24,8 @@
     {% elsif blocks.size > 0 %}
       {% comment %} Render products from section blocks {% endcomment %}
       {% for block in blocks %}
+        {{ block | json }}
+
         {% if block.settings.product_handle != blank %}
           {% assign product = all_products[block.settings.product_handle] %}
           {% assign variant = product.variants.first %}

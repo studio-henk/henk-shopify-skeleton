@@ -9,7 +9,7 @@
     %}
 
     <div class="henk-header-block__content">
-      {%- assign metafield_variants = article.metafields.HENK.featured_variant.value | default: empty -%}
+      {%- assign metafield_variants = article.metafields.HENK.featured_variant | default: empty -%}
       {{ metafield_variants | json }}
 
       {% if metafield_variants != empty %}

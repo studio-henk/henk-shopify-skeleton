@@ -15,6 +15,17 @@
     },
     "henk_section_product_block_nwy9ym": {
       "type": "henk-section-product-block",
+      "blocks": {
+        "product_j3WkHV": {
+          "type": "product",
+          "settings": {
+            "product_handle": "base-bar-stool"
+          }
+        }
+      },
+      "block_order": [
+        "product_j3WkHV"
+      ],
       "name": "HENK Product Block",
       "settings": {
         "caption": "caption",

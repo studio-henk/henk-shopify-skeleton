@@ -100,8 +100,7 @@
 
     <p class="henk-card__subtitle" id="subtitle-{{ product.id }}">{{ variant.title }}</p>
     <p class="henk-card__price henk-card__price--discounted">
-      NOW from {{ variant.compare_at_price | money_without_trailing_zeros }} for
-      {{ variant.price | money_without_trailing_zeros }}
+      {{ variant.compare_at_price | money_without_trailing_zeros }} - {{ variant.price | money_without_trailing_zeros }}
     </p>
 
     {% if card_variant == null %}

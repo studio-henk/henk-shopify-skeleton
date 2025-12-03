@@ -34,9 +34,15 @@
         "align": "left",
         "classes": ""
       }
+    },
+    "henk_section_breadcrumbs_fCekrp": {
+      "type": "henk-section-breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {}
     }
   },
   "order": [
+    "henk_section_breadcrumbs_fCekrp",
     "main",
     "henk_section_product_block_nwy9ym"
   ]

@@ -20,7 +20,7 @@
         "title": "Explore Our Collection",
         "text": "Discover the best products tailored for you.",
         "button_label": "Shop Now",
-        "button_url": "",
+        "button_url": "shopify://products/butterfly-dining-table",
         "button_variant": "primary"
       }
     },

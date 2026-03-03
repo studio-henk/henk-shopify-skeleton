@@ -1,0 +1,158 @@
+{% comment %}
+  Media Scroller with blocks or blog metafield variants
+{% endcomment %}
+
+<div class="media-scroller-container">
+  <div class="media-scroller snaps-inline">
+    {% assign metafield_variants = article.metafields.HENK.featured_product_variant.value | default: empty %}
+
+    {% if metafield_variants != empty %}
+      {% comment %} Render variants from blog post metafield {% endcomment %}
+      {% for variant in metafield_variants %}
+        {% assign product = variant.product %}
+        <div class="media-element">
+          {% render 'henk-card',
+            product: product,
+            variant: variant,
+            collection: null,
+            card_variant: 'macs',
+            show_variants_on_card: false
+          %}
+        </div>
+      {% endfor %}
+
+    {% elsif blocks.size > 0 %}
+      {% comment %} Render products from section blocks {% endcomment %}
+      {% for block in blocks %}
+        {% if block.settings.product_handle != blank %}
+          {% assign product = all_products[block.settings.product_handle] %}
+          {% assign target_variant_id = block.settings.variant_id | plus: 0 %}
+          {% assign found_variant = null %}
+
+          {% for variant in product.variants %}
+            {% if variant.id == target_variant_id %}
+              {% assign found_variant = variant %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+
+          {% if found_variant %}
+            {% assign variant = found_variant %}
+          {% else %}
+            {% assign variant = product.variants.first %}
+          {% endif %}
+
+          <div class="media-element">
+            {% render 'henk-card',
+              product: product,
+              variant: variant,
+              collection: null,
+              card_variant: 'macs',
+              show_variants_on_card: false
+            %}
+          </div>
+        {% endif %}
+      {% endfor %}
+
+    {% else %}
+      {% comment %} Placeholder: fallback fake products {% endcomment %}
+      {% assign product = all_products['ode-lounge-chair'] %}
+      {% assign first_variant = product.variants.first %}
+      {% assign product_2 = all_products['blob-vase'] %}
+      {% assign first_variant_2 = product_2.variants.first %}
+      {% assign product_3 = all_products['grid-light'] %}
+      {% assign first_variant_3 = product_3.variants.first %}
+
+      <div class="media-element">
+        {% render 'henk-card',
+          product: product,
+          variant: first_variant,
+          collection: null,
+          card_variant: 'macs',
+          show_variants_on_card: false
+        %}
+      </div>
+
+      <div class="media-element">
+        {% render 'henk-card',
+          product: product_2,
+          variant: first_variant_2,
+          collection: null,
+          card_variant: 'macs',
+          show_variants_on_card: false
+        %}
+      </div>
+
+      <div class="media-element">
+        {% render 'henk-card',
+          product: product_3,
+          variant: first_variant_3,
+          collection: null,
+          card_variant: 'macs',
+          show_variants_on_card: false
+        %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .snaps-inline {
+    scroll-padding-inline: 0;
+    scroll-snap-type: inline mandatory;
+  }
+
+  .media-scroller {
+    display: grid;
+    gap: 1rem;
+    grid-auto-columns: 84%;
+    grid-auto-flow: column;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding: 1rem 0;
+  }
+
+  .snaps-inline > * {
+    scroll-snap-align: start;
+  }
+
+  .media-element {
+    background-color: var(--color-background-muted, grey);
+    border-radius: 8px;
+    grid-template-rows: auto;
+    aspect-ratio: 2 / 3;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .media-scroller::-webkit-scrollbar {
+    height: 24px;
+  }
+
+  .media-scroller::-webkit-scrollbar-track {
+    background-color: var(--color-background-secondary, lightgrey);
+    border-radius: 100vw;
+  }
+
+  .media-scroller::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary, blue);
+    border-radius: 100vw;
+  }
+
+  .media-scroller-container {
+    container-type: inline-size;
+  }
+
+  @container (min-width: 718px) {
+    .media-scroller {
+      grid-auto-flow: row;
+      grid-template-columns: repeat(auto-fill, minmax(327px, 1fr));
+      overflow-x: visible;
+      scroll-snap-type: none;
+    }
+
+    .media-scroller > * {
+      scroll-snap-align: none;
+    }
+  }
+</style>

@@ -68,13 +68,15 @@
   <div class="henk-card__content">
     <p class="henk-card__title truncate">{{ product.title }}</p>
 
-    {% if card_variant == null %}
-      {% if variant %}
-        <p class="henk-card__subtitle" id="subtitle-{{ product.id }}">{{ variant.title }}</p>
-      {% else %}
-        <p class="henk-card__subtitle">???</p>
-      {% endif %}
-    {% endif %}
+    {% comment %}
+      {% if card_variant == null %}
+    {% endcomment %}
+    {% comment %} {% if variant %} {% endcomment %}
+    {% comment %}   <p class="henk-card__subtitle" id="subtitle-{{ product.id }}">{{ variant.title }}</p> {% endcomment %}
+    {% comment %} {% else %} {% endcomment %}
+    {% comment %}   <p class="henk-card__subtitle">???</p> {% endcomment %}
+    {% comment %} {% endif %} {% endcomment %}
+    {% comment %} {% endif %} {% endcomment %}
 
     {% if card_variant == null %}
       {% if product.metafields.custom.short_description != blank %}
@@ -95,6 +97,22 @@
         {%- endif -%}
       </p>
     {% endif %}
+
+    <p class="henk-card__subtitle" id="subtitle-{{ product.id }}">{{ variant.title }}</p>
+
+    {%- comment -%}
+      if has compare at price
+    {%- endcomment -%}
+
+    <p class="henk-card__price henk-card__price--discounted">
+      {%- if variant.compare_at_price -%}
+        <span class="henk-card__price henk-card__price--old">
+          {{- variant.compare_at_price | money_without_trailing_zeros -}}
+        </span>
+        -&nbsp;
+      {%- endif -%}
+      <span class="henk-card__price henk-card__price--new">{{ variant.price | money_without_trailing_zeros }}</span>
+    </p>
 
     {% if card_variant == null %}
       {% assign min_price = product.price_min | money_without_trailing_zeros %}
@@ -261,9 +279,40 @@
   {% endif %}
 </div>
 <style>
+  .henk-card.henk-card--macs .henk-card__content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-auto-rows: auto;
+    gap: 0;
+  }
+
+  .henk-card.henk-card--macs .henk-card__content > :nth-child(odd) {
+    justify-self: start;
+  }
+
+  .henk-card.henk-card--macs .henk-card__content > :nth-child(even) {
+    justify-self: end;
+  }
+
+  .henk-card__subtitle {
+    margin: 0;
+  }
+
+  .henk-card__price.henk-card__price--old {
+    text-decoration: line-through;
+    opacity: 0.6;
+    color: var(--color-text-muted);
+  }
+
+  .henk-card__price.henk-card__price--new {
+    color: var(--color-success);
+    font-weight: 700 !important;
+  }
+
   .henk-card__variant-selector {
     display: flex;
     gap: 8px;
+    margin-top: 12px;
   }
 
   .henk-card__variant-swatch {

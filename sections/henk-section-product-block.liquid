@@ -1,0 +1,55 @@
+{% render 'henk-snippet-product-block',
+  caption: section.settings.caption,
+  title: section.settings.title,
+  level: section.settings.level,
+  align: section.settings.align,
+  classes: section.settings.classes,
+  blocks: section.blocks,
+  section_id: section.id,
+  article: article
+%}
+
+{% schema %}
+{
+  "name": "HENK Product Block",
+  "settings": [
+    { "type": "text", "id": "caption", "label": "Caption" },
+    { "type": "text", "id": "title", "label": "Title" },
+    {
+      "type": "select",
+      "id": "level",
+      "label": "Heading level",
+      "options": [
+        { "value": "1", "label": "H1" },
+        { "value": "2", "label": "H2" },
+        { "value": "3", "label": "H3" },
+        { "value": "display", "label": "Display" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    { "type": "text", "id": "classes", "label": "Extra CSS classes" }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        { "type": "product", "id": "product_handle", "label": "Product" },
+        { "type": "text", "id": "variant_id", "label": "Variant ID (optional)" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "HENK Product Block" }]
+}
+{% endschema %}

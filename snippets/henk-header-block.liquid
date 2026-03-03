@@ -1,0 +1,65 @@
+{% comment %}
+  Inputs expected:
+  - caption: string (optional)
+  - title: string (required)
+  - level: 'display', '1', '2', '3' (optional)
+  - classes: string (optional extra classes)
+{% endcomment %}
+
+{%- assign align = align | default: 'left' -%}
+{%- assign align_class = 'henk-header-block--align-' | append: align -%}
+
+{%- assign heading_tag = 'h2' -%}
+{%- assign title_class = 'henk-header-block__title' -%}
+
+{%- case level -%}
+  {%- when 'display' -%}
+    {%- assign heading_tag = 'h1' -%}
+    {%- assign title_class = title_class | append: ' fs-display' -%}
+  {%- when '1' -%}
+    {%- assign heading_tag = 'h1' -%}
+  {%- when '3' -%}
+    {%- assign heading_tag = 'h3' -%}
+  {%- else -%}
+    {%- assign heading_tag = 'h2' -%}
+{%- endcase -%}
+
+<header class="henk-header-block {{ align_class }} {{ classes }}">
+  {%- if caption != blank -%}
+    <p class="henk-header-block__caption">{{ caption }}</p>
+  {%- endif -%}
+
+  {%- if title != blank -%}
+    <{{ heading_tag }} class="{{ title_class }}">{{ title }}</{{ heading_tag }}>
+  {%- endif -%}
+</header>
+<style>
+  .henk-header-block {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--vertical-rhythm);
+
+    > * {
+      margin-block: 0;
+    }
+  }
+
+  .henk-header-block--align-center {
+    place-items: center;
+    text-align: center;
+  }
+
+  .henk-header-block__caption {
+    font-weight: var(--type-caption-font-weight);
+    /* font-size: var(--type-caption-font-size); */
+    /* line-height: var(--type-caption-line-height); */
+    /* letter-spacing: var(--type-caption-letter-spacing); */
+  }
+
+  .henk-header-block__title {
+    word-break: normal;
+    /* font-weight: var(--type-title-font-weight); */
+    /* font-size: var(--type-title-font-size); */
+    /* line-height: var(--type-title-line-height); */
+  }
+</style>

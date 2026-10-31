@@ -10,11 +10,23 @@
     {% render 'henk-header-block', caption: caption, level: level, title: title, align: align, classes: classes %}
 
     <div class="henk-header-block__content">
-      {%
-        render 'henk-snippet-media-scroller',
-        blocks: blocks,
-        metafield_variants: article.metafields.HENK.featured_product_variant.value | default: empty
-      %}
+      {% render 'henk-snippet-media-scroller', blocks: blocks, metafield_variants: article.metafields.HENK.featured_product_variant.value, default: "" %}
     </div>
   </div>
 </section>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%
+            render 'henk-snippet-media-scroller',
+            blocks: blocks,
+            metafield_variants: article.metafields.HENK.featured_product_variant.value | default: empty
+          %}
+  to: '{% render ''henk-snippet-media-scroller'', blocks: blocks, metafield_variants:
+    article.metafields.HENK.featured_product_variant.value, default: "" %}'
+  position: 359..506
+{% endcomment %}

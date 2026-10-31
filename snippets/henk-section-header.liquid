@@ -60,17 +60,30 @@
         </div>
       {% endif %}
       {% if button_label and button_url %}
-        {%
-          render 'henk-button',
-          element: button_element | default: 'a',
-          href: button_url,
-          label: button_label,
-          extra_classes: 'henk-section-header__button'
-          variant: button_variant | default: 'primary',
-          icon_name: button_icon_name,
-          icon_position: button_icon_position | default: 'left',
-        %}
+        {% render 'henk-button', element: button_element, default: 'left', href: button_url, label: button_label, extra_classes: 'henk-section-header__button', variant: button_variant, icon_name: button_icon_name, icon_position: button_icon_position %}
       {% endif %}
     </div>
   </div>
 </section>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%
+              render 'henk-button',
+              element: button_element | default: 'a',
+              href: button_url,
+              label: button_label,
+              extra_classes: 'henk-section-header__button'
+              variant: button_variant | default: 'primary',
+              icon_name: button_icon_name,
+              icon_position: button_icon_position | default: 'left',
+            %}
+  to: "{% render 'henk-button', element: button_element, default: 'left', href: button_url,
+    label: button_label, extra_classes: 'henk-section-header__button', variant: button_variant,
+    icon_name: button_icon_name, icon_position: button_icon_position %}"
+  position: 2044..2288
+{% endcomment %}

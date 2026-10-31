@@ -12,7 +12,7 @@
 <details class="henk-details henk-details--{{ variant | default: 'default' }}" name="{{ name | default: 'cc' }}">
   <summary class="henk-details__summary">
     {% if icon_name %}
-      {% render 'henk-icon', icon_name: icon_name, size: icon_size | default: 'large', only: true %}
+      {% render 'henk-icon', icon_name: icon_name, size: icon_size, default: 'large', only: true %}
     {% endif %}
     {{ summary }}
   </summary>
@@ -20,3 +20,15 @@
     {{ content }}
   </div>
 </details>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'henk-icon', icon_name: icon_name, size: icon_size | default: 'large',
+    only: true %}"
+  to: "{% render 'henk-icon', icon_name: icon_name, size: icon_size, default: 'large',
+    only: true %}"
+  position: 469..562
+{% endcomment %}

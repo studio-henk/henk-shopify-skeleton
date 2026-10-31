@@ -14,20 +14,14 @@
     {%- comment -%} if > 0, we want to override the Color swatch with a metafield  {%- endcomment -%}
     {% if has_metafield %}
       <!-- At least one variant has a metafield -->
-      {%
-        render 'henk-snippet-option-metafield', option: option,
-        current_variant: current_variant, metafield_value, product: product
-      %}
+      {% render 'henk-snippet-option-metafield', option: option, current_variant: current_variant, product: product %}
     {% else %}
       <!-- No variants have a metafield -->
       {% render 'henk-snippet-option-color', option: option, current_variant: current_variant %}
     {% endif %}
 
   {% else %}
-    {%
-      render 'henk-snippet-option-metafield', option: option,
-      current_variant: current_variant, metafield_value, product: product
-    %}
+    {% render 'henk-snippet-option-metafield', option: option, current_variant: current_variant, product: product %}
   {%- endif -%}
 {% endfor %}
 <script>
@@ -119,3 +113,26 @@
     });
   });
 </script>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%
+            render 'henk-snippet-option-metafield', option: option,
+            current_variant: current_variant, metafield_value, product: product
+          %}
+  to: "{% render 'henk-snippet-option-metafield', option: option, current_variant:
+    current_variant, product: product %}"
+  position: 590..702
+- from: |-
+    {%
+          render 'henk-snippet-option-metafield', option: option,
+          current_variant: current_variant, metafield_value, product: product
+        %}
+  to: "{% render 'henk-snippet-option-metafield', option: option, current_variant:
+    current_variant, product: product %}"
+  position: 893..1005
+{% endcomment %}
